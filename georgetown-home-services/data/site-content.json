@@ -1,0 +1,538 @@
+{
+  "brand": {
+    "name": "Georgetown Home Services",
+    "domain": "www.georgetownhomeservices.com"
+  },
+  "contact": {
+    "email": "info@georgetownhomeservices.com"
+  },
+  "locations": [
+    {
+      "slug": "georgetown-tx",
+      "title": "Georgetown, TX",
+      "h1": "Trusted Plumbing, HVAC, and Roofing in Georgetown, TX",
+      "description": "Local service for plumbing, AC, heating, and roof repairs across Georgetown.",
+      "heroBullets": [
+        "Licensed and insured technicians",
+        "Fast response times",
+        "Transparent upfront pricing"
+      ],
+      "content": [
+        { "kind": "p", "text": "When you need help fast, you want a team that shows up, communicates clearly, and fixes the problem the first time. Georgetown Home Services provides plumbing, HVAC, and roofing support for homeowners across Georgetown, TX." },
+        { "kind": "h2", "text": "What we can help with" },
+        {
+          "kind": "ul",
+          "items": [
+            "Plumbing repairs and replacements",
+            "AC not cooling, heating issues, and maintenance",
+            "Roof leaks, repairs, and replacement planning"
+          ]
+        },
+        { "kind": "p", "text": "Use the form below to request service options and free quotes." }
+      ],
+      "serviceSlugs": [
+        "plumber-georgetown-tx",
+        "hvac-georgetown-tx",
+        "roofer-georgetown-tx",
+        "ac-not-cooling-georgetown-tx",
+        "clogged-drain-georgetown-tx",
+        "roof-leak-repair-georgetown-tx"
+      ],
+      "bestSlugs": [
+        "best-plumbers-georgetown-tx",
+        "top-hvac-companies-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "sun-city-georgetown-tx",
+      "title": "Sun City, Georgetown, TX",
+      "h1": "Reliable Plumbing in Sun City, Georgetown, TX",
+      "description": "Get professional plumbing help for Sun City residents in Georgetown, TX.",
+      "heroBullets": [
+        "Prompt scheduling",
+        "Upfront estimates",
+        "Clean, respectful technicians"
+      ],
+      "content": [
+        { "kind": "p", "text": "From a running toilet to drain problems, our team handles plumbing repairs and replacements with care and clear communication." },
+        { "kind": "p", "text": "Schedule service when it works for you—then relax while we fix the root cause." }
+      ],
+      "serviceSlugs": [
+        "plumber-sun-city-georgetown-tx"
+      ],
+      "bestSlugs": [
+        "best-plumbers-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "wolf-ranch-georgetown-tx",
+      "title": "Wolf Ranch, Georgetown, TX",
+      "h1": "HVAC Support for Wolf Ranch, Georgetown, TX",
+      "description": "Stay comfortable with fast HVAC repairs and maintenance in Wolf Ranch.",
+      "heroBullets": [
+        "AC performance troubleshooting",
+        "Maintenance that reduces breakdowns",
+        "Quality parts and workmanship"
+      ],
+      "content": [
+        { "kind": "p", "text": "If your system isn’t keeping up, we’ll diagnose the issue and recommend the right fix—repair or replacement—based on your goals and budget." },
+        { "kind": "p", "text": "Get a tailored quote and timeline. No pressure—just professional recommendations." }
+      ],
+      "serviceSlugs": [
+        "hvac-wolf-ranch-georgetown-tx",
+        "ac-not-cooling-georgetown-tx"
+      ],
+      "bestSlugs": [
+        "top-hvac-companies-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "berry-creek-georgetown-tx",
+      "title": "Berry Creek, Georgetown, TX",
+      "h1": "Roof Repairs You Can Count On in Berry Creek",
+      "description": "Professional roofing repairs and leak prevention for Berry Creek homes.",
+      "heroBullets": [
+        "Leak detection and repair",
+        "Weatherproofing solutions",
+        "Detailed repair plans"
+      ],
+      "content": [
+        { "kind": "p", "text": "Roof leaks and damage rarely improve on their own. When you act early, you protect your home from bigger issues down the road." },
+        { "kind": "p", "text": "Tell us what you’re seeing and we’ll help you understand the next best step." }
+      ],
+      "serviceSlugs": [
+        "roofer-berry-creek-georgetown-tx",
+        "roof-leak-repair-georgetown-tx"
+      ],
+      "bestSlugs": []
+    }
+  ],
+  "services": [
+    {
+      "slug": "plumber-georgetown-tx",
+      "title": "Plumber in Georgetown, TX",
+      "h1": "Plumbing Repairs in Georgetown, TX",
+      "description": "Reliable plumbing service for leaks, clogs, fixtures, and replacements across Georgetown.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Plumbing",
+      "heroBullets": [
+        "Leak and clog troubleshooting",
+        "Fixture and repiping options",
+        "Upfront pricing"
+      ],
+      "content": [
+        { "kind": "p", "text": "Georgetown Home Services helps homeowners handle plumbing issues with practical solutions and clean workmanship." },
+        { "kind": "h2", "text": "Common plumbing problems" },
+        {
+          "kind": "ul",
+          "items": [
+            "Clogged drains and slow drains",
+            "Running toilets and toilet repair",
+            "Leaky faucets and pipe leaks",
+            "Water pressure concerns"
+          ]
+        },
+        { "kind": "p", "text": "If you’re dealing with a stubborn issue, we’ll diagnose the cause and recommend the most cost-effective path forward." }
+      ],
+      "faqs": [
+        { "q": "Do you offer upfront estimates?", "a": "Yes. We explain what we find, outline options, and provide a clear estimate before work begins." },
+        { "q": "Can you handle both repairs and replacements?", "a": "Absolutely. When repair isn’t the best long-term value, we’ll walk you through replacement options." }
+      ],
+      "bestSlugs": [
+        "best-plumbers-georgetown-tx"
+      ],
+      "relatedServiceSlugs": [
+        "clogged-drain-georgetown-tx",
+        "plumber-sun-city-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "hvac-georgetown-tx",
+      "title": "HVAC in Georgetown, TX",
+      "h1": "HVAC Repair and Maintenance in Georgetown, TX",
+      "description": "Heating and AC repairs, maintenance, and performance checks for Georgetown homes.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "HVAC",
+      "heroBullets": [
+        "AC and heating diagnostics",
+        "Maintenance to reduce breakdowns",
+        "Repair vs replacement guidance"
+      ],
+      "content": [
+        { "kind": "p", "text": "From comfort issues to unusual sounds, our HVAC team diagnoses the problem and recommends the right next step." },
+        { "kind": "h2", "text": "When to call" },
+        {
+          "kind": "ul",
+          "items": [
+            "AC not cooling or uneven cooling",
+            "Heating that won’t start reliably",
+            "Rising energy bills or poor airflow",
+            "Strange noises or frequent cycling"
+          ]
+        },
+        { "kind": "p", "text": "We’ll help you get back to comfortable temperatures with transparent recommendations." }
+      ],
+      "faqs": [
+        { "q": "Do you service both repairs and replacements?", "a": "Yes. We’ll recommend repair when it makes sense and discuss replacement when it’s the better long-term option." },
+        { "q": "Do you offer seasonal maintenance?", "a": "Yes. Maintenance helps prevent breakdowns and improve efficiency." }
+      ],
+      "bestSlugs": [
+        "top-hvac-companies-georgetown-tx"
+      ],
+      "relatedServiceSlugs": [
+        "ac-not-cooling-georgetown-tx",
+        "hvac-wolf-ranch-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "roofer-georgetown-tx",
+      "title": "Roofer in Georgetown, TX",
+      "h1": "Roof Repairs and Replacement Planning in Georgetown, TX",
+      "description": "Professional roof repair and leak prevention for Georgetown homeowners.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Roofing",
+      "heroBullets": [
+        "Leak detection and repair",
+        "Weatherproofing solutions",
+        "Clear repair timelines"
+      ],
+      "content": [
+        { "kind": "p", "text": "When your roof shows signs of damage, acting early can prevent more costly problems. We help you understand what needs repair now vs later." },
+        { "kind": "h2", "text": "Typical roof issues" },
+        {
+          "kind": "ul",
+          "items": [
+            "Roof leaks and water intrusion",
+            "Missing or damaged shingles",
+            "Flashing and sealing concerns",
+            "Storm-related damage inspection"
+          ]
+        },
+        { "kind": "p", "text": "Tell us what you’re seeing and we’ll provide a plan of action." }
+      ],
+      "faqs": [
+        { "q": "Will you help with insurance-related documentation?", "a": "We can provide clear repair notes and documentation to support your process." },
+        { "q": "Do you handle minor repairs as well as full replacements?", "a": "Yes. We assess the situation and recommend the most appropriate option." }
+      ],
+      "bestSlugs": [],
+      "relatedServiceSlugs": [
+        "roof-leak-repair-georgetown-tx",
+        "roofer-berry-creek-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "plumber-sun-city-georgetown-tx",
+      "title": "Plumber in Sun City, Georgetown, TX",
+      "h1": "Plumbing Service for Sun City, Georgetown, TX",
+      "description": "Professional plumbing repairs and drain solutions for Sun City homeowners.",
+      "locationSlug": "sun-city-georgetown-tx",
+      "serviceType": "Plumbing",
+      "heroBullets": [
+        "Drain and fixture repairs",
+        "Toilet and leak troubleshooting",
+        "Clear communication"
+      ],
+      "content": [
+        { "kind": "p", "text": "Sun City homeowners trust Georgetown Home Services for dependable plumbing repairs—handled with care and tidy workmanship." },
+        { "kind": "h2", "text": "We commonly service" },
+        {
+          "kind": "ul",
+          "items": [
+            "Clogged or slow drains",
+            "Running toilets",
+            "Leaky faucets",
+            "Repair/replacement recommendations"
+          ]
+        },
+        { "kind": "p", "text": "Use our lead form to request service options and free quotes." }
+      ],
+      "faqs": [
+        { "q": "How do I describe my issue?", "a": "Share what you’re seeing (leak, clog, noise, etc.), and we’ll ask a couple of follow-up questions to schedule correctly." }
+      ],
+      "bestSlugs": [
+        "best-plumbers-georgetown-tx"
+      ],
+      "relatedServiceSlugs": [
+        "plumber-georgetown-tx",
+        "clogged-drain-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "hvac-wolf-ranch-georgetown-tx",
+      "title": "HVAC in Wolf Ranch, Georgetown, TX",
+      "h1": "HVAC Repair in Wolf Ranch, Georgetown, TX",
+      "description": "HVAC troubleshooting, AC repairs, and maintenance for Wolf Ranch homes.",
+      "locationSlug": "wolf-ranch-georgetown-tx",
+      "serviceType": "HVAC",
+      "heroBullets": [
+        "AC diagnostics",
+        "Maintenance and tune-ups",
+        "Comfort-first recommendations"
+      ],
+      "content": [
+        { "kind": "p", "text": "When comfort drops or the system cycles unexpectedly, our technicians diagnose the issue and recommend the right fix." },
+        { "kind": "p", "text": "Get a tailored quote based on what we find during inspection." }
+      ],
+      "faqs": [
+        { "q": "Do you help with AC not cooling?", "a": "Yes—if your AC isn’t cooling properly, we’ll troubleshoot airflow, refrigerant, and system performance." }
+      ],
+      "bestSlugs": [
+        "top-hvac-companies-georgetown-tx"
+      ],
+      "relatedServiceSlugs": [
+        "hvac-georgetown-tx",
+        "ac-not-cooling-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "roofer-berry-creek-georgetown-tx",
+      "title": "Roofer in Berry Creek, Georgetown, TX",
+      "h1": "Roof Repairs in Berry Creek, Georgetown, TX",
+      "description": "Leak detection and roof repair service for Berry Creek homeowners.",
+      "locationSlug": "berry-creek-georgetown-tx",
+      "serviceType": "Roofing",
+      "heroBullets": [
+        "Leak repairs",
+        "Weatherproofing",
+        "Clear next steps"
+      ],
+      "content": [
+        { "kind": "p", "text": "A small roof leak can become a bigger problem fast. We help you identify the source and prevent further water intrusion." },
+        { "kind": "p", "text": "Use the form to request service options and next steps." }
+      ],
+      "faqs": [
+        { "q": "Do you inspect for hidden leaks?", "a": "Yes. We look beyond the obvious spot to identify the likely source of the leak." }
+      ],
+      "bestSlugs": [],
+      "relatedServiceSlugs": [
+        "roofer-georgetown-tx",
+        "roof-leak-repair-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "ac-not-cooling-georgetown-tx",
+      "title": "AC Not Cooling in Georgetown, TX",
+      "h1": "AC Repair for Not-Cooling Issues in Georgetown, TX",
+      "description": "Troubleshooting and repair for AC systems that won’t cool properly in Georgetown.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Air Conditioning Repair",
+      "heroBullets": [
+        "Airflow and performance diagnostics",
+        "Clear repair recommendations",
+        "Efficient follow-up scheduling"
+      ],
+      "content": [
+        { "kind": "p", "text": "When your AC isn’t cooling, it’s often an issue with airflow, system performance, or thermostat settings. We diagnose what’s causing the problem and recommend the most cost-effective fix." },
+        { "kind": "h2", "text": "Signs your AC needs service" },
+        {
+          "kind": "ul",
+          "items": [
+            "Warm air or uneven cooling",
+            "System cycling too frequently",
+            "Poor airflow from vents",
+            "Unusual sounds or smells"
+          ]
+        },
+        { "kind": "p", "text": "Use the form to request service options and free quotes." }
+      ],
+      "faqs": [
+        { "q": "Should I keep running the AC?", "a": "If it’s running without cooling, it’s better to schedule diagnostics so you don’t risk bigger issues." }
+      ],
+      "bestSlugs": [
+        "top-hvac-companies-georgetown-tx"
+      ],
+      "relatedServiceSlugs": [
+        "hvac-georgetown-tx",
+        "hvac-wolf-ranch-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "clogged-drain-georgetown-tx",
+      "title": "Clogged Drain Repair in Georgetown, TX",
+      "h1": "Clogged Drain Repair in Georgetown, TX",
+      "description": "Fast drain clearing and troubleshooting for clogged drains in Georgetown.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Drain Cleaning",
+      "heroBullets": [
+        "Drain clearing solutions",
+        "Root-cause troubleshooting",
+        "Clean, careful service"
+      ],
+      "content": [
+        { "kind": "p", "text": "A clogged drain can disrupt your day quickly. Our team clears blockages and also checks for patterns that might point to an underlying issue." },
+        { "kind": "h2", "text": "Common causes" },
+        {
+          "kind": "ul",
+          "items": [
+            "Hair and soap buildup",
+            "Grease and debris buildup",
+            "Tree roots or older plumbing issues"
+          ]
+        },
+        { "kind": "p", "text": "Use the form to request drain service options and free quotes." }
+      ],
+      "faqs": [
+        { "q": "Do you handle recurring clogs?", "a": "Yes. If clogs come back, we look for the root cause so the fix lasts." }
+      ],
+      "bestSlugs": [
+        "best-plumbers-georgetown-tx"
+      ],
+      "relatedServiceSlugs": [
+        "plumber-georgetown-tx",
+        "plumber-sun-city-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "roof-leak-repair-georgetown-tx",
+      "title": "Roof Leak Repair in Georgetown, TX",
+      "h1": "Roof Leak Repair in Georgetown, TX",
+      "description": "Leak detection and repair for Georgetown roof problems to protect your home.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Roof Leak Repair",
+      "heroBullets": [
+        "Leak detection and repair planning",
+        "Weatherproofing solutions",
+        "Clear next steps"
+      ],
+      "content": [
+        { "kind": "p", "text": "Roof leaks can lead to interior damage if they’re not addressed quickly. We identify the likely source and repair it in a way that protects against future water intrusion." },
+        { "kind": "h2", "text": "What we’ll check" },
+        {
+          "kind": "ul",
+          "items": [
+            "Flashing and sealing points",
+            "Shingle and penetration damage",
+            "Vent/waterproofing interfaces",
+            "Storm-related wear"
+          ]
+        },
+        { "kind": "p", "text": "Use the form to request repair options and free quotes." }
+      ],
+      "faqs": [
+        { "q": "Will a small leak get worse?", "a": "Yes. Even small leaks can cause rot, mold risk, and structural damage over time." }
+      ],
+      "bestSlugs": [],
+      "relatedServiceSlugs": [
+        "roofer-georgetown-tx",
+        "roofer-berry-creek-georgetown-tx"
+      ]
+    }
+  ],
+  "blog": [
+    {
+      "slug": "cost-to-replace-hvac-georgetown",
+      "title": "Cost to Replace HVAC in Georgetown, TX",
+      "h1": "Cost to Replace HVAC in Georgetown, TX",
+      "description": "A practical overview of HVAC replacement costs and what affects your total price.",
+      "locationSlug": "georgetown-tx",
+      "readTime": "6 min",
+      "content": [
+        { "kind": "p", "text": "HVAC replacement is a major investment, and it helps to understand the factors that influence total cost. While every home is different, there are common pricing drivers that show up in most Georgetown, TX replacements." },
+        { "kind": "h2", "text": "What affects your HVAC replacement price" },
+        {
+          "kind": "ul",
+          "items": [
+            "Unit size and system type",
+            "Ductwork condition and modifications",
+            "Electrical and safety considerations",
+            "Labor and installation complexity",
+            "Efficiency ratings (long-term savings)"
+          ]
+        },
+        { "kind": "p", "text": "If you’d like a quote, use the lead form and we’ll discuss repair vs replacement after a brief inspection." }
+      ],
+      "relatedServiceSlugs": [
+        "hvac-georgetown-tx",
+        "ac-not-cooling-georgetown-tx"
+      ],
+      "relatedBestSlugs": [
+        "top-hvac-companies-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "how-to-find-a-good-plumber-georgetown",
+      "title": "How to Find a Good Plumber in Georgetown, TX",
+      "h1": "How to Find a Good Plumber in Georgetown, TX",
+      "description": "Use this checklist to choose a dependable plumber and avoid common service mistakes.",
+      "locationSlug": "georgetown-tx",
+      "readTime": "5 min",
+      "content": [
+        { "kind": "p", "text": "Finding the right plumber is easier when you know what to ask. Use this checklist to choose a trustworthy technician for your Georgetown home." },
+        { "kind": "h2", "text": "A quick plumber checklist" },
+        {
+          "kind": "ul",
+          "items": [
+            "Confirm licensing and insurance",
+            "Ask whether they’ll provide an upfront estimate",
+            "Look for clear explanations of cause and options",
+            "Check reviews for communication and cleanliness",
+            "Schedule service promptly if you have active leaks or severe clogs"
+          ]
+        },
+        { "kind": "p", "text": "Need help now? Use the form to request service options and free quotes." }
+      ],
+      "relatedServiceSlugs": [
+        "plumber-georgetown-tx",
+        "clogged-drain-georgetown-tx",
+        "plumber-sun-city-georgetown-tx"
+      ],
+      "relatedBestSlugs": [
+        "best-plumbers-georgetown-tx"
+      ]
+    }
+  ],
+  "best": [
+    {
+      "slug": "best-plumbers-georgetown-tx",
+      "title": "Best Plumbers in Georgetown, TX",
+      "h1": "Best Plumbers in Georgetown, TX",
+      "description": "A practical guide to choosing the right plumber—plus service recommendations for Georgetown homeowners.",
+      "locationSlug": "georgetown-tx",
+      "content": [
+        { "kind": "p", "text": "Choosing the right plumber is about more than a price quote. Look for licensing, clear communication, and solutions that address the real cause—not just the symptom." },
+        { "kind": "h2", "text": "What to look for" },
+        {
+          "kind": "ul",
+          "items": [
+            "Verified licensing and insurance",
+            "Experience with your specific issue",
+            "Upfront estimates and clear explanations",
+            "Respectful, clean job sites"
+          ]
+        },
+        { "kind": "p", "text": "If you want a dependable team for plumbing repairs in Georgetown, use the form below to request free quotes." }
+      ],
+      "recommendedServiceSlugs": [
+        "plumber-georgetown-tx",
+        "clogged-drain-georgetown-tx",
+        "plumber-sun-city-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "top-hvac-companies-georgetown-tx",
+      "title": "Top HVAC Companies in Georgetown, TX",
+      "h1": "Top HVAC Companies in Georgetown, TX",
+      "description": "How to evaluate HVAC companies and when to call for AC or heating repair.",
+      "locationSlug": "georgetown-tx",
+      "content": [
+        { "kind": "p", "text": "Reliable HVAC service starts with correct diagnostics. A good company will explain what’s happening, why, and what it means for your comfort and costs." },
+        { "kind": "h2", "text": "Questions to ask" },
+        {
+          "kind": "ul",
+          "items": [
+            "Will you show repair options and long-term value?",
+            "Do you offer maintenance to prevent recurring issues?",
+            "Can you explain the difference between repair and replacement?"
+          ]
+        },
+        { "kind": "p", "text": "If your AC isn’t cooling like it should, use the form to request service options and next steps." }
+      ],
+      "recommendedServiceSlugs": [
+        "hvac-georgetown-tx",
+        "ac-not-cooling-georgetown-tx",
+        "hvac-wolf-ranch-georgetown-tx"
+      ]
+    }
+  ]
+}
+
