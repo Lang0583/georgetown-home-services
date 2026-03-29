@@ -1,0 +1,67 @@
+{
+  "best-plumbers-georgetown-tx": {
+    "evaluatedIntro": "Providers below are listed as a starting point for Georgetown homeowners. Evaluation focuses on service coverage in Georgetown, clarity of service offerings, and ease of contacting the company through their official website. Details like pricing and response time vary by job scope and season.",
+    "providers": [],
+    "comparison": {
+      "pricingExpectations": [
+        "Service call/diagnostic fees vary by company and time of day.",
+        "Simple repairs (minor leaks, basic clogs, fixture swaps) are typically lower-cost than line replacements or complex access work.",
+        "After-hours and emergency requests commonly increase total cost."
+      ],
+      "responseTime": [
+        "Same-day availability depends on schedule load and whether the issue is an emergency.",
+        "Peak demand often occurs during freezes, heavy rain events, and weekends."
+      ],
+      "servicesOffered": [
+        "Drain clearing and troubleshooting",
+        "Leak detection and repair",
+        "Toilet and fixture repair/replacement",
+        "Water heater service (varies by provider)"
+      ]
+    }
+  },
+  "top-hvac-companies-georgetown-tx": {
+    "evaluatedIntro": "Providers below are listed as a starting point for Georgetown homeowners. Evaluation focuses on service coverage in Georgetown, clarity of HVAC offerings (repair, maintenance, install), and ease of contacting the company through their official website. Details like pricing and response time vary by system, season, and parts availability.",
+    "providers": [],
+    "comparison": {
+      "pricingExpectations": [
+        "Diagnostic fees vary by company and may be applied toward repair on approval.",
+        "Maintenance visits are typically lower-cost than repair calls.",
+        "Replacement quotes depend on system size, efficiency, ductwork needs, and installation complexity."
+      ],
+      "responseTime": [
+        "Same-day availability depends on season and demand (summer peaks are busiest).",
+        "Emergency service windows vary by provider and may cost more."
+      ],
+      "servicesOffered": [
+        "AC and heating diagnostics/repair",
+        "Seasonal maintenance and tune-ups",
+        "Replacement planning and installation",
+        "Airflow and comfort troubleshooting"
+      ]
+    }
+  },
+  "best-roofers-georgetown-tx": {
+    "evaluatedIntro": "Providers below are listed as a starting point for Georgetown homeowners. Evaluation focuses on service coverage in Georgetown, clarity of roofing offerings (repair, replacement, inspections), and ease of contacting the company through their official website. Details like pricing and timing vary by roof complexity, materials, and weather.",
+    "providers": [],
+    "comparison": {
+      "pricingExpectations": [
+        "Repair pricing depends on access, materials, and extent of damage.",
+        "Replacement quotes vary widely by roof size, pitch, decking condition, and product selection.",
+        "Emergency tarping or leak mitigation may be priced separately from permanent repairs."
+      ],
+      "responseTime": [
+        "After storms, scheduling can be tighter—book inspections early when damage is suspected.",
+        "Same-week availability varies by crew load and material lead times.",
+        "Insurance-related timelines may add coordination steps."
+      ],
+      "servicesOffered": [
+        "Leak detection and localized repairs",
+        "Shingle replacement and flashing work",
+        "Storm damage assessments",
+        "Replacement planning and installation"
+      ]
+    }
+  }
+}
+

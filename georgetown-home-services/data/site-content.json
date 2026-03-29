@@ -40,7 +40,8 @@
       ],
       "bestSlugs": [
         "best-plumbers-georgetown-tx",
-        "top-hvac-companies-georgetown-tx"
+        "top-hvac-companies-georgetown-tx",
+        "best-roofers-georgetown-tx"
       ]
     },
     {
@@ -214,7 +215,9 @@
         { "q": "Will you help with insurance-related documentation?", "a": "We can provide clear repair notes and documentation to support your process." },
         { "q": "Do you handle minor repairs as well as full replacements?", "a": "Yes. We assess the situation and recommend the most appropriate option." }
       ],
-      "bestSlugs": [],
+      "bestSlugs": [
+        "best-roofers-georgetown-tx"
+      ],
       "relatedServiceSlugs": [
         "roof-leak-repair-georgetown-tx",
         "roofer-berry-creek-georgetown-tx"
@@ -531,6 +534,32 @@
         "hvac-georgetown-tx",
         "ac-not-cooling-georgetown-tx",
         "hvac-wolf-ranch-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "best-roofers-georgetown-tx",
+      "title": "Best Roofers in Georgetown, TX",
+      "h1": "Best Roofers in Georgetown, TX",
+      "description": "How to compare roofing contractors for repairs and replacement—plus local service links for Georgetown homeowners.",
+      "locationSlug": "georgetown-tx",
+      "content": [
+        { "kind": "p", "text": "A strong roofing contractor explains what they found, why it matters, and what options fit your budget. Look for clear scopes of work—not vague promises." },
+        { "kind": "h2", "text": "What to verify" },
+        {
+          "kind": "ul",
+          "items": [
+            "Insurance and workmanship expectations",
+            "Written estimates and warranty details",
+            "How they handle storm-related inspections",
+            "Timeline and communication during the job"
+          ]
+        },
+        { "kind": "p", "text": "If you’re seeing leaks or storm damage, use the form to request service options and next steps." }
+      ],
+      "recommendedServiceSlugs": [
+        "roofer-georgetown-tx",
+        "roof-leak-repair-georgetown-tx",
+        "roofer-berry-creek-georgetown-tx"
       ]
     }
   ]

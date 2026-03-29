@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Container from "../../../components/Container";
 import LeadForm from "../../../components/LeadForm";
+import GeneratedArticleBody from "../../../components/GeneratedArticleBody";
 import RichText from "../../../components/RichText";
 import LinkCard from "../../../components/LinkCard";
 import CTASection from "../../../components/CTASection";
@@ -13,21 +14,25 @@ import {
   getLocationBySlug,
   getServices,
 } from "../../../lib/site-content";
+import { getGeneratedPage } from "../../../lib/generatedPages";
 
 export function generateStaticParams() {
   return getBlogSlugs().map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = getBlogBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getBlogBySlug(slug);
   if (!post) return {};
   return { title: post.title, description: post.description };
 }
 
-export default function BlogPage({ params }: { params: { slug: string } }) {
-  const post = getBlogBySlug(params.slug);
+export default async function BlogPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = getBlogBySlug(slug);
   if (!post) notFound();
 
+  const generated = getGeneratedPage(slug);
   const location = getLocationBySlug(post.locationSlug);
   const services = getServices();
   const relatedServices = post.relatedServiceSlugs
@@ -39,25 +44,25 @@ export default function BlogPage({ params }: { params: { slug: string } }) {
     .filter((b): b is NonNullable<typeof b> => Boolean(b));
 
   return (
-    <div className="bg-zinc-50">
+    <div className="bg-gray-50">
       <Container>
-        <section className="py-8 md:py-12">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:items-start">
-            <article className="md:col-span-2">
-              <div className="text-sm font-semibold uppercase tracking-wide text-zinc-600">
+        <section className="py-10 md:py-12">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:items-start lg:gap-12">
+            <article className="min-w-0 md:col-span-2">
+              <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">
                 Blog • {location?.title ?? "Georgetown, TX"}
               </div>
-              <h1 className="mt-3 text-4xl font-bold tracking-tight text-zinc-900">{post.h1}</h1>
-              <p className="mt-4 max-w-2xl text-lg text-zinc-700">{post.description}</p>
-              <div className="mt-2 text-sm text-zinc-500">Estimated read time: {post.readTime}</div>
+              <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{post.h1}</h1>
+              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">{post.description}</p>
+              <div className="mt-2 text-sm text-gray-500">Estimated read time: {post.readTime}</div>
 
               <div className="mt-8">
-                <RichText blocks={post.content} />
+                {generated ? <GeneratedArticleBody html={generated.html} /> : <RichText blocks={post.content} />}
               </div>
 
-              <section className="mt-10">
-                <h2 className="text-2xl font-semibold text-zinc-900">Related Services</h2>
-                <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <section className="mt-12">
+                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Related Services</h2>
+                <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {relatedServices.slice(0, 4).map((s) => (
                     <LinkCard
                       key={s.slug}
@@ -71,9 +76,9 @@ export default function BlogPage({ params }: { params: { slug: string } }) {
               </section>
 
               {relatedBest.length ? (
-                <section className="mt-10">
-                  <h2 className="text-2xl font-semibold text-zinc-900">Best Of Guides</h2>
-                  <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <section className="mt-12">
+                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Best Of Guides</h2>
+                  <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                     {relatedBest.slice(0, 2).map((b) => (
                       <LinkCard key={b.slug} href={`/best/${b.slug}`} title={b.title} description={b.description} />
                     ))}
@@ -82,24 +87,22 @@ export default function BlogPage({ params }: { params: { slug: string } }) {
               ) : null}
             </article>
 
-            <aside className="md:col-span-1">
-              <div className="sticky top-[82px]">
-                <LeadForm
-                  formId="lead"
-                  defaultLocation={location?.title ?? "Georgetown, TX"}
-                  defaultService="Service request"
-                />
-              </div>
+            <aside className="min-w-0 md:col-span-1">
+              <LeadForm
+                formId="lead"
+                defaultLocation={location?.title ?? "Georgetown, TX"}
+                defaultService="Service request"
+              />
 
               <div className="mt-8">
                 <CTASection
                   eyebrow="Need a pro?"
                   title="Request Service"
                   description="Submit the form to request service options and free quotes."
-                  primaryHref={`/locations/${post.locationSlug}`}
-                  primaryLabel="View location services"
+                  primaryHref={`/services/${post.relatedServiceSlugs[0] ?? "plumber-georgetown-tx"}`}
+                  primaryLabel="Browse services"
                   secondary={
-                    <div className="text-sm text-zinc-600">
+                    <div className="text-sm text-gray-600">
                       Prefer to browse?{" "}
                       <Link
                         href={`/services/${post.relatedServiceSlugs[0]}`}

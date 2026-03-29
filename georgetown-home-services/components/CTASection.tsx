@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
+import { ButtonLink } from "./Button";
 
 export default function CTASection({
   eyebrow,
@@ -17,18 +17,15 @@ export default function CTASection({
   secondary?: ReactNode;
 }) {
   return (
-    <section className="rounded-2xl border border-black/10 bg-zinc-50 p-6 md:p-8">
-      {eyebrow ? <div className="text-xs font-semibold uppercase tracking-wide text-zinc-600">{eyebrow}</div> : null}
-      <h2 className="mt-2 text-2xl font-semibold text-zinc-900">{title}</h2>
-      <p className="mt-2 text-zinc-700">{description}</p>
-      <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
-        <Link
-          href={primaryHref}
-          className="inline-flex h-11 items-center justify-center rounded-full bg-zinc-900 px-5 text-sm font-semibold text-white hover:bg-zinc-800"
-        >
+    <section className="rounded-xl border border-gray-200 bg-gray-50 p-6 shadow-md md:p-8">
+      {eyebrow ? <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">{eyebrow}</div> : null}
+      <h2 className="mt-2 text-3xl font-semibold tracking-tight text-gray-900">{title}</h2>
+      <p className="mt-3 text-sm leading-relaxed text-gray-700 md:text-base">{description}</p>
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+        <ButtonLink href={primaryHref} className="shrink-0 text-sm">
           {primaryLabel}
-        </Link>
-        {secondary ? <div className="sm:ml-3">{secondary}</div> : null}
+        </ButtonLink>
+        {secondary ? <div className="text-sm sm:max-w-md">{secondary}</div> : null}
       </div>
     </section>
   );

@@ -17,14 +17,16 @@ export function generateStaticParams() {
   return getLocations().map((l) => ({ slug: l.slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const location = getLocationBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const location = getLocationBySlug(slug);
   if (!location) return {};
   return { title: location.title, description: location.description };
 }
 
-export default function LocationPage({ params }: { params: { slug: string } }) {
-  const location = getLocationBySlug(params.slug);
+export default async function LocationPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const location = getLocationBySlug(slug);
   if (!location) notFound();
 
   const services = getServices();
@@ -36,18 +38,18 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
     .filter((b): b is NonNullable<typeof b> => Boolean(b));
 
   return (
-    <div className="bg-zinc-50">
+    <div className="bg-gray-50">
       <Container>
         <section className="py-8 md:py-12">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:items-start">
             <div className="md:col-span-2">
-              <div className="text-sm font-semibold uppercase tracking-wide text-zinc-600">Service locations</div>
-              <h1 className="mt-3 text-4xl font-bold tracking-tight text-zinc-900">{location.h1}</h1>
-              <p className="mt-4 max-w-2xl text-lg text-zinc-700">{location.description}</p>
+              <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Service locations</div>
+              <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{location.h1}</h1>
+              <p className="mt-4 max-w-2xl text-lg text-gray-700">{location.description}</p>
 
-              <div className="mt-6 rounded-2xl border border-black/10 bg-white p-6">
-                <div className="text-sm font-semibold text-zinc-900">Highlights</div>
-                <ul className="mt-3 list-disc space-y-2 pl-6 text-sm text-zinc-700">
+              <div className="mt-6 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
+                <div className="text-sm font-semibold text-gray-900">Highlights</div>
+                <ul className="mt-3 list-disc space-y-2 pl-6 text-sm text-gray-700">
                   {location.heroBullets.map((b) => (
                     <li key={b}>{b}</li>
                   ))}
@@ -59,8 +61,8 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
               </div>
 
               {servicePages.length ? (
-                <section className="mt-10">
-                  <h2 className="text-2xl font-semibold text-zinc-900">Services in {location.title}</h2>
+                <section className="mt-12">
+                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Services in {location.title}</h2>
                   <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
                     {servicePages.map((s) => (
                       <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
@@ -70,8 +72,8 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
               ) : null}
 
               {bestPages.length ? (
-                <section className="mt-10">
-                  <h2 className="text-2xl font-semibold text-zinc-900">Best Of for {location.title}</h2>
+                <section className="mt-12">
+                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Best Of for {location.title}</h2>
                   <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
                     {bestPages.map((b) => (
                       <LinkCard key={b.slug} href={`/best/${b.slug}`} title={b.title} description={b.description} />
@@ -81,14 +83,12 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
               ) : null}
             </div>
 
-            <aside className="md:col-span-1">
-              <div className="sticky top-[82px]">
-                <LeadForm
-                  formId="lead"
-                  defaultLocation={location.title}
-                  defaultService="Service request"
-                />
-              </div>
+            <aside className="min-w-0 md:col-span-1">
+              <LeadForm
+                formId="lead"
+                defaultLocation={location.title}
+                defaultService="Service request"
+              />
               <div className="mt-8">
                 <CTASection
                   eyebrow="Quick next steps"
@@ -98,14 +98,14 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
                   primaryLabel="Browse services"
                 />
               </div>
-              <div className="mt-8 rounded-2xl border border-black/10 bg-white p-6">
-                <div className="text-sm font-semibold text-zinc-900">Internal links</div>
-                <div className="mt-2 text-sm text-zinc-700">
+              <div className="mt-8 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
+                <div className="text-sm font-semibold text-gray-900">Internal links</div>
+                <div className="mt-2 text-sm text-gray-700">
                   <Link className="underline underline-offset-4" href="/">
                     Home
                   </Link>
                 </div>
-                <div className="mt-2 text-sm text-zinc-700">
+                <div className="mt-2 text-sm text-gray-700">
                   <Link className="underline underline-offset-4" href={`/locations/${location.slug}`}>
                     This location
                   </Link>

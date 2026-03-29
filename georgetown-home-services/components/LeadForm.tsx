@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { Button } from "./Button";
 
 type LeadFormProps = {
   defaultService?: string;
@@ -60,18 +61,18 @@ export default function LeadForm({ defaultService, defaultLocation, formId }: Le
     <form
       id={formId}
       onSubmit={onSubmit}
-      className="rounded-2xl border border-black/10 bg-white p-6 md:p-8"
+      className="w-full min-w-0 max-w-full rounded-xl border border-gray-200 bg-white p-6 shadow-md md:p-8"
     >
-      <h2 className="text-xl font-semibold text-zinc-900">Request Service</h2>
-      <p className="mt-2 text-sm text-zinc-600">Submit the form to request service options and free quotes.</p>
+      <h2 className="text-xl font-semibold text-gray-900">Request Service</h2>
+      <p className="mt-2 text-sm text-gray-600">Submit the form to request service options and free quotes.</p>
 
       <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
         <label className="flex flex-col gap-1">
-          <span className="text-sm font-medium text-zinc-800">Name</span>
+          <span className="text-sm font-medium text-gray-800">Name</span>
           <input
             required
             name="name"
-            className="h-10 rounded-xl border border-black/10 bg-white px-3 text-sm text-zinc-900 outline-none ring-0 placeholder:text-zinc-400 focus:border-zinc-300 focus:ring-2 focus:ring-zinc-200"
+            className="h-10 rounded-lg border border-gray-200 bg-white px-3 text-sm text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-blue-300 focus:ring-2 focus:ring-blue-100"
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Your name"
@@ -80,11 +81,11 @@ export default function LeadForm({ defaultService, defaultLocation, formId }: Le
         </label>
 
         <label className="flex flex-col gap-1">
-          <span className="text-sm font-medium text-zinc-800">Email</span>
+          <span className="text-sm font-medium text-gray-800">Email</span>
           <input
             required
             name="email"
-            className="h-10 rounded-xl border border-black/10 bg-white px-3 text-sm text-zinc-900 outline-none ring-0 placeholder:text-zinc-400 focus:border-zinc-300 focus:ring-2 focus:ring-zinc-200"
+            className="h-10 rounded-lg border border-gray-200 bg-white px-3 text-sm text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-blue-300 focus:ring-2 focus:ring-blue-100"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
@@ -94,10 +95,10 @@ export default function LeadForm({ defaultService, defaultLocation, formId }: Le
         </label>
 
         <label className="flex flex-col gap-1 sm:col-span-2">
-          <span className="text-sm font-medium text-zinc-800">Phone (optional)</span>
+          <span className="text-sm font-medium text-gray-800">Phone (optional)</span>
           <input
             name="phone"
-            className="h-10 rounded-xl border border-black/10 bg-white px-3 text-sm text-zinc-900 outline-none ring-0 placeholder:text-zinc-400 focus:border-zinc-300 focus:ring-2 focus:ring-zinc-200"
+            className="h-10 rounded-lg border border-gray-200 bg-white px-3 text-sm text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-blue-300 focus:ring-2 focus:ring-blue-100"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             placeholder="Your phone number"
@@ -107,11 +108,11 @@ export default function LeadForm({ defaultService, defaultLocation, formId }: Le
         </label>
 
         <label className="flex flex-col gap-1">
-          <span className="text-sm font-medium text-zinc-800">Service</span>
+          <span className="text-sm font-medium text-gray-800">Service</span>
           <input
             required
             name="serviceType"
-            className="h-10 rounded-xl border border-black/10 bg-white px-3 text-sm text-zinc-900 outline-none ring-0 placeholder:text-zinc-400 focus:border-zinc-300 focus:ring-2 focus:ring-zinc-200"
+            className="h-10 rounded-lg border border-gray-200 bg-white px-3 text-sm text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-blue-300 focus:ring-2 focus:ring-blue-100"
             value={serviceType}
             onChange={(e) => setServiceType(e.target.value)}
             placeholder="Plumbing, HVAC, or Roofing"
@@ -119,11 +120,11 @@ export default function LeadForm({ defaultService, defaultLocation, formId }: Le
         </label>
 
         <label className="flex flex-col gap-1">
-          <span className="text-sm font-medium text-zinc-800">Location</span>
+          <span className="text-sm font-medium text-gray-800">Location</span>
           <input
             required
             name="location"
-            className="h-10 rounded-xl border border-black/10 bg-white px-3 text-sm text-zinc-900 outline-none ring-0 placeholder:text-zinc-400 focus:border-zinc-300 focus:ring-2 focus:ring-zinc-200"
+            className="h-10 rounded-lg border border-gray-200 bg-white px-3 text-sm text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-blue-300 focus:ring-2 focus:ring-blue-100"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
             placeholder="Georgetown, TX"
@@ -131,10 +132,10 @@ export default function LeadForm({ defaultService, defaultLocation, formId }: Le
         </label>
 
         <label className="flex flex-col gap-1 sm:col-span-2">
-          <span className="text-sm font-medium text-zinc-800">What’s going on? (optional)</span>
+          <span className="text-sm font-medium text-gray-800">What’s going on? (optional)</span>
           <textarea
             name="message"
-            className="min-h-24 rounded-xl border border-black/10 bg-white px-3 py-2 text-sm text-zinc-900 outline-none ring-0 placeholder:text-zinc-400 focus:border-zinc-300 focus:ring-2 focus:ring-zinc-200"
+            className="min-h-24 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-blue-300 focus:ring-2 focus:ring-blue-100"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Short description, when it started, any relevant details."
@@ -159,15 +160,15 @@ export default function LeadForm({ defaultService, defaultLocation, formId }: Le
         </div>
       ) : null}
 
-      <button
+      <Button
         type="submit"
         disabled={!canSubmit}
-        className="mt-6 inline-flex h-11 w-full items-center justify-center rounded-full bg-zinc-900 px-5 text-sm font-semibold text-white transition hover:bg-zinc-800 disabled:cursor-not-allowed disabled:bg-zinc-400"
+        className="mt-6 w-full disabled:cursor-not-allowed disabled:bg-gray-400"
       >
         {status === "submitting" ? "Sending..." : "Get Free Quotes"}
-      </button>
+      </Button>
 
-      <p className="mt-4 text-xs text-zinc-500">
+      <p className="mt-4 text-xs text-gray-500">
         By submitting, you agree to be contacted about your request. We never sell your information.
       </p>
     </form>
