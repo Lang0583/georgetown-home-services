@@ -117,6 +117,24 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         </Link>
                         , you can do that from our main service page as well.
                       </p>
+                      <div className="mt-5 rounded-xl border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-sm">
+                        <div className="font-semibold text-gray-900">Quick takeaways for Georgetown homeowners</div>
+                        <ul className="mt-2 list-disc space-y-1.5 pl-5 leading-relaxed">
+                          <li>
+                            A plumber’s <span className="font-semibold text-gray-900">diagnosis process</span> matters
+                            more than their sales pitch—especially for recurring clogs and leak tracing.
+                          </li>
+                          <li>
+                            In Georgetown, <span className="font-semibold text-gray-900">slab foundations</span> and
+                            hard water make shutoffs, cartridges, and water heaters fail in predictable ways.
+                          </li>
+                          <li>
+                            When water is actively damaging your home, the right question is often{" "}
+                            <span className="font-semibold text-gray-900">“How do we stop damage safely first?”</span>{" "}
+                            and then “What is the permanent fix?”
+                          </li>
+                        </ul>
+                      </div>
                     </section>
 
                     <section>
@@ -149,6 +167,12 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         We rely strictly on publicly available information. Listings here are not endorsements or
                         guarantees. Before you hire anyone, verify current licensing, insurance, availability, and
                         pricing directly with the company.
+                      </p>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700">
+                        “Local” in practice means the company can actually service Georgetown neighborhoods such as Sun
+                        City, Berry Creek, Wolf Ranch, and areas closer to the Square without treating it as an
+                        afterthought. Availability is part of quality: a great plumber who cannot schedule you for two
+                        weeks is not helpful when you have a leaking shutoff or a main line backing up.
                       </p>
                     </section>
 
@@ -183,6 +207,42 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                           what was done and what to watch for next.
                         </li>
                       </ul>
+                      <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <div className="rounded-xl border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-sm">
+                          <div className="font-semibold text-gray-900">What “good diagnosis” looks like</div>
+                          <ul className="mt-2 list-disc space-y-1.5 pl-5 leading-relaxed">
+                            <li>
+                              For drains: “Is it one fixture or multiple?” and “Does it worsen after laundry or
+                              showers?”
+                            </li>
+                            <li>
+                              For leaks: confirming the source (supply vs drain) instead of assuming the nearest wet
+                              spot is the cause.
+                            </li>
+                            <li>
+                              For slab leaks: explaining how they will locate the leak and what repair options exist
+                              (not just “we’ll break concrete”).
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="rounded-xl border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-sm">
+                          <div className="font-semibold text-gray-900">Georgetown-specific realities</div>
+                          <ul className="mt-2 list-disc space-y-1.5 pl-5 leading-relaxed">
+                            <li>
+                              <span className="font-semibold text-gray-900">Hard water:</span> faster wear on cartridges
+                              and valves; periodic maintenance can prevent “mystery drips.”
+                            </li>
+                            <li>
+                              <span className="font-semibold text-gray-900">Slabs:</span> leaks are often hidden; early
+                              signs matter (hot spots, sound of water, bill spikes).
+                            </li>
+                            <li>
+                              <span className="font-semibold text-gray-900">Irrigation tie-ins:</span> yard leaks can
+                              mimic main line issues; good plumbers isolate before digging.
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
                     </section>
 
                     <section>
@@ -193,6 +253,12 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         No two jobs are identical, and every company has its own pricing structure, but homeowners in
                         and around Georgetown, TX tend to see similar patterns. Think in ranges rather than a single
                         number and always get a written estimate for your exact project.
+                      </p>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                        Two notes that matter locally: first, after-hours and weekend calls can change the base service
+                        fee; second, repairs that involve drywall, flooring, or concrete often have a plumbing cost and a
+                        separate restoration cost. Ask which parts of the job the plumber is responsible for and what
+                        will be handled by other trades.
                       </p>
                       <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
                         <li>
@@ -253,6 +319,12 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         triggers for true emergency service are active water damage, sewage backing up into fixtures, or
                         safety concerns around gas and water heaters.
                       </p>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                        If you have active leaking right now, stop the damage first: shut off the nearest fixture valve
+                        if it works, then the main shutoff if it does not. If you are unsure where the main shutoff is,
+                        take a minute to locate it on a calm day—Georgetown emergencies are easier when you are not
+                        hunting for a valve while water spreads across flooring.
+                      </p>
                       <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
                         <li>
                           <span className="font-semibold text-gray-900">Active leaks you cannot contain:</span> water
@@ -269,6 +341,15 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                           failed shutoff that leaves you without water is usually treated as urgent.
                         </li>
                       </ul>
+                      <div className="mt-5 rounded-xl border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-sm">
+                        <div className="font-semibold text-gray-900">What to ask on an emergency call</div>
+                        <ul className="mt-2 list-disc space-y-1.5 pl-5 leading-relaxed">
+                          <li>Is this visit for stabilization, a permanent repair, or both?</li>
+                          <li>Is there an after-hours fee or minimum service charge?</li>
+                          <li>Will you document findings (photos/video) for insurance or landlord records?</li>
+                          <li>What should we avoid using until the repair is complete (toilets, laundry, dishwasher)?</li>
+                        </ul>
+                      </div>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
                         If you are facing that kind of issue, start by shutting off water if you can do so safely, then
                         contact a plumber who clearly describes how they handle after-hours or emergency calls. For
@@ -332,6 +413,27 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         </div>
                         <div>
                           <h3 className="font-semibold text-gray-900">
+                            What are early signs of a slab leak in a Georgetown home?
+                          </h3>
+                          <p className="mt-1">
+                            Common early signals include warm spots on the floor, the sound of running water when
+                            fixtures are off, unexplained bill increases, damp carpet along interior walls, or reduced
+                            hot-water performance. Slab leaks are easiest to handle when found early—do not wait for a
+                            visible crack or pooling water.
+                          </p>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-gray-900">
+                            If multiple drains are backing up, what should I do first?
+                          </h3>
+                          <p className="mt-1">
+                            Treat it like a main-line issue: stop using water (no laundry, showers, or dishwashers),
+                            document which fixtures are affected, and request professional help. Continued water use can
+                            make a backup worse and spread contamination into tubs or floor drains.
+                          </p>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-gray-900">
                             How do I compare multiple plumbers fairly for the same job?
                           </h3>
                           <p className="mt-1">
@@ -345,6 +447,16 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                               plumber checklist for Georgetown
                             </Link>{" "}
                             as a reference while you compare.
+                          </p>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-gray-900">
+                            Should I replace shutoff valves proactively?
+                          </h3>
+                          <p className="mt-1">
+                            If a shutoff is stuck, leaking, or will not fully close, it is a liability during an
+                            emergency. Many homeowners in Georgetown replace problem shutoffs during fixture upgrades so
+                            a future leak can be contained quickly without shutting off water to the entire home.
                           </p>
                         </div>
                       </div>
