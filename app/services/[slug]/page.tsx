@@ -11,6 +11,7 @@ import RichText from "../../../components/RichText";
 import { ButtonLink } from "../../../components/Button";
 import {
   getBestBySlug,
+  getBlogsForServiceSlug,
   getLocationBySlug,
   getServiceBySlug,
   getServices,
@@ -52,9 +53,17 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const bestPages = service.bestSlugs
     .map((s) => getBestBySlug(s))
     .filter((b): b is NonNullable<typeof b> => Boolean(b));
+  const helpfulGuides = getBlogsForServiceSlug(service.slug);
   const businessCategory = getBusinessCategoryForServiceSlug(service.slug);
   const providersFromJson =
     businessCategory !== null ? getBusinessesByCategory(businessCategory) : [];
+
+  const CORE_SERVICES = [
+    { label: "Plumbing", slug: "plumber-georgetown-tx", best: "best-plumbers-georgetown-tx" },
+    { label: "HVAC", slug: "hvac-georgetown-tx", best: "top-hvac-companies-georgetown-tx" },
+    { label: "Roofing", slug: "roofer-georgetown-tx", best: "best-roofers-georgetown-tx" },
+  ] as const;
+  const explore = CORE_SERVICES.filter((s) => s.slug !== service.slug);
 
   return (
     <div className="bg-gray-50">
@@ -620,6 +629,55 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   </p>
                   <div className="mt-6">
                     <ServiceTopProvidersSection businesses={providersFromJson} />
+                  </div>
+                </section>
+              ) : null}
+
+              <section className="mt-12">
+                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Explore More Home Services</h2>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                  Jump to another category, or compare top providers before you request service.
+                </p>
+                <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  {explore.map((s) => (
+                    <LinkCard
+                      key={s.slug}
+                      href={`/services/${s.slug}`}
+                      title={`${s.label} in Georgetown, TX`}
+                      description={`Explore ${s.label.toLowerCase()} options and common homeowner issues.`}
+                      badge="Service"
+                    />
+                  ))}
+                </div>
+                <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  {explore.map((s) => (
+                    <LinkCard
+                      key={s.best}
+                      href={`/best/${s.best}`}
+                      title={`Best ${s.label} Providers in Georgetown, TX`}
+                      description={`Compare top ${s.label.toLowerCase()} companies and what to look for.`}
+                      badge="Top Providers"
+                    />
+                  ))}
+                </div>
+              </section>
+
+              {helpfulGuides.length ? (
+                <section className="mt-12">
+                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Helpful Guides</h2>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                    Related articles for Georgetown homeowners.
+                  </p>
+                  <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                    {helpfulGuides.slice(0, 4).map((p) => (
+                      <LinkCard
+                        key={p.slug}
+                        href={`/blog/${p.slug}`}
+                        title={p.title}
+                        description={p.description}
+                        badge={p.readTime}
+                      />
+                    ))}
                   </div>
                 </section>
               ) : null}

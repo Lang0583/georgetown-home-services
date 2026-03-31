@@ -11,6 +11,7 @@ import ProviderList from "../../../components/ProviderList";
 import ComparisonSection from "../../../components/ComparisonSection";
 import {
   getBestBySlug,
+  getBlogsForBestSlug,
   getLocations,
   getBestSlugs,
   getServiceBySlug,
@@ -59,6 +60,14 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
   const recommended = best.recommendedServiceSlugs
     .map((s) => services.find((x) => x.slug === s))
     .filter((s): s is (typeof services)[number] => Boolean(s));
+  const helpfulGuides = getBlogsForBestSlug(best.slug);
+
+  const CORE_BEST = [
+    { label: "Best Plumbers", slug: "best-plumbers-georgetown-tx", service: "plumber-georgetown-tx" },
+    { label: "Best HVAC", slug: "top-hvac-companies-georgetown-tx", service: "hvac-georgetown-tx" },
+    { label: "Best Roofers", slug: "best-roofers-georgetown-tx", service: "roofer-georgetown-tx" },
+  ] as const;
+  const explore = CORE_BEST.filter((b) => b.slug !== best.slug);
 
   return (
     <div className="bg-gray-50">
@@ -1300,6 +1309,55 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         title={s.title}
                         description={s.description}
                         badge={s.serviceType}
+                      />
+                    ))}
+                  </div>
+                </section>
+              ) : null}
+
+              <section className="mt-12">
+                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Explore More Categories</h2>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                  Browse other categories, or jump directly to the matching service pages.
+                </p>
+                <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  {explore.map((b) => (
+                    <LinkCard
+                      key={b.slug}
+                      href={`/best/${b.slug}`}
+                      title={`${b.label} in Georgetown, TX`}
+                      description="Compare top providers, pricing expectations, and what to ask."
+                      badge="Top Providers"
+                    />
+                  ))}
+                </div>
+                <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  {explore.map((b) => (
+                    <LinkCard
+                      key={b.service}
+                      href={`/services/${b.service}`}
+                      title={`${b.label.replace("Best ", "")} service in Georgetown, TX`}
+                      description="Start with service options, common problems, and next steps."
+                      badge="Service"
+                    />
+                  ))}
+                </div>
+              </section>
+
+              {helpfulGuides.length ? (
+                <section className="mt-12">
+                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Helpful Guides</h2>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                    Related articles for Georgetown homeowners.
+                  </p>
+                  <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                    {helpfulGuides.slice(0, 4).map((p) => (
+                      <LinkCard
+                        key={p.slug}
+                        href={`/blog/${p.slug}`}
+                        title={p.title}
+                        description={p.description}
+                        badge={p.readTime}
                       />
                     ))}
                   </div>

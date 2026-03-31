@@ -1,17 +1,11 @@
 import Link from "next/link";
-import { getBrandName, getBlogSlugs, getBestSlugs, getServiceSlugs } from "../lib/site-content";
+import { getBrandName } from "../lib/site-content";
 
 const navLinkClass =
   "text-sm font-medium text-gray-700 transition-colors hover:text-gray-900 whitespace-nowrap";
 
 export default function StickyHeader() {
   const brand = getBrandName();
-
-  const serviceSlugs = getServiceSlugs();
-  const bestSlugs = getBestSlugs();
-  const blogSlugs = getBlogSlugs();
-
-  const primaryBlog = blogSlugs[0] ?? "how-to-find-a-good-plumber-georgetown-tx";
 
   return (
     <header className="sticky top-0 z-50 h-20 border-b border-gray-200 bg-white shadow-sm">
@@ -20,21 +14,27 @@ export default function StickyHeader() {
           {brand}
         </Link>
 
-        <nav
-          className="hidden items-center gap-8 md:flex"
-          aria-label="Main navigation"
-        >
+        <nav className="flex max-w-full items-center gap-6 overflow-x-auto" aria-label="Main navigation">
           <Link href="/" className={navLinkClass}>
             Home
           </Link>
-          <Link href="/services" className={navLinkClass}>
-            Services
+          <Link href="/services/plumber-georgetown-tx" className={navLinkClass}>
+            Plumbing
           </Link>
-          <Link href="/best" className={navLinkClass}>
-            Top Providers
+          <Link href="/services/hvac-georgetown-tx" className={navLinkClass}>
+            HVAC
           </Link>
-          <Link href={`/blog/${primaryBlog}`} className={navLinkClass}>
-            Blog
+          <Link href="/services/roofer-georgetown-tx" className={navLinkClass}>
+            Roofing
+          </Link>
+          <Link href="/best/best-plumbers-georgetown-tx" className={navLinkClass}>
+            Best Plumbers
+          </Link>
+          <Link href="/best/top-hvac-companies-georgetown-tx" className={navLinkClass}>
+            Best HVAC
+          </Link>
+          <Link href="/best/best-roofers-georgetown-tx" className={navLinkClass}>
+            Best Roofers
           </Link>
         </nav>
       </div>

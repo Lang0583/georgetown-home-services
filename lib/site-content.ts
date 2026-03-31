@@ -141,3 +141,11 @@ export function getRecommendedServicesForSlug(slug: string) {
   return [];
 }
 
+export function getBlogsForServiceSlug(serviceSlug: string) {
+  return data.blog.filter((p) => p.relatedServiceSlugs.includes(serviceSlug));
+}
+
+export function getBlogsForBestSlug(bestSlug: string) {
+  return data.blog.filter((p) => p.relatedBestSlugs.includes(bestSlug));
+}
+
