@@ -13,7 +13,7 @@ export default function StickyHeader() {
 
   const primaryService = serviceSlugs[0] ?? "plumber-georgetown-tx";
   const primaryBest = bestSlugs[0] ?? "best-plumbers-georgetown-tx";
-  const primaryBlog = blogSlugs[0] ?? "how-to-find-a-good-plumber-georgetown";
+  const primaryBlog = blogSlugs[0] ?? "how-to-find-a-good-plumber-georgetown-tx";
 
   return (
     <header className="sticky top-0 z-50 h-20 border-b border-gray-200 bg-white shadow-sm">

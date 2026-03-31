@@ -204,7 +204,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         </li>
                         <li>
                           <Link
-                            href="/blog/how-to-find-a-good-plumber-georgetown"
+                            href="/blog/how-to-find-a-good-plumber-georgetown-tx"
                             className="font-semibold hover:underline"
                           >
                             How to Find a Good Plumber in Georgetown

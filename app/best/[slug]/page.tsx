@@ -457,7 +457,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                             terms. Look beyond price to responsiveness, clarity of explanations, and whether each
                             company is willing to answer your questions before and after the job. When in doubt, use the{" "}
                             <Link
-                              href="/blog/how-to-find-a-good-plumber-georgetown"
+                              href="/blog/how-to-find-a-good-plumber-georgetown-tx"
                               className="font-semibold text-blue-700"
                             >
                               plumber checklist for Georgetown
@@ -713,7 +713,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                           <p>
                             Looking for a step-by-step checklist? Read{" "}
                             <Link
-                              href="/blog/how-to-find-a-good-plumber-georgetown"
+                              href="/blog/how-to-find-a-good-plumber-georgetown-tx"
                               className="font-semibold text-blue-600 hover:text-blue-700"
                             >
                               how to find a good plumber in Georgetown

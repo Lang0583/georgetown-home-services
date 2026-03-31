@@ -169,7 +169,7 @@ export default function Home() {
                   <ButtonLink href="/services/roof-leak-repair-georgetown-tx" variant="secondary" className="w-full justify-center px-4 py-2.5 text-sm sm:w-auto">
                     Roof leak repair
                   </ButtonLink>
-                  <ButtonLink href="/blog/how-to-find-a-good-plumber-georgetown" variant="secondary" className="w-full justify-center px-4 py-2.5 text-sm sm:w-auto">
+                  <ButtonLink href="/blog/how-to-find-a-good-plumber-georgetown-tx" variant="secondary" className="w-full justify-center px-4 py-2.5 text-sm sm:w-auto">
                     How to find a good plumber
                   </ButtonLink>
                 </div>
