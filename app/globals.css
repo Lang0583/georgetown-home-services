@@ -23,3 +23,9 @@ a {
   text-decoration: none;
 }
 
+/* Ensure in-page anchors (like the request form) are not hidden beneath the sticky header. */
+:target {
+  scroll-margin-top: 6rem;
+}
+
+
