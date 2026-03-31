@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         destination: "/blog/how-to-find-a-good-plumber-georgetown-tx",
         permanent: true,
       },
+      {
+        source: "/blog/roof-repair-cost-georgetown",
+        destination: "/blog/roof-repair-cost-georgetown-tx",
+        permanent: true,
+      },
     ];
   },
 };

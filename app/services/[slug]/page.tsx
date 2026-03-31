@@ -82,10 +82,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 </p>
               ) : isRooferService ? (
                 <p className="mt-4 text-lg leading-relaxed text-gray-700">
-                  Georgetown, TX roofs see hail, high winds, and harsh sun, which makes small problems easy to ignore
-                  until water finds its way inside. Here you will find guidance on common roofing issues for Georgetown
-                  homes, what different repairs tend to cost, and how to decide when a repair is enough versus when it
-                  is time to plan a full replacement.
+                  In Georgetown, TX, roofing problems tend to show up the same way: a ceiling stain after a heavy rain,
+                  missing or lifted shingles after wind, granules in gutters after hail, or a slow drip that only appears
+                  when storms hit at the right angle. This page is written for Georgetown homeowners who want clarity—what
+                  is urgent, what can be scheduled, and how to choose a roofer who documents the real failure point
+                  (flashing, vents, valleys, transitions), not just the symptom.
                 </p>
               ) : (
                 <p className="mt-4 text-lg leading-relaxed text-gray-700">{service.description}</p>
@@ -413,91 +414,157 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 ) : isRooferService ? (
                   <div className="space-y-10 text-gray-800">
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
-                        Common Roofing Problems in Georgetown
-                      </h2>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
-                        <li>
-                          <span className="font-semibold text-gray-900">Hail and wind damage:</span> granule loss,
-                          bruised shingles, lifted edges, and missing tabs after Central Texas storms.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-gray-900">Aging shingles and UV wear:</span> brittle or
-                          curling shingles on older roofs exposed to years of sun on open Georgetown lots.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-gray-900">Flashing and valley leaks:</span> water stains
-                          near chimneys, walls, or in valleys where workmanship matters as much as material choice.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-gray-900">Vent and penetration issues:</span> cracked
-                          boots or poorly sealed penetrations that let water track into attics over time.
-                        </li>
-                      </ul>
-                    </section>
-
-                    <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
-                        Roofing Pricing Expectations in Georgetown TX
-                      </h2>
+                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Common roofing issues in Georgetown</h2>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
-                        Roof pricing depends on pitch, size, material, and whether there is underlying damage, but
-                        Georgetown, TX homeowners generally see:
+                        Georgetown’s mix of UV-heavy summers and sudden storm bursts tends to reveal weak points at
+                        transitions—places where water concentrates or where materials meet. These are the most common
+                        patterns homeowners report before calling a roofer.
                       </p>
                       <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
                         <li>
-                          <span className="font-semibold text-gray-900">Minor repairs:</span> replacing a small number
-                          of damaged shingles or resealing a penetration is often in the lower hundreds depending on
-                          access and height.
+                          <span className="font-semibold text-gray-900">Hail and wind damage:</span> bruised shingles,
+                          granule loss, lifted edges, and missing tabs after storms moving through Williamson County.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Leak tracing and patching:</span> diagnosing a
-                          leak and repairing a localized area can cost more when attic access, decking, or flashing
-                          needs work.
+                          <span className="font-semibold text-gray-900">Flashing / valley leaks:</span> leaks around
+                          chimneys, roof-to-wall areas, and valleys where water channels during downpours.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Full replacement:</span> re-roofing a typical
-                          Georgetown home, especially with upgraded materials or complex roofs, is usually quoted in the
-                          many-thousands.
+                          <span className="font-semibold text-gray-900">Vent and penetration failures:</span> cracked pipe
+                          boots, loose vents, and seal degradation that lets water track into the attic over time.
+                        </li>
+                        <li>
+                          <span className="font-semibold text-gray-900">Age and heat wear:</span> brittle shingles,
+                          curling edges, and failing seals on older roofs exposed to years of Georgetown sun.
+                        </li>
+                      </ul>
+                      <div className="mt-5 rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+                        <div className="text-sm font-semibold text-gray-900">Start here if you see a ceiling stain</div>
+                        <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-gray-700">
+                          <li>Take photos of the stain and note which direction the storm came from.</li>
+                          <li>Check the attic (if safe) for wet decking, drips, or daylight near penetrations.</li>
+                          <li>Avoid climbing the roof—request an inspection with photos and a written scope.</li>
+                        </ul>
+                      </div>
+                    </section>
+
+                    <section>
+                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Roof repair in Georgetown</h2>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                        Most Georgetown roofing calls start as “there’s a leak.” The most useful repair visit does two
+                        things: it stabilizes the problem (stop water intrusion) and it documents the cause so you can
+                        make a durable decision rather than chasing the leak every time it rains.
+                      </p>
+                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
+                        <li>
+                          <span className="font-semibold text-gray-900">Leak diagnosis:</span> tracing the entry point
+                          (often flashing, vents, valleys, or transitions) instead of only patching where the stain shows
+                          up.
+                        </li>
+                        <li>
+                          <span className="font-semibold text-gray-900">Targeted repairs:</span> replacing damaged shingles,
+                          repairing flashing, resealing penetrations, and addressing specific weak points.
+                        </li>
+                        <li>
+                          <span className="font-semibold text-gray-900">What good looks like:</span> photos, clear scope,
+                          and guidance on what to monitor after the next storm.
                         </li>
                       </ul>
                       <p className="mt-3 text-sm leading-relaxed text-gray-700">
-                        Because storm and insurance details matter, it is important to get written estimates and clarify
-                        what work is covered before authorizing a full replacement.
+                        If you are budgeting, see{" "}
+                        <Link
+                          href="/blog/roof-repair-cost-georgetown-tx"
+                          className="font-semibold text-blue-700 hover:underline"
+                        >
+                          roof repair cost in Georgetown
+                        </Link>{" "}
+                        for a breakdown of what typically drives pricing.
                       </p>
                     </section>
 
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
-                        When to Call a Roofing Professional
-                      </h2>
+                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Roof replacement in Georgetown</h2>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                        Replacement becomes the better option when the roof is near end-of-life, damage is widespread, or
+                        you are dealing with repeated repairs that keep returning. In Georgetown, good replacement planning
+                        includes more than shingles—it includes underlayment, flashing, ventilation, and any decking that
+                        needs attention once tear-off begins.
+                      </p>
                       <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
                         <li>
-                          <span className="font-semibold text-gray-900">Active leaks or ceiling stains:</span> any water
-                          entering the home or fresh staining after a storm should be inspected quickly.
+                          <span className="font-semibold text-gray-900">Scope clarity:</span> written materials, edge and
+                          flashing details, ventilation plan, and disposal/cleanup expectations.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Storm damage:</span> hail, fallen limbs, or
-                          wind-driven debris visible from the ground are good reasons to call a roofer instead of
-                          climbing a ladder yourself.
+                          <span className="font-semibold text-gray-900">Decking plan:</span> how rotten or damaged decking
+                          is handled and priced if discovered during tear-off.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Older roofs near end of life:</span> if your
-                          roof is already at the typical lifespan for its material, a roofer can help you plan repairs
-                          versus full replacement.
+                          <span className="font-semibold text-gray-900">Warranty terms:</span> workmanship + manufacturer
+                          warranty details you can review before signing.
+                        </li>
+                      </ul>
+                      <p className="mt-3 text-sm leading-relaxed text-gray-700">
+                        For a cost-focused breakdown, read{" "}
+                        <Link
+                          href="/blog/roof-replacement-cost-georgetown-tx"
+                          className="font-semibold text-blue-700 hover:underline"
+                        >
+                          roof replacement cost in Georgetown, TX
+                        </Link>
+                        .
+                      </p>
+                    </section>
+
+                    <section>
+                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Storm damage in Georgetown</h2>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                        After hail or wind, the most helpful next step is documentation and a clear plan—especially if you
+                        may involve insurance. A reputable roofer can show you what is damaged, what is cosmetic, and what
+                        impacts water shedding and lifespan.
+                      </p>
+                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
+                        <li>
+                          <span className="font-semibold text-gray-900">What to document:</span> photos of missing shingles,
+                          dented vents, exposed flashing, granules in downspouts, and interior staining that appears after
+                          rain.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Repeated patching in the same area:</span> leaks
-                          that keep returning may signal a deeper flashing or design issue that needs a more thorough
-                          fix.
+                          <span className="font-semibold text-gray-900">What to avoid:</span> climbing the roof or letting
+                          anyone pressure you into signing before you have a written scope and timeline.
+                        </li>
+                        <li>
+                          <span className="font-semibold text-gray-900">What to ask:</span> which items are repairable now,
+                          which indicate end-of-life, and how they’ll prevent leaks during the next heavy Georgetown
+                          downpour.
+                        </li>
+                        <li>
+                          <span className="font-semibold text-gray-900">Timing:</span> if water is actively entering, ask
+                          whether they can provide temporary stabilization while you decide on the long-term scope.
                         </li>
                       </ul>
                     </section>
 
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
-                        Guides for Georgetown Homeowners
-                      </h2>
+                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Roof inspections in Georgetown</h2>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                        Inspections are most valuable when they are specific. The goal is not “yes/no replacement”—it’s a
+                        clear understanding of the failure points, remaining life, and what a repair would actually
+                        accomplish. Ask for photos and a written summary so you can compare providers.
+                      </p>
+                      <div className="mt-5 rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+                        <div className="text-sm font-semibold text-gray-900">A good inspection should cover</div>
+                        <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-gray-700">
+                          <li>Flashing, valleys, vents, and penetrations (common leak sources)</li>
+                          <li>Shingle condition, granule loss, and any storm impacts</li>
+                          <li>Ventilation basics (intake/exhaust balance) and obvious heat issues</li>
+                          <li>Evidence of moisture in the attic or on decking</li>
+                        </ul>
+                      </div>
+                    </section>
+
+                    <section>
+                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Guides for Georgetown homeowners</h2>
                       <p className="mt-3 text-sm leading-relaxed text-gray-700">
                         If you are gathering information before you talk with a roofer, you may also want to review:
                       </p>
@@ -505,6 +572,24 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         <li>
                           <Link href="/best/best-roofers-georgetown-tx" className="font-semibold hover:underline">
                             Best Roofers in Georgetown TX
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/blog/roof-replacement-cost-georgetown-tx" className="font-semibold hover:underline">
+                            Roof replacement cost in Georgetown, TX
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href="/blog/roof-repair-cost-georgetown-tx" className="font-semibold hover:underline">
+                            Roof repair cost in Georgetown
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/blog/signs-you-may-need-a-new-roof-georgetown-tx"
+                            className="font-semibold hover:underline"
+                          >
+                            Signs you may need a new roof in Georgetown TX
                           </Link>
                         </li>
                       </ul>
