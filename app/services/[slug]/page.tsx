@@ -232,48 +232,89 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 ) : isHvacService ? (
                   <div className="space-y-10 text-gray-800">
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
-                        Common HVAC Problems in Georgetown Homes
-                      </h2>
+                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">HVAC Services in Georgetown TX</h2>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                        Georgetown homes see long cooling seasons, hot afternoons that push systems under peak load, and
+                        quick weather swings that expose weak airflow, drain line, and control issues. This page breaks
+                        down the core HVAC services most homeowners need—what they include, when they matter, and how to
+                        describe the problem so you get the right appointment.
+                      </p>
+                    </section>
+
+                    <section>
+                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">AC repair in Georgetown</h2>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                        Most summer calls are some version of “it’s running but not cooling.” In Georgetown, that often
+                        shows up during the hottest hours, in upstairs bedrooms, or in one wing of the house that never
+                        seems to catch up. A useful repair visit starts with diagnosis (what failed and why), then
+                        options (repair now vs monitor vs plan replacement if the system is at end of life).
+                      </p>
                       <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
                         <li>
-                          <span className="font-semibold text-gray-900">No-cool calls during heat waves:</span> systems
-                          that run constantly without reaching the set temperature or shut off on safety switches.
+                          <span className="font-semibold text-gray-900">No-cool / warm air:</span> electrical components
+                          failing under load, control issues, or performance problems that require confirmation.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Uneven temperatures between floors:</span> hot
-                          upstairs rooms and chilly downstairs spaces caused by airflow and duct design, not just
-                          equipment size.
+                          <span className="font-semibold text-gray-900">Weak airflow:</span> filters, returns, duct
+                          restrictions, or blower-related issues—often mistaken for “needs refrigerant.”
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Drain line and condensate issues:</span> backed
-                          up drain lines that trip safety switches or cause water around indoor units and closets.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-gray-900">Aging or noisy equipment:</span> older systems
-                          that struggle in Georgetown heat, short-cycle, or cause power issues when starting.
+                          <span className="font-semibold text-gray-900">Condensate and drain line issues:</span> backed up
+                          drains that trip safety switches or cause water near the indoor unit.
                         </li>
                       </ul>
                     </section>
 
                     <section>
+                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">AC replacement in Georgetown</h2>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                        Replacement is worth discussing when repairs are frequent, comfort is inconsistent, or a major
+                        repair is a large fraction of the cost of a new system. In Georgetown, homeowners also replace
+                        to solve comfort problems (hot rooms, humidity, noisy run cycles) that are partly equipment and
+                        partly airflow.
+                      </p>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                        When comparing bids, ask for written equipment model numbers, efficiency ratings, warranty terms,
+                        and whether any ductwork or electrical corrections are included.
+                      </p>
+                    </section>
+
+                    <section>
+                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Heating service in Georgetown</h2>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                        Georgetown’s heating season is shorter, but cold snaps still make “no heat” urgent. Heating
+                        service typically includes troubleshooting failed starts, short cycling, thermostat/control
+                        issues, and verifying safe operation. If the heater hasn’t run in a while, the first cold front
+                        is when problems usually show up.
+                      </p>
+                    </section>
+
+                    <section>
+                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Maintenance (tune-ups)</h2>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                        Maintenance is most valuable before peak summer. A useful tune-up is not a checkbox—it should
+                        reduce breakdown risk by checking airflow basics, cleaning where appropriate, and confirming the
+                        condensate drain is clear. If your home has persistent hot rooms (common in two-story layouts),
+                        ask for airflow observations instead of only equipment notes.
+                      </p>
+                    </section>
+
+                    <section>
                       <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
-                        HVAC Pricing Expectations in Georgetown TX
+                        Typical HVAC Costs in Georgetown TX
                       </h2>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
-                        HVAC quotes vary widely based on equipment, access, and scope of work, but homeowners around
-                        Georgetown, TX often see:
+                        Pricing depends on equipment brand/age, access, and timing, but Georgetown, TX homeowners often
+                        see:
                       </p>
                       <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
                         <li>
-                          <span className="font-semibold text-gray-900">Service call and basic diagnosis:</span>{" "}
-                          commonly a fee in the low-to-mid hundreds, sometimes credited toward approved repairs on the
-                          same visit.
+                          <span className="font-semibold text-gray-900">Service call and diagnosis:</span> commonly a fee
+                          in the low-to-mid hundreds, sometimes credited toward approved repairs.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Typical repairs:</span> parts like capacitors,
-                          contactors, or simple drain clearings are often in the lower hundreds depending on access and
-                          brand.
+                          <span className="font-semibold text-gray-900">Typical repairs:</span> smaller parts and drain
+                          clears often in the lower hundreds depending on access and brand.
                         </li>
                         <li>
                           <span className="font-semibold text-gray-900">Major repairs:</span> coils, compressors, or
@@ -281,14 +322,16 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                           systems.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Full system replacement:</span> swapping indoor
-                          and outdoor units, especially for higher-efficiency setups, is typically quoted in the
-                          many-thousands depending on tonnage and duct work.
+                          <span className="font-semibold text-gray-900">Replacement:</span> full system swaps are quoted
+                          in the many-thousands depending on tonnage, efficiency, and ductwork scope.
                         </li>
                       </ul>
                       <p className="mt-3 text-sm leading-relaxed text-gray-700">
-                        Treat these as directional only—always ask for a written proposal that spells out equipment
-                        models, scope, and warranty terms.
+                        For a deeper replacement budget breakdown, read{" "}
+                        <Link href="/blog/cost-to-replace-hvac-georgetown" className="font-semibold hover:underline">
+                          cost to replace HVAC in Georgetown
+                        </Link>
+                        .
                       </p>
                     </section>
 
@@ -333,6 +376,30 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                             className="font-semibold hover:underline"
                           >
                             Top HVAC Companies in Georgetown TX
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/blog/why-your-ac-is-not-cooling-georgetown-tx"
+                            className="font-semibold hover:underline"
+                          >
+                            Why your AC is not cooling in Georgetown TX
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/blog/ac-repair-cost-georgetown-tx"
+                            className="font-semibold hover:underline"
+                          >
+                            AC repair cost in Georgetown TX
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/blog/signs-you-need-hvac-repair-georgetown-tx"
+                            className="font-semibold hover:underline"
+                          >
+                            Signs you need HVAC repair in Georgetown TX
                           </Link>
                         </li>
                         <li>
