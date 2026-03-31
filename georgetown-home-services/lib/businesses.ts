@@ -15,6 +15,7 @@ export type Business = {
   rating: number;
   reviews: number;
   location_link: string;
+  description?: string;
 };
 
 const businesses: Business[] = raw as Business[];

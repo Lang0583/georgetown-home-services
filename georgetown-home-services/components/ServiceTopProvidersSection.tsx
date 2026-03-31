@@ -1,3 +1,4 @@
+import { BusinessListingDescription } from "./BusinessListingDescription";
 import {
   BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS,
   BUSINESS_LINK_VISIT_WEBSITE,
@@ -66,6 +67,7 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
                     )}
                   </span>
                 </div>
+                <BusinessListingDescription text={b.description} className="" />
                 {addr ? <p className="text-sm text-gray-700">{addr}</p> : null}
                 {website || maps ? (
                   <div className="flex flex-wrap gap-2 pt-0.5">

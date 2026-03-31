@@ -1,3 +1,4 @@
+import { BusinessListingDescription } from "../components/BusinessListingDescription";
 import CTASection from "../components/CTASection";
 import Container from "../components/Container";
 import LeadForm from "../components/LeadForm";
@@ -69,7 +70,8 @@ export default function Home() {
                               business.name
                             )}
                           </div>
-                          <div>
+                          <BusinessListingDescription text={business.description} className="mt-1" />
+                          <div className="mt-1">
                             {business.rating.toFixed(1)} stars • {business.reviews.toLocaleString()} reviews
                           </div>
                           {website || maps ? (

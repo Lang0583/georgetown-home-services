@@ -1,3 +1,4 @@
+import { BusinessListingDescription } from "./BusinessListingDescription";
 import {
   BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS,
   BUSINESS_LINK_VISIT_WEBSITE,
@@ -84,6 +85,7 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
               className="rounded-xl border border-gray-200 bg-white p-6 shadow-md"
             >
               <BusinessNameHeading b={b} />
+              <BusinessListingDescription text={b.description} />
               <p className="mt-1 text-sm text-gray-600">
                 {hasBusinessRatingData(b) ? (
                   <>
@@ -134,6 +136,7 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
                         )}
                       </span>
                     </div>
+                    <BusinessListingDescription text={b.description} className="" />
                     {trim(b.address) ? <p className="text-sm text-gray-700">{trim(b.address)}</p> : null}
                     {website || maps ? (
                       <div className="flex flex-wrap gap-2 pt-0.5">
