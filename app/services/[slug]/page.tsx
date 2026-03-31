@@ -220,7 +220,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         </li>
                         <li>
                           <Link
-                            href="/blog/how-to-choose-a-reliable-plumber-georgetown-tx"
+                            href="/blog/how-to-choose-plumber-georgetown-tx"
                             className="font-semibold hover:underline"
                           >
                             How to choose a reliable plumber in Georgetown TX
