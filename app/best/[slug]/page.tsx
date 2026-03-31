@@ -1316,29 +1316,18 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
               ) : null}
 
               <section className="mt-12">
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Explore More Categories</h2>
+                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Explore Other Categories</h2>
                 <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
-                  Browse other categories, or jump directly to the matching service pages.
+                  Browse our full set of best-of categories for Georgetown, TX.
                 </p>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
-                  {explore.map((b) => (
+                  {CORE_BEST.map((b) => (
                     <LinkCard
                       key={b.slug}
                       href={`/best/${b.slug}`}
                       title={`${b.label} in Georgetown, TX`}
                       description="Compare top providers, pricing expectations, and what to ask."
                       badge="Top Providers"
-                    />
-                  ))}
-                </div>
-                <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
-                  {explore.map((b) => (
-                    <LinkCard
-                      key={b.service}
-                      href={`/services/${b.service}`}
-                      title={`${b.label.replace("Best ", "")} service in Georgetown, TX`}
-                      description="Start with service options, common problems, and next steps."
-                      badge="Service"
                     />
                   ))}
                 </div>

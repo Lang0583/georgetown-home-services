@@ -634,9 +634,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               ) : null}
 
               <section className="mt-12">
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Explore More Home Services</h2>
+                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Explore Other Services</h2>
                 <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
-                  Jump to another category, or compare top providers before you request service.
+                  Browse the other core service categories in Georgetown, TX.
                 </p>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {explore.map((s) => (
@@ -644,19 +644,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                       key={s.slug}
                       href={`/services/${s.slug}`}
                       title={`${s.label} in Georgetown, TX`}
-                      description={`Explore ${s.label.toLowerCase()} options and common homeowner issues.`}
+                      description={`Explore ${s.label.toLowerCase()} service options and next steps.`}
                       badge="Service"
-                    />
-                  ))}
-                </div>
-                <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
-                  {explore.map((s) => (
-                    <LinkCard
-                      key={s.best}
-                      href={`/best/${s.best}`}
-                      title={`Best ${s.label} Providers in Georgetown, TX`}
-                      description={`Compare top ${s.label.toLowerCase()} companies and what to look for.`}
-                      badge="Top Providers"
                     />
                   ))}
                 </div>
