@@ -9,14 +9,22 @@ export default function RichText({ blocks }: { blocks: ContentBlock[] }) {
       <ProseArticle>
         {blocks.map((block, idx) => {
           if (block.kind === "p") {
-            return <p key={idx}>{block.text}</p>;
+            return (
+              <p key={idx} className="mb-4">
+                {block.text}
+              </p>
+            );
           }
           if (block.kind === "h2") {
-            return <h2 key={idx}>{block.text}</h2>;
+            return (
+              <h2 key={idx} className="mt-8 mb-4 text-xl font-semibold">
+                {block.text}
+              </h2>
+            );
           }
           if (block.kind === "ul") {
             return (
-              <ul key={idx}>
+              <ul key={idx} className="mb-4 ml-5 list-disc">
                 {block.items.map((item, itemIdx) => (
                   <li key={itemIdx}>{item}</li>
                 ))}

@@ -578,7 +578,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               ) : null}
             </div>
 
-            <aside className="min-w-0 md:col-span-1">
+            <aside className="min-w-0 md:col-span-1 md:sticky md:top-24 md:self-start">
               <LeadForm
                 defaultService={service.serviceType}
                 defaultLocation={location?.title ?? "Georgetown, TX"}

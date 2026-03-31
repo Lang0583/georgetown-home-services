@@ -112,26 +112,27 @@ export default function Home() {
               </div>
 
               <h1 className="mt-5 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
-                Home Services in Georgetown, Texas
+                Find Trusted Home Services in Georgetown, TX
               </h1>
 
               <p className="mt-4 max-w-xl text-lg leading-relaxed text-gray-700">
-                Georgetown continues to grow with new homeowners, busy households, and year-round systems under stress from Central Texas heat,
-                sudden storms, and hard-working plumbing. Whether you’re in Sun City, Wolf Ranch, or Berry Creek, use
-                the form to request service options and free quotes for{" "}
-                <Link href="/services/plumber-georgetown-tx" className="font-semibold underline underline-offset-4">
-                  plumbing
-                </Link>
-                ,{" "}
-                <Link href="/services/hvac-georgetown-tx" className="font-semibold underline underline-offset-4">
-                  HVAC
-                </Link>
-                , and{" "}
-                <Link href="/services/roofer-georgetown-tx" className="font-semibold underline underline-offset-4">
-                  roofing
-                </Link>
-                .
+                Compare top-rated plumbers, HVAC companies, and roofers based on real data and local performance.
               </p>
+
+              <ul className="mt-5 max-w-xl space-y-2 text-sm leading-relaxed text-gray-700">
+                <li>
+                  <span className="font-semibold text-gray-900">Verified local businesses</span>
+                </li>
+                <li>
+                  <span className="font-semibold text-gray-900">Ratings and reviews</span>
+                </li>
+                <li>
+                  <span className="font-semibold text-gray-900">Fast service options</span>
+                </li>
+                <li>
+                  <span className="font-semibold text-gray-900">Free quote requests</span>
+                </li>
+              </ul>
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <ButtonLink href="#lead" className="text-sm">

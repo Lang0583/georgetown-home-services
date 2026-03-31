@@ -92,12 +92,20 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                   </p>
                 </>
               ) : isHvacGeorgetown ? (
-                <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">
-                  Summers in Georgetown, TX come with long stretches of heat and humidity, which makes a reliable HVAC
-                  company nearly as important as the equipment itself. This guide highlights local providers that keep
-                  Georgetown homes livable when systems struggle on 100° days, from emergency AC repairs to full
-                  replacements and maintenance plans sized for Central Texas weather.
-                </p>
+                <>
+                  <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">
+                    Summers in Georgetown, TX come with long stretches of heat and humidity, which makes a reliable HVAC
+                    company nearly as important as the equipment itself. This guide highlights local providers that keep
+                    Georgetown homes livable when systems struggle on 100° days, from emergency AC repairs to full
+                    replacements and maintenance plans sized for Central Texas weather.
+                  </p>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                    <span className="font-semibold text-gray-900">Last updated:</span> March 2026
+                  </p>
+                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-700">
+                    We update this page regularly based on verified reviews and service availability in Georgetown.
+                  </p>
+                </>
               ) : (
                 <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">{best.description}</p>
               )}
@@ -970,7 +978,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
               ) : null}
             </div>
 
-            <aside className="min-w-0 md:col-span-1">
+            <aside className="min-w-0 md:col-span-1 md:sticky md:top-24 md:self-start">
               <LeadForm
                 formId="lead"
                 defaultLocation={locationTitle}

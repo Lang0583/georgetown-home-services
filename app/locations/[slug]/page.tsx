@@ -83,7 +83,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
               ) : null}
             </div>
 
-            <aside className="min-w-0 md:col-span-1">
+            <aside className="min-w-0 md:col-span-1 md:sticky md:top-24 md:self-start">
               <LeadForm
                 formId="lead"
                 defaultLocation={location.title}

@@ -5,11 +5,12 @@ import type { ReactNode } from "react";
  * (headings, FAQ h3s, lists) does not read as a single block.
  */
 export const proseArticleClassName = [
-  "prose prose-slate max-w-none",
+  "prose prose-slate prose-lg",
+  "max-w-3xl mx-auto space-y-6",
   "text-base leading-relaxed",
   "prose-headings:scroll-mt-24 prose-headings:font-semibold prose-headings:text-slate-900",
-  "prose-h2:mt-10 prose-h2:mb-4 prose-h2:text-2xl prose-h2:tracking-tight",
-  "prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-lg prose-h3:font-bold prose-h3:tracking-tight",
+  "prose-h2:mt-10 prose-h2:mb-4 prose-h2:text-xl sm:prose-h2:text-2xl prose-h2:tracking-tight",
+  "prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-base sm:prose-h3:text-lg prose-h3:font-bold prose-h3:tracking-tight",
   "prose-p:mb-5 prose-p:mt-0 prose-p:text-slate-700 prose-p:leading-relaxed",
   "prose-strong:font-semibold prose-strong:text-slate-900",
   "prose-ul:my-6 prose-ul:space-y-2.5",
@@ -19,7 +20,7 @@ export const proseArticleClassName = [
 ].join(" ");
 
 export const articleContentShellClassName =
-  "max-w-4xl rounded-xl border border-gray-200 bg-white p-6 shadow-md md:p-8";
+  "max-w-4xl rounded-xl border border-gray-200 bg-white p-5 shadow-md sm:p-6 md:p-8";
 
 export function ArticleContentShell({ children, className }: { children: ReactNode; className?: string }) {
   const shell = className ? `${articleContentShellClassName} ${className}` : articleContentShellClassName;

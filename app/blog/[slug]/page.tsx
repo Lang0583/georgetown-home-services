@@ -87,7 +87,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
               ) : null}
             </article>
 
-            <aside className="min-w-0 md:col-span-1">
+            <aside className="min-w-0 md:col-span-1 md:sticky md:top-24 md:self-start">
               <LeadForm
                 formId="lead"
                 defaultLocation={location?.title ?? "Georgetown, TX"}
