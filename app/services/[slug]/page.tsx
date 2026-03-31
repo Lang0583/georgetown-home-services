@@ -210,6 +210,22 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                             How to Find a Good Plumber in Georgetown
                           </Link>
                         </li>
+                        <li>
+                          <Link
+                            href="/blog/emergency-plumber-cost-georgetown-tx"
+                            className="font-semibold hover:underline"
+                          >
+                            Emergency plumber cost in Georgetown TX
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/blog/how-to-choose-a-reliable-plumber-georgetown-tx"
+                            className="font-semibold hover:underline"
+                          >
+                            How to choose a reliable plumber in Georgetown TX
+                          </Link>
+                        </li>
                       </ul>
                     </section>
                   </div>

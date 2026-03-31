@@ -485,15 +485,15 @@
     },
     {
       "slug": "emergency-plumber-cost-georgetown-tx",
-      "title": "Emergency Plumber Cost in Georgetown, TX",
-      "h1": "Emergency Plumber Cost in Georgetown, TX",
-      "description": "What Georgetown homeowners can realistically expect to pay for urgent plumbing calls—and how to avoid surprises.",
+      "title": "Emergency Plumber Cost in Georgetown TX",
+      "h1": "Emergency Plumber Cost in Georgetown TX",
+      "description": "Clear pricing ranges for emergency plumbing in Georgetown—service calls, leak repairs, water heaters, and sewer work—plus when to call now vs wait.",
       "locationSlug": "georgetown-tx",
-      "readTime": "7 min",
+      "readTime": "8 min",
       "content": [
         {
           "kind": "p",
-          "text": "When water is where it shouldn’t be—backing up through a drain, pouring from a burst pipe, or dripping steadily from a ceiling—most Georgetown, TX homeowners ask the same question: “What is an emergency plumber going to cost me?” This guide breaks down the main cost drivers for urgent plumbing calls in Georgetown so you can set expectations and make informed decisions under pressure."
+          "text": "When water is where it shouldn’t be—backing up through a drain, pouring from a burst pipe, or dripping steadily from a ceiling—most Georgetown, TX homeowners ask the same question: “What is an emergency plumber going to cost me?” This guide gives practical price ranges for common emergencies in Georgetown and shows you when it’s worth calling immediately versus scheduling a standard appointment."
         },
         {
           "kind": "h2",
@@ -767,6 +767,73 @@
       ],
       "relatedBestSlugs": [
         "best-roofers-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "how-to-choose-a-reliable-plumber-georgetown-tx",
+      "title": "How to Choose a Reliable Plumber in Georgetown TX",
+      "h1": "How to Choose a Reliable Plumber in Georgetown TX",
+      "description": "A practical checklist for Georgetown homeowners: licensing, insurance, response time, warning signs, and how to compare plumbers fairly.",
+      "locationSlug": "georgetown-tx",
+      "readTime": "8 min",
+      "content": [
+        {
+          "kind": "p",
+          "text": "When you need a plumber in Georgetown, TX, you can usually find a long list of names. The harder part is choosing someone reliable—someone who diagnoses correctly, communicates clearly, and does work you won’t have to redo. This guide is a homeowner checklist written for Georgetown, with the local realities in mind: slab foundations, hard water, and scheduling crunches during freezes and storm weeks."
+        },
+        { "kind": "h2", "text": "Homeowner checklist: how to choose a reliable plumber" },
+        {
+          "kind": "ul",
+          "items": [
+            "Confirm Texas licensing and that the license matches the company you’re hiring",
+            "Verify insurance (liability coverage at minimum; ask about workers’ comp if crews are used)",
+            "Ask how pricing works (flat-rate vs time-and-materials) and request a written scope",
+            "Check response time expectations for urgent calls versus scheduled work",
+            "Look for communication habits: text updates, clear ETAs, photos/video for diagnosis when appropriate",
+            "Ask how they handle permits for larger work like water heaters, repipes, or sewer ties",
+            "For bigger jobs, compare at least two written estimates when the situation is stable"
+          ]
+        },
+        { "kind": "h2", "text": "Licensing and insurance (what to confirm and why)" },
+        {
+          "kind": "p",
+          "text": "In Georgetown, plumbing work can quickly become code- and safety-sensitive: water heaters, gas connections, main drains, and slab penetrations aren’t the place for guesswork. A reliable plumber won’t dodge licensing questions and should be able to explain what their insurance covers. If a contractor refuses to discuss licensing or won’t provide a written scope, treat that as an early warning sign."
+        },
+        { "kind": "h2", "text": "Response time and service availability in Georgetown" },
+        {
+          "kind": "p",
+          "text": "Availability is part of quality. In Georgetown, TX, schedules tighten during freezes, heavy rain, and peak weekends—exactly when leaks and backups spike. A trustworthy plumber will be clear about whether your issue is an emergency, what the earliest arrival window looks like, and whether there are after-hours minimum charges. If your issue can wait, scheduling during normal hours is often more cost-effective."
+        },
+        { "kind": "h2", "text": "Warning signs of bad contractors" },
+        {
+          "kind": "ul",
+          "items": [
+            "Vague explanations that don’t connect symptoms to a root cause",
+            "Pressure to approve a big scope without showing repair options and trade-offs",
+            "No written estimate, or refusal to itemize labor vs materials for larger jobs",
+            "Blaming everything on “old pipes” without confirming where the failure is",
+            "Repeat “temporary fixes” for recurring clogs or leaks with no plan to prevent repeats",
+            "Poor communication about arrival windows, change orders, or next steps"
+          ]
+        },
+        { "kind": "h2", "text": "Local Georgetown context: slabs, hard water, and irrigation tie-ins" },
+        {
+          "kind": "p",
+          "text": "Many Georgetown homes are on slab foundations, which changes how leaks are found and repaired. Hard water can also shorten the life of cartridges, shutoff valves, and water heaters—so it’s common to see certain repairs repeat over time if maintenance is ignored. And in some neighborhoods, irrigation systems and exterior hose bibs can create leaks that look like “main line” issues until a plumber isolates the right section."
+        },
+        { "kind": "h2", "text": "Where to start (service page + best-of guide)" },
+        {
+          "kind": "p",
+          "text": "If you want to request help right away, start with our plumbing services page. If you’re comparing providers, use our best-of guide to review top rated plumbers serving Georgetown, then contact two or three companies for written scopes so you can compare apples to apples."
+        }
+      ],
+      "relatedServiceSlugs": [
+        "plumber-georgetown-tx",
+        "clogged-drain-georgetown-tx",
+        "sewer-line-backup-georgetown-tx"
+      ],
+      "relatedBestSlugs": [
+        "best-plumbers-georgetown-tx"
       ]
     }
   ],

@@ -81,6 +81,15 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                     We continuously update our rankings based on customer reviews, service availability, and verified
                     local presence in Georgetown and surrounding areas.
                   </p>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                    <span className="font-semibold text-gray-900">Last updated:</span> March 2026
+                  </p>
+                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-700">
+                    We update this list regularly based on verified reviews and service availability in Georgetown.
+                  </p>
+                  <p className="mt-1 max-w-2xl text-sm leading-relaxed text-gray-700">
+                    This matters more than most people realize.
+                  </p>
                 </>
               ) : isHvacGeorgetown ? (
                 <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">
@@ -294,6 +303,13 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                             className="font-semibold text-blue-700"
                           >
                             emergency plumber cost guide for Georgetown
+                          </Link>
+                          . For a step-by-step hiring checklist, see{" "}
+                          <Link
+                            href="/blog/how-to-choose-a-reliable-plumber-georgetown-tx"
+                            className="font-semibold text-blue-700"
+                          >
+                            how to choose a reliable plumber in Georgetown TX
                           </Link>
                           . If you are planning broader system work, you may also find it helpful to compare{" "}
                           <Link
