@@ -12,7 +12,7 @@ export default function NotFound() {
           <ButtonLink href="/" className="text-sm">
             Go to Home
           </ButtonLink>
-          <ButtonLink href="/services/plumber-georgetown-tx" variant="secondary" className="text-sm">
+          <ButtonLink href="/services" variant="secondary" className="text-sm">
             View Services
           </ButtonLink>
         </div>

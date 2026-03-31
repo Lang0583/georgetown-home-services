@@ -87,7 +87,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
               ) : null}
             </article>
 
-            <aside className="min-w-0 md:col-span-1 md:sticky md:top-24 md:self-start">
+            <aside className="min-w-0 md:col-span-1">
               <LeadForm
                 formId="lead"
                 defaultLocation={location?.title ?? "Georgetown, TX"}
@@ -105,7 +105,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
                     <div className="text-sm text-gray-600">
                       Prefer to browse?{" "}
                       <Link
-                        href={`/services/${post.relatedServiceSlugs[0]}`}
+                        href={`/services/${post.relatedServiceSlugs[0] ?? "plumber-georgetown-tx"}`}
                         className="font-semibold underline underline-offset-4"
                       >
                         Start with a service

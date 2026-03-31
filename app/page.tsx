@@ -31,13 +31,24 @@ export default function Home() {
   const locations = getLocations();
   const best = getBest();
   const blog = getBlog();
-  const defaultServiceSlug = services[0]?.slug ?? "plumber-georgetown-tx";
   const allBusinesses = businesses as Business[];
   const topLocalGroups: { title: string; key: ProviderGroup }[] = [
     { title: "Plumbers", key: "plumber" },
     { title: "HVAC", key: "hvac" },
     { title: "Roofers", key: "roofer" },
   ];
+
+  const bestHrefByGroup: Record<ProviderGroup, string> = {
+    plumber: "/best/best-plumbers-georgetown-tx",
+    hvac: "/best/top-hvac-companies-georgetown-tx",
+    roofer: "/best/best-roofers-georgetown-tx",
+  };
+
+  const serviceHrefByGroup: Record<ProviderGroup, string> = {
+    plumber: "/services/plumber-georgetown-tx",
+    hvac: "/services/hvac-georgetown-tx",
+    roofer: "/services/roofer-georgetown-tx",
+  };
 
   return (
     <div className="bg-gray-50">
@@ -49,7 +60,12 @@ export default function Home() {
             <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
               {topLocalGroups.map(({ title, key }) => (
                 <div key={key} className="rounded-lg bg-gray-50 p-4">
-                  <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-900">{title}</h3>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-900">{title}</h3>
+                    <Link href={bestHrefByGroup[key]} className="text-xs font-semibold text-blue-700 hover:underline">
+                      Top Providers
+                    </Link>
+                  </div>
                   <ul className="mt-3 space-y-3">
                     {topProvidersForGroup(allBusinesses, key, 3).map((business) => {
                       const outbound = getBusinessOutboundUrl(business);
@@ -100,6 +116,15 @@ export default function Home() {
                       );
                     })}
                   </ul>
+                  <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs">
+                    <Link href={serviceHrefByGroup[key]} className="font-semibold text-gray-900 hover:underline">
+                      View service page
+                    </Link>
+                    <span className="text-gray-400">·</span>
+                    <Link href={bestHrefByGroup[key]} className="font-semibold text-gray-900 hover:underline">
+                      Compare top providers
+                    </Link>
+                  </div>
                 </div>
               ))}
             </div>
@@ -138,7 +163,7 @@ export default function Home() {
                 <ButtonLink href="#lead" className="text-sm">
                   Get Free Quotes
                 </ButtonLink>
-                <ButtonLink href={`/services/${defaultServiceSlug}`} variant="secondary" className="text-sm">
+                <ButtonLink href="/services" variant="secondary" className="text-sm">
                   Request Service
                 </ButtonLink>
               </div>
@@ -180,7 +205,7 @@ export default function Home() {
             <div className="min-w-0">
               <LeadForm
                 formId="lead"
-                defaultService={services[0]?.title}
+                defaultService={services.find((s) => s.slug === "plumber-georgetown-tx")?.title ?? "Plumbing"}
                 defaultLocation={getLocationBySlug("georgetown-tx")?.title}
               />
             </div>
@@ -191,7 +216,7 @@ export default function Home() {
         <section className="py-10 md:py-12">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
             <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Popular Services</h2>
-            <ButtonLink href="/services/plumber-georgetown-tx" variant="secondary" className="shrink-0 px-4 py-2 text-sm">
+            <ButtonLink href="/services" variant="secondary" className="shrink-0 px-4 py-2 text-sm">
               View all services
             </ButtonLink>
           </div>
@@ -220,7 +245,7 @@ export default function Home() {
         <section className="py-10 md:py-12">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
             <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Top Rated Services</h2>
-            <ButtonLink href="/best/best-plumbers-georgetown-tx" variant="secondary" className="shrink-0 px-4 py-2 text-sm">
+            <ButtonLink href="/best" variant="secondary" className="shrink-0 px-4 py-2 text-sm">
               See best-of guides
             </ButtonLink>
           </div>
@@ -275,8 +300,8 @@ export default function Home() {
             eyebrow="Need help today?"
             title="Get a quote and next steps"
             description="Tell us what you need and we’ll follow up with clear service options."
-            primaryHref={`/services/${defaultServiceSlug}`}
-            primaryLabel="View service options"
+            primaryHref="/services"
+            primaryLabel="Browse service categories"
             secondary={
               <div className="text-sm text-gray-600">
                 Prefer to start online? Use the form above and we’ll respond with next steps.

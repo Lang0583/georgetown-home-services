@@ -83,7 +83,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
               ) : null}
             </div>
 
-            <aside className="min-w-0 md:col-span-1 md:sticky md:top-24 md:self-start">
+            <aside className="min-w-0 md:col-span-1">
               <LeadForm
                 formId="lead"
                 defaultLocation={location.title}
@@ -94,7 +94,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
                   eyebrow="Quick next steps"
                   title="Get clear options"
                   description="Share what you’re dealing with, and we’ll suggest the best next step for your home."
-                  primaryHref={`/services/${location.serviceSlugs[0]}`}
+                  primaryHref="/services"
                   primaryLabel="Browse services"
                 />
               </div>

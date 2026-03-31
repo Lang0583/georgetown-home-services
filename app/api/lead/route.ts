@@ -3,11 +3,11 @@ import path from "node:path";
 import { NextResponse } from "next/server";
 
 type LeadPayload = {
-  name: string;
-  email: string;
+  name?: string;
+  email?: string;
   phone?: string;
-  serviceType: string;
-  location: string;
+  serviceType?: string;
+  location?: string;
   message?: string;
   honeypot?: string;
 };
@@ -44,18 +44,18 @@ export async function POST(req: Request) {
   const location = sanitizeText(payload.location ?? "", 80);
   const message = sanitizeText(payload.message ?? "", 1500);
 
-  if (!name) return NextResponse.json({ ok: false, error: "Name is required" }, { status: 400 });
   if (!isValidEmail(email)) return NextResponse.json({ ok: false, error: "Valid email is required" }, { status: 400 });
   if (!serviceType) return NextResponse.json({ ok: false, error: "Service is required" }, { status: 400 });
-  if (!location) return NextResponse.json({ ok: false, error: "Location is required" }, { status: 400 });
+  const safeName = name || "Website lead";
+  const safeLocation = location || "Georgetown, TX";
 
   const lead = {
     ...payload,
-    name,
+    name: safeName,
     email,
     phone: phone.length >= 10 ? phone : undefined,
     serviceType,
-    location,
+    location: safeLocation,
     message,
     createdAt: new Date().toISOString(),
     source: "georgetown-home-services",

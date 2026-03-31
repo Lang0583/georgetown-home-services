@@ -1307,7 +1307,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
               ) : null}
             </div>
 
-            <aside className="min-w-0 md:col-span-1 md:sticky md:top-24 md:self-start">
+            <aside className="min-w-0 md:col-span-1">
               <LeadForm
                 formId="lead"
                 defaultLocation={locationTitle}

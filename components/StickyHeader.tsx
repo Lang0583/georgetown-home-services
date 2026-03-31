@@ -11,8 +11,6 @@ export default function StickyHeader() {
   const bestSlugs = getBestSlugs();
   const blogSlugs = getBlogSlugs();
 
-  const primaryService = serviceSlugs[0] ?? "plumber-georgetown-tx";
-  const primaryBest = bestSlugs[0] ?? "best-plumbers-georgetown-tx";
   const primaryBlog = blogSlugs[0] ?? "how-to-find-a-good-plumber-georgetown-tx";
 
   return (
@@ -29,10 +27,10 @@ export default function StickyHeader() {
           <Link href="/" className={navLinkClass}>
             Home
           </Link>
-          <Link href={`/services/${primaryService}`} className={navLinkClass}>
+          <Link href="/services" className={navLinkClass}>
             Services
           </Link>
-          <Link href={`/best/${primaryBest}`} className={navLinkClass}>
+          <Link href="/best" className={navLinkClass}>
             Top Providers
           </Link>
           <Link href={`/blog/${primaryBlog}`} className={navLinkClass}>
