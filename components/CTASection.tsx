@@ -7,11 +7,11 @@ export { CTA_EMAIL_PROVIDERS, CTA_VIEW_TOP_PROVIDERS } from "../lib/site-cta";
 
 export function SiteCTAButtons({
   primaryHref,
-  emailFormHref = "#lead",
+  emailFormHref = "#email-capture",
   className,
 }: {
   primaryHref: string;
-  /** Hash or path to the page that contains the email form (e.g. `#lead` or `/#lead`). */
+  /** Hash or path to the page that contains the email form (e.g. `#email-capture` or `/#email-capture`). */
   emailFormHref?: string;
   className?: string;
 }) {
@@ -32,7 +32,7 @@ export default function CTASection({
   title,
   description,
   primaryHref,
-  emailFormHref = "#lead",
+  emailFormHref = "#email-capture",
   secondary,
   showDisclaimer,
 }: {

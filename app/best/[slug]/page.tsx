@@ -1355,7 +1355,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
             </div>
 
             <aside className="min-w-0 md:col-span-1">
-              <LeadForm formId="lead" defaultService={relatedService?.serviceType ?? "Plumbing"} />
+              <LeadForm defaultService={relatedService?.serviceType ?? "Plumbing"} />
 
               <div className="mt-8">
                 <CTASection
@@ -1363,7 +1363,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                   title="Contact providers directly"
                   description="Scroll to local listings on this page, or use the email form for optional provider ideas."
                   primaryHref="#providers"
-                  emailFormHref="#lead"
+                  emailFormHref="#email-capture"
                   secondary={
                     recommended[0] || relatedServiceSlug ? (
                       <div className="text-sm text-gray-600">

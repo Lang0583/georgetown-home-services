@@ -717,7 +717,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </div>
 
             <aside className="min-w-0 md:col-span-1">
-              <LeadForm defaultService={service.serviceType} formId="lead" />
+              <LeadForm defaultService={service.serviceType} />
               {bestPages.length ? (
                 <div className="mt-8">
                   <CTASection
@@ -725,7 +725,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     title="See ranked local companies"
                     description="Open the guide for this category to compare providers and contact businesses directly."
                     primaryHref={topProvidersCtaHref}
-                    emailFormHref="#lead"
+                    emailFormHref="#email-capture"
                     showDisclaimer
                   />
                 </div>
@@ -747,7 +747,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 for optional provider ideas—we do not schedule or route jobs for you.
               </p>
               <div className="mt-4">
-                <SiteCTAButtons primaryHref={topProvidersCtaHref} emailFormHref="#lead" />
+                <SiteCTAButtons primaryHref={topProvidersCtaHref} emailFormHref="#email-capture" />
               </div>
             </div>
             <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">

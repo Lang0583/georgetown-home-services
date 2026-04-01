@@ -84,14 +84,14 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
             </div>
 
             <aside className="min-w-0 md:col-span-1">
-              <LeadForm formId="lead" defaultService="Plumbing" />
+              <LeadForm defaultService="Plumbing" />
               <div className="mt-8">
                 <CTASection
                   eyebrow="Local guides"
                   title="Find providers you can contact"
                   description="Browse best-of rankings and service pages for Georgetown—then reach out to businesses directly."
                   primaryHref="/best#top-providers"
-                  emailFormHref="/#lead"
+                  emailFormHref="/#email-capture"
                   showDisclaimer
                 />
               </div>

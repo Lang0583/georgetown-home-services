@@ -52,7 +52,7 @@ export default function BestIndexPage() {
                 title="Service guides and email signup"
                 description="Read category guides on the services hub, or use the optional email form on the homepage for provider ideas."
                 primaryHref="#top-providers"
-                emailFormHref="/#lead"
+                emailFormHref="/#email-capture"
                 secondary={
                   <div className="text-sm text-gray-600">
                     Service guides:{" "}

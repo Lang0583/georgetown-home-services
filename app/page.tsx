@@ -87,7 +87,7 @@ export default function Home() {
               </ul>
 
               <div className="mt-6">
-                <SiteCTAButtons primaryHref="#providers" emailFormHref="#lead" />
+                <SiteCTAButtons primaryHref="#providers" emailFormHref="#email-capture" />
               </div>
 
               <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -124,7 +124,7 @@ export default function Home() {
               </div>
             </div>
 
-            <LeadForm formId="lead" defaultService={defaultPlumbing} />
+            <LeadForm defaultService={defaultPlumbing} />
 
             <div id="providers" className="scroll-mt-28 rounded-xl border border-gray-200 bg-white p-6 shadow-md sm:p-8">
               <h2 className="text-xl font-semibold tracking-tight text-gray-900">Top Local Providers</h2>
@@ -291,7 +291,7 @@ export default function Home() {
             title="Browse rankings or get ideas by email"
             description="Jump to the listings on this page, or use the email form above for optional provider ideas."
             primaryHref="#providers"
-            emailFormHref="#lead"
+            emailFormHref="#email-capture"
             showDisclaimer
           />
         </section>

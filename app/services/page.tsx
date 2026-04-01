@@ -48,7 +48,7 @@ export default function ServicesIndexPage() {
                 title="See top local companies"
                 description="Open a best-of guide for ranked providers, or use the optional email signup on the homepage."
                 primaryHref="/best#top-providers"
-                emailFormHref="/#lead"
+                emailFormHref="/#email-capture"
                 secondary={
                   <div className="text-sm text-gray-600">
                     Or go back to{" "}

@@ -91,7 +91,6 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
 
             <aside className="min-w-0 md:col-span-1">
               <LeadForm
-                formId="lead"
                 defaultService={relatedServices[0]?.serviceType ?? "Plumbing"}
               />
 
@@ -101,7 +100,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
                   title="View providers or optional email"
                   description="Open a best-of guide for ranked local companies, or use the email form for informational provider ideas."
                   primaryHref={topProvidersHref}
-                  emailFormHref="#lead"
+                  emailFormHref="#email-capture"
                   secondary={
                     relatedServices[0] ? (
                       <div className="text-sm text-gray-600">
