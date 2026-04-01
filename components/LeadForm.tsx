@@ -2,21 +2,30 @@
 
 import { useMemo, useState } from "react";
 import { Button } from "./Button";
+import { PROVIDER_INFO_DISCLAIMER } from "../lib/provider-disclaimer";
+import { CTA_EMAIL_PROVIDERS } from "../lib/site-cta";
 
 type LeadFormProps = {
   defaultService?: string;
-  defaultLocation?: string;
   formId?: string;
+  title?: string;
+  description?: string;
+  compact?: boolean;
 };
 
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 }
 
-export default function LeadForm({ defaultService, defaultLocation, formId }: LeadFormProps) {
+export default function LeadForm({
+  defaultService,
+  formId = "lead",
+  title = "Email capture",
+  description = "Optional: we may email you curated Georgetown providers to contact on your own.",
+  compact = false,
+}: LeadFormProps) {
   const [email, setEmail] = useState("");
   const [serviceType, setServiceType] = useState(defaultService ?? "Plumbing");
-  const [honeypot, setHoneypot] = useState("");
 
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
@@ -51,8 +60,6 @@ export default function LeadForm({ defaultService, defaultLocation, formId }: Le
       const payload = {
         email: email.trim(),
         serviceType: serviceType.trim(),
-        location: (defaultLocation ?? "Georgetown, TX").trim(),
-        honeypot,
       };
 
       const res = await fetch("/api/lead", {
@@ -63,17 +70,16 @@ export default function LeadForm({ defaultService, defaultLocation, formId }: Le
 
       if (!res.ok) {
         const data = (await res.json().catch(() => null)) as { error?: string } | null;
-        throw new Error(data?.error ?? "Request failed");
+        throw new Error(data?.error ?? "Something went wrong");
       }
 
       setStatus("success");
       e.currentTarget.reset();
       setEmail("");
       setServiceType(normalizedDefaultService ?? "Plumbing");
-      setHoneypot("");
     } catch (err) {
       setStatus("error");
-      setError(err instanceof Error ? err.message : "Request failed");
+      setError(err instanceof Error ? err.message : "Something went wrong");
     }
   }
 
@@ -81,17 +87,21 @@ export default function LeadForm({ defaultService, defaultLocation, formId }: Le
     <form
       id={formId}
       onSubmit={onSubmit}
-      className="w-full min-w-0 max-w-full rounded-xl border border-gray-200 bg-white p-6 shadow-md md:p-8"
+      className={`w-full min-w-0 max-w-full rounded-xl border border-gray-200 bg-white shadow-md ${
+        compact ? "p-5 md:p-6" : "p-6 md:p-8"
+      }`}
     >
-      <h2 className="text-xl font-semibold text-gray-900">Get Top Local Providers Instantly</h2>
-      <p className="mt-2 text-sm text-gray-600">Enter your email and choose a service to get matched quickly.</p>
+      <h2 className="text-xl font-semibold text-gray-900">{title}</h2>
+      <p className="mt-2 text-sm text-gray-600">{description}</p>
+      <p className="mt-3 border-t border-gray-100 pt-3 text-xs leading-relaxed text-gray-600">{PROVIDER_INFO_DISCLAIMER}</p>
 
-      <div className="mt-6 grid grid-cols-1 gap-4">
+      <div className={`grid grid-cols-1 gap-4 ${compact ? "mt-4" : "mt-6"}`}>
         <label className="flex flex-col gap-1">
           <span className="text-sm font-medium text-gray-800">Email</span>
           <input
             required
             name="email"
+            type="email"
             className="h-10 rounded-lg border border-gray-200 bg-white px-3 text-sm text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-blue-300 focus:ring-2 focus:ring-blue-100"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -102,7 +112,7 @@ export default function LeadForm({ defaultService, defaultLocation, formId }: Le
         </label>
 
         <label className="flex flex-col gap-1">
-          <span className="text-sm font-medium text-gray-800">Service</span>
+          <span className="text-sm font-medium text-gray-800">Service type</span>
           <select
             required
             name="serviceType"
@@ -117,21 +127,19 @@ export default function LeadForm({ defaultService, defaultLocation, formId }: Le
             ))}
           </select>
         </label>
-
-        {/* Honeypot field - bots will fill it, real users won't. */}
-        <label className="hidden">
-          <span>Leave this field blank</span>
-          <input name="honeypot" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
-        </label>
       </div>
 
       {status === "success" ? (
-        <div className="mt-6 rounded-xl border border-emerald-500/30 bg-emerald-50 p-4 text-sm text-emerald-900">
-          Thank you. Your request has been received.
+        <div
+          className={`rounded-xl border border-emerald-500/30 bg-emerald-50 p-4 text-sm text-emerald-900 ${compact ? "mt-4" : "mt-6"}`}
+        >
+          Thanks — check your inbox for provider information when it arrives.
         </div>
       ) : null}
       {status === "error" && error ? (
-        <div className="mt-6 rounded-xl border border-rose-500/30 bg-rose-50 p-4 text-sm text-rose-900">
+        <div
+          className={`rounded-xl border border-rose-500/30 bg-rose-50 p-4 text-sm text-rose-900 ${compact ? "mt-4" : "mt-6"}`}
+        >
           {error}
         </div>
       ) : null}
@@ -139,15 +147,14 @@ export default function LeadForm({ defaultService, defaultLocation, formId }: Le
       <Button
         type="submit"
         disabled={!canSubmit}
-        className="mt-6 w-full disabled:cursor-not-allowed disabled:bg-gray-400"
+        className={`w-full disabled:cursor-not-allowed disabled:bg-gray-400 ${compact ? "mt-4" : "mt-6"}`}
       >
-        {status === "submitting" ? "Sending..." : "Get Top Local Providers Instantly"}
+        {status === "submitting" ? "Sending..." : CTA_EMAIL_PROVIDERS}
       </Button>
 
       <p className="mt-4 text-xs text-gray-500">
-        By submitting, you agree to be contacted about your request. We never sell your information.
+        By submitting, you agree to receive informational emails about local providers. We never sell your information.
       </p>
     </form>
   );
 }
-

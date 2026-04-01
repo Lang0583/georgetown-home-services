@@ -34,7 +34,7 @@ export default function BestIndexPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div id="top-providers" className="scroll-mt-24 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {bestPages.map((b) => (
                 <LinkCard
                   key={b!.slug}
@@ -48,20 +48,25 @@ export default function BestIndexPage() {
 
             <div className="pt-4">
               <CTASection
-                eyebrow="Need service options?"
-                title="Browse service categories"
-                description="Start with a service page if you want a faster path to next steps."
-                primaryHref="/services"
-                primaryLabel="View services"
+                eyebrow="More ways to browse"
+                title="Service guides and email signup"
+                description="Read category guides on the services hub, or use the optional email form on the homepage for provider ideas."
+                primaryHref="#top-providers"
+                emailFormHref="/#lead"
                 secondary={
                   <div className="text-sm text-gray-600">
-                    Or go back to{" "}
+                    Service guides:{" "}
+                    <Link href="/services" className="font-semibold underline underline-offset-4">
+                      /services
+                    </Link>
+                    . Or go back to{" "}
                     <Link href="/" className="font-semibold underline underline-offset-4">
                       the homepage
                     </Link>
                     .
                   </div>
                 }
+                showDisclaimer
               />
             </div>
           </div>

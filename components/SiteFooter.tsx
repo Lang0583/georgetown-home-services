@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PROVIDER_INFO_DISCLAIMER } from "../lib/provider-disclaimer";
 import { getBrandName, getContact } from "../lib/site-content";
 
 export default function SiteFooter() {
@@ -70,7 +71,9 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-2 border-t border-gray-200 pt-6 text-sm text-gray-500 md:flex-row md:items-center md:justify-between">
+        <p className="mt-8 max-w-3xl text-xs leading-relaxed text-gray-500">{PROVIDER_INFO_DISCLAIMER}</p>
+
+        <div className="mt-6 flex flex-col gap-2 border-t border-gray-200 pt-6 text-sm text-gray-500 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap gap-x-3 gap-y-1">
             <Link className="hover:underline" href="/">
               Home

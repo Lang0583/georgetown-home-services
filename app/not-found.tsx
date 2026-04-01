@@ -1,4 +1,5 @@
-import { ButtonLink } from "../components/Button";
+import Link from "next/link";
+import { SiteCTAButtons } from "../components/CTASection";
 
 export default function NotFound() {
   return (
@@ -8,14 +9,12 @@ export default function NotFound() {
         <div className="text-lg text-gray-700">
           The page you’re looking for doesn’t exist. Use the links below to find what you need.
         </div>
-        <div className="flex flex-col gap-3 sm:flex-row">
-          <ButtonLink href="/" className="text-sm">
-            Go to Home
-          </ButtonLink>
-          <ButtonLink href="/services" variant="secondary" className="text-sm">
-            View Services
-          </ButtonLink>
-        </div>
+        <SiteCTAButtons primaryHref="/best#top-providers" emailFormHref="/#lead" />
+        <p className="text-sm text-gray-600">
+          <Link href="/" className="font-semibold text-blue-700 underline underline-offset-4 hover:text-blue-800">
+            Back to homepage
+          </Link>
+        </p>
       </div>
     </div>
   );

@@ -1,11 +1,11 @@
 import { BusinessListingDescription } from "../components/BusinessListingDescription";
-import CTASection from "../components/CTASection";
+import CTASection, { SiteCTAButtons } from "../components/CTASection";
 import Container from "../components/Container";
 import LeadForm from "../components/LeadForm";
 import LinkCard from "../components/LinkCard";
 import { ButtonLink } from "../components/Button";
 import Link from "next/link";
-import { getBlog, getBest, getLocationBySlug, getLocations, getServices } from "../lib/site-content";
+import { getBlog, getBest, getLocations, getServices } from "../lib/site-content";
 import businesses from "@/lib/businesses.json";
 import {
   BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS,
@@ -50,86 +50,13 @@ export default function Home() {
     roofer: "/services/roofer-georgetown-tx",
   };
 
+  const defaultPlumbing = services.find((s) => s.slug === "plumber-georgetown-tx")?.title ?? "Plumbing";
+
   return (
     <div className="bg-gray-50">
       <Container>
         <section className="py-10 md:py-12">
-          <div className="flex flex-col gap-12">
-            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-md sm:p-8">
-            <h2 className="text-xl font-semibold tracking-tight text-gray-900">Top Local Providers</h2>
-            <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
-              {topLocalGroups.map(({ title, key }) => (
-                <div key={key} className="rounded-lg bg-gray-50 p-4">
-                  <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-900">{title}</h3>
-                    <Link href={bestHrefByGroup[key]} className="text-xs font-semibold text-blue-700 hover:underline">
-                      Top Providers
-                    </Link>
-                  </div>
-                  <ul className="mt-3 space-y-3">
-                    {topProvidersForGroup(allBusinesses, key, 3).map((business) => {
-                      const outbound = getBusinessOutboundUrl(business);
-                      const website = getBusinessWebsiteUrl(business);
-                      const maps = getBusinessMapsUrl(business);
-                      return (
-                        <li key={`${key}-${business.name}`} className="text-sm text-gray-700">
-                          <div className="font-medium text-gray-900">
-                            {outbound ? (
-                              <a
-                                href={outbound}
-                                {...externalBusinessLinkProps}
-                                className="text-gray-900 hover:text-blue-700 hover:underline"
-                              >
-                                {business.name}
-                              </a>
-                            ) : (
-                              business.name
-                            )}
-                          </div>
-                          <BusinessListingDescription text={business.description} className="mt-1" />
-                          <div className="mt-1">
-                            {business.rating.toFixed(1)} stars • {business.reviews.toLocaleString()} reviews
-                          </div>
-                          {website || maps ? (
-                            <div className="mt-1 flex flex-wrap gap-x-3 gap-y-0.5">
-                              {website ? (
-                                <a
-                                  href={website}
-                                  {...externalBusinessLinkProps}
-                                  className="text-blue-600 hover:text-blue-700"
-                                >
-                                  {BUSINESS_LINK_VISIT_WEBSITE}
-                                </a>
-                              ) : null}
-                              {maps ? (
-                                <a
-                                  href={maps}
-                                  {...externalBusinessLinkProps}
-                                  className="text-blue-600 hover:text-blue-700"
-                                >
-                                  {BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS}
-                                </a>
-                              ) : null}
-                            </div>
-                          ) : null}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs">
-                    <Link href={serviceHrefByGroup[key]} className="font-semibold text-gray-900 hover:underline">
-                      View service page
-                    </Link>
-                    <span className="text-gray-400">·</span>
-                    <Link href={bestHrefByGroup[key]} className="font-semibold text-gray-900 hover:underline">
-                      Compare top providers
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-            </div>
-            <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-start lg:gap-12">
+          <div className="flex flex-col gap-10 md:gap-12">
             <div className="min-w-0">
               <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-xs font-semibold text-gray-700">
                 <span className="h-2 w-2 rounded-full bg-emerald-500" />
@@ -155,23 +82,18 @@ export default function Home() {
                   <span className="font-semibold text-gray-900">Fast service options</span>
                 </li>
                 <li>
-                  <span className="font-semibold text-gray-900">Free quote requests</span>
+                  <span className="font-semibold text-gray-900">Direct links to local businesses</span>
                 </li>
               </ul>
 
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <ButtonLink href="#lead" className="text-sm">
-                  Get Free Quotes
-                </ButtonLink>
-                <ButtonLink href="/services" variant="secondary" className="text-sm">
-                  Request Service
-                </ButtonLink>
+              <div className="mt-6">
+                <SiteCTAButtons primaryHref="#providers" emailFormHref="#lead" />
               </div>
 
               <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
                 <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-                  <div className="text-sm font-semibold text-gray-900">Fast scheduling</div>
-                  <div className="mt-1 text-sm text-gray-700">Submit the form to get clear next steps.</div>
+                  <div className="text-sm font-semibold text-gray-900">Compare listings</div>
+                  <div className="mt-1 text-sm text-gray-700">Open provider pages and contact companies yourself.</div>
                 </div>
                 <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
                   <div className="text-sm font-semibold text-gray-900">Clear estimates</div>
@@ -202,13 +124,81 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="min-w-0">
-              <LeadForm
-                formId="lead"
-                defaultService={services.find((s) => s.slug === "plumber-georgetown-tx")?.title ?? "Plumbing"}
-                defaultLocation={getLocationBySlug("georgetown-tx")?.title}
-              />
-            </div>
+            <LeadForm formId="lead" defaultService={defaultPlumbing} />
+
+            <div id="providers" className="scroll-mt-28 rounded-xl border border-gray-200 bg-white p-6 shadow-md sm:p-8">
+              <h2 className="text-xl font-semibold tracking-tight text-gray-900">Top Local Providers</h2>
+              <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
+                {topLocalGroups.map(({ title, key }) => (
+                  <div key={key} className="rounded-lg bg-gray-50 p-4">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-900">{title}</h3>
+                      <Link href={bestHrefByGroup[key]} className="text-xs font-semibold text-blue-700 hover:underline">
+                        Top Providers
+                      </Link>
+                    </div>
+                    <ul className="mt-3 space-y-3">
+                      {topProvidersForGroup(allBusinesses, key, 3).map((business) => {
+                        const outbound = getBusinessOutboundUrl(business);
+                        const website = getBusinessWebsiteUrl(business);
+                        const maps = getBusinessMapsUrl(business);
+                        return (
+                          <li key={`${key}-${business.name}`} className="text-sm text-gray-700">
+                            <div className="font-medium text-gray-900">
+                              {outbound ? (
+                                <a
+                                  href={outbound}
+                                  {...externalBusinessLinkProps}
+                                  className="text-gray-900 hover:text-blue-700 hover:underline"
+                                >
+                                  {business.name}
+                                </a>
+                              ) : (
+                                business.name
+                              )}
+                            </div>
+                            <BusinessListingDescription text={business.description} className="mt-1" />
+                            <div className="mt-1">
+                              {business.rating.toFixed(1)} stars • {business.reviews.toLocaleString()} reviews
+                            </div>
+                            {website || maps ? (
+                              <div className="mt-1 flex flex-wrap gap-x-3 gap-y-0.5">
+                                {website ? (
+                                  <a
+                                    href={website}
+                                    {...externalBusinessLinkProps}
+                                    className="text-blue-600 hover:text-blue-700"
+                                  >
+                                    {BUSINESS_LINK_VISIT_WEBSITE}
+                                  </a>
+                                ) : null}
+                                {maps ? (
+                                  <a
+                                    href={maps}
+                                    {...externalBusinessLinkProps}
+                                    className="text-blue-600 hover:text-blue-700"
+                                  >
+                                    {BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS}
+                                  </a>
+                                ) : null}
+                              </div>
+                            ) : null}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                    <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs">
+                      <Link href={serviceHrefByGroup[key]} className="font-semibold text-gray-900 hover:underline">
+                        View service page
+                      </Link>
+                      <span className="text-gray-400">·</span>
+                      <Link href={bestHrefByGroup[key]} className="font-semibold text-gray-900 hover:underline">
+                        Compare top providers
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -297,16 +287,12 @@ export default function Home() {
 
         <section className="py-10 md:py-12">
           <CTASection
-            eyebrow="Need help today?"
-            title="Get a quote and next steps"
-            description="Tell us what you need and we’ll follow up with clear service options."
-            primaryHref="/services"
-            primaryLabel="Browse service categories"
-            secondary={
-              <div className="text-sm text-gray-600">
-                Prefer to start online? Use the form above and we’ll respond with next steps.
-              </div>
-            }
+            eyebrow="Find providers"
+            title="Browse rankings or get ideas by email"
+            description="Jump to the listings on this page, or use the email form above for optional provider ideas."
+            primaryHref="#providers"
+            emailFormHref="#lead"
+            showDisclaimer
           />
         </section>
       </Container>

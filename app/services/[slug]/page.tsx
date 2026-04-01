@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import FAQList from "../../../components/FAQList";
-import CTASection from "../../../components/CTASection";
+import CTASection, { SiteCTAButtons } from "../../../components/CTASection";
 import Container from "../../../components/Container";
 import LeadForm from "../../../components/LeadForm";
 import LinkCard from "../../../components/LinkCard";
 import GeneratedArticleBody from "../../../components/GeneratedArticleBody";
 import RichText from "../../../components/RichText";
-import { ButtonLink } from "../../../components/Button";
 import {
   getBestBySlug,
   getBlogsForServiceSlug,
@@ -57,6 +56,13 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const businessCategory = getBusinessCategoryForServiceSlug(service.slug);
   const providersFromJson =
     businessCategory !== null ? getBusinessesByCategory(businessCategory) : [];
+
+  const topProvidersCtaHref =
+    providersFromJson.length > 0
+      ? "#providers"
+      : bestPages.length > 0
+        ? `/best/${bestPages[0]!.slug}`
+        : "/best#top-providers";
 
   const CORE_SERVICES = [
     { label: "Plumbing", slug: "plumber-georgetown-tx", best: "best-plumbers-georgetown-tx" },
@@ -612,7 +618,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               </div>
 
               {providersFromJson.length ? (
-                <section className="mt-12">
+                <section id="providers" className="mt-12 scroll-mt-24">
                   <h2 className="text-3xl font-semibold tracking-tight text-gray-900">
                     {isPlumberService
                       ? "Top Plumbers Serving Georgetown TX"
@@ -644,7 +650,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                       key={s.slug}
                       href={`/services/${s.slug}`}
                       title={`${s.label} in Georgetown, TX`}
-                      description={`Explore ${s.label.toLowerCase()} service options and next steps.`}
+                      description={`Compare ${s.label.toLowerCase()} listings and guides for Georgetown.`}
                       badge="Service"
                     />
                   ))}
@@ -711,19 +717,16 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </div>
 
             <aside className="min-w-0 md:col-span-1">
-              <LeadForm
-                defaultService={service.serviceType}
-                defaultLocation={location?.title ?? "Georgetown, TX"}
-                formId="lead"
-              />
+              <LeadForm defaultService={service.serviceType} formId="lead" />
               {bestPages.length ? (
                 <div className="mt-8">
                   <CTASection
                     eyebrow="Best Of"
-                    title="Explore trusted recommendations"
-                    description="Read guides that explain what to look for and why it matters."
-                    primaryHref={`/best/${bestPages[0]!.slug}`}
-                    primaryLabel="View Best Of"
+                    title="See ranked local companies"
+                    description="Open the guide for this category to compare providers and contact businesses directly."
+                    primaryHref={topProvidersCtaHref}
+                    emailFormHref="#lead"
+                    showDisclaimer
                   />
                 </div>
               ) : null}
@@ -738,14 +741,13 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         <section className="py-10 md:py-12">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
             <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-              <h2 className="text-xl font-semibold text-gray-900">Get help fast</h2>
+              <h2 className="text-xl font-semibold text-gray-900">Compare local providers</h2>
               <p className="mt-2 text-sm text-gray-700">
-                Submit the form and we’ll follow up with next steps for your plumbing, HVAC, or roofing need.
+                Jump to listings on this page when available, or open the best-of guide. Use the email form in the sidebar
+                for optional provider ideas—we do not schedule or route jobs for you.
               </p>
               <div className="mt-4">
-                <ButtonLink href="#lead" className="rounded-full px-5 py-2.5 text-sm">
-                  Get Free Quotes
-                </ButtonLink>
+                <SiteCTAButtons primaryHref={topProvidersCtaHref} emailFormHref="#lead" />
               </div>
             </div>
             <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">

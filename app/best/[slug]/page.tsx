@@ -12,7 +12,6 @@ import ComparisonSection from "../../../components/ComparisonSection";
 import {
   getBestBySlug,
   getBlogsForBestSlug,
-  getLocations,
   getBestSlugs,
   getServiceBySlug,
   getServices,
@@ -55,7 +54,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
     businessCategory !== null ? getBusinessesByCategory(businessCategory) : null;
   const relatedServiceSlug = getRelatedServiceSlugForBestSlug(slug);
   const relatedService = relatedServiceSlug ? getServiceBySlug(relatedServiceSlug) : null;
-  const locationTitle = getLocations().find((l) => l.slug === best.locationSlug)?.title ?? "Georgetown, TX";
   const services = getServices();
   const recommended = best.recommendedServiceSlugs
     .map((s) => services.find((x) => x.slug === s))
@@ -1268,18 +1266,20 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         ) : null}
                         {isRoofersGeorgetown ? (
                           <p>
-                            Want service options instead of a comparison list? Start with{" "}
+                            Prefer a service-style guide instead of this comparison list? See{" "}
                             <Link
                               href="/services/roofer-georgetown-tx"
                               className="font-semibold text-blue-600 hover:text-blue-700"
                             >
-                              roofing service in Georgetown, TX
+                              roofing in Georgetown, TX
                             </Link>
                             .
                           </p>
                         ) : null}
                       </div>
-                      <BestBusinessesSection businesses={businessesForPage} />
+                      <div id="providers" className="scroll-mt-24">
+                        <BestBusinessesSection businesses={businessesForPage} />
+                      </div>
                     </>
                   ) : (
                     <>
@@ -1355,34 +1355,38 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
             </div>
 
             <aside className="min-w-0 md:col-span-1">
-              <LeadForm
-                formId="lead"
-                defaultLocation={locationTitle}
-                defaultService="Service request"
-              />
+              <LeadForm formId="lead" defaultService={relatedService?.serviceType ?? "Plumbing"} />
 
               <div className="mt-8">
                 <CTASection
-                  eyebrow="Need a recommendation?"
-                  title="Get Free Quotes"
-                  description="Submit the form to request service options and free quotes."
-                  primaryHref={`/services/${recommended[0]?.slug ?? relatedServiceSlug ?? "plumber-georgetown-tx"}`}
-                  primaryLabel={recommended[0] ? `View ${recommended[0].serviceType} services` : "Browse services"}
+                  eyebrow="Take action"
+                  title="Contact providers directly"
+                  description="Scroll to local listings on this page, or use the email form for optional provider ideas."
+                  primaryHref="#providers"
+                  emailFormHref="#lead"
                   secondary={
-                    <div className="text-sm text-gray-600">
-                      Or browse services directly:{" "}
-                      {recommended[0] ? (
-                        <Link
-                          href={`/services/${recommended[0]?.slug}`}
-                          className="font-semibold underline underline-offset-4"
-                        >
-                          {recommended[0]?.serviceType}
-                        </Link>
-                      ) : (
-                        <span className="font-semibold">Services</span>
-                      )}
-                    </div>
+                    recommended[0] || relatedServiceSlug ? (
+                      <div className="text-sm text-gray-600">
+                        Related service guide:{" "}
+                        {recommended[0] ? (
+                          <Link
+                            href={`/services/${recommended[0].slug}`}
+                            className="font-semibold underline underline-offset-4"
+                          >
+                            {recommended[0].title}
+                          </Link>
+                        ) : relatedServiceSlug ? (
+                          <Link
+                            href={`/services/${relatedServiceSlug}`}
+                            className="font-semibold underline underline-offset-4"
+                          >
+                            {relatedService?.title ?? "Service guide"}
+                          </Link>
+                        ) : null}
+                      </div>
+                    ) : null
                   }
+                  showDisclaimer
                 />
               </div>
             </aside>

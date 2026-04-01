@@ -60,7 +60,7 @@ function WebsiteAndMapLinks({ b }: { b: Business }) {
       ) : null}
       {tel ? (
         <a href={tel} className={linkButtonClass}>
-          Call Now
+          Phone
         </a>
       ) : null}
       {maps ? (
@@ -76,7 +76,7 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
   if (!businesses.length) {
     return (
       <div className="mt-5 rounded-xl border border-gray-200 bg-white p-6 text-sm text-gray-700 shadow-md">
-        No businesses matched this category in the current import.
+        No businesses were found for this category in the current data.
       </div>
     );
   }
@@ -142,7 +142,7 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
                       ) : null}
                       {tel ? (
                         <a href={tel} className={linkButtonClass}>
-                          Call Now
+                          Phone
                         </a>
                       ) : null}
                       {maps ? (
@@ -211,7 +211,7 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
                       ) : null}
                       {tel ? (
                         <a href={tel} className={linkButtonClass}>
-                          Call Now
+                          Phone
                         </a>
                       ) : null}
                       {maps ? (

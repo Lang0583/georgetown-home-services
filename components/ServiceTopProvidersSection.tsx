@@ -100,7 +100,7 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
                     ) : null}
                     {tel ? (
                       <a href={tel} className={linkButtonClass}>
-                        Call Now
+                        Phone
                       </a>
                     ) : null}
                     {maps ? (
@@ -168,7 +168,7 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
                     ) : null}
                     {tel ? (
                       <a href={tel} className={linkButtonClass}>
-                        Call Now
+                        Phone
                       </a>
                     ) : null}
                     {maps ? (

@@ -26,7 +26,7 @@ export default function ServicesIndexPage() {
                 Home Services in Georgetown, TX
               </h1>
               <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">
-                Choose a category to view providers, pricing guidance, and next steps.
+                Choose a category to compare public listings, guides, and what to ask before you hire.
               </p>
             </div>
 
@@ -44,11 +44,11 @@ export default function ServicesIndexPage() {
 
             <div className="pt-4">
               <CTASection
-                eyebrow="Need help fast?"
-                title="Get clear options"
-                description="Share your email and choose a service to get matched quickly."
-                primaryHref="/services/plumber-georgetown-tx"
-                primaryLabel="Start with plumbing"
+                eyebrow="Compare providers"
+                title="See top local companies"
+                description="Open a best-of guide for ranked providers, or use the optional email signup on the homepage."
+                primaryHref="/best#top-providers"
+                emailFormHref="/#lead"
                 secondary={
                   <div className="text-sm text-gray-600">
                     Or go back to{" "}
@@ -58,6 +58,7 @@ export default function ServicesIndexPage() {
                     .
                   </div>
                 }
+                showDisclaimer
               />
             </div>
           </div>

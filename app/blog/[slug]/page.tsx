@@ -43,6 +43,8 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
     .map((s) => getBestBySlug(s))
     .filter((b): b is NonNullable<typeof b> => Boolean(b));
 
+  const topProvidersHref = relatedBest.length > 0 ? `/best/${relatedBest[0]!.slug}` : "/best";
+
   return (
     <div className="bg-gray-50">
       <Container>
@@ -90,28 +92,30 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
             <aside className="min-w-0 md:col-span-1">
               <LeadForm
                 formId="lead"
-                defaultLocation={location?.title ?? "Georgetown, TX"}
-                defaultService="Service request"
+                defaultService={relatedServices[0]?.serviceType ?? "Plumbing"}
               />
 
               <div className="mt-8">
                 <CTASection
-                  eyebrow="Need a pro?"
-                  title="Request Service"
-                  description="Submit the form to request service options and free quotes."
-                  primaryHref={`/services/${post.relatedServiceSlugs[0] ?? "plumber-georgetown-tx"}`}
-                  primaryLabel="Browse services"
+                  eyebrow="Take action"
+                  title="View providers or optional email"
+                  description="Open a best-of guide for ranked local companies, or use the email form for informational provider ideas."
+                  primaryHref={topProvidersHref}
+                  emailFormHref="#lead"
                   secondary={
-                    <div className="text-sm text-gray-600">
-                      Prefer to browse?{" "}
-                      <Link
-                        href={`/services/${post.relatedServiceSlugs[0] ?? "plumber-georgetown-tx"}`}
-                        className="font-semibold underline underline-offset-4"
-                      >
-                        Start with a service
-                      </Link>
-                    </div>
+                    relatedServices[0] ? (
+                      <div className="text-sm text-gray-600">
+                        Related service guide:{" "}
+                        <Link
+                          href={`/services/${relatedServices[0].slug}`}
+                          className="font-semibold underline underline-offset-4"
+                        >
+                          {relatedServices[0].title}
+                        </Link>
+                      </div>
+                    ) : null
                   }
+                  showDisclaimer
                 />
               </div>
             </aside>
