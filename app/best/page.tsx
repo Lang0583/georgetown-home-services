@@ -56,8 +56,16 @@ export default function BestIndexPage() {
                 secondary={
                   <div className="text-sm text-gray-600">
                     Service guides:{" "}
-                    <Link href="/services" className="font-semibold underline underline-offset-4">
-                      /services
+                    <Link href="/services/plumber-georgetown-tx" className="font-semibold underline underline-offset-4">
+                      Plumbing
+                    </Link>
+                    ,{" "}
+                    <Link href="/services/hvac-georgetown-tx" className="font-semibold underline underline-offset-4">
+                      HVAC
+                    </Link>
+                    ,{" "}
+                    <Link href="/services/roofer-georgetown-tx" className="font-semibold underline underline-offset-4">
+                      Roofing
                     </Link>
                     . Or go back to{" "}
                     <Link href="/" className="font-semibold underline underline-offset-4">

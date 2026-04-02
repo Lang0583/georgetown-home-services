@@ -9,7 +9,7 @@ export default function NotFound() {
         <div className="text-lg text-gray-700">
           The page you’re looking for doesn’t exist. Use the links below to find what you need.
         </div>
-        <SiteCTAButtons primaryHref="/best#top-providers" emailFormHref="/#email-capture" />
+        <SiteCTAButtons primaryHref="/best/best-plumbers-georgetown-tx" emailFormHref="/#email-capture" />
         <p className="text-sm text-gray-600">
           <Link href="/" className="font-semibold text-blue-700 underline underline-offset-4 hover:text-blue-800">
             Back to homepage

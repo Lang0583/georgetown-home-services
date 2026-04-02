@@ -206,9 +206,26 @@ export default function Home() {
         <section className="py-10 md:py-12">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
             <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Popular Services</h2>
-            <ButtonLink href="/services" variant="secondary" className="shrink-0 px-4 py-2 text-sm">
-              View all services
-            </ButtonLink>
+            <nav
+              className="flex shrink-0 flex-wrap items-center gap-x-4 gap-y-1 text-sm font-medium text-gray-700"
+              aria-label="Core service pages"
+            >
+              <Link href="/services/plumber-georgetown-tx" className="hover:text-gray-900 hover:underline">
+                Plumbing
+              </Link>
+              <span className="text-gray-300" aria-hidden>
+                ·
+              </span>
+              <Link href="/services/hvac-georgetown-tx" className="hover:text-gray-900 hover:underline">
+                HVAC
+              </Link>
+              <span className="text-gray-300" aria-hidden>
+                ·
+              </span>
+              <Link href="/services/roofer-georgetown-tx" className="hover:text-gray-900 hover:underline">
+                Roofing
+              </Link>
+            </nav>
           </div>
           <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             <LinkCard
@@ -235,11 +252,28 @@ export default function Home() {
         <section className="py-10 md:py-12">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
             <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Top Rated Services</h2>
-            <ButtonLink href="/best" variant="secondary" className="shrink-0 px-4 py-2 text-sm">
-              See best-of guides
-            </ButtonLink>
+            <nav
+              className="flex shrink-0 flex-wrap items-center gap-x-4 gap-y-1 text-sm font-medium text-gray-700"
+              aria-label="Best-of guides"
+            >
+              <Link href="/best/best-plumbers-georgetown-tx" className="hover:text-gray-900 hover:underline">
+                Best plumbers
+              </Link>
+              <span className="text-gray-300" aria-hidden>
+                ·
+              </span>
+              <Link href="/best/top-hvac-companies-georgetown-tx" className="hover:text-gray-900 hover:underline">
+                Best HVAC
+              </Link>
+              <span className="text-gray-300" aria-hidden>
+                ·
+              </span>
+              <Link href="/best/best-roofers-georgetown-tx" className="hover:text-gray-900 hover:underline">
+                Best roofers
+              </Link>
+            </nav>
           </div>
-          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
             <LinkCard
               href="/best/best-plumbers-georgetown-tx"
               title="Best Plumbers in Georgetown, TX"
@@ -250,6 +284,12 @@ export default function Home() {
               href="/best/top-hvac-companies-georgetown-tx"
               title="Top HVAC Companies in Georgetown, TX"
               description="How to evaluate HVAC companies, plus a comparison table and pricing guidance."
+              badge="Best Of"
+            />
+            <LinkCard
+              href="/best/best-roofers-georgetown-tx"
+              title="Best Roofers in Georgetown, TX"
+              description="How to evaluate roofers, compare proposals, and what to ask before you hire."
               badge="Best Of"
             />
           </div>

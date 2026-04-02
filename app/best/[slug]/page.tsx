@@ -16,7 +16,7 @@ import {
   getServiceBySlug,
   getServices,
 } from "../../../lib/site-content";
-import { getGeneratedPage } from "../../../lib/generatedPages";
+import { resolveBestPage } from "../../../lib/pageContentRegistry";
 import { getProvidersForBestSlug } from "../../../lib/providers";
 import {
   BUSINESS_LISTINGS_LAST_UPDATED,
@@ -26,6 +26,12 @@ import {
 } from "../../../lib/businesses";
 import BestBusinessesSection from "../../../components/BestBusinessesSection";
 import businessSource from "@/lib/businesses.json";
+
+/**
+ * Allow runtime resolution for `[slug]` so `getBestBySlug` + `notFound()` control 404s.
+ * (With `false`, Next can 404 before the page runs if static params are out of sync.)
+ */
+export const dynamicParams = true;
 
 export function generateStaticParams() {
   return getBestSlugs().map((slug) => ({ slug }));
@@ -40,14 +46,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BestPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const best = getBestBySlug(slug);
-  if (!best) notFound();
+  const resolved = resolveBestPage(slug);
+  if (!resolved) notFound();
+  const best = resolved.record;
+  const articleHtml = resolved.html;
 
   const isPlumbersGeorgetown = slug === "best-plumbers-georgetown-tx";
   const isHvacGeorgetown = slug === "top-hvac-companies-georgetown-tx";
   const isRoofersGeorgetown = slug === "best-roofers-georgetown-tx";
 
-  const generated = getGeneratedPage(slug);
   const providerData = getProvidersForBestSlug(slug);
   const businessCategory = getBusinessCategoryForBestSlug(slug);
   const businessesForPage =
@@ -1191,8 +1198,8 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       </div>
                     </section>
                   </div>
-                ) : generated ? (
-                  <GeneratedArticleBody html={generated.html} />
+                ) : articleHtml ? (
+                  <GeneratedArticleBody html={articleHtml} />
                 ) : (
                   <RichText blocks={best.content} />
                 )}

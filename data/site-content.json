@@ -111,6 +111,7 @@
   "services": [
     {
       "slug": "plumber-georgetown-tx",
+      "type": "service",
       "title": "Plumber in Georgetown, TX",
       "h1": "Plumbing Repairs in Georgetown, TX",
       "description": "Reliable plumbing service for leaks, clogs, fixtures, and replacements across Georgetown.",
@@ -149,6 +150,7 @@
     },
     {
       "slug": "hvac-georgetown-tx",
+      "type": "service",
       "title": "HVAC in Georgetown, TX",
       "h1": "HVAC Repair and Maintenance in Georgetown, TX",
       "description": "Heating and AC repairs, maintenance, and performance checks for Georgetown homes.",
@@ -187,6 +189,7 @@
     },
     {
       "slug": "roofer-georgetown-tx",
+      "type": "service",
       "title": "Roofer in Georgetown, TX",
       "h1": "Roof Repairs and Replacement Planning in Georgetown, TX",
       "description": "Professional roof repair and leak prevention for Georgetown homeowners.",
@@ -1005,6 +1008,7 @@
   "best": [
     {
       "slug": "best-plumbers-georgetown-tx",
+      "type": "best",
       "title": "Best Plumbers in Georgetown, TX",
       "h1": "Best Plumbers in Georgetown, TX",
       "description": "A practical guide to choosing the right plumber—plus service recommendations for Georgetown homeowners.",
@@ -1031,6 +1035,7 @@
     },
     {
       "slug": "top-hvac-companies-georgetown-tx",
+      "type": "best",
       "title": "Top HVAC Companies in Georgetown, TX",
       "h1": "Top HVAC Companies in Georgetown, TX",
       "description": "How to evaluate HVAC companies and when to call for AC or heating repair.",
@@ -1056,6 +1061,7 @@
     },
     {
       "slug": "best-roofers-georgetown-tx",
+      "type": "best",
       "title": "Best Roofers in Georgetown, TX",
       "h1": "Best Roofers in Georgetown, TX",
       "description": "How to compare roofing contractors for repairs and replacement—plus local service links for Georgetown homeowners.",

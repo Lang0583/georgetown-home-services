@@ -16,9 +16,15 @@ import {
   getServices,
   getServiceSlugs,
 } from "../../../lib/site-content";
-import { getGeneratedPage } from "../../../lib/generatedPages";
+import { resolveServicePage } from "../../../lib/pageContentRegistry";
 import ServiceTopProvidersSection from "../../../components/ServiceTopProvidersSection";
 import { getBusinessCategoryForServiceSlug, getBusinessesByCategory } from "../../../lib/businesses";
+
+/**
+ * Allow runtime resolution for `[slug]` so `getServiceBySlug` + `notFound()` control 404s.
+ * (With `false`, Next can 404 before the page runs if static params are out of sync.)
+ */
+export const dynamicParams = true;
 
 export function generateStaticParams() {
   return getServiceSlugs().map((slug) => ({ slug }));
@@ -37,14 +43,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const service = getServiceBySlug(slug);
-  if (!service) notFound();
+  const resolved = resolveServicePage(slug);
+  if (!resolved) notFound();
+  const service = resolved.record;
+  const articleHtml = resolved.html;
 
   const isPlumberService = service.slug === "plumber-georgetown-tx";
   const isHvacService = service.slug === "hvac-georgetown-tx";
   const isRooferService = service.slug === "roofer-georgetown-tx";
 
-  const generated = getGeneratedPage(slug);
   const location = getLocationBySlug(service.locationSlug);
   const relatedServices = service.relatedServiceSlugs
     .map((s) => getServiceBySlug(s))
@@ -62,7 +69,13 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       ? "#providers"
       : bestPages.length > 0
         ? `/best/${bestPages[0]!.slug}`
-        : "/best#top-providers";
+        : isPlumberService
+          ? "/best/best-plumbers-georgetown-tx"
+          : isHvacService
+            ? "/best/top-hvac-companies-georgetown-tx"
+            : isRooferService
+              ? "/best/best-roofers-georgetown-tx"
+              : "/best/best-plumbers-georgetown-tx";
 
   const CORE_SERVICES = [
     { label: "Plumbing", slug: "plumber-georgetown-tx", best: "best-plumbers-georgetown-tx" },
@@ -610,8 +623,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                       </ul>
                     </section>
                   </div>
-                ) : generated ? (
-                  <GeneratedArticleBody html={generated.html} />
+                ) : articleHtml ? (
+                  <GeneratedArticleBody html={articleHtml} />
                 ) : (
                   <RichText blocks={service.content} />
                 )}

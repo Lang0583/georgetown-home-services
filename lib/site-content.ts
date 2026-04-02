@@ -31,7 +31,10 @@ export type ServicePage = {
   bestSlugs: string[];
   relatedServiceSlugs: string[];
   recommendedServiceSlugs?: string[];
-  type?: "best";
+  /** Discriminator for service routes; core pages should set `"service"`. */
+  type?: "service";
+  /** Optional inline HTML; otherwise merged from `lib/generatedPages.json` by slug. */
+  html?: string;
 };
 
 export type BestPage = {
@@ -43,6 +46,8 @@ export type BestPage = {
   type?: "best";
   content: ContentBlock[];
   recommendedServiceSlugs: string[];
+  /** Optional inline HTML; otherwise merged from `lib/generatedPages.json` by slug. */
+  html?: string;
 };
 
 export type BlogPage = {

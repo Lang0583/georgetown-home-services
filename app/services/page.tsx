@@ -47,7 +47,7 @@ export default function ServicesIndexPage() {
                 eyebrow="Compare providers"
                 title="See top local companies"
                 description="Open a best-of guide for ranked providers, or use the optional email signup on the homepage."
-                primaryHref="/best#top-providers"
+                primaryHref="/best/best-plumbers-georgetown-tx"
                 emailFormHref="/#email-capture"
                 secondary={
                   <div className="text-sm text-gray-600">

@@ -16,6 +16,9 @@ import {
 } from "../../../lib/site-content";
 import { getGeneratedPage } from "../../../lib/generatedPages";
 
+/** Only slugs returned by `generateStaticParams` resolve; unknown slugs 404. */
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return getBlogSlugs().map((slug) => ({ slug }));
 }
@@ -43,7 +46,8 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
     .map((s) => getBestBySlug(s))
     .filter((b): b is NonNullable<typeof b> => Boolean(b));
 
-  const topProvidersHref = relatedBest.length > 0 ? `/best/${relatedBest[0]!.slug}` : "/best";
+  const topProvidersHref =
+    relatedBest.length > 0 ? `/best/${relatedBest[0]!.slug}` : "/best/best-plumbers-georgetown-tx";
 
   return (
     <div className="bg-gray-50">

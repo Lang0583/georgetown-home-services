@@ -13,6 +13,9 @@ import {
   getServices,
 } from "../../../lib/site-content";
 
+/** Only slugs returned by `generateStaticParams` resolve; unknown slugs 404. */
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return getLocations().map((l) => ({ slug: l.slug }));
 }
@@ -90,7 +93,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
                   eyebrow="Local guides"
                   title="Find providers you can contact"
                   description="Browse best-of rankings and service pages for Georgetown—then reach out to businesses directly."
-                  primaryHref="/best#top-providers"
+                  primaryHref="/best/best-plumbers-georgetown-tx"
                   emailFormHref="/#email-capture"
                   showDisclaimer
                 />
