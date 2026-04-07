@@ -7,8 +7,8 @@
   },
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --webpack",
-    "vercel-build": "next build --webpack",
+    "build": "next build --webpack && node scripts/vercel-mirror-next.cjs",
+    "vercel-build": "next build --webpack && node scripts/vercel-mirror-next.cjs",
     "start": "next start"
   },
   "dependencies": {

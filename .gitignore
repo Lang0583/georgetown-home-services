@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# Vercel: mirrored .next for builder path (scripts/vercel-mirror-next.cjs)
+/georgetown-home-services/
+
 # production
 /build
 
