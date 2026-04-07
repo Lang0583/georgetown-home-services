@@ -46,6 +46,17 @@ export type BestPage = {
   type?: "best";
   content: ContentBlock[];
   recommendedServiceSlugs: string[];
+  /**
+   * Optional sponsored placement shown as "Featured Partner" on the best-of page.
+   * Admin-friendly: edit in `data/site-content.json` and always include a disclosure label.
+   */
+  featuredPartner?: {
+    name: string;
+    href: string;
+    description: string;
+    disclosureLabel?: string; // default: "Featured Partner (Sponsored)"
+    ctaLabel?: string; // default: "Visit partner"
+  };
   /** Optional inline HTML; otherwise merged from `lib/generatedPages.json` by slug. */
   html?: string;
 };
@@ -132,8 +143,11 @@ export function getBlogSlugs() {
 export function getAllSitemapRoutes() {
   return {
     home: "/",
+    servicesIndex: "/services",
     services: getServiceSlugs().map((slug) => `/services/${slug}`),
+    blogIndex: "/blog",
     locations: getLocationSlugs().map((slug) => `/locations/${slug}`),
+    bestIndex: "/best",
     best: getBestSlugs().map((slug) => `/best/${slug}`),
     blog: getBlogSlugs().map((slug) => `/blog/${slug}`),
   };

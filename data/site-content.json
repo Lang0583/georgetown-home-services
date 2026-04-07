@@ -19,7 +19,7 @@
       ],
       "content": [
         { "kind": "p", "text": "When you need help fast, you want a team that shows up, communicates clearly, and fixes the problem the first time. Georgetown Home Services provides plumbing, HVAC, and roofing support for homeowners across Georgetown, TX." },
-        { "kind": "h2", "text": "What we can help with" },
+        { "kind": "h2", "text": "What this site covers" },
         {
           "kind": "ul",
           "items": [
@@ -28,7 +28,7 @@
             "Roof leaks, repairs, and replacement planning"
           ]
         },
-        { "kind": "p", "text": "Use the form below to request service options and free quotes." }
+        { "kind": "p", "text": "Use the service pages and best-of guides below to compare local providers and decide who to contact." }
       ],
       "serviceSlugs": [
         "plumber-georgetown-tx",
@@ -77,7 +77,7 @@
       ],
       "content": [
         { "kind": "p", "text": "If your system isn’t keeping up, we’ll diagnose the issue and recommend the right fix—repair or replacement—based on your goals and budget." },
-        { "kind": "p", "text": "Get a tailored quote and timeline. No pressure—just professional recommendations." }
+        { "kind": "p", "text": "Use the guides on this site to shortlist providers and compare written scopes. Contact providers directly for availability and estimates." }
       ],
       "serviceSlugs": [
         "hvac-wolf-ranch-georgetown-tx",
@@ -250,10 +250,10 @@
             "Repair/replacement recommendations"
           ]
         },
-        { "kind": "p", "text": "Use our lead form to request service options and free quotes." }
+        { "kind": "p", "text": "Use the guides on this site to compare providers and decide who to contact for your home." }
       ],
       "faqs": [
-        { "q": "How do I describe my issue?", "a": "Share what you’re seeing (leak, clog, noise, etc.), and we’ll ask a couple of follow-up questions to schedule correctly." }
+        { "q": "How do I describe my issue when I call a provider?", "a": "Share the symptom (leak, clog, noise, warm air, stain, etc.), where it’s happening, and how urgent it is. Ask what information they need to give you a clear next step and a written scope." }
       ],
       "bestSlugs": [
         "best-plumbers-georgetown-tx"
@@ -277,7 +277,7 @@
       ],
       "content": [
         { "kind": "p", "text": "When comfort drops or the system cycles unexpectedly, our technicians diagnose the issue and recommend the right fix." },
-        { "kind": "p", "text": "Get a tailored quote based on what we find during inspection." }
+        { "kind": "p", "text": "Compare written estimates based on a clear scope. Use the provider directory to shortlist who to contact." }
       ],
       "faqs": [
         { "q": "Do you help with AC not cooling?", "a": "Yes—if your AC isn’t cooling properly, we’ll troubleshoot airflow, refrigerant, and system performance." }
@@ -304,7 +304,7 @@
       ],
       "content": [
         { "kind": "p", "text": "A small roof leak can become a bigger problem fast. We help you identify the source and prevent further water intrusion." },
-        { "kind": "p", "text": "Use the form to request service options and next steps." }
+        { "kind": "p", "text": "Use this guide to compare options and decide what to do next." }
       ],
       "faqs": [
         { "q": "Do you inspect for hidden leaks?", "a": "Yes. We look beyond the obvious spot to identify the likely source of the leak." }
@@ -325,7 +325,7 @@
       "heroBullets": [
         "Airflow and performance diagnostics",
         "Clear repair recommendations",
-        "Efficient follow-up scheduling"
+        "Clear scope and communication"
       ],
       "content": [
         { "kind": "p", "text": "When your AC isn’t cooling, it’s often an issue with airflow, system performance, or thermostat settings. We diagnose what’s causing the problem and recommend the most cost-effective fix." },
@@ -339,7 +339,7 @@
             "Unusual sounds or smells"
           ]
         },
-        { "kind": "p", "text": "Use the form to request service options and free quotes." }
+        { "kind": "p", "text": "Use this page to understand typical causes and compare local providers." }
       ],
       "faqs": [
         { "q": "Should I keep running the AC?", "a": "If it’s running without cooling, it’s better to schedule diagnostics so you don’t risk bigger issues." }
@@ -375,7 +375,7 @@
             "Tree roots or older plumbing issues"
           ]
         },
-        { "kind": "p", "text": "Use the form to request drain service options and free quotes." }
+        { "kind": "p", "text": "Use this page to understand what’s typical, then compare local providers and request written estimates directly." }
       ],
       "faqs": [
         { "q": "Do you handle recurring clogs?", "a": "Yes. If clogs come back, we look for the root cause so the fix lasts." }
@@ -412,7 +412,7 @@
             "Storm-related wear"
           ]
         },
-        { "kind": "p", "text": "Use the form to request repair options and free quotes." }
+        { "kind": "p", "text": "Use this page to understand likely causes and what to ask before you hire a roofer." }
       ],
       "faqs": [
         { "q": "Will a small leak get worse?", "a": "Yes. Even small leaks can cause rot, mold risk, and structural damage over time." }
@@ -422,6 +422,530 @@
         "roofer-georgetown-tx",
         "roofer-berry-creek-georgetown-tx"
       ]
+    },
+    {
+      "slug": "drain-cleaning-georgetown-tx",
+      "title": "Drain Cleaning in Georgetown, TX",
+      "h1": "Drain Cleaning in Georgetown, TX",
+      "description": "Clear clogged drains in Georgetown with practical troubleshooting and what-to-ask guidance before you hire.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Plumbing",
+      "heroBullets": [
+        "Clogged drain troubleshooting",
+        "Recurring clog prevention guidance",
+        "Clear next steps and what to ask"
+      ],
+      "content": [
+        { "kind": "p", "text": "A clogged drain in Georgetown can be a one-off blockage—or the first sign of a larger issue like grease buildup, root intrusion, or an older line that needs deeper inspection. This page helps you understand what’s typical, what changes pricing, and what to ask before you approve drain cleaning." },
+        { "kind": "h2", "text": "Common local drain issues" },
+        { "kind": "ul", "items": [ "Kitchen drains slowed by grease and debris", "Bathroom clogs from hair and soap buildup", "Main-line backups that affect multiple fixtures", "Recurring clogs that return after “quick clears”" ] },
+        { "kind": "h2", "text": "What to ask before hiring" },
+        { "kind": "ul", "items": [ "Will you use a cable, hydro-jetting, or a camera inspection if it recurs?", "Will you explain what you found and how to prevent repeat clogs?", "Is pricing flat-rate or time/materials, and what can change the total?" ] }
+      ],
+      "faqs": [
+        { "q": "Why does my drain keep clogging again?", "a": "Recurring clogs often mean the line isn’t being cleared fully or there’s an underlying cause like grease buildup, scale, roots, or a line issue. Ask what they think the root cause is and whether a camera inspection is appropriate." }
+      ],
+      "bestSlugs": [ "best-plumbers-georgetown-tx" ],
+      "relatedServiceSlugs": [ "clogged-drain-georgetown-tx", "sewer-line-repair-georgetown-tx" ]
+    },
+    {
+      "slug": "water-heater-repair-georgetown-tx",
+      "title": "Water Heater Repair in Georgetown, TX",
+      "h1": "Water Heater Repair in Georgetown, TX",
+      "description": "Diagnose hot water problems in Georgetown—pilot issues, heating elements, leaks, and when repair is worth it.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Plumbing",
+      "heroBullets": [ "No hot water troubleshooting", "Leak and performance checks", "Repair vs replacement guidance" ],
+      "content": [
+        { "kind": "p", "text": "When you lose hot water in Georgetown, the cause is often predictable: heating elements, thermostats, gas ignition components, or a tank that’s reaching end-of-life. Use this guide to understand symptoms, likely causes, and when it’s smarter to plan a replacement instead of stacking repairs." },
+        { "kind": "h2", "text": "Symptoms homeowners notice" },
+        { "kind": "ul", "items": [ "Water isn’t hot or runs out quickly", "Rusty or discolored hot water", "Popping or rumbling sounds", "Moisture or leaking around the base" ] },
+        { "kind": "h2", "text": "Repair vs replacement" },
+        { "kind": "ul", "items": [ "Repair is more common for electrical components and minor leaks at fittings", "Replacement is common when the tank is leaking or corrosion is advanced", "Ask about age, warranty, and whether parts are still readily available" ] }
+      ],
+      "faqs": [
+        { "q": "Is a leaking water heater always an emergency?", "a": "A tank leak can worsen quickly and cause water damage. Shut off water if safe, and prioritize an inspection. Small leaks at fittings may be repairable, but tank leaks usually indicate replacement." }
+      ],
+      "bestSlugs": [ "best-plumbers-georgetown-tx" ],
+      "relatedServiceSlugs": [ "water-heater-replacement-georgetown-tx", "emergency-plumber-georgetown-tx" ]
+    },
+    {
+      "slug": "water-heater-replacement-georgetown-tx",
+      "title": "Water Heater Replacement in Georgetown, TX",
+      "h1": "Water Heater Replacement in Georgetown, TX",
+      "description": "Plan a water heater replacement in Georgetown—tank vs tankless, sizing, and what affects total cost.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Plumbing",
+      "heroBullets": [ "Tank vs tankless options", "Sizing and venting considerations", "Clear estimate comparison guidance" ],
+      "content": [
+        { "kind": "p", "text": "Water heater replacement in Georgetown is usually triggered by a tank leak, repeated repairs, or performance that no longer meets household needs. This page outlines common options (tank vs tankless), what changes total cost, and what to confirm in a written estimate." },
+        { "kind": "h2", "text": "What affects replacement cost" },
+        { "kind": "ul", "items": [ "Capacity and recovery rate (household size)", "Gas vs electric configuration", "Venting and code requirements", "Access, drain pan, and shutoff upgrades" ] },
+        { "kind": "h2", "text": "What to ask before you sign" },
+        { "kind": "ul", "items": [ "Exact model number and warranty terms", "What upgrades are included vs optional", "Disposal/haul-away and cleanup expectations" ] }
+      ],
+      "faqs": [
+        { "q": "Tank or tankless—what’s better in Georgetown?", "a": "It depends on demand, budget, and installation constraints. Tankless can provide continuous hot water but often costs more upfront and may require venting or gas-line changes." }
+      ],
+      "bestSlugs": [ "best-plumbers-georgetown-tx" ],
+      "relatedServiceSlugs": [ "water-heater-repair-georgetown-tx", "emergency-plumber-georgetown-tx" ]
+    },
+    {
+      "slug": "leak-detection-georgetown-tx",
+      "title": "Leak Detection in Georgetown, TX",
+      "h1": "Leak Detection in Georgetown, TX",
+      "description": "Find hidden leaks in Georgetown homes—signs to watch for, what drives diagnosis cost, and next steps.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Plumbing",
+      "heroBullets": [ "Hidden leak diagnosis", "Clear documentation and next steps", "Damage-prevention guidance" ],
+      "content": [
+        { "kind": "p", "text": "Leak detection is often about finding the true source—behind walls, under slabs, or near fixtures—before repairs start. If your water bill spikes or you see wet drywall, this page explains common Georgetown scenarios and what questions reduce guesswork." },
+        { "kind": "h2", "text": "Common signs of a hidden leak" },
+        { "kind": "ul", "items": [ "Unexplained higher water bills", "Hot spots on the floor (possible slab leak)", "Wet drywall, baseboards, or musty odors", "Water meter movement when fixtures are off" ] },
+        { "kind": "h2", "text": "What affects price" },
+        { "kind": "ul", "items": [ "Access to suspected area", "Whether thermal/acoustic tools are used", "Time required to isolate the source", "Whether a camera inspection is needed" ] }
+      ],
+      "faqs": [
+        { "q": "Can you detect a slab leak without tearing up floors?", "a": "Often yes. Many companies use a combination of pressure testing and non-invasive tools to narrow down the area before any opening work is discussed." }
+      ],
+      "bestSlugs": [ "best-plumbers-georgetown-tx" ],
+      "relatedServiceSlugs": [ "slab-leak-repair-georgetown-tx", "emergency-plumber-georgetown-tx" ]
+    },
+    {
+      "slug": "slab-leak-repair-georgetown-tx",
+      "title": "Slab Leak Repair in Georgetown, TX",
+      "h1": "Slab Leak Repair in Georgetown, TX",
+      "description": "Slab leak guidance for Georgetown homeowners—symptoms, repair vs reroute decisions, and cost factors.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Plumbing",
+      "heroBullets": [ "Slab leak symptom triage", "Repair vs reroute guidance", "Written estimate comparison" ],
+      "content": [
+        { "kind": "p", "text": "Slab leaks are one of the most stressful plumbing problems for Georgetown homeowners because damage can spread before the leak is obvious. This page covers symptoms, likely causes, and how to compare repair options (spot repair vs reroute)." },
+        { "kind": "h2", "text": "Symptoms homeowners notice" },
+        { "kind": "ul", "items": [ "Warm spots on flooring", "Sound of running water when fixtures are off", "Cracks or damp areas near baseboards", "Sudden bill increases" ] },
+        { "kind": "h2", "text": "Repair vs reroute" },
+        { "kind": "ul", "items": [ "Spot repair can work when the leak is isolated and pipe condition is otherwise sound", "Reroutes are common when pipe condition suggests more failures ahead", "Ask what evidence supports the recommended approach" ] }
+      ],
+      "faqs": [
+        { "q": "Is a slab leak always an emergency?", "a": "Active leaks can cause foundation and flooring damage. If you suspect one, prioritize diagnosis quickly and limit water use until you understand the scope." }
+      ],
+      "bestSlugs": [ "best-plumbers-georgetown-tx" ],
+      "relatedServiceSlugs": [ "leak-detection-georgetown-tx", "emergency-plumber-georgetown-tx" ]
+    },
+    {
+      "slug": "toilet-repair-georgetown-tx",
+      "title": "Toilet Repair in Georgetown, TX",
+      "h1": "Toilet Repair in Georgetown, TX",
+      "description": "Fix running, leaking, or clogging toilets in Georgetown—common causes, typical fixes, and what to ask.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Plumbing",
+      "heroBullets": [ "Running toilet fixes", "Leak and seal checks", "Clog diagnostics and prevention" ],
+      "content": [
+        { "kind": "p", "text": "Toilet problems often look simple, but recurring clogs, base leaks, or constant running can point to parts issues, seal failures, or a larger drain problem. This page helps Georgetown homeowners understand likely causes and what to request in a repair visit." },
+        { "kind": "h2", "text": "Common toilet symptoms" },
+        { "kind": "ul", "items": [ "Toilet runs continuously", "Weak flush or frequent clogs", "Water around the base", "Tank refills randomly" ] },
+        { "kind": "h2", "text": "Likely causes" },
+        { "kind": "ul", "items": [ "Flapper/fill valve issues", "Wax ring seal failure", "Partial blockages in the line", "Improper venting or older plumbing constraints" ] }
+      ],
+      "faqs": [
+        { "q": "Is water around the base always a wax ring issue?", "a": "Often, but not always. It can also be condensation, a loose supply connection, or a crack. Ask for confirmation before approving repairs." }
+      ],
+      "bestSlugs": [ "best-plumbers-georgetown-tx" ],
+      "relatedServiceSlugs": [ "drain-cleaning-georgetown-tx", "plumber-georgetown-tx" ]
+    },
+    {
+      "slug": "garbage-disposal-repair-georgetown-tx",
+      "title": "Garbage Disposal Repair in Georgetown, TX",
+      "h1": "Garbage Disposal Repair in Georgetown, TX",
+      "description": "Garbage disposal troubleshooting in Georgetown—jams, leaks, resets, and when replacement makes more sense.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Plumbing",
+      "heroBullets": [ "Jam and leak diagnosis", "Repair vs replacement guidance", "Kitchen drain best practices" ],
+      "content": [
+        { "kind": "p", "text": "When a disposal hums, trips breakers, or leaks, the fix depends on whether the unit is jammed, failing mechanically, or leaking at a seal. This guide explains common Georgetown kitchen scenarios and what to ask a plumber before approving a replacement." },
+        { "kind": "h2", "text": "Symptoms" },
+        { "kind": "ul", "items": [ "Humming but not spinning", "Leaking from the bottom or connections", "Frequent resets or breaker trips", "Bad smells that return" ] },
+        { "kind": "h2", "text": "Repair vs replacement" },
+        { "kind": "ul", "items": [ "Minor jams and connection leaks are often repairable", "Bottom leaks often indicate internal seal failure and replacement", "Ask whether the issue is disposal-only or a drain/vent problem" ] }
+      ],
+      "faqs": [
+        { "q": "Can a disposal problem cause a clogged drain?", "a": "Yes. Food debris can contribute to slow kitchen drains, especially when combined with grease. If slow drains persist, ask whether the line needs deeper clearing." }
+      ],
+      "bestSlugs": [ "best-plumbers-georgetown-tx" ],
+      "relatedServiceSlugs": [ "drain-cleaning-georgetown-tx", "plumber-georgetown-tx" ]
+    },
+    {
+      "slug": "sewer-line-repair-georgetown-tx",
+      "title": "Sewer Line Repair in Georgetown, TX",
+      "h1": "Sewer Line Repair in Georgetown, TX",
+      "description": "Main sewer line backups and repairs in Georgetown—symptoms, inspection options, and what affects price.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Plumbing",
+      "heroBullets": [ "Main line backup triage", "Camera inspection guidance", "Repair vs replacement planning" ],
+      "content": [
+        { "kind": "p", "text": "Sewer line problems tend to show up as multiple fixtures backing up at once, gurgling drains, or sewage odors. This page helps Georgetown homeowners understand when it’s a simple clearing versus a repair situation—and what to confirm before approving excavation." },
+        { "kind": "h2", "text": "Symptoms that suggest a main-line issue" },
+        { "kind": "ul", "items": [ "Multiple drains back up together", "Toilets bubble when sinks drain", "Sewage odor near cleanouts", "Backups after heavy use or rain" ] },
+        { "kind": "h2", "text": "What to ask" },
+        { "kind": "ul", "items": [ "Will you camera the line if the clog returns?", "What evidence supports repair vs ongoing maintenance?", "How will you protect landscaping and surfaces if digging is required?" ] }
+      ],
+      "faqs": [
+        { "q": "Is sewer line repair always a big dig?", "a": "Not always. Some issues are resolved with clearing or localized repairs. Ask for camera documentation and a clear scope before approving major work." }
+      ],
+      "bestSlugs": [ "best-plumbers-georgetown-tx" ],
+      "relatedServiceSlugs": [ "drain-cleaning-georgetown-tx", "emergency-plumber-georgetown-tx" ]
+    },
+    {
+      "slug": "emergency-plumber-georgetown-tx",
+      "title": "Emergency Plumber in Georgetown, TX",
+      "h1": "Emergency Plumber in Georgetown, TX",
+      "description": "Emergency plumbing guidance for Georgetown—what counts as urgent, what to do first, and how to compare providers.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Plumbing",
+      "heroBullets": [ "Active leak and backup triage", "After-hours cost factors", "What to ask on the phone" ],
+      "content": [
+        { "kind": "p", "text": "When water is actively damaging your home or sewage is backing up, the goal is to stop damage safely and then confirm a durable repair. This page helps Georgetown homeowners know what’s urgent, what to do first, and what questions speed up a correct response." },
+        { "kind": "h2", "text": "What counts as an emergency" },
+        { "kind": "ul", "items": [ "Active leaks causing water damage", "Sewer backups affecting multiple fixtures", "No water to the home due to a failure", "Water heater tank leaking" ] },
+        { "kind": "h2", "text": "What to ask when you call" },
+        { "kind": "ul", "items": [ "Is there an after-hours minimum?", "How quickly can someone arrive?", "What should I shut off or avoid using until arrival?" ] }
+      ],
+      "faqs": [
+        { "q": "How can I reduce emergency plumbing cost?", "a": "If it’s safe, shut off water quickly, document symptoms clearly, and ask whether the visit will be stabilization, permanent repair, or both." }
+      ],
+      "bestSlugs": [ "best-plumbers-georgetown-tx" ],
+      "relatedServiceSlugs": [ "leak-detection-georgetown-tx", "sewer-line-repair-georgetown-tx" ]
+    },
+
+    {
+      "slug": "ac-repair-georgetown-tx",
+      "title": "AC Repair in Georgetown, TX",
+      "h1": "AC Repair in Georgetown, TX",
+      "description": "AC repair guidance for Georgetown—AC not cooling, uneven cooling, common failures, and cost drivers.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "HVAC",
+      "heroBullets": [ "AC not cooling diagnosis guidance", "Uneven cooling and airflow checks", "Repair vs replacement decision support" ],
+      "content": [
+        { "kind": "p", "text": "AC repair calls in Georgetown often start the same way: “it’s running but not cooling,” or one side of the home never catches up. This guide covers symptoms, likely causes, and what to ask so you can compare repair recommendations and costs." },
+        { "kind": "h2", "text": "Common symptoms" },
+        { "kind": "ul", "items": [ "AC not cooling or warm air", "Uneven cooling between rooms", "Weak airflow from vents", "Water near the indoor unit" ] },
+        { "kind": "h2", "text": "What affects repair cost" },
+        { "kind": "ul", "items": [ "Diagnosis time and access", "Parts required (motors, controls, capacitors, etc.)", "After-hours timing", "Whether maintenance issues contributed" ] }
+      ],
+      "faqs": [
+        { "q": "Should I keep running the AC if it isn’t cooling?", "a": "If it’s running but not cooling, it’s often better to schedule diagnosis to avoid worsening damage. If you smell burning or see smoke, shut it off." }
+      ],
+      "bestSlugs": [ "top-hvac-companies-georgetown-tx" ],
+      "relatedServiceSlugs": [ "ac-not-cooling-georgetown-tx", "hvac-georgetown-tx" ]
+    },
+    {
+      "slug": "ac-replacement-georgetown-tx",
+      "title": "AC Replacement in Georgetown, TX",
+      "h1": "AC Replacement in Georgetown, TX",
+      "description": "Plan an AC replacement in Georgetown—what changes price, what to confirm in bids, and how to compare companies.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "HVAC",
+      "heroBullets": [ "Replacement planning guidance", "Bid comparison checklist", "Efficiency and comfort considerations" ],
+      "content": [
+        { "kind": "p", "text": "AC replacement is often the right move when major repairs stack up or comfort is consistently poor. This page helps Georgetown homeowners understand what drives pricing and what questions ensure you’re comparing bids fairly." },
+        { "kind": "h2", "text": "When replacement makes sense" },
+        { "kind": "ul", "items": [ "Major repair cost is a large fraction of replacement", "Comfort problems persist despite repairs", "Equipment age and refrigerant constraints", "High energy bills with poor performance" ] },
+        { "kind": "h2", "text": "What to confirm in written estimates" },
+        { "kind": "ul", "items": [ "Model numbers and efficiency ratings", "Warranty terms (parts and labor)", "Any ductwork or electrical corrections included", "Startup/testing and cleanup expectations" ] }
+      ],
+      "faqs": [
+        { "q": "Is a bigger unit always better in Georgetown heat?", "a": "No. Oversizing can cause humidity and cycling problems. Ask how sizing was determined and whether airflow/ductwork is part of the comfort issue." }
+      ],
+      "bestSlugs": [ "top-hvac-companies-georgetown-tx" ],
+      "relatedServiceSlugs": [ "hvac-georgetown-tx", "hvac-maintenance-georgetown-tx" ]
+    },
+    {
+      "slug": "furnace-repair-georgetown-tx",
+      "title": "Furnace Repair in Georgetown, TX",
+      "h1": "Furnace Repair in Georgetown, TX",
+      "description": "Furnace repair guidance for Georgetown—failed starts, cycling, safety concerns, and what to ask a technician.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "HVAC",
+      "heroBullets": [ "No-heat triage guidance", "Safety-first troubleshooting", "Repair vs replacement planning" ],
+      "content": [
+        { "kind": "p", "text": "Even in Central Texas, furnace problems show up during cold snaps—exactly when schedules tighten. This page covers common no-heat symptoms, safety signals, and what to ask before approving repairs." },
+        { "kind": "h2", "text": "Symptoms homeowners notice" },
+        { "kind": "ul", "items": [ "No heat or short cycling", "Unusual odors or burning smell", "Thermostat calls but system won’t start", "Repeated breaker trips" ] },
+        { "kind": "h2", "text": "What to ask" },
+        { "kind": "ul", "items": [ "What failed and why?", "Is this a one-time part failure or a system-age pattern?", "Any safety recommendations or ventilation concerns?" ] }
+      ],
+      "faqs": [
+        { "q": "What should I do if I smell gas or strong burning odor?", "a": "Treat it as urgent. Shut the system off and contact a licensed professional immediately. Follow safety guidance from local authorities if you suspect a gas issue." }
+      ],
+      "bestSlugs": [ "top-hvac-companies-georgetown-tx" ],
+      "relatedServiceSlugs": [ "heater-repair-georgetown-tx", "emergency-hvac-georgetown-tx" ]
+    },
+    {
+      "slug": "heater-repair-georgetown-tx",
+      "title": "Heater Repair in Georgetown, TX",
+      "h1": "Heater Repair in Georgetown, TX",
+      "description": "Heater repair guidance for Georgetown—no heat, airflow issues, and how to compare repair recommendations.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "HVAC",
+      "heroBullets": [ "No-heat symptom guidance", "Airflow and control checks", "Cost factors and next steps" ],
+      "content": [
+        { "kind": "p", "text": "Heater repair visits go best when the symptom is described clearly: no heat, weak airflow, cycling, or thermostat behavior. This guide helps Georgetown homeowners understand likely causes and the questions that lead to a clear scope." },
+        { "kind": "h2", "text": "Likely causes" },
+        { "kind": "ul", "items": [ "Thermostat/control issues", "Ignition or safety switch issues", "Airflow restrictions and filter problems", "Electrical component failures" ] }
+      ],
+      "faqs": [
+        { "q": "Is a heater tune-up the same as a repair?", "a": "No. Tune-ups are preventative. If you have a no-heat issue or safety concern, you need diagnosis and repair." }
+      ],
+      "bestSlugs": [ "top-hvac-companies-georgetown-tx" ],
+      "relatedServiceSlugs": [ "furnace-repair-georgetown-tx", "hvac-maintenance-georgetown-tx" ]
+    },
+    {
+      "slug": "hvac-maintenance-georgetown-tx",
+      "title": "HVAC Maintenance in Georgetown, TX",
+      "h1": "HVAC Maintenance in Georgetown, TX",
+      "description": "Maintenance guidance for Georgetown HVAC systems—what a good tune-up includes and when to schedule it.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "HVAC",
+      "heroBullets": [ "Tune-up scope guidance", "Breakdown-risk reduction tips", "Best timing before peak season" ],
+      "content": [
+        { "kind": "p", "text": "Maintenance is most valuable when it prevents the summer ‘no-cool’ call. This page explains what a useful Georgetown HVAC maintenance visit includes and what to ask so it’s more than a checklist." },
+        { "kind": "h2", "text": "What a good tune-up includes" },
+        { "kind": "ul", "items": [ "Airflow basics and filter guidance", "Coil/condensate observations", "Drain line checks", "Notes on comfort issues like uneven cooling" ] }
+      ],
+      "faqs": [
+        { "q": "When should I schedule maintenance in Georgetown?", "a": "Typically before peak summer cooling season and before winter. Timing helps you avoid the busiest weeks when schedules tighten." }
+      ],
+      "bestSlugs": [ "top-hvac-companies-georgetown-tx" ],
+      "relatedServiceSlugs": [ "ac-repair-georgetown-tx", "ductwork-repair-georgetown-tx" ]
+    },
+    {
+      "slug": "ductwork-repair-georgetown-tx",
+      "title": "Ductwork Repair in Georgetown, TX",
+      "h1": "Ductwork Repair in Georgetown, TX",
+      "description": "Ductwork repair guidance for Georgetown—weak airflow, uneven cooling, leaks, and what to verify in proposals.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "HVAC",
+      "heroBullets": [ "Airflow troubleshooting", "Leak and restriction checks", "Proposal comparison guidance" ],
+      "content": [
+        { "kind": "p", "text": "Uneven cooling in Georgetown homes is often part equipment and part airflow. Duct issues can waste capacity and money. This page outlines symptoms, likely causes, and what to confirm when a company recommends ductwork repair." },
+        { "kind": "h2", "text": "Symptoms" },
+        { "kind": "ul", "items": [ "Hot rooms even when the system runs constantly", "Weak airflow at certain vents", "Dusty rooms or noisy returns", "High bills without comfort improvement" ] }
+      ],
+      "faqs": [
+        { "q": "Can duct issues mimic “needs refrigerant”?", "a": "Yes. Weak airflow or restrictions can feel like low cooling capacity. Ask for airflow observations before approving refrigerant-related work." }
+      ],
+      "bestSlugs": [ "top-hvac-companies-georgetown-tx" ],
+      "relatedServiceSlugs": [ "ac-repair-georgetown-tx", "hvac-maintenance-georgetown-tx" ]
+    },
+    {
+      "slug": "indoor-air-quality-georgetown-tx",
+      "title": "Indoor Air Quality in Georgetown, TX",
+      "h1": "Indoor Air Quality in Georgetown, TX",
+      "description": "Improve indoor air quality in Georgetown—filters, humidity, ventilation, and what to ask about IAQ upgrades.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "HVAC",
+      "heroBullets": [ "Humidity and filtration guidance", "Allergy and dust considerations", "Upgrade comparison checklist" ],
+      "content": [
+        { "kind": "p", "text": "Indoor air quality concerns in Georgetown often show up as dust, humidity discomfort, or allergy triggers. This page outlines practical steps and questions to ask before investing in IAQ upgrades." },
+        { "kind": "h2", "text": "Common homeowner concerns" },
+        { "kind": "ul", "items": [ "Dust accumulation and allergy flare-ups", "Humidity that makes the home feel sticky", "Odors that linger", "Hot/cold spots tied to airflow" ] }
+      ],
+      "faqs": [
+        { "q": "Will a better filter solve everything?", "a": "Not always. Filtration helps, but airflow, duct sealing, and humidity control are often part of the real solution." }
+      ],
+      "bestSlugs": [ "top-hvac-companies-georgetown-tx" ],
+      "relatedServiceSlugs": [ "ductwork-repair-georgetown-tx", "hvac-maintenance-georgetown-tx" ]
+    },
+    {
+      "slug": "thermostat-repair-georgetown-tx",
+      "title": "Thermostat Repair in Georgetown, TX",
+      "h1": "Thermostat Repair in Georgetown, TX",
+      "description": "Thermostat issues in Georgetown—short cycling, inaccurate readings, and when replacement is the better fix.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "HVAC",
+      "heroBullets": [ "Control/comfort troubleshooting", "Smart thermostat considerations", "Repair vs replace guidance" ],
+      "content": [
+        { "kind": "p", "text": "Thermostat problems can look like equipment failure: cycling, wrong temperatures, or a system that won’t respond. This guide helps Georgetown homeowners understand likely causes and what to verify before swapping parts." },
+        { "kind": "h2", "text": "Symptoms" },
+        { "kind": "ul", "items": [ "System won’t start when setpoint is changed", "Short cycling or frequent starts", "Temperature readings feel wrong", "Wi‑Fi / smart features fail intermittently" ] }
+      ],
+      "faqs": [
+        { "q": "Should I replace the thermostat first?", "a": "Sometimes, but not always. Ask whether the technician confirmed the thermostat is the root cause before replacing it." }
+      ],
+      "bestSlugs": [ "top-hvac-companies-georgetown-tx" ],
+      "relatedServiceSlugs": [ "ac-repair-georgetown-tx", "heater-repair-georgetown-tx" ]
+    },
+    {
+      "slug": "emergency-hvac-georgetown-tx",
+      "title": "Emergency HVAC in Georgetown, TX",
+      "h1": "Emergency HVAC in Georgetown, TX",
+      "description": "Emergency HVAC guidance for Georgetown—no-cool and safety issues, what to do first, and what to ask when you call.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "HVAC",
+      "heroBullets": [ "No-cool triage guidance", "Safety-first recommendations", "After-hours cost factors" ],
+      "content": [
+        { "kind": "p", "text": "In Georgetown heat, ‘no-cool’ can become urgent quickly—especially for vulnerable occupants. This page covers what’s truly urgent, what to do first, and what to ask so you can compare availability and costs." },
+        { "kind": "h2", "text": "When it’s urgent" },
+        { "kind": "ul", "items": [ "System runs but blows warm in extreme heat", "Electrical smell, smoke, or repeated breaker trips", "Water around the indoor unit causing damage risk" ] }
+      ],
+      "faqs": [
+        { "q": "What should I say on the phone?", "a": "Describe the symptom clearly: no cool vs weak airflow vs uneven rooms, plus any safety concerns like burning smell or water near equipment." }
+      ],
+      "bestSlugs": [ "top-hvac-companies-georgetown-tx" ],
+      "relatedServiceSlugs": [ "ac-repair-georgetown-tx", "thermostat-repair-georgetown-tx" ]
+    },
+
+    {
+      "slug": "roof-repair-georgetown-tx",
+      "title": "Roof Repair in Georgetown, TX",
+      "h1": "Roof Repair in Georgetown, TX",
+      "description": "Roof repair guidance for Georgetown—leaks, shingle repairs, flashing issues, and how to compare scopes.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Roofing",
+      "heroBullets": [ "Leak and shingle repair guidance", "Flashing/penetration checks", "Scope comparison checklist" ],
+      "content": [
+        { "kind": "p", "text": "Most Georgetown roof repair calls start with a ceiling stain after a storm or a shingle issue you can see from the yard. This page explains common failure points (flashing, vents, valleys), what good documentation looks like, and what affects repair cost." },
+        { "kind": "h2", "text": "Common repair scenarios" },
+        { "kind": "ul", "items": [ "Roof leaks after heavy rain", "Shingle blow-offs and lifted tabs", "Flashing failures near roof-to-wall transitions", "Vent and pipe boot leaks" ] }
+      ],
+      "faqs": [
+        { "q": "Can a roofer fix the leak without replacing the whole roof?", "a": "Often yes. Ask for photos and a clear explanation of the entry point before approving broad replacement work." }
+      ],
+      "bestSlugs": [ "best-roofers-georgetown-tx" ],
+      "relatedServiceSlugs": [ "roof-leak-repair-georgetown-tx", "flashing-repair-georgetown-tx" ]
+    },
+    {
+      "slug": "roof-replacement-georgetown-tx",
+      "title": "Roof Replacement in Georgetown, TX",
+      "h1": "Roof Replacement in Georgetown, TX",
+      "description": "Roof replacement planning for Georgetown—what affects estimates, what to verify in scopes, and how to compare bids.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Roofing",
+      "heroBullets": [ "Estimate comparison checklist", "Ventilation and decking allowances", "Warranty and scope clarity" ],
+      "content": [
+        { "kind": "p", "text": "Roof replacement decisions are easier when the scope is clear: materials, underlayment, flashing, ventilation plan, and how decking is handled if damaged. This page helps Georgetown homeowners compare bids and avoid surprises." },
+        { "kind": "h2", "text": "What affects replacement cost" },
+        { "kind": "ul", "items": [ "Roof size/complexity and pitch", "Material choices and underlayment", "Ventilation and flashing details", "Decking repairs discovered during tear-off" ] }
+      ],
+      "faqs": [
+        { "q": "What should a written roof estimate include?", "a": "Materials, underlayment, flashing/edge details, ventilation plan, cleanup, and clear warranty terms. Ask how decking is handled if issues are found." }
+      ],
+      "bestSlugs": [ "best-roofers-georgetown-tx" ],
+      "relatedServiceSlugs": [ "roof-repair-georgetown-tx", "shingle-roof-repair-georgetown-tx" ]
+    },
+    {
+      "slug": "storm-damage-roof-repair-georgetown-tx",
+      "title": "Storm Damage Roof Repair in Georgetown, TX",
+      "h1": "Storm Damage Roof Repair in Georgetown, TX",
+      "description": "Storm damage roof repair in Georgetown—documentation, urgent leak stabilization, and what to ask before you sign.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Roofing",
+      "heroBullets": [ "Storm documentation guidance", "Leak stabilization options", "Scope and warranty questions" ],
+      "content": [
+        { "kind": "p", "text": "After storms in Georgetown, roof damage often involves lifted shingles, punctures near vents, or flashing failures that only show up in heavy rain. This guide focuses on documentation and a clear repair plan so you can compare providers." },
+        { "kind": "h2", "text": "What to document" },
+        { "kind": "ul", "items": [ "Photos of missing shingles, dents, and exposed flashing", "Interior stains and when they appeared", "Storm timing and wind direction notes" ] }
+      ],
+      "faqs": [
+        { "q": "Should I get temporary tarping?", "a": "If water is actively entering, temporary stabilization can prevent damage while you finalize scope and scheduling." }
+      ],
+      "bestSlugs": [ "best-roofers-georgetown-tx" ],
+      "relatedServiceSlugs": [ "hail-damage-roof-repair-georgetown-tx", "emergency-roof-tarping-georgetown-tx" ]
+    },
+    {
+      "slug": "hail-damage-roof-repair-georgetown-tx",
+      "title": "Hail Damage Roof Repair in Georgetown, TX",
+      "h1": "Hail Damage Roof Repair in Georgetown, TX",
+      "description": "Hail damage guidance for Georgetown roofs—what’s cosmetic vs functional, documentation tips, and next steps.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Roofing",
+      "heroBullets": [ "Hail impact inspection guidance", "Documentation tips", "Repair vs replacement planning" ],
+      "content": [
+        { "kind": "p", "text": "Hail can bruise shingles, damage vents, and shorten roof life without an obvious leak on day one. This page helps Georgetown homeowners understand what to look for and what questions separate a real scope from a sales pitch." },
+        { "kind": "h2", "text": "Common hail damage indicators" },
+        { "kind": "ul", "items": [ "Granule loss and bruising", "Dented vents and soft metals", "Lifted shingle edges after impacts", "New interior staining after subsequent storms" ] }
+      ],
+      "faqs": [
+        { "q": "Is every dented vent a full replacement?", "a": "Not necessarily. Ask what affects water shedding and lifespan, and request photos and a written scope." }
+      ],
+      "bestSlugs": [ "best-roofers-georgetown-tx" ],
+      "relatedServiceSlugs": [ "storm-damage-roof-repair-georgetown-tx", "roof-repair-georgetown-tx" ]
+    },
+    {
+      "slug": "shingle-roof-repair-georgetown-tx",
+      "title": "Shingle Roof Repair in Georgetown, TX",
+      "h1": "Shingle Roof Repair in Georgetown, TX",
+      "description": "Shingle roof repair guidance for Georgetown—blow-offs, lifted tabs, sealing, and how to prevent repeat leaks.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Roofing",
+      "heroBullets": [ "Wind damage shingle repairs", "Seal and flashing checks", "Next-step guidance" ],
+      "content": [
+        { "kind": "p", "text": "Shingle issues often follow wind events or heat wear. This page helps Georgetown homeowners understand what a durable shingle repair includes and which related areas (flashing, vents, valleys) should be inspected at the same time." },
+        { "kind": "h2", "text": "Typical shingle repair scenarios" },
+        { "kind": "ul", "items": [ "Missing or lifted shingles after wind", "Exposed nails or fastener issues", "Granule loss and heat wear", "Small leaks tied to transitions" ] }
+      ],
+      "faqs": [
+        { "q": "Can one missing shingle cause a bigger problem?", "a": "Yes. Even small openings can allow water intrusion underlayment and decking damage over time—especially during heavy Georgetown storms." }
+      ],
+      "bestSlugs": [ "best-roofers-georgetown-tx" ],
+      "relatedServiceSlugs": [ "roof-repair-georgetown-tx", "flashing-repair-georgetown-tx" ]
+    },
+    {
+      "slug": "flashing-repair-georgetown-tx",
+      "title": "Flashing Repair in Georgetown, TX",
+      "h1": "Flashing Repair in Georgetown, TX",
+      "description": "Flashing repair guidance for Georgetown—roof-to-wall transitions, chimneys, vents, and common leak entry points.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Roofing",
+      "heroBullets": [ "Leak entry point diagnosis", "Transition and penetration repairs", "Documentation expectations" ],
+      "content": [
+        { "kind": "p", "text": "Many Georgetown roof leaks trace back to flashing: roof-to-wall transitions, chimneys, vents, and valleys. This page explains what flashing repair should include and what documentation helps you trust the scope." },
+        { "kind": "h2", "text": "What to verify" },
+        { "kind": "ul", "items": [ "Photos of the entry point and repair area", "Materials used and how it integrates with shingles/underlayment", "What to monitor after the next storm" ] }
+      ],
+      "faqs": [
+        { "q": "Is caulk alone a real flashing repair?", "a": "Sometimes it’s temporary. Ask how the repair prevents water intrusion during heavy rain and whether damaged metal or underlayment needs correction." }
+      ],
+      "bestSlugs": [ "best-roofers-georgetown-tx" ],
+      "relatedServiceSlugs": [ "roof-leak-repair-georgetown-tx", "roof-repair-georgetown-tx" ]
+    },
+    {
+      "slug": "gutter-installation-georgetown-tx",
+      "title": "Gutter Installation in Georgetown, TX",
+      "h1": "Gutter Installation in Georgetown, TX",
+      "description": "Gutter installation guidance for Georgetown—why it matters for drainage, fascia, and protecting roof systems.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Roofing",
+      "heroBullets": [ "Drainage planning guidance", "Integration with roof edge details", "What to ask before installation" ],
+      "content": [
+        { "kind": "p", "text": "Gutters help manage water flow and reduce damage risk at fascia, landscaping, and foundations. This page helps Georgetown homeowners understand scope basics and what to confirm when gutters are bundled with roof work." },
+        { "kind": "h2", "text": "What to ask" },
+        { "kind": "ul", "items": [ "How downspouts will be routed away from the home", "How gutters integrate with drip edge and flashing", "Cleanup and water-testing expectations after installation" ] }
+      ],
+      "faqs": [
+        { "q": "Should gutters be addressed during roof replacement?", "a": "Often, yes—especially if edge details are being updated. Ask how drip edge and gutters will work together to shed water correctly." }
+      ],
+      "bestSlugs": [ "best-roofers-georgetown-tx" ],
+      "relatedServiceSlugs": [ "roof-replacement-georgetown-tx", "roof-repair-georgetown-tx" ]
+    },
+    {
+      "slug": "emergency-roof-tarping-georgetown-tx",
+      "title": "Emergency Roof Tarping in Georgetown, TX",
+      "h1": "Emergency Roof Tarping in Georgetown, TX",
+      "description": "Emergency roof tarping guidance for Georgetown—when it’s needed, what to expect, and how to prevent further damage.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Roofing",
+      "heroBullets": [ "Leak stabilization guidance", "What to document for scope", "Next steps toward permanent repair" ],
+      "content": [
+        { "kind": "p", "text": "If water is actively entering your home, temporary tarping or stabilization can prevent damage while you compare repair scopes. This page explains when tarping makes sense in Georgetown and what to ask so you’re not stuck with a vague repair plan." },
+        { "kind": "h2", "text": "When tarping is appropriate" },
+        { "kind": "ul", "items": [ "Active leak during storms", "Missing shingles exposing underlayment", "Storm damage before a full repair scope is finalized" ] }
+      ],
+      "faqs": [
+        { "q": "Is tarping the same as a repair?", "a": "No. It’s temporary stabilization. Ask what the permanent repair path is and when you’ll receive a written scope for the remaining work." }
+      ],
+      "bestSlugs": [ "best-roofers-georgetown-tx" ],
+      "relatedServiceSlugs": [ "storm-damage-roof-repair-georgetown-tx", "roof-leak-repair-georgetown-tx" ]
     }
   ],
   "blog": [
@@ -445,7 +969,7 @@
             "Efficiency ratings (long-term savings)"
           ]
         },
-        { "kind": "p", "text": "If you’d like a quote, use the lead form and we’ll discuss repair vs replacement after a brief inspection." }
+        { "kind": "p", "text": "If you’re collecting estimates, use the related service page and best-of guide to shortlist providers and compare written scopes." }
       ],
       "relatedServiceSlugs": [
         "hvac-georgetown-tx",
@@ -475,7 +999,7 @@
             "Schedule service promptly if you have active leaks or severe clogs"
           ]
         },
-        { "kind": "p", "text": "Need help now? Use the form to request service options and free quotes." }
+        { "kind": "p", "text": "Need help now? Use the service page and best-of guide to shortlist providers you can contact directly." }
       ],
       "relatedServiceSlugs": [
         "plumber-georgetown-tx",
@@ -529,7 +1053,7 @@
             "Diagnostic or service-call fee (often higher after hours)",
             "Labor for the time spent onsite resolving the issue",
             "Materials and parts used during the repair",
-            "Potential follow-up visit if a permanent fix requires additional work"
+            "A second visit may be needed if the permanent fix requires additional work"
           ]
         },
         {
@@ -673,7 +1197,7 @@
         },
         {
           "kind": "p",
-          "text": "For early warning signs—like mild comfort changes or occasional noises—it is reasonable to schedule a standard repair visit. For safety-related concerns or active water issues, treat the situation as more urgent and mention that when you request service."
+          "text": "For early warning signs—like mild comfort changes or occasional noises—it is reasonable to schedule a standard repair visit with a local HVAC company. For safety-related concerns or active water issues, treat the situation as more urgent and describe that clearly when you contact a provider."
         }
       ],
       "relatedServiceSlugs": [
@@ -698,7 +1222,7 @@
         },
         {
           "kind": "p",
-          "text": "If you want to request service, start with our HVAC service in Georgetown TX page. If you’re comparing options first, use our top HVAC companies in Georgetown TX list to review providers."
+          "text": "If you want to compare options, start with our HVAC service guide for Georgetown, TX. Then use our top HVAC companies list to shortlist providers and contact them directly."
         }
       ],
       "relatedServiceSlugs": [
@@ -722,7 +1246,7 @@
         },
         {
           "kind": "p",
-          "text": "If you want to schedule service, start with our HVAC service in Georgetown TX page. If you’re comparing companies, use our top HVAC companies in Georgetown TX list."
+          "text": "If you want to understand the service category, start with our HVAC guide for Georgetown, TX. If you’re comparing companies, use our Top HVAC Companies in Georgetown, TX directory page."
         }
       ],
       "relatedServiceSlugs": [
@@ -860,7 +1384,7 @@
         },
         {
           "kind": "p",
-          "text": "If you want to request service, start with our roofer service page. If you’re comparing companies first, use our best roofers guide for Georgetown."
+          "text": "Start with our roofing service guide for Georgetown, TX, then use our best roofers page to compare providers and contact them directly."
         }
       ],
       "relatedServiceSlugs": [
@@ -926,7 +1450,7 @@
         { "kind": "h2", "text": "Where to start (service page + best-of guide)" },
         {
           "kind": "p",
-          "text": "If you want to request help right away, start with our plumbing services page. If you’re comparing providers, use our best-of guide to review top rated plumbers serving Georgetown, then contact two or three companies for written scopes so you can compare apples to apples."
+          "text": "If you want the service fundamentals, start with our plumbing guide for Georgetown, TX. If you’re comparing providers, use our Best Plumbers directory page and contact two or three companies for written scopes so you can compare apples to apples."
         }
       ],
       "relatedServiceSlugs": [
@@ -1025,7 +1549,7 @@
             "Respectful, clean job sites"
           ]
         },
-        { "kind": "p", "text": "If you want a dependable team for plumbing repairs in Georgetown, use the form below to request free quotes." }
+        { "kind": "p", "text": "Use this guide to compare plumbers, then contact a short list to request written estimates you can compare line-by-line." }
       ],
       "recommendedServiceSlugs": [
         "plumber-georgetown-tx",
@@ -1051,7 +1575,7 @@
             "Can you explain the difference between repair and replacement?"
           ]
         },
-        { "kind": "p", "text": "If your AC isn’t cooling like it should, use the form to request service options and next steps." }
+        { "kind": "p", "text": "If your AC isn’t cooling, start with the AC guide and then compare local HVAC companies to decide who to contact." }
       ],
       "recommendedServiceSlugs": [
         "hvac-georgetown-tx",
@@ -1078,7 +1602,7 @@
             "Timeline and communication during the job"
           ]
         },
-        { "kind": "p", "text": "If you’re seeing leaks or storm damage, use the form to request service options and next steps." }
+        { "kind": "p", "text": "If you’re seeing leaks or storm damage, start with the roofing guide and then compare local roofers to decide who to contact." }
       ],
       "recommendedServiceSlugs": [
         "roofer-georgetown-tx",

@@ -1,4 +1,6 @@
 import raw from "./businesses.json";
+import providerOverridesRaw from "../data/provider-overrides.json";
+import directoryConfigRaw from "../data/directory-config.json";
 
 export type ProviderGroup = "plumber" | "hvac" | "roofer";
 
@@ -16,6 +18,11 @@ export type Business = {
   reviews: number;
   location_link: string;
   description?: string;
+  /**
+   * Optional overlay fields to support future monetization and expanded profiles
+   * without altering the core provider dataset.
+   */
+  directory?: DirectoryListingMeta;
 };
 
 const businesses: Business[] = raw as Business[];
@@ -50,8 +57,142 @@ export function normalizeBusinessGroup(b: Business): ProviderGroup | null {
 /** Shown on best-of pages next to business listings. */
 export const BUSINESS_LISTINGS_LAST_UPDATED = "March 29, 2026";
 
+/**
+ * Provider listing quality thresholds.
+ *
+ * Goal: avoid presenting low-signal providers (few reviews or minimal documentation)
+ * as equal to well-documented, established companies.
+ */
+export const PROVIDER_MIN_ESTABLISHED_REVIEWS = 50;
+export const PROVIDER_HIGH_REVIEW_VOLUME = 200;
+
+export type ProviderQualityTier = "established" | "lower_signal";
+
+export type ExpandedProviderProfile = {
+  /** One-line editorial summary override. */
+  shortDescription?: string;
+  /** Longer profile notes for future expanded views. */
+  profileSummary?: string;
+  specialties?: string[];
+  serviceAreas?: string[];
+  licenseNote?: string;
+  insuranceNote?: string;
+  hoursNote?: string;
+  financingNote?: string;
+};
+
+export type DirectoryListingMeta = {
+  /** True when this listing is paid placement. Must be labeled on the frontend. */
+  sponsored?: boolean;
+  /** True when this listing is featured placement (paid or editorial). Must be labeled on the frontend. */
+  featured?: boolean;
+  /** Badge label shown on the card (e.g., "Sponsored", "Featured"). */
+  sponsorBadgeLabel?: string;
+  /** Optional disclosure line for future dedicated blocks. */
+  sponsorDisclosureText?: string;
+  /** Expanded profile fields (safe to add over time). */
+  profile?: ExpandedProviderProfile;
+  /**
+   * Organic ordering hint within a category (lower is earlier).
+   * Separate from sponsorship logic.
+   */
+  organicPriority?: number;
+};
+
+type ProviderOverridesFile = Record<
+  string,
+  {
+    directory?: DirectoryListingMeta;
+    profile?: ExpandedProviderProfile; // convenience alias for directory.profile
+  }
+>;
+
+type DirectoryConfigFile = {
+  categoryPriorityOrdering?: Partial<Record<ProviderGroup, string[]>>;
+};
+
+const providerOverrides = providerOverridesRaw as ProviderOverridesFile;
+const directoryConfig = directoryConfigRaw as DirectoryConfigFile;
+
+export type ProviderBadgeKey =
+  | "high_review_volume"
+  | "georgetown_office"
+  | "repair_focused"
+  | "replacement_focused"
+  | "emergency_availability"
+  | "map_only_profile"
+  | "featured"
+  | "sponsored";
+
+export type ProviderBadge = { key: ProviderBadgeKey; label: string };
+
+function includesAny(haystack: string, needles: string[]) {
+  const h = haystack.toLowerCase();
+  return needles.some((n) => h.includes(n));
+}
+
 function trimStr(s: string | undefined): string {
   return (s ?? "").trim();
+}
+
+function toAsciiKey(input: string) {
+  return input
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[^\w\s.-]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function safeHostFromUrl(rawUrl: string | undefined): string | null {
+  const u = normalizeOutboundHref(rawUrl);
+  if (!u) return null;
+  try {
+    return new URL(u).hostname.toLowerCase();
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Stable identifier used to attach overlay metadata (sponsored flags, expanded profiles, ordering).
+ * Key format: name|city|host
+ */
+export function getBusinessId(b: Business): string {
+  const host = safeHostFromUrl(b.website) ?? safeHostFromUrl(b.location_link) ?? "";
+  return `${toAsciiKey(b.name)}|${toAsciiKey(b.city)}|${toAsciiKey(host)}`;
+}
+
+function applyDirectoryOverlay(b: Business, group: ProviderGroup): Business {
+  const id = getBusinessId(b);
+  const o = providerOverrides[id];
+  const categoryOrder = directoryConfig.categoryPriorityOrdering?.[group] ?? [];
+  const orderIdx = categoryOrder.indexOf(id);
+  const organicPriorityFromCategory = orderIdx >= 0 ? orderIdx : undefined;
+
+  const meta: DirectoryListingMeta | undefined =
+    o?.directory || o?.profile || organicPriorityFromCategory !== undefined
+      ? {
+          ...(o?.directory ?? {}),
+          profile: { ...(o?.directory?.profile ?? {}), ...(o?.profile ?? {}) },
+          organicPriority:
+            typeof o?.directory?.organicPriority === "number"
+              ? o.directory.organicPriority
+              : typeof organicPriorityFromCategory === "number"
+                ? organicPriorityFromCategory
+                : undefined,
+        }
+      : undefined;
+
+  if (!meta) return b;
+  return { ...b, directory: { ...(b.directory ?? {}), ...meta } };
+}
+
+export function hasGeorgetownOfficeSignal(b: Business): boolean {
+  const city = trimStr(b.city).toLowerCase();
+  if (city === "georgetown") return true;
+  const addr = trimStr(b.address).toLowerCase();
+  return addr.includes("georgetown") && addr.includes("tx");
 }
 
 /**
@@ -150,16 +291,83 @@ export function businessPrimaryUrl(b: Business): string {
 export function getBusinessesByCategory(category: string): Business[] {
   const target = category.toLowerCase();
   if (target !== "plumber" && target !== "hvac" && target !== "roofer") return [];
-  return businesses
-    .filter((b) => normalizeBusinessGroup(b) === target)
-    .sort((a, b) => {
-      if (b.rating !== a.rating) return b.rating - a.rating;
-      return b.reviews - a.reviews;
-    });
+  const group = target as ProviderGroup;
+  const merged = businesses
+    .filter((b) => normalizeBusinessGroup(b) === group)
+    .map((b) => applyDirectoryOverlay(b, group));
+
+  // Organic ordering: optional category ordering hint, then rating/reviews.
+  merged.sort((a, b) => {
+    const ap = a.directory?.organicPriority;
+    const bp = b.directory?.organicPriority;
+    if (typeof ap === "number" || typeof bp === "number") {
+      const aVal = typeof ap === "number" ? ap : Number.POSITIVE_INFINITY;
+      const bVal = typeof bp === "number" ? bp : Number.POSITIVE_INFINITY;
+      if (aVal !== bVal) return aVal - bVal;
+    }
+    if (b.rating !== a.rating) return b.rating - a.rating;
+    return b.reviews - a.reviews;
+  });
+
+  return merged;
 }
 
 export function hasBusinessRatingData(b: Business): boolean {
   return b.rating > 0 || b.reviews > 0;
+}
+
+export function isMapOnlyProviderProfile(b: Business): boolean {
+  const website = getBusinessWebsiteUrl(b);
+  const maps = getBusinessMapsUrl(b);
+  // "Map-only" means they have a listing link but no distinct company website.
+  return Boolean(maps) && !website;
+}
+
+export function getProviderQualityTier(b: Business): ProviderQualityTier {
+  // Treat map-only profiles as lower-signal even with high reviews.
+  // (Requirement: do not present map-only providers as equal to better documented providers.)
+  if (isMapOnlyProviderProfile(b)) return "lower_signal";
+
+  if (!hasBusinessRatingData(b)) return "lower_signal";
+  if (b.reviews < PROVIDER_MIN_ESTABLISHED_REVIEWS) return "lower_signal";
+
+  return "established";
+}
+
+export function getProviderBadges(b: Business): ProviderBadge[] {
+  const badges: ProviderBadge[] = [];
+
+  if (b.directory?.sponsored) {
+    badges.push({ key: "sponsored", label: b.directory.sponsorBadgeLabel?.trim() || "Sponsored" });
+  } else if (b.directory?.featured) {
+    badges.push({ key: "featured", label: b.directory.sponsorBadgeLabel?.trim() || "Featured" });
+  }
+
+  if (b.reviews >= PROVIDER_HIGH_REVIEW_VOLUME) {
+    badges.push({ key: "high_review_volume", label: "High review volume" });
+  }
+  if (hasGeorgetownOfficeSignal(b)) {
+    badges.push({ key: "georgetown_office", label: "Georgetown office" });
+  }
+
+  const desc = trimStr(b.description);
+  if (desc) {
+    if (includesAny(desc, ["emergency", "24/7", "after-hours", "same-day"])) {
+      badges.push({ key: "emergency_availability", label: "Emergency availability" });
+    }
+    if (includesAny(desc, ["repair", "leak", "clog", "diagnos", "fix", "tarp", "patch", "service call"])) {
+      badges.push({ key: "repair_focused", label: "Repair-focused" });
+    }
+    if (includesAny(desc, ["replace", "replacement", "install", "change-out", "re-roof", "tear-off", "new system"])) {
+      badges.push({ key: "replacement_focused", label: "Replacement-focused" });
+    }
+  }
+
+  if (isMapOnlyProviderProfile(b)) {
+    badges.push({ key: "map_only_profile", label: "Map listing only" });
+  }
+
+  return badges;
 }
 
 export function generateBusinessDescription(b: Business): string {

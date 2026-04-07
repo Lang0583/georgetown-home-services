@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import StickyHeader from "../components/StickyHeader";
 import SiteFooter from "../components/SiteFooter";
+import JsonLd from "../components/JsonLd";
+import { getBrandName } from "../lib/site-content";
 
 const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
 
@@ -37,12 +39,32 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const brand = getBrandName();
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: brand,
+    url: siteUrl,
+    description:
+      "A local directory and homeowner guide for comparing plumbers, HVAC companies, and roofers in Georgetown, Texas.",
+  };
+
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: brand,
+    url: siteUrl,
+    // SearchAction is omitted because the site does not currently provide on-site search.
+  };
+
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full text-gray-900 antialiased`}
     >
       <body className="min-h-full flex flex-col bg-gray-50 text-gray-900">
+        <JsonLd data={organizationJsonLd} />
+        <JsonLd data={websiteJsonLd} />
         <StickyHeader />
         <main className="flex-1 pt-20">{children}</main>
         <SiteFooter />

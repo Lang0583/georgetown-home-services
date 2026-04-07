@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
 import { ButtonLink } from "./Button";
 import { PROVIDER_INFO_DISCLAIMER } from "../lib/provider-disclaimer";
-import { CTA_EMAIL_PROVIDERS, CTA_VIEW_TOP_PROVIDERS } from "../lib/site-cta";
+import { CTA_EMAIL_PROVIDERS, CTA_NEWSLETTER_SHORT, CTA_VIEW_TOP_PROVIDERS } from "../lib/site-cta";
 
-export { CTA_EMAIL_PROVIDERS, CTA_VIEW_TOP_PROVIDERS } from "../lib/site-cta";
+export { CTA_EMAIL_PROVIDERS, CTA_NEWSLETTER_SHORT, CTA_VIEW_TOP_PROVIDERS } from "../lib/site-cta";
 
 export function SiteCTAButtons({
   primaryHref,
@@ -11,7 +11,7 @@ export function SiteCTAButtons({
   className,
 }: {
   primaryHref: string;
-  /** Hash or path to the page that contains the email form (e.g. `#email-capture` or `/#email-capture`). */
+  /** Hash or path to the page that contains the newsletter signup (e.g. `#email-capture` or `/#email-capture`). */
   emailFormHref?: string;
   className?: string;
 }) {
@@ -21,7 +21,7 @@ export function SiteCTAButtons({
         {CTA_VIEW_TOP_PROVIDERS}
       </ButtonLink>
       <ButtonLink href={emailFormHref} variant="secondary" className="text-sm">
-        {CTA_EMAIL_PROVIDERS}
+        {CTA_NEWSLETTER_SHORT}
       </ButtonLink>
     </div>
   );

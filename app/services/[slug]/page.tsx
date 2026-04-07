@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import FAQList from "../../../components/FAQList";
-import CTASection, { SiteCTAButtons } from "../../../components/CTASection";
+import { ButtonLink } from "../../../components/Button";
 import Container from "../../../components/Container";
-import LeadForm from "../../../components/LeadForm";
+import EmailCaptureSitewide from "../../../components/EmailCaptureSitewide";
 import LinkCard from "../../../components/LinkCard";
 import GeneratedArticleBody from "../../../components/GeneratedArticleBody";
 import RichText from "../../../components/RichText";
+import JsonLd from "../../../components/JsonLd";
+import Breadcrumbs from "../../../components/Breadcrumbs";
+import PageShell from "../../../components/templates/PageShell";
+import TwoColumnPage from "../../../components/templates/TwoColumnPage";
 import {
   getBestBySlug,
   getBlogsForServiceSlug,
@@ -19,6 +23,41 @@ import {
 import { resolveServicePage } from "../../../lib/pageContentRegistry";
 import ServiceTopProvidersSection from "../../../components/ServiceTopProvidersSection";
 import { getBusinessCategoryForServiceSlug, getBusinessesByCategory } from "../../../lib/businesses";
+import { servicePageInternalLinks } from "../../../lib/internal-links";
+
+function breadcrumbJsonLd({
+  siteUrl,
+  serviceTitle,
+  serviceSlug,
+}: {
+  siteUrl: string;
+  serviceTitle: string;
+  serviceSlug: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${siteUrl}/services` },
+      { "@type": "ListItem", position: 3, name: serviceTitle, item: `${siteUrl}/services/${serviceSlug}` },
+    ],
+  };
+}
+
+function faqPageJsonLd(siteUrl: string, title: string, faqs: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+    mainEntityOfPage: siteUrl,
+    name: title,
+  };
+}
 
 /**
  * Allow runtime resolution for `[slug]` so `getServiceBySlug` + `notFound()` control 404s.
@@ -35,9 +74,28 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const service = getServiceBySlug(slug);
   if (!service) return {};
 
+  const overrides: Record<string, { title: string; description: string }> = {
+    "plumber-georgetown-tx": {
+      title: "Plumber in Georgetown, TX: Clogs, Leaks, Costs, and What to Ask",
+      description:
+        "A Georgetown plumbing guide for clogged drains, leak detection, and emergency scenarios—plus cost factors, repair vs replacement decisions, and questions to ask before hiring.",
+    },
+    "hvac-georgetown-tx": {
+      title: "AC Repair in Georgetown, TX: Common Problems, Cost Factors, and Next Steps",
+      description:
+        "A Georgetown HVAC guide for AC not cooling, uneven cooling, and common failures—plus what drives repair cost, when replacement makes sense, and how to compare local companies.",
+    },
+    "roofer-georgetown-tx": {
+      title: "Roof Repair in Georgetown, TX: Leaks, Storm Damage, Estimates, Next Steps",
+      description:
+        "A Georgetown roofing guide covering roof leaks, storm damage, shingle repair, and roof replacement estimates—plus what affects pricing and how to compare roofers.",
+    },
+  };
+
+  const o = overrides[slug];
   return {
-    title: service.title,
-    description: service.description,
+    title: o?.title ?? service.title,
+    description: o?.description ?? service.description,
   };
 }
 
@@ -47,6 +105,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   if (!resolved) notFound();
   const service = resolved.record;
   const articleHtml = resolved.html;
+
+  const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
 
   const isPlumberService = service.slug === "plumber-georgetown-tx";
   const isHvacService = service.slug === "hvac-georgetown-tx";
@@ -64,18 +124,24 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const providersFromJson =
     businessCategory !== null ? getBusinessesByCategory(businessCategory) : [];
 
-  const topProvidersCtaHref =
-    providersFromJson.length > 0
-      ? "#providers"
-      : bestPages.length > 0
-        ? `/best/${bestPages[0]!.slug}`
-        : isPlumberService
-          ? "/best/best-plumbers-georgetown-tx"
-          : isHvacService
-            ? "/best/top-hvac-companies-georgetown-tx"
-            : isRooferService
-              ? "/best/best-roofers-georgetown-tx"
-              : "/best/best-plumbers-georgetown-tx";
+  const bestHref =
+    bestPages.length > 0
+      ? `/best/${bestPages[0]!.slug}`
+      : isPlumberService
+        ? "/best/best-plumbers-georgetown-tx"
+        : isHvacService
+          ? "/best/top-hvac-companies-georgetown-tx"
+          : isRooferService
+            ? "/best/best-roofers-georgetown-tx"
+            : "/best/best-plumbers-georgetown-tx";
+
+  const bestCtaLabel = isPlumberService
+    ? "Compare Georgetown Plumbers"
+    : isHvacService
+      ? "See Top HVAC Companies"
+      : isRooferService
+        ? "Browse Roof Repair Options"
+        : "Browse provider directory";
 
   const CORE_SERVICES = [
     { label: "Plumbing", slug: "plumber-georgetown-tx", best: "best-plumbers-georgetown-tx" },
@@ -83,13 +149,31 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     { label: "Roofing", slug: "roofer-georgetown-tx", best: "best-roofers-georgetown-tx" },
   ] as const;
   const explore = CORE_SERVICES.filter((s) => s.slug !== service.slug);
+  const ruleLinks = servicePageInternalLinks(service.slug);
 
   return (
-    <div className="bg-gray-50">
-      <Container>
+    <PageShell>
         <section className="py-10 md:py-12">
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:items-start lg:gap-12">
-            <div className="min-w-0 md:col-span-2">
+          <JsonLd data={breadcrumbJsonLd({ siteUrl, serviceTitle: service.title, serviceSlug: service.slug })} />
+          {service.faqs?.length ? (
+            <JsonLd
+              data={faqPageJsonLd(
+                `${siteUrl}/services/${service.slug}`,
+                `${service.title} FAQ`,
+                service.faqs
+              )}
+            />
+          ) : null}
+          <TwoColumnPage
+            main={
+              <>
+              <Breadcrumbs
+                items={[
+                  { href: "/", label: "Home" },
+                  { href: "/services", label: "Services" },
+                  { href: `/services/${service.slug}`, label: service.title },
+                ]}
+              />
               <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">
                 {service.serviceType} • {location?.title ?? "Georgetown, TX"}
               </div>
@@ -121,12 +205,23 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               )}
 
               <div className="mt-6 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-                <div className="text-sm font-semibold text-gray-900">What we’ll handle</div>
+                <div className="text-sm font-semibold text-gray-900">What this guide covers</div>
                 <ul className="mt-3 list-disc space-y-2.5 pl-6 text-sm leading-relaxed text-gray-700">
                   {service.heroBullets.map((b) => (
                     <li key={b}>{b}</li>
                   ))}
                 </ul>
+                <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <ButtonLink href={bestHref} variant="primary">
+                    {bestCtaLabel}
+                  </ButtonLink>
+                  <ButtonLink href="/best" variant="secondary">
+                    Browse all categories
+                  </ButtonLink>
+                </div>
+                <p className="mt-3 text-xs leading-relaxed text-slate-600">
+                  We publish educational guides and a provider directory. We don’t take service requests or schedule jobs.
+                </p>
               </div>
 
               <div className="mt-8">
@@ -727,28 +822,87 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   </div>
                 </section>
               ) : null}
-            </div>
 
-            <aside className="min-w-0 md:col-span-1">
-              <LeadForm defaultService={service.serviceType} />
-              {bestPages.length ? (
-                <div className="mt-8">
-                  <CTASection
-                    eyebrow="Best Of"
-                    title="See ranked local companies"
-                    description="Open the guide for this category to compare providers and contact businesses directly."
-                    primaryHref={topProvidersCtaHref}
-                    emailFormHref="#email-capture"
-                    showDisclaimer
-                  />
-                </div>
+              {ruleLinks ? (
+                <section className="mt-12">
+                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Next internal links</h2>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                    Use these pages to navigate the directory and compare providers without starting over.
+                  </p>
+                  <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                    <LinkCard
+                      href={ruleLinks.parentHub.href}
+                      title={ruleLinks.parentHub.label}
+                      description={ruleLinks.parentHub.description ?? "Browse related service guides."}
+                      badge="Hub"
+                    />
+                    {ruleLinks.bestOf ? (
+                      <LinkCard
+                        href={ruleLinks.bestOf.href}
+                        title={ruleLinks.bestOf.label}
+                        description={ruleLinks.bestOf.description ?? "Compare top providers."}
+                        badge="Best Of"
+                      />
+                    ) : null}
+                    {ruleLinks.neighborhood ? (
+                      <LinkCard
+                        href={ruleLinks.neighborhood.href}
+                        title={ruleLinks.neighborhood.label}
+                        description={ruleLinks.neighborhood.description ?? "Neighborhood service area page."}
+                        badge="Neighborhood"
+                      />
+                    ) : null}
+                    {ruleLinks.siblings.map((l) => (
+                      <LinkCard
+                        key={l.href}
+                        href={l.href}
+                        title={l.label}
+                        description={l.description ?? "Sibling service category."}
+                        badge="Sibling service"
+                      />
+                    ))}
+                    {ruleLinks.blogs.map((l) => (
+                      <LinkCard
+                        key={l.href}
+                        href={l.href}
+                        title={l.label}
+                        description={l.description ?? "Related homeowner guide."}
+                        badge="Blog"
+                      />
+                    ))}
+                  </div>
+                </section>
               ) : null}
+              </>
+            }
+            aside={
+              <>
+              <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+                <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">Primary next step</div>
+                <div className="mt-2 text-lg font-semibold text-gray-900">Browse the provider directory</div>
+                <p className="mt-2 text-sm leading-relaxed text-gray-700">
+                  When you’re ready, compare companies in Georgetown and contact providers directly.
+                </p>
+                <div className="mt-4">
+                  <ButtonLink href={bestHref} variant="primary">
+                    {bestCtaLabel}
+                  </ButtonLink>
+                </div>
+              </div>
+
+              <EmailCaptureSitewide
+                compact
+                source={`service:${service.slug}`}
+                offers={["seasonal_checklist", "monthly_reminder"]}
+                defaultOffer="seasonal_checklist"
+              />
               <div className="mt-8 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
                 <div className="text-sm font-semibold text-gray-900">Service area</div>
                 <div className="mt-2 text-sm leading-relaxed text-gray-700">{location?.title ?? "Georgetown, TX"}</div>
               </div>
-            </aside>
-          </div>
+              </>
+            }
+          />
         </section>
 
         <section className="py-10 md:py-12">
@@ -756,11 +910,13 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
               <h2 className="text-xl font-semibold text-gray-900">Compare local providers</h2>
               <p className="mt-2 text-sm text-gray-700">
-                Jump to listings on this page when available, or open the best-of guide. Use the email form in the sidebar
-                for optional provider ideas—we do not schedule or route jobs for you.
+                Your next step is browsing the directory page for this category. Use it to shortlist providers, then request written estimates
+                directly from the companies you choose.
               </p>
               <div className="mt-4">
-                <SiteCTAButtons primaryHref={topProvidersCtaHref} emailFormHref="#email-capture" />
+                <ButtonLink href={bestHref} variant="primary">
+                  {bestCtaLabel}
+                </ButtonLink>
               </div>
             </div>
             <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
@@ -791,8 +947,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </div>
           </div>
         </section>
-      </Container>
-    </div>
+    </PageShell>
   );
 }
 

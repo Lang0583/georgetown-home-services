@@ -9,7 +9,7 @@ export default function SiteFooter() {
   return (
     <footer className="border-t border-gray-200 bg-gray-50">
       <div className="mx-auto max-w-5xl px-4 py-10">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-5">
           <div>
             <div className="text-sm font-semibold text-gray-900">{brand}</div>
             <div className="mt-1 text-sm text-gray-600">
@@ -25,12 +25,22 @@ export default function SiteFooter() {
                   Home
                 </Link>
               </li>
+              <li>
+                <Link className="hover:underline" href="/blog">
+                  Blog
+                </Link>
+              </li>
             </ul>
           </div>
 
           <div>
             <div className="text-sm font-semibold text-gray-900">Services</div>
             <ul className="mt-2 space-y-2 text-sm text-gray-700">
+              <li>
+                <Link className="hover:underline" href="/services">
+                  Service guides hub
+                </Link>
+              </li>
               <li>
                 <Link className="hover:underline" href="/services/plumber-georgetown-tx">
                   Plumbing
@@ -50,8 +60,13 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <div className="text-sm font-semibold text-gray-900">Top Providers</div>
+            <div className="text-sm font-semibold text-gray-900">Provider directory</div>
             <ul className="mt-2 space-y-2 text-sm text-gray-700">
+              <li>
+                <Link className="hover:underline" href="/best">
+                  Provider directory hub
+                </Link>
+              </li>
               <li>
                 <Link className="hover:underline" href="/best/best-plumbers-georgetown-tx">
                   Best Plumbers
@@ -69,6 +84,47 @@ export default function SiteFooter() {
               </li>
             </ul>
           </div>
+
+          <div>
+            <div className="text-sm font-semibold text-gray-900">Trust & legal</div>
+            <ul className="mt-2 space-y-2 text-sm text-gray-700">
+              <li>
+                <Link className="hover:underline" href="/about">
+                  About Georgetown Home Services
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:underline" href="/methodology">
+                  How We Review and Rank Providers
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:underline" href="/editorial-policy">
+                  Editorial Policy
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:underline" href="/service-areas">
+                  Service Areas
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:underline" href="/contact">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:underline" href="/privacy-policy">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:underline" href="/terms">
+                  Terms
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <p className="mt-8 max-w-3xl text-xs leading-relaxed text-gray-500">{PROVIDER_INFO_DISCLAIMER}</p>
@@ -77,6 +133,30 @@ export default function SiteFooter() {
           <div className="flex flex-wrap gap-x-3 gap-y-1">
             <Link className="hover:underline" href="/">
               Home
+            </Link>
+            <Link className="hover:underline" href="/about">
+              About
+            </Link>
+            <Link className="hover:underline" href="/methodology">
+              How we rank
+            </Link>
+            <Link className="hover:underline" href="/services">
+              Service guides
+            </Link>
+            <Link className="hover:underline" href="/best">
+              Provider directory
+            </Link>
+            <Link className="hover:underline" href="/blog">
+              Homeowner blog
+            </Link>
+            <Link className="hover:underline" href="/contact">
+              Contact
+            </Link>
+            <Link className="hover:underline" href="/privacy-policy">
+              Privacy
+            </Link>
+            <Link className="hover:underline" href="/terms">
+              Terms
             </Link>
             <Link className="hover:underline" href="/services/plumber-georgetown-tx">
               Plumbing

@@ -1,12 +1,12 @@
 import { BusinessListingDescription } from "../components/BusinessListingDescription";
 import CTASection, { SiteCTAButtons } from "../components/CTASection";
 import Container from "../components/Container";
-import LeadForm from "../components/LeadForm";
 import LinkCard from "../components/LinkCard";
 import { ButtonLink } from "../components/Button";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { getBlog, getBest, getLocations, getServices } from "../lib/site-content";
-import businesses from "@/lib/businesses.json";
+import businesses from "../lib/businesses.json";
 import {
   BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS,
   BUSINESS_LINK_VISIT_WEBSITE,
@@ -17,7 +17,7 @@ import {
   normalizeBusinessGroup,
   type Business,
   type ProviderGroup,
-} from "@/lib/businesses";
+} from "../lib/businesses";
 
 function topProvidersForGroup(list: Business[], group: ProviderGroup, limit: number) {
   return list
@@ -25,6 +25,12 @@ function topProvidersForGroup(list: Business[], group: ProviderGroup, limit: num
     .sort((a, b) => (b.rating !== a.rating ? b.rating - a.rating : b.reviews - a.reviews))
     .slice(0, limit);
 }
+
+export const metadata: Metadata = {
+  title: "Find Trusted Home Service Companies in Georgetown, Texas",
+  description:
+    "Compare local plumbers, HVAC companies, and roofers in Georgetown, TX with directory highlights, best-of guides, service pages, and practical homeowner tips.",
+};
 
 export default function Home() {
   const services = getServices();
@@ -50,8 +56,6 @@ export default function Home() {
     roofer: "/services/roofer-georgetown-tx",
   };
 
-  const defaultPlumbing = services.find((s) => s.slug === "plumber-georgetown-tx")?.title ?? "Plumbing";
-
   return (
     <div className="bg-gray-50">
       <Container>
@@ -60,48 +64,58 @@ export default function Home() {
             <div className="min-w-0">
               <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-xs font-semibold text-gray-700">
                 <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                Local plumbing, HVAC, and roofing
+                Georgetown home services directory + homeowner guides
               </div>
 
               <h1 className="mt-5 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
-                Find Trusted Home Services in Georgetown, TX
+                Find Trusted Home Service Companies in Georgetown, Texas
               </h1>
 
               <p className="mt-4 max-w-xl text-lg leading-relaxed text-gray-700">
-                Compare top-rated plumbers, HVAC companies, and roofers based on real data and local performance.
+                Compare local plumbers, HVAC companies, and roofers with practical guides, service area pages, and homeowner tips.
               </p>
 
-              <ul className="mt-5 max-w-xl space-y-2 text-sm leading-relaxed text-gray-700">
-                <li>
-                  <span className="font-semibold text-gray-900">Verified local businesses</span>
-                </li>
-                <li>
-                  <span className="font-semibold text-gray-900">Ratings and reviews</span>
-                </li>
-                <li>
-                  <span className="font-semibold text-gray-900">Fast service options</span>
-                </li>
-                <li>
-                  <span className="font-semibold text-gray-900">Direct links to local businesses</span>
-                </li>
-              </ul>
-
               <div className="mt-6">
-                <SiteCTAButtons primaryHref="#providers" emailFormHref="#email-capture" />
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <ButtonLink href="#providers" className="text-sm">
+                    Browse Top Providers
+                  </ButtonLink>
+                  <ButtonLink href="/services" variant="secondary" className="text-sm">
+                    Explore Service Guides
+                  </ButtonLink>
+                </div>
               </div>
 
-              <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-                <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-                  <div className="text-sm font-semibold text-gray-900">Compare listings</div>
-                  <div className="mt-1 text-sm text-gray-700">Open provider pages and contact companies yourself.</div>
-                </div>
-                <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-                  <div className="text-sm font-semibold text-gray-900">Clear estimates</div>
-                  <div className="mt-1 text-sm text-gray-700">Upfront pricing before work begins.</div>
-                </div>
-                <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-                  <div className="text-sm font-semibold text-gray-900">Quality repairs</div>
-                  <div className="mt-1 text-sm text-gray-700">Fix the root cause, not just symptoms.</div>
+              <div className="mt-8 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
+                <div className="text-sm font-semibold text-gray-900">Browse by category</div>
+                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-700">
+                  Choose a category to see comparison guides, service pages, and common local issues (like clogged drains, AC not cooling, and roof leaks after storms).
+                </p>
+                <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                  <Link
+                    href="/services/plumber-georgetown-tx"
+                    className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                  >
+                    <div className="text-sm font-semibold text-gray-900">Plumbing</div>
+                    <div className="mt-1 text-sm text-gray-700">Clogged drain, leak detection, emergency plumber.</div>
+                    <div className="mt-2 text-xs font-semibold text-blue-700">Explore plumbing →</div>
+                  </Link>
+                  <Link
+                    href="/services/hvac-georgetown-tx"
+                    className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                  >
+                    <div className="text-sm font-semibold text-gray-900">HVAC</div>
+                    <div className="mt-1 text-sm text-gray-700">AC not cooling, uneven cooling, repairs vs replacement.</div>
+                    <div className="mt-2 text-xs font-semibold text-blue-700">Explore HVAC →</div>
+                  </Link>
+                  <Link
+                    href="/services/roofer-georgetown-tx"
+                    className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                  >
+                    <div className="text-sm font-semibold text-gray-900">Roofing</div>
+                    <div className="mt-1 text-sm text-gray-700">Roof leak, storm damage, shingle repair, estimates.</div>
+                    <div className="mt-2 text-xs font-semibold text-blue-700">Explore roofing →</div>
+                  </Link>
                 </div>
               </div>
 
@@ -124,10 +138,11 @@ export default function Home() {
               </div>
             </div>
 
-            <LeadForm defaultService={defaultPlumbing} />
-
             <div id="providers" className="scroll-mt-28 rounded-xl border border-gray-200 bg-white p-6 shadow-md sm:p-8">
               <h2 className="text-xl font-semibold tracking-tight text-gray-900">Top Local Providers</h2>
+              <p className="mt-2 max-w-3xl text-sm leading-relaxed text-gray-700">
+                Directory highlights from public listing data. Use these as a starting point for comparison, then open the best-of guides for deeper decision support.
+              </p>
               <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
                 {topLocalGroups.map(({ title, key }) => (
                   <div key={key} className="rounded-lg bg-gray-50 p-4">
@@ -328,10 +343,10 @@ export default function Home() {
         <section className="py-10 md:py-12">
           <CTASection
             eyebrow="Find providers"
-            title="Browse rankings or get ideas by email"
-            description="Jump to the listings on this page, or use the email form above for optional provider ideas."
-            primaryHref="#providers"
-            emailFormHref="#email-capture"
+            title="Browse the directory by category"
+            description="Start with top providers, then use service pages and guides to compare options with clearer expectations."
+            primaryHref="/best"
+            emailFormHref="/services"
             showDisclaimer
           />
         </section>

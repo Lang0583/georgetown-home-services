@@ -3,55 +3,247 @@ import type { Metadata } from "next";
 import Container from "../../components/Container";
 import LinkCard from "../../components/LinkCard";
 import CTASection from "../../components/CTASection";
-import { getServiceBySlug } from "../../lib/site-content";
+import JsonLd from "../../components/JsonLd";
+import { getBlog, getLocations, getServices } from "../../lib/site-content";
 
 export const metadata: Metadata = {
-  title: "Services in Georgetown, TX",
-  description: "Browse plumbing, HVAC, and roofing services for Georgetown homeowners.",
+  title: "Service Guides for Georgetown, TX Homeowners",
+  description:
+    "Browse Georgetown service guides for plumbing, HVAC, and roofing—including common problems and neighborhood-specific pages.",
 };
 
 const CORE_SERVICE_SLUGS = ["plumber-georgetown-tx", "hvac-georgetown-tx", "roofer-georgetown-tx"] as const;
 
+function faqJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Is this a service company?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text:
+            "This site is a local research hub. Use the service pages and best-of guides to compare providers and decide who to contact. Always confirm licensing, pricing, and availability directly with any company before hiring.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What should I do if the problem is urgent?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text:
+            "If there is active water damage, no cooling in extreme heat, or a roof leak during storms, start with the relevant problem-based service page and then contact a provider from the best-of guide.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you cover neighborhoods like Sun City or Wolf Ranch?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text:
+            "Yes. We publish neighborhood and location pages to help Georgetown homeowners find the right service category and next steps.",
+        },
+      },
+    ],
+  };
+}
+
 export default function ServicesIndexPage() {
-  const services = CORE_SERVICE_SLUGS.map((slug) => getServiceBySlug(slug)).filter(Boolean);
+  const services = getServices();
+  const locations = getLocations();
+  const blog = getBlog();
+
+  const core = services.filter((s) => (CORE_SERVICE_SLUGS as readonly string[]).includes(s.slug));
+  // Group transactional service pages by their best-of association (more stable than serviceType strings).
+  const plumbing = services.filter(
+    (s) => s.bestSlugs?.includes("best-plumbers-georgetown-tx") && !(CORE_SERVICE_SLUGS as readonly string[]).includes(s.slug)
+  );
+  const hvac = services.filter(
+    (s) => s.bestSlugs?.includes("top-hvac-companies-georgetown-tx") && !(CORE_SERVICE_SLUGS as readonly string[]).includes(s.slug)
+  );
+  const roofing = services.filter(
+    (s) => s.bestSlugs?.includes("best-roofers-georgetown-tx") && !(CORE_SERVICE_SLUGS as readonly string[]).includes(s.slug)
+  );
+
+  const problemBased = services.filter(
+    (s) =>
+      (s.slug.includes("ac-not-cooling") || s.slug.includes("clogged-drain") || s.slug.includes("roof-leak")) &&
+      !(CORE_SERVICE_SLUGS as readonly string[]).includes(s.slug)
+  );
+
+  // Ensure every service is linked somewhere, even if it doesn't match the heuristics above.
+  const groupedSlugs = new Set<string>([
+    ...core.map((s) => s.slug),
+    ...plumbing.map((s) => s.slug),
+    ...hvac.map((s) => s.slug),
+    ...roofing.map((s) => s.slug),
+    ...problemBased.map((s) => s.slug),
+  ]);
+  const otherServices = services.filter((s) => !groupedSlugs.has(s.slug));
+
+  const featuredGuides = blog.slice(0, Math.min(4, blog.length));
 
   return (
     <div className="bg-gray-50">
       <Container>
         <section className="py-10 md:py-12">
-          <div className="flex flex-col gap-6">
+          <JsonLd data={faqJsonLd()} />
+          <div className="flex flex-col gap-10">
             <div>
               <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Services</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
                 Home Services in Georgetown, TX
               </h1>
-              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">
-                Choose a category to compare public listings, guides, and what to ask before you hire.
+              <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
+                Start with a core service category, then narrow down to problem-based pages (like “AC not cooling” or “roof leak repair”) or
+                neighborhood-specific guides. Each page links to related comparisons and articles so you can go from research to a confident next step.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {services.map((s) => (
+            <section>
+              <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Core service categories</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                The best starting point if you’re not sure which specific page fits your situation.
+              </p>
+              <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {core.map((s) => (
+                  <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
+                ))}
+              </div>
+              <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 <LinkCard
-                  key={s!.slug}
-                  href={`/services/${s!.slug}`}
-                  title={s!.title}
-                  description={s!.description}
-                  badge={s!.serviceType}
+                  href="/services/plumbing"
+                  title="Plumbing hub"
+                  description="Plumbing guide + supporting pages + cost and checklist posts."
+                  badge="Category hub"
                 />
-              ))}
-            </div>
+                <LinkCard
+                  href="/services/hvac"
+                  title="HVAC hub"
+                  description="HVAC guide + supporting pages + costs, maintenance, and warning signs."
+                  badge="Category hub"
+                />
+                <LinkCard
+                  href="/services/roofing"
+                  title="Roofing hub"
+                  description="Roofing guide + supporting pages + after-storm steps and replacement planning."
+                  badge="Category hub"
+                />
+              </div>
+            </section>
+
+            {problemBased.length ? (
+              <section>
+                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Problem-based pages</h2>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                  If you’re dealing with a specific symptom, start here for a clearer diagnosis path and what to ask when you call.
+                </p>
+                <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {problemBased.map((s) => (
+                    <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {plumbing.length ? (
+              <section>
+                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Plumbing</h2>
+                <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  {plumbing.map((s) => (
+                    <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {hvac.length ? (
+              <section>
+                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">HVAC</h2>
+                <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  {hvac.map((s) => (
+                    <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {roofing.length ? (
+              <section>
+                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Roofing</h2>
+                <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  {roofing.map((s) => (
+                    <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {otherServices.length ? (
+              <section>
+                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">More service pages</h2>
+                <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  {otherServices.map((s) => (
+                    <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {locations.length ? (
+              <section>
+                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Neighborhood and location pages</h2>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                  Browse service guides tailored to Georgetown neighborhoods and nearby areas.
+                </p>
+                <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  {locations.map((l) => (
+                    <LinkCard
+                      key={l.slug}
+                      href={`/locations/${l.slug}`}
+                      title={l.title}
+                      description={l.description}
+                      badge="Location"
+                    />
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {featuredGuides.length ? (
+              <section>
+                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Featured articles</h2>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                  Research-first reads to set cost expectations and avoid common mistakes.
+                </p>
+                <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
+                  {featuredGuides.map((p) => (
+                    <LinkCard key={p.slug} href={`/blog/${p.slug}`} title={p.title} description={p.description} badge={p.readTime} />
+                  ))}
+                </div>
+              </section>
+            ) : null}
 
             <div className="pt-4">
               <CTASection
                 eyebrow="Compare providers"
                 title="See top local companies"
-                description="Open a best-of guide for ranked providers, or use the optional email signup on the homepage."
-                primaryHref="/best/best-plumbers-georgetown-tx"
+                description="Open a best-of guide for ranked providers by category, or use the optional email signup on the homepage."
+                primaryHref="/best"
                 emailFormHref="/#email-capture"
                 secondary={
                   <div className="text-sm text-gray-600">
-                    Or go back to{" "}
+                    Explore hubs:{" "}
+                    <Link href="/best" className="font-semibold underline underline-offset-4">
+                      Best Of
+                    </Link>
+                    ,{" "}
+                    <Link href="/blog" className="font-semibold underline underline-offset-4">
+                      Blog
+                    </Link>
+                    . Or go back to{" "}
                     <Link href="/" className="font-semibold underline underline-offset-4">
                       the homepage
                     </Link>

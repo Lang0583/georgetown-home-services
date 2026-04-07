@@ -40,6 +40,20 @@ type Props = {
   className?: string;
 };
 
+function sanitizeGeneratedHtmlForDirectoryModel(html: string) {
+  let out = html;
+
+  // Remove obvious lead-intake remnants from older generated content.
+  out = out.replace(/<p><strong>CTA:<\/strong>[\s\S]*?<\/p>/gi, "");
+  out = out.replace(/<h2>[^<]*form[^<]*<\/h2>[\s\S]*?(?=<h2>|$)/gi, "");
+  out = out.replace(/<h3>[^<]*form[^<]*<\/h3>[\s\S]*?(?=<h2>|<h3>|$)/gi, "");
+  out = out.replace(/<p>[^<]*(submit the form|request service options|free quotes)[^<]*<\/p>/gi, "");
+
+  // Normalize accidental extra whitespace.
+  out = out.replace(/\n{3,}/g, "\n\n").trim();
+  return out;
+}
+
 /**
  * Wraps CMS / generated HTML in a readable article with Tailwind Typography (`prose`).
  * Outer shell is `max-w-4xl`; inner `prose max-w-none` fills the card without the default prose max-width cap.
@@ -47,7 +61,7 @@ type Props = {
 export default function GeneratedArticleBody({ html, className }: Props) {
   return (
     <ArticleContentShell className={className}>
-      <ProseArticle dangerouslySetInnerHTML={{ __html: html }} />
+      <ProseArticle dangerouslySetInnerHTML={{ __html: sanitizeGeneratedHtmlForDirectoryModel(html) }} />
     </ArticleContentShell>
   );
 }

@@ -2,9 +2,11 @@ import fs from "node:fs";
 import path from "node:path";
 import { NextResponse } from "next/server";
 
-type LeadPayload = {
+type NewsletterPayload = {
   email?: string;
-  serviceType?: string;
+  firstName?: string;
+  leadMagnet?: string;
+  source?: string;
 };
 
 function isValidEmail(email: string) {
@@ -16,48 +18,52 @@ function sanitizeText(input: string, maxLen: number) {
 }
 
 export async function POST(req: Request) {
-  let payload: LeadPayload;
+  let payload: NewsletterPayload;
   try {
-    payload = (await req.json()) as LeadPayload;
+    payload = (await req.json()) as NewsletterPayload;
   } catch {
     return NextResponse.json({ ok: false, error: "Invalid JSON" }, { status: 400 });
   }
 
   const email = sanitizeText(payload.email ?? "", 120);
-  const serviceType = sanitizeText(payload.serviceType ?? "", 80);
+  const firstNameRaw = sanitizeText(payload.firstName ?? "", 60);
+  const firstName = firstNameRaw.length ? firstNameRaw : undefined;
+  const leadMagnetRaw = sanitizeText(payload.leadMagnet ?? "", 60);
+  const leadMagnet = leadMagnetRaw.length ? leadMagnetRaw : undefined;
+  const source = sanitizeText(payload.source ?? "site", 80);
 
   if (!isValidEmail(email)) return NextResponse.json({ ok: false, error: "Valid email is required" }, { status: 400 });
-  if (!serviceType) return NextResponse.json({ ok: false, error: "Service type is required" }, { status: 400 });
 
-  const lead = {
+  const signup = {
     email,
-    serviceType,
+    firstName,
+    leadMagnet,
+    source,
     createdAt: new Date().toISOString(),
-    source: "georgetown-home-services",
   };
 
-  const webhookUrl = process.env.LEAD_WEBHOOK_URL;
-
+  const webhookUrl = process.env.NEWSLETTER_WEBHOOK_URL;
   if (webhookUrl) {
     try {
       await fetch(webhookUrl, {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(lead),
+        body: JSON.stringify(signup),
       });
     } catch {
-      // Don't fail the request if the webhook has a transient error.
+      // Ignore transient webhook errors.
     }
   }
 
   try {
     const dataDir = path.join(process.cwd(), "data");
     if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
-    const filePath = path.join(dataDir, "leads.jsonl");
-    fs.appendFileSync(filePath, JSON.stringify(lead) + "\n", "utf8");
+    const filePath = path.join(dataDir, "newsletter-signups.jsonl");
+    fs.appendFileSync(filePath, JSON.stringify(signup) + "\n", "utf8");
   } catch {
     // Ignore local persistence failures.
   }
 
   return NextResponse.json({ ok: true });
 }
+

@@ -6,6 +6,8 @@ import {
   getBusinessMapsUrl,
   getBusinessOutboundUrl,
   getBusinessWebsiteUrl,
+  hasGeorgetownOfficeSignal,
+  isMapOnlyProviderProfile,
   hasBusinessRatingData,
   type Business,
 } from "../lib/businesses";
@@ -18,19 +20,19 @@ function formatRating(rating: number) {
   return rating.toFixed(1);
 }
 
-function toTelHref(phoneRaw: string | undefined) {
-  const t = (phoneRaw ?? "").trim();
-  if (!t) return null;
-  const normalized = t.replace(/[^\d+]/g, "");
-  if (normalized.replace(/[^\d]/g, "").length < 10) return null;
-  return `tel:${normalized}`;
-}
-
 const linkButtonClass =
   "inline-flex items-center rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-semibold text-gray-900 hover:bg-gray-50";
 
+function serviceAreaNote(b: Business) {
+  if (hasGeorgetownOfficeSignal(b)) return "Service area: Georgetown, TX and nearby.";
+  const city = trim(b.city);
+  const state = trim(b.state) || "TX";
+  if (city) return `Service area: ${city}, ${state} (serves the Georgetown area).`;
+  return "Service area: Georgetown, TX area.";
+}
+
 /**
- * Real listings from `@/lib/businesses.json`, same category rules as homepage / best pages.
+ * Provider listings sourced from public business data, same category rules as homepage / best pages.
  * Sorted by rating desc, then reviews desc (via `getBusinessesByCategory`).
  */
 export default function ServiceTopProvidersSection({ businesses }: { businesses: Business[] }) {
@@ -54,8 +56,6 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
             const website = getBusinessWebsiteUrl(b);
             const maps = getBusinessMapsUrl(b);
             const href = getBusinessOutboundUrl(b);
-            const addr = trim(b.address);
-            const tel = toTelHref(b.phone);
             return (
               <li key={`featured-${b.name}-${i}`} className="px-4 py-5 first:rounded-t-xl last:rounded-b-xl md:px-6">
                 <div className="flex flex-col gap-2">
@@ -78,35 +78,27 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
                           <span className="font-semibold text-gray-900">{b.reviews.toLocaleString()}</span> reviews
                         </>
                       ) : (
-                        <span className="text-gray-500">Rating not listed in source data</span>
+                        <span className="text-gray-500">Rating not available</span>
                       )}
                     </span>
                   </div>
                   <BusinessListingDescription text={b.description} className="" />
-                  {addr ? <p className="text-sm text-gray-700">{addr}</p> : null}
-                  {tel ? (
-                    <div className="text-sm text-gray-700">
-                      Phone:{" "}
-                      <a href={tel} className="font-semibold text-blue-700 hover:underline">
-                        {b.phone}
-                      </a>
-                    </div>
-                  ) : null}
+                  <p className="text-sm text-gray-700">{serviceAreaNote(b)}</p>
                   <div className="flex flex-wrap gap-2 pt-0.5">
                     {website ? (
                       <a href={website} {...externalBusinessLinkProps} className={linkButtonClass}>
                         {BUSINESS_LINK_VISIT_WEBSITE}
                       </a>
                     ) : null}
-                    {tel ? (
-                      <a href={tel} className={linkButtonClass}>
-                        Phone
-                      </a>
-                    ) : null}
                     {maps ? (
                       <a href={maps} {...externalBusinessLinkProps} className={linkButtonClass}>
                         {BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS}
                       </a>
+                    ) : null}
+                    {isMapOnlyProviderProfile(b) ? (
+                      <span className="inline-flex items-center rounded-lg border border-gray-300 bg-gray-50 px-3 py-1.5 text-xs font-semibold text-gray-700">
+                        Map listing only.
+                      </span>
                     ) : null}
                   </div>
                 </div>
@@ -122,8 +114,6 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
             const website = getBusinessWebsiteUrl(b);
             const maps = getBusinessMapsUrl(b);
             const href = getBusinessOutboundUrl(b);
-            const addr = trim(b.address);
-            const tel = toTelHref(b.phone);
             return (
               <li key={`${b.name}-${i}`} className="px-4 py-5 first:rounded-t-xl last:rounded-b-xl md:px-6">
                 <div className="flex flex-col gap-2">
@@ -146,35 +136,27 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
                           <span className="font-semibold text-gray-900">{b.reviews.toLocaleString()}</span> reviews
                         </>
                       ) : (
-                        <span className="text-gray-500">Rating not listed in source data</span>
+                        <span className="text-gray-500">Rating not available</span>
                       )}
                     </span>
                   </div>
                   <BusinessListingDescription text={b.description} className="" />
-                  {addr ? <p className="text-sm text-gray-700">{addr}</p> : null}
-                  {tel ? (
-                    <div className="text-sm text-gray-700">
-                      Phone:{" "}
-                      <a href={tel} className="font-semibold text-blue-700 hover:underline">
-                        {b.phone}
-                      </a>
-                    </div>
-                  ) : null}
+                  <p className="text-sm text-gray-700">{serviceAreaNote(b)}</p>
                   <div className="flex flex-wrap gap-2 pt-0.5">
                     {website ? (
                       <a href={website} {...externalBusinessLinkProps} className={linkButtonClass}>
                         {BUSINESS_LINK_VISIT_WEBSITE}
                       </a>
                     ) : null}
-                    {tel ? (
-                      <a href={tel} className={linkButtonClass}>
-                        Phone
-                      </a>
-                    ) : null}
                     {maps ? (
                       <a href={maps} {...externalBusinessLinkProps} className={linkButtonClass}>
                         {BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS}
                       </a>
+                    ) : null}
+                    {isMapOnlyProviderProfile(b) ? (
+                      <span className="inline-flex items-center rounded-lg border border-gray-300 bg-gray-50 px-3 py-1.5 text-xs font-semibold text-gray-700">
+                        Map listing only.
+                      </span>
                     ) : null}
                   </div>
                 </div>

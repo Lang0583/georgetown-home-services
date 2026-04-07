@@ -1,0 +1,58 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import TrustPage from "../../components/templates/TrustPage";
+
+export const metadata: Metadata = {
+  title: "Editorial Policy",
+  description:
+    "How Georgetown Home Services creates and updates homeowner guides and provider comparisons, including transparency around sponsored placements.",
+};
+
+export default function EditorialPolicyPage() {
+  return (
+    <TrustPage
+      eyebrow="Editorial"
+      title="Editorial Policy"
+      description={
+        <>
+          Our goal is repeat-use homeowner content: checklists, cost drivers, and “what to ask” guidance that stays useful after publishing. We also
+          publish a provider directory to help you compare companies and contact them directly.
+        </>
+      }
+    >
+      <section>
+        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">What we publish</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5">
+          <li>Service guides that explain the category, common local issues, and decision points.</li>
+          <li>Best Of comparison pages that help you shortlist providers using publicly available information.</li>
+          <li>Blog posts built around recurring formats (monthly maintenance, seasonal checklists, cost guides, warning signs).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Accuracy and updates</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5">
+          <li>We focus on durable guidance (how to compare scopes, what changes price, what red flags look like).</li>
+          <li>Providers and details can change. Always confirm pricing, availability, and credentials directly with the provider.</li>
+          <li>We may revise pages to improve clarity, add new internal links, or update methodology.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Sponsored placements</h2>
+        <p className="mt-3">
+          If we publish paid placements, they will be clearly labeled (for example, “Sponsored” or “Featured”). Paid placements are kept separate from
+          organic ranking logic.
+        </p>
+        <p className="mt-3">
+          Learn more on{" "}
+          <Link href="/methodology" className="font-semibold text-blue-700 hover:underline">
+            how we review and rank providers
+          </Link>
+          .
+        </p>
+      </section>
+    </TrustPage>
+  );
+}
+

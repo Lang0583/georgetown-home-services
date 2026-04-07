@@ -2,16 +2,38 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CTASection from "../../../components/CTASection";
-import Container from "../../../components/Container";
-import LeadForm from "../../../components/LeadForm";
+import EmailCaptureSitewide from "../../../components/EmailCaptureSitewide";
 import LinkCard from "../../../components/LinkCard";
 import RichText from "../../../components/RichText";
+import JsonLd from "../../../components/JsonLd";
+import PageShell from "../../../components/templates/PageShell";
+import TwoColumnPage from "../../../components/templates/TwoColumnPage";
 import {
   getBestBySlug,
   getLocationBySlug,
   getLocations,
   getServices,
 } from "../../../lib/site-content";
+
+function breadcrumbJsonLd({
+  siteUrl,
+  locationTitle,
+  locationSlug,
+}: {
+  siteUrl: string;
+  locationTitle: string;
+  locationSlug: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+      { "@type": "ListItem", position: 2, name: "Locations", item: `${siteUrl}/services#neighborhood-and-location-pages` },
+      { "@type": "ListItem", position: 3, name: locationTitle, item: `${siteUrl}/locations/${locationSlug}` },
+    ],
+  };
+}
 
 /** Only slugs returned by `generateStaticParams` resolve; unknown slugs 404. */
 export const dynamicParams = false;
@@ -24,13 +46,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const location = getLocationBySlug(slug);
   if (!location) return {};
-  return { title: location.title, description: location.description };
+
+  const title = `${location.title}: Service Guides and Local Provider Lists`;
+  const description =
+    `${location.description} Browse service guides and best-of comparisons for this area, then contact providers directly for availability and estimates.`;
+  return { title, description };
 }
 
 export default async function LocationPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const location = getLocationBySlug(slug);
   if (!location) notFound();
+
+  const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
 
   const services = getServices();
   const servicePages = location.serviceSlugs
@@ -41,11 +69,13 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
     .filter((b): b is NonNullable<typeof b> => Boolean(b));
 
   return (
-    <div className="bg-gray-50">
-      <Container>
-        <section className="py-8 md:py-12">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:items-start">
-            <div className="md:col-span-2">
+    <PageShell>
+      <section className="py-8 md:py-12">
+          <JsonLd data={breadcrumbJsonLd({ siteUrl, locationTitle: location.title, locationSlug: location.slug })} />
+          <TwoColumnPage
+            gapClassName="gap-8"
+            main={
+              <>
               <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Service locations</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{location.h1}</h1>
               <p className="mt-4 max-w-2xl text-lg text-gray-700">{location.description}</p>
@@ -84,10 +114,11 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
                   </div>
                 </section>
               ) : null}
-            </div>
-
-            <aside className="min-w-0 md:col-span-1">
-              <LeadForm defaultService="Plumbing" />
+              </>
+            }
+            aside={
+              <>
+              <EmailCaptureSitewide source={`location:${location.slug}`} offers={["seasonal_checklist", "monthly_reminder"]} />
               <div className="mt-8">
                 <CTASection
                   eyebrow="Local guides"
@@ -111,11 +142,11 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
                   </Link>
                 </div>
               </div>
-            </aside>
-          </div>
-        </section>
-      </Container>
-    </div>
+              </>
+            }
+          />
+      </section>
+    </PageShell>
   );
 }
 

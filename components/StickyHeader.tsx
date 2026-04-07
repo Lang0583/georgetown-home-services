@@ -18,6 +18,15 @@ export default function StickyHeader() {
           <Link href="/" className={navLinkClass}>
             Home
           </Link>
+          <Link href="/services" className={navLinkClass}>
+            Service guides
+          </Link>
+          <Link href="/best" className={navLinkClass}>
+            Provider directory
+          </Link>
+          <Link href="/blog" className={navLinkClass}>
+            Homeowner blog
+          </Link>
           <Link href="/services/plumber-georgetown-tx" className={navLinkClass}>
             Plumbing
           </Link>
@@ -26,15 +35,6 @@ export default function StickyHeader() {
           </Link>
           <Link href="/services/roofer-georgetown-tx" className={navLinkClass}>
             Roofing
-          </Link>
-          <Link href="/best/best-plumbers-georgetown-tx" className={navLinkClass}>
-            Best Plumbers
-          </Link>
-          <Link href="/best/top-hvac-companies-georgetown-tx" className={navLinkClass}>
-            Best HVAC
-          </Link>
-          <Link href="/best/best-roofers-georgetown-tx" className={navLinkClass}>
-            Best Roofers
           </Link>
         </nav>
       </div>
