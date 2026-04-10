@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import EmailCaptureSitewide from "../../../components/EmailCaptureSitewide";
-import EmailCaptureInlineBlog from "../../../components/EmailCaptureInlineBlog";
-import GeneratedArticleBody from "../../../components/GeneratedArticleBody";
-import RichText from "../../../components/RichText";
+import BlogArticleBodyWithMidEmail from "../../../components/BlogArticleBodyWithMidEmail";
 import LinkCard from "../../../components/LinkCard";
 import CTASection from "../../../components/CTASection";
 import JsonLd from "../../../components/JsonLd";
@@ -290,7 +288,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
               <div className="mt-2 text-sm text-gray-500">Estimated read time: {post.readTime}</div>
 
               <div className="mt-8">
-                {generated ? <GeneratedArticleBody html={generated.html} /> : <RichText blocks={post.content} />}
+                <BlogArticleBodyWithMidEmail slug={post.slug} generated={generated} blocks={post.content} />
               </div>
 
               <PracticalTakeaway bullets={takeaway} />
@@ -306,12 +304,6 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
                 primaryLabel={isCostPost ? "Compare local quotes" : "See top providers"}
                 secondaryHref={serviceGuideHref}
                 secondaryLabel="Explore service guide"
-              />
-
-              <EmailCaptureInlineBlog
-                source={`blog-inline:${post.slug}`}
-                offer="monthly_reminder"
-                headline="Get monthly maintenance reminders"
               />
 
               {ruleLinks ? (

@@ -4,6 +4,7 @@ import "./globals.css";
 import StickyHeader from "../components/StickyHeader";
 import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
+import CanonicalFromPathname from "../components/CanonicalFromPathname";
 import { getBrandName } from "../lib/site-content";
 
 const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
@@ -63,6 +64,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full text-gray-900 antialiased`}
     >
       <body className="min-h-full flex flex-col bg-gray-50 text-gray-900">
+        <CanonicalFromPathname />
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
         <StickyHeader />

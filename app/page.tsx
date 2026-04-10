@@ -1,6 +1,8 @@
 import { BusinessListingDescription } from "../components/BusinessListingDescription";
-import CTASection, { SiteCTAButtons } from "../components/CTASection";
+import CTASection from "../components/CTASection";
 import Container from "../components/Container";
+import EmailCaptureSitewide from "../components/EmailCaptureSitewide";
+import StickyHomeEmailCapture from "../components/StickyHomeEmailCapture";
 import LinkCard from "../components/LinkCard";
 import { ButtonLink } from "../components/Button";
 import Link from "next/link";
@@ -57,7 +59,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 pb-40 md:pb-44">
       <Container>
         <section className="py-10 md:py-12">
           <div className="flex flex-col gap-10 md:gap-12">
@@ -134,6 +136,33 @@ export default function Home() {
                   <ButtonLink href="/blog/how-to-find-a-good-plumber-georgetown-tx" variant="secondary" className="w-full justify-center px-4 py-2.5 text-sm sm:w-auto">
                     How to find a good plumber
                   </ButtonLink>
+                </div>
+              </div>
+
+              <div className="mt-8 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
+                <div className="text-sm font-semibold text-gray-900">How it works</div>
+                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-700">
+                  This site is a directory and guide—browse categories, compare listings on Best Of pages, then contact companies yourself.
+                </p>
+                <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
+                  <div className="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                    <div className="text-sm font-semibold text-gray-900">1. Pick a category</div>
+                    <p className="mt-2 text-sm leading-relaxed text-gray-700">
+                      Start with plumbing, HVAC, or roofing guides and common issues.
+                    </p>
+                  </div>
+                  <div className="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                    <div className="text-sm font-semibold text-gray-900">2. Compare on Best Of</div>
+                    <p className="mt-2 text-sm leading-relaxed text-gray-700">
+                      Use methodology, comparisons, and FAQs to shortlist providers.
+                    </p>
+                  </div>
+                  <div className="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                    <div className="text-sm font-semibold text-gray-900">3. Contact providers</div>
+                    <p className="mt-2 text-sm leading-relaxed text-gray-700">
+                      Open websites or maps from listings—no quote requests through us.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -341,16 +370,22 @@ export default function Home() {
         </section>
 
         <section className="py-10 md:py-12">
+          <EmailCaptureSitewide source="home" offers={["seasonal_checklist", "monthly_reminder"]} defaultOffer="seasonal_checklist" />
+        </section>
+
+        <section className="py-10 md:py-12">
           <CTASection
             eyebrow="Find providers"
             title="Browse the directory by category"
             description="Start with top providers, then use service pages and guides to compare options with clearer expectations."
             primaryHref="/best"
-            emailFormHref="/services"
+            emailFormHref="/#email-capture"
             showDisclaimer
           />
         </section>
       </Container>
+
+      <StickyHomeEmailCapture />
     </div>
   );
 }

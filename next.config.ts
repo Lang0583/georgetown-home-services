@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
         destination: "/blog/roof-repair-cost-georgetown-tx",
         permanent: true,
       },
+      {
+        source: "/blog/how-to-choose-plumber-georgetown-tx",
+        destination: "/blog/how-to-choose-a-reliable-plumber-georgetown-tx",
+        permanent: true,
+      },
     ];
   },
 };

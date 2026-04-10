@@ -3,6 +3,7 @@ import Link from "next/link";
 import Container from "../../components/Container";
 import CTASection from "../../components/CTASection";
 import LinkCard from "../../components/LinkCard";
+import BlogMidContentEmailCard from "../../components/BlogMidContentEmailCard";
 import JsonLd from "../../components/JsonLd";
 import { getBlog } from "../../lib/site-content";
 
@@ -120,6 +121,8 @@ export default function BlogIndexPage() {
   const categories = categorizePosts(posts);
 
   const featured = posts.slice(0, Math.min(6, posts.length));
+  const featuredFirst = featured.slice(0, 3);
+  const featuredRest = featured.slice(3);
 
   return (
     <div className="bg-gray-50">
@@ -175,7 +178,7 @@ export default function BlogIndexPage() {
                 Start here if you’re new to the site or planning a major repair or replacement.
               </p>
               <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
-                {featured.map((p) => (
+                {featuredFirst.map((p) => (
                   <LinkCard
                     key={p.slug}
                     href={`/blog/${p.slug}`}
@@ -185,6 +188,24 @@ export default function BlogIndexPage() {
                   />
                 ))}
               </div>
+
+              <div className="mt-8">
+                <BlogMidContentEmailCard source="blog-index-mid" />
+              </div>
+
+              {featuredRest.length ? (
+                <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
+                  {featuredRest.map((p) => (
+                    <LinkCard
+                      key={p.slug}
+                      href={`/blog/${p.slug}`}
+                      title={p.title}
+                      description={p.description}
+                      badge={p.readTime}
+                    />
+                  ))}
+                </div>
+              ) : null}
             </section>
 
             {(Object.keys(CATEGORY_META) as BlogCategoryKey[]).map((key) => {

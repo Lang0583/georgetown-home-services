@@ -580,7 +580,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                           </Link>
                           . For a step-by-step hiring checklist, see{" "}
                           <Link
-                            href="/blog/how-to-choose-plumber-georgetown-tx"
+                            href="/blog/how-to-choose-a-reliable-plumber-georgetown-tx"
                             className="font-semibold text-blue-700"
                           >
                             how to choose a reliable plumber in Georgetown TX

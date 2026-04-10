@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import FAQList from "../../../components/FAQList";
 import { ButtonLink } from "../../../components/Button";
 import Container from "../../../components/Container";
-import EmailCaptureSitewide from "../../../components/EmailCaptureSitewide";
 import LinkCard from "../../../components/LinkCard";
 import GeneratedArticleBody from "../../../components/GeneratedArticleBody";
 import RichText from "../../../components/RichText";
@@ -21,6 +20,7 @@ import {
   getServiceSlugs,
 } from "../../../lib/site-content";
 import { resolveServicePage } from "../../../lib/pageContentRegistry";
+import ServiceRequestForm from "../../../components/ServiceRequestForm";
 import ServiceTopProvidersSection from "../../../components/ServiceTopProvidersSection";
 import { getBusinessCategoryForServiceSlug, getBusinessesByCategory } from "../../../lib/businesses";
 import { servicePageInternalLinks } from "../../../lib/internal-links";
@@ -344,7 +344,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         </li>
                         <li>
                           <Link
-                            href="/blog/how-to-choose-plumber-georgetown-tx"
+                            href="/blog/how-to-choose-a-reliable-plumber-georgetown-tx"
                             className="font-semibold hover:underline"
                           >
                             How to choose a reliable plumber in Georgetown TX
@@ -890,12 +890,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 </div>
               </div>
 
-              <EmailCaptureSitewide
-                compact
-                source={`service:${service.slug}`}
-                offers={["seasonal_checklist", "monthly_reminder"]}
-                defaultOffer="seasonal_checklist"
-              />
+              <div className="mt-8">
+                <ServiceRequestForm serviceSlug={service.slug} />
+              </div>
+
               <div className="mt-8 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
                 <div className="text-sm font-semibold text-gray-900">Service area</div>
                 <div className="mt-2 text-sm leading-relaxed text-gray-700">{location?.title ?? "Georgetown, TX"}</div>

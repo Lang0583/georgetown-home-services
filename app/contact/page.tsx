@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import TrustPage from "../../components/templates/TrustPage";
 import { getBrandName, getContact } from "../../lib/site-content";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Contact Georgetown Home Services. For service availability and pricing, contact providers directly from the directory.",
+  description:
+    "Contact Georgetown Home Services about the site. For repairs and estimates, use service guide request forms or reach providers from the Best Of directory.",
 };
 
 export default function ContactPage() {
@@ -24,8 +26,16 @@ export default function ContactPage() {
           </a>
         </div>
         <p className="mt-4 text-sm leading-relaxed text-gray-700">
-          If you need to schedule a repair or request an estimate, please contact providers directly from the Best Of directory pages. We don’t take
-          service requests or route jobs.
+          <strong>Home service needs:</strong> Each{" "}
+          <Link href="/services" className="font-semibold text-blue-700 underline underline-offset-2 hover:text-blue-800">
+            service guide
+          </Link>{" "}
+          includes a short request form so you can describe the job and your contact details. You can also reach providers directly from the{" "}
+          <Link href="/best" className="font-semibold text-blue-700 underline underline-offset-2 hover:text-blue-800">
+            Best Of
+          </Link>{" "}
+          directory (websites and maps). This contact email is for questions about the site, listing corrections, and partnership inquiries—not for
+          scheduling specific appointments.
         </p>
       </section>
     </TrustPage>

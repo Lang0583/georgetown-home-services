@@ -1,38 +1,48 @@
 import type { ContentBlock } from "../lib/site-content";
 import { ArticleContentShell, ProseArticle } from "./GeneratedArticleBody";
 
+export function RichTextBlocks({ blocks }: { blocks: ContentBlock[] }) {
+  if (!blocks.length) return null;
+
+  return (
+    <>
+      {blocks.map((block, idx) => {
+        if (block.kind === "p") {
+          return (
+            <p key={idx} className="mb-4">
+              {block.text}
+            </p>
+          );
+        }
+        if (block.kind === "h2") {
+          return (
+            <h2 key={idx} className="mt-8 mb-4 text-xl font-semibold">
+              {block.text}
+            </h2>
+          );
+        }
+        if (block.kind === "ul") {
+          return (
+            <ul key={idx} className="mb-4 ml-5 list-disc">
+              {block.items.map((item, itemIdx) => (
+                <li key={itemIdx}>{item}</li>
+              ))}
+            </ul>
+          );
+        }
+        return null;
+      })}
+    </>
+  );
+}
+
 export default function RichText({ blocks }: { blocks: ContentBlock[] }) {
   if (!blocks.length) return null;
 
   return (
     <ArticleContentShell>
       <ProseArticle>
-        {blocks.map((block, idx) => {
-          if (block.kind === "p") {
-            return (
-              <p key={idx} className="mb-4">
-                {block.text}
-              </p>
-            );
-          }
-          if (block.kind === "h2") {
-            return (
-              <h2 key={idx} className="mt-8 mb-4 text-xl font-semibold">
-                {block.text}
-              </h2>
-            );
-          }
-          if (block.kind === "ul") {
-            return (
-              <ul key={idx} className="mb-4 ml-5 list-disc">
-                {block.items.map((item, itemIdx) => (
-                  <li key={itemIdx}>{item}</li>
-                ))}
-              </ul>
-            );
-          }
-          return null;
-        })}
+        <RichTextBlocks blocks={blocks} />
       </ProseArticle>
     </ArticleContentShell>
   );

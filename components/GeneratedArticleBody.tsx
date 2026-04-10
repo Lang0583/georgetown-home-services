@@ -40,7 +40,8 @@ type Props = {
   className?: string;
 };
 
-function sanitizeGeneratedHtmlForDirectoryModel(html: string) {
+/** Sanitize CMS / generated HTML before rendering (directory model: no lead-intake blocks). */
+export function sanitizeArticleHtml(html: string) {
   let out = html;
 
   // Remove obvious lead-intake remnants from older generated content.
@@ -61,7 +62,7 @@ function sanitizeGeneratedHtmlForDirectoryModel(html: string) {
 export default function GeneratedArticleBody({ html, className }: Props) {
   return (
     <ArticleContentShell className={className}>
-      <ProseArticle dangerouslySetInnerHTML={{ __html: sanitizeGeneratedHtmlForDirectoryModel(html) }} />
+      <ProseArticle dangerouslySetInnerHTML={{ __html: sanitizeArticleHtml(html) }} />
     </ArticleContentShell>
   );
 }
