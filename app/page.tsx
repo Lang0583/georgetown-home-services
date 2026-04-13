@@ -7,7 +7,10 @@ import LinkCard from "../components/LinkCard";
 import { ButtonLink } from "../components/Button";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { pageSeoMetadata } from "../lib/page-seo";
+import HomeTrustBar from "../components/HomeTrustBar";
+import FAQList from "../components/FAQList";
+import JsonLd from "../components/JsonLd";
+import { pageSeoMetadata, SITE_URL } from "../lib/page-seo";
 import { CORE_BEST_SLUGS, CORE_SERVICE_SLUGS } from "../lib/pageContentRegistry";
 import {
   EXTENDED_PROVIDER_GROUPS,
@@ -15,6 +18,7 @@ import {
   isExtendedServiceSlug,
   showExtendedHomeServices,
 } from "../lib/public-site-scope";
+import type { Faq } from "../lib/site-content";
 import { getBlog, getBest, getLocations, getServices } from "../lib/site-content";
 import businesses from "../lib/businesses.json";
 import {
@@ -35,6 +39,77 @@ function topProvidersForGroup(list: Business[], group: ProviderGroup, limit: num
     .filter((b) => normalizeBusinessGroup(b) === group)
     .sort((a, b) => (b.rating !== a.rating ? b.rating - a.rating : b.reviews - a.reviews))
     .slice(0, limit);
+}
+
+function homeLocalBusinessJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "Georgetown Home Services",
+    url: SITE_URL,
+    description:
+      "Local directory of trusted home service companies in Georgetown, TX covering plumbing, HVAC, roofing, electrical, landscaping, pest control, foundation repair, and house cleaning.",
+    areaServed: [
+      { "@type": "City", name: "Georgetown", containedInPlace: { "@type": "State", name: "Texas" } },
+      { "@type": "City", name: "Round Rock", containedInPlace: { "@type": "State", name: "Texas" } },
+      { "@type": "City", name: "Cedar Park", containedInPlace: { "@type": "State", name: "Texas" } },
+      { "@type": "City", name: "Leander", containedInPlace: { "@type": "State", name: "Texas" } },
+    ],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Georgetown",
+      addressRegion: "TX",
+      addressCountry: "US",
+    },
+    sameAs: [] as string[],
+  };
+}
+
+function homeWebPageJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Find Trusted Home Service Companies in Georgetown, Texas",
+    url: SITE_URL,
+    description: "Local directory of trusted home service companies in Georgetown, TX",
+    dateModified: "2026-04-13",
+  };
+}
+
+/** Homepage FAQ copy + FAQPage JSON-LD (single source). */
+const HOME_PAGE_FAQS: Faq[] = [
+  {
+    q: "How do I find a reliable home service company in Georgetown, TX?",
+    a: "Start by checking reviews on Google and comparing at least 3 companies. Look for businesses with consistent ratings above 4.5 stars, verified licenses, and written estimates. Georgetown Home Services lists pre-screened providers across plumbing, HVAC, roofing, electrical, and more.",
+  },
+  {
+    q: "What home services are available in Georgetown, TX?",
+    a: "Georgetown has active local providers for plumbing, HVAC, roofing, electrical, landscaping, pest control, foundation repair, and house cleaning. Georgetown Home Services maintains a directory of top-rated local companies for each category.",
+  },
+  {
+    q: "How much does it cost to hire a plumber in Georgetown, TX?",
+    a: "Most plumbing jobs in Georgetown range from $150 to $500 for common repairs. Emergency calls and larger jobs like slab leak repair can run $1,000 or more. See our plumbing cost guides for detailed breakdowns.",
+  },
+  {
+    q: "Is Georgetown, TX a good area for foundation issues?",
+    a: "Yes—Central Texas clay soil expands and contracts with moisture, making foundation movement common in Georgetown. Hairline cracks are often cosmetic, but horizontal or stair-step cracks warrant a professional inspection. Georgetown Home Services lists foundation repair specialists in the area.",
+  },
+  {
+    q: "How do I know if I need a new HVAC system in Georgetown?",
+    a: "Key signs include a system older than 15 years, frequent repairs, uneven cooling, or energy bills rising without explanation. Georgetown summers regularly exceed 100 degrees, making a functioning HVAC essential. See our HVAC guides for full diagnostic checklists.",
+  },
+];
+
+function homeFaqPageJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: HOME_PAGE_FAQS.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
 }
 
 export const metadata: Metadata = pageSeoMetadata({
@@ -77,8 +152,24 @@ export default function Home() {
     key,
   }));
 
+  const bestBySlug = new Map(best.map((b) => [b.slug, b]));
+  const allCoreBestNav = (CORE_BEST_SLUGS as readonly string[])
+    .map((slug) => {
+      const record = bestBySlug.get(slug);
+      if (!record) return null;
+      return {
+        slug,
+        href: `/best/${slug}`,
+        label: record.title.replace(/ in Georgetown, TX$/, ""),
+      };
+    })
+    .filter((x): x is NonNullable<typeof x> => Boolean(x));
+
   return (
     <div className="bg-gray-50 pb-40 md:pb-44">
+      <JsonLd data={homeLocalBusinessJsonLd()} />
+      <JsonLd data={homeWebPageJsonLd()} />
+      <JsonLd data={homeFaqPageJsonLd()} />
       <Container>
         <section className="py-10 md:py-12">
           <div className="flex flex-col gap-10 md:gap-12">
@@ -96,6 +187,18 @@ export default function Home() {
                 Compare local home service companies—electrical, landscaping, pest control, foundation repair, cleaning, plumbing, HVAC, and roofing—with practical guides and directory pages.
               </p>
 
+              <p className="mt-3 max-w-3xl text-sm leading-relaxed text-gray-700">
+                <span className="font-semibold text-gray-900">Best-of guides:</span>{" "}
+                {allCoreBestNav.map((item, i) => (
+                  <span key={item.slug}>
+                    {i > 0 ? <span className="text-gray-300"> · </span> : null}
+                    <Link href={item.href} className="font-medium text-primary hover:underline">
+                      {item.label}
+                    </Link>
+                  </span>
+                ))}
+              </p>
+
               <div className="mt-6">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                   <ButtonLink href="#providers" className="text-sm">
@@ -107,6 +210,8 @@ export default function Home() {
                 </div>
               </div>
 
+              <HomeTrustBar />
+
               <div className="mt-8 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
                 <div className="text-sm font-semibold text-gray-900">Browse by category</div>
                 <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-700">
@@ -115,69 +220,69 @@ export default function Home() {
                 <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
                   <Link
                     href="/services/plumber-georgetown-tx"
-                    className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                    className="rounded-lg border border-gray-200 border-t-[3px] border-t-transparent bg-gray-50 p-4 transition hover:border-x-primary/25 hover:border-b-primary/25 hover:border-t-primary hover:bg-white"
                   >
                     <div className="text-sm font-semibold text-gray-900">Plumbing</div>
                     <div className="mt-1 text-sm text-gray-700">Clogged drain, leak detection, emergency plumber.</div>
-                    <div className="mt-2 text-xs font-semibold text-blue-700">Explore plumbing →</div>
+                    <div className="mt-2 text-xs font-semibold text-primary">Explore plumbing →</div>
                   </Link>
                   <Link
                     href="/services/hvac-georgetown-tx"
-                    className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                    className="rounded-lg border border-gray-200 border-t-[3px] border-t-transparent bg-gray-50 p-4 transition hover:border-x-primary/25 hover:border-b-primary/25 hover:border-t-primary hover:bg-white"
                   >
                     <div className="text-sm font-semibold text-gray-900">HVAC</div>
                     <div className="mt-1 text-sm text-gray-700">AC not cooling, uneven cooling, repairs vs replacement.</div>
-                    <div className="mt-2 text-xs font-semibold text-blue-700">Explore HVAC →</div>
+                    <div className="mt-2 text-xs font-semibold text-primary">Explore HVAC →</div>
                   </Link>
                   <Link
                     href="/services/roofer-georgetown-tx"
-                    className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                    className="rounded-lg border border-gray-200 border-t-[3px] border-t-transparent bg-gray-50 p-4 transition hover:border-x-primary/25 hover:border-b-primary/25 hover:border-t-primary hover:bg-white"
                   >
                     <div className="text-sm font-semibold text-gray-900">Roofing</div>
                     <div className="mt-1 text-sm text-gray-700">Roof leak, storm damage, shingle repair, estimates.</div>
-                    <div className="mt-2 text-xs font-semibold text-blue-700">Explore roofing →</div>
+                    <div className="mt-2 text-xs font-semibold text-primary">Explore roofing →</div>
                   </Link>
                   {showExtendedHomeServices() ? (
                     <>
                       <Link
                         href="/services/electrician-georgetown-tx"
-                        className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                        className="rounded-lg border border-gray-200 border-t-[3px] border-t-transparent bg-gray-50 p-4 transition hover:border-x-primary/25 hover:border-b-primary/25 hover:border-t-primary hover:bg-white"
                       >
                         <div className="text-sm font-semibold text-gray-900">Electrical</div>
                         <div className="mt-1 text-sm text-gray-700">Panels, circuits, outlets, EV charger prep.</div>
-                        <div className="mt-2 text-xs font-semibold text-blue-700">Explore electrical →</div>
+                        <div className="mt-2 text-xs font-semibold text-primary">Explore electrical →</div>
                       </Link>
                       <Link
                         href="/services/landscaping-georgetown-tx"
-                        className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                        className="rounded-lg border border-gray-200 border-t-[3px] border-t-transparent bg-gray-50 p-4 transition hover:border-x-primary/25 hover:border-b-primary/25 hover:border-t-primary hover:bg-white"
                       >
                         <div className="text-sm font-semibold text-gray-900">Landscaping</div>
                         <div className="mt-1 text-sm text-gray-700">Lawn care, beds, mulch, irrigation tuning.</div>
-                        <div className="mt-2 text-xs font-semibold text-blue-700">Explore landscaping →</div>
+                        <div className="mt-2 text-xs font-semibold text-primary">Explore landscaping →</div>
                       </Link>
                       <Link
                         href="/services/pest-control-georgetown-tx"
-                        className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                        className="rounded-lg border border-gray-200 border-t-[3px] border-t-transparent bg-gray-50 p-4 transition hover:border-x-primary/25 hover:border-b-primary/25 hover:border-t-primary hover:bg-white"
                       >
                         <div className="text-sm font-semibold text-gray-900">Pest control</div>
                         <div className="mt-1 text-sm text-gray-700">Ants, roaches, rodents, perimeter plans.</div>
-                        <div className="mt-2 text-xs font-semibold text-blue-700">Explore pest control →</div>
+                        <div className="mt-2 text-xs font-semibold text-primary">Explore pest control →</div>
                       </Link>
                       <Link
                         href="/services/foundation-repair-georgetown-tx"
-                        className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                        className="rounded-lg border border-gray-200 border-t-[3px] border-t-transparent bg-gray-50 p-4 transition hover:border-x-primary/25 hover:border-b-primary/25 hover:border-t-primary hover:bg-white"
                       >
                         <div className="text-sm font-semibold text-gray-900">Foundation</div>
                         <div className="mt-1 text-sm text-gray-700">Clay soil cracks, drainage, pier and slab.</div>
-                        <div className="mt-2 text-xs font-semibold text-blue-700">Explore foundation →</div>
+                        <div className="mt-2 text-xs font-semibold text-primary">Explore foundation →</div>
                       </Link>
                       <Link
                         href="/services/house-cleaning-georgetown-tx"
-                        className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                        className="rounded-lg border border-gray-200 border-t-[3px] border-t-transparent bg-gray-50 p-4 transition hover:border-x-primary/25 hover:border-b-primary/25 hover:border-t-primary hover:bg-white"
                       >
                         <div className="text-sm font-semibold text-gray-900">House cleaning</div>
                         <div className="mt-1 text-sm text-gray-700">Recurring maid service, deep and move-out cleans.</div>
-                        <div className="mt-2 text-xs font-semibold text-blue-700">Explore cleaning →</div>
+                        <div className="mt-2 text-xs font-semibold text-primary">Explore cleaning →</div>
                       </Link>
                     </>
                   ) : null}
@@ -240,7 +345,7 @@ export default function Home() {
                   <div key={key} className="rounded-lg bg-gray-50 p-4">
                     <div className="flex items-baseline justify-between gap-3">
                       <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-900">{title}</h3>
-                      <Link href={PROVIDER_GROUP_LINKS[key].best} className="text-xs font-semibold text-blue-700 hover:underline">
+                      <Link href={PROVIDER_GROUP_LINKS[key].best} className="text-xs font-semibold text-primary hover:underline">
                         Top Providers
                       </Link>
                     </div>
@@ -256,7 +361,7 @@ export default function Home() {
                                 <a
                                   href={outbound}
                                   {...externalBusinessLinkProps}
-                                  className="text-gray-900 hover:text-blue-700 hover:underline"
+                                  className="text-gray-900 hover:text-primary-hover hover:underline"
                                 >
                                   {business.name}
                                 </a>
@@ -274,7 +379,7 @@ export default function Home() {
                                   <a
                                     href={website}
                                     {...externalBusinessLinkProps}
-                                    className="text-blue-600 hover:text-blue-700"
+                                    className="text-primary hover:text-primary-hover"
                                   >
                                     {BUSINESS_LINK_VISIT_WEBSITE}
                                   </a>
@@ -283,7 +388,7 @@ export default function Home() {
                                   <a
                                     href={maps}
                                     {...externalBusinessLinkProps}
-                                    className="text-blue-600 hover:text-blue-700"
+                                    className="text-primary hover:text-primary-hover"
                                   >
                                     {BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS}
                                   </a>
@@ -423,6 +528,10 @@ export default function Home() {
             emailFormHref="/#email-capture"
             showDisclaimer
           />
+        </section>
+
+        <section className="pb-10 pt-2 md:pb-12 md:pt-4">
+          <FAQList faqs={HOME_PAGE_FAQS} />
         </section>
       </Container>
 

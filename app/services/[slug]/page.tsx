@@ -22,6 +22,7 @@ import {
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
+  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import { CORE_SERVICE_SLUGS, resolveServicePage } from "../../../lib/pageContentRegistry";
@@ -232,7 +233,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 {service.serviceType} • {location?.title ?? "Georgetown, TX"}
               </div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{service.h1}</h1>
-              <p className="mt-2 text-sm text-gray-600">Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+              <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               {isPlumberService ? (
                 <p className="mt-4 text-lg leading-relaxed text-gray-700">
                   Plumbing issues in Georgetown, TX rarely happen at a convenient time. From slab leaks and aging water
@@ -375,7 +376,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                       <p className="mt-3 text-sm leading-relaxed text-gray-700">
                         For deeper research, many Georgetown, TX homeowners start with:
                       </p>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-blue-700">
+                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-primary">
                         <li>
                           <Link href="/best/best-plumbers-georgetown-tx" className="font-semibold hover:underline">
                             Best Plumbers in Georgetown TX
@@ -548,7 +549,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                       <p className="mt-3 text-sm leading-relaxed text-gray-700">
                         For more background before you schedule service, you can also read:
                       </p>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-blue-700">
+                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-primary">
                         <li>
                           <Link
                             href="/best/top-hvac-companies-georgetown-tx"
@@ -652,7 +653,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         If you are budgeting, see{" "}
                         <Link
                           href="/blog/roof-repair-cost-georgetown-tx"
-                          className="font-semibold text-blue-700 hover:underline"
+                          className="font-semibold text-primary hover:underline"
                         >
                           roof repair cost in Georgetown
                         </Link>{" "}
@@ -686,7 +687,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         For a cost-focused breakdown, read{" "}
                         <Link
                           href="/blog/roof-replacement-cost-georgetown-tx"
-                          className="font-semibold text-blue-700 hover:underline"
+                          className="font-semibold text-primary hover:underline"
                         >
                           roof replacement cost in Georgetown, TX
                         </Link>
@@ -746,7 +747,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                       <p className="mt-3 text-sm leading-relaxed text-gray-700">
                         If you are gathering information before you talk with a roofer, you may also want to review:
                       </p>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-blue-700">
+                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-primary">
                         <li>
                           <Link href="/best/best-roofers-georgetown-tx" className="font-semibold hover:underline">
                             Best Roofers in Georgetown TX
@@ -926,16 +927,20 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             }
             aside={
               <>
-              <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-                <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">Primary next step</div>
-                <div className="mt-2 text-lg font-semibold text-gray-900">Browse the provider directory</div>
-                <p className="mt-2 text-sm leading-relaxed text-gray-700">
-                  When you’re ready, compare companies in Georgetown and contact providers directly.
-                </p>
-                <div className="mt-4">
-                  <ButtonLink href={bestHref} variant="primary">
-                    {bestCtaLabel}
-                  </ButtonLink>
+              <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+                <div className="bg-primary px-6 py-3.5 text-xs font-semibold uppercase tracking-wide text-white">
+                  Directory navigation
+                </div>
+                <div className="px-6 pb-6 pt-4">
+                  <div className="text-lg font-semibold text-gray-900">Browse the provider directory</div>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-700">
+                    When you’re ready, compare companies in Georgetown and contact providers directly.
+                  </p>
+                  <div className="mt-4">
+                    <ButtonLink href={bestHref} variant="primary">
+                      {bestCtaLabel}
+                    </ButtonLink>
+                  </div>
                 </div>
               </div>
 

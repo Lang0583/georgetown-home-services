@@ -26,7 +26,7 @@ export function RichTextBlocks({ blocks }: { blocks: ContentBlock[] }) {
                       key={pidx}
                       href={part.href}
                       rel={part.rel ?? "nofollow sponsored"}
-                      className="font-medium text-blue-700 underline underline-offset-2 hover:text-blue-800"
+                      className="font-medium text-primary underline underline-offset-2 hover:text-primary-hover"
                     >
                       {part.label}
                     </a>

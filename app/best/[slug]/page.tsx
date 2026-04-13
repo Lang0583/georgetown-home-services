@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import Script from "next/script";
+import BestAlsoCompareBar from "../../../components/BestAlsoCompareBar";
 import { notFound } from "next/navigation";
 import LinkCard from "../../../components/LinkCard";
 import GeneratedArticleBody from "../../../components/GeneratedArticleBody";
@@ -22,6 +22,7 @@ import {
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
+  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import { CORE_BEST_SLUGS, resolveBestPage } from "../../../lib/pageContentRegistry";
@@ -33,6 +34,7 @@ import {
   getDefaultBestDirectoryListing,
   getRelatedServiceSlugForBestSlug,
 } from "../../../lib/businesses";
+import { getAlsoCompareLinksForBestSlug } from "../../../lib/best-also-compare-links";
 import { buildBestDirectoryItemListJsonLd } from "../../../lib/best-directory-item-list-schema";
 import { bestPageInternalLinks } from "../../../lib/internal-links";
 import {
@@ -42,19 +44,42 @@ import {
   showExtendedHomeServices,
 } from "../../../lib/public-site-scope";
 import BestBusinessesDirectory from "../../../components/BestBusinessesDirectory";
+import BestProvidersMethodologyCallout from "../../../components/BestProvidersMethodologyCallout";
 
-const HERO_PLACEHOLDER_SRC =
-  "https://placehold.co/1200x400/01696F/FFFFFF?text=Georgetown+Home+Services";
-
-const CORE_BEST_HERO_ALT: Record<string, string> = {
-  "best-plumbers-georgetown-tx": "Licensed plumber working on pipes in Georgetown TX home",
-  "top-hvac-companies-georgetown-tx": "HVAC technician servicing air conditioning unit in Georgetown TX",
-  "best-roofers-georgetown-tx": "Roofer installing shingles on Georgetown TX residential home",
-  "best-electricians-georgetown-tx": "Electrician inspecting electrical panel in Georgetown TX home",
-  "best-landscaping-companies-georgetown-tx": "Landscaper maintaining lawn and flower beds in Georgetown TX",
-  "best-pest-control-georgetown-tx": "Pest control technician treating home exterior in Georgetown TX",
-  "best-foundation-repair-georgetown-tx": "Foundation repair specialist evaluating a Georgetown TX home",
-  "best-house-cleaning-services-georgetown-tx": "House cleaning team working in a Georgetown TX residence",
+/** Hero images for core `/best/[slug]` pages (Unsplash — permitted use per Unsplash License). */
+const CORE_BEST_HERO: Record<string, { src: string; alt: string }> = {
+  "best-plumbers-georgetown-tx": {
+    src: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=1200&q=80",
+    alt: "Licensed plumber working on pipes in Georgetown TX home",
+  },
+  "top-hvac-companies-georgetown-tx": {
+    src: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1200&q=80",
+    alt: "HVAC technician servicing air conditioning unit in Georgetown TX",
+  },
+  "best-roofers-georgetown-tx": {
+    src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
+    alt: "Roofer installing shingles on Georgetown TX residential home",
+  },
+  "best-electricians-georgetown-tx": {
+    src: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200&q=80",
+    alt: "Electrician inspecting electrical panel in Georgetown TX home",
+  },
+  "best-landscaping-companies-georgetown-tx": {
+    src: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&q=80",
+    alt: "Landscaper maintaining lawn and flower beds in Georgetown TX",
+  },
+  "best-pest-control-georgetown-tx": {
+    src: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&q=80",
+    alt: "Pest control technician treating home exterior in Georgetown TX",
+  },
+  "best-foundation-repair-georgetown-tx": {
+    src: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80",
+    alt: "Foundation repair specialist evaluating a Georgetown TX home",
+  },
+  "best-house-cleaning-services-georgetown-tx": {
+    src: "https://images.unsplash.com/photo-1581578731548-c64695db6952?w=1200&q=80",
+    alt: "House cleaning team working in a Georgetown TX residence",
+  },
 };
 
 function breadcrumbJsonLd({
@@ -258,6 +283,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
     (b) => showExtendedHomeServices() || !isExtendedBestSlug(b.slug),
   );
   const ruleLinks = bestPageInternalLinks(best.slug);
+  const hero = CORE_BEST_HERO[best.slug];
 
   const faqsForSchema =
     isPlumbersGeorgetown
@@ -331,7 +357,10 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
     ],
   };
 
+  const alsoCompareLinks = getAlsoCompareLinksForBestSlug(best.slug);
+
   return (
+    <>
     <PageShell>
       <section className="py-10 md:py-12">
           <JsonLd data={breadcrumbJsonLd({ siteUrl, bestTitle: best.title, bestSlug: best.slug })} />
@@ -353,15 +382,11 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
             />
           ) : null}
           {businessesForPage?.length ? (
-            <Script
-              id={`best-itemlist-${best.slug}`}
-              type="application/ld+json"
-              strategy="afterInteractive"
-              dangerouslySetInnerHTML={{
-                __html: JSON.stringify(
-                  buildBestDirectoryItemListJsonLd(best.title, getDefaultBestDirectoryListing(businessesForPage)),
-                ),
-              }}
+            <JsonLd
+              data={buildBestDirectoryItemListJsonLd(
+                best.title,
+                getDefaultBestDirectoryListing(businessesForPage),
+              )}
             />
           ) : null}
           <TwoColumnPage
@@ -374,14 +399,14 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                   { href: `/best/${best.slug}`, label: best.title },
                 ]}
               />
-              <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Best Of</div>
+              <div className="text-sm font-semibold uppercase tracking-wide text-primary">Best Of</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{best.h1}</h1>
-              <p className="mt-2 text-sm text-gray-600">Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
-              {CORE_BEST_HERO_ALT[best.slug] ? (
+              <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+              {hero ? (
                 <div className="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
                   <Image
-                    src={HERO_PLACEHOLDER_SRC}
-                    alt={CORE_BEST_HERO_ALT[best.slug]!}
+                    src={hero.src}
+                    alt={hero.alt}
                     width={1200}
                     height={400}
                     loading="lazy"
@@ -438,7 +463,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                   </p>
                   <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
                     If you want the fundamentals before you compare companies, start with{" "}
-                    <Link href="/services/roofer-georgetown-tx" className="font-semibold text-blue-700">
+                    <Link href="/services/roofer-georgetown-tx" className="font-semibold text-primary">
                       our roofing guide for Georgetown, TX
                     </Link>
                     . This page focuses on helping you compare real roofing companies serving Georgetown—especially for
@@ -474,7 +499,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         steady day-in, day-out plumbing work—not just one or two categories. From there, it is up to
                         you to confirm licensing, insurance, current pricing, and fit for your specific job. If you
                         prefer to start with the basics, read{" "}
-                        <Link href="/services/plumber-georgetown-tx" className="font-semibold text-blue-700">
+                        <Link href="/services/plumber-georgetown-tx" className="font-semibold text-primary">
                           our plumbing guide for Georgetown, TX
                         </Link>
                         .
@@ -653,26 +678,26 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                           For deeper cost context on specific problems, you can also read focused articles such as our{" "}
                           <Link
                             href="/blog/emergency-plumber-cost-georgetown-tx"
-                            className="font-semibold text-blue-700"
+                            className="font-semibold text-primary"
                           >
                             emergency plumber cost guide for Georgetown
                           </Link>
                           . For a step-by-step hiring checklist, see{" "}
                           <Link
                             href="/blog/how-to-choose-a-reliable-plumber-georgetown-tx"
-                            className="font-semibold text-blue-700"
+                            className="font-semibold text-primary"
                           >
                             how to choose a reliable plumber in Georgetown TX
                           </Link>
                           . If you are planning broader system work, you may also find it helpful to compare{" "}
                           <Link
                             href="/best/top-hvac-companies-georgetown-tx"
-                            className="font-semibold text-blue-700"
+                            className="font-semibold text-primary"
                           >
                             top HVAC companies in Georgetown
                           </Link>{" "}
                           and{" "}
-                          <Link href="/best/best-roofers-georgetown-tx" className="font-semibold text-blue-700">
+                          <Link href="/best/best-roofers-georgetown-tx" className="font-semibold text-primary">
                             leading roofers in Georgetown
                           </Link>
                           .
@@ -811,7 +836,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                             company is willing to answer your questions before and after the job. When in doubt, use the{" "}
                             <Link
                               href="/blog/how-to-find-a-good-plumber-georgetown-tx"
-                              className="font-semibold text-blue-700"
+                              className="font-semibold text-primary"
                             >
                               plumber checklist for Georgetown
                             </Link>{" "}
@@ -856,22 +881,22 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         using practical criteria: reachability, evidence of actual residential heating/cooling work,
                         transparent service offerings, and the ability to explain options without pressure. If you want
                         the fundamentals before you compare companies, start with{" "}
-                        <Link href="/services/hvac-georgetown-tx" className="font-semibold text-blue-700">
+                        <Link href="/services/hvac-georgetown-tx" className="font-semibold text-primary">
                           our HVAC guide for Georgetown, TX
                         </Link>
                         .
                       </p>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
                         If you’re troubleshooting a no-cool situation, read{" "}
-                        <Link href="/blog/why-your-ac-is-not-cooling-georgetown-tx" className="font-semibold text-blue-700">
+                        <Link href="/blog/why-your-ac-is-not-cooling-georgetown-tx" className="font-semibold text-primary">
                           why your AC is not cooling in Georgetown TX
                         </Link>
                         . For pricing expectations, see{" "}
-                        <Link href="/blog/ac-repair-cost-georgetown-tx" className="font-semibold text-blue-700">
+                        <Link href="/blog/ac-repair-cost-georgetown-tx" className="font-semibold text-primary">
                           AC repair cost in Georgetown TX
                         </Link>
                         . For early warning signs, review{" "}
-                        <Link href="/blog/signs-you-need-hvac-repair-georgetown-tx" className="font-semibold text-blue-700">
+                        <Link href="/blog/signs-you-need-hvac-repair-georgetown-tx" className="font-semibold text-primary">
                           signs you need HVAC repair
                         </Link>
                         .
@@ -1070,7 +1095,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       </p>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
                         If you are specifically researching replacement budgets, see{" "}
-                        <Link href="/blog/cost-to-replace-hvac-georgetown" className="font-semibold text-blue-700">
+                        <Link href="/blog/cost-to-replace-hvac-georgetown" className="font-semibold text-primary">
                           cost to replace HVAC in Georgetown, TX
                         </Link>{" "}
                         for a breakdown of the major pricing drivers.
@@ -1411,15 +1436,15 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       </div>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
                         For Georgetown-specific planning, you can also start with{" "}
-                        <Link href="/services/roofer-georgetown-tx" className="font-semibold text-blue-700">
+                        <Link href="/services/roofer-georgetown-tx" className="font-semibold text-primary">
                           roofing service in Georgetown, TX
                         </Link>{" "}
                         or read our guides on{" "}
-                        <Link href="/blog/roof-repair-cost-georgetown-tx" className="font-semibold text-blue-700">
+                        <Link href="/blog/roof-repair-cost-georgetown-tx" className="font-semibold text-primary">
                           roof repair cost in Georgetown
                         </Link>{" "}
                         and{" "}
-                        <Link href="/blog/signs-you-may-need-a-new-roof-georgetown-tx" className="font-semibold text-blue-700">
+                        <Link href="/blog/signs-you-may-need-a-new-roof-georgetown-tx" className="font-semibold text-primary">
                           signs you may need a new roof
                         </Link>
                         .
@@ -1525,7 +1550,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       </p>
                       {relatedServiceSlug ? (
                         <p className="mt-4 text-sm font-semibold">
-                          <Link href={`/services/${relatedServiceSlug}`} className="text-blue-700 hover:underline">
+                          <Link href={`/services/${relatedServiceSlug}`} className="text-primary hover:underline">
                             Open the related service guide →
                           </Link>
                         </p>
@@ -1543,7 +1568,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         </ul>
                         <p className="mt-3 text-sm text-gray-700">
                           Read more:{" "}
-                          <Link href="/methodology" className="font-semibold text-blue-700 hover:underline">
+                          <Link href="/methodology" className="font-semibold text-primary hover:underline">
                             How we review and rank providers
                           </Link>
                           .
@@ -1576,7 +1601,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       {best.featuredPartner ? <FeaturedPartnerCard partner={best.featuredPartner} /> : <FeaturedListingReservedSlot />}
                       <div className="mt-3 space-y-1 text-sm text-gray-700">
                         <p>
-                          <Link href="/" className="font-semibold text-blue-600 hover:text-blue-700">
+                          <Link href="/" className="font-semibold text-primary hover:text-primary-hover">
                             Home
                           </Link>
                           {relatedServiceSlug ? (
@@ -1585,7 +1610,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                               ·{" "}
                               <Link
                                 href={`/services/${relatedServiceSlug}`}
-                                className="font-semibold text-blue-600 hover:text-blue-700"
+                                className="font-semibold text-primary hover:text-primary-hover"
                               >
                                 {relatedService?.title ?? "Related service"}
                               </Link>
@@ -1595,7 +1620,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         {isPlumbersGeorgetown ? (
                           <p>
                             Looking for a step-by-step checklist? Read{" "}
-                            <Link href="/blog/how-to-find-a-good-plumber-georgetown-tx" className="font-semibold text-blue-600 hover:text-blue-700">
+                            <Link href="/blog/how-to-find-a-good-plumber-georgetown-tx" className="font-semibold text-primary hover:text-primary-hover">
                               how to find a good plumber in Georgetown
                             </Link>
                             .
@@ -1606,7 +1631,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                             If you are planning ahead on equipment, see{" "}
                             <Link
                               href="/blog/cost-to-replace-hvac-georgetown"
-                              className="font-semibold text-blue-600 hover:text-blue-700"
+                              className="font-semibold text-primary hover:text-primary-hover"
                             >
                               typical costs to replace HVAC in Georgetown
                             </Link>
@@ -1616,12 +1641,15 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         {isRoofersGeorgetown ? (
                           <p>
                             Prefer the fundamentals before you compare companies? Start with{" "}
-                            <Link href="/services/roofer-georgetown-tx" className="font-semibold text-blue-600 hover:text-blue-700">
+                            <Link href="/services/roofer-georgetown-tx" className="font-semibold text-primary hover:text-primary-hover">
                               our roofing guide for Georgetown, TX
                             </Link>
                             .
                           </p>
                         ) : null}
+                      </div>
+                      <div className="mt-4">
+                        <BestProvidersMethodologyCallout />
                       </div>
                       <div id="providers" className="scroll-mt-24">
                         <BestBusinessesDirectory
@@ -1653,6 +1681,9 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                   ) : (
                     <>
                       <p className="mt-3 text-sm text-gray-700">{providerData.evaluatedIntro}</p>
+                      <div className="mt-4">
+                        <BestProvidersMethodologyCallout />
+                      </div>
                       {providerData.providers.length ? (
                         <ProviderList providers={providerData.providers} />
                       ) : (
@@ -1801,9 +1832,11 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
               </div>
             }
             aside={
-              <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-                <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">Directory navigation</div>
-                <div className="mt-3 space-y-3 text-sm">
+              <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+                <div className="bg-primary px-6 py-3.5 text-xs font-semibold uppercase tracking-wide text-white">
+                  Directory navigation
+                </div>
+                <div className="space-y-3 px-6 pb-6 pt-4 text-sm">
                   <Link href="#providers" className="block font-semibold text-gray-900 hover:underline">
                     Jump to provider cards
                   </Link>
@@ -1815,15 +1848,17 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       {relatedService ? `Read: ${relatedService.title}` : "Read our service guide"}
                     </Link>
                   ) : null}
+                  <p className="pt-1 text-xs leading-relaxed text-slate-600">
+                    We don’t take service requests or route jobs. Use the outbound links on each card to contact providers directly.
+                  </p>
                 </div>
-                <p className="mt-4 text-xs leading-relaxed text-slate-600">
-                  We don’t take service requests or route jobs. Use the outbound links on each card to contact providers directly.
-                </p>
               </div>
             }
           />
       </section>
     </PageShell>
+    <BestAlsoCompareBar links={alsoCompareLinks} />
+    </>
   );
 }
 

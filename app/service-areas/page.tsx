@@ -31,7 +31,7 @@ export default function ServiceAreasPage() {
         <section className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
           <div className="text-sm font-semibold text-gray-900">Core area</div>
           <div className="mt-3">
-            <Link href={`/locations/${core.slug}`} className="text-lg font-semibold text-blue-700 hover:underline">
+            <Link href={`/locations/${core.slug}`} className="text-lg font-semibold text-primary hover:underline">
               {core.title}
             </Link>
             <p className="mt-2 text-sm text-gray-700">{core.description}</p>
@@ -45,7 +45,7 @@ export default function ServiceAreasPage() {
           <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {neighborhoods.map((n) => (
               <div key={n.slug} className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-                <Link href={`/locations/${n.slug}`} className="font-semibold text-gray-900 hover:text-blue-700 hover:underline">
+                <Link href={`/locations/${n.slug}`} className="font-semibold text-gray-900 hover:text-primary-hover hover:underline">
                   {n.title}
                 </Link>
                 <p className="mt-2 text-sm text-gray-700">{n.description}</p>

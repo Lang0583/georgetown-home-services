@@ -49,9 +49,9 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
         licensing and availability before hiring.
       </p>
 
-      <div className="mt-6 rounded-xl border border-blue-200 bg-blue-50/40 p-4 shadow-sm md:p-5">
-        <div className="text-sm font-semibold uppercase tracking-wide text-blue-900">Featured Providers</div>
-        <ul className="mt-3 divide-y divide-blue-200/60 rounded-xl border border-blue-200 bg-white shadow-sm">
+      <div className="mt-6 rounded-xl border border-primary/25 bg-primary-light/60 p-4 shadow-sm md:p-5">
+        <div className="text-sm font-semibold uppercase tracking-wide text-primary">Featured Providers</div>
+        <ul className="mt-3 divide-y divide-primary/25 rounded-xl border border-primary/25 bg-white shadow-sm">
           {featured.map((b, i) => {
             const website = getBusinessWebsiteUrl(b);
             const maps = getBusinessMapsUrl(b);
@@ -64,7 +64,7 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
                       <a
                         href={href}
                         {...externalBusinessLinkProps}
-                        className="text-base font-semibold text-gray-900 hover:text-blue-700 hover:underline"
+                        className="text-base font-semibold text-gray-900 hover:text-primary-hover hover:underline"
                       >
                         {b.name}
                       </a>
@@ -122,7 +122,7 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
                       <a
                         href={href}
                         {...externalBusinessLinkProps}
-                        className="text-base font-semibold text-gray-900 hover:text-blue-700 hover:underline"
+                        className="text-base font-semibold text-gray-900 hover:text-primary-hover hover:underline"
                       >
                         {b.name}
                       </a>

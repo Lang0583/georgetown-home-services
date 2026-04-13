@@ -3,16 +3,23 @@ import { showExtendedHomeServices } from "../lib/public-site-scope";
 import { getBrandName } from "../lib/site-content";
 
 const navLinkClass =
-  "text-sm font-medium text-gray-700 transition-colors hover:text-gray-900 whitespace-nowrap";
+  "text-sm font-semibold text-gray-700 underline-offset-4 transition-colors hover:text-[#01696F] hover:underline hover:decoration-[#01696F] whitespace-nowrap";
 
 export default function StickyHeader() {
   const brand = getBrandName();
 
   return (
-    <header className="sticky top-0 z-50 h-20 border-b border-gray-200 bg-white shadow-sm">
+    <header className="sticky top-0 z-50 h-20 border-b-[3px] border-[#01696F] bg-white shadow-sm">
       <div className="mx-auto flex h-full max-w-5xl items-center justify-between gap-6 px-4">
-        <Link href="/" className="shrink-0 text-lg font-semibold text-gray-900">
-          {brand}
+        <Link href="/" className="shrink-0 text-lg font-bold text-gray-900">
+          {brand.startsWith("Georgetown") ? (
+            <>
+              <span className="text-[#01696F]">Georgetown</span>
+              <span className="text-gray-900">{brand.slice("Georgetown".length)}</span>
+            </>
+          ) : (
+            brand
+          )}
         </Link>
 
         <nav className="flex max-w-full items-center gap-6 overflow-x-auto" aria-label="Main navigation">

@@ -5,10 +5,10 @@ const styles = {
   primary:
     [
       "inline-flex items-center justify-center rounded-lg",
-      "bg-blue-600 px-6 py-3 font-semibold text-white",
+      "bg-primary px-6 py-3 font-semibold text-white",
       "shadow-sm transition-colors",
-      "hover:bg-blue-700",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2",
+      "hover:bg-primary-hover",
+      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2",
       "disabled:cursor-not-allowed disabled:opacity-60",
     ].join(" "),
   secondary:
@@ -17,7 +17,7 @@ const styles = {
       "border border-gray-300 bg-white px-6 py-3 font-semibold text-gray-900",
       "shadow-sm transition-colors",
       "hover:border-gray-400 hover:bg-gray-50",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2",
+      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2",
       "disabled:cursor-not-allowed disabled:opacity-60",
     ].join(" "),
 } as const;

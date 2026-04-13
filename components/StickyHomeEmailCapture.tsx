@@ -91,12 +91,12 @@ export default function StickyHomeEmailCapture() {
                   onChange={(e) => setEmail(e.target.value)}
                   autoComplete="email"
                   inputMode="email"
-                  className="min-h-11 w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none placeholder:text-gray-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+                  className="min-h-11 w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none placeholder:text-gray-400 focus:border-primary focus:ring-2 focus:ring-primary-light"
                 />
                 <button
                   type="submit"
                   disabled={!canSubmit}
-                  className="min-h-11 shrink-0 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="min-h-11 shrink-0 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {status === "submitting" ? "…" : "Subscribe"}
                 </button>

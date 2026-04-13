@@ -18,7 +18,7 @@ export default function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
               {isLast ? (
                 <span className="font-medium text-gray-900">{it.label}</span>
               ) : (
-                <Link href={it.href} className="hover:underline">
+                <Link href={it.href} className="font-medium text-primary hover:text-primary-hover hover:underline">
                   {it.label}
                 </Link>
               )}

@@ -11,7 +11,7 @@ export default function NotFound() {
         </div>
         <SiteCTAButtons primaryHref="/best/best-plumbers-georgetown-tx" emailFormHref="/#email-capture" />
         <p className="text-sm text-gray-600">
-          <Link href="/" className="font-semibold text-blue-700 underline underline-offset-4 hover:text-blue-800">
+          <Link href="/" className="font-semibold text-primary underline underline-offset-4 hover:text-primary-hover">
             Back to homepage
           </Link>
         </p>

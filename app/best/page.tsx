@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import BestAlsoCompareBar from "../../components/BestAlsoCompareBar";
+import BestProvidersMethodologyCallout from "../../components/BestProvidersMethodologyCallout";
 import Container from "../../components/Container";
 import LinkCard from "../../components/LinkCard";
 import CTASection from "../../components/CTASection";
@@ -7,8 +9,10 @@ import JsonLd from "../../components/JsonLd";
 import { pageSeoMetadata } from "../../lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
+  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
   webPageWithDateModifiedJsonLd,
 } from "../../lib/service-best-pages-meta";
+import { getAlsoCompareLinksForBestIndex } from "../../lib/best-also-compare-links";
 import { CORE_BEST_SLUGS, CORE_SERVICE_SLUGS } from "../../lib/pageContentRegistry";
 import { isExtendedBestSlug, isExtendedServiceSlug, showExtendedHomeServices } from "../../lib/public-site-scope";
 import { getBest, getBlog, getServices } from "../../lib/site-content";
@@ -95,7 +99,7 @@ export default function BestIndexPage() {
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
                 Best Home Service Providers in Georgetown, TX
               </h1>
-              <p className="mt-2 text-sm text-gray-600">Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+              <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">
                 Use these comparison guides to shortlist providers you can contact directly. Each guide includes practical
                 criteria (scope clarity, documentation, responsiveness) so you can compare quotes and avoid common mistakes.
@@ -107,6 +111,9 @@ export default function BestIndexPage() {
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
                 Pick the trade you need, then open the guide to compare real local companies.
               </p>
+              <div className="mt-4 max-w-2xl">
+                <BestProvidersMethodologyCallout />
+              </div>
               <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {core.map((b) => (
                   <LinkCard key={b.slug} href={`/best/${b.slug}`} title={b.title} description={b.description} badge="Best Of" />
@@ -126,7 +133,7 @@ export default function BestIndexPage() {
                   <p className="mt-2 text-sm text-gray-700">
                     Start with symptom pages, then return here to compare providers for the right trade.
                   </p>
-                  <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-sm font-semibold text-blue-700">
+                  <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-sm font-semibold text-primary">
                     <Link href="/services/ac-not-cooling-georgetown-tx" className="hover:underline">
                       AC not cooling
                     </Link>
@@ -149,7 +156,7 @@ export default function BestIndexPage() {
                   <p className="mt-2 text-sm text-gray-700">
                     Use cost and replacement guides to set expectations before collecting estimates.
                   </p>
-                  <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-sm font-semibold text-blue-700">
+                  <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-sm font-semibold text-primary">
                     <Link href="/blog/cost-to-replace-hvac-georgetown" className="hover:underline">
                       HVAC replacement cost
                     </Link>
@@ -256,6 +263,7 @@ export default function BestIndexPage() {
           </div>
         </section>
       </Container>
+      <BestAlsoCompareBar links={getAlsoCompareLinksForBestIndex()} />
     </div>
   );
 }

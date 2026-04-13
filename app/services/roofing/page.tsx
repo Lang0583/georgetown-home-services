@@ -6,6 +6,7 @@ import JsonLd from "../../../components/JsonLd";
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
+  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import { getBlog, getServices } from "../../../lib/site-content";
@@ -68,13 +69,13 @@ export default function RoofingHubPage() {
             <div>
               <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Services</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">Roofing in Georgetown, TX</h1>
-              <p className="mt-2 text-sm text-gray-600">Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+              <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
                 Use these pages to understand roof leaks, storm damage, when to stabilize vs repair, and what changes replacement costs in Georgetown.
                 When you’re ready, compare roofers in the directory and contact providers directly.
               </p>
               <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
-                <Link href="/best/best-roofers-georgetown-tx" className="text-blue-700 hover:underline">
+                <Link href="/best/best-roofers-georgetown-tx" className="text-primary hover:underline">
                   Browse Roof Repair Options
                 </Link>
                 <span className="text-gray-300" aria-hidden>

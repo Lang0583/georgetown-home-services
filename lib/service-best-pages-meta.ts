@@ -6,8 +6,11 @@ import { SITE_URL } from "./page-seo";
  */
 export const SERVICE_BEST_LAST_UPDATED_DISPLAY = "April 2026";
 
-/** ISO 8601 date for schema.org `dateModified` (month precision → first of month). */
-export const SERVICE_BEST_LAST_UPDATED_ISO = "2026-04-01";
+/** ISO 8601 date for schema.org `WebPage` `dateModified` on `/services/*` and `/best/*`. */
+export const SERVICE_BEST_LAST_UPDATED_ISO = "2026-04-13";
+
+/** className for the visible “Last updated” line directly under the main H1. */
+export const SERVICE_BEST_LAST_UPDATED_LINE_CLASS = "mt-2 text-sm text-gray-500";
 
 export function webPageWithDateModifiedJsonLd(opts: {
   pathname: string;

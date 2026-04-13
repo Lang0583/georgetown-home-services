@@ -6,6 +6,7 @@ import "./globals.css";
 import StickyHeader from "../components/StickyHeader";
 import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
+import { absolutePageUrl } from "../lib/page-seo";
 import { getBrandName } from "../lib/site-content";
 
 const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
@@ -26,7 +27,7 @@ const geistMono = Geist_Mono({
 export async function generateMetadata(): Promise<Metadata> {
   const h = await headers();
   const pathname = h.get("x-pathname") || "/";
-  const canonical = `https://www.georgetownhomeservices.com${pathname}`;
+  const canonical = absolutePageUrl(pathname);
 
   return {
     metadataBase: new URL(siteUrl),
@@ -55,7 +56,17 @@ export default function RootLayout({
     name: brand,
     url: siteUrl,
     description:
-      "A local directory and homeowner guide for comparing plumbers, HVAC companies, and roofers in Georgetown, Texas.",
+      "A local directory and homeowner guide for trusted home service companies in Georgetown, Texas, covering plumbing, HVAC, roofing, electrical, landscaping, pest control, foundation repair, and house cleaning.",
+    knowsAbout: [
+      "Plumbing",
+      "HVAC",
+      "Roofing",
+      "Electrical",
+      "Landscaping",
+      "Pest control",
+      "Foundation repair",
+      "House cleaning",
+    ],
   };
 
   const websiteJsonLd = {

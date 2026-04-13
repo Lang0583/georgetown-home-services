@@ -13,6 +13,7 @@ import {
   isExtendedServiceSlug,
   showExtendedHomeServices,
 } from "../../../lib/public-site-scope";
+import { absolutePageUrl } from "../../../lib/page-seo";
 import {
   getBestBySlug,
   getLocationBySlug,
@@ -55,7 +56,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const title = `${location.title}: Service Guides and Local Provider Lists`;
   const description =
     `${location.description} Browse service guides and best-of comparisons for this area, then contact providers directly for availability and estimates.`;
-  return { title, description };
+  const pagePath = `/locations/${slug}`;
+  const pageUrl = absolutePageUrl(pagePath);
+  return {
+    title,
+    description,
+    alternates: { canonical: pageUrl },
+    openGraph: { url: pageUrl },
+  };
 }
 
 export default async function LocationPage({ params }: { params: Promise<{ slug: string }> }) {

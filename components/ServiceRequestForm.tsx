@@ -100,7 +100,7 @@ export default function ServiceRequestForm({ serviceSlug }: Props) {
             value={name}
             onChange={(e) => setName(e.target.value)}
             autoComplete="name"
-            className="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+            className="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light"
           />
         </div>
 
@@ -117,7 +117,7 @@ export default function ServiceRequestForm({ serviceSlug }: Props) {
             onChange={(e) => setEmail(e.target.value)}
             autoComplete="email"
             inputMode="email"
-            className="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+            className="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light"
           />
         </div>
 
@@ -132,7 +132,7 @@ export default function ServiceRequestForm({ serviceSlug }: Props) {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             autoComplete="tel"
-            className="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+            className="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light"
           />
         </div>
 
@@ -148,7 +148,7 @@ export default function ServiceRequestForm({ serviceSlug }: Props) {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="What’s going on at your home? (issue, timeline, location in Georgetown area)"
-            className="mt-1 w-full resize-y rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+            className="mt-1 w-full resize-y rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light"
           />
         </div>
 
@@ -159,7 +159,7 @@ export default function ServiceRequestForm({ serviceSlug }: Props) {
               name="seasonalTipsOptIn"
               checked={seasonalTipsOptIn}
               onChange={(e) => setSeasonalTipsOptIn(e.target.checked)}
-              className="mt-0.5 h-4 w-4 shrink-0 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+              className="mt-0.5 h-4 w-4 shrink-0 rounded border-gray-300 text-primary focus:ring-primary/50"
             />
             <span>
               ✓ Send me seasonal maintenance tips for Georgetown homeowners (monthly email, unsubscribe anytime).
@@ -174,7 +174,7 @@ export default function ServiceRequestForm({ serviceSlug }: Props) {
         <button
           type="submit"
           disabled={!canSubmit}
-          className="w-full rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+          className="w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === "submitting" ? "Sending…" : "Send request"}
         </button>

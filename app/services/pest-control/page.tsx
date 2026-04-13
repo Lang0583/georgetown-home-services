@@ -7,6 +7,7 @@ import JsonLd from "../../../components/JsonLd";
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
+  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import { showExtendedHomeServices } from "../../../lib/public-site-scope";
@@ -74,13 +75,13 @@ export default function PestControlHubPage() {
             <div>
               <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Services</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">Pest Control in Georgetown, TX</h1>
-              <p className="mt-2 text-sm text-gray-600">Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+              <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
                 Compare inspection quality, treatment scope, and re-service policies before you commit to a plan. These pages help you ask better
                 questions for ants, roaches, rodents, and seasonal pests common around Georgetown.
               </p>
               <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
-                <Link href="/best/best-pest-control-georgetown-tx" className="text-blue-700 hover:underline">
+                <Link href="/best/best-pest-control-georgetown-tx" className="text-primary hover:underline">
                   Best Pest Control in Georgetown, TX
                 </Link>
                 <span className="text-gray-300" aria-hidden>

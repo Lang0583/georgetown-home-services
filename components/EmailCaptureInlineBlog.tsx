@@ -72,7 +72,7 @@ export default function EmailCaptureInlineBlog({
 
       <form onSubmit={onSubmit} className="mt-5 grid gap-3 sm:grid-cols-2">
         <input
-          className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-blue-300 focus:ring-2 focus:ring-blue-100"
+          className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
           type="text"
           name="firstName"
           placeholder="First name (optional)"
@@ -81,7 +81,7 @@ export default function EmailCaptureInlineBlog({
           autoComplete="given-name"
         />
         <input
-          className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-blue-300 focus:ring-2 focus:ring-blue-100"
+          className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
           type="email"
           name="email"
           placeholder="Email"
@@ -104,7 +104,7 @@ export default function EmailCaptureInlineBlog({
         <button
           type="submit"
           disabled={!canSubmit}
-          className="rounded-lg bg-blue-600 px-5 py-3 font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60 sm:col-span-2"
+          className="rounded-lg bg-primary px-5 py-3 font-semibold text-white hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60 sm:col-span-2"
         >
           {status === "submitting" ? "Signing up..." : "Email me the guide"}
         </button>

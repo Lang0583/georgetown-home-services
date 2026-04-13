@@ -7,6 +7,7 @@ import JsonLd from "../../../components/JsonLd";
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
+  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import { showExtendedHomeServices } from "../../../lib/public-site-scope";
@@ -74,13 +75,13 @@ export default function HouseCleaningHubPage() {
             <div>
               <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Services</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">House Cleaning in Georgetown, TX</h1>
-              <p className="mt-2 text-sm text-gray-600">Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+              <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
                 Clear checklists prevent surprises: which rooms, how often, who supplies products, and what happens for skips or cancellations. These
                 pages help you scope work, then compare reputable cleaners serving Georgetown.
               </p>
               <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
-                <Link href="/best/best-house-cleaning-services-georgetown-tx" className="text-blue-700 hover:underline">
+                <Link href="/best/best-house-cleaning-services-georgetown-tx" className="text-primary hover:underline">
                   Best House Cleaning Services in Georgetown, TX
                 </Link>
                 <span className="text-gray-300" aria-hidden>

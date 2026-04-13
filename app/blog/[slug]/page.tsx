@@ -40,6 +40,8 @@ function breadcrumbJsonLd({
   };
 }
 
+const EDITORIAL_AUTHOR_NAME = "Georgetown Home Services Editorial Team";
+
 function articleJsonLd({
   siteUrl,
   headline,
@@ -63,7 +65,11 @@ function articleJsonLd({
     headline,
     description,
     mainEntityOfPage: url,
-    author: { "@type": "Organization", name: publisherName, url: siteUrl },
+    author: {
+      "@type": "Person",
+      name: EDITORIAL_AUTHOR_NAME,
+      url: `${siteUrl}/about`,
+    },
     publisher: { "@type": "Organization", name: publisherName, url: siteUrl },
     datePublished,
     dateModified,
@@ -106,7 +112,7 @@ function NativeInlineCta({
       <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
         <Link
           href={primaryHref}
-          className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700"
+          className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-hover"
         >
           {primaryLabel}
         </Link>
@@ -330,10 +336,16 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
                   { href: `/blog/${post.slug}`, label: post.title },
                 ]}
               />
-              <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">
+              <div className="text-sm font-semibold uppercase tracking-wide text-primary">
                 Blog • {location?.title ?? "Georgetown, TX"}
               </div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{post.h1}</h1>
+              <p className="mt-2 text-sm text-gray-600">
+                By{" "}
+                <Link href="/about" className="font-medium text-gray-900 underline-offset-4 hover:underline">
+                  {EDITORIAL_AUTHOR_NAME}
+                </Link>
+              </p>
               <div className="mt-2 text-sm text-gray-600">
                 <div>
                   <span className="font-semibold text-gray-900">Published:</span> {publishedLabel}
@@ -430,10 +442,10 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
             aside={
               <>
               <EmailCaptureSitewide
-                compact
+                variant="blog-sidebar"
                 source={`blog-sidebar:${post.slug}`}
-                offers={isCostPost ? ["local_cost_guide", "monthly_reminder"] : ["seasonal_checklist", "monthly_reminder"]}
-                defaultOffer={isCostPost ? "local_cost_guide" : "seasonal_checklist"}
+                offers={["seasonal_checklist", "monthly_reminder"]}
+                defaultOffer="seasonal_checklist"
               />
 
               <div className="mt-8">

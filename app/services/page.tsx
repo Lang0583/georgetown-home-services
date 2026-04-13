@@ -7,6 +7,7 @@ import JsonLd from "../../components/JsonLd";
 import { pageSeoMetadata } from "../../lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
+  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
   webPageWithDateModifiedJsonLd,
 } from "../../lib/service-best-pages-meta";
 import { CORE_SERVICE_SLUGS } from "../../lib/pageContentRegistry";
@@ -138,7 +139,7 @@ export default function ServicesIndexPage() {
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
                 Home Services in Georgetown, TX
               </h1>
-              <p className="mt-2 text-sm text-gray-600">Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+              <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
                 Start with a core service category, then narrow down to problem-based pages (like “AC not cooling” or “roof leak repair”) or
                 neighborhood-specific guides. Each page links to related comparisons and articles so you can go from research to a confident next step.
@@ -152,7 +153,14 @@ export default function ServicesIndexPage() {
               </p>
               <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {core.map((s) => (
-                  <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
+                  <LinkCard
+                    key={s.slug}
+                    href={`/services/${s.slug}`}
+                    title={s.title}
+                    description={s.description}
+                    badge={s.serviceType}
+                    categoryTopHover
+                  />
                 ))}
               </div>
               <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">

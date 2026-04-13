@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { BusinessListingDescription } from "./BusinessListingDescription";
+import { RatingStarsWithCaption } from "./BusinessRatingStars";
 import Link from "next/link";
 import {
   BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS,
@@ -21,9 +22,10 @@ import {
 
 type SortKey = "recommended" | "reviews" | "rating";
 
-function formatRating(rating: number) {
-  return rating.toFixed(1);
-}
+const websiteCtaClass =
+  "inline-flex items-center justify-center rounded-lg bg-[#01696F] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#0C4E54]";
+const mapsCtaClass =
+  "inline-flex items-center justify-center rounded-lg border border-[#01696F] bg-white px-4 py-2 text-sm font-semibold text-[#01696F] transition-colors hover:bg-[#01696F]/5";
 
 function trim(s: string | undefined) {
   return (s ?? "").trim();
@@ -48,7 +50,7 @@ function badgeTone(b: ProviderBadge["key"]) {
   if (b === "map_only_profile") return "border-gray-300 bg-gray-50 text-gray-700";
   if (b === "emergency_availability") return "border-rose-200 bg-rose-50 text-rose-900";
   if (b === "high_review_volume") return "border-emerald-200 bg-emerald-50 text-emerald-900";
-  if (b === "georgetown_office") return "border-blue-200 bg-blue-50 text-blue-900";
+  if (b === "georgetown_office") return "border-primary/25 bg-primary-light text-primary";
   return "border-amber-200 bg-amber-50 text-amber-900";
 }
 
@@ -86,19 +88,19 @@ function ProviderMeta({
   return (
     <div className="mt-3 flex flex-wrap gap-2">
       {website ? (
-        <a href={website} {...externalBusinessLinkProps} className="inline-flex items-center rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-semibold text-gray-900 hover:bg-gray-50">
+        <a href={website} {...externalBusinessLinkProps} className={websiteCtaClass}>
           {BUSINESS_LINK_VISIT_WEBSITE}
         </a>
       ) : null}
       {maps ? (
-        <a href={maps} {...externalBusinessLinkProps} className="inline-flex items-center rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-semibold text-gray-900 hover:bg-gray-50">
+        <a href={maps} {...externalBusinessLinkProps} className={mapsCtaClass}>
           {BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS}
         </a>
       ) : null}
       {guideHref ? (
         <Link
           href={guideHref}
-          className="inline-flex items-center rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-semibold text-gray-900 hover:bg-gray-50"
+          className="inline-flex items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-800 transition-colors hover:bg-gray-50"
         >
           {guideLabel}
         </Link>
@@ -124,35 +126,39 @@ function ProviderCard({
   b,
   guideHref,
   guideLabel,
+  showTopPick = false,
 }: {
   b: Business;
   guideHref?: string | null;
   guideLabel?: string;
+  showTopPick?: boolean;
 }) {
   const href = getBusinessOutboundUrl(b);
   const badges = getProviderBadges(b);
 
   return (
-    <li className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
+    <li className="rounded-xl border border-gray-200 border-l-4 border-l-[#01696F] bg-white p-6 shadow-md">
       <div className="flex flex-col gap-2">
-        <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-x-4">
-          <div className="text-lg font-semibold text-gray-900">
-            {href ? (
-              <a href={href} {...externalBusinessLinkProps} className="text-gray-900 hover:text-blue-700 hover:underline">
-                {b.name}
-              </a>
-            ) : (
-              b.name
-            )}
+        <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-x-4">
+          <div className="flex min-w-0 flex-1 flex-wrap items-center justify-between gap-2 gap-y-1">
+            <div className="text-lg font-semibold text-gray-900">
+              {href ? (
+                <a href={href} {...externalBusinessLinkProps} className="text-gray-900 hover:text-primary-hover hover:underline">
+                  {b.name}
+                </a>
+              ) : (
+                b.name
+              )}
+            </div>
+            {showTopPick ? (
+              <span className="shrink-0 rounded-full bg-[#01696F] px-2.5 py-1 text-xs font-semibold text-white">Top Pick</span>
+            ) : null}
           </div>
-          <div className="text-sm text-gray-600">
+          <div className="w-full sm:w-auto sm:shrink-0">
             {hasBusinessRatingData(b) ? (
-              <>
-                <span className="font-semibold text-gray-900">{formatRating(b.rating)}</span> stars •{" "}
-                <span className="font-semibold text-gray-900">{b.reviews.toLocaleString()}</span> reviews
-              </>
+              <RatingStarsWithCaption rating={b.rating} reviewCount={b.reviews} className="sm:justify-end" />
             ) : (
-              <span className="text-gray-500">Rating not available</span>
+              <span className="text-sm text-gray-500">Rating not available</span>
             )}
           </div>
         </div>
@@ -308,7 +314,13 @@ export default function BestBusinessesDirectory({
           </p>
           <ul className="mt-6 space-y-5">
             {sponsored.map((b, idx) => (
-              <ProviderCard key={`${b.name}-${idx}-sponsor`} b={b} guideHref={guideHref} guideLabel={guideLabel} />
+              <ProviderCard
+                key={`${b.name}-${idx}-sponsor`}
+                b={b}
+                guideHref={guideHref}
+                guideLabel={guideLabel}
+                showTopPick={idx === 0}
+              />
             ))}
           </ul>
         </section>
@@ -323,7 +335,13 @@ export default function BestBusinessesDirectory({
         {filteredEstablished.length ? (
           <ul className="mt-6 space-y-5">
             {filteredEstablished.map((b, idx) => (
-              <ProviderCard key={`${b.name}-${idx}`} b={b} guideHref={guideHref} guideLabel={guideLabel} />
+              <ProviderCard
+                key={`${b.name}-${idx}`}
+                b={b}
+                guideHref={guideHref}
+                guideLabel={guideLabel}
+                showTopPick={sponsored.length === 0 && idx === 0}
+              />
             ))}
           </ul>
         ) : (

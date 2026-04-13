@@ -47,11 +47,11 @@ export default function AboutPage() {
         <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Where to start</h2>
         <p className="mt-3">
           If you’re ready to compare companies, start with the{" "}
-          <Link href="/best" className="font-semibold text-blue-700 hover:underline">
+          <Link href="/best" className="font-semibold text-primary hover:underline">
             provider directory
           </Link>
           . If you’re still diagnosing, start with{" "}
-          <Link href="/services" className="font-semibold text-blue-700 hover:underline">
+          <Link href="/services" className="font-semibold text-primary hover:underline">
             service guides
           </Link>
           .

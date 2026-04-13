@@ -39,7 +39,7 @@ function BusinessNameHeading({ b }: { b: Business }) {
   if (href) {
     return (
       <h4 className="text-lg font-semibold text-gray-900">
-        <a href={href} {...externalBusinessLinkProps} className="text-gray-900 hover:text-blue-700 hover:underline">
+        <a href={href} {...externalBusinessLinkProps} className="text-gray-900 hover:text-primary-hover hover:underline">
           {b.name}
         </a>
       </h4>
@@ -93,8 +93,8 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
           Top {Math.min(FEATURED_MAX, businesses.length)} by rating, then review count
           {businesses.length > FEATURED_MAX ? ` (${businesses.length} total in this category)` : ""}.
         </p>
-        <div className="mt-6 rounded-xl border border-blue-200 bg-blue-50/40 p-4 shadow-sm md:p-5">
-          <ul className="divide-y divide-blue-200/60 rounded-xl border border-blue-200 bg-white shadow-sm">
+        <div className="mt-6 rounded-xl border border-primary/25 bg-primary-light/60 p-4 shadow-sm md:p-5">
+          <ul className="divide-y divide-primary/25 rounded-xl border border-primary/25 bg-white shadow-sm">
             {featured.map((b, i) => {
               const href = getBusinessOutboundUrl(b);
               return (
@@ -105,7 +105,7 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
                         <a
                           href={href}
                           {...externalBusinessLinkProps}
-                          className="text-sm font-semibold text-gray-900 hover:text-blue-700 hover:underline"
+                          className="text-sm font-semibold text-gray-900 hover:text-primary-hover hover:underline"
                         >
                           {b.name}
                         </a>
@@ -147,7 +147,7 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
                         <a
                           href={href}
                           {...externalBusinessLinkProps}
-                          className="text-sm font-semibold text-gray-900 hover:text-blue-700 hover:underline"
+                          className="text-sm font-semibold text-gray-900 hover:text-primary-hover hover:underline"
                         >
                           {b.name}
                         </a>

@@ -6,6 +6,7 @@ import JsonLd from "../../../components/JsonLd";
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
+  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import { getBlog, getServices } from "../../../lib/site-content";
@@ -68,13 +69,13 @@ export default function HvacHubPage() {
             <div>
               <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Services</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">HVAC in Georgetown, TX</h1>
-              <p className="mt-2 text-sm text-gray-600">Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+              <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
                 Use these pages to diagnose common HVAC problems (AC not cooling, uneven temperatures), understand cost drivers, and choose who to call.
                 When you’re ready, compare local HVAC companies and contact providers directly.
               </p>
               <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
-                <Link href="/best/top-hvac-companies-georgetown-tx" className="text-blue-700 hover:underline">
+                <Link href="/best/top-hvac-companies-georgetown-tx" className="text-primary hover:underline">
                   See Top HVAC Companies
                 </Link>
                 <span className="text-gray-300" aria-hidden>

@@ -56,7 +56,7 @@ export default function BlogMidContentEmailCard({ source, className }: Props) {
   return (
     <aside
       className={[
-        "not-prose mx-auto max-w-3xl rounded-xl border border-blue-100 bg-blue-50 p-5 shadow-sm sm:p-6",
+        "not-prose mx-auto max-w-3xl rounded-xl border border-primary-light bg-primary-light p-5 shadow-sm sm:p-6",
         className ?? "",
       ]
         .filter(Boolean)
@@ -92,13 +92,13 @@ export default function BlogMidContentEmailCard({ source, className }: Props) {
               onChange={(e) => setEmail(e.target.value)}
               autoComplete="email"
               inputMode="email"
-              className="w-full rounded-lg border border-blue-200 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none placeholder:text-gray-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+              className="w-full rounded-lg border border-primary/25 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none placeholder:text-gray-400 focus:border-primary focus:ring-2 focus:ring-primary-light"
             />
           </div>
           <button
             type="submit"
             disabled={!canSubmit}
-            className="shrink-0 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+            className="shrink-0 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60"
           >
             {status === "submitting" ? "…" : "Get Georgetown homeowner tips."}
           </button>

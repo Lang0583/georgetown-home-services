@@ -49,7 +49,7 @@ export default function EditorialPolicyPage() {
         </p>
         <p className="mt-3">
           Learn more on{" "}
-          <Link href="/methodology" className="font-semibold text-blue-700 hover:underline">
+          <Link href="/methodology" className="font-semibold text-primary hover:underline">
             how we review and rank providers
           </Link>
           .

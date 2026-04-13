@@ -16,7 +16,7 @@ export const proseArticleClassName = [
   "prose-ul:my-6 prose-ul:space-y-2.5",
   "prose-ol:my-6 prose-ol:space-y-2.5",
   "prose-li:leading-relaxed prose-li:my-0",
-  "prose-a:font-medium prose-a:text-blue-700 prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-blue-800",
+  "prose-a:font-medium prose-a:text-primary prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-primary-hover",
 ].join(" ");
 
 export const articleContentShellClassName =

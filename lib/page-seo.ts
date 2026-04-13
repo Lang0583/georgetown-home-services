@@ -4,6 +4,12 @@ export const SITE_URL = process.env.SITE_URL ?? "https://www.georgetownhomeservi
 
 const SITE_NAME = "Georgetown Home Services";
 
+/** Absolute page URL for the configured origin (same base as canonical tags). */
+export function absolutePageUrl(pathname: string): string {
+  const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  return new URL(path, SITE_URL).href;
+}
+
 /** Full `<title>` / `og:title` text (includes brand suffix). */
 export function documentTitleFromSegment(titleSegment: string): string {
   return `${titleSegment} | ${SITE_NAME}`;
@@ -18,22 +24,21 @@ export const DEFAULT_OG_IMAGE = {
 
 /**
  * Page-level SEO: `title` uses the root layout template; `openGraph.title` is the resolved
- * document title.
- *
- * Canonical URL is set automatically in the root layout using the current request pathname.
+ * document title. `openGraph.url` is the full canonical URL for the route (`SITE_URL` + pathname).
  */
 export function pageSeoMetadata(opts: {
   titleSegment: string;
   description: string;
-  /** Kept for backwards compatibility; canonical is now set globally in root metadata. */
-  pathname?: string;
+  pathname: string;
   ogType: "website" | "article";
 }): Metadata {
   const ogTitle = documentTitleFromSegment(opts.titleSegment);
+  const pageUrl = absolutePageUrl(opts.pathname);
   return {
     title: opts.titleSegment,
     description: opts.description,
     openGraph: {
+      url: pageUrl,
       title: ogTitle,
       description: opts.description,
       type: opts.ogType,
