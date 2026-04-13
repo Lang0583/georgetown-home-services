@@ -10,6 +10,7 @@ import {
   webPageWithDateModifiedJsonLd,
 } from "../../lib/service-best-pages-meta";
 import { CORE_SERVICE_SLUGS } from "../../lib/pageContentRegistry";
+import { isExtendedServiceSlug, showExtendedHomeServices } from "../../lib/public-site-scope";
 import { getBlog, getLocations, getServices } from "../../lib/site-content";
 
 export const metadata: Metadata = pageSeoMetadata({
@@ -61,7 +62,11 @@ export default function ServicesIndexPage() {
   const locations = getLocations();
   const blog = getBlog();
 
-  const core = services.filter((s) => (CORE_SERVICE_SLUGS as readonly string[]).includes(s.slug));
+  const core = services.filter(
+    (s) =>
+      (CORE_SERVICE_SLUGS as readonly string[]).includes(s.slug) &&
+      (showExtendedHomeServices() || !isExtendedServiceSlug(s.slug)),
+  );
   // Group transactional service pages by their best-of association (more stable than serviceType strings).
   const plumbing = services.filter(
     (s) => s.bestSlugs?.includes("best-plumbers-georgetown-tx") && !(CORE_SERVICE_SLUGS as readonly string[]).includes(s.slug)
@@ -107,7 +112,10 @@ export default function ServicesIndexPage() {
     ...houseCleaning.map((s) => s.slug),
     ...problemBased.map((s) => s.slug),
   ]);
-  const otherServices = services.filter((s) => !groupedSlugs.has(s.slug));
+  const otherServices = services.filter(
+    (s) =>
+      !groupedSlugs.has(s.slug) && (showExtendedHomeServices() || !isExtendedServiceSlug(s.slug)),
+  );
 
   const featuredGuides = blog.slice(0, Math.min(4, blog.length));
 
@@ -166,36 +174,40 @@ export default function ServicesIndexPage() {
                   description="Roofing guide + supporting pages + after-storm steps and replacement planning."
                   badge="Category hub"
                 />
-                <LinkCard
-                  href="/services/electrical"
-                  title="Electrical hub"
-                  description="Electrician guide + Best Electricians directory + safety-focused hiring tips."
-                  badge="Category hub"
-                />
-                <LinkCard
-                  href="/services/landscaping"
-                  title="Landscaping hub"
-                  description="Lawn and landscape guide + irrigation and seasonal maintenance context."
-                  badge="Category hub"
-                />
-                <LinkCard
-                  href="/services/pest-control"
-                  title="Pest control hub"
-                  description="Pest guide + treatment plans, warranties, and local directory links."
-                  badge="Category hub"
-                />
-                <LinkCard
-                  href="/services/foundation"
-                  title="Foundation hub"
-                  description="Clay soil context + repair guide + foundation contractor directory."
-                  badge="Category hub"
-                />
-                <LinkCard
-                  href="/services/house-cleaning"
-                  title="House cleaning hub"
-                  description="Recurring and deep-clean guide + local cleaning service directory."
-                  badge="Category hub"
-                />
+                {showExtendedHomeServices() ? (
+                  <>
+                    <LinkCard
+                      href="/services/electrical"
+                      title="Electrical hub"
+                      description="Electrician guide + Best Electricians directory + safety-focused hiring tips."
+                      badge="Category hub"
+                    />
+                    <LinkCard
+                      href="/services/landscaping"
+                      title="Landscaping hub"
+                      description="Lawn and landscape guide + irrigation and seasonal maintenance context."
+                      badge="Category hub"
+                    />
+                    <LinkCard
+                      href="/services/pest-control"
+                      title="Pest control hub"
+                      description="Pest guide + treatment plans, warranties, and local directory links."
+                      badge="Category hub"
+                    />
+                    <LinkCard
+                      href="/services/foundation"
+                      title="Foundation hub"
+                      description="Clay soil context + repair guide + foundation contractor directory."
+                      badge="Category hub"
+                    />
+                    <LinkCard
+                      href="/services/house-cleaning"
+                      title="House cleaning hub"
+                      description="Recurring and deep-clean guide + local cleaning service directory."
+                      badge="Category hub"
+                    />
+                  </>
+                ) : null}
               </div>
             </section>
 
@@ -246,7 +258,7 @@ export default function ServicesIndexPage() {
               </section>
             ) : null}
 
-            {electrician.length ? (
+            {showExtendedHomeServices() && electrician.length ? (
               <section>
                 <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Electrical</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -257,7 +269,7 @@ export default function ServicesIndexPage() {
               </section>
             ) : null}
 
-            {landscaping.length ? (
+            {showExtendedHomeServices() && landscaping.length ? (
               <section>
                 <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Landscaping &amp; lawn care</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -268,7 +280,7 @@ export default function ServicesIndexPage() {
               </section>
             ) : null}
 
-            {pest.length ? (
+            {showExtendedHomeServices() && pest.length ? (
               <section>
                 <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Pest control</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -279,7 +291,7 @@ export default function ServicesIndexPage() {
               </section>
             ) : null}
 
-            {foundation.length ? (
+            {showExtendedHomeServices() && foundation.length ? (
               <section>
                 <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Foundation repair</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -290,7 +302,7 @@ export default function ServicesIndexPage() {
               </section>
             ) : null}
 
-            {houseCleaning.length ? (
+            {showExtendedHomeServices() && houseCleaning.length ? (
               <section>
                 <h2 className="text-3xl font-semibold tracking-tight text-gray-900">House cleaning</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">

@@ -25,6 +25,12 @@ import {
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import { CORE_SERVICE_SLUGS, resolveServicePage } from "../../../lib/pageContentRegistry";
+import {
+  isExtendedProviderGroup,
+  isExtendedServiceSlug,
+  shouldShowExtendedDirectoryListings,
+  showExtendedHomeServices,
+} from "../../../lib/public-site-scope";
 import ServiceRequestForm from "../../../components/ServiceRequestForm";
 import ServiceTopProvidersSection from "../../../components/ServiceTopProvidersSection";
 import {
@@ -162,7 +168,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const helpfulGuides = getBlogsForServiceSlug(service.slug);
   const businessCategory = getBusinessCategoryForServiceSlug(service.slug);
   const providersFromJson =
-    businessCategory !== null ? getBusinessesByCategory(businessCategory) : [];
+    businessCategory !== null &&
+    (!isExtendedProviderGroup(businessCategory) || shouldShowExtendedDirectoryListings())
+      ? getBusinessesByCategory(businessCategory)
+      : [];
 
   const bestHref =
     bestPages.length > 0
@@ -175,7 +184,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     ? BEST_CTA_LABEL_BY_GROUP[businessCategory]
     : "Browse provider directory";
 
-  const CORE_SERVICES = (CORE_SERVICE_SLUGS as readonly string[])
+  const visibleCoreSlugs = (CORE_SERVICE_SLUGS as readonly string[]).filter(
+    (slug) => showExtendedHomeServices() || !isExtendedServiceSlug(slug),
+  );
+  const CORE_SERVICES = visibleCoreSlugs
     .map((slug) => {
       const s = getServiceBySlug(slug);
       const b0 = s?.bestSlugs?.[0];

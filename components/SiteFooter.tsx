@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PROVIDER_INFO_DISCLAIMER } from "../lib/provider-disclaimer";
+import { showExtendedHomeServices } from "../lib/public-site-scope";
 import { getBrandName, getContact } from "../lib/site-content";
 
 export default function SiteFooter() {
@@ -56,31 +57,35 @@ export default function SiteFooter() {
                   Roofing
                 </Link>
               </li>
-              <li>
-                <Link className="hover:underline" href="/services/electrician-georgetown-tx">
-                  Electrical
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:underline" href="/services/landscaping-georgetown-tx">
-                  Landscaping
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:underline" href="/services/pest-control-georgetown-tx">
-                  Pest control
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:underline" href="/services/foundation-repair-georgetown-tx">
-                  Foundation repair
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:underline" href="/services/house-cleaning-georgetown-tx">
-                  House cleaning
-                </Link>
-              </li>
+              {showExtendedHomeServices() ? (
+                <>
+                  <li>
+                    <Link className="hover:underline" href="/services/electrician-georgetown-tx">
+                      Electrical
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline" href="/services/landscaping-georgetown-tx">
+                      Landscaping
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline" href="/services/pest-control-georgetown-tx">
+                      Pest control
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline" href="/services/foundation-repair-georgetown-tx">
+                      Foundation repair
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline" href="/services/house-cleaning-georgetown-tx">
+                      House cleaning
+                    </Link>
+                  </li>
+                </>
+              ) : null}
             </ul>
           </div>
 
@@ -107,31 +112,35 @@ export default function SiteFooter() {
                   Best Roofers
                 </Link>
               </li>
-              <li>
-                <Link className="hover:underline" href="/best/best-electricians-georgetown-tx">
-                  Best Electricians
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:underline" href="/best/best-landscaping-companies-georgetown-tx">
-                  Best Landscaping
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:underline" href="/best/best-pest-control-georgetown-tx">
-                  Best Pest Control
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:underline" href="/best/best-foundation-repair-georgetown-tx">
-                  Best Foundation Repair
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:underline" href="/best/best-house-cleaning-services-georgetown-tx">
-                  Best House Cleaning
-                </Link>
-              </li>
+              {showExtendedHomeServices() ? (
+                <>
+                  <li>
+                    <Link className="hover:underline" href="/best/best-electricians-georgetown-tx">
+                      Best Electricians
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline" href="/best/best-landscaping-companies-georgetown-tx">
+                      Best Landscaping
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline" href="/best/best-pest-control-georgetown-tx">
+                      Best Pest Control
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline" href="/best/best-foundation-repair-georgetown-tx">
+                      Best Foundation Repair
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline" href="/best/best-house-cleaning-services-georgetown-tx">
+                      Best House Cleaning
+                    </Link>
+                  </li>
+                </>
+              ) : null}
             </ul>
           </div>
 

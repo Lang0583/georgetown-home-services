@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { isExtendedBestSlug, isExtendedServiceSlug, showExtendedHomeServices } from "@/lib/public-site-scope";
 import {
   getBestSlugs,
   getBlogSlugs,
@@ -41,11 +42,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/services/plumbing",
     "/services/hvac",
     "/services/roofing",
-    "/services/electrical",
-    "/services/landscaping",
-    "/services/pest-control",
-    "/services/foundation",
-    "/services/house-cleaning",
+    ...(showExtendedHomeServices()
+      ? [
+          "/services/electrical",
+          "/services/landscaping",
+          "/services/pest-control",
+          "/services/foundation",
+          "/services/house-cleaning",
+        ]
+      : []),
   ];
 
   const entries: MetadataRoute.Sitemap = [];
@@ -78,6 +83,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   for (const slug of getServiceSlugs()) {
+    if (!showExtendedHomeServices() && isExtendedServiceSlug(slug)) continue;
     entries.push({
       url: absoluteUrl(`/services/${slug}`),
       lastModified,
@@ -87,6 +93,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   for (const slug of getBestSlugs()) {
+    if (!showExtendedHomeServices() && isExtendedBestSlug(slug)) continue;
     entries.push({
       url: absoluteUrl(`/best/${slug}`),
       lastModified,

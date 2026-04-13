@@ -9,6 +9,12 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { pageSeoMetadata } from "../lib/page-seo";
 import { CORE_BEST_SLUGS, CORE_SERVICE_SLUGS } from "../lib/pageContentRegistry";
+import {
+  EXTENDED_PROVIDER_GROUPS,
+  isExtendedBestSlug,
+  isExtendedServiceSlug,
+  showExtendedHomeServices,
+} from "../lib/public-site-scope";
 import { getBlog, getBest, getLocations, getServices } from "../lib/site-content";
 import businesses from "../lib/businesses.json";
 import {
@@ -45,22 +51,17 @@ export default function Home() {
   const best = getBest();
   const blog = getBlog();
   const coreHomeServices = (CORE_SERVICE_SLUGS as readonly string[])
+    .filter((slug) => showExtendedHomeServices() || !isExtendedServiceSlug(slug))
     .map((slug) => services.find((s) => s.slug === slug))
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
   const coreHomeBest = (CORE_BEST_SLUGS as readonly string[])
+    .filter((slug) => showExtendedHomeServices() || !isExtendedBestSlug(slug))
     .map((slug) => best.find((b) => b.slug === slug))
     .filter((b): b is NonNullable<typeof b> => Boolean(b));
   const allBusinesses = businesses as Business[];
-  const homepageTradeOrder: ProviderGroup[] = [
-    "plumber",
-    "hvac",
-    "roofer",
-    "electrician",
-    "landscaping",
-    "pest_control",
-    "foundation_repair",
-    "house_cleaning",
-  ];
+  const homepageTradeOrder: ProviderGroup[] = showExtendedHomeServices()
+    ? (["plumber", "hvac", "roofer", ...EXTENDED_PROVIDER_GROUPS] as ProviderGroup[])
+    : ["plumber", "hvac", "roofer"];
   const tradeHomepageTitle: Record<ProviderGroup, string> = {
     plumber: "Plumbers",
     hvac: "HVAC",
@@ -136,46 +137,50 @@ export default function Home() {
                     <div className="mt-1 text-sm text-gray-700">Roof leak, storm damage, shingle repair, estimates.</div>
                     <div className="mt-2 text-xs font-semibold text-blue-700">Explore roofing →</div>
                   </Link>
-                  <Link
-                    href="/services/electrician-georgetown-tx"
-                    className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
-                  >
-                    <div className="text-sm font-semibold text-gray-900">Electrical</div>
-                    <div className="mt-1 text-sm text-gray-700">Panels, circuits, outlets, EV charger prep.</div>
-                    <div className="mt-2 text-xs font-semibold text-blue-700">Explore electrical →</div>
-                  </Link>
-                  <Link
-                    href="/services/landscaping-georgetown-tx"
-                    className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
-                  >
-                    <div className="text-sm font-semibold text-gray-900">Landscaping</div>
-                    <div className="mt-1 text-sm text-gray-700">Lawn care, beds, mulch, irrigation tuning.</div>
-                    <div className="mt-2 text-xs font-semibold text-blue-700">Explore landscaping →</div>
-                  </Link>
-                  <Link
-                    href="/services/pest-control-georgetown-tx"
-                    className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
-                  >
-                    <div className="text-sm font-semibold text-gray-900">Pest control</div>
-                    <div className="mt-1 text-sm text-gray-700">Ants, roaches, rodents, perimeter plans.</div>
-                    <div className="mt-2 text-xs font-semibold text-blue-700">Explore pest control →</div>
-                  </Link>
-                  <Link
-                    href="/services/foundation-repair-georgetown-tx"
-                    className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
-                  >
-                    <div className="text-sm font-semibold text-gray-900">Foundation</div>
-                    <div className="mt-1 text-sm text-gray-700">Clay soil cracks, drainage, pier and slab.</div>
-                    <div className="mt-2 text-xs font-semibold text-blue-700">Explore foundation →</div>
-                  </Link>
-                  <Link
-                    href="/services/house-cleaning-georgetown-tx"
-                    className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
-                  >
-                    <div className="text-sm font-semibold text-gray-900">House cleaning</div>
-                    <div className="mt-1 text-sm text-gray-700">Recurring maid service, deep and move-out cleans.</div>
-                    <div className="mt-2 text-xs font-semibold text-blue-700">Explore cleaning →</div>
-                  </Link>
+                  {showExtendedHomeServices() ? (
+                    <>
+                      <Link
+                        href="/services/electrician-georgetown-tx"
+                        className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                      >
+                        <div className="text-sm font-semibold text-gray-900">Electrical</div>
+                        <div className="mt-1 text-sm text-gray-700">Panels, circuits, outlets, EV charger prep.</div>
+                        <div className="mt-2 text-xs font-semibold text-blue-700">Explore electrical →</div>
+                      </Link>
+                      <Link
+                        href="/services/landscaping-georgetown-tx"
+                        className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                      >
+                        <div className="text-sm font-semibold text-gray-900">Landscaping</div>
+                        <div className="mt-1 text-sm text-gray-700">Lawn care, beds, mulch, irrigation tuning.</div>
+                        <div className="mt-2 text-xs font-semibold text-blue-700">Explore landscaping →</div>
+                      </Link>
+                      <Link
+                        href="/services/pest-control-georgetown-tx"
+                        className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                      >
+                        <div className="text-sm font-semibold text-gray-900">Pest control</div>
+                        <div className="mt-1 text-sm text-gray-700">Ants, roaches, rodents, perimeter plans.</div>
+                        <div className="mt-2 text-xs font-semibold text-blue-700">Explore pest control →</div>
+                      </Link>
+                      <Link
+                        href="/services/foundation-repair-georgetown-tx"
+                        className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                      >
+                        <div className="text-sm font-semibold text-gray-900">Foundation</div>
+                        <div className="mt-1 text-sm text-gray-700">Clay soil cracks, drainage, pier and slab.</div>
+                        <div className="mt-2 text-xs font-semibold text-blue-700">Explore foundation →</div>
+                      </Link>
+                      <Link
+                        href="/services/house-cleaning-georgetown-tx"
+                        className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                      >
+                        <div className="text-sm font-semibold text-gray-900">House cleaning</div>
+                        <div className="mt-1 text-sm text-gray-700">Recurring maid service, deep and move-out cleans.</div>
+                        <div className="mt-2 text-xs font-semibold text-blue-700">Explore cleaning →</div>
+                      </Link>
+                    </>
+                  ) : null}
                 </div>
               </div>
 
@@ -376,15 +381,17 @@ export default function Home() {
         <section className="py-10 md:py-12">
           <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Best Of</h2>
           <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
-            {best.map((b) => (
-              <LinkCard
-                key={b.slug}
-                href={`/best/${b.slug}`}
-                title={b.title}
-                description={b.description}
-                badge={l10nLocation(b.locationSlug, locations)}
-              />
-            ))}
+            {best
+              .filter((b) => showExtendedHomeServices() || !isExtendedBestSlug(b.slug))
+              .map((b) => (
+                <LinkCard
+                  key={b.slug}
+                  href={`/best/${b.slug}`}
+                  title={b.title}
+                  description={b.description}
+                  badge={l10nLocation(b.locationSlug, locations)}
+                />
+              ))}
           </div>
         </section>
 

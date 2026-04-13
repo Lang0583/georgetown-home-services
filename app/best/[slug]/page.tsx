@@ -35,6 +35,12 @@ import {
 } from "../../../lib/businesses";
 import { buildBestDirectoryItemListJsonLd } from "../../../lib/best-directory-item-list-schema";
 import { bestPageInternalLinks } from "../../../lib/internal-links";
+import {
+  isExtendedBestSlug,
+  isExtendedProviderGroup,
+  shouldShowExtendedDirectoryListings,
+  showExtendedHomeServices,
+} from "../../../lib/public-site-scope";
 import BestBusinessesDirectory from "../../../components/BestBusinessesDirectory";
 
 const HERO_PLACEHOLDER_SRC =
@@ -222,8 +228,16 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
 
   const providerData = getProvidersForBestSlug(slug);
   const businessCategory = getBusinessCategoryForBestSlug(slug);
+  const extendedListingsPaused =
+    businessCategory !== null &&
+    isExtendedProviderGroup(businessCategory) &&
+    !shouldShowExtendedDirectoryListings();
   const businessesForPage =
-    businessCategory !== null ? getBusinessesByCategory(businessCategory) : null;
+    businessCategory !== null
+      ? extendedListingsPaused
+        ? []
+        : getBusinessesByCategory(businessCategory)
+      : null;
   const relatedServiceSlug = getRelatedServiceSlugForBestSlug(slug);
   const relatedService = relatedServiceSlug ? getServiceBySlug(relatedServiceSlug) : null;
   const services = getServices();
@@ -240,7 +254,9 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
       return { label: p.title.replace(/ in Georgetown, TX$/, ""), slug: p.slug, service: svc };
     })
     .filter((b): b is { label: string; slug: string; service: string } => Boolean(b));
-  const explore = CORE_BEST.filter((b) => b.slug !== best.slug);
+  const explore = CORE_BEST.filter((b) => b.slug !== best.slug).filter(
+    (b) => showExtendedHomeServices() || !isExtendedBestSlug(b.slug),
+  );
   const ruleLinks = bestPageInternalLinks(best.slug);
 
   const faqsForSchema =
@@ -1500,7 +1516,22 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                 <section className="mt-12">
                   <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Top provider cards</h2>
 
-                  {businessesForPage !== null ? (
+                  {extendedListingsPaused ? (
+                    <div className="mt-6 rounded-xl border border-amber-200 bg-amber-50/60 p-6 shadow-sm">
+                      <div className="text-xs font-semibold uppercase tracking-wide text-amber-900">Directory update</div>
+                      <p className="mt-2 text-sm leading-relaxed text-gray-800">
+                        Detailed provider listings for this category are paused while we refresh research. The guide on this page is still available;
+                        use the service guide for hiring questions and check back later for comparison cards.
+                      </p>
+                      {relatedServiceSlug ? (
+                        <p className="mt-4 text-sm font-semibold">
+                          <Link href={`/services/${relatedServiceSlug}`} className="text-blue-700 hover:underline">
+                            Open the related service guide →
+                          </Link>
+                        </p>
+                      ) : null}
+                    </div>
+                  ) : businessesForPage !== null ? (
                     <>
                       <section className="mt-6 rounded-xl border border-gray-200 bg-gray-50 p-6 shadow-md">
                         <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">Intro and methodology</div>

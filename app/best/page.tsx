@@ -10,6 +10,7 @@ import {
   webPageWithDateModifiedJsonLd,
 } from "../../lib/service-best-pages-meta";
 import { CORE_BEST_SLUGS, CORE_SERVICE_SLUGS } from "../../lib/pageContentRegistry";
+import { isExtendedBestSlug, isExtendedServiceSlug, showExtendedHomeServices } from "../../lib/public-site-scope";
 import { getBest, getBlog, getServices } from "../../lib/site-content";
 
 export const metadata: Metadata = pageSeoMetadata({
@@ -61,10 +62,18 @@ export default function BestIndexPage() {
   const services = getServices();
   const blog = getBlog();
 
-  const core = bestPages.filter((b) => (CORE_BEST_SLUGS as readonly string[]).includes(b.slug));
+  const core = bestPages.filter(
+    (b) =>
+      (CORE_BEST_SLUGS as readonly string[]).includes(b.slug) &&
+      (showExtendedHomeServices() || !isExtendedBestSlug(b.slug)),
+  );
   const other = bestPages.filter((b) => !(CORE_BEST_SLUGS as readonly string[]).includes(b.slug));
 
-  const featuredServices = services.filter((s) => (CORE_SERVICE_SLUGS as readonly string[]).includes(s.slug));
+  const featuredServices = services.filter(
+    (s) =>
+      (CORE_SERVICE_SLUGS as readonly string[]).includes(s.slug) &&
+      (showExtendedHomeServices() || !isExtendedServiceSlug(s.slug)),
+  );
   const featuredPosts = blog.slice(0, Math.min(4, blog.length));
 
   return (

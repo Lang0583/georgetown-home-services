@@ -9,6 +9,11 @@ import JsonLd from "../../../components/JsonLd";
 import PageShell from "../../../components/templates/PageShell";
 import TwoColumnPage from "../../../components/templates/TwoColumnPage";
 import {
+  isExtendedBestSlug,
+  isExtendedServiceSlug,
+  showExtendedHomeServices,
+} from "../../../lib/public-site-scope";
+import {
   getBestBySlug,
   getLocationBySlug,
   getLocations,
@@ -62,9 +67,11 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
 
   const services = getServices();
   const servicePages = location.serviceSlugs
+    .filter((s) => showExtendedHomeServices() || !isExtendedServiceSlug(s))
     .map((s) => services.find((x) => x.slug === s))
     .filter((s): s is (typeof services)[number] => Boolean(s));
   const bestPages = location.bestSlugs
+    .filter((s) => showExtendedHomeServices() || !isExtendedBestSlug(s))
     .map((s) => getBestBySlug(s))
     .filter((b): b is NonNullable<typeof b> => Boolean(b));
 
