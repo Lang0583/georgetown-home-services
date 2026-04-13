@@ -166,6 +166,36 @@ export default function ServicesIndexPage() {
                   description="Roofing guide + supporting pages + after-storm steps and replacement planning."
                   badge="Category hub"
                 />
+                <LinkCard
+                  href="/services/electrical"
+                  title="Electrical hub"
+                  description="Electrician guide + Best Electricians directory + safety-focused hiring tips."
+                  badge="Category hub"
+                />
+                <LinkCard
+                  href="/services/landscaping"
+                  title="Landscaping hub"
+                  description="Lawn and landscape guide + irrigation and seasonal maintenance context."
+                  badge="Category hub"
+                />
+                <LinkCard
+                  href="/services/pest-control"
+                  title="Pest control hub"
+                  description="Pest guide + treatment plans, warranties, and local directory links."
+                  badge="Category hub"
+                />
+                <LinkCard
+                  href="/services/foundation"
+                  title="Foundation hub"
+                  description="Clay soil context + repair guide + foundation contractor directory."
+                  badge="Category hub"
+                />
+                <LinkCard
+                  href="/services/house-cleaning"
+                  title="House cleaning hub"
+                  description="Recurring and deep-clean guide + local cleaning service directory."
+                  badge="Category hub"
+                />
               </div>
             </section>
 

@@ -3,9 +3,16 @@ import path from "node:path";
 import process from "node:process";
 import Anthropic from "@anthropic-ai/sdk";
 
+type RichInline =
+  | { type: "text"; text: string }
+  | { type: "link"; href: string; label: string; rel?: string };
+
 type ContentBlock =
   | { kind: "p"; text: string }
+  | { kind: "p"; parts: RichInline[] }
+  | { kind: "affiliateDisclosure"; text: string }
   | { kind: "h2"; text: string }
+  | { kind: "h3"; text: string }
   | { kind: "ul"; items: string[] };
 
 type Faq = { q: string; a: string };

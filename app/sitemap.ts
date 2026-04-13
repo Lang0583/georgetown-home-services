@@ -41,6 +41,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/services/plumbing",
     "/services/hvac",
     "/services/roofing",
+    "/services/electrical",
+    "/services/landscaping",
+    "/services/pest-control",
+    "/services/foundation",
+    "/services/house-cleaning",
   ];
 
   const entries: MetadataRoute.Sitemap = [];

@@ -237,6 +237,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description:
         "A Georgetown plumber checklist: licensing, estimates, communication, and what to ask so you can compare providers and avoid common service mistakes.",
     },
+    "water-heater-not-working-georgetown-tx": {
+      title: "Water Heater Not Working in Georgetown TX? Here's What to Do",
+      description:
+        "Water heater stopped working in Georgetown TX? This guide walks you through the most common causes, what you can check yourself, and when to call a plumber.",
+    },
+    "foundation-crack-georgetown-tx": {
+      title: "Foundation Crack in Georgetown TX: When to Worry and Who to Call",
+      description:
+        "Seeing cracks in your Georgetown TX home's foundation or walls? Learn which types of cracks are cosmetic and which signal a serious structural problem.",
+    },
+    "hvac-making-noise-georgetown-tx": {
+      title: "HVAC Making Noise in Georgetown TX? What Each Sound Means",
+      description:
+        "Banging, squealing, or clicking from your HVAC system in Georgetown TX? This guide explains what each noise likely means and whether you need a technician.",
+    },
   };
 
   const o = overrides[slug];
@@ -260,9 +275,8 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
 
   const generated = getGeneratedPage(slug);
   const location = getLocationBySlug(post.locationSlug);
-  // Blog posts do not currently store per-post publish dates; start with a stable default.
-  const datePublished = DEFAULT_BLOG_PUBLISH_DATE_ISO;
-  const dateModified = DEFAULT_BLOG_PUBLISH_DATE_ISO;
+  const datePublished = post.datePublished ?? DEFAULT_BLOG_PUBLISH_DATE_ISO;
+  const dateModified = post.dateModified ?? post.datePublished ?? DEFAULT_BLOG_PUBLISH_DATE_ISO;
   const publishedLabel = formatPublishDateLabel(datePublished);
   const modifiedLabel = formatPublishDateLabel(dateModified);
   const services = getServices();
@@ -286,7 +300,9 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
       ? "HVAC"
       : relatedServices[0]?.serviceType?.toLowerCase().includes("roof")
         ? "roofing"
-        : "plumbing";
+        : relatedServices[0]?.serviceType?.toLowerCase().includes("foundation")
+          ? "foundation"
+          : "plumbing";
   const takeaway = takeawayBullets(recurringType, serviceLabel);
 
   return (

@@ -7,10 +7,37 @@ export function RichTextBlocks({ blocks }: { blocks: ContentBlock[] }) {
   return (
     <>
       {blocks.map((block, idx) => {
+        if (block.kind === "affiliateDisclosure") {
+          return (
+            <p key={idx} className="mb-4 text-xs leading-relaxed text-slate-600">
+              {block.text}
+            </p>
+          );
+        }
         if (block.kind === "p") {
+          if ("parts" in block && block.parts?.length) {
+            return (
+              <p key={idx} className="mb-4">
+                {block.parts.map((part, pidx) =>
+                  part.type === "text" ? (
+                    <span key={pidx}>{part.text}</span>
+                  ) : (
+                    <a
+                      key={pidx}
+                      href={part.href}
+                      rel={part.rel ?? "nofollow sponsored"}
+                      className="font-medium text-blue-700 underline underline-offset-2 hover:text-blue-800"
+                    >
+                      {part.label}
+                    </a>
+                  )
+                )}
+              </p>
+            );
+          }
           return (
             <p key={idx} className="mb-4">
-              {block.text}
+              {"text" in block ? block.text : null}
             </p>
           );
         }

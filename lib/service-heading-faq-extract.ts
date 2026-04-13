@@ -43,7 +43,13 @@ function answerFromUlInner(ulInner: string): string {
 function nextBlockAnswer(blocks: ContentBlock[], startIdx: number): string | null {
   const next = blocks[startIdx + 1];
   if (!next) return null;
-  if (next.kind === "p") return next.text.trim() || null;
+  if (next.kind === "p") {
+    if ("parts" in next && next.parts?.length) {
+      const joined = next.parts.map((p) => (p.type === "text" ? p.text : p.label)).join("");
+      return joined.trim() || null;
+    }
+    if ("text" in next && typeof next.text === "string") return next.text.trim() || null;
+  }
   if (next.kind === "ul" && next.items?.length) {
     return next.items.map((x) => x.trim()).filter(Boolean).join(" ") || null;
   }

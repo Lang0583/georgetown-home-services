@@ -119,7 +119,7 @@ export function normalizeBusinessGroup(b: Business): ProviderGroup | null {
 }
 
 /** Shown on best-of pages next to business listings. */
-export const BUSINESS_LISTINGS_LAST_UPDATED = "March 29, 2026";
+export const BUSINESS_LISTINGS_LAST_UPDATED = "April 13, 2026";
 
 /**
  * Provider listing quality thresholds.

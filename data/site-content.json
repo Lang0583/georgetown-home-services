@@ -1163,7 +1163,31 @@
       "locationSlug": "georgetown-tx",
       "readTime": "6 min",
       "content": [
+        {
+          "kind": "affiliateDisclosure",
+          "text": "This post contains affiliate links. If you purchase through our links, we may earn a small commission at no extra cost to you."
+        },
         { "kind": "p", "text": "HVAC replacement is a major investment, and it helps to understand the factors that influence total cost. While every home is different, there are common pricing drivers that show up in most Georgetown, TX replacements." },
+        { "kind": "h2", "text": "Maintenance that supports equipment life" },
+        {
+          "kind": "p",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Replacement conversations often focus on equipment, but day-to-day care still affects how hard your system works. Keeping return air paths clear and changing filters on schedule helps protect airflow and can reduce unnecessary strain on the blower during Georgetown’s long cooling season. When it is time to restock, many homeowners choose "
+            },
+            {
+              "type": "link",
+              "href": "https://www.amazon.com/s?k=Filtrete+16x25x1+air+filter&tag=georgetownhom-20",
+              "label": "a quality air filter",
+              "rel": "nofollow sponsored"
+            },
+            {
+              "type": "text",
+              "text": " in the correct size for their grille or cabinet."
+            }
+          ]
+        },
         { "kind": "h2", "text": "What affects your HVAC replacement price" },
         {
           "kind": "ul",
@@ -1193,7 +1217,31 @@
       "locationSlug": "georgetown-tx",
       "readTime": "5 min",
       "content": [
+        {
+          "kind": "affiliateDisclosure",
+          "text": "This post contains affiliate links. If you purchase through our links, we may earn a small commission at no extra cost to you."
+        },
         { "kind": "p", "text": "Finding the right plumber is easier when you know what to ask. Use this checklist to choose a trustworthy technician for your Georgetown home." },
+        { "kind": "h2", "text": "Minor clogs you can try yourself first" },
+        {
+          "kind": "p",
+          "parts": [
+            {
+              "type": "text",
+              "text": "For a single fixture that is draining slowly—with no sewage smell, no gurgling in other drains, and no water backing up elsewhere—many Georgetown homeowners try a plunger first, then "
+            },
+            {
+              "type": "link",
+              "href": "https://www.amazon.com/s?k=drain+snake+auger&tag=georgetownhom-20",
+              "label": "a basic drain snake",
+              "rel": "nofollow sponsored"
+            },
+            {
+              "type": "text",
+              "text": " sized for sinks or showers. Stop and call a licensed plumber if multiple fixtures are affected, wastewater appears where it should not, or the clog keeps returning after you clear it."
+            }
+          ]
+        },
         { "kind": "h2", "text": "A quick plumber checklist" },
         {
           "kind": "ul",
@@ -1323,6 +1371,10 @@
       "readTime": "7 min",
       "content": [
         {
+          "kind": "affiliateDisclosure",
+          "text": "This post contains affiliate links. If you purchase through our links, we may earn a small commission at no extra cost to you."
+        },
+        {
           "kind": "p",
           "text": "Most HVAC systems in Georgetown, TX don’t fail without warning. The signs usually start small—like uneven temperatures, new noises, or changes in how often the system runs—then build into comfort problems when the heat or cold really hits. Knowing the early signals of trouble can help you schedule HVAC repair on your terms instead of waiting for a full no-cool situation in August."
         },
@@ -1354,6 +1406,25 @@
             "Short cycling—the system turns on and off more frequently than before",
             "The thermostat setting hasn’t changed, but the home feels different than it used to",
             "Frequent breaker trips or the system struggling to start"
+          ]
+        },
+        {
+          "kind": "p",
+          "parts": [
+            {
+              "type": "text",
+              "text": "If you are trying to narrow down what is happening before the technician arrives, "
+            },
+            {
+              "type": "link",
+              "href": "https://www.amazon.com/s?k=Google+Nest+Thermostat&tag=georgetownhom-20",
+              "label": "a smart thermostat",
+              "rel": "nofollow sponsored"
+            },
+            {
+              "type": "text",
+              "text": " that logs runtime, indoor humidity, or temperature swing can make intermittent problems easier to describe—especially short cycling, long run times, or rooms that never reach the setpoint."
+            }
           ]
         },
         {
@@ -1585,12 +1656,36 @@
       "readTime": "9 min",
       "content": [
         {
+          "kind": "affiliateDisclosure",
+          "text": "This post contains affiliate links. If you purchase through our links, we may earn a small commission at no extra cost to you."
+        },
+        {
           "kind": "p",
           "text": "Georgetown roofs don’t usually fail all at once. More often, homeowners notice small warning signs after heavy rain, hail, or a long summer of sun—then the question becomes whether a repair is enough or whether it’s time to plan a replacement. This guide is a practical checklist of the most common “new roof” signals in Georgetown, TX."
         },
         {
           "kind": "p",
           "text": "Start with our roofing service guide for Georgetown, TX, then use our best roofers page to compare providers and contact them directly."
+        },
+        { "kind": "h3", "text": "Temporary fixes while you wait for an inspection" },
+        {
+          "kind": "p",
+          "parts": [
+            {
+              "type": "text",
+              "text": "If active weather is coming and you are still scheduling a roofer, some homeowners use "
+            },
+            {
+              "type": "link",
+              "href": "https://www.amazon.com/s?k=Flex+Seal+roof+sealant&tag=georgetownhom-20",
+              "label": "temporary roof sealant",
+              "rel": "nofollow sponsored"
+            },
+            {
+              "type": "text",
+              "text": " only as a short bridge after documenting the area—never as a permanent repair. Steep, wet roofs are risky to walk; prioritize safety, keep interior buckets or tarps handy, and plan for the written scope your contractor recommends."
+            }
+          ]
         }
       ],
       "relatedServiceSlugs": [
@@ -1667,7 +1762,88 @@
       "relatedBestSlugs": [
         "best-plumbers-georgetown-tx"
       ]
-    }  ],
+    },
+    {
+      "slug": "water-heater-not-working-georgetown-tx",
+      "title": "Water Heater Not Working in Georgetown TX? Here's What to Do",
+      "h1": "Water Heater Not Working in Georgetown TX? Here's What to Do",
+      "description": "Water heater stopped working in Georgetown TX? This guide walks you through the most common causes, what you can check yourself, and when to call a plumber.",
+      "locationSlug": "georgetown-tx",
+      "readTime": "6 min",
+      "datePublished": "2026-04-12",
+      "dateModified": "2026-04-12",
+      "content": [
+        {
+          "kind": "p",
+          "text": "When hot water stops in Georgetown, the cause is often a simple power or fuel issue, sediment reducing performance, or a component nearing end of life—though some situations are true emergencies. This short summary mirrors the full guide: verify safe homeowner checks first, then involve a licensed plumber when you see leaks, gas concerns, or repeated electrical trips."
+        },
+        {
+          "kind": "p",
+          "text": "For water heater repair context and local providers, use the water heater repair and plumbing service guides, then compare companies on the Best Plumbers in Georgetown page."
+        }
+      ],
+      "relatedServiceSlugs": [
+        "water-heater-repair-georgetown-tx",
+        "plumber-georgetown-tx"
+      ],
+      "relatedBestSlugs": [
+        "best-plumbers-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "foundation-crack-georgetown-tx",
+      "title": "Foundation Crack in Georgetown TX: When to Worry and Who to Call",
+      "h1": "Foundation Crack in Georgetown TX: When to Worry and Who to Call",
+      "description": "Seeing cracks in your Georgetown TX home's foundation or walls? Learn which types of cracks are cosmetic and which signal a serious structural problem.",
+      "locationSlug": "georgetown-tx",
+      "readTime": "6 min",
+      "datePublished": "2026-04-12",
+      "dateModified": "2026-04-12",
+      "content": [
+        {
+          "kind": "p",
+          "text": "Foundation cracks in Georgetown often reflect expansive clay soil cycles rather than sudden catastrophe—but pattern, width, and companion symptoms (doors, floors, stair-step brick) separate watch-and-monitor cases from ones that need a specialist. Use photos, simple measurements, and drainage checks before you assume the worst."
+        },
+        {
+          "kind": "p",
+          "text": "Read the foundation repair service guide for warning signs and repair concepts, then compare contractors via the Best Foundation Repair in Georgetown directory."
+        }
+      ],
+      "relatedServiceSlugs": [
+        "foundation-repair-georgetown-tx"
+      ],
+      "relatedBestSlugs": [
+        "best-foundation-repair-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "hvac-making-noise-georgetown-tx",
+      "title": "HVAC Making Noise in Georgetown TX? What Each Sound Means",
+      "h1": "HVAC Making Noise in Georgetown TX? What Each Sound Means",
+      "description": "Banging, squealing, or clicking from your HVAC system in Georgetown TX? This guide explains what each noise likely means and whether you need a technician.",
+      "locationSlug": "georgetown-tx",
+      "readTime": "6 min",
+      "datePublished": "2026-04-12",
+      "dateModified": "2026-04-12",
+      "content": [
+        {
+          "kind": "p",
+          "text": "New HVAC noises usually mean something changed mechanically, electrically, or in airflow. Matching the sound—banging, squealing, rattling, clicking, or humming—to likely causes helps you decide what is safe to observe versus what needs a prompt technician visit."
+        },
+        {
+          "kind": "p",
+          "text": "Start with the Georgetown HVAC service guide for system basics, then shortlist technicians from the Top HVAC Companies in Georgetown comparison page."
+        }
+      ],
+      "relatedServiceSlugs": [
+        "hvac-georgetown-tx",
+        "ac-not-cooling-georgetown-tx"
+      ],
+      "relatedBestSlugs": [
+        "top-hvac-companies-georgetown-tx"
+      ]
+    }
+  ],
   "best": [
     {
       "slug": "best-plumbers-georgetown-tx",

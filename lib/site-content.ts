@@ -1,7 +1,13 @@
 import siteContent from "../data/site-content.json";
 
+export type RichInline =
+  | { type: "text"; text: string }
+  | { type: "link"; href: string; label: string; rel?: string };
+
 export type ContentBlock =
   | { kind: "p"; text: string }
+  | { kind: "p"; parts: RichInline[] }
+  | { kind: "affiliateDisclosure"; text: string }
   | { kind: "h2"; text: string }
   | { kind: "h3"; text: string }
   | { kind: "ul"; items: string[] };
@@ -72,6 +78,9 @@ export type BlogPage = {
   content: ContentBlock[];
   relatedServiceSlugs: string[];
   relatedBestSlugs: string[];
+  /** ISO date (YYYY-MM-DD) for Article JSON-LD and on-page date labels. */
+  datePublished?: string;
+  dateModified?: string;
 };
 
 export type SiteContent = {
