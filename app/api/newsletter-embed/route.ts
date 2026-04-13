@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { runNewsletterEmbedSignup } from "../../../lib/newsletter-embed-core";
+import { sendLeadMagnetWelcomeEmail } from "../../../lib/send-lead-magnet-welcome-email";
 
 type Body = {
   email?: string;
@@ -34,6 +35,15 @@ export async function POST(req: Request) {
     if (result.error.includes("configuration")) status = 500;
     else if (result.error.includes("Provider") || result.error.includes("reach")) status = 502;
     return NextResponse.json({ ok: false, error: result.error }, { status });
+  }
+
+  if (result.recorded) {
+    const to = (body.email ?? "").replace(/\s+/g, " ").trim();
+    try {
+      await sendLeadMagnetWelcomeEmail({ to });
+    } catch {
+      /* signup already succeeded */
+    }
   }
 
   return NextResponse.json({ ok: true });

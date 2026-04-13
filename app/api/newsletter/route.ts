@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { NextResponse } from "next/server";
+import { sendLeadMagnetWelcomeEmail } from "../../../lib/send-lead-magnet-welcome-email";
 
 type NewsletterPayload = {
   email?: string;
@@ -62,6 +63,12 @@ export async function POST(req: Request) {
     fs.appendFileSync(filePath, JSON.stringify(signup) + "\n", "utf8");
   } catch {
     // Ignore local persistence failures.
+  }
+
+  try {
+    await sendLeadMagnetWelcomeEmail({ to: email, firstName, leadMagnet });
+  } catch {
+    // Never fail signup if transactional email errors.
   }
 
   return NextResponse.json({ ok: true });

@@ -7,6 +7,7 @@
   },
   "scripts": {
     "dev": "next dev --turbopack",
+    "generate:lead-pdfs": "node scripts/generate-lead-magnet-pdfs.mjs",
     "build": "next build --webpack && node scripts/vercel-mirror-next.cjs",
     "vercel-build": "npm run build",
     "start": "next start"
@@ -15,13 +16,15 @@
     "@anthropic-ai/sdk": "^0.39.0",
     "next": "16.2.1",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "resend": "^6.11.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "pdf-lib": "^1.17.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

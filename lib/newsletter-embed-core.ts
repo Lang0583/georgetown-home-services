@@ -26,11 +26,13 @@ function sanitizeSource(input: string) {
 /**
  * Shared signup forward for `/api/newsletter-embed` and internal callers (e.g. service-request seasonal opt-in).
  */
-export async function runNewsletterEmbedSignup(
-  input: NewsletterEmbedInput
-): Promise<{ ok: true } | { ok: false; error: string }> {
+export type NewsletterEmbedResult =
+  | { ok: true; recorded: boolean }
+  | { ok: false; error: string };
+
+export async function runNewsletterEmbedSignup(input: NewsletterEmbedInput): Promise<NewsletterEmbedResult> {
   if (input.website != null && String(input.website).trim() !== "") {
-    return { ok: true };
+    return { ok: true, recorded: false };
   }
 
   const email = sanitizeEmail(input.email);
@@ -118,5 +120,5 @@ export async function runNewsletterEmbedSignup(
     }
   }
 
-  return { ok: true };
+  return { ok: true, recorded: true };
 }
