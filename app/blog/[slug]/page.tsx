@@ -16,6 +16,7 @@ import {
   getLocationBySlug,
   getServices,
 } from "../../../lib/site-content";
+import { pageSeoMetadata } from "../../../lib/page-seo";
 import { getGeneratedPage } from "../../../lib/generatedPages";
 import { blogPageInternalLinks } from "../../../lib/internal-links";
 
@@ -45,12 +46,16 @@ function articleJsonLd({
   description,
   url,
   publisherName,
+  datePublished,
+  dateModified,
 }: {
   siteUrl: string;
   headline: string;
   description: string;
   url: string;
   publisherName: string;
+  datePublished: string;
+  dateModified: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -60,7 +65,22 @@ function articleJsonLd({
     mainEntityOfPage: url,
     author: { "@type": "Organization", name: publisherName, url: siteUrl },
     publisher: { "@type": "Organization", name: publisherName, url: siteUrl },
+    datePublished,
+    dateModified,
   };
+}
+
+const DEFAULT_BLOG_PUBLISH_DATE_ISO = "2026-04-12";
+
+function formatPublishDateLabel(isoDate: string) {
+  // Use a stable date-only ISO string as canonical storage.
+  const d = new Date(`${isoDate}T00:00:00.000Z`);
+  return new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(d);
 }
 
 function NativeInlineCta({
@@ -220,7 +240,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 
   const o = overrides[slug];
-  return { title: o?.title ?? post.title, description: o?.description ?? post.description };
+  const titleSegment = o?.title ?? post.title;
+  const description = o?.description ?? post.description;
+  return pageSeoMetadata({
+    titleSegment,
+    description,
+    pathname: `/blog/${slug}`,
+    ogType: "article",
+  });
 }
 
 export default async function BlogPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -233,6 +260,11 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
 
   const generated = getGeneratedPage(slug);
   const location = getLocationBySlug(post.locationSlug);
+  // Blog posts do not currently store per-post publish dates; start with a stable default.
+  const datePublished = DEFAULT_BLOG_PUBLISH_DATE_ISO;
+  const dateModified = DEFAULT_BLOG_PUBLISH_DATE_ISO;
+  const publishedLabel = formatPublishDateLabel(datePublished);
+  const modifiedLabel = formatPublishDateLabel(dateModified);
   const services = getServices();
   const relatedServices = post.relatedServiceSlugs
     .map((s) => services.find((x) => x.slug === s))
@@ -268,6 +300,8 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
               headline: post.title,
               description: post.description,
               url: `${siteUrl}/blog/${post.slug}`,
+              datePublished,
+              dateModified,
             })}
           />
           <TwoColumnPage
@@ -284,6 +318,14 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
                 Blog • {location?.title ?? "Georgetown, TX"}
               </div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{post.h1}</h1>
+              <div className="mt-2 text-sm text-gray-600">
+                <div>
+                  <span className="font-semibold text-gray-900">Published:</span> {publishedLabel}
+                </div>
+                <div className="mt-1">
+                  <span className="font-semibold text-gray-900">Last Updated:</span> {modifiedLabel}
+                </div>
+              </div>
               <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">{post.description}</p>
               <div className="mt-2 text-sm text-gray-500">Estimated read time: {post.readTime}</div>
 

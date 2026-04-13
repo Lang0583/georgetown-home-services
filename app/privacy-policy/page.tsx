@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import TrustPage from "../../components/templates/TrustPage";
+import { pageSeoMetadata } from "../../lib/page-seo";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
+export const metadata: Metadata = pageSeoMetadata({
+  titleSegment: "Privacy Policy",
   description: "Privacy policy for Georgetown Home Services.",
-};
+  pathname: "/privacy-policy",
+  ogType: "website",
+});
 
 export default function PrivacyPolicyPage() {
   return (

@@ -21,6 +21,13 @@ export function RichTextBlocks({ blocks }: { blocks: ContentBlock[] }) {
             </h2>
           );
         }
+        if (block.kind === "h3") {
+          return (
+            <h3 key={idx} className="mt-6 mb-3 text-lg font-semibold">
+              {block.text}
+            </h3>
+          );
+        }
         if (block.kind === "ul") {
           return (
             <ul key={idx} className="mb-4 ml-5 list-disc">

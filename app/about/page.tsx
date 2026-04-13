@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import TrustPage from "../../components/templates/TrustPage";
+import { pageSeoMetadata } from "../../lib/page-seo";
 import { getBrandName } from "../../lib/site-content";
 
-export const metadata: Metadata = {
-  title: "About Georgetown Home Services",
+export const metadata: Metadata = pageSeoMetadata({
+  titleSegment: "About Georgetown Home Services",
   description:
     "Georgetown Home Services is a homeowner guide and provider directory for Georgetown, Texas—helping you compare companies and make better hiring decisions.",
-};
+  pathname: "/about",
+  ogType: "website",
+});
 
 export default function AboutPage() {
   const brand = getBrandName();

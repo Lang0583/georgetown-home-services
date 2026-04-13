@@ -3,6 +3,7 @@ import siteContent from "../data/site-content.json";
 export type ContentBlock =
   | { kind: "p"; text: string }
   | { kind: "h2"; text: string }
+  | { kind: "h3"; text: string }
   | { kind: "ul"; items: string[] };
 
 export type Faq = { q: string; a: string };

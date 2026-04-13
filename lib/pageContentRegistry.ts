@@ -3,12 +3,26 @@ import type { BestPage, ContentBlock, ServicePage } from "./site-content";
 import { getBestBySlug, getServiceBySlug } from "./site-content";
 
 /** Canonical slugs — must exist in `data/site-content.json` and have html (generated) and/or content blocks. */
-export const CORE_SERVICE_SLUGS = ["plumber-georgetown-tx", "hvac-georgetown-tx", "roofer-georgetown-tx"] as const;
+export const CORE_SERVICE_SLUGS = [
+  "plumber-georgetown-tx",
+  "hvac-georgetown-tx",
+  "roofer-georgetown-tx",
+  "electrician-georgetown-tx",
+  "landscaping-georgetown-tx",
+  "pest-control-georgetown-tx",
+  "foundation-repair-georgetown-tx",
+  "house-cleaning-georgetown-tx",
+] as const;
 
 export const CORE_BEST_SLUGS = [
   "best-plumbers-georgetown-tx",
   "top-hvac-companies-georgetown-tx",
   "best-roofers-georgetown-tx",
+  "best-electricians-georgetown-tx",
+  "best-landscaping-companies-georgetown-tx",
+  "best-pest-control-georgetown-tx",
+  "best-foundation-repair-georgetown-tx",
+  "best-house-cleaning-services-georgetown-tx",
 ] as const;
 
 export type ResolvedServicePage = {

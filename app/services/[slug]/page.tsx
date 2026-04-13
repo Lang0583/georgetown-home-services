@@ -19,10 +19,21 @@ import {
   getServices,
   getServiceSlugs,
 } from "../../../lib/site-content";
-import { resolveServicePage } from "../../../lib/pageContentRegistry";
+import { pageSeoMetadata } from "../../../lib/page-seo";
+import {
+  SERVICE_BEST_LAST_UPDATED_DISPLAY,
+  webPageWithDateModifiedJsonLd,
+} from "../../../lib/service-best-pages-meta";
+import { CORE_SERVICE_SLUGS, resolveServicePage } from "../../../lib/pageContentRegistry";
 import ServiceRequestForm from "../../../components/ServiceRequestForm";
 import ServiceTopProvidersSection from "../../../components/ServiceTopProvidersSection";
-import { getBusinessCategoryForServiceSlug, getBusinessesByCategory } from "../../../lib/businesses";
+import {
+  BEST_CTA_LABEL_BY_GROUP,
+  PROVIDER_GROUP_LINKS,
+  PROVIDER_SECTION_HEADING,
+  getBusinessCategoryForServiceSlug,
+  getBusinessesByCategory,
+} from "../../../lib/businesses";
 import { servicePageInternalLinks } from "../../../lib/internal-links";
 
 function breadcrumbJsonLd({
@@ -90,13 +101,42 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description:
         "A Georgetown roofing guide covering roof leaks, storm damage, shingle repair, and roof replacement estimates—plus what affects pricing and how to compare roofers.",
     },
+    "electrician-georgetown-tx": {
+      title: "Electrician in Georgetown, TX: Panels, Circuits, Safety, and What to Ask",
+      description:
+        "A Georgetown electrical guide for breaker trips, outlets, panels, and EV circuits—plus permit basics, cost factors, and how to compare licensed electricians.",
+    },
+    "landscaping-georgetown-tx": {
+      title: "Landscaping & Lawn Care in Georgetown, TX: Maintenance, Irrigation, Costs",
+      description:
+        "A Georgetown landscaping guide for lawn care, beds, mulch, and irrigation—plus seasonal timing, pricing factors, and how to compare local crews.",
+    },
+    "pest-control-georgetown-tx": {
+      title: "Pest Control in Georgetown, TX: Ants, Roaches, Rodents, and Treatment Plans",
+      description:
+        "A Georgetown pest control guide covering common pests, treatment options, warranties, and what to ask before signing a service plan.",
+    },
+    "foundation-repair-georgetown-tx": {
+      title: "Foundation Repair in Georgetown, TX: Clay Soil, Cracks, and Contractors",
+      description:
+        "A Georgetown foundation guide focused on expansive clay soil movement, warning signs, drainage, repair options, and how to vet foundation companies.",
+    },
+    "house-cleaning-georgetown-tx": {
+      title: "House Cleaning in Georgetown, TX: Recurring, Deep, and Move-Out Cleans",
+      description:
+        "A Georgetown house cleaning guide for maintenance vs deep cleans, pricing factors, insurance, and how to compare reputable maid services.",
+    },
   };
 
   const o = overrides[slug];
-  return {
-    title: o?.title ?? service.title,
-    description: o?.description ?? service.description,
-  };
+  const titleSegment = o?.title ?? service.title;
+  const description = o?.description ?? service.description;
+  return pageSeoMetadata({
+    titleSegment,
+    description,
+    pathname: `/services/${slug}`,
+    ogType: "website",
+  });
 }
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -127,27 +167,22 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const bestHref =
     bestPages.length > 0
       ? `/best/${bestPages[0]!.slug}`
-      : isPlumberService
-        ? "/best/best-plumbers-georgetown-tx"
-        : isHvacService
-          ? "/best/top-hvac-companies-georgetown-tx"
-          : isRooferService
-            ? "/best/best-roofers-georgetown-tx"
-            : "/best/best-plumbers-georgetown-tx";
+      : businessCategory
+        ? PROVIDER_GROUP_LINKS[businessCategory].best
+        : "/best";
 
-  const bestCtaLabel = isPlumberService
-    ? "Compare Georgetown Plumbers"
-    : isHvacService
-      ? "See Top HVAC Companies"
-      : isRooferService
-        ? "Browse Roof Repair Options"
-        : "Browse provider directory";
+  const bestCtaLabel = businessCategory
+    ? BEST_CTA_LABEL_BY_GROUP[businessCategory]
+    : "Browse provider directory";
 
-  const CORE_SERVICES = [
-    { label: "Plumbing", slug: "plumber-georgetown-tx", best: "best-plumbers-georgetown-tx" },
-    { label: "HVAC", slug: "hvac-georgetown-tx", best: "top-hvac-companies-georgetown-tx" },
-    { label: "Roofing", slug: "roofer-georgetown-tx", best: "best-roofers-georgetown-tx" },
-  ] as const;
+  const CORE_SERVICES = (CORE_SERVICE_SLUGS as readonly string[])
+    .map((slug) => {
+      const s = getServiceBySlug(slug);
+      const b0 = s?.bestSlugs?.[0];
+      if (!s || !b0) return null;
+      return { label: s.serviceType, slug: s.slug, best: b0 };
+    })
+    .filter((s): s is { label: string; slug: string; best: string } => Boolean(s));
   const explore = CORE_SERVICES.filter((s) => s.slug !== service.slug);
   const ruleLinks = servicePageInternalLinks(service.slug);
 
@@ -155,6 +190,13 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     <PageShell>
         <section className="py-10 md:py-12">
           <JsonLd data={breadcrumbJsonLd({ siteUrl, serviceTitle: service.title, serviceSlug: service.slug })} />
+          <JsonLd
+            data={webPageWithDateModifiedJsonLd({
+              pathname: `/services/${service.slug}`,
+              name: service.title,
+              description: service.description,
+            })}
+          />
           {service.faqs?.length ? (
             <JsonLd
               data={faqPageJsonLd(
@@ -178,6 +220,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 {service.serviceType} • {location?.title ?? "Georgetown, TX"}
               </div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{service.h1}</h1>
+              <p className="mt-2 text-sm text-gray-600">Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               {isPlumberService ? (
                 <p className="mt-4 text-lg leading-relaxed text-gray-700">
                   Plumbing issues in Georgetown, TX rarely happen at a convenient time. From slab leaks and aging water
@@ -728,13 +771,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               {providersFromJson.length ? (
                 <section id="providers" className="mt-12 scroll-mt-24">
                   <h2 className="text-3xl font-semibold tracking-tight text-gray-900">
-                    {isPlumberService
-                      ? "Top Plumbers Serving Georgetown TX"
-                      : isHvacService
-                      ? "Top HVAC Companies Serving Georgetown TX"
-                      : isRooferService
-                      ? "Top Roofers Serving Georgetown TX"
-                      : "Top Providers Serving Georgetown"}
+                    {businessCategory ? PROVIDER_SECTION_HEADING[businessCategory] : "Top Providers Serving Georgetown"}
                   </h2>
                   <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
                     These listings are compiled from public business information for companies that serve Georgetown, TX.

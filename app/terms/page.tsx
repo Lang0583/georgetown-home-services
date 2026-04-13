@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import TrustPage from "../../components/templates/TrustPage";
+import { pageSeoMetadata } from "../../lib/page-seo";
 
-export const metadata: Metadata = {
-  title: "Terms of Use",
+export const metadata: Metadata = pageSeoMetadata({
+  titleSegment: "Terms of Use",
   description: "Terms of use for Georgetown Home Services.",
-};
+  pathname: "/terms",
+  ogType: "website",
+});
 
 export default function TermsPage() {
   return (

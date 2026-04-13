@@ -7,11 +7,14 @@ import LinkCard from "../components/LinkCard";
 import { ButtonLink } from "../components/Button";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { pageSeoMetadata } from "../lib/page-seo";
+import { CORE_BEST_SLUGS, CORE_SERVICE_SLUGS } from "../lib/pageContentRegistry";
 import { getBlog, getBest, getLocations, getServices } from "../lib/site-content";
 import businesses from "../lib/businesses.json";
 import {
   BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS,
   BUSINESS_LINK_VISIT_WEBSITE,
+  PROVIDER_GROUP_LINKS,
   externalBusinessLinkProps,
   getBusinessMapsUrl,
   getBusinessOutboundUrl,
@@ -28,35 +31,50 @@ function topProvidersForGroup(list: Business[], group: ProviderGroup, limit: num
     .slice(0, limit);
 }
 
-export const metadata: Metadata = {
-  title: "Find Trusted Home Service Companies in Georgetown, Texas",
+export const metadata: Metadata = pageSeoMetadata({
+  titleSegment: "Find Trusted Home Service Companies in Georgetown, Texas",
   description:
-    "Compare local plumbers, HVAC companies, and roofers in Georgetown, TX with directory highlights, best-of guides, service pages, and practical homeowner tips.",
-};
+    "Compare local electricians, landscapers, pest control, foundation repair, house cleaners, plumbers, HVAC companies, and roofers in Georgetown, TX with directory highlights, best-of guides, and homeowner tips.",
+  pathname: "/",
+  ogType: "website",
+});
 
 export default function Home() {
   const services = getServices();
   const locations = getLocations();
   const best = getBest();
   const blog = getBlog();
+  const coreHomeServices = (CORE_SERVICE_SLUGS as readonly string[])
+    .map((slug) => services.find((s) => s.slug === slug))
+    .filter((s): s is NonNullable<typeof s> => Boolean(s));
+  const coreHomeBest = (CORE_BEST_SLUGS as readonly string[])
+    .map((slug) => best.find((b) => b.slug === slug))
+    .filter((b): b is NonNullable<typeof b> => Boolean(b));
   const allBusinesses = businesses as Business[];
-  const topLocalGroups: { title: string; key: ProviderGroup }[] = [
-    { title: "Plumbers", key: "plumber" },
-    { title: "HVAC", key: "hvac" },
-    { title: "Roofers", key: "roofer" },
+  const homepageTradeOrder: ProviderGroup[] = [
+    "plumber",
+    "hvac",
+    "roofer",
+    "electrician",
+    "landscaping",
+    "pest_control",
+    "foundation_repair",
+    "house_cleaning",
   ];
-
-  const bestHrefByGroup: Record<ProviderGroup, string> = {
-    plumber: "/best/best-plumbers-georgetown-tx",
-    hvac: "/best/top-hvac-companies-georgetown-tx",
-    roofer: "/best/best-roofers-georgetown-tx",
+  const tradeHomepageTitle: Record<ProviderGroup, string> = {
+    plumber: "Plumbers",
+    hvac: "HVAC",
+    roofer: "Roofers",
+    electrician: "Electricians",
+    landscaping: "Landscaping",
+    pest_control: "Pest control",
+    foundation_repair: "Foundation",
+    house_cleaning: "Cleaning",
   };
-
-  const serviceHrefByGroup: Record<ProviderGroup, string> = {
-    plumber: "/services/plumber-georgetown-tx",
-    hvac: "/services/hvac-georgetown-tx",
-    roofer: "/services/roofer-georgetown-tx",
-  };
+  const topLocalGroups: { title: string; key: ProviderGroup }[] = homepageTradeOrder.map((key) => ({
+    title: tradeHomepageTitle[key],
+    key,
+  }));
 
   return (
     <div className="bg-gray-50 pb-40 md:pb-44">
@@ -74,7 +92,7 @@ export default function Home() {
               </h1>
 
               <p className="mt-4 max-w-xl text-lg leading-relaxed text-gray-700">
-                Compare local plumbers, HVAC companies, and roofers with practical guides, service area pages, and homeowner tips.
+                Compare local home service companies—electrical, landscaping, pest control, foundation repair, cleaning, plumbing, HVAC, and roofing—with practical guides and directory pages.
               </p>
 
               <div className="mt-6">
@@ -93,7 +111,7 @@ export default function Home() {
                 <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-700">
                   Choose a category to see comparison guides, service pages, and common local issues (like clogged drains, AC not cooling, and roof leaks after storms).
                 </p>
-                <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
                   <Link
                     href="/services/plumber-georgetown-tx"
                     className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
@@ -117,6 +135,46 @@ export default function Home() {
                     <div className="text-sm font-semibold text-gray-900">Roofing</div>
                     <div className="mt-1 text-sm text-gray-700">Roof leak, storm damage, shingle repair, estimates.</div>
                     <div className="mt-2 text-xs font-semibold text-blue-700">Explore roofing →</div>
+                  </Link>
+                  <Link
+                    href="/services/electrician-georgetown-tx"
+                    className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                  >
+                    <div className="text-sm font-semibold text-gray-900">Electrical</div>
+                    <div className="mt-1 text-sm text-gray-700">Panels, circuits, outlets, EV charger prep.</div>
+                    <div className="mt-2 text-xs font-semibold text-blue-700">Explore electrical →</div>
+                  </Link>
+                  <Link
+                    href="/services/landscaping-georgetown-tx"
+                    className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                  >
+                    <div className="text-sm font-semibold text-gray-900">Landscaping</div>
+                    <div className="mt-1 text-sm text-gray-700">Lawn care, beds, mulch, irrigation tuning.</div>
+                    <div className="mt-2 text-xs font-semibold text-blue-700">Explore landscaping →</div>
+                  </Link>
+                  <Link
+                    href="/services/pest-control-georgetown-tx"
+                    className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                  >
+                    <div className="text-sm font-semibold text-gray-900">Pest control</div>
+                    <div className="mt-1 text-sm text-gray-700">Ants, roaches, rodents, perimeter plans.</div>
+                    <div className="mt-2 text-xs font-semibold text-blue-700">Explore pest control →</div>
+                  </Link>
+                  <Link
+                    href="/services/foundation-repair-georgetown-tx"
+                    className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                  >
+                    <div className="text-sm font-semibold text-gray-900">Foundation</div>
+                    <div className="mt-1 text-sm text-gray-700">Clay soil cracks, drainage, pier and slab.</div>
+                    <div className="mt-2 text-xs font-semibold text-blue-700">Explore foundation →</div>
+                  </Link>
+                  <Link
+                    href="/services/house-cleaning-georgetown-tx"
+                    className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+                  >
+                    <div className="text-sm font-semibold text-gray-900">House cleaning</div>
+                    <div className="mt-1 text-sm text-gray-700">Recurring maid service, deep and move-out cleans.</div>
+                    <div className="mt-2 text-xs font-semibold text-blue-700">Explore cleaning →</div>
                   </Link>
                 </div>
               </div>
@@ -148,7 +206,7 @@ export default function Home() {
                   <div className="rounded-lg border border-gray-100 bg-gray-50 p-4">
                     <div className="text-sm font-semibold text-gray-900">1. Pick a category</div>
                     <p className="mt-2 text-sm leading-relaxed text-gray-700">
-                      Start with plumbing, HVAC, or roofing guides and common issues.
+                      Start with core trade guides—from electrical and landscaping to plumbing, HVAC, and roofing.
                     </p>
                   </div>
                   <div className="rounded-lg border border-gray-100 bg-gray-50 p-4">
@@ -172,12 +230,12 @@ export default function Home() {
               <p className="mt-2 max-w-3xl text-sm leading-relaxed text-gray-700">
                 Directory highlights from public listing data. Use these as a starting point for comparison, then open the best-of guides for deeper decision support.
               </p>
-              <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
+              <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
                 {topLocalGroups.map(({ title, key }) => (
                   <div key={key} className="rounded-lg bg-gray-50 p-4">
                     <div className="flex items-baseline justify-between gap-3">
                       <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-900">{title}</h3>
-                      <Link href={bestHrefByGroup[key]} className="text-xs font-semibold text-blue-700 hover:underline">
+                      <Link href={PROVIDER_GROUP_LINKS[key].best} className="text-xs font-semibold text-blue-700 hover:underline">
                         Top Providers
                       </Link>
                     </div>
@@ -232,11 +290,11 @@ export default function Home() {
                       })}
                     </ul>
                     <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs">
-                      <Link href={serviceHrefByGroup[key]} className="font-semibold text-gray-900 hover:underline">
+                      <Link href={PROVIDER_GROUP_LINKS[key].service} className="font-semibold text-gray-900 hover:underline">
                         View service page
                       </Link>
                       <span className="text-gray-400">·</span>
-                      <Link href={bestHrefByGroup[key]} className="font-semibold text-gray-900 hover:underline">
+                      <Link href={PROVIDER_GROUP_LINKS[key].best} className="font-semibold text-gray-900 hover:underline">
                         Compare top providers
                       </Link>
                     </div>
@@ -254,42 +312,30 @@ export default function Home() {
               className="flex shrink-0 flex-wrap items-center gap-x-4 gap-y-1 text-sm font-medium text-gray-700"
               aria-label="Core service pages"
             >
-              <Link href="/services/plumber-georgetown-tx" className="hover:text-gray-900 hover:underline">
-                Plumbing
-              </Link>
-              <span className="text-gray-300" aria-hidden>
-                ·
-              </span>
-              <Link href="/services/hvac-georgetown-tx" className="hover:text-gray-900 hover:underline">
-                HVAC
-              </Link>
-              <span className="text-gray-300" aria-hidden>
-                ·
-              </span>
-              <Link href="/services/roofer-georgetown-tx" className="hover:text-gray-900 hover:underline">
-                Roofing
-              </Link>
+              {coreHomeServices.map((s, i) => (
+                <span key={s.slug} className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                  {i > 0 ? (
+                    <span className="text-gray-300" aria-hidden>
+                      ·
+                    </span>
+                  ) : null}
+                  <Link href={`/services/${s.slug}`} className="hover:text-gray-900 hover:underline">
+                    {s.serviceType}
+                  </Link>
+                </span>
+              ))}
             </nav>
           </div>
-          <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            <LinkCard
-              href="/services/plumber-georgetown-tx"
-              title="Plumber in Georgetown, TX"
-              description="Repairs for leaks, clogs, fixtures, and replacements across Georgetown."
-              badge="Plumbing"
-            />
-            <LinkCard
-              href="/services/hvac-georgetown-tx"
-              title="HVAC in Georgetown, TX"
-              description="AC and heating diagnostics, repairs, and maintenance for consistent comfort."
-              badge="HVAC"
-            />
-            <LinkCard
-              href="/services/roofer-georgetown-tx"
-              title="Roofer in Georgetown, TX"
-              description="Roof repairs, leak identification, and replacement planning."
-              badge="Roofing"
-            />
+          <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {coreHomeServices.map((s) => (
+              <LinkCard
+                key={s.slug}
+                href={`/services/${s.slug}`}
+                title={s.title}
+                description={s.description}
+                badge={s.serviceType}
+              />
+            ))}
           </div>
         </section>
 
@@ -300,42 +346,30 @@ export default function Home() {
               className="flex shrink-0 flex-wrap items-center gap-x-4 gap-y-1 text-sm font-medium text-gray-700"
               aria-label="Best-of guides"
             >
-              <Link href="/best/best-plumbers-georgetown-tx" className="hover:text-gray-900 hover:underline">
-                Best plumbers
-              </Link>
-              <span className="text-gray-300" aria-hidden>
-                ·
-              </span>
-              <Link href="/best/top-hvac-companies-georgetown-tx" className="hover:text-gray-900 hover:underline">
-                Best HVAC
-              </Link>
-              <span className="text-gray-300" aria-hidden>
-                ·
-              </span>
-              <Link href="/best/best-roofers-georgetown-tx" className="hover:text-gray-900 hover:underline">
-                Best roofers
-              </Link>
+              {coreHomeBest.map((b, i) => (
+                <span key={b.slug} className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                  {i > 0 ? (
+                    <span className="text-gray-300" aria-hidden>
+                      ·
+                    </span>
+                  ) : null}
+                  <Link href={`/best/${b.slug}`} className="hover:text-gray-900 hover:underline">
+                    {b.title.replace(/ in Georgetown, TX$/, "")}
+                  </Link>
+                </span>
+              ))}
             </nav>
           </div>
-          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-            <LinkCard
-              href="/best/best-plumbers-georgetown-tx"
-              title="Best Plumbers in Georgetown, TX"
-              description="A practical guide to choosing a plumber, with service comparisons and what to ask."
-              badge="Best Of"
-            />
-            <LinkCard
-              href="/best/top-hvac-companies-georgetown-tx"
-              title="Top HVAC Companies in Georgetown, TX"
-              description="How to evaluate HVAC companies, plus a comparison table and pricing guidance."
-              badge="Best Of"
-            />
-            <LinkCard
-              href="/best/best-roofers-georgetown-tx"
-              title="Best Roofers in Georgetown, TX"
-              description="How to evaluate roofers, compare proposals, and what to ask before you hire."
-              badge="Best Of"
-            />
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {coreHomeBest.map((b) => (
+              <LinkCard
+                key={b.slug}
+                href={`/best/${b.slug}`}
+                title={b.title}
+                description={b.description}
+                badge="Best Of"
+              />
+            ))}
           </div>
         </section>
 

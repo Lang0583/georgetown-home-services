@@ -1,3 +1,4 @@
+import { CORE_BEST_SLUGS, CORE_SERVICE_SLUGS } from "./pageContentRegistry";
 import { getBestBySlug, getBlog, getBlogBySlug, getBlogsForBestSlug, getBlogsForServiceSlug, getLocations, getServices, type BlogPage, type BestPage, type LocationPage, type ServicePage } from "./site-content";
 
 export type InternalLink = { href: string; label: string; description?: string };
@@ -18,7 +19,7 @@ function pick<T>(items: T[], n: number): T[] {
 }
 
 function siblingCoreServices(currentSlug: string): InternalLink[] {
-  const core = ["plumber-georgetown-tx", "hvac-georgetown-tx", "roofer-georgetown-tx"];
+  const core = CORE_SERVICE_SLUGS as readonly string[];
   const siblings = core.filter((s) => s !== currentSlug).slice(0, 2);
   const services = getServices();
   return siblings
@@ -62,7 +63,11 @@ export function servicePageInternalLinks(serviceSlug: string) {
   const service = getServices().find((s) => s.slug === serviceSlug) ?? null;
   if (!service) return null;
 
-  const parentHub: InternalLink = { href: "/services", label: "Services hub", description: "Browse plumbing, HVAC, and roofing guides." };
+  const parentHub: InternalLink = {
+    href: "/services",
+    label: "Services hub",
+    description: "Browse electrical, landscaping, pest control, foundation, cleaning, plumbing, HVAC, and roofing guides.",
+  };
   const siblings = siblingCoreServices(service.slug);
   const bestOf = bestOfForService(service);
   const neighborhood = neighborhoodForService(service);
@@ -108,7 +113,7 @@ export function bestPageInternalLinks(bestSlug: string) {
   if (!best) return null;
 
   const services = getServices();
-  const coreServiceSlugs = ["plumber-georgetown-tx", "hvac-georgetown-tx", "roofer-georgetown-tx"];
+  const coreServiceSlugs = CORE_SERVICE_SLUGS as readonly string[];
   const twoCore = pick(
     coreServiceSlugs
       .map((s) => services.find((x) => x.slug === s))

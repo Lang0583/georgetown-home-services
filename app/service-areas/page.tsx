@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import TrustPage from "../../components/templates/TrustPage";
+import { pageSeoMetadata } from "../../lib/page-seo";
 import { getLocations } from "../../lib/site-content";
 
-export const metadata: Metadata = {
-  title: "Service Areas",
+export const metadata: Metadata = pageSeoMetadata({
+  titleSegment: "Service Areas",
   description: "Neighborhood and service area pages for Georgetown, TX homeowners.",
-};
+  pathname: "/service-areas",
+  ogType: "website",
+});
 
 export default function ServiceAreasPage() {
   const locations = getLocations();

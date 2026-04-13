@@ -5,13 +5,16 @@ import CTASection from "../../components/CTASection";
 import LinkCard from "../../components/LinkCard";
 import BlogMidContentEmailCard from "../../components/BlogMidContentEmailCard";
 import JsonLd from "../../components/JsonLd";
+import { pageSeoMetadata } from "../../lib/page-seo";
 import { getBlog } from "../../lib/site-content";
 
-export const metadata: Metadata = {
-  title: "Georgetown, TX Homeowner Blog: Costs, Maintenance, and Hiring Tips",
+export const metadata: Metadata = pageSeoMetadata({
+  titleSegment: "Georgetown, TX Homeowner Blog: Costs, Maintenance, and Hiring Tips",
   description:
     "Repeat-use homeowner content for Georgetown, TX: monthly maintenance, seasonal checklists, cost guides, after-storm steps, warning signs, and contractor hiring checklists.",
-};
+  pathname: "/blog",
+  ogType: "website",
+});
 
 type BlogCategoryKey = "costs" | "repair" | "maintenance" | "emergency" | "hiring";
 

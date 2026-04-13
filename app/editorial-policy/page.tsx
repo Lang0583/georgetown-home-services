@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import TrustPage from "../../components/templates/TrustPage";
+import { pageSeoMetadata } from "../../lib/page-seo";
 
-export const metadata: Metadata = {
-  title: "Editorial Policy",
+export const metadata: Metadata = pageSeoMetadata({
+  titleSegment: "Editorial Policy",
   description:
     "How Georgetown Home Services creates and updates homeowner guides and provider comparisons, including transparency around sponsored placements.",
-};
+  pathname: "/editorial-policy",
+  ogType: "website",
+});
 
 export default function EditorialPolicyPage() {
   return (

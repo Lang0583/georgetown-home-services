@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import Script from "next/script";
 import { notFound } from "next/navigation";
 import LinkCard from "../../../components/LinkCard";
 import GeneratedArticleBody from "../../../components/GeneratedArticleBody";
@@ -17,16 +19,37 @@ import {
   getServiceBySlug,
   getServices,
 } from "../../../lib/site-content";
-import { resolveBestPage } from "../../../lib/pageContentRegistry";
+import { pageSeoMetadata } from "../../../lib/page-seo";
+import {
+  SERVICE_BEST_LAST_UPDATED_DISPLAY,
+  webPageWithDateModifiedJsonLd,
+} from "../../../lib/service-best-pages-meta";
+import { CORE_BEST_SLUGS, resolveBestPage } from "../../../lib/pageContentRegistry";
 import { getProvidersForBestSlug } from "../../../lib/providers";
 import {
   BUSINESS_LISTINGS_LAST_UPDATED,
   getBusinessCategoryForBestSlug,
   getBusinessesByCategory,
+  getDefaultBestDirectoryListing,
   getRelatedServiceSlugForBestSlug,
 } from "../../../lib/businesses";
+import { buildBestDirectoryItemListJsonLd } from "../../../lib/best-directory-item-list-schema";
 import { bestPageInternalLinks } from "../../../lib/internal-links";
 import BestBusinessesDirectory from "../../../components/BestBusinessesDirectory";
+
+const HERO_PLACEHOLDER_SRC =
+  "https://placehold.co/1200x400/01696F/FFFFFF?text=Georgetown+Home+Services";
+
+const CORE_BEST_HERO_ALT: Record<string, string> = {
+  "best-plumbers-georgetown-tx": "Licensed plumber working on pipes in Georgetown TX home",
+  "top-hvac-companies-georgetown-tx": "HVAC technician servicing air conditioning unit in Georgetown TX",
+  "best-roofers-georgetown-tx": "Roofer installing shingles on Georgetown TX residential home",
+  "best-electricians-georgetown-tx": "Electrician inspecting electrical panel in Georgetown TX home",
+  "best-landscaping-companies-georgetown-tx": "Landscaper maintaining lawn and flower beds in Georgetown TX",
+  "best-pest-control-georgetown-tx": "Pest control technician treating home exterior in Georgetown TX",
+  "best-foundation-repair-georgetown-tx": "Foundation repair specialist evaluating a Georgetown TX home",
+  "best-house-cleaning-services-georgetown-tx": "House cleaning team working in a Georgetown TX residence",
+};
 
 function breadcrumbJsonLd({
   siteUrl,
@@ -45,32 +68,6 @@ function breadcrumbJsonLd({
       { "@type": "ListItem", position: 2, name: "Best Of", item: `${siteUrl}/best` },
       { "@type": "ListItem", position: 3, name: bestTitle, item: `${siteUrl}/best/${bestSlug}` },
     ],
-  };
-}
-
-function itemListJsonLd({
-  siteUrl,
-  pageUrl,
-  name,
-  items,
-}: {
-  siteUrl: string;
-  pageUrl: string;
-  name: string;
-  items: { position: number; name: string; url: string }[];
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name,
-    url: pageUrl,
-    itemListElement: items.map((it) => ({
-      "@type": "ListItem",
-      position: it.position,
-      name: it.name,
-      item: it.url,
-    })),
-    isPartOf: { "@type": "WebSite", url: siteUrl, name: "Georgetown Home Services" },
   };
 }
 
@@ -173,10 +170,42 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description:
         "Compare Georgetown roofers for leak repairs and replacement planning. Covers storm documentation, scope details, warranties, and how to evaluate estimates.",
     },
+    "best-electricians-georgetown-tx": {
+      title: "Best Electricians in Georgetown, TX: Licensing, Panels, and Written Scopes",
+      description:
+        "Compare Georgetown electricians for safety repairs, panel work, and new circuits. Covers licensing questions, permit basics, and how to evaluate estimates.",
+    },
+    "best-landscaping-companies-georgetown-tx": {
+      title: "Best Landscaping Companies in Georgetown, TX: Lawn Care, Beds, and Irrigation",
+      description:
+        "Compare Georgetown landscaping companies for maintenance, cleanups, and irrigation tuning. Covers scope clarity, visit frequency, and pricing factors.",
+    },
+    "best-pest-control-georgetown-tx": {
+      title: "Best Pest Control in Georgetown, TX: Plans, Warranties, and What to Ask",
+      description:
+        "Compare Georgetown pest control providers for inspections, treatment plans, and re-service policies—plus questions to ask before you sign.",
+    },
+    "best-foundation-repair-georgetown-tx": {
+      title: "Best Foundation Repair in Georgetown, TX: Clay Soil, Drainage, and Contractors",
+      description:
+        "Compare Georgetown foundation repair companies with Central Texas expansive clay in mind. Covers warning signs, monitoring vs repair, and warranty basics.",
+    },
+    "best-house-cleaning-services-georgetown-tx": {
+      title: "Best House Cleaning Services in Georgetown, TX: Recurring, Deep, and Move-Out",
+      description:
+        "Compare Georgetown house cleaners for recurring service, deep cleans, and move-out work. Covers insurance, checklists, and how to compare quotes fairly.",
+    },
   };
 
   const o = overrides[slug];
-  return { title: o?.title ?? best.title, description: o?.description ?? best.description };
+  const titleSegment = o?.title ?? best.title;
+  const description = o?.description ?? best.description;
+  return pageSeoMetadata({
+    titleSegment,
+    description,
+    pathname: `/best/${slug}`,
+    ogType: "website",
+  });
 }
 
 export default async function BestPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -203,11 +232,14 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
     .filter((s): s is (typeof services)[number] => Boolean(s));
   const helpfulGuides = getBlogsForBestSlug(best.slug);
 
-  const CORE_BEST = [
-    { label: "Best Plumbers", slug: "best-plumbers-georgetown-tx", service: "plumber-georgetown-tx" },
-    { label: "Best HVAC", slug: "top-hvac-companies-georgetown-tx", service: "hvac-georgetown-tx" },
-    { label: "Best Roofers", slug: "best-roofers-georgetown-tx", service: "roofer-georgetown-tx" },
-  ] as const;
+  const CORE_BEST = (CORE_BEST_SLUGS as readonly string[])
+    .map((bestSlug) => {
+      const p = getBestBySlug(bestSlug);
+      const svc = getRelatedServiceSlugForBestSlug(bestSlug);
+      if (!p || !svc) return null;
+      return { label: p.title.replace(/ in Georgetown, TX$/, ""), slug: p.slug, service: svc };
+    })
+    .filter((b): b is { label: string; slug: string; service: string } => Boolean(b));
   const explore = CORE_BEST.filter((b) => b.slug !== best.slug);
   const ruleLinks = bestPageInternalLinks(best.slug);
 
@@ -257,7 +289,22 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                 a: "Not always. Some hail damage can be repaired, but widespread bruising, granule loss, or multiple compromised areas may justify replacement. Ask for photos and clear reasoning.",
               },
             ]
-          : [];
+          : businessCategory
+            ? [
+                {
+                  q: "How should I use this best-of guide for Georgetown, TX?",
+                  a: "Start with the related service guide for fundamentals, then shortlist a few companies below. Contact providers directly for written scopes, licensing proof, and availability.",
+                },
+                {
+                  q: "What should I ask before hiring?",
+                  a: "Ask what is included, what could change the price, how warranties or re-services work, and whether the company carries appropriate insurance for the trade.",
+                },
+                {
+                  q: "How often should I revisit this list?",
+                  a: "We update listings using publicly available business information. Always confirm current reviews, licensing, and pricing with the provider before you commit.",
+                },
+              ]
+            : [];
 
   const editorialMethodology = {
     title: "Methodology and editorial notes",
@@ -272,6 +319,13 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
     <PageShell>
       <section className="py-10 md:py-12">
           <JsonLd data={breadcrumbJsonLd({ siteUrl, bestTitle: best.title, bestSlug: best.slug })} />
+          <JsonLd
+            data={webPageWithDateModifiedJsonLd({
+              pathname: `/best/${best.slug}`,
+              name: best.title,
+              description: best.description,
+            })}
+          />
           {faqsForSchema.length ? (
             <JsonLd
               data={faqJsonLd({
@@ -283,19 +337,15 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
             />
           ) : null}
           {businessesForPage?.length ? (
-            <JsonLd
-              data={itemListJsonLd({
-                siteUrl,
-                pageUrl: `${siteUrl}/best/${best.slug}`,
-                name: best.title,
-                items: businessesForPage
-                  .slice(0, 25)
-                  .map((b, idx) => ({
-                    position: idx + 1,
-                    name: b.name,
-                    url: (b.website || b.location_link || "").trim() ? (b.website || b.location_link) : `${siteUrl}/best/${best.slug}`,
-                  })),
-              })}
+            <Script
+              id={`best-itemlist-${best.slug}`}
+              type="application/ld+json"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify(
+                  buildBestDirectoryItemListJsonLd(best.title, getDefaultBestDirectoryListing(businessesForPage)),
+                ),
+              }}
             />
           ) : null}
           <TwoColumnPage
@@ -310,6 +360,19 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
               />
               <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Best Of</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{best.h1}</h1>
+              <p className="mt-2 text-sm text-gray-600">Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+              {CORE_BEST_HERO_ALT[best.slug] ? (
+                <div className="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+                  <Image
+                    src={HERO_PLACEHOLDER_SRC}
+                    alt={CORE_BEST_HERO_ALT[best.slug]!}
+                    width={1200}
+                    height={400}
+                    loading="lazy"
+                    className="h-auto w-full"
+                  />
+                </div>
+              ) : null}
               {isPlumbersGeorgetown ? (
                 <>
                   <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">
@@ -1641,7 +1704,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                   {relatedServiceSlug ? (
                     <LinkCard
                       href={`/services/${relatedServiceSlug}`}
-                      title={isPlumbersGeorgetown ? "Plumbing guide for Georgetown, TX" : isHvacGeorgetown ? "HVAC guide for Georgetown, TX" : isRoofersGeorgetown ? "Roofing guide for Georgetown, TX" : "Service guide"}
+                      title={relatedService?.title ?? "Service guide"}
                       description={relatedService?.description ?? "Service guide and homeowner checklist."}
                       badge="Service guide"
                     />
@@ -1673,7 +1736,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                   Browse our full set of best-of categories for Georgetown, TX.
                 </p>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
-                  {CORE_BEST.map((b) => (
+                  {explore.map((b) => (
                     <LinkCard
                       key={b.slug}
                       href={`/best/${b.slug}`}
@@ -1718,7 +1781,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                   </Link>
                   {relatedServiceSlug ? (
                     <Link href={`/services/${relatedServiceSlug}`} className="block font-semibold text-gray-900 hover:underline">
-                      {isPlumbersGeorgetown ? "Read our plumbing guide" : isHvacGeorgetown ? "Read our HVAC guide" : isRoofersGeorgetown ? "Read our roofing guide" : "Read our service guide"}
+                      {relatedService ? `Read: ${relatedService.title}` : "Read our service guide"}
                     </Link>
                   ) : null}
                 </div>

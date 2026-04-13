@@ -4,15 +4,21 @@ import Container from "../../components/Container";
 import LinkCard from "../../components/LinkCard";
 import CTASection from "../../components/CTASection";
 import JsonLd from "../../components/JsonLd";
+import { pageSeoMetadata } from "../../lib/page-seo";
+import {
+  SERVICE_BEST_LAST_UPDATED_DISPLAY,
+  webPageWithDateModifiedJsonLd,
+} from "../../lib/service-best-pages-meta";
+import { CORE_SERVICE_SLUGS } from "../../lib/pageContentRegistry";
 import { getBlog, getLocations, getServices } from "../../lib/site-content";
 
-export const metadata: Metadata = {
-  title: "Service Guides for Georgetown, TX Homeowners",
+export const metadata: Metadata = pageSeoMetadata({
+  titleSegment: "Service Guides for Georgetown, TX Homeowners",
   description:
-    "Browse Georgetown service guides for plumbing, HVAC, and roofing—including common problems and neighborhood-specific pages.",
-};
-
-const CORE_SERVICE_SLUGS = ["plumber-georgetown-tx", "hvac-georgetown-tx", "roofer-georgetown-tx"] as const;
+    "Browse Georgetown service guides for electrical, landscaping, pest control, foundation repair, house cleaning, plumbing, HVAC, and roofing—including common problems and neighborhood-specific pages.",
+  pathname: "/services",
+  ogType: "website",
+});
 
 function faqJsonLd() {
   return {
@@ -66,6 +72,21 @@ export default function ServicesIndexPage() {
   const roofing = services.filter(
     (s) => s.bestSlugs?.includes("best-roofers-georgetown-tx") && !(CORE_SERVICE_SLUGS as readonly string[]).includes(s.slug)
   );
+  const electrician = services.filter(
+    (s) => s.bestSlugs?.includes("best-electricians-georgetown-tx") && !(CORE_SERVICE_SLUGS as readonly string[]).includes(s.slug)
+  );
+  const landscaping = services.filter(
+    (s) => s.bestSlugs?.includes("best-landscaping-companies-georgetown-tx") && !(CORE_SERVICE_SLUGS as readonly string[]).includes(s.slug)
+  );
+  const pest = services.filter(
+    (s) => s.bestSlugs?.includes("best-pest-control-georgetown-tx") && !(CORE_SERVICE_SLUGS as readonly string[]).includes(s.slug)
+  );
+  const foundation = services.filter(
+    (s) => s.bestSlugs?.includes("best-foundation-repair-georgetown-tx") && !(CORE_SERVICE_SLUGS as readonly string[]).includes(s.slug)
+  );
+  const houseCleaning = services.filter(
+    (s) => s.bestSlugs?.includes("best-house-cleaning-services-georgetown-tx") && !(CORE_SERVICE_SLUGS as readonly string[]).includes(s.slug)
+  );
 
   const problemBased = services.filter(
     (s) =>
@@ -79,6 +100,11 @@ export default function ServicesIndexPage() {
     ...plumbing.map((s) => s.slug),
     ...hvac.map((s) => s.slug),
     ...roofing.map((s) => s.slug),
+    ...electrician.map((s) => s.slug),
+    ...landscaping.map((s) => s.slug),
+    ...pest.map((s) => s.slug),
+    ...foundation.map((s) => s.slug),
+    ...houseCleaning.map((s) => s.slug),
     ...problemBased.map((s) => s.slug),
   ]);
   const otherServices = services.filter((s) => !groupedSlugs.has(s.slug));
@@ -90,12 +116,21 @@ export default function ServicesIndexPage() {
       <Container>
         <section className="py-10 md:py-12">
           <JsonLd data={faqJsonLd()} />
+          <JsonLd
+            data={webPageWithDateModifiedJsonLd({
+              pathname: "/services",
+              name: "Home Services in Georgetown, TX",
+              description:
+                "Browse Georgetown service guides for electrical, landscaping, pest control, foundation repair, house cleaning, plumbing, HVAC, and roofing—including common problems and neighborhood-specific pages.",
+            })}
+          />
           <div className="flex flex-col gap-10">
             <div>
               <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Services</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
                 Home Services in Georgetown, TX
               </h1>
+              <p className="mt-2 text-sm text-gray-600">Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
                 Start with a core service category, then narrow down to problem-based pages (like “AC not cooling” or “roof leak repair”) or
                 neighborhood-specific guides. Each page links to related comparisons and articles so you can go from research to a confident next step.
@@ -175,6 +210,61 @@ export default function ServicesIndexPage() {
                 <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Roofing</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {roofing.map((s) => (
+                    <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {electrician.length ? (
+              <section>
+                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Electrical</h2>
+                <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  {electrician.map((s) => (
+                    <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {landscaping.length ? (
+              <section>
+                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Landscaping &amp; lawn care</h2>
+                <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  {landscaping.map((s) => (
+                    <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {pest.length ? (
+              <section>
+                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Pest control</h2>
+                <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  {pest.map((s) => (
+                    <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {foundation.length ? (
+              <section>
+                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Foundation repair</h2>
+                <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  {foundation.map((s) => (
+                    <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {houseCleaning.length ? (
+              <section>
+                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">House cleaning</h2>
+                <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  {houseCleaning.map((s) => (
                     <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
                   ))}
                 </div>

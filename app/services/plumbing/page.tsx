@@ -3,13 +3,20 @@ import Link from "next/link";
 import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
 import JsonLd from "../../../components/JsonLd";
+import { pageSeoMetadata } from "../../../lib/page-seo";
+import {
+  SERVICE_BEST_LAST_UPDATED_DISPLAY,
+  webPageWithDateModifiedJsonLd,
+} from "../../../lib/service-best-pages-meta";
 import { getBlog, getServices } from "../../../lib/site-content";
 
-export const metadata: Metadata = {
-  title: "Plumbing Guides for Georgetown, TX",
+export const metadata: Metadata = pageSeoMetadata({
+  titleSegment: "Plumbing Guides for Georgetown, TX",
   description:
     "Practical plumbing guides for Georgetown homeowners: common issues, when to call a pro, cost drivers, and a directory of plumbers to compare.",
-};
+  pathname: "/services/plumbing",
+  ogType: "website",
+});
 
 function faqJsonLd() {
   return {
@@ -49,10 +56,19 @@ export default function PlumbingHubPage() {
       <Container>
         <section className="py-10 md:py-12">
           <JsonLd data={faqJsonLd()} />
+          <JsonLd
+            data={webPageWithDateModifiedJsonLd({
+              pathname: "/services/plumbing",
+              name: "Plumbing in Georgetown, TX",
+              description:
+                "Practical plumbing guides for Georgetown homeowners: common issues, when to call a pro, cost drivers, and a directory of plumbers to compare.",
+            })}
+          />
           <div className="flex flex-col gap-10">
             <div>
               <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Services</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">Plumbing in Georgetown, TX</h1>
+              <p className="mt-2 text-sm text-gray-600">Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
                 Use these pages to understand common Georgetown plumbing issues (clogs, leaks, water heaters), what affects cost, and what to ask
                 before you hire. When you’re ready, compare companies in the directory and contact providers directly.

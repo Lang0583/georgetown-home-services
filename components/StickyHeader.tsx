@@ -36,6 +36,21 @@ export default function StickyHeader() {
           <Link href="/services/roofer-georgetown-tx" className={navLinkClass}>
             Roofing
           </Link>
+          <Link href="/services/electrician-georgetown-tx" className={navLinkClass}>
+            Electrical
+          </Link>
+          <Link href="/services/landscaping-georgetown-tx" className={navLinkClass}>
+            Landscaping
+          </Link>
+          <Link href="/services/pest-control-georgetown-tx" className={navLinkClass}>
+            Pest
+          </Link>
+          <Link href="/services/foundation-repair-georgetown-tx" className={navLinkClass}>
+            Foundation
+          </Link>
+          <Link href="/services/house-cleaning-georgetown-tx" className={navLinkClass}>
+            Cleaning
+          </Link>
         </nav>
       </div>
     </header>

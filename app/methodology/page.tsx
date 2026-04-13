@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import TrustPage from "../../components/templates/TrustPage";
+import { pageSeoMetadata } from "../../lib/page-seo";
 
-export const metadata: Metadata = {
-  title: "How We Review and Rank Providers",
+export const metadata: Metadata = pageSeoMetadata({
+  titleSegment: "How We Review and Rank Providers",
   description:
     "How we review and rank plumbers, HVAC companies, and roofers serving Georgetown, Texas using publicly available information—and what you should confirm directly with providers.",
-};
+  pathname: "/methodology",
+  ogType: "website",
+});
 
 export default function MethodologyPage() {
   return (

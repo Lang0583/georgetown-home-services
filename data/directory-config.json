@@ -2,7 +2,12 @@
   "categoryPriorityOrdering": {
     "plumber": [],
     "hvac": [],
-    "roofer": []
+    "roofer": [],
+    "electrician": [],
+    "landscaping": [],
+    "pest_control": [],
+    "foundation_repair": [],
+    "house_cleaning": []
   }
 }
 

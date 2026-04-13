@@ -10,19 +10,20 @@
     {
       "slug": "georgetown-tx",
       "title": "Georgetown, TX",
-      "h1": "Trusted Plumbing, HVAC, and Roofing in Georgetown, TX",
-      "description": "Local service for plumbing, AC, heating, and roof repairs across Georgetown.",
+      "h1": "Trusted Home Services in Georgetown, TX",
+      "description": "Local guides for electrical, landscaping, pest control, foundation repair, house cleaning, plumbing, HVAC, and roofing across Georgetown.",
       "heroBullets": [
         "Licensed and insured technicians",
         "Fast response times",
         "Transparent upfront pricing"
       ],
       "content": [
-        { "kind": "p", "text": "When you need help fast, you want a team that shows up, communicates clearly, and fixes the problem the first time. Georgetown Home Services provides plumbing, HVAC, and roofing support for homeowners across Georgetown, TX." },
+        { "kind": "p", "text": "When you need help fast, you want a team that shows up, communicates clearly, and fixes the problem the first time. Georgetown Home Services provides research guides and provider directories for homeowners across Georgetown, TX." },
         { "kind": "h2", "text": "What this site covers" },
         {
           "kind": "ul",
           "items": [
+            "Electrical, landscaping, pest control, foundation, and house cleaning",
             "Plumbing repairs and replacements",
             "AC not cooling, heating issues, and maintenance",
             "Roof leaks, repairs, and replacement planning"
@@ -34,6 +35,11 @@
         "plumber-georgetown-tx",
         "hvac-georgetown-tx",
         "roofer-georgetown-tx",
+        "electrician-georgetown-tx",
+        "landscaping-georgetown-tx",
+        "pest-control-georgetown-tx",
+        "foundation-repair-georgetown-tx",
+        "house-cleaning-georgetown-tx",
         "ac-not-cooling-georgetown-tx",
         "clogged-drain-georgetown-tx",
         "roof-leak-repair-georgetown-tx"
@@ -41,7 +47,12 @@
       "bestSlugs": [
         "best-plumbers-georgetown-tx",
         "top-hvac-companies-georgetown-tx",
-        "best-roofers-georgetown-tx"
+        "best-roofers-georgetown-tx",
+        "best-electricians-georgetown-tx",
+        "best-landscaping-companies-georgetown-tx",
+        "best-pest-control-georgetown-tx",
+        "best-foundation-repair-georgetown-tx",
+        "best-house-cleaning-services-georgetown-tx"
       ]
     },
     {
@@ -224,6 +235,201 @@
       "relatedServiceSlugs": [
         "roof-leak-repair-georgetown-tx",
         "roofer-berry-creek-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "electrician-georgetown-tx",
+      "type": "service",
+      "title": "Electrician in Georgetown, TX",
+      "h1": "Electrician in Georgetown, TX",
+      "description": "Electrical repairs, panel work, and new circuits are safety-critical in Georgetown, TX homes. This guide covers when to call a licensed electrician, what a typical visit addresses, and how to compare written scopes before you approve work.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Electrical",
+      "heroBullets": [
+        "Panel and breaker troubleshooting",
+        "Outlets, circuits, and lighting",
+        "EV and appliance circuit planning"
+      ],
+      "content": [
+        { "kind": "p", "text": "Georgetown Home Services helps homeowners understand electrical symptoms, safety priorities, and realistic next steps before hiring a licensed electrician." },
+        { "kind": "h2", "text": "Common reasons to call" },
+        {
+          "kind": "ul",
+          "items": [
+            "Breakers that trip repeatedly or buzz",
+            "Warm outlets, scorch marks, or burning odor",
+            "Flickering lights after storms",
+            "Adding circuits for kitchen, HVAC, or EV charging"
+          ]
+        },
+        { "kind": "p", "text": "Treat unexplained electrical symptoms as urgent until a licensed professional evaluates them." }
+      ],
+      "faqs": [
+        { "q": "Do electrical upgrades require permits?", "a": "Many panel upgrades and new circuits require permits and inspection. A qualified electrician can explain what applies in your jurisdiction." },
+        { "q": "How should I compare electrician estimates?", "a": "Ask for a written scope, what materials are included, and how change orders are handled before work begins." }
+      ],
+      "bestSlugs": [
+        "best-electricians-georgetown-tx"
+      ],
+      "relatedServiceSlugs": [
+        "landscaping-georgetown-tx",
+        "pest-control-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "landscaping-georgetown-tx",
+      "type": "service",
+      "title": "Landscaping & Lawn Care in Georgetown, TX",
+      "h1": "Landscaping & Lawn Care in Georgetown, TX",
+      "description": "Healthy turf, beds, and irrigation make Georgetown yards enjoyable year-round. This guide explains typical lawn and landscape services, seasonal timing in Central Texas, and how to hire a crew that communicates clearly.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Landscaping",
+      "heroBullets": [
+        "Lawn care and seasonal cleanups",
+        "Planting, mulch, and bed maintenance",
+        "Irrigation checks and water-smart fixes"
+      ],
+      "content": [
+        { "kind": "p", "text": "From curb appeal to drainage, landscaping touches almost every corner of your property. We focus on practical maintenance and realistic expectations for Georgetown’s heat and soil." },
+        { "kind": "h2", "text": "What homeowners usually need" },
+        {
+          "kind": "ul",
+          "items": [
+            "Mowing, edging, and seasonal fertilization",
+            "Bed weed control and mulch refresh",
+            "Shrub trimming and small tree care",
+            "Irrigation tuning after dry spells"
+          ]
+        },
+        { "kind": "p", "text": "Clear scopes beat vague “make it look nice” requests—photos and measurements help companies bid accurately." }
+      ],
+      "faqs": [
+        { "q": "When should I schedule major planting?", "a": "Fall and spring are common windows in Central Texas, but timing depends on plant type and irrigation. Ask what the company recommends for your yard." },
+        { "q": "How do I compare landscape quotes?", "a": "Request the same services from each bidder (visit frequency, bed scope, mulch depth) so you can compare apples to apples." }
+      ],
+      "bestSlugs": [
+        "best-landscaping-companies-georgetown-tx"
+      ],
+      "relatedServiceSlugs": [
+        "electrician-georgetown-tx",
+        "house-cleaning-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "pest-control-georgetown-tx",
+      "type": "service",
+      "title": "Pest Control in Georgetown, TX",
+      "h1": "Pest Control in Georgetown, TX",
+      "description": "Ants, roaches, rodents, and seasonal pests are common in Georgetown, TX. This guide explains treatment approaches, what to ask about products and warranties, and when to call for an inspection.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Pest Control",
+      "heroBullets": [
+        "Interior and perimeter treatments",
+        "Rodent and wildlife entry points",
+        "Seasonal fire ant and spider pressure"
+      ],
+      "content": [
+        { "kind": "p", "text": "Effective pest control combines inspection, targeted treatment, and follow-up. Georgetown Home Services summarizes what to expect so you can compare providers responsibly." },
+        { "kind": "h2", "text": "Typical pest issues locally" },
+        {
+          "kind": "ul",
+          "items": [
+            "Ant trails and colony resettlement after rain",
+            "German roaches in kitchens and moisture zones",
+            "Rodents along fence lines and garages",
+            "Spiders and wasps during warm months"
+          ]
+        },
+        { "kind": "p", "text": "Ask how the provider handles re-treatments and what is included in a maintenance plan." }
+      ],
+      "faqs": [
+        { "q": "Are treatments safe for pets?", "a": "Reputable companies explain product choices, drying times, and any temporary precautions. Confirm details for your specific pets and access areas." },
+        { "q": "What should a written plan include?", "a": "Target pests, treatment areas, frequency, warranty or re-service terms, and pricing for initial vs ongoing service." }
+      ],
+      "bestSlugs": [
+        "best-pest-control-georgetown-tx"
+      ],
+      "relatedServiceSlugs": [
+        "foundation-repair-georgetown-tx",
+        "house-cleaning-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "foundation-repair-georgetown-tx",
+      "type": "service",
+      "title": "Foundation Repair in Georgetown, TX",
+      "h1": "Foundation Repair in Georgetown, TX",
+      "description": "Foundation issues are extremely common in Central Texas: expansive clay soil swells when wet and shrinks in drought, which stresses slabs and piers. This guide covers warning signs, repair methods, and how to evaluate foundation companies serving Georgetown, TX.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "Foundation Repair",
+      "heroBullets": [
+        "Crack patterns and floor slope checks",
+        "Pier, beam, and slab stabilization options",
+        "Moisture management around the perimeter"
+      ],
+      "content": [
+        { "kind": "p", "text": "Not every crack means disaster—but in Williamson County clay, small symptoms can worsen with seasonal moisture swings. A structured evaluation beats guessing from one photo." },
+        { "kind": "h2", "text": "Why clay soil matters here" },
+        {
+          "kind": "ul",
+          "items": [
+            "Heavy rain can swell soil and lift portions of a slab unevenly",
+            "Dry spells shrink soil and reduce support under footings",
+            "Poor drainage or gutter gaps concentrate water along one side of the home",
+            "Large trees can pull moisture and accentuate differential movement"
+          ]
+        },
+        { "kind": "p", "text": "Good contractors explain measurements, monitoring, and whether cosmetic repairs alone would mask ongoing movement." }
+      ],
+      "faqs": [
+        { "q": "Do I always need piers if I see cracks?", "a": "Not always. Some cracks are benign; others signal ongoing movement. Ask how the company documents changes over time and what triggers a repair recommendation." },
+        { "q": "Should I fix drainage before foundation work?", "a": "Often yes—managing water around the foundation is part of a durable solution in expansive clay." }
+      ],
+      "bestSlugs": [
+        "best-foundation-repair-georgetown-tx"
+      ],
+      "relatedServiceSlugs": [
+        "pest-control-georgetown-tx",
+        "landscaping-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "house-cleaning-georgetown-tx",
+      "type": "service",
+      "title": "House Cleaning Services in Georgetown, TX",
+      "h1": "House Cleaning Services in Georgetown, TX",
+      "description": "Recurring maid service, deep cleans, and move-out cleaning help Georgetown, TX homeowners stay ahead of dust and hard-water buildup. This guide explains how services are structured, what affects pricing, and how to compare reputable cleaners.",
+      "locationSlug": "georgetown-tx",
+      "serviceType": "House Cleaning",
+      "heroBullets": [
+        "Recurring and deep-clean options",
+        "Kitchens, baths, and high-dust zones",
+        "Clear checklists and supply policies"
+      ],
+      "content": [
+        { "kind": "p", "text": "The best cleaning relationships run on predictable scope: what rooms, how often, and whether you provide supplies. We outline questions that prevent “that wasn’t included” surprises." },
+        { "kind": "h2", "text": "Popular service types" },
+        {
+          "kind": "ul",
+          "items": [
+            "Biweekly or monthly maintenance cleans",
+            "Seasonal deep cleans before hosting or holidays",
+            "Move-in and move-out cleaning with appliance fronts",
+            "Post-construction dust detail (ask about HEPA and protection)"
+          ]
+        },
+        { "kind": "p", "text": "Ask how teams handle cancellations, reschedules, and access if you are not home." }
+      ],
+      "faqs": [
+        { "q": "Should a cleaner be insured?", "a": "Reputable companies carry liability coverage and can explain what happens if something is damaged during service." },
+        { "q": "How is pricing set?", "a": "Many cleaners price by square footage, bedrooms/bathrooms, or time blocks. Compare the same frequency and task list across bids." }
+      ],
+      "bestSlugs": [
+        "best-house-cleaning-services-georgetown-tx"
+      ],
+      "relatedServiceSlugs": [
+        "landscaping-georgetown-tx",
+        "electrician-georgetown-tx"
       ]
     },
     {
@@ -1541,6 +1747,141 @@
         "roofer-georgetown-tx",
         "roof-leak-repair-georgetown-tx",
         "roofer-berry-creek-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "best-electricians-georgetown-tx",
+      "type": "best",
+      "title": "Best Electricians in Georgetown, TX",
+      "h1": "Best Electricians in Georgetown, TX",
+      "description": "How to compare licensed electricians for panels, circuits, and safety repairs in Georgetown.",
+      "locationSlug": "georgetown-tx",
+      "content": [
+        { "kind": "p", "text": "Electrical work should prioritize safety and code compliance. Look for clear diagnostics, written scopes, and licensing you can verify." },
+        { "kind": "h2", "text": "What to look for" },
+        {
+          "kind": "ul",
+          "items": [
+            "Texas licensing and insurance documentation",
+            "Clear explanation of why a repair is needed",
+            "Written estimates before major panel or rewiring work",
+            "Respect for arc-fault, GFCI, and grounding requirements"
+          ]
+        },
+        { "kind": "p", "text": "Use this guide to shortlist electricians, then request written estimates you can compare line-by-line." }
+      ],
+      "recommendedServiceSlugs": [
+        "electrician-georgetown-tx",
+        "landscaping-georgetown-tx",
+        "pest-control-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "best-landscaping-companies-georgetown-tx",
+      "type": "best",
+      "title": "Best Landscaping Companies in Georgetown, TX",
+      "h1": "Best Landscaping Companies in Georgetown, TX",
+      "description": "Compare Georgetown landscapers for lawn care, beds, irrigation, and seasonal cleanups.",
+      "locationSlug": "georgetown-tx",
+      "content": [
+        { "kind": "p", "text": "Strong landscaping companies communicate visit frequency, what is included each trip, and how they handle irrigation or drainage issues." },
+        { "kind": "h2", "text": "Questions to ask" },
+        {
+          "kind": "ul",
+          "items": [
+            "What is included in a standard visit vs add-ons?",
+            "How do you handle dry spells and sprinkler adjustments?",
+            "Do you carry workers’ compensation and liability insurance?",
+            "How do you price mulch, seasonal color, and bed weed control?"
+          ]
+        },
+        { "kind": "p", "text": "Start with the landscaping service guide, then compare companies below." }
+      ],
+      "recommendedServiceSlugs": [
+        "landscaping-georgetown-tx",
+        "foundation-repair-georgetown-tx",
+        "house-cleaning-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "best-pest-control-georgetown-tx",
+      "type": "best",
+      "title": "Best Pest Control in Georgetown, TX",
+      "h1": "Best Pest Control in Georgetown, TX",
+      "description": "Evaluate pest control providers for inspections, treatment plans, and warranties in Georgetown.",
+      "locationSlug": "georgetown-tx",
+      "content": [
+        { "kind": "p", "text": "The best pest plans combine inspection, targeted treatment, and realistic follow-up—not a one-size chemical blanket." },
+        { "kind": "h2", "text": "What to verify" },
+        {
+          "kind": "ul",
+          "items": [
+            "Clear identification of target pests",
+            "Interior vs perimeter strategy",
+            "Re-service terms if pests return",
+            "Communication about pets, kids, and drying times"
+          ]
+        },
+        { "kind": "p", "text": "Read the pest control guide, then contact a short list for plans and pricing." }
+      ],
+      "recommendedServiceSlugs": [
+        "pest-control-georgetown-tx",
+        "foundation-repair-georgetown-tx",
+        "electrician-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "best-foundation-repair-georgetown-tx",
+      "type": "best",
+      "title": "Best Foundation Repair in Georgetown, TX",
+      "h1": "Best Foundation Repair in Georgetown, TX",
+      "description": "Compare foundation contractors who understand Central Texas expansive clay and drainage patterns.",
+      "locationSlug": "georgetown-tx",
+      "content": [
+        { "kind": "p", "text": "Foundation repair in Georgetown should account for clay soil movement and moisture swings. Look for documentation, elevation or crack monitoring, and drainage guidance—not fear-based sales." },
+        { "kind": "h2", "text": "What to ask" },
+        {
+          "kind": "ul",
+          "items": [
+            "How do you document movement over time?",
+            "What repair methods fit slab vs pier-and-beam homes?",
+            "How should gutters, grading, and irrigation be adjusted?",
+            "What warranties cover—and what they exclude?"
+          ]
+        },
+        { "kind": "p", "text": "Pair this directory with our foundation repair service guide for warning signs and next steps." }
+      ],
+      "recommendedServiceSlugs": [
+        "foundation-repair-georgetown-tx",
+        "landscaping-georgetown-tx",
+        "pest-control-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "best-house-cleaning-services-georgetown-tx",
+      "type": "best",
+      "title": "Best House Cleaning Services in Georgetown, TX",
+      "h1": "Best House Cleaning Services in Georgetown, TX",
+      "description": "Shortlist house cleaners for recurring service, deep cleans, and move-out work in Georgetown.",
+      "locationSlug": "georgetown-tx",
+      "content": [
+        { "kind": "p", "text": "Reliable cleaners provide checklists, supply policies, and transparent pricing for the same scope across visits." },
+        { "kind": "h2", "text": "Green flags" },
+        {
+          "kind": "ul",
+          "items": [
+            "Background-checked teams and insurance",
+            "Written task lists for standard vs deep cleans",
+            "Clear cancellation and rescheduling rules",
+            "Consistent crews when possible"
+          ]
+        },
+        { "kind": "p", "text": "Use the house cleaning guide to define scope, then compare providers here." }
+      ],
+      "recommendedServiceSlugs": [
+        "house-cleaning-georgetown-tx",
+        "landscaping-georgetown-tx",
+        "pest-control-georgetown-tx"
       ]
     }
   ]

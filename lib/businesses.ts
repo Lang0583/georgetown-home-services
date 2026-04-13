@@ -2,7 +2,15 @@ import raw from "./businesses.json";
 import providerOverridesRaw from "../data/provider-overrides.json";
 import directoryConfigRaw from "../data/directory-config.json";
 
-export type ProviderGroup = "plumber" | "hvac" | "roofer";
+export type ProviderGroup =
+  | "plumber"
+  | "hvac"
+  | "roofer"
+  | "electrician"
+  | "landscaping"
+  | "pest_control"
+  | "foundation_repair"
+  | "house_cleaning";
 
 export type Business = {
   name: string;
@@ -31,26 +39,82 @@ const BEST_SLUG_MAP: Record<string, ProviderGroup> = {
   "best-plumbers-georgetown-tx": "plumber",
   "top-hvac-companies-georgetown-tx": "hvac",
   "best-roofers-georgetown-tx": "roofer",
+  "best-electricians-georgetown-tx": "electrician",
+  "best-landscaping-companies-georgetown-tx": "landscaping",
+  "best-pest-control-georgetown-tx": "pest_control",
+  "best-foundation-repair-georgetown-tx": "foundation_repair",
+  "best-house-cleaning-services-georgetown-tx": "house_cleaning",
 };
 
 const SERVICE_SLUG_MAP: Record<string, ProviderGroup> = {
   "plumber-georgetown-tx": "plumber",
   "hvac-georgetown-tx": "hvac",
   "roofer-georgetown-tx": "roofer",
+  "electrician-georgetown-tx": "electrician",
+  "landscaping-georgetown-tx": "landscaping",
+  "pest-control-georgetown-tx": "pest_control",
+  "foundation-repair-georgetown-tx": "foundation_repair",
+  "house-cleaning-georgetown-tx": "house_cleaning",
 };
 
 const PROVIDER_GROUP_TO_SERVICE_SLUG: Record<ProviderGroup, string> = {
   plumber: "plumber-georgetown-tx",
   hvac: "hvac-georgetown-tx",
   roofer: "roofer-georgetown-tx",
+  electrician: "electrician-georgetown-tx",
+  landscaping: "landscaping-georgetown-tx",
+  pest_control: "pest-control-georgetown-tx",
+  foundation_repair: "foundation-repair-georgetown-tx",
+  house_cleaning: "house-cleaning-georgetown-tx",
 };
 
-/** Map the category field (substring match) to plumber | hvac | roofer — same rules as the homepage. */
+/** Section heading on service pages when listing JSON providers. */
+export const PROVIDER_SECTION_HEADING: Record<ProviderGroup, string> = {
+  plumber: "Top Plumbers Serving Georgetown TX",
+  hvac: "Top HVAC Companies Serving Georgetown TX",
+  roofer: "Top Roofers Serving Georgetown TX",
+  electrician: "Top Electricians Serving Georgetown TX",
+  landscaping: "Top Landscaping & Lawn Care Companies Serving Georgetown TX",
+  pest_control: "Top Pest Control Companies Serving Georgetown TX",
+  foundation_repair: "Top Foundation Repair Companies Serving Georgetown TX",
+  house_cleaning: "Top House Cleaning Services Serving Georgetown TX",
+};
+
+/** Primary CTA label on service pages → best-of directory. */
+export const BEST_CTA_LABEL_BY_GROUP: Record<ProviderGroup, string> = {
+  plumber: "Compare Georgetown Plumbers",
+  hvac: "See Top HVAC Companies",
+  roofer: "Browse Roof Repair Options",
+  electrician: "Compare Georgetown Electricians",
+  landscaping: "Compare Landscaping Companies",
+  pest_control: "Compare Pest Control Providers",
+  foundation_repair: "Compare Foundation Repair Companies",
+  house_cleaning: "Compare House Cleaning Services",
+};
+
+/** Homepage / nav: service and best-of paths per trade. */
+export const PROVIDER_GROUP_LINKS: Record<ProviderGroup, { service: string; best: string }> = {
+  plumber: { service: "/services/plumber-georgetown-tx", best: "/best/best-plumbers-georgetown-tx" },
+  hvac: { service: "/services/hvac-georgetown-tx", best: "/best/top-hvac-companies-georgetown-tx" },
+  roofer: { service: "/services/roofer-georgetown-tx", best: "/best/best-roofers-georgetown-tx" },
+  electrician: { service: "/services/electrician-georgetown-tx", best: "/best/best-electricians-georgetown-tx" },
+  landscaping: { service: "/services/landscaping-georgetown-tx", best: "/best/best-landscaping-companies-georgetown-tx" },
+  pest_control: { service: "/services/pest-control-georgetown-tx", best: "/best/best-pest-control-georgetown-tx" },
+  foundation_repair: { service: "/services/foundation-repair-georgetown-tx", best: "/best/best-foundation-repair-georgetown-tx" },
+  house_cleaning: { service: "/services/house-cleaning-georgetown-tx", best: "/best/best-house-cleaning-services-georgetown-tx" },
+};
+
+/** Map the category field (substring match) to a provider group — same rules as the homepage. */
 export function normalizeBusinessGroup(b: Business): ProviderGroup | null {
   const s = b.category.toLowerCase();
   if (s.includes("plumb")) return "plumber";
-  if (s.includes("hvac") || s.includes("air") || s.includes("heating")) return "hvac";
+  if (s.includes("hvac") || s.includes("air conditioning") || s.includes("heating")) return "hvac";
   if (s.includes("roof")) return "roofer";
+  if (s.includes("electric")) return "electrician";
+  if (s.includes("landscape") || s.includes("lawn")) return "landscaping";
+  if (s.includes("pest")) return "pest_control";
+  if (s.includes("foundation")) return "foundation_repair";
+  if (s.includes("clean")) return "house_cleaning";
   return null;
 }
 
@@ -288,9 +352,20 @@ export function businessPrimaryUrl(b: Business): string {
   return getBusinessOutboundUrl(b) ?? "";
 }
 
+const VALID_PROVIDER_GROUPS = new Set<string>([
+  "plumber",
+  "hvac",
+  "roofer",
+  "electrician",
+  "landscaping",
+  "pest_control",
+  "foundation_repair",
+  "house_cleaning",
+]);
+
 export function getBusinessesByCategory(category: string): Business[] {
   const target = category.toLowerCase();
-  if (target !== "plumber" && target !== "hvac" && target !== "roofer") return [];
+  if (!VALID_PROVIDER_GROUPS.has(target)) return [];
   const group = target as ProviderGroup;
   const merged = businesses
     .filter((b) => normalizeBusinessGroup(b) === group)
@@ -373,7 +448,23 @@ export function getProviderBadges(b: Business): ProviderBadge[] {
 export function generateBusinessDescription(b: Business): string {
   const g = normalizeBusinessGroup(b);
   const service =
-    g === "plumber" ? "plumbing" : g === "hvac" ? "heating and cooling" : g === "roofer" ? "roofing" : "home services";
+    g === "plumber"
+      ? "plumbing"
+      : g === "hvac"
+        ? "heating and cooling"
+        : g === "roofer"
+          ? "roofing"
+          : g === "electrician"
+            ? "electrical work"
+            : g === "landscaping"
+              ? "landscaping and lawn care"
+              : g === "pest_control"
+                ? "pest control"
+                : g === "foundation_repair"
+                  ? "foundation repair"
+                  : g === "house_cleaning"
+                    ? "house cleaning"
+                    : "home services";
   return `${b.name} focuses on ${service} for homes and businesses around Georgetown and nearby communities. Listings are provided for research; confirm licensing, availability, and scope of work before hiring.`;
 }
 
@@ -390,4 +481,28 @@ export function getRelatedServiceSlugForBestSlug(slug: string): string | null {
   const g = getBusinessCategoryForBestSlug(slug);
   if (!g) return null;
   return PROVIDER_GROUP_TO_SERVICE_SLUG[g];
+}
+
+/**
+ * Businesses shown in the default BestBusinessesDirectory view (before expanding lower-signal
+ * listings): sponsored/featured first in source order, then established picks sorted by rating
+ * then review count — matching the initial client render.
+ */
+export function getDefaultBestDirectoryListing(businesses: Business[]): Business[] {
+  const sponsored: Business[] = [];
+  const established: Business[] = [];
+  for (const b of businesses) {
+    if (b.directory?.sponsored || b.directory?.featured) {
+      sponsored.push(b);
+      continue;
+    }
+    if (getProviderQualityTier(b) === "established") {
+      established.push(b);
+    }
+  }
+  established.sort((a, b) => {
+    if (b.rating !== a.rating) return b.rating - a.rating;
+    return b.reviews - a.reviews;
+  });
+  return [...sponsored, ...established];
 }

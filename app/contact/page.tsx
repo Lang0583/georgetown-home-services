@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import TrustPage from "../../components/templates/TrustPage";
+import { pageSeoMetadata } from "../../lib/page-seo";
 import { getBrandName, getContact } from "../../lib/site-content";
 
-export const metadata: Metadata = {
-  title: "Contact",
+export const metadata: Metadata = pageSeoMetadata({
+  titleSegment: "Contact",
   description:
     "Contact Georgetown Home Services about the site. For repairs and estimates, use service guide request forms or reach providers from the Best Of directory.",
-};
+  pathname: "/contact",
+  ogType: "website",
+});
 
 export default function ContactPage() {
   const brand = getBrandName();

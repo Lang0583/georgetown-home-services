@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
+import { headers } from "next/headers";
 import "./globals.css";
 import StickyHeader from "../components/StickyHeader";
 import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
-import CanonicalFromPathname from "../components/CanonicalFromPathname";
 import { getBrandName } from "../lib/site-content";
 
 const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
+
+const adsenseClientId = "ca-pub-2692091044925789";
+const adsenseScriptSrc = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,21 +23,25 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: {
-    default: "Georgetown Home Services",
-    template: "%s | Georgetown Home Services",
-  },
-  description: "Local plumbing, HVAC, and roofing service in Georgetown, TX.",
-  robots: { index: true, follow: true },
-  openGraph: {
-    title: "Georgetown Home Services",
+export async function generateMetadata(): Promise<Metadata> {
+  const h = await headers();
+  const pathname = h.get("x-pathname") || "/";
+  const canonical = `https://www.georgetownhomeservices.com${pathname}`;
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title: {
+      default: "Georgetown Home Services",
+      template: "%s | Georgetown Home Services",
+    },
     description: "Local plumbing, HVAC, and roofing service in Georgetown, TX.",
-    type: "website",
-    url: siteUrl,
-  },
-};
+    robots: { index: true, follow: true },
+    alternates: { canonical },
+    openGraph: {
+      url: canonical,
+    },
+  };
+}
 
 export default function RootLayout({
   children,
@@ -64,7 +72,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full text-gray-900 antialiased`}
     >
       <body className="min-h-full flex flex-col bg-gray-50 text-gray-900">
-        <CanonicalFromPathname />
+        <Script
+          async
+          src={adsenseScriptSrc}
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
         <StickyHeader />

@@ -4,19 +4,21 @@ import Container from "../../components/Container";
 import LinkCard from "../../components/LinkCard";
 import CTASection from "../../components/CTASection";
 import JsonLd from "../../components/JsonLd";
+import { pageSeoMetadata } from "../../lib/page-seo";
+import {
+  SERVICE_BEST_LAST_UPDATED_DISPLAY,
+  webPageWithDateModifiedJsonLd,
+} from "../../lib/service-best-pages-meta";
+import { CORE_BEST_SLUGS, CORE_SERVICE_SLUGS } from "../../lib/pageContentRegistry";
 import { getBest, getBlog, getServices } from "../../lib/site-content";
 
-export const metadata: Metadata = {
-  title: "Provider Directory: Top Home Service Companies in Georgetown, TX",
+export const metadata: Metadata = pageSeoMetadata({
+  titleSegment: "Provider Directory: Top Home Service Companies in Georgetown, TX",
   description:
-    "Browse provider directory and comparison pages for plumbers, HVAC companies, and roofers serving Georgetown, Texas.",
-};
-
-const CORE_BEST_SLUGS = [
-  "best-plumbers-georgetown-tx",
-  "top-hvac-companies-georgetown-tx",
-  "best-roofers-georgetown-tx",
-] as const;
+    "Browse provider directory and comparison pages for electricians, landscapers, pest control, foundation repair, house cleaners, plumbers, HVAC companies, and roofers serving Georgetown, Texas.",
+  pathname: "/best",
+  ogType: "website",
+});
 
 function faqJsonLd() {
   return {
@@ -29,7 +31,7 @@ function faqJsonLd() {
         acceptedAnswer: {
           "@type": "Answer",
           text:
-            "Start with the category you need (plumbing, HVAC, or roofing). Compare providers using scopes, responsiveness, and review patterns—not just the star rating—and then contact a short list for written estimates.",
+            "Start with the category you need (electrical, landscaping, pest control, foundation, cleaning, plumbing, HVAC, or roofing). Compare providers using scopes, responsiveness, and review patterns—not just the star rating—and then contact a short list for written estimates.",
         },
       },
       {
@@ -62,15 +64,7 @@ export default function BestIndexPage() {
   const core = bestPages.filter((b) => (CORE_BEST_SLUGS as readonly string[]).includes(b.slug));
   const other = bestPages.filter((b) => !(CORE_BEST_SLUGS as readonly string[]).includes(b.slug));
 
-  const byCategory = {
-    plumbing: core.filter((b) => b.slug.includes("plumber")),
-    hvac: core.filter((b) => b.slug.includes("hvac")),
-    roofing: core.filter((b) => b.slug.includes("roofer") || b.slug.includes("roof")),
-  } as const;
-
-  const featuredServices = services
-    .filter((s) => ["plumber-georgetown-tx", "hvac-georgetown-tx", "roofer-georgetown-tx"].includes(s.slug))
-    .slice(0, 3);
+  const featuredServices = services.filter((s) => (CORE_SERVICE_SLUGS as readonly string[]).includes(s.slug));
   const featuredPosts = blog.slice(0, Math.min(4, blog.length));
 
   return (
@@ -78,12 +72,21 @@ export default function BestIndexPage() {
       <Container>
         <section className="py-10 md:py-12">
           <JsonLd data={faqJsonLd()} />
+          <JsonLd
+            data={webPageWithDateModifiedJsonLd({
+              pathname: "/best",
+              name: "Best Home Service Providers in Georgetown, TX",
+              description:
+                "Browse provider directory and comparison pages for electricians, landscapers, pest control, foundation repair, house cleaners, plumbers, HVAC companies, and roofers serving Georgetown, Texas.",
+            })}
+          />
           <div className="flex flex-col gap-10">
             <div>
               <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Top Providers</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
                 Best Home Service Providers in Georgetown, TX
               </h1>
+              <p className="mt-2 text-sm text-gray-600">Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">
                 Use these comparison guides to shortlist providers you can contact directly. Each guide includes practical
                 criteria (scope clarity, documentation, responsiveness) so you can compare quotes and avoid common mistakes.
