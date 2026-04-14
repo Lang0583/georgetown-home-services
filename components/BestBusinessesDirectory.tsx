@@ -50,7 +50,7 @@ function badgeTone(b: ProviderBadge["key"]) {
   if (b === "map_only_profile") return "border-gray-300 bg-gray-50 text-gray-700";
   if (b === "emergency_availability") return "border-rose-200 bg-rose-50 text-rose-900";
   if (b === "high_review_volume") return "border-emerald-200 bg-emerald-50 text-emerald-900";
-  if (b === "georgetown_office") return "border-primary/25 bg-primary-light text-primary";
+  if (b === "georgetown_office") return "border-white/25 bg-[#01696F] text-white";
   return "border-amber-200 bg-amber-50 text-amber-900";
 }
 

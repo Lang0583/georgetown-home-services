@@ -357,7 +357,11 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
     ],
   };
 
-  const alsoCompareLinks = getAlsoCompareLinksForBestSlug(best.slug);
+  const coreAlsoCompareSlugs = new Set([
+    "best-plumbers-georgetown-tx",
+    "top-hvac-companies-georgetown-tx",
+    "best-roofers-georgetown-tx",
+  ]);
 
   return (
     <>
@@ -1857,7 +1861,9 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
           />
       </section>
     </PageShell>
-    <BestAlsoCompareBar links={alsoCompareLinks} />
+    {coreAlsoCompareSlugs.has(best.slug) ? (
+      <BestAlsoCompareBar links={getAlsoCompareLinksForBestSlug(best.slug)} />
+    ) : null}
     </>
   );
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { headers } from "next/headers";
@@ -13,6 +14,9 @@ const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com"
 
 const adsenseClientId = "ca-pub-2692091044925789";
 const adsenseScriptSrc = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`;
+
+/** Set in `.env.local` after you get your Grow site ID from Mediavine (app.mediavine.com/grow). */
+const mediavineGrowSiteId = process.env.NEXT_PUBLIC_MEDIAVINE_GROW_SITE_ID;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -82,6 +86,15 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full text-gray-900 antialiased`}
     >
+      <head>
+        {mediavineGrowSiteId ? (
+          <Script
+            id="mediavine-grow"
+            src={`https://uploads.mediavine.com/grow/${mediavineGrowSiteId}.js`}
+            strategy="afterInteractive"
+          />
+        ) : null}
+      </head>
       <body className="min-h-full flex flex-col bg-gray-50 text-gray-900">
         <Script
           async
@@ -95,6 +108,9 @@ export default function RootLayout({
         <main className="flex-1 pt-20">{children}</main>
         <SiteFooter />
       </body>
+      {process.env.NODE_ENV === "production" ? (
+        <GoogleAnalytics gaId="G-PLACEHOLDER" />
+      ) : null}
     </html>
   );
 }

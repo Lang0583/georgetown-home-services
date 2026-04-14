@@ -12,17 +12,19 @@ const BULLETS = [
  */
 export default function BestProvidersMethodologyCallout() {
   return (
-    <div className="rounded-lg border border-[#01696F]/30 bg-[#E6F2F2] px-5 py-4">
-      <h3 className="text-sm font-semibold text-[#01696F]">How we selected these providers</h3>
-      <ul className="mt-2 list-disc space-y-1 pl-4 text-xs leading-snug text-gray-800 sm:text-sm">
+    <div className="rounded-lg border border-white/20 bg-[#01696F] px-5 py-4 shadow-sm">
+      <h3 className="text-sm font-semibold text-white">How we selected these providers</h3>
+      <ul className="mt-2 list-disc space-y-1 pl-4 text-xs leading-snug text-white/95 marker:text-white/90 sm:text-sm">
         {BULLETS.map((text) => (
-          <li key={text}>{text}</li>
+          <li key={text} className="pl-0.5">
+            {text}
+          </li>
         ))}
       </ul>
       <p className="mt-2">
         <Link
           href="/methodology"
-          className="text-sm font-semibold text-[#01696F] underline underline-offset-2 hover:text-[#0C4E54]"
+          className="text-sm font-semibold text-white underline underline-offset-2 decoration-white/80 hover:text-white hover:decoration-white"
         >
           Read our full methodology →
         </Link>

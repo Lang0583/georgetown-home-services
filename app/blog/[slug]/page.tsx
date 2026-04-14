@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import EmailCaptureSitewide from "../../../components/EmailCaptureSitewide";
@@ -19,6 +20,18 @@ import {
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import { getGeneratedPage } from "../../../lib/generatedPages";
 import { blogPageInternalLinks } from "../../../lib/internal-links";
+import { getBlogHeroImage } from "../../../lib/blog-hero-images";
+
+/** Posts with Amazon affiliate links in body copy — disclosure shown below byline. */
+const AFFILIATE_DISCLOSURE_SLUGS = new Set([
+  "cost-to-replace-hvac-georgetown",
+  "signs-you-need-hvac-repair-georgetown-tx",
+  "how-to-find-a-good-plumber-georgetown-tx",
+  "signs-you-may-need-a-new-roof-georgetown-tx",
+]);
+
+const AFFILIATE_DISCLOSURE_TEXT =
+  "Disclosure: This post contains affiliate links. If you purchase through our links, we may earn a small commission at no extra cost to you.";
 
 function breadcrumbJsonLd({
   siteUrl,
@@ -63,6 +76,12 @@ function articleJsonLd({
     "@context": "https://schema.org",
     "@type": "Article",
     headline,
+    image: {
+      "@type": "ImageObject",
+      url: `${siteUrl}/og-image.jpg`,
+      width: 1200,
+      height: 630,
+    },
     description,
     mainEntityOfPage: url,
     author: {
@@ -310,6 +329,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
           ? "foundation"
           : "plumbing";
   const takeaway = takeawayBullets(recurringType, serviceLabel);
+  const hero = getBlogHeroImage(post.slug);
 
   return (
     <PageShell>
@@ -340,6 +360,17 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
                 Blog • {location?.title ?? "Georgetown, TX"}
               </div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{post.h1}</h1>
+              <div className="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-gray-100 shadow-sm">
+                <Image
+                  src={hero.src}
+                  alt={hero.alt}
+                  width={1200}
+                  height={630}
+                  loading="lazy"
+                  className="h-auto w-full object-cover"
+                  sizes="(max-width: 768px) 100vw, min(1200px, 100vw)"
+                />
+              </div>
               <p className="mt-2 text-sm text-gray-600">
                 By{" "}
                 <Link href="/about" className="font-medium text-gray-900 underline-offset-4 hover:underline">
@@ -354,6 +385,9 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
                   <span className="font-semibold text-gray-900">Last Updated:</span> {modifiedLabel}
                 </div>
               </div>
+              {AFFILIATE_DISCLOSURE_SLUGS.has(post.slug) ? (
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-gray-700">{AFFILIATE_DISCLOSURE_TEXT}</p>
+              ) : null}
               <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">{post.description}</p>
               <div className="mt-2 text-sm text-gray-500">Estimated read time: {post.readTime}</div>
 

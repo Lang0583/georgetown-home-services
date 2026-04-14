@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import BestAlsoCompareBar from "../../components/BestAlsoCompareBar";
 import BestProvidersMethodologyCallout from "../../components/BestProvidersMethodologyCallout";
 import Container from "../../components/Container";
 import LinkCard from "../../components/LinkCard";
@@ -12,7 +11,6 @@ import {
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
   webPageWithDateModifiedJsonLd,
 } from "../../lib/service-best-pages-meta";
-import { getAlsoCompareLinksForBestIndex } from "../../lib/best-also-compare-links";
 import { CORE_BEST_SLUGS, CORE_SERVICE_SLUGS } from "../../lib/pageContentRegistry";
 import { isExtendedBestSlug, isExtendedServiceSlug, showExtendedHomeServices } from "../../lib/public-site-scope";
 import { getBest, getBlog, getServices } from "../../lib/site-content";
@@ -263,7 +261,6 @@ export default function BestIndexPage() {
           </div>
         </section>
       </Container>
-      <BestAlsoCompareBar links={getAlsoCompareLinksForBestIndex()} />
     </div>
   );
 }

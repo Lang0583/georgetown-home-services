@@ -3,6 +3,7 @@ import { isExtendedBestSlug, isExtendedServiceSlug, showExtendedHomeServices } f
 import {
   getBestSlugs,
   getBlogSlugs,
+  getLocationSlugs,
   getServiceSlugs,
 } from "@/lib/site-content";
 
@@ -92,13 +93,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
+  for (const slug of getLocationSlugs()) {
+    entries.push({
+      url: absoluteUrl(`/locations/${slug}`),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    });
+  }
+
   for (const slug of getBestSlugs()) {
-    if (!showExtendedHomeServices() && isExtendedBestSlug(slug)) continue;
+    const pausedExtendedBest = isExtendedBestSlug(slug);
     entries.push({
       url: absoluteUrl(`/best/${slug}`),
       lastModified,
       changeFrequency: "monthly",
-      priority: 0.9,
+      priority: pausedExtendedBest ? 0.7 : 0.9,
     });
   }
 

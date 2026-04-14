@@ -56,7 +56,7 @@ export default function BlogMidContentEmailCard({ source, className }: Props) {
   return (
     <aside
       className={[
-        "not-prose mx-auto max-w-3xl rounded-xl border border-primary-light bg-primary-light p-5 shadow-sm sm:p-6",
+        "not-prose mx-auto max-w-3xl rounded-xl border border-white/20 bg-[#01696F] p-5 shadow-sm sm:p-6",
         className ?? "",
       ]
         .filter(Boolean)
@@ -64,7 +64,7 @@ export default function BlogMidContentEmailCard({ source, className }: Props) {
       aria-label="Email tips signup"
     >
       {status === "success" ? (
-        <p className="text-center text-sm font-medium text-emerald-800">You’re in — thanks for subscribing.</p>
+        <p className="text-center text-sm font-medium text-white">You’re in — thanks for subscribing.</p>
       ) : (
         <form onSubmit={onSubmit} className="flex flex-col gap-4 sm:flex-row sm:items-end sm:gap-4">
           <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
@@ -98,13 +98,13 @@ export default function BlogMidContentEmailCard({ source, className }: Props) {
           <button
             type="submit"
             disabled={!canSubmit}
-            className="shrink-0 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60"
+            className="shrink-0 rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-[#01696F] shadow-sm transition-colors hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {status === "submitting" ? "…" : "Get Georgetown homeowner tips."}
           </button>
         </form>
       )}
-      {status === "error" && error ? <p className="mt-2 text-sm text-rose-700">{error}</p> : null}
+      {status === "error" && error ? <p className="mt-2 text-sm font-medium text-rose-100">{error}</p> : null}
     </aside>
   );
 }

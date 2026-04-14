@@ -3,9 +3,9 @@
  */
 export type AlsoCompareLink = { href: string; label: string };
 
-const PLUMBERS = { href: "/best/best-plumbers-georgetown-tx", label: "Plumbers" } as const;
-const HVAC = { href: "/best/top-hvac-companies-georgetown-tx", label: "HVAC companies" } as const;
-const ROOFERS = { href: "/best/best-roofers-georgetown-tx", label: "Roofers" } as const;
+const PLUMBERS = { href: "/best/best-plumbers-georgetown-tx", label: "Best Plumbers" } as const;
+const HVAC = { href: "/best/top-hvac-companies-georgetown-tx", label: "Top HVAC Companies" } as const;
+const ROOFERS = { href: "/best/best-roofers-georgetown-tx", label: "Best Roofers" } as const;
 
 const CORE_TRIO: AlsoCompareLink[] = [PLUMBERS, HVAC, ROOFERS];
 

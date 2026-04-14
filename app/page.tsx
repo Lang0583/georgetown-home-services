@@ -1,4 +1,3 @@
-import { BusinessListingDescription } from "../components/BusinessListingDescription";
 import CTASection from "../components/CTASection";
 import Container from "../components/Container";
 import EmailCaptureSitewide from "../components/EmailCaptureSitewide";
@@ -7,6 +6,7 @@ import LinkCard from "../components/LinkCard";
 import { ButtonLink } from "../components/Button";
 import Link from "next/link";
 import type { Metadata } from "next";
+import HomeTopProvidersColumn from "../components/HomeTopProvidersColumn";
 import HomeTrustBar from "../components/HomeTrustBar";
 import FAQList from "../components/FAQList";
 import JsonLd from "../components/JsonLd";
@@ -22,23 +22,15 @@ import type { Faq } from "../lib/site-content";
 import { getBlog, getBest, getLocations, getServices } from "../lib/site-content";
 import businesses from "../lib/businesses.json";
 import {
-  BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS,
-  BUSINESS_LINK_VISIT_WEBSITE,
-  PROVIDER_GROUP_LINKS,
-  externalBusinessLinkProps,
-  getBusinessMapsUrl,
-  getBusinessOutboundUrl,
-  getBusinessWebsiteUrl,
   normalizeBusinessGroup,
   type Business,
   type ProviderGroup,
 } from "../lib/businesses";
 
-function topProvidersForGroup(list: Business[], group: ProviderGroup, limit: number) {
+function sortedProvidersForGroup(list: Business[], group: ProviderGroup) {
   return list
     .filter((b) => normalizeBusinessGroup(b) === group)
-    .sort((a, b) => (b.rating !== a.rating ? b.rating - a.rating : b.reviews - a.reviews))
-    .slice(0, limit);
+    .sort((a, b) => (b.rating !== a.rating ? b.rating - a.rating : b.reviews - a.reviews));
 }
 
 function homeLocalBusinessJsonLd() {
@@ -342,73 +334,12 @@ export default function Home() {
               </p>
               <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
                 {topLocalGroups.map(({ title, key }) => (
-                  <div key={key} className="rounded-lg bg-gray-50 p-4">
-                    <div className="flex items-baseline justify-between gap-3">
-                      <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-900">{title}</h3>
-                      <Link href={PROVIDER_GROUP_LINKS[key].best} className="text-xs font-semibold text-primary hover:underline">
-                        Top Providers
-                      </Link>
-                    </div>
-                    <ul className="mt-3 space-y-3">
-                      {topProvidersForGroup(allBusinesses, key, 3).map((business) => {
-                        const outbound = getBusinessOutboundUrl(business);
-                        const website = getBusinessWebsiteUrl(business);
-                        const maps = getBusinessMapsUrl(business);
-                        return (
-                          <li key={`${key}-${business.name}`} className="text-sm text-gray-700">
-                            <div className="font-medium text-gray-900">
-                              {outbound ? (
-                                <a
-                                  href={outbound}
-                                  {...externalBusinessLinkProps}
-                                  className="text-gray-900 hover:text-primary-hover hover:underline"
-                                >
-                                  {business.name}
-                                </a>
-                              ) : (
-                                business.name
-                              )}
-                            </div>
-                            <BusinessListingDescription text={business.description} className="mt-1" />
-                            <div className="mt-1">
-                              {business.rating.toFixed(1)} stars • {business.reviews.toLocaleString()} reviews
-                            </div>
-                            {website || maps ? (
-                              <div className="mt-1 flex flex-wrap gap-x-3 gap-y-0.5">
-                                {website ? (
-                                  <a
-                                    href={website}
-                                    {...externalBusinessLinkProps}
-                                    className="text-primary hover:text-primary-hover"
-                                  >
-                                    {BUSINESS_LINK_VISIT_WEBSITE}
-                                  </a>
-                                ) : null}
-                                {maps ? (
-                                  <a
-                                    href={maps}
-                                    {...externalBusinessLinkProps}
-                                    className="text-primary hover:text-primary-hover"
-                                  >
-                                    {BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS}
-                                  </a>
-                                ) : null}
-                              </div>
-                            ) : null}
-                          </li>
-                        );
-                      })}
-                    </ul>
-                    <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs">
-                      <Link href={PROVIDER_GROUP_LINKS[key].service} className="font-semibold text-gray-900 hover:underline">
-                        View service page
-                      </Link>
-                      <span className="text-gray-400">·</span>
-                      <Link href={PROVIDER_GROUP_LINKS[key].best} className="font-semibold text-gray-900 hover:underline">
-                        Compare top providers
-                      </Link>
-                    </div>
-                  </div>
+                  <HomeTopProvidersColumn
+                    key={key}
+                    title={title}
+                    providerGroupKey={key}
+                    businesses={sortedProvidersForGroup(allBusinesses, key)}
+                  />
                 ))}
               </div>
             </div>
