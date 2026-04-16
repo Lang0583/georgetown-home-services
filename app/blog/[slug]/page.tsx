@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AdSenseDisplay from "../../../components/AdSenseDisplay";
 import EmailCaptureSitewide from "../../../components/EmailCaptureSitewide";
 import BlogArticleBodyWithMidEmail from "../../../components/BlogArticleBodyWithMidEmail";
 import LinkCard from "../../../components/LinkCard";
-import CTASection from "../../../components/CTASection";
 import JsonLd from "../../../components/JsonLd";
 import Breadcrumbs from "../../../components/Breadcrumbs";
 import PageShell from "../../../components/templates/PageShell";
@@ -17,6 +17,7 @@ import {
   getLocationBySlug,
   getServices,
 } from "../../../lib/site-content";
+import { adsenseInlineSlot, adsenseSidebarSlot } from "../../../lib/adsense-config";
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import { getGeneratedPage } from "../../../lib/generatedPages";
 import { blogPageInternalLinks } from "../../../lib/internal-links";
@@ -277,6 +278,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description:
         "Banging, squealing, or clicking from your HVAC system in Georgetown TX? This guide explains what each noise likely means and whether you need a technician.",
     },
+    "ac-not-cooling-georgetown-tx": {
+      title: "AC Not Cooling in Georgetown TX? Here's What To Do",
+      description:
+        "Air conditioning not working in Georgetown TX? Follow these steps to diagnose the issue and find emergency HVAC repair near you.",
+    },
   };
 
   const o = overrides[slug];
@@ -397,6 +403,12 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
 
               <PracticalTakeaway bullets={takeaway} />
 
+              {adsenseInlineSlot ? (
+                <div className="mt-10">
+                  <AdSenseDisplay slot={adsenseInlineSlot} />
+                </div>
+              ) : null}
+
               <NativeInlineCta
                 title={isCostPost ? "Compare local quotes" : "See top Georgetown providers"}
                 description={
@@ -475,36 +487,14 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
             }
             aside={
               <>
-              <EmailCaptureSitewide
-                variant="blog-sidebar"
-                source={`blog-sidebar:${post.slug}`}
-                offers={["seasonal_checklist", "monthly_reminder"]}
-                defaultOffer="seasonal_checklist"
-              />
-
-              <div className="mt-8">
-                <CTASection
-                  eyebrow="Take action"
-                  title="Browse providers or get tips by email"
-                  description="Open a best-of guide to compare local companies, or sign up for occasional Georgetown homeowner tips."
-                  primaryHref={topProvidersHref}
-                  emailFormHref="#email-capture"
-                  secondary={
-                    relatedServices[0] ? (
-                      <div className="text-sm text-gray-600">
-                        Related service guide:{" "}
-                        <Link
-                          href={`/services/${relatedServices[0].slug}`}
-                          className="font-semibold underline underline-offset-4"
-                        >
-                          {relatedServices[0].title}
-                        </Link>
-                      </div>
-                    ) : null
-                  }
-                  showDisclaimer
+                <EmailCaptureSitewide
+                  variant="blog-sidebar"
+                  source={`blog-sidebar:${post.slug}`}
+                  offers={["seasonal_checklist", "monthly_reminder"]}
+                  defaultOffer="seasonal_checklist"
+                  blogSidebarSecondaryHref={topProvidersHref}
                 />
-              </div>
+                {adsenseSidebarSlot ? <AdSenseDisplay slot={adsenseSidebarSlot} className="mt-8" /> : null}
               </>
             }
           />

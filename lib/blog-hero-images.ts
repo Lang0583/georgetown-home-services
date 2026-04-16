@@ -6,8 +6,12 @@ const DEFAULT_SRC =
 export type BlogHeroImage = { src: string; alt: string };
 
 const HERO_BY_SLUG: Record<string, BlogHeroImage> = {
+  "ac-not-cooling-georgetown-tx": {
+    src: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1200&q=80",
+    alt: "Air conditioning repair in Georgetown TX home",
+  },
   "water-heater-not-working-georgetown-tx": {
-    src: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1200&q=80",
+    src: "https://images.unsplash.com/photo-1599045118108-bf9954418b76?w=1200&q=80",
     alt: "Water heater repair in Georgetown TX home",
   },
   "foundation-crack-georgetown-tx": {

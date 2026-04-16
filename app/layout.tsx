@@ -2,18 +2,16 @@ import type { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
-import { headers } from "next/headers";
 import "./globals.css";
 import StickyHeader from "../components/StickyHeader";
 import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
-import { absolutePageUrl } from "../lib/page-seo";
+import { ADSENSE_CLIENT_ID } from "../lib/adsense-config";
 import { getBrandName } from "../lib/site-content";
 
 const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
 
-const adsenseClientId = "ca-pub-2692091044925789";
-const adsenseScriptSrc = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`;
+const adsenseScriptSrc = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`;
 
 /** Set in `.env.local` after you get your Grow site ID from Mediavine (app.mediavine.com/grow). */
 const mediavineGrowSiteId = process.env.NEXT_PUBLIC_MEDIAVINE_GROW_SITE_ID;
@@ -29,10 +27,6 @@ const geistMono = Geist_Mono({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const h = await headers();
-  const pathname = h.get("x-pathname") || "/";
-  const canonical = absolutePageUrl(pathname);
-
   return {
     metadataBase: new URL(siteUrl),
     title: {
@@ -41,10 +35,6 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     description: "Local plumbing, HVAC, and roofing service in Georgetown, TX.",
     robots: { index: true, follow: true },
-    alternates: { canonical },
-    openGraph: {
-      url: canonical,
-    },
   };
 }
 
@@ -87,21 +77,28 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full text-gray-900 antialiased`}
     >
       <head>
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+        {process.env.NODE_ENV === "production" ? (
+          <link rel="preconnect" href="https://www.googletagmanager.com" />
+        ) : null}
+        <Script
+          id="google-adsense"
+          src={adsenseScriptSrc}
+          strategy="afterInteractive"
+          async
+          crossOrigin="anonymous"
+        />
         {mediavineGrowSiteId ? (
           <Script
             id="mediavine-grow"
             src={`https://uploads.mediavine.com/grow/${mediavineGrowSiteId}.js`}
-            strategy="afterInteractive"
+            strategy="lazyOnload"
           />
         ) : null}
       </head>
       <body className="min-h-full flex flex-col bg-gray-50 text-gray-900">
-        <Script
-          async
-          src={adsenseScriptSrc}
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
         <StickyHeader />

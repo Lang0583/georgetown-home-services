@@ -309,10 +309,24 @@ export function isLikelyMapsListingUrl(href: string): boolean {
   }
 }
 
+/**
+ * Generic Yelp category search (not a specific business profile). Never treat as the company homepage.
+ */
+export function isGenericYelpSearchUrl(href: string): boolean {
+  try {
+    const u = new URL(href);
+    const h = u.hostname.toLowerCase().replace(/^www\./, "");
+    if (h !== "yelp.com" && !h.endsWith(".yelp.com")) return false;
+    return u.pathname.toLowerCase().includes("/search");
+  } catch {
+    return false;
+  }
+}
+
 /** Valid company website URL (https added if needed), or null if missing/invalid or maps listing URL. */
 export function getBusinessWebsiteUrl(b: Business): string | null {
   const n = normalizeOutboundHref(b.website);
-  if (!n || isLikelyMapsListingUrl(n)) return null;
+  if (!n || isLikelyMapsListingUrl(n) || isGenericYelpSearchUrl(n)) return null;
   return n;
 }
 

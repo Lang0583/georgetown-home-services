@@ -5,6 +5,19 @@
   "engines": {
     "node": "20.x"
   },
+  "browserslist": {
+    "production": [
+      "chrome >= 111",
+      "edge >= 111",
+      "firefox >= 111",
+      "safari >= 16.4"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "generate:lead-pdfs": "node scripts/generate-lead-magnet-pdfs.mjs",

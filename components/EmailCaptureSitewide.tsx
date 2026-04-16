@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
-import { CTA_EMAIL_PROVIDERS } from "../lib/site-cta";
+import { CTA_EMAIL_PROVIDERS, CTA_VIEW_TOP_PROVIDERS } from "../lib/site-cta";
 import { LEAD_MAGNETS, type LeadMagnetKey } from "../lib/lead-magnets";
 
 type Props = {
@@ -15,6 +16,9 @@ type Props = {
   offers?: LeadMagnetKey[];
   /** Default selected offer (must be in offers). */
   defaultOffer?: LeadMagnetKey;
+  /** Optional text link below submit (`blog-sidebar` only), e.g. best-of directory. */
+  blogSidebarSecondaryHref?: string;
+  blogSidebarSecondaryLabel?: string;
 };
 
 function radioLabelForBlogSidebar(k: LeadMagnetKey): string {
@@ -34,6 +38,8 @@ export default function EmailCaptureSitewide({
   source = "site",
   offers = ["seasonal_checklist", "monthly_reminder"],
   defaultOffer,
+  blogSidebarSecondaryHref,
+  blogSidebarSecondaryLabel = CTA_VIEW_TOP_PROVIDERS,
 }: Props) {
   const allowedOffers = useMemo(() => {
     const uniq = Array.from(new Set(offers)).filter((k) => Boolean(LEAD_MAGNETS[k]));
@@ -128,6 +134,17 @@ export default function EmailCaptureSitewide({
           >
             {status === "submitting" ? "Signing up..." : "Get free guides"}
           </button>
+
+          {blogSidebarSecondaryHref ? (
+            <p className="text-center">
+              <Link
+                href={blogSidebarSecondaryHref}
+                className="text-sm font-medium text-primary underline-offset-4 hover:text-primary-hover hover:underline"
+              >
+                {blogSidebarSecondaryLabel}
+              </Link>
+            </p>
+          ) : null}
 
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 pt-0.5 text-xs text-gray-700">
             {allowedOffers.map((k) => {

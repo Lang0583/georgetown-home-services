@@ -37,6 +37,7 @@ export function pageSeoMetadata(opts: {
   return {
     title: opts.titleSegment,
     description: opts.description,
+    alternates: { canonical: pageUrl },
     openGraph: {
       url: pageUrl,
       title: ogTitle,

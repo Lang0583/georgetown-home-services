@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { isExtendedBestSlug, isExtendedServiceSlug, showExtendedHomeServices } from "@/lib/public-site-scope";
+import { SITE_URL } from "@/lib/page-seo";
 import {
   getBestSlugs,
   getBlogSlugs,
@@ -7,19 +8,15 @@ import {
   getServiceSlugs,
 } from "@/lib/site-content";
 
-const SITE_URL = "https://www.georgetownhomeservices.com";
-
 function absoluteUrl(path: string): string {
   if (path === "/") return `${SITE_URL}/`;
   return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
 /**
- * Listing indexes: /services, /best, /blog — weekly.
- * Marketing / legal static pages — monthly.
- * Individual service, best-of, and blog URLs — monthly (stable guides).
+ * Sitemap URL list (used by `/sitemap.xml` → `/api/sitemap-xml` rewrite).
  */
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+export function buildSitemapEntries(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
   const staticMonthlyPaths: { path: string; priority: number }[] = [
@@ -122,4 +119,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   return entries;
+}
+
+function escapeXml(text: string): string {
+  return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+function lastModIso(entry: MetadataRoute.Sitemap[number]): string {
+  const d = entry.lastModified;
+  if (d instanceof Date) return d.toISOString();
+  if (typeof d === "string") return new Date(d).toISOString();
+  return new Date().toISOString();
+}
+
+/** sitemap.org XML for crawlers (explicit `Content-Type`, no RSC/HTML shell). */
+export function sitemapEntriesToXml(entries: MetadataRoute.Sitemap): string {
+  const urls = entries
+    .map((e) => {
+      const loc = escapeXml(e.url);
+      const lastmod = lastModIso(e);
+      const changefreq = e.changeFrequency ?? "monthly";
+      const priority = e.priority ?? 0.5;
+      return `<url><loc>${loc}</loc><lastmod>${lastmod}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`;
+    })
+    .join("");
+
+  return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}</urlset>`;
 }

@@ -23,13 +23,14 @@ export default function StickyHomeEmailCapture() {
     setError(null);
 
     try {
-      const res = await fetch("/api/newsletter-embed", {
+      const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           email: email.trim(),
           website: website.trim(),
           source: "home-sticky",
+          leadMagnet: "seasonal_checklist",
         }),
       });
 

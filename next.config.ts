@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async rewrites() {
+    return {
+      beforeFiles: [{ source: "/sitemap.xml", destination: "/api/sitemap-xml" }],
+    };
+  },
   images: {
     remotePatterns: [
       {
@@ -11,6 +16,11 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: "/sitemap",
+        destination: "/sitemap.xml",
+        permanent: false,
+      },
       {
         source: "/blog/how-to-find-a-good-plumber-georgetown",
         destination: "/blog/how-to-find-a-good-plumber-georgetown-tx",

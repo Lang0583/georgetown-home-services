@@ -31,7 +31,9 @@ export default function LinkCard({
           <div className="mt-1 text-base font-semibold text-gray-900 group-hover:underline">{title}</div>
           <div className="mt-2 text-sm text-gray-700">{description}</div>
         </div>
-        <div className="text-sm text-gray-500 group-hover:text-gray-800">→</div>
+        <div className="text-sm text-gray-600 group-hover:text-gray-900" aria-hidden>
+          →
+        </div>
       </div>
       {children ? <div className="mt-4">{children}</div> : null}
     </Link>

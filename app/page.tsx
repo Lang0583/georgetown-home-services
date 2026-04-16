@@ -1,3 +1,4 @@
+import AdSenseDisplay from "../components/AdSenseDisplay";
 import CTASection from "../components/CTASection";
 import Container from "../components/Container";
 import EmailCaptureSitewide from "../components/EmailCaptureSitewide";
@@ -10,6 +11,7 @@ import HomeTopProvidersColumn from "../components/HomeTopProvidersColumn";
 import HomeTrustBar from "../components/HomeTrustBar";
 import FAQList from "../components/FAQList";
 import JsonLd from "../components/JsonLd";
+import { adsenseInlineSlot } from "../lib/adsense-config";
 import { pageSeoMetadata, SITE_URL } from "../lib/page-seo";
 import { CORE_BEST_SLUGS, CORE_SERVICE_SLUGS } from "../lib/pageContentRegistry";
 import {
@@ -68,15 +70,15 @@ function homeWebPageJsonLd() {
   };
 }
 
-/** Homepage FAQ copy + FAQPage JSON-LD (single source). */
+/** Homepage FAQ copy + FAQPage JSON-LD (single source; must match visible FAQ section). */
 const HOME_PAGE_FAQS: Faq[] = [
-  {
-    q: "How do I find a reliable home service company in Georgetown, TX?",
-    a: "Start by checking reviews on Google and comparing at least 3 companies. Look for businesses with consistent ratings above 4.5 stars, verified licenses, and written estimates. Georgetown Home Services lists pre-screened providers across plumbing, HVAC, roofing, electrical, and more.",
-  },
   {
     q: "What home services are available in Georgetown, TX?",
     a: "Georgetown has active local providers for plumbing, HVAC, roofing, electrical, landscaping, pest control, foundation repair, and house cleaning. Georgetown Home Services maintains a directory of top-rated local companies for each category.",
+  },
+  {
+    q: "How do I find a reliable home service company in Georgetown, TX?",
+    a: "Start by checking reviews on Google and comparing at least 3 companies. Look for businesses with consistent ratings above 4.5 stars, verified licenses, and written estimates. Georgetown Home Services lists pre-screened providers across all major home service categories.",
   },
   {
     q: "How much does it cost to hire a plumber in Georgetown, TX?",
@@ -84,11 +86,11 @@ const HOME_PAGE_FAQS: Faq[] = [
   },
   {
     q: "Is Georgetown, TX a good area for foundation issues?",
-    a: "Yes—Central Texas clay soil expands and contracts with moisture, making foundation movement common in Georgetown. Hairline cracks are often cosmetic, but horizontal or stair-step cracks warrant a professional inspection. Georgetown Home Services lists foundation repair specialists in the area.",
+    a: "Yes - Central Texas clay soil expands and contracts with moisture, making foundation movement common in Georgetown. Hairline cracks are often cosmetic, but horizontal or stair-step cracks warrant a professional inspection.",
   },
   {
     q: "How do I know if I need a new HVAC system in Georgetown?",
-    a: "Key signs include a system older than 15 years, frequent repairs, uneven cooling, or energy bills rising without explanation. Georgetown summers regularly exceed 100 degrees, making a functioning HVAC essential. See our HVAC guides for full diagnostic checklists.",
+    a: "Key signs include a system older than 15 years, frequent repairs, uneven cooling, or energy bills rising without explanation. Georgetown summers regularly exceed 100 degrees, making a functioning HVAC essential.",
   },
 ];
 
@@ -380,6 +382,12 @@ export default function Home() {
           </div>
         </section>
 
+        {adsenseInlineSlot ? (
+          <div className="py-6 md:py-8">
+            <AdSenseDisplay slot={adsenseInlineSlot} className="mx-auto max-w-3xl" />
+          </div>
+        ) : null}
+
         <section className="py-10 md:py-12">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
             <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Top Rated Services</h2>
@@ -447,6 +455,10 @@ export default function Home() {
         </section>
 
         <section className="py-10 md:py-12">
+          <FAQList faqs={HOME_PAGE_FAQS} variant="plain" />
+        </section>
+
+        <section className="py-10 md:py-12">
           <EmailCaptureSitewide source="home" offers={["seasonal_checklist", "monthly_reminder"]} defaultOffer="seasonal_checklist" />
         </section>
 
@@ -461,9 +473,6 @@ export default function Home() {
           />
         </section>
 
-        <section className="pb-10 pt-2 md:pb-12 md:pt-4">
-          <FAQList faqs={HOME_PAGE_FAQS} />
-        </section>
       </Container>
 
       <StickyHomeEmailCapture />

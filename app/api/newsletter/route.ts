@@ -8,6 +8,8 @@ type NewsletterPayload = {
   firstName?: string;
   leadMagnet?: string;
   source?: string;
+  /** Honeypot field used by some forms to catch bots. */
+  website?: string;
 };
 
 function isValidEmail(email: string) {
@@ -32,8 +34,12 @@ export async function POST(req: Request) {
   const leadMagnetRaw = sanitizeText(payload.leadMagnet ?? "", 60);
   const leadMagnet = leadMagnetRaw.length ? leadMagnetRaw : undefined;
   const source = sanitizeText(payload.source ?? "site", 80);
+  const website = sanitizeText(payload.website ?? "", 120);
 
   if (!isValidEmail(email)) return NextResponse.json({ ok: false, error: "Valid email is required" }, { status: 400 });
+
+  // Honeypot: if filled, treat as bot submission. Pretend success but do nothing.
+  if (website) return NextResponse.json({ ok: true, emailed: false, recorded: false });
 
   const signup = {
     email,
@@ -67,10 +73,11 @@ export async function POST(req: Request) {
 
   try {
     await sendLeadMagnetWelcomeEmail({ to: email, firstName, leadMagnet });
+    return NextResponse.json({ ok: true, emailed: true, recorded: true });
   } catch {
-    // Never fail signup if transactional email errors.
+    // Never fail signup if transactional email errors, but surface status to the client.
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, emailed: false, recorded: true });
 }
 

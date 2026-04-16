@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AdSenseDisplay from "../../../components/AdSenseDisplay";
 import FAQList from "../../../components/FAQList";
 import { ButtonLink } from "../../../components/Button";
 import Container from "../../../components/Container";
@@ -19,6 +20,7 @@ import {
   getServices,
   getServiceSlugs,
 } from "../../../lib/site-content";
+import { adsenseSidebarSlot } from "../../../lib/adsense-config";
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
@@ -952,6 +954,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 <div className="text-sm font-semibold text-gray-900">Service area</div>
                 <div className="mt-2 text-sm leading-relaxed text-gray-700">{location?.title ?? "Georgetown, TX"}</div>
               </div>
+
+              {adsenseSidebarSlot ? <AdSenseDisplay slot={adsenseSidebarSlot} className="mt-8" /> : null}
               </>
             }
           />

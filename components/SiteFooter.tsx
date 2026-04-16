@@ -3,6 +3,9 @@ import { PROVIDER_INFO_DISCLAIMER } from "../lib/provider-disclaimer";
 import { showExtendedHomeServices } from "../lib/public-site-scope";
 import { getBrandName, getContact } from "../lib/site-content";
 
+const footerBarLinkClass =
+  "inline-flex min-h-11 items-center rounded-md px-0.5 hover:underline sm:min-h-0";
+
 export default function SiteFooter() {
   const brand = getBrandName();
   const contact = getContact();
@@ -186,53 +189,53 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <p className="mt-8 max-w-3xl text-xs leading-relaxed text-gray-500">{PROVIDER_INFO_DISCLAIMER}</p>
+        <p className="mt-8 max-w-3xl text-xs leading-relaxed text-gray-600">{PROVIDER_INFO_DISCLAIMER}</p>
 
-        <div className="mt-6 flex flex-col gap-2 border-t border-gray-200 pt-6 text-sm text-gray-500 md:flex-row md:items-center md:justify-between">
-          <div className="flex flex-wrap gap-x-3 gap-y-1">
-            <Link className="hover:underline" href="/">
+        <div className="mt-6 flex flex-col gap-2 border-t border-gray-200 pt-6 text-sm text-gray-600 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-wrap gap-x-3 gap-y-2">
+                       <Link className={footerBarLinkClass} href="/">
               Home
             </Link>
-            <Link className="hover:underline" href="/about">
+            <Link className={footerBarLinkClass} href="/about">
               About
             </Link>
-            <Link className="hover:underline" href="/methodology">
+            <Link className={footerBarLinkClass} href="/methodology">
               How we rank
             </Link>
-            <Link className="hover:underline" href="/services">
+            <Link className={footerBarLinkClass} href="/services">
               Service guides
             </Link>
-            <Link className="hover:underline" href="/best">
+            <Link className={footerBarLinkClass} href="/best">
               Provider directory
             </Link>
-            <Link className="hover:underline" href="/blog">
+            <Link className={footerBarLinkClass} href="/blog">
               Homeowner blog
             </Link>
-            <Link className="hover:underline" href="/contact">
+            <Link className={footerBarLinkClass} href="/contact">
               Contact
             </Link>
-            <Link className="hover:underline" href="/privacy-policy">
+            <Link className={footerBarLinkClass} href="/privacy-policy">
               Privacy
             </Link>
-            <Link className="hover:underline" href="/terms">
+            <Link className={footerBarLinkClass} href="/terms">
               Terms
             </Link>
-            <Link className="hover:underline" href="/services/plumber-georgetown-tx">
+            <Link className={footerBarLinkClass} href="/services/plumber-georgetown-tx">
               Plumbing
             </Link>
-            <Link className="hover:underline" href="/services/hvac-georgetown-tx">
+            <Link className={footerBarLinkClass} href="/services/hvac-georgetown-tx">
               HVAC
             </Link>
-            <Link className="hover:underline" href="/services/roofer-georgetown-tx">
+            <Link className={footerBarLinkClass} href="/services/roofer-georgetown-tx">
               Roofing
             </Link>
-            <Link className="hover:underline" href="/best/best-plumbers-georgetown-tx">
+            <Link className={footerBarLinkClass} href="/best/best-plumbers-georgetown-tx">
               Best Plumbers
             </Link>
-            <Link className="hover:underline" href="/best/top-hvac-companies-georgetown-tx">
+            <Link className={footerBarLinkClass} href="/best/top-hvac-companies-georgetown-tx">
               Best HVAC
             </Link>
-            <Link className="hover:underline" href="/best/best-roofers-georgetown-tx">
+            <Link className={footerBarLinkClass} href="/best/best-roofers-georgetown-tx">
               Best Roofers
             </Link>
           </div>

@@ -10,9 +10,9 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  /* Brand teal — replaces former blue accent */
-  --color-primary: #01696f;
-  --color-primary-hover: #0c4e54;
+  /* Brand teal — slightly darker for WCAG AA contrast on white/gray-50 body text */
+  --color-primary: #0a5c64;
+  --color-primary-hover: #084249;
   --color-primary-light: #e6f2f2;
 }
 

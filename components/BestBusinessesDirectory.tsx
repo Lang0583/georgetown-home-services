@@ -135,13 +135,15 @@ function ProviderCard({
 }) {
   const href = getBusinessOutboundUrl(b);
   const badges = getProviderBadges(b);
+  const topPickClass =
+    "inline-flex shrink-0 items-center rounded-full bg-[#01696F] px-[10px] py-[2px] text-[12px] font-semibold leading-none text-white";
 
   return (
     <li className="rounded-xl border border-gray-200 border-l-4 border-l-[#01696F] bg-white p-6 shadow-md">
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-x-4">
-          <div className="flex min-w-0 flex-1 flex-wrap items-center justify-between gap-2 gap-y-1">
-            <div className="text-lg font-semibold text-gray-900">
+          <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-1">
+            <div className="text-lg font-semibold text-gray-900 inline-flex max-w-full flex-wrap items-center gap-2">
               {href ? (
                 <a href={href} {...externalBusinessLinkProps} className="text-gray-900 hover:text-primary-hover hover:underline">
                   {b.name}
@@ -149,10 +151,8 @@ function ProviderCard({
               ) : (
                 b.name
               )}
+              {showTopPick ? <span className={topPickClass}>Top Pick</span> : null}
             </div>
-            {showTopPick ? (
-              <span className="shrink-0 rounded-full bg-[#01696F] px-2.5 py-1 text-xs font-semibold text-white">Top Pick</span>
-            ) : null}
           </div>
           <div className="w-full sm:w-auto sm:shrink-0">
             {hasBusinessRatingData(b) ? (
@@ -245,6 +245,14 @@ export default function BestBusinessesDirectory({
     sort,
   ]);
 
+  /** First visible “position 1” listing across sponsored → established → lower-signal buckets. */
+  const topPickBusiness = useMemo(() => {
+    if (sponsored.length) return sponsored[0];
+    if (filteredEstablished.length) return filteredEstablished[0];
+    if (lowerSignal.length) return lowerSignal[0];
+    return null;
+  }, [sponsored, filteredEstablished, lowerSignal]);
+
   return (
     <div className="mt-8 space-y-10">
       <section className="rounded-xl border border-gray-200 bg-gray-50 p-6 shadow-md">
@@ -319,7 +327,7 @@ export default function BestBusinessesDirectory({
                 b={b}
                 guideHref={guideHref}
                 guideLabel={guideLabel}
-                showTopPick={idx === 0}
+                showTopPick={b === topPickBusiness}
               />
             ))}
           </ul>
@@ -340,7 +348,7 @@ export default function BestBusinessesDirectory({
                 b={b}
                 guideHref={guideHref}
                 guideLabel={guideLabel}
-                showTopPick={sponsored.length === 0 && idx === 0}
+                showTopPick={b === topPickBusiness}
               />
             ))}
           </ul>
@@ -360,7 +368,13 @@ export default function BestBusinessesDirectory({
           </p>
           <ul className="mt-6 space-y-5">
             {lowerSignal.map((b, idx) => (
-              <ProviderCard key={`${b.name}-${idx}-low`} b={b} guideHref={guideHref} guideLabel={guideLabel} />
+              <ProviderCard
+                key={`${b.name}-${idx}-low`}
+                b={b}
+                guideHref={guideHref}
+                guideLabel={guideLabel}
+                showTopPick={b === topPickBusiness}
+              />
             ))}
           </ul>
         </section>
