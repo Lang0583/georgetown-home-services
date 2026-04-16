@@ -35,6 +35,9 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     description: "Local plumbing, HVAC, and roofing service in Georgetown, TX.",
     robots: { index: true, follow: true },
+    other: {
+      "google-adsense-account": ADSENSE_CLIENT_ID,
+    },
   };
 }
 
