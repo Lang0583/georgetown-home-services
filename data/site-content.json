@@ -9,50 +9,62 @@
   "locations": [
     {
       "slug": "georgetown-tx",
-      "title": "Georgetown, TX",
-      "h1": "Trusted Home Services in Georgetown, TX",
-      "description": "Local guides for electrical, landscaping, pest control, foundation repair, house cleaning, plumbing, HVAC, and roofing across Georgetown.",
+      "title": "Home Services in Georgetown, TX: Local Guide for Homeowners",
+      "h1": "Georgetown, TX Home Services: A Homeowner's Research Guide",
+      "description": "Independent homeowner guides to plumbing, HVAC, and roofing in Georgetown, TX. Local context on Williamson County climate, soil, neighborhoods, and what makes home services different here. Editorial pricing and contractor evaluation guidance.",
       "heroBullets": [
-        "Licensed and insured technicians",
-        "Fast response times",
-        "Transparent upfront pricing"
+        "Independent local research, not a contractor",
+        "Editorial pricing for Georgetown trades",
+        "Neighborhood and climate context"
       ],
       "content": [
-        { "kind": "p", "text": "When you need help fast, you want a team that shows up, communicates clearly, and fixes the problem the first time. Georgetown Home Services provides research guides and provider directories for homeowners across Georgetown, TX." },
-        { "kind": "h2", "text": "What this site covers" },
-        {
-          "kind": "ul",
-          "items": [
-            "Electrical, landscaping, pest control, foundation, and house cleaning",
-            "Plumbing repairs and replacements",
-            "AC not cooling, heating issues, and maintenance",
-            "Roof leaks, repairs, and replacement planning"
-          ]
-        },
-        { "kind": "p", "text": "Use the service pages and best-of guides below to compare local providers and decide who to contact." }
+        { "kind": "p", "text": "Georgetown sits at the north edge of the Austin metro in Williamson County, with a homeowner population split roughly between long-established neighborhoods (central Georgetown, Berry Creek, Serenada), the large Sun City retiree community built from 1995 onward, and newer master-planned subdivisions like Wolf Ranch that have come online over the past decade. Each of those eras puts homeowners in front of different home-service realities — different roof ages, different plumbing materials, different HVAC system vintages — and a useful local guide takes that mix into account." },
+        { "kind": "p", "text": "This site is a homeowner-side research resource, not a contracting business. We don't dispatch trucks or quote jobs; we publish editorial guides on what tends to break in Georgetown homes, what changes the price of a given job, and what to look for when comparing contractor bids. The goal is for a Georgetown homeowner to walk into a service conversation with enough context to know whether the recommendations they're getting line up with how the work is actually scoped in this market." },
+        { "kind": "h2", "text": "What makes home services different in Georgetown" },
+        { "kind": "p", "text": "A few local factors matter more than they would in most national how-to guides:" },
+        { "kind": "h3", "text": "Hail and wind season" },
+        { "kind": "p", "text": "Williamson County's spring convective season produces enough hail and wind events that roof age cohorts and insurance-scope replacements are a real category here. Roofs in Sun City built in the late 1990s through early 2000s are largely on their second roof or due for one; Wolf Ranch is mostly still on first roofs. The roofing guide goes deeper on documentation, hail vs. cosmetic damage, and how insurance-scope versus cash-pay roofs are priced differently." },
+        { "kind": "h3", "text": "Hard water from the limestone aquifer" },
+        { "kind": "p", "text": "Williamson County water is hard enough to noticeably scale water heaters, fixtures, and (for tankless owners) heat exchangers. Most tank water heaters here last 8 to 12 years, often less without periodic flushing. Softeners and scale-prevention devices change the math on tankless installs and are worth pricing whether or not you're going tankless." },
+        { "kind": "h3", "text": "Expansive clay soil" },
+        { "kind": "p", "text": "Older slabs over expansive clay shift with seasonal moisture, which stresses copper supply lines underneath. Slab leaks are noticeably more common in central Georgetown, parts of Sun City, and established Berry Creek than in newer subdivisions where construction practices and pipe materials have evolved. The plumbing guide covers detection options and when an above-slab repipe starts to make sense." },
+        { "kind": "h3", "text": "Heat-dominated climate with short cold snaps" },
+        { "kind": "p", "text": "AC drives the household load 6+ months of the year here; furnaces mostly coast except for short January cold snaps. That balance changes how systems should be sized, what fails when, and what's worth investing in during a replacement. Oversized cooling systems — common in Texas — cause humidity and short-cycling problems specifically because they're working against this load profile." },
+        { "kind": "h2", "text": "The trade guides" },
+        { "kind": "p", "text": "Three guides cover the trades most Georgetown homeowners deal with regularly:" },
+        { "kind": "ul", "items": [
+          "Plumbing in Georgetown — slab leaks, hard water and water heater life, sewer-line basics, when emergency response is warranted, and how to compare plumber bids.",
+          "HVAC in Georgetown — AC and heating diagnostics, the R-410A refrigerant transition, what changes installation cost in Central Texas, ductwork basics, and how to evaluate HVAC bids.",
+          "Roofing in Georgetown — repair vs. replacement framing, hail and storm documentation, what changes roof replacement cost in Williamson County, and how to evaluate a roofer."
+        ] },
+        { "kind": "p", "text": "The pricing guide consolidates editorial price ranges for all three trades plus electrical, foundation, and landscaping work, with notes on what drives the variance in each category." },
+        { "kind": "h2", "text": "A homeowner calendar for Williamson County" },
+        { "kind": "p", "text": "There's no exact maintenance calendar that fits every Georgetown home, but a useful rough cadence:" },
+        { "kind": "ul", "items": [
+          "Late February through early March — schedule the cooling tune-up before the first 90-degree week. Demand spikes in May; pricing and availability are better in March.",
+          "Spring storm season (March through May) — after any storm with notable hail or wind, a perimeter walk for granule loss, dented vents, or lifted shingles is worth 10 minutes. Document with photos and dates; that documentation ages better than memory.",
+          "Late summer — flush the water heater. If it's been 5+ years without anode-rod attention, that's a worthwhile call too.",
+          "Fall (October through November) — heating check, especially if you have a furnace or heat pump that hasn't been serviced in a year. Cold snaps arrive without warning in December and January.",
+          "Anytime — find your main water shutoff and confirm it works. This is the highest-leverage 5 minutes of homeowner prep there is."
+        ] },
+        { "kind": "h2", "text": "How to use this site" },
+        { "kind": "p", "text": "Each trade guide has the same structure: common problems homeowners actually see, repair vs. replacement framing, what changes cost, and what to verify in a bid. The pricing page consolidates editorial ranges across trades. Cost-guide blog posts go deeper on individual services where price variance is high." },
+        { "kind": "p", "text": "This site doesn't quote jobs or refer to specific contractors as a primary editorial activity. The goal is making the homeowner side of the conversation more informed; you bring the contractor evaluation, this site brings the framework." }
+      ],
+      "faqs": [
+        { "q": "Is Georgetown, TX expensive for home services compared to Austin?", "a": "Generally similar to greater Austin pricing for most trades, with some specifics that go either way. Roofing in Williamson County tends to run on the higher end because of insurance-scope work after hail events. Plumbing and HVAC labor rates are roughly comparable to Austin. Same-day and after-hours dispatch can be more limited (and pricier) outside business hours simply because the contractor pool serving Georgetown is smaller than central Austin. Editorial price ranges by job type are on the pricing guide." },
+        { "q": "What neighborhoods in Georgetown have older homes that need more maintenance?", "a": "Central Georgetown (the older grid around the courthouse), Serenada, parts of Berry Creek, and the original Sun City phases (built starting 1995) all have homes 25+ years old in significant numbers. That generally means original roofs are at end-of-life or replaced once already, water heaters and HVAC systems are on their second or third install, and slab-related plumbing issues are more common. Newer subdivisions like Wolf Ranch and parts of north Georgetown are largely on original equipment still." },
+        { "q": "Why does this site not focus on listing specific contractors?", "a": "The editorial focus is the homeowner side of the conversation — what tends to break, what affects price, what to verify in a bid. Leading with generic \"top 10\" lists at the article level would either produce low-value content (easily gamed and not specific enough to be useful) or compromise editorial independence through paid placements. The trade guides stay framework-focused; some category pages link to vetted local options where they exist." },
+        { "q": "Does this site cover areas around Georgetown like Liberty Hill or Hutto?", "a": "The editorial focus is Georgetown specifically, but most of the local context — Williamson County climate, expansive clay soil, hard water, hail patterns — applies broadly across the area including Liberty Hill, Hutto, Round Rock, Leander, and Cedar Park. Specific pricing and contractor availability vary by exact zip code, but the guides assume Georgetown and most of the framework transfers." },
+        { "q": "What are the most common home service emergencies in Georgetown?", "a": "By volume: water leaks (slab leaks in older neighborhoods, water heater tank failures, hose-bib failures during cold snaps), AC failures during the first sustained heat week (typically late May), and roof issues after hail events (typically March through May). Less common but worth knowing: gas furnace lockouts during the December and January cold snaps. The plumbing and HVAC guides cover what to do first in each case." }
       ],
       "serviceSlugs": [
         "plumber-georgetown-tx",
         "hvac-georgetown-tx",
-        "roofer-georgetown-tx",
-        "electrician-georgetown-tx",
-        "landscaping-georgetown-tx",
-        "pest-control-georgetown-tx",
-        "foundation-repair-georgetown-tx",
-        "house-cleaning-georgetown-tx",
-        "ac-not-cooling-georgetown-tx",
-        "clogged-drain-georgetown-tx",
-        "roof-leak-repair-georgetown-tx"
+        "roofer-georgetown-tx"
       ],
       "bestSlugs": [
-        "best-plumbers-georgetown-tx",
-        "top-hvac-companies-georgetown-tx",
-        "best-roofers-georgetown-tx",
-        "best-electricians-georgetown-tx",
-        "best-landscaping-companies-georgetown-tx",
-        "best-pest-control-georgetown-tx",
-        "best-foundation-repair-georgetown-tx",
-        "best-house-cleaning-services-georgetown-tx"
+        "best-plumbers-georgetown-tx"
       ]
     },
     {
@@ -123,119 +135,220 @@
     {
       "slug": "plumber-georgetown-tx",
       "type": "service",
-      "title": "Plumber in Georgetown, TX",
-      "h1": "Plumbing Repairs in Georgetown, TX",
-      "description": "Reliable plumbing service for leaks, clogs, fixtures, and replacements across Georgetown.",
+      "title": "Plumbers in Georgetown, TX: Repairs, Replacements, and Emergencies",
+      "h1": "Hiring a Plumber in Georgetown, TX: Leaks, Drains, and Replacements",
+      "description": "A homeowner's guide to plumbing repairs, water heater work, and emergencies in Georgetown, TX. Slab leak basics for clay-soil neighborhoods, drain and sewer triage, water heater replacement decisions, and how to compare bids.",
       "locationSlug": "georgetown-tx",
       "serviceType": "Plumbing",
       "heroBullets": [
-        "Leak and clog troubleshooting",
-        "Fixture and repiping options",
-        "Upfront pricing"
+        "Slab leak and hidden-leak basics",
+        "Sewer triage and camera inspection",
+        "Water heater repair vs. replacement"
       ],
       "content": [
-        { "kind": "p", "text": "Georgetown Home Services helps homeowners handle plumbing issues with practical solutions and clean workmanship." },
-        { "kind": "h2", "text": "Common plumbing problems" },
-        {
-          "kind": "ul",
-          "items": [
-            "Clogged drains and slow drains",
-            "Running toilets and toilet repair",
-            "Leaky faucets and pipe leaks",
-            "Water pressure concerns"
-          ]
-        },
-        { "kind": "p", "text": "If you’re dealing with a stubborn issue, we’ll diagnose the cause and recommend the most cost-effective path forward." }
+        { "kind": "p", "text": "Plumbing problems in Georgetown break into a few patterns shaped by the local environment: hard water from Williamson County's limestone aquifer wears fixtures and scales water heaters faster than national averages; expansive clay soil moves slabs and stresses lines, particularly in older neighborhoods; and the mix of older established homes and newer master-planned communities means a 1970s house in central Georgetown and a 2020 build in Wolf Ranch face very different plumbing realities. This guide walks through what tends to break, when it's a repair versus a replacement situation, and what makes one plumbing bid materially different from another." },
+        { "kind": "h2", "text": "Common plumbing problems in Georgetown homes" },
+        { "kind": "h3", "text": "Drains, toilets, and fixture issues" },
+        { "kind": "p", "text": "Routine drain clogs usually clear with a snake or hydrojetting. The diagnostic question is whether it's a single fixture issue or a pattern. Toilets that run continuously are almost always a flapper or fill-valve issue — under $50 in parts, often a 15-minute fix — but recurring base leaks can also be a wax-ring failure or a flange-height problem from a tile floor that was added on top of the original. Garbage disposals that hum without spinning are typically jammed (manual reset usually clears it); leaks from the bottom of the unit usually mean internal seal failure and replacement." },
+        { "kind": "h3", "text": "Hidden leaks and slab leaks" },
+        { "kind": "p", "text": "An unexplained jump in your Georgetown water bill, hot spots on a tile or laminate floor, or wet drywall away from a fixture all point at hidden leaks. Slab leaks — pinhole or crack failures in the copper supply lines under the foundation — are more common in older neighborhoods built on slabs over expansive clay, where soil movement abrades or stresses the lines over decades. Detection methods range from non-invasive (acoustic, thermal imaging) to pressure isolation and, in last resort, line tracing. The cost of detection is small relative to the cost of guessing wrong about which line to repair." },
+        { "kind": "h3", "text": "Sewer and main-line backups" },
+        { "kind": "p", "text": "Multiple fixtures backing up at once, gurgling drains when a washing machine runs, or sewage odors near outdoor cleanouts almost always indicate a main sewer line issue rather than a single drain. Causes range from grease and tree-root intrusion (older neighborhoods with mature pecans and oaks have higher rates) to bellies in the line where it has settled. A camera inspection turns guessing into evidence; reputable Georgetown plumbers will save the footage and show you what they saw before recommending excavation or a trenchless repair." },
+        { "kind": "h3", "text": "Water heater issues" },
+        { "kind": "p", "text": "Hard water in Williamson County is rough on water heaters: scale builds in tank-type units, increasing energy use and shortening tank life. Most tank water heaters in Georgetown last 8 to 12 years, often less without periodic flushing. A leaking tank (water on the floor near the base, not at supply connections) is a replacement decision — tank failures are not repairable. Tankless units can run 15 to 20 years with annual descaling but are sensitive to incoming water quality; a softener or scale-prevention device is worth pricing if you're going tankless and don't already have one." },
+        { "kind": "h2", "text": "Repair vs. replacement on common items" },
+        { "kind": "p", "text": "Some patterns that hold up across most Georgetown plumbing scenarios:" },
+        { "kind": "ul", "items": [
+          "Water heater tank leaking from the body: replace, not repair. Repair attempts on a failed tank don't hold.",
+          "Faucet drips and toilet runs: almost always repair (parts cost less than $50, labor 30 to 60 minutes per fixture).",
+          "Garbage disposal jam: try the reset and a wrench in the bottom socket before calling — often resolves in 5 minutes.",
+          "Garbage disposal leaking from the bottom: replace, not repair.",
+          "Recurring slow drains in the same fixture: snake first; if it returns within months, ask for a camera inspection of the branch line before more aggressive intervention.",
+          "Repeated whole-house plumbing issues in an older home with galvanized or polybutylene supply lines: at some point the math tilts toward repipe rather than chasing individual failures."
+        ] },
+        { "kind": "h2", "text": "What changes plumbing costs in Georgetown" },
+        { "kind": "p", "text": "Editorial price ranges for Georgetown plumbing — from minor repairs through water heater replacement, leak detection, and main-line work — are kept up to date on the pricing guide. The real drivers:" },
+        { "kind": "ul", "items": [
+          "Diagnosis time and access. A leak under a slab in the middle of a kitchen costs more to find than one in an exposed wall cavity.",
+          "Materials. Copper, PEX, and CPVC pricing differs; choice often depends on what your home was built with (consistent material is generally preferred).",
+          "Whether code upgrades are required. Replacing a water heater often triggers a pan, drain, and shutoff upgrade in modern code that the old install lacked.",
+          "Permits. Water heater replacements and re-pipes in incorporated Georgetown typically require permits pulled by the contractor — verify the specifics for your address with your plumber.",
+          "After-hours and emergency rates. Active leaks and sewage backups warrant emergency response; a small toilet leak overnight usually does not. Triage the urgency before agreeing to weekend pricing."
+        ] },
+        { "kind": "h2", "text": "Emergency plumbing: what to do first" },
+        { "kind": "p", "text": "If water is actively damaging the home, the first priority is shutting off the source — at the fixture, the line, or the main. Most Georgetown homes have a main shutoff at the front of the house near the street side, sometimes inside a garage near the water heater. Knowing where it is in advance is worth more than any other prep step. Once water is off, document the symptom (photos, when it started, what was running at the time) before calling. Plumbers can triage faster with that information and can often advise whether you need same-day or after-hours dispatch." },
+        { "kind": "p", "text": "Sewage backups affecting living space are also urgent and warrant after-hours response. Backups isolated to a basement floor drain or a single rarely-used fixture are not — they can wait until business hours and cost meaningfully less." },
+        { "kind": "h2", "text": "How to evaluate a Georgetown plumber" },
+        { "kind": "p", "text": "Most plumbing complaints in Central Texas come down to vague scoping or surprise add-ons after work starts. Before you commit, the bid should specify:" },
+        { "kind": "ul", "items": [
+          "Diagnostic findings in writing (what's failed, what's the evidence) before parts are ordered.",
+          "Materials by name and grade (e.g. \"3/4-inch PEX-A,\" not just \"new line\").",
+          "Whether the work triggers code upgrades that aren't optional, and what those add to the cost.",
+          "Warranty terms on parts and labor — many Texas plumbers offer 1-year labor warranties as standard; longer is better.",
+          "Permits and inspections, including who pulls them and timeline expectations.",
+          "Cleanup and water-test expectations after install or repair."
+        ] }
       ],
       "faqs": [
-        { "q": "Do you offer upfront estimates?", "a": "Yes. We explain what we find, outline options, and provide a clear estimate before work begins." },
-        { "q": "Can you handle both repairs and replacements?", "a": "Absolutely. When repair isn’t the best long-term value, we’ll walk you through replacement options." }
+        { "q": "Why are slab leaks more common in some Georgetown neighborhoods?", "a": "Williamson County's expansive clay soil moves with moisture changes — drying out and shrinking in summer drought, swelling in heavy rain seasons. That movement transfers stress to copper supply lines running through the slab, abrading or pinching them over decades. Older neighborhoods built on slabs (much of central Georgetown, parts of Sun City, established Berry Creek) see slab leaks at higher rates than newer subdivisions like Wolf Ranch where construction practices and pipe materials have evolved. If you've had a slab leak, the next one isn't unlikely; some homeowners eventually opt for an above-slab repipe rather than chasing individual leaks." },
+        { "q": "Tank or tankless water heater for a Georgetown home?", "a": "It depends on demand patterns, gas vs. electric configuration, and your tolerance for upfront cost. Tankless typically runs 1.5 to 2 times the installed cost of a comparable tank unit but can run 15 to 20 years versus 8 to 12 for a tank. Gas tankless makes more sense in homes already plumbed for gas with adequate venting; retrofitting electric tankless usually requires a panel upgrade. Hard water is rough on both — annual descaling is worth budgeting either way, and a softener or scale-prevention device is worth pricing if you're going tankless without one." },
+        { "q": "How do I know if it's a sewer line problem vs. just a clog?", "a": "The key signal is whether multiple fixtures are affected. A single slow drain is usually a branch-line issue. Multiple drains backing up at once, toilets bubbling when sinks drain, or sewage odors near outdoor cleanouts all point at the main line. Backups that recur within weeks of clearing also suggest something structural — a belly in the line, root intrusion (common in older Georgetown neighborhoods with mature trees), or line breakage. A camera inspection turns this from guessing into evidence; ask for the footage." },
+        { "q": "How long should a water heater last in Georgetown?", "a": "Most tank water heaters in Williamson County run 8 to 12 years, with the lower end common in homes that don't periodically flush them. Hard water builds scale at the bottom of the tank, where the burner heats; eventually that layer insulates the heating element from the water, increasing run time and accelerating tank failure. A periodic flush (annually or biannually) and replacing the anode rod every 3 to 5 years can meaningfully extend life. Tankless units last 15 to 20 years with annual descaling but are sensitive to scale — without a softener or scale-prevention device the life can be much shorter." },
+        { "q": "What's a fair price for emergency plumbing in Georgetown?", "a": "Editorial range for after-hours emergency plumbing in Georgetown is roughly $150 to $400 for the dispatch and minimum visit, plus the actual repair cost. The dispatch fee is the part that's elevated for after-hours; labor and parts beyond that are typically priced consistently with daytime rates. If a quote is multiples of business-hour pricing for the same work, it's worth a second opinion if the situation allows. Active leaks and sewage in living space genuinely warrant after-hours response; a small drip overnight usually does not." },
+        { "q": "Do I need a permit to replace my water heater in Georgetown?", "a": "Water heater replacements in incorporated Georgetown typically require a permit pulled by the contractor — verify the specifics for your address with your plumber. Permitted work is inspected, which is meaningful because water heater installs can introduce gas, venting, or electrical safety issues. A plumber offering to skip the permit is a flag worth heeding. Most reputable Georgetown plumbers handle the permit and inspection routinely as part of the install." }
       ],
       "bestSlugs": [
         "best-plumbers-georgetown-tx"
       ],
-      "relatedServiceSlugs": [
-        "clogged-drain-georgetown-tx",
-        "plumber-sun-city-georgetown-tx"
-      ]
+      "relatedServiceSlugs": []
     },
     {
       "slug": "hvac-georgetown-tx",
       "type": "service",
-      "title": "HVAC in Georgetown, TX",
-      "h1": "HVAC Repair and Maintenance in Georgetown, TX",
-      "description": "Heating and AC repairs, maintenance, and performance checks for Georgetown homes.",
+      "title": "HVAC Companies in Georgetown, TX: Repair, Replacement, and Maintenance",
+      "h1": "Hiring an HVAC Company in Georgetown, TX: AC, Heating, and Indoor Comfort",
+      "description": "A homeowner's guide to AC and heating repair, replacement, and maintenance in Georgetown, TX. When to repair vs. replace, what changes installation costs in Central Texas, ductwork and IAQ basics, and how to compare bids.",
       "locationSlug": "georgetown-tx",
       "serviceType": "HVAC",
       "heroBullets": [
-        "AC and heating diagnostics",
-        "Maintenance to reduce breakdowns",
-        "Repair vs replacement guidance"
+        "Repair vs. replacement decision framework",
+        "Manual J sizing and ductwork basics",
+        "What to verify in HVAC bids"
       ],
       "content": [
-        { "kind": "p", "text": "From comfort issues to unusual sounds, our HVAC team diagnoses the problem and recommends the right next step." },
-        { "kind": "h2", "text": "When to call" },
-        {
-          "kind": "ul",
-          "items": [
-            "AC not cooling or uneven cooling",
-            "Heating that won’t start reliably",
-            "Rising energy bills or poor airflow",
-            "Strange noises or frequent cycling"
-          ]
-        },
-        { "kind": "p", "text": "We’ll help you get back to comfortable temperatures with transparent recommendations." }
+        { "kind": "p", "text": "Georgetown summers run hot enough that AC is the dominant household load from late spring through October, and heating systems mostly coast except for short January cold snaps. That balance shapes everything: how systems are sized, when they fail, what's worth replacing versus repairing, and where most of the comfort complaints actually come from. This guide walks through the common HVAC scenarios in Williamson County, the questions that separate a real diagnostic from a sales pitch, and how to compare bids on repair, replacement, and maintenance work." },
+        { "kind": "h2", "text": "AC problems Georgetown homeowners see most" },
+        { "kind": "h3", "text": "Not cooling, or only cooling some rooms" },
+        { "kind": "p", "text": "The most common call is \"running but not cooling\" or \"one side of the house never catches up.\" These have very different causes. Running but not cooling usually points to refrigerant, an outdoor-unit issue (capacitor, contactor, fan motor), or a frozen indoor coil. Uneven cooling is more often an airflow problem — duct sizing, return air, or a system that's actually undersized for the load. A reasonable diagnostic call should include static-pressure or temperature-split readings before any parts are recommended." },
+        { "kind": "h3", "text": "Frequent short cycling or strange noises" },
+        { "kind": "p", "text": "Short cycling (turning on and off rapidly) on a hot day usually means an oversized system, a thermostat or sensor problem, or a low-charge condition causing protective shutoffs. Noise patterns matter too: a hard click then silence is often a capacitor; a steady humming with no fan rotation is usually a start capacitor or seized motor; metallic rattling can be loose components or a failing blower wheel." },
+        { "kind": "h3", "text": "Rising energy bills with no obvious failure" },
+        { "kind": "p", "text": "When a Georgetown bill creeps up summer over summer without a comfort complaint, the usual suspects are duct leakage in the attic, a slowly losing refrigerant charge, or efficiency degradation as the system ages past 12 to 15 years. A maintenance visit that includes static pressure, temperature split, and a quick attic-duct visual inspection is worth more than one that just \"checks levels.\"" },
+        { "kind": "h2", "text": "Heating: the part that fails when you weren't paying attention" },
+        { "kind": "p", "text": "Even in Central Texas, furnace and heat-pump problems show up during cold snaps when service schedules tighten. Common no-heat scenarios include ignition failures, safety-switch lockouts, thermostat communication issues, and (in older homes) cracked heat exchangers — that last one is a safety stop, not a repair. If you smell gas or a strong burning odor, treat it as urgent: shut the system off and call a licensed technician before troubleshooting further." },
+        { "kind": "p", "text": "Heat pumps work well in Georgetown's climate because the design temperature stays mild, but they need correct refrigerant charge and clean coils to perform efficiently in defrost cycles. A heat pump that runs constantly without warming is often a refrigerant or reversing-valve problem rather than a sizing issue." },
+        { "kind": "h2", "text": "Repair vs. replacement: the math that matters" },
+        { "kind": "p", "text": "There's no single \"replace at this age\" rule, but a few patterns hold up:" },
+        { "kind": "ul", "items": [
+          "If a single repair costs more than 30 to 40 percent of replacement, replacement usually wins on a multi-year basis, especially for systems over 12 years old.",
+          "Repeated repairs in successive seasons are a stronger signal than any one repair cost — the underlying system is asking to be replaced.",
+          "Refrigerant matters in 2026. R-410A is being phased out for new equipment under EPA rules, and the industry has transitioned to R-454B and R-32 across the major manufacturers. If your system is on R-22 (pre-2010), recharge costs have been rising for years and replacement math tilts strongly toward replacement.",
+          "A 14 to 15 SEER system replaced with a 16 to 18 SEER inverter system can drop summer cooling cost meaningfully in Georgetown, but only if duct issues and airflow are addressed at the same install."
+        ] },
+        { "kind": "h2", "text": "What changes installation cost in Georgetown" },
+        { "kind": "p", "text": "Editorial price ranges for HVAC work in Georgetown — from minor repairs through full replacement and ductwork — are kept up to date on the pricing guide. The real drivers in any individual quote:" },
+        { "kind": "ul", "items": [
+          "Equipment tier and configuration. Single-stage, two-stage, and inverter-driven systems span a wide price range; matched systems (indoor and outdoor sized for each other) perform better than mixed-tier replacements.",
+          "Ductwork condition. In Sun City and other late-1990s neighborhoods, original flex duct in attics has often degraded or pulled apart at boots. Replacing a system without addressing ducts caps the comfort benefit.",
+          "Refrigerant transition. New equipment installed in 2026 is generally on R-454B or R-32; service parts and refrigerant pricing for the older R-410A platform will continue to drift as supply tightens.",
+          "Electrical and code work. Older panels may need a new disconnect, breaker, or service whip; quotes that don't address this end up with surprise change orders.",
+          "Permits and inspections. HVAC replacements in incorporated Georgetown typically require a permit pulled by the contractor — verify the specifics for your address with your installer."
+        ] },
+        { "kind": "h2", "text": "Ductwork, thermostats, and indoor air quality" },
+        { "kind": "p", "text": "These three categories are where comfort actually lives, and they're frequently underspecified in HVAC quotes." },
+        { "kind": "p", "text": "Ductwork. Symptoms like one hot room, dusty returns, high bills with no obvious cooling complaint, or system noise that changes when doors close are often duct issues, not equipment issues. Replacing equipment without addressing duct sizing or leakage in a multi-story Georgetown home is one of the most common comfort regrets after install." },
+        { "kind": "p", "text": "Thermostats. Smart-thermostat issues often look like equipment problems — cycling, wrong temperatures, or a system that won't respond. Before swapping the unit, ask whether the technician confirmed the thermostat is the cause or just guessing. For homes with multi-stage equipment, the thermostat must be matched to the equipment's capability." },
+        { "kind": "p", "text": "Indoor air quality. Georgetown homes deal with dust, summer humidity, and seasonal allergens. Filtration helps, but airflow and humidity control are usually the bigger levers. A higher-MERV filter on an undersized return can starve the system; pair filter upgrades with a return-air check. Whole-home dehumidifiers and ventilation upgrades are worth pricing on a case-by-case basis rather than as automatic add-ons." },
+        { "kind": "h2", "text": "How to evaluate an HVAC company in Georgetown" },
+        { "kind": "p", "text": "The bid should answer in writing:" },
+        { "kind": "ul", "items": [
+          "The exact equipment proposed (manufacturer, model number, capacity in tons, SEER2 and HSPF2 ratings, refrigerant type) — not just \"a 4-ton system.\"",
+          "Whether it's a Manual J load calculation or just a like-for-like swap. \"Same size as the old one\" is the most common cause of comfort regret.",
+          "Ductwork condition assessment, with specific recommendations or a written \"no work needed.\"",
+          "Warranty terms — manufacturer parts (commonly 10 years registered, less if not), labor warranty from the installer (usually 1 to 10 years), and what voids each.",
+          "Permits and inspections, including who pulls and pays for them.",
+          "Startup, commissioning, and post-install testing — refrigerant charge verification, airflow measurements, and a walkthrough of thermostat configuration."
+        ] }
       ],
       "faqs": [
-        { "q": "Do you service both repairs and replacements?", "a": "Yes. We’ll recommend repair when it makes sense and discuss replacement when it’s the better long-term option." },
-        { "q": "Do you offer seasonal maintenance?", "a": "Yes. Maintenance helps prevent breakdowns and improve efficiency." }
+        { "q": "How do I know if I need a new AC or just a repair?", "a": "A few thresholds worth applying. If a single repair quote is 30 to 40 percent or more of replacement, and the system is over 12 years old, replacement usually wins on a multi-year basis. If you've had two or more significant repairs in two years, the underlying system is signaling for replacement regardless of any one cost. And if your system is on R-22 (anything pre-2010), recharge pricing alone often pushes the math toward replacement before the unit fully fails." },
+        { "q": "What size HVAC system do I need for my Georgetown home?", "a": "The honest answer is a Manual J load calculation, not square-footage rules of thumb. Two homes the same size in Sun City versus Wolf Ranch can need meaningfully different capacity because of insulation, window orientation, and duct condition. \"Same size as the old one\" is the most common path to comfort regret, especially when the old system was oversized to start with — oversizing causes humidity and short-cycling problems in Central Texas. Ask whether the contractor will perform a load calc, or at minimum justify the proposed size in writing." },
+        { "q": "Should I be worried about the R-410A refrigerant phase-out?", "a": "Worry isn't the right word, but plan for it. EPA rules ended new R-410A equipment manufacturing in 2025, and the industry has transitioned to R-454B and R-32 across the major manufacturers. Existing R-410A systems can still be serviced — refrigerant remains available — but pricing has been drifting up for years and will continue to. If you're considering replacement anyway, this isn't a reason to rush, but it does change the math when comparing repair vs. replacement on a 10 to 15 year old system." },
+        { "q": "How often should I have HVAC maintenance done in Central Texas?", "a": "Most homes benefit from twice a year: a cooling tune-up in spring before peak summer, and a heating check before winter. The cooling visit is the more important one in Georgetown's climate. A useful tune-up isn't just a checklist — ask whether it includes static-pressure measurement, temperature-split readings, condensate drain inspection, and an actual visual on coils and the attic ducts. A 20-minute \"check\" without measurements is essentially a sticker on the side of the unit." },
+        { "q": "Will a smart thermostat actually save me money?", "a": "It depends on your habits and your existing system. The biggest savings come from setbacks while you're away or asleep — a smart thermostat that learns your schedule formalizes what a manual programmable thermostat could do if you used it. Where smart thermostats fail is when they're paired with multi-stage equipment but configured as single-stage, or when they're installed without confirming the C-wire and equipment compatibility. The savings figures cited in manufacturer marketing are real but tend to assume you weren't already programming the old thermostat." },
+        { "q": "Do I need a permit for an HVAC replacement in Georgetown?", "a": "HVAC replacements in incorporated Georgetown typically require a permit pulled by the contractor — verify the specifics for your address with your installer. Most reputable Georgetown HVAC companies handle this routinely. A contractor offering to skip the permit is a meaningful signal because permitted work is inspected, which is a quality safeguard on equipment that runs in your home for 12+ years." }
       ],
       "bestSlugs": [
         "top-hvac-companies-georgetown-tx"
       ],
-      "relatedServiceSlugs": [
-        "ac-not-cooling-georgetown-tx",
-        "hvac-wolf-ranch-georgetown-tx"
-      ]
+      "relatedServiceSlugs": []
     },
     {
       "slug": "roofer-georgetown-tx",
       "type": "service",
-      "title": "Roofer in Georgetown, TX",
-      "h1": "Roof Repairs and Replacement Planning in Georgetown, TX",
-      "description": "Professional roof repair and leak prevention for Georgetown homeowners.",
+      "title": "Roofers in Georgetown, TX: Repairs, Replacements, and How to Hire",
+      "h1": "Hiring a Roofer in Georgetown, TX: Repair, Replace, or Stabilize",
+      "description": "A homeowner's guide to roof repair and replacement in Georgetown, TX. Repair vs. replacement framing, hail and storm documentation, what changes Williamson County roofing costs, and how to compare bids.",
       "locationSlug": "georgetown-tx",
       "serviceType": "Roofing",
       "heroBullets": [
-        "Leak detection and repair",
-        "Weatherproofing solutions",
-        "Clear repair timelines"
+        "Repair vs. replacement decision framework",
+        "Hail and storm documentation checklist",
+        "Cost drivers and bid comparison tips"
       ],
       "content": [
-        { "kind": "p", "text": "When your roof shows signs of damage, acting early can prevent more costly problems. We help you understand what needs repair now vs later." },
-        { "kind": "h2", "text": "Typical roof issues" },
-        {
-          "kind": "ul",
-          "items": [
-            "Roof leaks and water intrusion",
-            "Missing or damaged shingles",
-            "Flashing and sealing concerns",
-            "Storm-related damage inspection"
-          ]
-        },
-        { "kind": "p", "text": "Tell us what you’re seeing and we’ll provide a plan of action." }
+        { "kind": "p", "text": "Georgetown sits in the part of Williamson County that gets reliably hot summers and a real hail and wind season in spring, which means asphalt shingle roofs work hard here. Most repair calls trace back to a small number of recurring failure points — flashing, vents, valleys, and storm impact — but the right next step depends on how old the roof is, what the underlayment looks like, and whether you'll be filing an insurance claim. This guide walks through what tends to break, when a repair is the right call versus a full replacement, what affects cost, and how to compare bids without getting locked into a vague scope." },
+        { "kind": "h2", "text": "Common roof problems Georgetown homeowners see" },
+        { "kind": "p", "text": "Most roof issues in Georgetown fall into one of four categories, and a good repair scope identifies which one (or which combination) you actually have before quoting a price." },
+        { "kind": "h3", "text": "Leaks at flashing, vents, and valleys" },
+        { "kind": "p", "text": "If a ceiling stain shows up after heavy rain, the entry point is almost never the middle of a shingle field. It's usually a flashing transition (roof-to-wall, chimney, dormer), a pipe boot, or a valley where two roof planes meet. A good repair scope includes photos of the entry point before and after, a description of the materials used, and how the patch integrates with the existing shingles and underlayment. Watch for vague scopes that say \"reseal\" without identifying the actual failure — re-sealing on top of a failed flashing detail buys you maybe a season." },
+        { "kind": "h3", "text": "Wind and shingle damage" },
+        { "kind": "p", "text": "Williamson County wind events lift shingle tabs and break the seal that holds them flat. You can sometimes see lifted edges from the yard. Once the seal is broken, the shingle is one thunderstorm away from blowing off entirely, even if it looks fine from below. Spot-replacement of a few shingles is straightforward; a whole windward slope is closer to a partial replacement decision and should be priced accordingly. Wind-rated shingles are worth asking about during any replacement conversation in Central Texas." },
+        { "kind": "h3", "text": "Hail damage — bruising, granule loss, and dented metals" },
+        { "kind": "p", "text": "Hail damage isn't always a leak on day one. Asphalt shingles can be \"bruised\" — the impact crushes the mat below the granule layer, which then sheds granules and ages prematurely. Indicators a roofer or insurance adjuster will check: granule loss in gutters and at downspout outlets, dented vents or soft metals, bruising patterns visible under angled light, and lifted shingle edges around impact points. Williamson County's spring convective season produces enough hail events that an insurance-scope conversation is reasonable after a notable storm, especially for roofs over five or six years old where the cumulative impact matters." },
+        { "kind": "h3", "text": "Gutters, fascia, and drainage" },
+        { "kind": "p", "text": "Gutters aren't strictly part of the roof, but they're tightly coupled to it: bad gutter drainage rots fascia, overflows damage soffits, and downspouts that empty too close to the foundation push water at the slab — which matters in clay-soil neighborhoods. When gutters are bundled with a roof job, ask how downspouts will be routed away from the home, how the gutters integrate with the drip edge and flashing detail, and whether the contractor water-tests the system after install." },
+        { "kind": "h2", "text": "Repair vs. replacement: how to decide" },
+        { "kind": "p", "text": "The honest answer is that age and underlayment condition usually decide for you. An asphalt shingle roof in Central Texas typically lasts 15 to 25 years depending on shingle tier and ventilation, with the lower end common for entry-level three-tab shingles in heavier hail exposure. Three rules of thumb most reputable Georgetown roofers will agree with:" },
+        { "kind": "ul", "items": [
+          "If the roof is under 10 years old and the damage is localized — a leak at a single flashing detail, a wind-lifted section, a failed pipe boot — repair is almost always right.",
+          "If the roof is 15 or more years old and a significant area has visible wear, repair money is often better spent toward a planned replacement; patching one section accelerates failure elsewhere.",
+          "If the underlayment was damaged by a leak that ran for a while, a \"shingle repair\" without addressing the underlayment is cosmetic — the deck below may already need attention."
+        ] },
+        { "kind": "p", "text": "Sun City and other neighborhoods built in the late 1990s and early 2000s have a meaningful share of homes on their second roof or approaching it now; replacement quotes in those communities are common. Wolf Ranch and other newer-build areas are mostly still on original roofs, so repair vs. replacement weighting skews toward repair there." },
+        { "kind": "h2", "text": "What changes the cost in Georgetown" },
+        { "kind": "p", "text": "Editorial price ranges for Georgetown roofing — minor repair, mid-scope repair, emergency tarping, full replacement — are kept up to date on the pricing guide. The drivers worth understanding before you read a quote:" },
+        { "kind": "ul", "items": [
+          "Square footage and pitch. Two-story sections and steeper pitches add labor; single-story walk-up roofs price near the low end of any given scope.",
+          "Decking condition. Almost every replacement quote should include a per-sheet allowance ($75 to $125 installed is typical) for decking that turns out to be soft once tear-off exposes it. If the quote doesn't address this, ask before signing.",
+          "Ventilation. A replacement is the cheapest time to upgrade ridge vent or add intake; doing it later costs more and requires re-opening the roof.",
+          "Insurance scope vs. cash-pay. Insurance-scope replacements after a covered hail event are priced from a different baseline than cash-pay jobs and typically include line items (code upgrades, drip edge, ice-and-water shield) that a cash quote may strip out for price.",
+          "Materials. Architectural (dimensional) shingles are the modern default in Georgetown; three-tab is rare on new construction now. Impact-resistant Class 4 shingles cost more upfront and many Texas insurance carriers offer a premium discount for their use, though the discount amount varies — worth pricing both options and confirming the discount with your carrier during the replacement conversation."
+        ] },
+        { "kind": "p", "text": "See the pricing guide for current ranges by job type." },
+        { "kind": "h2", "text": "Hail and storm season: documentation matters" },
+        { "kind": "p", "text": "If there's any chance you'll be filing an insurance claim, the documentation you collect in the first 24 to 48 hours after a storm makes a meaningful difference in how the claim is scoped:" },
+        { "kind": "ul", "items": [
+          "Photos of any visible roof damage — missing or lifted shingles, dented vents, granule piles in gutters and at downspout outlets.",
+          "Interior photos of any new ceiling staining, with the date the stain appeared.",
+          "The date and approximate time of the storm — most adjusters cross-reference NWS storm reports for hail size in your zip code.",
+          "If you walked the perimeter, note where shingle granules accumulated. Heavy granule pooling at downspouts is a flag adjusters look for."
+        ] },
+        { "kind": "p", "text": "If water is actively entering the home, an emergency tarping or stabilization protects the interior while you compare repair scopes. Tarping is a separate line item from the eventual repair and isn't a substitute for it; a reasonable scope says what the tarping covers, what it doesn't, and how long the temporary protection is expected to hold." },
+        { "kind": "h2", "text": "How to evaluate a Georgetown roofer" },
+        { "kind": "p", "text": "Most homeowner-roofer disputes in Central Texas come down to scope clarity at signing. Before you commit, the bid should answer in writing:" },
+        { "kind": "ul", "items": [
+          "Exactly what materials are being used, including underlayment, drip edge, flashing material, and pipe boots — not just \"shingles\".",
+          "Decking allowance: per-sheet rate for any soft decking discovered at tear-off, and whether it's already included in the headline price or billed on top.",
+          "Ventilation plan: is ridge vent being maintained, upgraded, or added, and are intake vents adequate?",
+          "Tear-off vs. layover: a single layover (new shingles over old) is cheaper but limits the next replacement and may void warranty terms; tear-off is the modern norm.",
+          "Manufacturer warranty (typically 25 to 30 years on architectural shingles) plus the labor warranty from the installer (commonly 2 to 10 years). The two are different — both should be in writing.",
+          "Insurance claim handling: if it's a claim job, who's negotiating with the carrier, who pulls the permit, and how supplements are handled."
+        ] },
+        { "kind": "p", "text": "Roof replacements in incorporated Georgetown typically require a permit pulled by the contractor — verify the specifics for your address with your roofer. A contractor who waves the permit conversation off entirely is a flag worth heeding." }
       ],
       "faqs": [
-        { "q": "Will you help with insurance-related documentation?", "a": "We can provide clear repair notes and documentation to support your process." },
-        { "q": "Do you handle minor repairs as well as full replacements?", "a": "Yes. We assess the situation and recommend the most appropriate option." }
+        { "q": "How long does an asphalt shingle roof last in Georgetown, TX?", "a": "Plan on roughly 15 to 25 years for a standard architectural shingle roof in Central Texas, with the lower end common for entry-level three-tab shingles in higher hail-exposure areas. Real life varies based on ventilation, underlayment condition, hail history, and shade. Many homes built in Sun City and other late-1990s-to-early-2000s communities are now on their second roof or due for one." },
+        { "q": "Do I need a permit for roof replacement in Georgetown?", "a": "Roof replacements in incorporated Georgetown typically require a building permit pulled by the contractor. Verify the requirement and process for your specific address — most reputable Georgetown roofers handle this routinely. A contractor offering to skip the permit is a meaningful signal because permitted work is inspected, which is a quality safeguard for you." },
+        { "q": "Should I file an insurance claim after a hailstorm?", "a": "It depends on the roof's age and the visible damage. Most homeowner policies in Texas cover hail damage, but filing without obvious damage can affect future premiums. A standard sequence: document the storm date and any visible damage with photos, get a roofer (not the carrier) to inspect first, and then decide based on what they find. If damage is borderline, sometimes the right move is to monitor and document for the next storm." },
+        { "q": "When is repair the right call instead of replacement?", "a": "Repair makes sense when the roof is under about 10 years old and the damage is localized — a leak at a single flashing detail, a small wind-lifted section, a failed pipe boot. For roofs 15 years or older with broader visible wear, the calculus often flips: patching one section accelerates failure elsewhere, and the repair money is often better spent toward a planned replacement." },
+        { "q": "What should I expect to pay for an emergency roof tarp in Georgetown?", "a": "Editorial range is roughly $400 to $1,200 depending on roof access, the affected area, and whether the contractor is responding after-hours. Tarping is a temporary stabilization, not a fix, and isn't always billable to insurance separately — confirm with the roofer how it will be invoiced relative to the eventual repair." },
+        { "q": "Are impact-resistant (Class 4) shingles worth the upcharge?", "a": "It depends on the math for your specific situation. Class 4 impact-resistant shingles cost more upfront, and many Texas insurance carriers offer a premium discount for their use. The discount amount varies by carrier and the upcharge varies by manufacturer, so the cumulative discount over a roof's life can offset or exceed the upcharge in some cases but not all. Worth running the numbers explicitly with both your roofer and your insurance carrier rather than treating it as a default upgrade." }
       ],
       "bestSlugs": [
         "best-roofers-georgetown-tx"
       ],
-      "relatedServiceSlugs": [
-        "roof-leak-repair-georgetown-tx",
-        "roofer-berry-creek-georgetown-tx"
-      ]
+      "relatedServiceSlugs": []
     },
     {
       "slug": "electrician-georgetown-tx",

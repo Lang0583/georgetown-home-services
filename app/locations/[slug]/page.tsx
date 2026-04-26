@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import CTASection from "../../../components/CTASection";
 import EmailCaptureSitewide from "../../../components/EmailCaptureSitewide";
+import FAQList from "../../../components/FAQList";
 import LinkCard from "../../../components/LinkCard";
 import RichText from "../../../components/RichText";
 import JsonLd from "../../../components/JsonLd";
@@ -40,6 +41,20 @@ function breadcrumbJsonLd({
       { "@type": "ListItem", position: 2, name: "Locations", item: `${siteUrl}/services#neighborhood-and-location-pages` },
       { "@type": "ListItem", position: 3, name: locationTitle, item: `${siteUrl}/locations/${locationSlug}` },
     ],
+  };
+}
+
+function faqPageJsonLd(siteUrl: string, title: string, faqs: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+    mainEntityOfPage: siteUrl,
+    name: title,
   };
 }
 
@@ -90,6 +105,15 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
     <PageShell>
       <section className="py-8 md:py-12">
           <JsonLd data={breadcrumbJsonLd({ siteUrl, locationTitle: location.title, locationSlug: location.slug })} />
+          {location.faqs?.length ? (
+            <JsonLd
+              data={faqPageJsonLd(
+                `${siteUrl}/locations/${location.slug}`,
+                `${location.title} FAQ`,
+                location.faqs
+              )}
+            />
+          ) : null}
           <TwoColumnPage
             gapClassName="gap-8"
             main={
@@ -129,6 +153,15 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
                     {bestPages.map((b) => (
                       <LinkCard key={b.slug} href={`/best/${b.slug}`} title={b.title} description={b.description} />
                     ))}
+                  </div>
+                </section>
+              ) : null}
+
+              {location.faqs?.length ? (
+                <section className="mt-12">
+                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Frequently asked questions</h2>
+                  <div className="mt-6">
+                    <FAQList faqs={location.faqs} />
                   </div>
                 </section>
               ) : null}

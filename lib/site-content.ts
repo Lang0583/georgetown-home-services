@@ -21,6 +21,7 @@ export type LocationPage = {
   description: string;
   heroBullets: string[];
   content: ContentBlock[];
+  faqs?: Faq[];
   serviceSlugs: string[];
   bestSlugs: string[];
 };
