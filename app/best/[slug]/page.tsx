@@ -40,6 +40,7 @@ import { bestPageInternalLinks } from "../../../lib/internal-links";
 import {
   isExtendedBestSlug,
   isExtendedProviderGroup,
+  isNoindexSlug,
   shouldShowExtendedDirectoryListings,
   showExtendedHomeServices,
 } from "../../../lib/public-site-scope";
@@ -236,6 +237,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description,
     pathname: `/best/${slug}`,
     ogType: "website",
+    noindex: isNoindexSlug(slug),
   });
 }
 

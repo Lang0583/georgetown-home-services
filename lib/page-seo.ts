@@ -25,16 +25,21 @@ export const DEFAULT_OG_IMAGE = {
 /**
  * Page-level SEO: `title` uses the root layout template; `openGraph.title` is the resolved
  * document title. `openGraph.url` is the full canonical URL for the route (`SITE_URL` + pathname).
+ *
+ * Pass `noindex: true` to emit `<meta name="robots" content="noindex,follow">`. We keep
+ * `follow` so internal links from the page still pass crawl signal to indexable hubs;
+ * the goal is to remove the page from the index, not to orphan the rest of the site.
  */
 export function pageSeoMetadata(opts: {
   titleSegment: string;
   description: string;
   pathname: string;
   ogType: "website" | "article";
+  noindex?: boolean;
 }): Metadata {
   const ogTitle = documentTitleFromSegment(opts.titleSegment);
   const pageUrl = absolutePageUrl(opts.pathname);
-  return {
+  const meta: Metadata = {
     title: opts.titleSegment,
     description: opts.description,
     alternates: { canonical: pageUrl },
@@ -54,4 +59,12 @@ export function pageSeoMetadata(opts: {
       images: [DEFAULT_OG_IMAGE.url],
     },
   };
+  if (opts.noindex) {
+    meta.robots = {
+      index: false,
+      follow: true,
+      googleBot: { index: false, follow: true },
+    };
+  }
+  return meta;
 }

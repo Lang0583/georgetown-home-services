@@ -1,0 +1,113 @@
+# Weekly SEO digest.
+#
+# Every Monday at 13:00 UTC (≈ 8 AM Central Time):
+#   1. Pulls last-28-days Search Console data (and the prior 28 for trend).
+#   2. Runs the content-health audit (thin pages, cost-no-$ pages).
+#   3. Runs the freshness audit (stale content, missing dateModified).
+#   4. Assembles a single Markdown digest.
+#   5. Opens a GitHub issue with the digest as the body. Labels: `seo`, `digest`.
+#
+# The pipeline is read-only. It does not modify site code or open PRs — the
+# user reviews the issue and decides what to act on.
+#
+# Required secrets:
+#   - GSC_SERVICE_ACCOUNT_KEY  (JSON string for a GCP service-account key with
+#                               GSC read access to the property)
+#   - GSC_SITE_URL             (property identifier, e.g.
+#                               `sc-domain:georgetownhomeservices.com`)
+#
+# Optional secrets (enable email delivery of the digest in addition to the
+# GitHub issue — the step no-ops silently if these are absent):
+#   - RESEND_API_KEY           (from resend.com)
+#   - REPORT_EMAIL             (destination address)
+#   - REPORT_FROM              (sender; defaults to onboarding@resend.dev
+#                               which works without domain verification)
+#
+# The default `GITHUB_TOKEN` is used for `gh issue create` — no extra token
+# setup needed; it has `issues: write` per the `permissions` block below.
+
+name: Weekly SEO digest
+
+on:
+  schedule:
+    # 13:00 UTC Mon ≈ 08:00 CT (CDT) / 07:00 CT (CST).
+    - cron: "0 13 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: seo-weekly-digest
+  cancel-in-progress: false
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    env:
+      GSC_SERVICE_ACCOUNT_KEY: ${{ secrets.GSC_SERVICE_ACCOUNT_KEY }}
+      GSC_SITE_URL: ${{ secrets.GSC_SITE_URL }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          # Needed so git log can find the latest commit touching each content
+          # source file (freshness audit uses `git log -1 -- <path>`).
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Pull Search Console data
+        id: gsc
+        continue-on-error: true
+        run: npx tsx scripts/seo/pull-gsc-data.ts
+
+      - name: Audit content health
+        run: npx tsx scripts/seo/audit-content-health.ts
+
+      - name: Audit content freshness
+        run: npx tsx scripts/seo/audit-freshness.ts
+
+      - name: Build weekly digest markdown
+        run: npx tsx scripts/seo/build-weekly-digest.ts
+
+      - name: Upload reports as workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-reports-${{ github.run_id }}
+          path: .reports/
+          retention-days: 30
+
+      - name: Open weekly digest issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          title="Weekly SEO digest — $(date -u +%Y-%m-%d)"
+          # Use --label only if the label already exists; ignore errors so the
+          # issue still opens on a fresh repo that hasn't seeded labels yet.
+          gh issue create \
+            --title "$title" \
+            --body-file .reports/weekly-digest.md \
+            --label seo \
+            --label digest \
+            || gh issue create \
+              --title "$title" \
+              --body-file .reports/weekly-digest.md
+
+      - name: Email weekly digest (optional)
+        # No-ops cleanly if RESEND_API_KEY / REPORT_EMAIL aren't set, so this
+        # step is safe to keep enabled even before you configure them.
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          REPORT_EMAIL: ${{ secrets.REPORT_EMAIL }}
+          REPORT_FROM: ${{ secrets.REPORT_FROM }}
+        run: npx tsx scripts/seo/email-digest.ts

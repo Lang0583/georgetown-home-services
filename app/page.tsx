@@ -201,6 +201,9 @@ export default function Home() {
                   <ButtonLink href="/services" variant="secondary" className="text-sm">
                     Explore Service Guides
                   </ButtonLink>
+                  <ButtonLink href="/pricing" variant="secondary" className="text-sm">
+                    See Georgetown Pricing
+                  </ButtonLink>
                 </div>
               </div>
 

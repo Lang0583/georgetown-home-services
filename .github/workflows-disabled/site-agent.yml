@@ -1,0 +1,141 @@
+# DISABLED — DO NOT MOVE TO .github/workflows/ WITHOUT READING THIS FIRST.
+#
+# This workflow was drafted to run an autonomous AI site agent that would:
+#   - read MDX content files
+#   - autogenerate ~2 new posts per week
+#   - rewrite titles, descriptions, and content with no human review step
+#   - submit URLs to the Google Indexing API
+#   - open a single PR per week
+#
+# It is intentionally not active because:
+#
+#   1. STACK MISMATCH (will not run as written).
+#      The script `scripts/site-agent.ts` it invokes does not exist in this
+#      repo. Even if added, it expects a `content/` directory of MDX files.
+#      This Next.js site stores content in `data/site-content.json` and
+#      `lib/generatedPages.json` — there is no MDX layer.
+#
+#   2. ACTIVELY HARMFUL FOR AdSense / HCU CONTEXT.
+#      On 2026-04-25 the site received an AdSense "Low value content" policy
+#      decline. The decline was driven by thin/templated pages already
+#      surfaced in the weekly content-health audit. Auto-generating 2 more
+#      AI-written posts per week is the exact pattern Google's helpful-content
+#      and spam-policy updates target. Running this workflow during the
+#      remediation period would extend (or escalate) the violation.
+#
+#   3. WRONG DIRECTION FOR INDEXING API.
+#      Google's Indexing API officially supports only `JobPosting` and
+#      `BroadcastEvent`. Submitting blog/service URLs returns HTTP 200 but is
+#      not used by the crawler. See docs/seo-pipeline.md.
+#
+#   4. INSTALL STEP MUTATES package.json.
+#      `npm install googleapis @anthropic-ai/sdk` runs every execution and
+#      writes new versions to package.json, which (a) bypasses the lockfile
+#      and (b) causes `git status --porcelain` to always report changes,
+#      which would make the PR step fire on no-op runs.
+#
+# Re-enabling preconditions (in priority order):
+#
+#   a. AdSense violation cleared, GSC "Discovered – currently not indexed"
+#      count materially reduced, and the average word count across published
+#      pages is comfortably above 800.
+#   b. The agent script is rewritten to operate on the JSON content model
+#      (no MDX), and is restricted to suggestion-only mode (writes proposals
+#      to .reports/, never directly to content files).
+#   c. The Indexing API call is removed.
+#   d. The new-post-generation step is removed entirely OR replaced with a
+#      step that only opens an issue with a draft outline for human review.
+#   e. Dependencies are added to package.json + package-lock.json (one-time
+#      via `npm install --save`), not installed inside the workflow.
+#
+# Until then this file lives in `.github/workflows-disabled/` so GitHub
+# Actions does not pick it up. It is preserved for reference / future port.
+#
+# History note: the version we already ship at
+# `.github/workflows/seo-weekly-digest.yml` is the safe equivalent — it pulls
+# the same data, audits the same content, but writes a digest issue instead
+# of mutating files.
+
+name: AI Site Agent — Weekly Run
+
+on:
+  schedule:
+    - cron: "0 14 * * 1"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run — analyze only, no file changes"
+        required: false
+        default: "false"
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npm install googleapis @anthropic-ai/sdk
+
+      - name: Run AI agent
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_SERVICE_ACCOUNT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
+          SITE_URL: https://www.georgetownhomeservices.com
+          REPORT_EMAIL: ${{ secrets.REPORT_EMAIL }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: npx ts-node scripts/site-agent.ts
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Read agent report
+        id: report
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          if [ -f agent-report.json ]; then
+            ACTIONS=$(cat agent-report.json | python3 -c "import sys,json; d=json.load(sys.stdin); print(len(d.get('actionsCompleted',[])))")
+            echo "actions_count=$ACTIONS" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Pull Request
+        if: steps.changes.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "agent: weekly automated improvements"
+          title: "AI Agent — ${{ steps.report.outputs.actions_count }} improvements this week"
+          body: |
+            ## Weekly AI agent run
+
+            Review changes, then merge to deploy via Vercel.
+
+            **Checklist:**
+            - [ ] Price tables look accurate
+            - [ ] Rewritten titles match the content
+            - [ ] New posts are on-topic for Georgetown TX
+          branch: "agent/weekly-${{ github.run_id }}"
+          labels: "ai-agent,automated"
+          delete-branch: true

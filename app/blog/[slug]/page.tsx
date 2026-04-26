@@ -19,9 +19,12 @@ import {
 } from "../../../lib/site-content";
 import { adsenseInlineSlot, adsenseSidebarSlot } from "../../../lib/adsense-config";
 import { pageSeoMetadata } from "../../../lib/page-seo";
+import { isNoindexSlug } from "../../../lib/public-site-scope";
 import { getGeneratedPage } from "../../../lib/generatedPages";
 import { blogPageInternalLinks } from "../../../lib/internal-links";
 import { getBlogHeroImage } from "../../../lib/blog-hero-images";
+import { extractFaqPairs, faqPageJsonLd } from "../../../lib/extract-faq-schema";
+import { PRICING_YEAR } from "../../../lib/pricing-data";
 
 /** Posts with Amazon affiliate links in body copy — disclosure shown below byline. */
 const AFFILIATE_DISCLOSURE_SLUGS = new Set([
@@ -286,14 +289,33 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 
   const o = overrides[slug];
-  const titleSegment = o?.title ?? post.title;
+  const rawTitleSegment = o?.title ?? post.title;
   const description = o?.description ?? post.description;
+  // Recency signal: for cost guides and hiring/how-to guides, append "(2026 Guide)"
+  // to the `<title>` tag if not already year-stamped. Visible H1 stays unchanged
+  // (see `post.h1` below) so the on-page heading doesn't pick up editorial chrome.
+  const titleSegment = appendYearSignalIfApplicable(rawTitleSegment, slug);
   return pageSeoMetadata({
     titleSegment,
     description,
     pathname: `/blog/${slug}`,
     ogType: "article",
+    noindex: isNoindexSlug(slug),
   });
+}
+
+/**
+ * Append " (YEAR Guide)" to titles for cost and how-to posts that don't already
+ * carry a year. Skips titles already containing a 4-digit year so we never
+ * double-stamp. Pure string function — safe to call at build time.
+ */
+function appendYearSignalIfApplicable(title: string, slug: string): string {
+  if (/\b20\d{2}\b/.test(title)) return title;
+  const isCost = /cost|price|how[- ]much/i.test(slug) || /cost|price|how much/i.test(title);
+  const isHowTo = /how[- ]to|guide|checklist|signs/i.test(slug);
+  if (!isCost && !isHowTo) return title;
+  const suffix = isCost ? `${PRICING_YEAR} Guide` : `${PRICING_YEAR}`;
+  return `${title} (${suffix})`;
 }
 
 export default async function BlogPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -336,6 +358,9 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
           : "plumbing";
   const takeaway = takeawayBullets(recurringType, serviceLabel);
   const hero = getBlogHeroImage(post.slug);
+  // Auto-extract FAQPage JSON-LD from generated article HTML. Posts with no
+  // `?`-terminated H3s (e.g. pure listicles) simply emit no FAQ schema.
+  const faqPairs = generated ? extractFaqPairs(generated.html) : [];
 
   return (
     <PageShell>
@@ -352,6 +377,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
               dateModified,
             })}
           />
+          {faqPairs.length > 0 ? <JsonLd data={faqPageJsonLd(faqPairs)} /> : null}
           <TwoColumnPage
             main={
               <article className="min-w-0">

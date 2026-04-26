@@ -23,7 +23,15 @@
     "generate:lead-pdfs": "node scripts/generate-lead-magnet-pdfs.mjs",
     "build": "next build --webpack && node scripts/vercel-mirror-next.cjs",
     "vercel-build": "npm run build",
-    "start": "next start"
+    "start": "next start",
+    "seo:pull": "tsx scripts/seo/pull-gsc-data.ts",
+    "seo:audit": "tsx scripts/seo/audit-content-health.ts",
+    "seo:freshness": "tsx scripts/seo/audit-freshness.ts",
+    "seo:digest": "tsx scripts/seo/build-weekly-digest.ts",
+    "seo:email": "tsx scripts/seo/email-digest.ts",
+    "seo:propose": "tsx scripts/seo/propose-consolidation.ts",
+    "seo:consolidate:patch": "tsx scripts/seo/apply-consolidation.ts",
+    "seo:all": "npm run seo:pull && npm run seo:audit && npm run seo:freshness && npm run seo:digest"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
@@ -38,9 +46,11 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "googleapis": "^171.4.0",
     "pdf-lib": "^1.17.1",
     "sharp": "^0.34.5",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

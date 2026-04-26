@@ -48,3 +48,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# SEO pipeline reports (regenerated weekly by GitHub Actions; archived as workflow artifacts)
+/.reports/

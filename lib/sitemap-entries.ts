@@ -1,6 +1,14 @@
 import type { MetadataRoute } from "next";
-import { isExtendedBestSlug, isExtendedServiceSlug, showExtendedHomeServices } from "@/lib/public-site-scope";
+import {
+  isExtendedBestSlug,
+  isExtendedServiceSlug,
+  isNoindexSlug,
+  isRedirectedLocationSlug,
+  isRedirectedServiceSlug,
+  showExtendedHomeServices,
+} from "@/lib/public-site-scope";
 import { SITE_URL } from "@/lib/page-seo";
+import { CORE_BEST_SLUGS, CORE_SERVICE_SLUGS } from "@/lib/pageContentRegistry";
 import {
   getBestSlugs,
   getBlogSlugs,
@@ -13,27 +21,41 @@ function absoluteUrl(path: string): string {
   return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
+const CORE_SERVICE_SET: ReadonlySet<string> = new Set(CORE_SERVICE_SLUGS);
+const CORE_BEST_SET: ReadonlySet<string> = new Set(CORE_BEST_SLUGS);
+
 /**
  * Sitemap URL list (used by `/sitemap.xml` → `/api/sitemap-xml` rewrite).
+ *
+ * Priority tiering (sitemap.org priority is relative within the site):
+ *   1.0    homepage
+ *   0.9    core hubs, core service pages, core best-of pages
+ *   0.7    supporting sub-service pages, blog posts, /locations/georgetown-tx
+ *   0.5    static pages (about/contact/policies), low-signal pages
+ *
+ * Redirected neighborhood slugs are excluded — they 308 in `next.config.ts` and
+ * should not be advertised to crawlers.
  */
 export function buildSitemapEntries(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
   const staticMonthlyPaths: { path: string; priority: number }[] = [
     { path: "/", priority: 1 },
-    { path: "/about", priority: 0.6 },
-    { path: "/methodology", priority: 0.6 },
-    { path: "/editorial-policy", priority: 0.6 },
-    { path: "/service-areas", priority: 0.6 },
-    { path: "/contact", priority: 0.6 },
-    { path: "/privacy-policy", priority: 0.6 },
-    { path: "/terms", priority: 0.6 },
+    { path: "/about", priority: 0.5 },
+    { path: "/methodology", priority: 0.5 },
+    { path: "/editorial-policy", priority: 0.5 },
+    { path: "/service-areas", priority: 0.5 },
+    { path: "/contact", priority: 0.5 },
+    { path: "/privacy-policy", priority: 0.3 },
+    { path: "/terms", priority: 0.3 },
   ];
 
   const listingWeekly: { path: string; priority: number }[] = [
-    { path: "/services", priority: 0.8 },
+    { path: "/services", priority: 0.9 },
     { path: "/best", priority: 0.9 },
     { path: "/blog", priority: 0.7 },
+    // High priority: featured-snippet target for "[service] cost georgetown tx" queries.
+    { path: "/pricing", priority: 0.9 },
   ];
 
   const serviceHubMonthly: string[] = [
@@ -76,40 +98,48 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
       url: absoluteUrl(path),
       lastModified,
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.9,
     });
   }
 
   for (const slug of getServiceSlugs()) {
     if (!showExtendedHomeServices() && isExtendedServiceSlug(slug)) continue;
+    if (isRedirectedServiceSlug(slug)) continue;
+    if (isNoindexSlug(slug)) continue;
+    const isCore = CORE_SERVICE_SET.has(slug);
     entries.push({
       url: absoluteUrl(`/services/${slug}`),
       lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
+      changeFrequency: isCore ? "monthly" : "yearly",
+      priority: isCore ? 0.9 : 0.6,
     });
   }
 
   for (const slug of getLocationSlugs()) {
+    if (isRedirectedLocationSlug(slug)) continue;
+    if (isNoindexSlug(slug)) continue;
     entries.push({
       url: absoluteUrl(`/locations/${slug}`),
       lastModified,
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.7,
     });
   }
 
   for (const slug of getBestSlugs()) {
-    const pausedExtendedBest = isExtendedBestSlug(slug);
+    if (!showExtendedHomeServices() && isExtendedBestSlug(slug)) continue;
+    if (isNoindexSlug(slug)) continue;
+    const isCore = CORE_BEST_SET.has(slug);
     entries.push({
       url: absoluteUrl(`/best/${slug}`),
       lastModified,
       changeFrequency: "monthly",
-      priority: pausedExtendedBest ? 0.7 : 0.9,
+      priority: isCore ? 0.9 : 0.7,
     });
   }
 
   for (const slug of getBlogSlugs()) {
+    if (isNoindexSlug(slug)) continue;
     entries.push({
       url: absoluteUrl(`/blog/${slug}`),
       lastModified,

@@ -1,4 +1,7 @@
 import { CORE_BEST_SLUGS, CORE_SERVICE_SLUGS } from "./pageContentRegistry";
+import {
+  isRedirectedLocationSlug,
+} from "./public-site-scope";
 import { getBestBySlug, getBlog, getBlogBySlug, getBlogsForBestSlug, getBlogsForServiceSlug, getLocations, getServices, type BlogPage, type BestPage, type LocationPage, type ServicePage } from "./site-content";
 
 export type InternalLink = { href: string; label: string; description?: string };
@@ -37,13 +40,19 @@ function bestOfForService(service: ServicePage): InternalLink | null {
 }
 
 function neighborhoodForService(service: ServicePage): InternalLink | null {
-  // Prefer a neighborhood/location page (not the generic Georgetown location) that contains this service slug.
+  // Previously preferred a neighborhood page (Sun City / Wolf Ranch / Berry Creek),
+  // but those 308 to /locations/georgetown-tx now. Skip them and use a real,
+  // indexable location so internal links don't point at redirecting URLs.
   const locations = getLocations();
-  const neighborhood = locations.find((l) => l.slug !== "georgetown-tx" && l.serviceSlugs.includes(service.slug));
-  const fallback = locations.find((l) => l.slug !== "georgetown-tx" && l.serviceSlugs.some((s) => service.relatedServiceSlugs.includes(s)));
-  const chosen = neighborhood ?? fallback ?? locations.find((l) => l.slug !== "georgetown-tx") ?? null;
-  if (!chosen) return null;
-  return { href: `/locations/${chosen.slug}`, label: chosen.title, description: chosen.description };
+  const eligible = locations.filter((l) => !isRedirectedLocationSlug(l.slug));
+  const match =
+    eligible.find((l) => l.serviceSlugs.includes(service.slug)) ??
+    eligible.find((l) => l.serviceSlugs.some((s) => service.relatedServiceSlugs.includes(s))) ??
+    eligible.find((l) => l.slug === "georgetown-tx") ??
+    eligible[0] ??
+    null;
+  if (!match) return null;
+  return { href: `/locations/${match.slug}`, label: match.title, description: match.description };
 }
 
 function blogLinksForService(serviceSlug: string): InternalLink[] {

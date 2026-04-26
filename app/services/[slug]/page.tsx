@@ -31,6 +31,8 @@ import { CORE_SERVICE_SLUGS, resolveServicePage } from "../../../lib/pageContent
 import {
   isExtendedProviderGroup,
   isExtendedServiceSlug,
+  isNoindexSlug,
+  isRedirectedServiceSlug,
   shouldShowExtendedDirectoryListings,
   showExtendedHomeServices,
 } from "../../../lib/public-site-scope";
@@ -86,7 +88,9 @@ function faqPageJsonLd(siteUrl: string, title: string, faqs: { q: string; a: str
 export const dynamicParams = true;
 
 export function generateStaticParams() {
-  return getServiceSlugs().map((slug) => ({ slug }));
+  return getServiceSlugs()
+    .filter((slug) => !isRedirectedServiceSlug(slug))
+    .map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -145,6 +149,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description,
     pathname: `/services/${slug}`,
     ogType: "website",
+    noindex: isNoindexSlug(slug),
   });
 }
 

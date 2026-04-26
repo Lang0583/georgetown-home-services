@@ -11,9 +11,11 @@ import TwoColumnPage from "../../../components/templates/TwoColumnPage";
 import {
   isExtendedBestSlug,
   isExtendedServiceSlug,
+  isNoindexSlug,
+  isRedirectedLocationSlug,
   showExtendedHomeServices,
 } from "../../../lib/public-site-scope";
-import { absolutePageUrl } from "../../../lib/page-seo";
+import { pageSeoMetadata } from "../../../lib/page-seo";
 import {
   getBestBySlug,
   getLocationBySlug,
@@ -45,7 +47,9 @@ function breadcrumbJsonLd({
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return getLocations().map((l) => ({ slug: l.slug }));
+  return getLocations()
+    .filter((l) => !isRedirectedLocationSlug(l.slug))
+    .map((l) => ({ slug: l.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -53,17 +57,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const location = getLocationBySlug(slug);
   if (!location) return {};
 
-  const title = `${location.title}: Service Guides and Local Provider Lists`;
+  const titleSegment = `${location.title}: Service Guides and Local Provider Lists`;
   const description =
     `${location.description} Browse service guides and best-of comparisons for this area, then contact providers directly for availability and estimates.`;
-  const pagePath = `/locations/${slug}`;
-  const pageUrl = absolutePageUrl(pagePath);
-  return {
-    title,
+  return pageSeoMetadata({
+    titleSegment,
     description,
-    alternates: { canonical: pageUrl },
-    openGraph: { url: pageUrl },
-  };
+    pathname: `/locations/${slug}`,
+    ogType: "website",
+    noindex: isNoindexSlug(slug),
+  });
 }
 
 export default async function LocationPage({ params }: { params: Promise<{ slug: string }> }) {
