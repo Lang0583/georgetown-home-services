@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import TrustPage from "../../components/templates/TrustPage";
 import { pageSeoMetadata } from "../../lib/page-seo";
+import { AUTHOR_NAME, AUTHOR_PROFILE_PATH } from "../../lib/site-author";
 
 export const metadata: Metadata = pageSeoMetadata({
   titleSegment: "How We Review and Rank Providers",
@@ -22,6 +24,19 @@ export default function MethodologyPage() {
         </>
       }
     >
+      <section>
+        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Who edits this</h2>
+        <p className="mt-3">
+          Methodology and rankings on this site are maintained by{" "}
+          <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-primary hover:underline">
+            {AUTHOR_NAME}, founder and editor
+          </Link>
+          . The criteria below describe how shortlists are constructed. They do not constitute a guarantee that any
+          particular provider is the right fit for your job — always confirm credentials and scope directly with the
+          provider before hiring.
+        </p>
+      </section>
+
       <section>
         <h2 className="text-2xl font-semibold tracking-tight text-gray-900">What we use to evaluate providers</h2>
         <ul className="mt-3 list-disc space-y-2 pl-5">

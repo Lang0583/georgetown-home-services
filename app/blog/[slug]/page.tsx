@@ -25,6 +25,7 @@ import { blogPageInternalLinks } from "../../../lib/internal-links";
 import { getBlogHeroImage } from "../../../lib/blog-hero-images";
 import { extractFaqPairs, faqPageJsonLd } from "../../../lib/extract-faq-schema";
 import { PRICING_YEAR } from "../../../lib/pricing-data";
+import { AUTHOR_NAME, AUTHOR_PROFILE_PATH, authorPersonSchema } from "../../../lib/site-author";
 
 /** Posts with Amazon affiliate links in body copy — disclosure shown below byline. */
 const AFFILIATE_DISCLOSURE_SLUGS = new Set([
@@ -57,8 +58,6 @@ function breadcrumbJsonLd({
   };
 }
 
-const EDITORIAL_AUTHOR_NAME = "Georgetown Home Services Editorial Team";
-
 function articleJsonLd({
   siteUrl,
   headline,
@@ -88,11 +87,7 @@ function articleJsonLd({
     },
     description,
     mainEntityOfPage: url,
-    author: {
-      "@type": "Person",
-      name: EDITORIAL_AUTHOR_NAME,
-      url: `${siteUrl}/about`,
-    },
+    author: authorPersonSchema(siteUrl),
     publisher: { "@type": "Organization", name: publisherName, url: siteUrl },
     datePublished,
     dateModified,
@@ -405,9 +400,10 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
               </div>
               <p className="mt-2 text-sm text-gray-600">
                 By{" "}
-                <Link href="/about" className="font-medium text-gray-900 underline-offset-4 hover:underline">
-                  {EDITORIAL_AUTHOR_NAME}
+                <Link href={AUTHOR_PROFILE_PATH} className="font-medium text-gray-900 underline-offset-4 hover:underline">
+                  {AUTHOR_NAME}
                 </Link>
+                <span className="text-gray-500"> · Founder and Editor</span>
               </p>
               <div className="mt-2 text-sm text-gray-600">
                 <div>

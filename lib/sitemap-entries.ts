@@ -42,6 +42,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
   const staticMonthlyPaths: { path: string; priority: number }[] = [
     { path: "/", priority: 1 },
     { path: "/about", priority: 0.5 },
+    { path: "/authors/matt", priority: 0.5 },
     { path: "/methodology", priority: 0.5 },
     { path: "/editorial-policy", priority: 0.5 },
     { path: "/service-areas", priority: 0.5 },

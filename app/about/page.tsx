@@ -3,6 +3,7 @@ import Link from "next/link";
 import TrustPage from "../../components/templates/TrustPage";
 import { pageSeoMetadata } from "../../lib/page-seo";
 import { getBrandName } from "../../lib/site-content";
+import { AUTHOR_NAME, AUTHOR_PROFILE_PATH } from "../../lib/site-author";
 
 export const metadata: Metadata = pageSeoMetadata({
   titleSegment: "About Georgetown Home Services",
@@ -25,6 +26,24 @@ export default function AboutPage() {
         </>
       }
     >
+      <section>
+        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Who runs this site</h2>
+        <p className="mt-3">
+          {brand} is run by{" "}
+          <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-primary hover:underline">
+            {AUTHOR_NAME}
+          </Link>
+          , a Georgetown homeowner with a background in building local-market editorial sites. {AUTHOR_NAME} writes
+          and edits the guides on this site. He is not a licensed contractor, plumber, electrician, HVAC technician,
+          or roofer — the site is a homeowner research resource, not professional trades advice. The full editor
+          bio, sourcing approach, and editorial principles are on the{" "}
+          <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-primary hover:underline">
+            editor profile page
+          </Link>
+          .
+        </p>
+      </section>
+
       <section>
         <h2 className="text-2xl font-semibold tracking-tight text-gray-900">What we are</h2>
         <ul className="mt-3 list-disc space-y-2 pl-5">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import TrustPage from "../../components/templates/TrustPage";
 import { pageSeoMetadata } from "../../lib/page-seo";
+import { AUTHOR_NAME, AUTHOR_PROFILE_PATH } from "../../lib/site-author";
 
 export const metadata: Metadata = pageSeoMetadata({
   titleSegment: "Editorial Policy",
@@ -23,6 +24,19 @@ export default function EditorialPolicyPage() {
         </>
       }
     >
+      <section>
+        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Who edits this site</h2>
+        <p className="mt-3">
+          Editorial decisions on this site — what to publish, what to update, what to consolidate or remove — are made by{" "}
+          <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-primary hover:underline">
+            {AUTHOR_NAME}, founder and editor
+          </Link>
+          . AI is used for first-draft generation; every published page is human-edited specifically to remove
+          templated language, add real local specifics, and ground claims in Williamson County conditions. Pages
+          that couldn&apos;t clear that bar were consolidated or removed from the index.
+        </p>
+      </section>
+
       <section>
         <h2 className="text-2xl font-semibold tracking-tight text-gray-900">What we publish</h2>
         <ul className="mt-3 list-disc space-y-2 pl-5">

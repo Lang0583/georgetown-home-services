@@ -24,9 +24,12 @@ import { adsenseSidebarSlot } from "../../../lib/adsense-config";
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
+  SERVICE_BEST_LAST_UPDATED_ISO,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
+import AuthorByline from "../../../components/AuthorByline";
+import { hubArticleJsonLd } from "../../../lib/site-author";
 import { CORE_SERVICE_SLUGS, resolveServicePage } from "../../../lib/pageContentRegistry";
 import {
   isExtendedProviderGroup,
@@ -217,6 +220,15 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               description: service.description,
             })}
           />
+          <JsonLd
+            data={hubArticleJsonLd({
+              pathname: `/services/${service.slug}`,
+              headline: service.h1 ?? service.title,
+              description: service.description,
+              datePublished: SERVICE_BEST_LAST_UPDATED_ISO,
+              dateModified: SERVICE_BEST_LAST_UPDATED_ISO,
+            })}
+          />
           {service.faqs?.length ? (
             <JsonLd
               data={faqPageJsonLd(
@@ -241,6 +253,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               </div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{service.h1}</h1>
               <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+              <AuthorByline className="mt-3" compact />
+
               {isPlumberService ? (
                 <p className="mt-4 text-lg leading-relaxed text-gray-700">
                   Plumbing issues in Georgetown, TX rarely happen at a convenient time. From slab leaks and aging water
