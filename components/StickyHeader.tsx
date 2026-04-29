@@ -7,7 +7,7 @@ import { getBrandName } from "../lib/site-content";
 // equity drain across the entire site.
 
 const navLinkClass =
-  "inline-flex min-h-11 min-w-11 items-center justify-center rounded-md px-2 text-sm font-semibold text-gray-700 underline-offset-4 transition-colors hover:bg-gray-50 hover:text-primary hover:underline hover:decoration-primary whitespace-nowrap sm:min-h-0 sm:min-w-0 sm:justify-start sm:px-0.5 sm:hover:bg-transparent";
+  "inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-md px-2 text-sm font-semibold text-gray-700 underline-offset-4 transition-colors hover:bg-gray-50 hover:text-primary hover:underline hover:decoration-primary whitespace-nowrap sm:min-h-0 sm:min-w-0 sm:justify-start sm:px-0.5 sm:hover:bg-transparent";
 
 export default function StickyHeader() {
   const brand = getBrandName();
@@ -15,12 +15,18 @@ export default function StickyHeader() {
   return (
     <header className="sticky top-0 z-50 h-20 border-b-[3px] border-primary bg-white shadow-sm">
       <div className="mx-auto flex h-full max-w-5xl items-center justify-between gap-6 px-4">
-        <Link href="/" className="shrink-0 text-lg font-bold text-gray-900" aria-label={`${brand} home`}>
+        <Link
+          href="/"
+          className={
+            brand.startsWith("Georgetown")
+              ? "inline-flex shrink-0 items-baseline gap-x-1.5 text-lg font-bold text-gray-900"
+              : "shrink-0 text-lg font-bold text-gray-900"
+          }
+          aria-label={`${brand} home`}
+        >
           {brand.startsWith("Georgetown") ? (
             <>
               <span className="text-primary">Georgetown</span>
-              {/* Explicit space — adjacent inline spans can collapse boundaries; slice may omit a leading space if brand data drifts */}
-              {" "}
               <span className="text-gray-900">{brand.slice("Georgetown".length).trimStart()}</span>
             </>
           ) : (
@@ -28,7 +34,7 @@ export default function StickyHeader() {
           )}
         </Link>
 
-        <nav className="flex max-w-full items-center gap-2 overflow-x-auto sm:gap-6" aria-label="Main navigation">
+        <nav className="flex max-w-full min-w-0 flex-1 items-center gap-3 overflow-x-auto sm:gap-4 md:gap-6" aria-label="Main navigation">
           <Link href="/" className={navLinkClass}>
             Home
           </Link>

@@ -176,8 +176,8 @@ export default function Home() {
           <div className="flex flex-col gap-10 md:gap-12">
             <div className="min-w-0">
               <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-xs font-semibold text-gray-700">
-                <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                Georgetown home services directory + homeowner guides
+                <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-500" aria-hidden />
+                <span>Georgetown home services directory + homeowner guides</span>
               </div>
 
               <h1 className="mt-5 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
