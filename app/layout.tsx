@@ -27,6 +27,11 @@ const geistMono = Geist_Mono({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
+  const verification: NonNullable<Metadata["verification"]> = {};
+  const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+  const bingVerification = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION;
+  if (googleVerification) verification.google = googleVerification;
+  if (bingVerification) verification.other = { "msvalidate.01": bingVerification };
   return {
     metadataBase: new URL(siteUrl),
     title: {
@@ -38,6 +43,7 @@ export async function generateMetadata(): Promise<Metadata> {
     other: {
       "google-adsense-account": ADSENSE_CLIENT_ID,
     },
+    ...(googleVerification || bingVerification ? { verification } : {}),
   };
 }
 
@@ -108,8 +114,8 @@ export default function RootLayout({
         <main className="flex-1 pt-20">{children}</main>
         <SiteFooter />
       </body>
-      {process.env.NODE_ENV === "production" ? (
-        <GoogleAnalytics gaId="G-PLACEHOLDER" />
+      {process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_GA_ID ? (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
       ) : null}
     </html>
   );
