@@ -19,14 +19,16 @@ export default function StickyHeader() {
           {brand.startsWith("Georgetown") ? (
             <>
               <span className="text-primary">Georgetown</span>
-              <span className="text-gray-900">{brand.slice("Georgetown".length)}</span>
+              {/* Explicit space — adjacent inline spans can collapse boundaries; slice may omit a leading space if brand data drifts */}
+              {" "}
+              <span className="text-gray-900">{brand.slice("Georgetown".length).trimStart()}</span>
             </>
           ) : (
             brand
           )}
         </Link>
 
-        <nav className="flex max-w-full items-center gap-1 overflow-x-auto sm:gap-6" aria-label="Main navigation">
+        <nav className="flex max-w-full items-center gap-2 overflow-x-auto sm:gap-6" aria-label="Main navigation">
           <Link href="/" className={navLinkClass}>
             Home
           </Link>
