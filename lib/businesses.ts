@@ -119,7 +119,16 @@ export function normalizeBusinessGroup(b: Business): ProviderGroup | null {
 }
 
 /** Shown on best-of pages next to business listings. */
-export const BUSINESS_LISTINGS_LAST_UPDATED = "April 13, 2026";
+/**
+ * Listings sourced from publicly available business profiles (each provider's
+ * own website plus public profiles on Google Maps, Yelp, BBB, and the
+ * Georgetown Chamber of Commerce). Names, addresses, phone numbers, and
+ * websites were verified directly against the provider's listing on the
+ * date below. Ratings and review counts are public-snapshot approximations
+ * and should be re-verified periodically — refresh by re-running the
+ * verification pass and bumping this constant.
+ */
+export const BUSINESS_LISTINGS_LAST_UPDATED = "April 28, 2026";
 
 /**
  * Provider listing quality thresholds.
