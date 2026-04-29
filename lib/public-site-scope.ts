@@ -152,25 +152,14 @@ export const NOINDEX_SLUGS = new Set([
   "ac-not-cooling-georgetown-tx",
   // (`how-to-find-a-good-plumber-georgetown-tx` moved to REDIRECTED_BLOG_SLUGS)
 
-  // Service pages (thin, not in any cluster, not a hub):
-  "house-cleaning-georgetown-tx",
-  "pest-control-georgetown-tx",
-  "landscaping-georgetown-tx",
-  "foundation-repair-georgetown-tx",
-  "electrician-georgetown-tx",
-  // The six symptom service slugs that were here moved to
-  // REDIRECTED_SERVICE_SLUGS in Phase 2 of the consolidation pass.
-
-  // Best-of pages (thin, no consolidation target available):
-  "best-pest-control-georgetown-tx",
-  "best-house-cleaning-services-georgetown-tx",
-  "best-landscaping-companies-georgetown-tx",
-  "best-foundation-repair-georgetown-tx",
-  "best-electricians-georgetown-tx",
-  // Removed (rewritten to >=1,000 words with Williamson-County-specific
-  // technical detail; see lib/generatedPages.json):
-  //   - "best-roofers-georgetown-tx"
-  //   - "top-hvac-companies-georgetown-tx"
+  // Phase 3 of the audit follow-up rewrote every remaining noindex
+  // service hub and best-of page to >= the section's thin-content
+  // threshold (800 words for service, 500 for best). The bodies live
+  // in `lib/generatedPages.json` and now include Williamson-County-
+  // specific licensing, soil/climate, and pricing context. Slugs that
+  // used to live here (8 service hubs + 7 best-of pages) are now
+  // indexable; this set is intentionally empty and serves as a marker
+  // that the site has no thin-content opt-out pages remaining.
 ]);
 
 export function isNoindexSlug(slug: string): boolean {
