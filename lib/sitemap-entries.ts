@@ -9,6 +9,7 @@ import {
 } from "@/lib/public-site-scope";
 import { SITE_URL } from "@/lib/page-seo";
 import { CORE_BEST_SLUGS, CORE_SERVICE_SLUGS } from "@/lib/pageContentRegistry";
+import { AUTHOR_PROFILE_PATH } from "@/lib/site-author";
 import {
   getBestSlugs,
   getBlogSlugs,
@@ -42,7 +43,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
   const staticMonthlyPaths: { path: string; priority: number }[] = [
     { path: "/", priority: 1 },
     { path: "/about", priority: 0.5 },
-    { path: "/authors/matt", priority: 0.5 },
+    { path: AUTHOR_PROFILE_PATH, priority: 0.5 },
     { path: "/methodology", priority: 0.5 },
     { path: "/editorial-policy", priority: 0.5 },
     { path: "/service-areas", priority: 0.5 },
