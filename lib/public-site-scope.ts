@@ -80,6 +80,16 @@ export const REDIRECTED_SERVICE_SLUGS = new Set([
   "garbage-disposal-repair-georgetown-tx",
   "sewer-line-repair-georgetown-tx",
   "emergency-plumber-georgetown-tx",
+
+  // Phase 2 (April 2026, post-audit follow-up): symptom pages folded into
+  // their trade hub instead of being kept as noindexed thin pages.
+  // See `next.config.ts` for the matching 308 redirect entries.
+  "ac-not-cooling-georgetown-tx",
+  "emergency-hvac-georgetown-tx",
+  "clogged-drain-georgetown-tx",
+  "drain-cleaning-georgetown-tx",
+  "slab-leak-repair-georgetown-tx",
+  "roof-leak-repair-georgetown-tx",
 ]);
 
 export const REDIRECTED_LOCATION_SLUGS = new Set([
@@ -88,12 +98,27 @@ export const REDIRECTED_LOCATION_SLUGS = new Set([
   "berry-creek-georgetown-tx",
 ]);
 
+/**
+ * Blog slugs that 308 to a canonical post in `next.config.ts`. Mirrors the
+ * service/location pattern: keeping a single source of truth lets sitemap
+ * generation, internal-link helpers, and audit scripts skip redirected
+ * blog URLs without re-encoding the redirect map.
+ */
+export const REDIRECTED_BLOG_SLUGS = new Set([
+  // Old plumber-finding guide consolidated into the reliable-plumber post.
+  "how-to-find-a-good-plumber-georgetown-tx",
+]);
+
 export function isRedirectedServiceSlug(slug: string): boolean {
   return REDIRECTED_SERVICE_SLUGS.has(slug);
 }
 
 export function isRedirectedLocationSlug(slug: string): boolean {
   return REDIRECTED_LOCATION_SLUGS.has(slug);
+}
+
+export function isRedirectedBlogSlug(slug: string): boolean {
+  return REDIRECTED_BLOG_SLUGS.has(slug);
 }
 
 /**
@@ -125,7 +150,7 @@ export function isRedirectedLocationSlug(slug: string): boolean {
 export const NOINDEX_SLUGS = new Set([
   // Blog posts (thin, no consolidation target, not in COST_POST_SUPPLEMENTS):
   "ac-not-cooling-georgetown-tx",
-  "how-to-find-a-good-plumber-georgetown-tx",
+  // (`how-to-find-a-good-plumber-georgetown-tx` moved to REDIRECTED_BLOG_SLUGS)
 
   // Service pages (thin, not in any cluster, not a hub):
   "house-cleaning-georgetown-tx",
@@ -133,11 +158,8 @@ export const NOINDEX_SLUGS = new Set([
   "landscaping-georgetown-tx",
   "foundation-repair-georgetown-tx",
   "electrician-georgetown-tx",
-  "clogged-drain-georgetown-tx",
-  "roof-leak-repair-georgetown-tx",
-  "slab-leak-repair-georgetown-tx",
-  "emergency-hvac-georgetown-tx",
-  "drain-cleaning-georgetown-tx",
+  // The six symptom service slugs that were here moved to
+  // REDIRECTED_SERVICE_SLUGS in Phase 2 of the consolidation pass.
 
   // Best-of pages (thin, no consolidation target available):
   "best-pest-control-georgetown-tx",

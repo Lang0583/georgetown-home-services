@@ -3,6 +3,7 @@ import {
   isExtendedBestSlug,
   isExtendedServiceSlug,
   isNoindexSlug,
+  isRedirectedBlogSlug,
   isRedirectedLocationSlug,
   isRedirectedServiceSlug,
   showExtendedHomeServices,
@@ -141,6 +142,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
   }
 
   for (const slug of getBlogSlugs()) {
+    if (isRedirectedBlogSlug(slug)) continue;
     if (isNoindexSlug(slug)) continue;
     entries.push({
       url: absoluteUrl(`/blog/${slug}`),

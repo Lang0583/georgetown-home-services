@@ -95,6 +95,26 @@ const nextConfig: NextConfig = {
       { source: "/services/sewer-line-repair-georgetown-tx",           destination: "/services/plumber-georgetown-tx", permanent: true },
       { source: "/services/emergency-plumber-georgetown-tx",           destination: "/services/plumber-georgetown-tx", permanent: true },
 
+      // ──────────────────────────────────────────────────────────────────────
+      // Phase 2 thin-content consolidation (April 2026, post-audit follow-up).
+      // Six service slugs that the audit flagged as thin and that previously
+      // shipped with `noindex`. Redirecting into the trade hub is the right
+      // call here: the queries are symptom-driven (e.g. "ac not cooling")
+      // and the trade hub already covers the diagnostic + booking flow with
+      // substantively rewritten content (see Phase 3 hub rewrites).
+      // ──────────────────────────────────────────────────────────────────────
+
+      // Symptom pages → relevant trade hub
+      { source: "/services/ac-not-cooling-georgetown-tx",              destination: "/services/hvac-georgetown-tx",     permanent: true },
+      { source: "/services/emergency-hvac-georgetown-tx",              destination: "/services/hvac-georgetown-tx",     permanent: true },
+      { source: "/services/clogged-drain-georgetown-tx",               destination: "/services/plumber-georgetown-tx",  permanent: true },
+      { source: "/services/drain-cleaning-georgetown-tx",              destination: "/services/plumber-georgetown-tx",  permanent: true },
+      { source: "/services/slab-leak-repair-georgetown-tx",            destination: "/services/plumber-georgetown-tx",  permanent: true },
+      { source: "/services/roof-leak-repair-georgetown-tx",            destination: "/services/roofer-georgetown-tx",   permanent: true },
+
+      // Old plumber blog → consolidated reliable-plumber guide
+      { source: "/blog/how-to-find-a-good-plumber-georgetown-tx",      destination: "/blog/how-to-choose-a-reliable-plumber-georgetown-tx", permanent: true },
+
       // Neighborhood location pages were thin (2 paragraphs of boilerplate);
       // redirect them to the primary Georgetown location hub.
       {

@@ -35,6 +35,7 @@ import {
   isExtendedProviderGroup,
   isExtendedServiceSlug,
   isNoindexSlug,
+  isRedirectedBlogSlug,
   isRedirectedServiceSlug,
   shouldShowExtendedDirectoryListings,
   showExtendedHomeServices,
@@ -177,7 +178,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const bestPages = service.bestSlugs
     .map((s) => getBestBySlug(s))
     .filter((b): b is NonNullable<typeof b> => Boolean(b));
-  const helpfulGuides = getBlogsForServiceSlug(service.slug);
+  const helpfulGuides = getBlogsForServiceSlug(service.slug).filter(
+    (b) => !isRedirectedBlogSlug(b.slug) && !isNoindexSlug(b.slug),
+  );
   const businessCategory = getBusinessCategoryForServiceSlug(service.slug);
   const providersFromJson =
     businessCategory !== null &&
@@ -406,10 +409,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         </li>
                         <li>
                           <Link
-                            href="/blog/how-to-find-a-good-plumber-georgetown-tx"
+                            href="/blog/how-to-choose-a-reliable-plumber-georgetown-tx"
                             className="font-semibold hover:underline"
                           >
-                            How to Find a Good Plumber in Georgetown
+                            How to Choose a Reliable Plumber in Georgetown
                           </Link>
                         </li>
                         <li>

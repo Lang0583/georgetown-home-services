@@ -41,6 +41,8 @@ import {
   isExtendedBestSlug,
   isExtendedProviderGroup,
   isNoindexSlug,
+  isRedirectedBlogSlug,
+  isRedirectedServiceSlug,
   shouldShowExtendedDirectoryListings,
   showExtendedHomeServices,
 } from "../../../lib/public-site-scope";
@@ -269,9 +271,12 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
   const relatedService = relatedServiceSlug ? getServiceBySlug(relatedServiceSlug) : null;
   const services = getServices();
   const recommended = best.recommendedServiceSlugs
+    .filter((s) => !isRedirectedServiceSlug(s) && !isNoindexSlug(s))
     .map((s) => services.find((x) => x.slug === s))
     .filter((s): s is (typeof services)[number] => Boolean(s));
-  const helpfulGuides = getBlogsForBestSlug(best.slug);
+  const helpfulGuides = getBlogsForBestSlug(best.slug).filter(
+    (b) => !isRedirectedBlogSlug(b.slug) && !isNoindexSlug(b.slug),
+  );
 
   const CORE_BEST = (CORE_BEST_SLUGS as readonly string[])
     .map((bestSlug) => {
@@ -841,7 +846,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                             terms. Look beyond price to responsiveness, clarity of explanations, and whether each
                             company is willing to answer your questions before and after the job. When in doubt, use the{" "}
                             <Link
-                              href="/blog/how-to-find-a-good-plumber-georgetown-tx"
+                              href="/blog/how-to-choose-a-reliable-plumber-georgetown-tx"
                               className="font-semibold text-primary"
                             >
                               plumber checklist for Georgetown
@@ -1626,8 +1631,8 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         {isPlumbersGeorgetown ? (
                           <p>
                             Looking for a step-by-step checklist? Read{" "}
-                            <Link href="/blog/how-to-find-a-good-plumber-georgetown-tx" className="font-semibold text-primary hover:text-primary-hover">
-                              how to find a good plumber in Georgetown
+                            <Link href="/blog/how-to-choose-a-reliable-plumber-georgetown-tx" className="font-semibold text-primary hover:text-primary-hover">
+                              how to choose a reliable plumber in Georgetown
                             </Link>
                             .
                           </p>

@@ -132,20 +132,20 @@ export default function BestIndexPage() {
                     Start with symptom pages, then return here to compare providers for the right trade.
                   </p>
                   <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-sm font-semibold text-primary">
-                    <Link href="/services/ac-not-cooling-georgetown-tx" className="hover:underline">
-                      AC not cooling
+                    <Link href="/services/hvac-georgetown-tx" className="hover:underline">
+                      AC &amp; HVAC issues
                     </Link>
                     <span className="text-gray-300" aria-hidden>
                       ·
                     </span>
-                    <Link href="/services/clogged-drain-georgetown-tx" className="hover:underline">
-                      Clogged drain
+                    <Link href="/services/plumber-georgetown-tx" className="hover:underline">
+                      Plumbing issues
                     </Link>
                     <span className="text-gray-300" aria-hidden>
                       ·
                     </span>
-                    <Link href="/services/roof-leak-repair-georgetown-tx" className="hover:underline">
-                      Roof leak repair
+                    <Link href="/services/roofer-georgetown-tx" className="hover:underline">
+                      Roof leaks &amp; storm damage
                     </Link>
                   </div>
                 </div>
@@ -161,7 +161,7 @@ export default function BestIndexPage() {
                     <span className="text-gray-300" aria-hidden>
                       ·
                     </span>
-                    <Link href="/blog/how-to-find-a-good-plumber-georgetown-tx" className="hover:underline">
+                    <Link href="/blog/how-to-choose-a-reliable-plumber-georgetown-tx" className="hover:underline">
                       Hiring checklist (plumber)
                     </Link>
                   </div>
