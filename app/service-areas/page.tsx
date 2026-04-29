@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd from "../../components/JsonLd";
 import TrustPage from "../../components/templates/TrustPage";
 import { pageSeoMetadata } from "../../lib/page-seo";
 import { isRedirectedLocationSlug } from "../../lib/public-site-scope";
 import { getLocations } from "../../lib/site-content";
+import { webPageTrustJsonLd } from "../../lib/trust-pages-schema";
 
 export const metadata: Metadata = pageSeoMetadata({
   titleSegment: "Service Areas",
@@ -19,6 +21,16 @@ export default function ServiceAreasPage() {
 
   return (
     <TrustPage
+      topSlot={
+        <JsonLd
+          data={webPageTrustJsonLd({
+            pathname: "/service-areas",
+            name: "Georgetown, TX Service Areas",
+            description:
+              "Neighborhood and service area pages for Georgetown, TX homeowners.",
+          })}
+        />
+      }
       eyebrow="Service areas"
       title="Georgetown, TX Service Areas"
       description={

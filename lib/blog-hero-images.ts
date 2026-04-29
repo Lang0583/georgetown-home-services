@@ -58,6 +58,10 @@ const HERO_BY_SLUG: Record<string, BlogHeroImage> = {
     src: DEFAULT_SRC,
     alt: "Roof inspection signs Georgetown TX",
   },
+  "after-hail-roof-checklist-georgetown-tx": {
+    src: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=1200&q=80",
+    alt: "Storm clouds over Texas neighborhood — roof checklist after hail",
+  },
   "how-to-choose-a-reliable-plumber-georgetown-tx": {
     src: DEFAULT_SRC,
     alt: "How to choose a plumber Georgetown TX",

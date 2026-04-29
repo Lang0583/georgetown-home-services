@@ -7,7 +7,7 @@ import StickyHeader from "../components/StickyHeader";
 import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
 import { ADSENSE_CLIENT_ID } from "../lib/adsense-config";
-import { getBrandName } from "../lib/site-content";
+import { getBrandName, getContact } from "../lib/site-content";
 
 const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
 
@@ -53,6 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const brand = getBrandName();
+  const { email: orgEmail } = getContact();
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -60,6 +61,13 @@ export default function RootLayout({
     url: siteUrl,
     description:
       "A local directory and homeowner guide for trusted home service companies in Georgetown, Texas, covering plumbing, HVAC, roofing, electrical, landscaping, pest control, foundation repair, and house cleaning.",
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: orgEmail,
+      areaServed: "US",
+      availableLanguage: ["English", "en-US"],
+    },
     knowsAbout: [
       "Plumbing",
       "HVAC",

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import JsonLd from "../../components/JsonLd";
 import TrustPage from "../../components/templates/TrustPage";
 import { pageSeoMetadata } from "../../lib/page-seo";
+import { webPageTrustJsonLd } from "../../lib/trust-pages-schema";
 
 export const metadata: Metadata = pageSeoMetadata({
   titleSegment: "Terms of Use",
@@ -12,6 +14,15 @@ export const metadata: Metadata = pageSeoMetadata({
 export default function TermsPage() {
   return (
     <TrustPage
+      topSlot={
+        <JsonLd
+          data={webPageTrustJsonLd({
+            pathname: "/terms",
+            name: "Terms of Use",
+            description: "Terms of use for Georgetown Home Services.",
+          })}
+        />
+      }
       eyebrow="Legal"
       title="Terms of Use"
       description={

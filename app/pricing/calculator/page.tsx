@@ -1,0 +1,67 @@
+import type { Metadata } from "next";
+import Breadcrumbs from "../../../components/Breadcrumbs";
+import JsonLd from "../../../components/JsonLd";
+import PricingEstimatorInteractive from "../../../components/PricingEstimatorInteractive";
+import PageShell from "../../../components/templates/PageShell";
+import { pageSeoMetadata, SITE_URL } from "../../../lib/page-seo";
+import { PRICING_LAST_REVIEWED_MONTH, PRICING_YEAR } from "../../../lib/pricing-data";
+
+export const metadata: Metadata = pageSeoMetadata({
+  titleSegment: `Interactive Home Service Cost Estimator (${PRICING_YEAR})`,
+  description: `Sum editorial Georgetown, TX price ranges by trade and job type for planning. Ranges reviewed ${PRICING_LAST_REVIEWED_MONTH} — not quotes.`,
+  pathname: "/pricing/calculator",
+  ogType: "website",
+});
+
+function breadcrumbJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Pricing", item: `${SITE_URL}/pricing` },
+      { "@type": "ListItem", position: 3, name: "Calculator", item: `${SITE_URL}/pricing/calculator` },
+    ],
+  };
+}
+
+export default function PricingCalculatorPage() {
+  return (
+    <PageShell>
+      <JsonLd data={breadcrumbJsonLd()} />
+      <section className="py-10 md:py-12">
+        <div className="mx-auto max-w-3xl">
+          <Breadcrumbs
+            items={[
+              { href: "/", label: "Home" },
+              { href: "/pricing", label: "Pricing" },
+              { href: "/pricing/calculator", label: "Calculator" },
+            ]}
+          />
+          <div className="mt-2 text-sm font-semibold uppercase tracking-wide text-primary">
+            Planning tool
+          </div>
+          <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
+            Home service cost estimator — Georgetown, TX
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-gray-700">
+            Pick a trade, then select the jobs you are comparing bids on. We add the low and high ends of our
+            editorial ranges so you can sanity-check contractor quotes — not replace them.
+          </p>
+
+          <aside className="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm leading-relaxed text-amber-900">
+            <div className="font-semibold">Not a quote</div>
+            <p className="mt-2">
+              Real projects bundle labor, discovery, and code upgrades. Summing line items double-counts
+              trip charges if you select everything; use this as a rough bracket for one or a few scopes at a time.
+            </p>
+          </aside>
+
+          <div className="mt-10">
+            <PricingEstimatorInteractive />
+          </div>
+        </div>
+      </section>
+    </PageShell>
+  );
+}

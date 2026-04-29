@@ -92,11 +92,8 @@ export const REDIRECTED_SERVICE_SLUGS = new Set([
   "roof-leak-repair-georgetown-tx",
 ]);
 
-export const REDIRECTED_LOCATION_SLUGS = new Set([
-  "sun-city-georgetown-tx",
-  "wolf-ranch-georgetown-tx",
-  "berry-creek-georgetown-tx",
-]);
+/** Location slugs that 308 elsewhere — keep in sync with `next.config.ts`. */
+export const REDIRECTED_LOCATION_SLUGS = new Set<string>([]);
 
 /**
  * Blog slugs that 308 to a canonical post in `next.config.ts`. Mirrors the

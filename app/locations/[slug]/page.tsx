@@ -45,7 +45,7 @@ function breadcrumbJsonLd({
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
-      { "@type": "ListItem", position: 2, name: "Locations", item: `${siteUrl}/services#neighborhood-and-location-pages` },
+      { "@type": "ListItem", position: 2, name: "Service areas", item: `${siteUrl}/service-areas` },
       { "@type": "ListItem", position: 3, name: locationTitle, item: `${siteUrl}/locations/${locationSlug}` },
     ],
   };

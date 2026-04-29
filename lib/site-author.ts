@@ -9,6 +9,21 @@
 
 import { SITE_URL } from "./page-seo";
 
+function authorSameAsFromEnv(): string[] {
+  const raw = process.env.NEXT_PUBLIC_AUTHOR_SAME_AS;
+  if (!raw?.trim()) return [];
+  return raw
+    .split(",")
+    .map((s) => s.trim())
+    .filter((s) => {
+      try {
+        return Boolean(s && new URL(s).protocol.startsWith("http"));
+      } catch {
+        return false;
+      }
+    });
+}
+
 /**
  * Editor identity is published under the pen name "Cole Reinhardt" by editorial
  * choice. Pen names are an established convention in long-form journalism and
@@ -56,11 +71,13 @@ export const AUTHOR_LONG_DESCRIPTION =
  * Returned as a plain object so callers can spread additional fields.
  */
 export function authorPersonSchema(siteUrl: string = SITE_URL) {
+  const sameAs = authorSameAsFromEnv();
   return {
     "@type": "Person" as const,
     name: AUTHOR_NAME,
     url: `${siteUrl}${AUTHOR_PROFILE_PATH}`,
     jobTitle: AUTHOR_JOB_TITLE,
+    ...(sameAs.length ? { sameAs } : {}),
     worksFor: {
       "@type": "Organization" as const,
       name: "Georgetown Home Services",
@@ -75,6 +92,7 @@ export function authorPersonSchema(siteUrl: string = SITE_URL) {
  * `knowsAbout`, which Google's quality systems use to disambiguate authors.
  */
 export function fullAuthorPersonSchema(siteUrl: string = SITE_URL) {
+  const sameAs = authorSameAsFromEnv();
   return {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -84,6 +102,7 @@ export function fullAuthorPersonSchema(siteUrl: string = SITE_URL) {
     url: `${siteUrl}${AUTHOR_PROFILE_PATH}`,
     jobTitle: AUTHOR_JOB_TITLE,
     description: AUTHOR_LONG_DESCRIPTION,
+    ...(sameAs.length ? { sameAs } : {}),
     knowsAbout: [...AUTHOR_KNOWS_ABOUT],
     homeLocation: {
       "@type": "Place",

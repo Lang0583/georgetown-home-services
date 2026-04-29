@@ -115,23 +115,6 @@ const nextConfig: NextConfig = {
       // Old plumber blog → consolidated reliable-plumber guide
       { source: "/blog/how-to-find-a-good-plumber-georgetown-tx",      destination: "/blog/how-to-choose-a-reliable-plumber-georgetown-tx", permanent: true },
 
-      // Neighborhood location pages were thin (2 paragraphs of boilerplate);
-      // redirect them to the primary Georgetown location hub.
-      {
-        source: "/locations/sun-city-georgetown-tx",
-        destination: "/locations/georgetown-tx",
-        permanent: true,
-      },
-      {
-        source: "/locations/wolf-ranch-georgetown-tx",
-        destination: "/locations/georgetown-tx",
-        permanent: true,
-      },
-      {
-        source: "/locations/berry-creek-georgetown-tx",
-        destination: "/locations/georgetown-tx",
-        permanent: true,
-      },
       {
         source: "/blog/how-to-find-a-good-plumber-georgetown",
         destination: "/blog/how-to-find-a-good-plumber-georgetown-tx",

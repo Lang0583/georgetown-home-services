@@ -69,66 +69,112 @@
     },
     {
       "slug": "sun-city-georgetown-tx",
-      "title": "Sun City, Georgetown, TX",
-      "h1": "Reliable Plumbing in Sun City, Georgetown, TX",
-      "description": "Get professional plumbing help for Sun City residents in Georgetown, TX.",
+      "title": "Sun City, Georgetown, TX: Home Services Guide for Homeowners",
+      "h1": "Sun City, Georgetown: Plumbing, HVAC, and Roofing in an Active-Adult Community",
+      "description": "What Sun City Texas homeowners actually see from trades: hard water, aging roofs, slab plumbing, and HVAC run hours — with hub links to compare providers on your own timeline.",
       "heroBullets": [
-        "Prompt scheduling",
-        "Upfront estimates",
-        "Clean, respectful technicians"
+        "Built 1995–2000s: many homes on second roof or second HVAC",
+        "Slab + clay soil: slab leaks and repipe conversations are common",
+        "Editorial guides — you contact providers directly"
       ],
       "content": [
-        { "kind": "p", "text": "From a running toilet to drain problems, our team handles plumbing repairs and replacements with care and clear communication." },
-        { "kind": "p", "text": "Schedule service when it works for you—then relax while we fix the root cause." }
+        { "kind": "p", "text": "Sun City Texas is a large active-adult community on the west side of Georgetown. Most homes went up from the mid-1990s through the 2000s on slab foundations, with a high share of seasonal residents and retirees. That profile changes what breaks: water heaters and tankless units fight Williamson County hard water; asphalt roofs from the original build cycle are often on a second replacement now; and HVAC systems logged enough 100°F+ cooling hours that replacement timing surprises people who moved from milder climates." },
+        { "kind": "h2", "text": "Plumbing: what Sun City homeowners hear most often" },
+        { "kind": "p", "text": "Slab-on-grade over expansive clay means supply lines under the foundation can see stress over decades. Unexplained water bill spikes, hot spots on tile, or wet drywall away from a fixture are the usual triage signals — not every leak is a \"slab leak,\" but Sun City has enough history with them that good plumbers treat the symptom seriously. Separately, hard water scales tank water heaters and shortens cartridge life at fixtures; tankless without descaling or treatment can disappoint on longevity." },
+        { "kind": "h2", "text": "HVAC: comfort and run-time reality" },
+        { "kind": "p", "text": "Many Sun City homes are single-story with straightforward duct paths, which helps honest load calculations — but oversizing still happens. If humidity stays high while the setpoint is satisfied, duct leakage, poor condensate drainage, or an oversized AC can all be in play. Before peak summer, a real tune-up (static pressure and temperature split, not a sticker visit) is worth scheduling." },
+        { "kind": "h2", "text": "Roofing: age cohorts and hail season" },
+        { "kind": "p", "text": "Williamson County spring storms mean documentation habits matter. Granule loss in gutters, dented vents, and interior stains after wind — all worth photographing with dates. Sun City's roof age distribution skews toward replacement and repair scopes that include decking touch-ups and ventilation updates, not just shingles." },
+        { "kind": "h2", "text": "How to use this page" },
+        { "kind": "p", "text": "We publish frameworks, not dispatch lists. Use the Georgetown trade hubs below to understand symptoms, bid comparison, and price drivers — then shortlist providers from the best-of guides and contact them directly for written scopes." }
+      ],
+      "faqs": [
+        { "q": "Does Sun City have more slab leaks than newer Georgetown subdivisions?", "a": "Older slab neighborhoods on expansive clay generally see more slab-related plumbing failures than brand-new builds with evolved materials and practices. It is not destiny — but if you've had one slab leak, understanding detection and repipe vs. spot repair trade-offs is worthwhile." },
+        { "q": "Why does my water heater fail faster here than at my last house?", "a": "Williamson County water is hard. Scale accelerates tank failure and hurts tankless efficiency without maintenance. Periodic flushing, anode attention on tanks, and descaling on tankless are part of realistic life-cycle planning." },
+        { "q": "Is this site a Sun City contractor?", "a": "No. Georgetown Home Services is a homeowner education site and directory. We do not schedule service or route leads to a single provider." }
       ],
       "serviceSlugs": [
-        "plumber-sun-city-georgetown-tx"
+        "plumber-georgetown-tx",
+        "hvac-georgetown-tx",
+        "roofer-georgetown-tx"
       ],
       "bestSlugs": [
-        "best-plumbers-georgetown-tx"
+        "best-plumbers-georgetown-tx",
+        "top-hvac-companies-georgetown-tx",
+        "best-roofers-georgetown-tx"
       ]
     },
     {
       "slug": "wolf-ranch-georgetown-tx",
-      "title": "Wolf Ranch, Georgetown, TX",
-      "h1": "HVAC Support for Wolf Ranch, Georgetown, TX",
-      "description": "Stay comfortable with fast HVAC repairs and maintenance in Wolf Ranch.",
+      "title": "Wolf Ranch, Georgetown, TX: Home Services Guide",
+      "h1": "Wolf Ranch, Georgetown: HVAC-First Home Maintenance (With Plumbing + Roof Context)",
+      "description": "Newer-build Georgetown master-planned homes: HVAC load, duct reality, and what breaks first — plus hub links to compare local providers.",
       "heroBullets": [
-        "AC performance troubleshooting",
-        "Maintenance that reduces breakdowns",
-        "Quality parts and workmanship"
+        "Most homes still on first major-system replacements",
+        "Two-story plans: airflow and zoning questions show up often",
+        "Use hubs + best-of pages to shortlist contractors"
       ],
       "content": [
-        { "kind": "p", "text": "If your system isn’t keeping up, we’ll diagnose the issue and recommend the right fix—repair or replacement—based on your goals and budget." },
-        { "kind": "p", "text": "Use the guides on this site to shortlist providers and compare written scopes. Contact providers directly for availability and estimates." }
+        { "kind": "p", "text": "Wolf Ranch is a newer master-planned area in Georgetown with a heavy share of 2010s-and-later construction. Homes here often still run first-generation water heaters and AC equipment — which means many owners are entering their first real \"replacement cycle\" conversations rather than chasing chronic patchwork. Two-story and open plans can hide airflow imbalance until a peak heat week stress-tests the duct system." },
+        { "kind": "h2", "text": "HVAC: the trade Wolf Ranch owners call about first" },
+        { "kind": "p", "text": "Long cooling seasons push wear on capacitors, contactors, and compressors. If upstairs rooms drift hot while downstairs is fine, the answer might be duct leakage, insufficient return paths, charge issues, or equipment short-cycling — not necessarily \"you need more tons.\" Push for measurements, not slogan-level diagnoses." },
+        { "kind": "h2", "text": "Plumbing: hard water still applies" },
+        { "kind": "p", "text": "Newer PEX layouts reduce some slab-leak risk relative to older copper-under-slab neighborhoods, but hard water still attacks water heaters, fixtures, and tankless heat exchangers. Plan descaling and filtration like anywhere else in Georgetown." },
+        { "kind": "h2", "text": "Roofing: first-roof maintenance window" },
+        { "kind": "p", "text": "Many Wolf Ranch roofs are young enough that damage is event-driven — wind tabs, flashing leaks, and hail bruising — rather than age-driven failure. After notable weather, perimeter checks and gutter granule patterns are still worth the time." },
+        { "kind": "h2", "text": "Practical next steps" },
+        { "kind": "p", "text": "Start with the HVAC hub for load and replacement framing, keep the plumber hub handy for water heaters and leaks, and use the roofer hub after storms. The best-of guides help you compare written bids on an even footing." }
+      ],
+      "faqs": [
+        { "q": "Why is upstairs cooling such a common Wolf Ranch complaint?", "a": "Two-story homes in Central Texas fight stack effect and solar gain upstairs. Sometimes zoning or duct fixes solve most of it; sometimes equipment really is undersized or charge is off. A thorough diagnostic separates duct from mechanical causes." },
+        { "q": "Do I still need to worry about slab leaks in Wolf Ranch?", "a": "Generally less than in 1990s slab neighborhoods, but plumbing failures still happen. Focus on evidence: meter tests, isolation, and camera work when symptoms justify it." }
       ],
       "serviceSlugs": [
-        "hvac-wolf-ranch-georgetown-tx",
-        "ac-not-cooling-georgetown-tx"
+        "hvac-georgetown-tx",
+        "plumber-georgetown-tx",
+        "roofer-georgetown-tx"
       ],
       "bestSlugs": [
-        "top-hvac-companies-georgetown-tx"
+        "top-hvac-companies-georgetown-tx",
+        "best-plumbers-georgetown-tx",
+        "best-roofers-georgetown-tx"
       ]
     },
     {
       "slug": "berry-creek-georgetown-tx",
-      "title": "Berry Creek, Georgetown, TX",
-      "h1": "Roof Repairs You Can Count On in Berry Creek",
-      "description": "Professional roofing repairs and leak prevention for Berry Creek homes.",
+      "title": "Berry Creek, Georgetown, TX: Home Services Guide",
+      "h1": "Berry Creek, Georgetown: Roof Age, Trees, and Established-Home Maintenance",
+      "description": "Mixed-age Georgetown neighborhood context for roofing, storm documentation, and the plumbing realities of mature trees — with trade hubs and best-of links.",
       "heroBullets": [
-        "Leak detection and repair",
-        "Weatherproofing solutions",
-        "Detailed repair plans"
+        "Mature canopy: more debris and organic roof wear",
+        "Homes span decades — roof age is not uniform",
+        "Editorial pricing and bid frameworks live on the hubs"
       ],
       "content": [
-        { "kind": "p", "text": "Roof leaks and damage rarely improve on their own. When you act early, you protect your home from bigger issues down the road." },
-        { "kind": "p", "text": "Tell us what you’re seeing and we’ll help you understand the next best step." }
+        { "kind": "p", "text": "Berry Creek blends established homes and newer infill around mature landscaping. That matters for roofs — organic debris, Valley areas, and shade patterns change moisture and wear — and for drains and sewers, where root intrusion shows up more often than in bare new construction. Insurance-scope roofing after hail remains a recurring Williamson County conversation; documentation beats memory every time." },
+        { "kind": "h2", "text": "Roofing: repairs vs. replacement in an established neighborhood" },
+        { "kind": "p", "text": "Localized flashing and wind-tab repairs are common on middle-aged shingle roofs. If multiple planes show widespread granular loss or interior stains recur, replacement planning usually beats whack-a-mole patching. The Georgetown roofer hub walks through scope clarity, decking allowances, and ventilation decisions." },
+        { "kind": "h2", "text": "Plumbing and sewer context" },
+        { "kind": "p", "text": "Slow drains that return after snaking, or multiple fixtures misbehaving together, should escalate to camera evidence before you pay for repeated cleanouts. Hard water still affects water heaters and fixtures across Berry Creek the same way it does elsewhere in the city." },
+        { "kind": "h2", "text": "HVAC" },
+        { "kind": "p", "text": "Berry Creek isn't dramatically different from other Georgetown neighborhoods on HVAC physics — long summers dominate — but tree debris around condensers and gutter overflow can exacerbate drainage issues. Keep condenser coils clear and condensate lines checked seasonally." },
+        { "kind": "h2", "text": "Using this guide" },
+        { "kind": "p", "text": "Read the roofer hub first if weather or leaks are your driver; use plumbing and HVAC hubs for everything else. The best-of pages are the fastest path to a short list for written estimates." }
+      ],
+      "faqs": [
+        { "q": "After a hailstorm, what should I photograph first?", "a": "Wide shots of the roofline from the ground, gutters and downspout outlets, dented metals, any interior stains with dates, and close-ups of lifted tabs or missing shingles where safely visible. See the storm checklist blog post linked from the roofer hub for a full walkthrough." },
+        { "q": "Are sewer backups always a main line problem?", "a": "Usually when multiple fixtures are affected or gurgling tracks with laundry use. A single slow sink is often branch-line. Camera inspections clarify before major excavation." }
       ],
       "serviceSlugs": [
-        "roofer-berry-creek-georgetown-tx",
-        "roof-leak-repair-georgetown-tx"
+        "roofer-georgetown-tx",
+        "plumber-georgetown-tx",
+        "hvac-georgetown-tx"
       ],
-      "bestSlugs": []
+      "bestSlugs": [
+        "best-roofers-georgetown-tx",
+        "best-plumbers-georgetown-tx",
+        "top-hvac-companies-georgetown-tx"
+      ]
     }
   ],
   "services": [
@@ -325,6 +371,14 @@
           "If you walked the perimeter, note where shingle granules accumulated. Heavy granule pooling at downspouts is a flag adjusters look for."
         ] },
         { "kind": "p", "text": "If water is actively entering the home, an emergency tarping or stabilization protects the interior while you compare repair scopes. Tarping is a separate line item from the eventual repair and isn't a substitute for it; a reasonable scope says what the tarping covers, what it doesn't, and how long the temporary protection is expected to hold." },
+        {
+          "kind": "p",
+          "parts": [
+            { "type": "text", "text": "For a homeowner storm checklist—ground-level photos, interior stains, documentation for adjusters, and how tarping fits in—see " },
+            { "type": "link", "href": "/blog/after-hail-roof-checklist-georgetown-tx", "label": "what to check on your roof after hail or wind in Georgetown" },
+            { "type": "text", "text": "." }
+          ]
+        },
         { "kind": "h2", "text": "How to evaluate a Georgetown roofer" },
         { "kind": "p", "text": "Most homeowner-roofer disputes in Central Texas come down to scope clarity at signing. Before you commit, the bid should answer in writing:" },
         { "kind": "ul", "items": [
@@ -1275,6 +1329,8 @@
       "description": "A practical overview of HVAC replacement costs and what affects your total price.",
       "locationSlug": "georgetown-tx",
       "readTime": "6 min",
+      "datePublished": "2025-08-10",
+      "dateModified": "2026-04-01",
       "content": [
         {
           "kind": "affiliateDisclosure",
@@ -1315,8 +1371,7 @@
         { "kind": "p", "text": "If you’re collecting estimates, use the related service page and best-of guide to shortlist providers and compare written scopes." }
       ],
       "relatedServiceSlugs": [
-        "hvac-georgetown-tx",
-        "ac-not-cooling-georgetown-tx"
+        "hvac-georgetown-tx"
       ],
       "relatedBestSlugs": [
         "top-hvac-companies-georgetown-tx"
@@ -1329,6 +1384,8 @@
       "description": "Use this checklist to choose a dependable plumber and avoid common service mistakes.",
       "locationSlug": "georgetown-tx",
       "readTime": "5 min",
+      "datePublished": "2025-06-05",
+      "dateModified": "2026-03-15",
       "content": [
         {
           "kind": "affiliateDisclosure",
@@ -1370,8 +1427,7 @@
       ],
       "relatedServiceSlugs": [
         "plumber-georgetown-tx",
-        "clogged-drain-georgetown-tx",
-        "plumber-sun-city-georgetown-tx"
+        "water-heater-repair-georgetown-tx"
       ],
       "relatedBestSlugs": [
         "best-plumbers-georgetown-tx"
@@ -1384,6 +1440,8 @@
       "description": "Clear pricing ranges for emergency plumbing in Georgetown—service calls, leak repairs, water heaters, and sewer work—plus when to call now vs wait.",
       "locationSlug": "georgetown-tx",
       "readTime": "8 min",
+      "datePublished": "2025-09-12",
+      "dateModified": "2026-04-05",
       "content": [
         {
           "kind": "p",
@@ -1468,8 +1526,7 @@
       ],
       "relatedServiceSlugs": [
         "plumber-georgetown-tx",
-        "clogged-drain-georgetown-tx",
-        "sewer-line-repair-georgetown-tx"
+        "water-heater-repair-georgetown-tx"
       ],
       "relatedBestSlugs": [
         "best-plumbers-georgetown-tx"
@@ -1482,6 +1539,8 @@
       "description": "Practical warning signs Georgetown homeowners should watch for before an HVAC issue becomes a full no-cool emergency.",
       "locationSlug": "georgetown-tx",
       "readTime": "7 min",
+      "datePublished": "2025-10-01",
+      "dateModified": "2026-03-20",
       "content": [
         {
           "kind": "affiliateDisclosure",
@@ -1591,8 +1650,7 @@
         }
       ],
       "relatedServiceSlugs": [
-        "hvac-georgetown-tx",
-        "ac-not-cooling-georgetown-tx"
+        "hvac-georgetown-tx"
       ],
       "relatedBestSlugs": [
         "top-hvac-companies-georgetown-tx"
@@ -1605,6 +1663,8 @@
       "description": "Realistic AC repair pricing ranges for Georgetown homeowners—what affects cost, when it’s worth repairing, and when replacement makes more sense.",
       "locationSlug": "georgetown-tx",
       "readTime": "9 min",
+      "datePublished": "2025-11-15",
+      "dateModified": "2026-04-10",
       "content": [
         {
           "kind": "p",
@@ -1629,6 +1689,8 @@
       "description": "A Georgetown homeowner’s troubleshooting guide: common causes, safe checks you can do, and when to call an HVAC professional.",
       "locationSlug": "georgetown-tx",
       "readTime": "9 min",
+      "datePublished": "2025-12-01",
+      "dateModified": "2026-04-08",
       "content": [
         {
           "kind": "p",
@@ -1640,8 +1702,7 @@
         }
       ],
       "relatedServiceSlugs": [
-        "hvac-georgetown-tx",
-        "ac-not-cooling-georgetown-tx"
+        "hvac-georgetown-tx"
       ],
       "relatedBestSlugs": [
         "top-hvac-companies-georgetown-tx"
@@ -1741,9 +1802,7 @@
         }
       ],
       "relatedServiceSlugs": [
-        "hvac-georgetown-tx",
-        "ac-not-cooling-georgetown-tx",
-        "ac-repair-georgetown-tx"
+        "hvac-georgetown-tx"
       ],
       "relatedBestSlugs": [
         "top-hvac-companies-georgetown-tx"
@@ -1756,6 +1815,8 @@
       "description": "A practical overview of what influences roof replacement pricing for Georgetown homeowners—and how to plan ahead.",
       "locationSlug": "georgetown-tx",
       "readTime": "7 min",
+      "datePublished": "2025-07-20",
+      "dateModified": "2026-04-12",
       "content": [
         {
           "kind": "p",
@@ -1830,8 +1891,7 @@
         }
       ],
       "relatedServiceSlugs": [
-        "roofer-georgetown-tx",
-        "roof-leak-repair-georgetown-tx"
+        "roofer-georgetown-tx"
       ],
       "relatedBestSlugs": [
         "best-roofers-georgetown-tx"
@@ -1844,6 +1904,8 @@
       "description": "Realistic roof repair cost ranges for Georgetown homeowners—common repair types, what drives pricing, and when repair is enough vs replacement.",
       "locationSlug": "georgetown-tx",
       "readTime": "8 min",
+      "datePublished": "2025-08-01",
+      "dateModified": "2026-04-11",
       "content": [
         {
           "kind": "p",
@@ -1855,8 +1917,7 @@
         }
       ],
       "relatedServiceSlugs": [
-        "roofer-georgetown-tx",
-        "roof-leak-repair-georgetown-tx"
+        "roofer-georgetown-tx"
       ],
       "relatedBestSlugs": [
         "best-roofers-georgetown-tx"
@@ -1869,6 +1930,8 @@
       "description": "A homeowner-friendly checklist of warning signs—plus Georgetown climate context and what to do next if you suspect your roof is near end of life.",
       "locationSlug": "georgetown-tx",
       "readTime": "9 min",
+      "datePublished": "2025-09-22",
+      "dateModified": "2026-04-09",
       "content": [
         {
           "kind": "affiliateDisclosure",
@@ -1904,8 +1967,7 @@
         }
       ],
       "relatedServiceSlugs": [
-        "roofer-georgetown-tx",
-        "roof-leak-repair-georgetown-tx"
+        "roofer-georgetown-tx"
       ],
       "relatedBestSlugs": [
         "best-roofers-georgetown-tx"
@@ -1918,6 +1980,8 @@
       "description": "A practical checklist for Georgetown homeowners: licensing, insurance, response time, warning signs, and how to compare plumbers fairly.",
       "locationSlug": "georgetown-tx",
       "readTime": "8 min",
+      "datePublished": "2026-01-08",
+      "dateModified": "2026-04-07",
       "content": [
         {
           "kind": "p",
@@ -1971,8 +2035,7 @@
       ],
       "relatedServiceSlugs": [
         "plumber-georgetown-tx",
-        "clogged-drain-georgetown-tx",
-        "sewer-line-repair-georgetown-tx"
+        "water-heater-repair-georgetown-tx"
       ],
       "relatedBestSlugs": [
         "best-plumbers-georgetown-tx"
@@ -2051,11 +2114,82 @@
         }
       ],
       "relatedServiceSlugs": [
-        "hvac-georgetown-tx",
-        "ac-not-cooling-georgetown-tx"
+        "hvac-georgetown-tx"
       ],
       "relatedBestSlugs": [
         "top-hvac-companies-georgetown-tx"
+      ]
+    },
+    {
+      "slug": "after-hail-roof-checklist-georgetown-tx",
+      "title": "After a Hail or Wind Storm: Roof Checklist for Georgetown Homeowners",
+      "h1": "What to Check on Your Roof After a Storm in Georgetown, TX",
+      "description": "A safe, ground-level-first checklist: photos to take, interior signs to watch, when tarping makes sense, and how to talk to adjusters and roofers without walking a wet roof.",
+      "locationSlug": "georgetown-tx",
+      "readTime": "10 min",
+      "datePublished": "2026-04-28",
+      "dateModified": "2026-04-28",
+      "content": [
+        {
+          "kind": "p",
+          "text": "Williamson County’s spring storm season is loud — hail, straight-line wind, and sudden hard rain show up every year. Most homeowners don’t need to climb a roof to gather useful information; in fact, steep, damp roofs are where avoidable injuries happen. This checklist keeps you on the ground first, documents what matters for insurance conversations, and lines up smart next steps with local roofers."
+        },
+        { "kind": "h2", "text": "Safety first: stay off steep or wet roofs" },
+        {
+          "kind": "p",
+          "text": "Binoculars from the driveway, a zoom photo from a safe ladder position at the eave, or a drone where legal beats a hurried walk on slick shingles. If water is actively entering the living space, prioritize buckets, moving valuables, and calling for temporary stabilization — not heroics on the slope."
+        },
+        { "kind": "h2", "text": "Ground-level inspection checklist" },
+        {
+          "kind": "ul",
+          "items": [
+            "Shingles or tile fragments in the yard, especially on the windward side of the home.",
+            "New granule grit at downspout outlets or splashed against siding — heavy granule dump often matters for shingle age.",
+            "Dented mailboxes, AC fins, window screens, or soft-metal fixtures — context adjusters use alongside roof photos.",
+            "Tree debris impacts: scratched siding or broken branches overhanging the roofline."
+          ]
+        },
+        { "kind": "h2", "text": "Interior and attic cues" },
+        {
+          "kind": "ul",
+          "items": [
+            "New ceiling stains, especially after the first post-storm rain — photograph with the date.",
+            "Damp insulation in the attic or daylight visible at penetrations — note location for the roofer.",
+            "Musty odors that appear within days of a storm; catch these early before mold becomes part of the claim story."
+          ]
+        },
+        { "kind": "h2", "text": "Documentation that ages well" },
+        {
+          "kind": "p",
+          "text": "Use your phone’s timestamp, capture wide context shots and closer detail, and jot the approximate storm time from NOAA or local news. Memory fades; dated photos don’t. That’s especially true if you need to show that staining appeared after a specific event rather than as an old maintenance issue."
+        },
+        { "kind": "h2", "text": "Temporary tarping: when it helps" },
+        {
+          "kind": "p",
+          "text": "Tarping is stabilization, not repair. It can buy time while you compare written scopes, but it should come with a clear plan for the permanent fix. Ask what area is covered, how it’s anchored, and what happens if wind pulls it before the repair date."
+        },
+        { "kind": "h2", "text": "Working with adjusters and roofers" },
+        {
+          "kind": "p",
+          "text": "You want an inspection that identifies failure points (flashing, penetrations, windward slopes) rather than a vague “some damage.” It’s reasonable to get a roofer’s opinion on scope before you accept a carrier’s first summary if something feels incomplete — but avoid signing open-ended assignment-of-benefits paperwork you haven’t read. Compare at least two Georgetown roofers on materials, decking allowances, and ventilation when the job is larger than a minor repair."
+        },
+        { "kind": "h2", "text": "Related reading" },
+        {
+          "kind": "p",
+          "parts": [
+            { "type": "text", "text": "Use the " },
+            { "type": "link", "href": "/services/roofer-georgetown-tx", "label": "Georgetown roofer hiring guide" },
+            { "type": "text", "text": " for bid comparison, then the " },
+            { "type": "link", "href": "/best/best-roofers-georgetown-tx", "label": "best roofers comparison" },
+            { "type": "text", "text": " to shortlist companies for written estimates." }
+          ]
+        }
+      ],
+      "relatedServiceSlugs": [
+        "roofer-georgetown-tx"
+      ],
+      "relatedBestSlugs": [
+        "best-roofers-georgetown-tx"
       ]
     }
   ],
@@ -2083,8 +2217,7 @@
       ],
       "recommendedServiceSlugs": [
         "plumber-georgetown-tx",
-        "clogged-drain-georgetown-tx",
-        "plumber-sun-city-georgetown-tx"
+        "water-heater-repair-georgetown-tx"
       ]
     },
     {
@@ -2108,9 +2241,7 @@
         { "kind": "p", "text": "If your AC isn’t cooling, start with the AC guide and then compare local HVAC companies to decide who to contact." }
       ],
       "recommendedServiceSlugs": [
-        "hvac-georgetown-tx",
-        "ac-not-cooling-georgetown-tx",
-        "hvac-wolf-ranch-georgetown-tx"
+        "hvac-georgetown-tx"
       ]
     },
     {
@@ -2135,9 +2266,7 @@
         { "kind": "p", "text": "If you’re seeing leaks or storm damage, start with the roofing guide and then compare local roofers to decide who to contact." }
       ],
       "recommendedServiceSlugs": [
-        "roofer-georgetown-tx",
-        "roof-leak-repair-georgetown-tx",
-        "roofer-berry-creek-georgetown-tx"
+        "roofer-georgetown-tx"
       ]
     },
     {

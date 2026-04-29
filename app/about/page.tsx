@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd from "../../components/JsonLd";
 import TrustPage from "../../components/templates/TrustPage";
 import { pageSeoMetadata } from "../../lib/page-seo";
 import { getBrandName } from "../../lib/site-content";
 import { AUTHOR_NAME, AUTHOR_PROFILE_PATH } from "../../lib/site-author";
+import { aboutPageJsonLd } from "../../lib/trust-pages-schema";
 
 export const metadata: Metadata = pageSeoMetadata({
   titleSegment: "About Georgetown Home Services",
@@ -17,6 +19,15 @@ export default function AboutPage() {
   const brand = getBrandName();
   return (
     <TrustPage
+      topSlot={
+        <JsonLd
+          data={aboutPageJsonLd({
+            name: `About ${brand}`,
+            description:
+              "Georgetown Home Services is a homeowner guide and provider directory for Georgetown, Texas—helping you compare companies and make better hiring decisions.",
+          })}
+        />
+      }
       eyebrow="About"
       title={`About ${brand}`}
       description={

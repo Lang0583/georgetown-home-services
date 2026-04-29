@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd from "../../components/JsonLd";
 import TrustPage from "../../components/templates/TrustPage";
 import { pageSeoMetadata } from "../../lib/page-seo";
 import { AUTHOR_NAME, AUTHOR_PROFILE_PATH } from "../../lib/site-author";
+import { webPageTrustJsonLd } from "../../lib/trust-pages-schema";
 
 export const metadata: Metadata = pageSeoMetadata({
   titleSegment: "How We Review and Rank Providers",
@@ -15,6 +17,16 @@ export const metadata: Metadata = pageSeoMetadata({
 export default function MethodologyPage() {
   return (
     <TrustPage
+      topSlot={
+        <JsonLd
+          data={webPageTrustJsonLd({
+            pathname: "/methodology",
+            name: "How We Review and Rank Providers",
+            description:
+              "How we review and rank plumbers, HVAC companies, and roofers serving Georgetown, Texas using publicly available information—and what you should confirm directly with providers.",
+          })}
+        />
+      }
       eyebrow="Methodology"
       title="How We Review and Rank Providers"
       description={

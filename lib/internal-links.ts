@@ -40,9 +40,6 @@ function bestOfForService(service: ServicePage): InternalLink | null {
 }
 
 function neighborhoodForService(service: ServicePage): InternalLink | null {
-  // Previously preferred a neighborhood page (Sun City / Wolf Ranch / Berry Creek),
-  // but those 308 to /locations/georgetown-tx now. Skip them and use a real,
-  // indexable location so internal links don't point at redirecting URLs.
   const locations = getLocations();
   const eligible = locations.filter((l) => !isRedirectedLocationSlug(l.slug));
   const match =

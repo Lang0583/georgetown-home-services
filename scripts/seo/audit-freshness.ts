@@ -2,16 +2,14 @@
  * Freshness audit: how stale is each published page?
  *
  * Strategy:
- *   1. Check whether the blog page has an explicit `dateModified` override in
- *      `app/blog/[slug]/page.tsx` (currently overrides live in a local map).
- *   2. If not, use the latest git commit touching the content source files
- *      (`data/site-content.json` or `lib/generatedPages.json`) as a proxy.
+ *   1. Blog posts: `hasExplicitDateModified` is true when `data/site-content.json`
+ *      defines `dateModified` or `datePublished` for the slug, or when
+ *      `app/blog/[slug]/page.tsx` embeds per-slug `datePublished` / `dateModified`
+ *      in a map (legacy pattern).
+ *   2. Use the latest git commit touching the content source files
+ *      (`data/site-content.json` or `lib/generatedPages.json`) as a coarse proxy
+ *      for last change when comparing staleness.
  *   3. Flag any page whose effective last-change is older than the threshold.
- *
- * The second heuristic is coarse (file-level, not slug-level) but it's
- * deterministic and available in CI without extra tooling. Over time we should
- * add explicit `datePublished` / `dateModified` to `data/site-content.json` so
- * this becomes precise.
  *
  * Writes `.reports/freshness.json`.
  */
@@ -123,20 +121,26 @@ async function main(): Promise<void> {
     .sort()
     .at(-1) ?? null;
 
-  const items: FreshnessItem[] = rows.map((r) => ({
-    slug: r.slug,
-    title: r.title,
-    section: r.section,
-    lastContentChange: corpusLastChange,
-    daysSinceChange: daysSince(corpusLastChange),
-    hasExplicitDateModified: r.section === "blog" ? explicitDateBlogs.has(r.slug) : false,
-  }));
+  const items: FreshnessItem[] = rows.map((r) => {
+    const blog = r.section === "blog" ? getBlogBySlug(r.slug) : null;
+    const explicitFromJson = Boolean(blog?.dateModified ?? blog?.datePublished);
+    const explicitFromBlogPage = r.section === "blog" && explicitDateBlogs.has(r.slug);
+    return {
+      slug: r.slug,
+      title: r.title,
+      section: r.section,
+      lastContentChange: corpusLastChange,
+      daysSinceChange: daysSince(corpusLastChange),
+      hasExplicitDateModified:
+        r.section === "blog" ? explicitFromJson || explicitFromBlogPage : false,
+    };
+  });
 
   const stale = items.filter(
     (i) => i.daysSinceChange !== null && i.daysSinceChange > STALENESS_THRESHOLD_DAYS,
   );
-  // Blog posts without any explicit dateModified — candidates for adding one,
-  // which helps Google treat them as freshly reviewed after small edits.
+  // Blog posts with neither datePublished nor dateModified in site content (and
+  // no legacy per-slug dates in the blog route file).
   const missingExplicitDate = items.filter(
     (i) => i.section === "blog" && !i.hasExplicitDateModified,
   );
@@ -151,7 +155,7 @@ async function main(): Promise<void> {
   await mkdir(dirname(OUTPUT_PATH), { recursive: true });
   await writeFile(OUTPUT_PATH, JSON.stringify(report, null, 2));
   console.log(
-    `[seo/audit-freshness] ${items.length} pages, ${stale.length} stale (>${STALENESS_THRESHOLD_DAYS}d), ${missingExplicitDate.length} blog posts without explicit dateModified → ${OUTPUT_PATH}`,
+    `[seo/audit-freshness] ${items.length} pages, ${stale.length} stale (>${STALENESS_THRESHOLD_DAYS}d), ${missingExplicitDate.length} blog posts without explicit dates in site content → ${OUTPUT_PATH}`,
   );
 }
 

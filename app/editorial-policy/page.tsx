@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd from "../../components/JsonLd";
 import TrustPage from "../../components/templates/TrustPage";
 import { pageSeoMetadata } from "../../lib/page-seo";
 import { AUTHOR_NAME, AUTHOR_PROFILE_PATH } from "../../lib/site-author";
+import { webPageTrustJsonLd } from "../../lib/trust-pages-schema";
 
 export const metadata: Metadata = pageSeoMetadata({
   titleSegment: "Editorial Policy",
@@ -15,6 +17,16 @@ export const metadata: Metadata = pageSeoMetadata({
 export default function EditorialPolicyPage() {
   return (
     <TrustPage
+      topSlot={
+        <JsonLd
+          data={webPageTrustJsonLd({
+            pathname: "/editorial-policy",
+            name: "Editorial Policy",
+            description:
+              "How Georgetown Home Services creates and updates homeowner guides and provider comparisons, including transparency around sponsored placements.",
+          })}
+        />
+      }
       eyebrow="Editorial"
       title="Editorial Policy"
       description={

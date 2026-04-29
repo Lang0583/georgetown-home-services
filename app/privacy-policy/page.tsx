@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import JsonLd from "../../components/JsonLd";
 import TrustPage from "../../components/templates/TrustPage";
 import { pageSeoMetadata } from "../../lib/page-seo";
+import { webPageTrustJsonLd } from "../../lib/trust-pages-schema";
 
 export const metadata: Metadata = pageSeoMetadata({
   titleSegment: "Privacy Policy",
@@ -12,6 +14,15 @@ export const metadata: Metadata = pageSeoMetadata({
 export default function PrivacyPolicyPage() {
   return (
     <TrustPage
+      topSlot={
+        <JsonLd
+          data={webPageTrustJsonLd({
+            pathname: "/privacy-policy",
+            name: "Privacy Policy",
+            description: "Privacy policy for Georgetown Home Services.",
+          })}
+        />
+      }
       eyebrow="Legal"
       title="Privacy Policy"
       description={

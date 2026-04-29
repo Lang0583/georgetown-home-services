@@ -276,6 +276,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description:
         "Banging, squealing, or clicking from your HVAC system in Georgetown TX? This guide explains what each noise likely means and whether you need a technician.",
     },
+    "after-hail-roof-checklist-georgetown-tx": {
+      title: "Georgetown Roof Storm Checklist: After Hail or Wind Damage",
+      description:
+        "Safe ground-level inspection steps, photos to take for claims, when tarping helps, and how to compare roofer scopes in Williamson County.",
+    },
     "ac-not-cooling-georgetown-tx": {
       title: "AC Not Cooling in Georgetown TX? Here's What To Do",
       description:

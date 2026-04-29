@@ -6,8 +6,12 @@ const SITE_NAME = "Georgetown Home Services";
 
 /** Absolute page URL for the configured origin (same base as canonical tags). */
 export function absolutePageUrl(pathname: string): string {
+  const base = SITE_URL.replace(/\/$/, "");
+  if (pathname === "" || pathname === "/") {
+    return `${base}/`;
+  }
   const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
-  return new URL(path, SITE_URL).href;
+  return new URL(path, `${base}/`).href;
 }
 
 /** Full `<title>` / `og:title` text (includes brand suffix). */

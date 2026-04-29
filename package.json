@@ -31,7 +31,8 @@
     "seo:email": "tsx scripts/seo/email-digest.ts",
     "seo:propose": "tsx scripts/seo/propose-consolidation.ts",
     "seo:consolidate:patch": "tsx scripts/seo/apply-consolidation.ts",
-    "seo:all": "npm run seo:pull && npm run seo:audit && npm run seo:freshness && npm run seo:digest"
+    "seo:all": "npm run seo:pull && npm run seo:audit && npm run seo:freshness && npm run seo:digest",
+    "seo:check": "npm run seo:audit && npm run seo:freshness"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
@@ -43,10 +44,12 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/jsdom": "^28.0.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "googleapis": "^171.4.0",
+    "jsdom": "^29.1.0",
     "pdf-lib": "^1.17.1",
     "sharp": "^0.34.5",
     "tailwindcss": "^4",

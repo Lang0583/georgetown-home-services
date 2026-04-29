@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd from "../../components/JsonLd";
 import TrustPage from "../../components/templates/TrustPage";
 import { pageSeoMetadata } from "../../lib/page-seo";
 import { getBrandName, getContact } from "../../lib/site-content";
+import { contactPageJsonLd } from "../../lib/trust-pages-schema";
 
 export const metadata: Metadata = pageSeoMetadata({
   titleSegment: "Contact",
@@ -17,6 +19,15 @@ export default function ContactPage() {
   const contact = getContact();
   return (
     <TrustPage
+      topSlot={
+        <JsonLd
+          data={contactPageJsonLd({
+            name: `Contact ${brand}`,
+            description:
+              "Contact Georgetown Home Services about the site. For repairs and estimates, use service guide request forms or reach providers from the Best Of directory.",
+          })}
+        />
+      }
       eyebrow="Contact"
       title={`Contact ${brand}`}
       description={<>Questions about this site, corrections, or partnership inquiries are welcome.</>}

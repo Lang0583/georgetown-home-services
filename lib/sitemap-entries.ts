@@ -35,8 +35,8 @@ const CORE_BEST_SET: ReadonlySet<string> = new Set(CORE_BEST_SLUGS);
  *   0.7    supporting sub-service pages, blog posts, /locations/georgetown-tx
  *   0.5    static pages (about/contact/policies), low-signal pages
  *
- * Redirected neighborhood slugs are excluded — they 308 in `next.config.ts` and
- * should not be advertised to crawlers.
+ * Location slugs that 308 elsewhere — keep in sync with `next.config.ts`.
+ * (Empty when all neighborhood location pages are indexable.)
  */
 export function buildSitemapEntries(): MetadataRoute.Sitemap {
   const lastModified = new Date();
@@ -59,6 +59,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     { path: "/blog", priority: 0.7 },
     // High priority: featured-snippet target for "[service] cost georgetown tx" queries.
     { path: "/pricing", priority: 0.9 },
+    { path: "/pricing/calculator", priority: 0.85 },
   ];
 
   const serviceHubMonthly: string[] = [

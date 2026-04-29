@@ -147,7 +147,14 @@ export default function PricingPage() {
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-gray-700">
             Typical Georgetown price ranges for the home services homeowners in
             Williamson County ask about most. Use these as a sanity-check on written
-            bids — not as quotes. Ranges reviewed {PRICING_LAST_REVIEWED_MONTH}.
+            bids — not as quotes. Ranges reviewed {PRICING_LAST_REVIEWED_MONTH}.{" "}
+            <Link
+              href="/pricing/calculator"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Open the interactive estimator
+            </Link>{" "}
+            to sum ranges for the jobs you are planning.
           </p>
 
           <aside className="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm leading-relaxed text-amber-900">
