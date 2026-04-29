@@ -145,8 +145,10 @@ export const NOINDEX_SLUGS = new Set([
   "best-landscaping-companies-georgetown-tx",
   "best-foundation-repair-georgetown-tx",
   "best-electricians-georgetown-tx",
-  "best-roofers-georgetown-tx",
-  "top-hvac-companies-georgetown-tx",
+  // Removed (rewritten to >=1,000 words with Williamson-County-specific
+  // technical detail; see lib/generatedPages.json):
+  //   - "best-roofers-georgetown-tx"
+  //   - "top-hvac-companies-georgetown-tx"
 ]);
 
 export function isNoindexSlug(slug: string): boolean {
