@@ -171,6 +171,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
   const location = getLocationBySlug(service.locationSlug);
   const relatedServices = service.relatedServiceSlugs
+    .filter((s) => !isRedirectedServiceSlug(s) && !isNoindexSlug(s))
     .map((s) => getServiceBySlug(s))
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
   const bestPages = service.bestSlugs
@@ -1009,15 +1010,18 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     </Link>
                   );
                 })}
-                {service.relatedServiceSlugs.slice(0, 2).map((sSlug) => {
-                  const s = getServices().find((x) => x.slug === sSlug);
-                  if (!s) return null;
-                  return (
-                    <Link key={s.slug} href={`/services/${s.slug}`} className="text-sm font-semibold text-gray-900 hover:underline">
-                      {s.title}
-                    </Link>
-                  );
-                })}
+                {service.relatedServiceSlugs
+                  .filter((s) => !isRedirectedServiceSlug(s) && !isNoindexSlug(s))
+                  .slice(0, 2)
+                  .map((sSlug) => {
+                    const s = getServices().find((x) => x.slug === sSlug);
+                    if (!s) return null;
+                    return (
+                      <Link key={s.slug} href={`/services/${s.slug}`} className="text-sm font-semibold text-gray-900 hover:underline">
+                        {s.title}
+                      </Link>
+                    );
+                  })}
               </div>
             </div>
           </div>

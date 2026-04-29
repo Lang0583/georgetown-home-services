@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { PROVIDER_INFO_DISCLAIMER } from "../lib/provider-disclaimer";
-import { showExtendedHomeServices } from "../lib/public-site-scope";
+import { isNoindexSlug, showExtendedHomeServices } from "../lib/public-site-scope";
 import { getBrandName, getContact } from "../lib/site-content";
+
+// Sitewide footer: rendered on every request. Like the header, links to
+// noindex slugs are filtered to avoid funneling link equity into pages
+// Google has been told not to index.
 
 const footerBarLinkClass =
   "inline-flex min-h-11 items-center rounded-md px-0.5 hover:underline sm:min-h-0";
@@ -60,34 +64,40 @@ export default function SiteFooter() {
                   Roofing
                 </Link>
               </li>
-              {showExtendedHomeServices() ? (
-                <>
-                  <li>
-                    <Link className="hover:underline" href="/services/electrician-georgetown-tx">
-                      Electrical
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="hover:underline" href="/services/landscaping-georgetown-tx">
-                      Landscaping
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="hover:underline" href="/services/pest-control-georgetown-tx">
-                      Pest control
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="hover:underline" href="/services/foundation-repair-georgetown-tx">
-                      Foundation repair
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="hover:underline" href="/services/house-cleaning-georgetown-tx">
-                      House cleaning
-                    </Link>
-                  </li>
-                </>
+              {showExtendedHomeServices() && !isNoindexSlug("electrician-georgetown-tx") ? (
+                <li>
+                  <Link className="hover:underline" href="/services/electrician-georgetown-tx">
+                    Electrical
+                  </Link>
+                </li>
+              ) : null}
+              {showExtendedHomeServices() && !isNoindexSlug("landscaping-georgetown-tx") ? (
+                <li>
+                  <Link className="hover:underline" href="/services/landscaping-georgetown-tx">
+                    Landscaping
+                  </Link>
+                </li>
+              ) : null}
+              {showExtendedHomeServices() && !isNoindexSlug("pest-control-georgetown-tx") ? (
+                <li>
+                  <Link className="hover:underline" href="/services/pest-control-georgetown-tx">
+                    Pest control
+                  </Link>
+                </li>
+              ) : null}
+              {showExtendedHomeServices() && !isNoindexSlug("foundation-repair-georgetown-tx") ? (
+                <li>
+                  <Link className="hover:underline" href="/services/foundation-repair-georgetown-tx">
+                    Foundation repair
+                  </Link>
+                </li>
+              ) : null}
+              {showExtendedHomeServices() && !isNoindexSlug("house-cleaning-georgetown-tx") ? (
+                <li>
+                  <Link className="hover:underline" href="/services/house-cleaning-georgetown-tx">
+                    House cleaning
+                  </Link>
+                </li>
               ) : null}
             </ul>
           </div>
@@ -100,49 +110,61 @@ export default function SiteFooter() {
                   Provider directory hub
                 </Link>
               </li>
-              <li>
-                <Link className="hover:underline" href="/best/best-plumbers-georgetown-tx">
-                  Best Plumbers
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:underline" href="/best/top-hvac-companies-georgetown-tx">
-                  Best HVAC
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:underline" href="/best/best-roofers-georgetown-tx">
-                  Best Roofers
-                </Link>
-              </li>
-              {showExtendedHomeServices() ? (
-                <>
-                  <li>
-                    <Link className="hover:underline" href="/best/best-electricians-georgetown-tx">
-                      Best Electricians
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="hover:underline" href="/best/best-landscaping-companies-georgetown-tx">
-                      Best Landscaping
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="hover:underline" href="/best/best-pest-control-georgetown-tx">
-                      Best Pest Control
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="hover:underline" href="/best/best-foundation-repair-georgetown-tx">
-                      Best Foundation Repair
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="hover:underline" href="/best/best-house-cleaning-services-georgetown-tx">
-                      Best House Cleaning
-                    </Link>
-                  </li>
-                </>
+              {!isNoindexSlug("best-plumbers-georgetown-tx") ? (
+                <li>
+                  <Link className="hover:underline" href="/best/best-plumbers-georgetown-tx">
+                    Best Plumbers
+                  </Link>
+                </li>
+              ) : null}
+              {!isNoindexSlug("top-hvac-companies-georgetown-tx") ? (
+                <li>
+                  <Link className="hover:underline" href="/best/top-hvac-companies-georgetown-tx">
+                    Best HVAC
+                  </Link>
+                </li>
+              ) : null}
+              {!isNoindexSlug("best-roofers-georgetown-tx") ? (
+                <li>
+                  <Link className="hover:underline" href="/best/best-roofers-georgetown-tx">
+                    Best Roofers
+                  </Link>
+                </li>
+              ) : null}
+              {showExtendedHomeServices() && !isNoindexSlug("best-electricians-georgetown-tx") ? (
+                <li>
+                  <Link className="hover:underline" href="/best/best-electricians-georgetown-tx">
+                    Best Electricians
+                  </Link>
+                </li>
+              ) : null}
+              {showExtendedHomeServices() && !isNoindexSlug("best-landscaping-companies-georgetown-tx") ? (
+                <li>
+                  <Link className="hover:underline" href="/best/best-landscaping-companies-georgetown-tx">
+                    Best Landscaping
+                  </Link>
+                </li>
+              ) : null}
+              {showExtendedHomeServices() && !isNoindexSlug("best-pest-control-georgetown-tx") ? (
+                <li>
+                  <Link className="hover:underline" href="/best/best-pest-control-georgetown-tx">
+                    Best Pest Control
+                  </Link>
+                </li>
+              ) : null}
+              {showExtendedHomeServices() && !isNoindexSlug("best-foundation-repair-georgetown-tx") ? (
+                <li>
+                  <Link className="hover:underline" href="/best/best-foundation-repair-georgetown-tx">
+                    Best Foundation Repair
+                  </Link>
+                </li>
+              ) : null}
+              {showExtendedHomeServices() && !isNoindexSlug("best-house-cleaning-services-georgetown-tx") ? (
+                <li>
+                  <Link className="hover:underline" href="/best/best-house-cleaning-services-georgetown-tx">
+                    Best House Cleaning
+                  </Link>
+                </li>
               ) : null}
             </ul>
           </div>
@@ -229,15 +251,21 @@ export default function SiteFooter() {
             <Link className={footerBarLinkClass} href="/services/roofer-georgetown-tx">
               Roofing
             </Link>
-            <Link className={footerBarLinkClass} href="/best/best-plumbers-georgetown-tx">
-              Best Plumbers
-            </Link>
-            <Link className={footerBarLinkClass} href="/best/top-hvac-companies-georgetown-tx">
-              Best HVAC
-            </Link>
-            <Link className={footerBarLinkClass} href="/best/best-roofers-georgetown-tx">
-              Best Roofers
-            </Link>
+            {!isNoindexSlug("best-plumbers-georgetown-tx") ? (
+              <Link className={footerBarLinkClass} href="/best/best-plumbers-georgetown-tx">
+                Best Plumbers
+              </Link>
+            ) : null}
+            {!isNoindexSlug("top-hvac-companies-georgetown-tx") ? (
+              <Link className={footerBarLinkClass} href="/best/top-hvac-companies-georgetown-tx">
+                Best HVAC
+              </Link>
+            ) : null}
+            {!isNoindexSlug("best-roofers-georgetown-tx") ? (
+              <Link className={footerBarLinkClass} href="/best/best-roofers-georgetown-tx">
+                Best Roofers
+              </Link>
+            ) : null}
           </div>
           <div>
             © {new Date().getFullYear()} {brand}. All rights reserved.

@@ -18,6 +18,7 @@ import {
   EXTENDED_PROVIDER_GROUPS,
   isExtendedBestSlug,
   isExtendedServiceSlug,
+  isNoindexSlug,
   showExtendedHomeServices,
 } from "../lib/public-site-scope";
 import type { Faq } from "../lib/site-content";
@@ -119,12 +120,17 @@ export default function Home() {
   const locations = getLocations();
   const best = getBest();
   const blog = getBlog();
+  // Hide noindex slugs from on-page navigation: linking heavily to noindex
+  // pages from indexable pages drains crawl budget and PageRank. The header
+  // and footer also exclude these (see StickyHeader.tsx / SiteFooter.tsx).
   const coreHomeServices = (CORE_SERVICE_SLUGS as readonly string[])
     .filter((slug) => showExtendedHomeServices() || !isExtendedServiceSlug(slug))
+    .filter((slug) => !isNoindexSlug(slug))
     .map((slug) => services.find((s) => s.slug === slug))
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
   const coreHomeBest = (CORE_BEST_SLUGS as readonly string[])
     .filter((slug) => showExtendedHomeServices() || !isExtendedBestSlug(slug))
+    .filter((slug) => !isNoindexSlug(slug))
     .map((slug) => best.find((b) => b.slug === slug))
     .filter((b): b is NonNullable<typeof b> => Boolean(b));
   const allBusinesses = businesses as Business[];
@@ -148,6 +154,7 @@ export default function Home() {
 
   const bestBySlug = new Map(best.map((b) => [b.slug, b]));
   const allCoreBestNav = (CORE_BEST_SLUGS as readonly string[])
+    .filter((slug) => !isNoindexSlug(slug))
     .map((slug) => {
       const record = bestBySlug.get(slug);
       if (!record) return null;
@@ -239,49 +246,55 @@ export default function Home() {
                     <div className="mt-1 text-sm text-gray-700">Roof leak, storm damage, shingle repair, estimates.</div>
                     <div className="mt-2 text-xs font-semibold text-primary">Explore roofing →</div>
                   </Link>
-                  {showExtendedHomeServices() ? (
-                    <>
-                      <Link
-                        href="/services/electrician-georgetown-tx"
-                        className="rounded-lg border border-gray-200 border-t-[3px] border-t-transparent bg-gray-50 p-4 transition hover:border-x-primary/25 hover:border-b-primary/25 hover:border-t-primary hover:bg-white"
-                      >
-                        <div className="text-sm font-semibold text-gray-900">Electrical</div>
-                        <div className="mt-1 text-sm text-gray-700">Panels, circuits, outlets, EV charger prep.</div>
-                        <div className="mt-2 text-xs font-semibold text-primary">Explore electrical →</div>
-                      </Link>
-                      <Link
-                        href="/services/landscaping-georgetown-tx"
-                        className="rounded-lg border border-gray-200 border-t-[3px] border-t-transparent bg-gray-50 p-4 transition hover:border-x-primary/25 hover:border-b-primary/25 hover:border-t-primary hover:bg-white"
-                      >
-                        <div className="text-sm font-semibold text-gray-900">Landscaping</div>
-                        <div className="mt-1 text-sm text-gray-700">Lawn care, beds, mulch, irrigation tuning.</div>
-                        <div className="mt-2 text-xs font-semibold text-primary">Explore landscaping →</div>
-                      </Link>
-                      <Link
-                        href="/services/pest-control-georgetown-tx"
-                        className="rounded-lg border border-gray-200 border-t-[3px] border-t-transparent bg-gray-50 p-4 transition hover:border-x-primary/25 hover:border-b-primary/25 hover:border-t-primary hover:bg-white"
-                      >
-                        <div className="text-sm font-semibold text-gray-900">Pest control</div>
-                        <div className="mt-1 text-sm text-gray-700">Ants, roaches, rodents, perimeter plans.</div>
-                        <div className="mt-2 text-xs font-semibold text-primary">Explore pest control →</div>
-                      </Link>
-                      <Link
-                        href="/services/foundation-repair-georgetown-tx"
-                        className="rounded-lg border border-gray-200 border-t-[3px] border-t-transparent bg-gray-50 p-4 transition hover:border-x-primary/25 hover:border-b-primary/25 hover:border-t-primary hover:bg-white"
-                      >
-                        <div className="text-sm font-semibold text-gray-900">Foundation</div>
-                        <div className="mt-1 text-sm text-gray-700">Clay soil cracks, drainage, pier and slab.</div>
-                        <div className="mt-2 text-xs font-semibold text-primary">Explore foundation →</div>
-                      </Link>
-                      <Link
-                        href="/services/house-cleaning-georgetown-tx"
-                        className="rounded-lg border border-gray-200 border-t-[3px] border-t-transparent bg-gray-50 p-4 transition hover:border-x-primary/25 hover:border-b-primary/25 hover:border-t-primary hover:bg-white"
-                      >
-                        <div className="text-sm font-semibold text-gray-900">House cleaning</div>
-                        <div className="mt-1 text-sm text-gray-700">Recurring maid service, deep and move-out cleans.</div>
-                        <div className="mt-2 text-xs font-semibold text-primary">Explore cleaning →</div>
-                      </Link>
-                    </>
+                  {showExtendedHomeServices() && !isNoindexSlug("electrician-georgetown-tx") ? (
+                    <Link
+                      href="/services/electrician-georgetown-tx"
+                      className="rounded-lg border border-gray-200 border-t-[3px] border-t-transparent bg-gray-50 p-4 transition hover:border-x-primary/25 hover:border-b-primary/25 hover:border-t-primary hover:bg-white"
+                    >
+                      <div className="text-sm font-semibold text-gray-900">Electrical</div>
+                      <div className="mt-1 text-sm text-gray-700">Panels, circuits, outlets, EV charger prep.</div>
+                      <div className="mt-2 text-xs font-semibold text-primary">Explore electrical →</div>
+                    </Link>
+                  ) : null}
+                  {showExtendedHomeServices() && !isNoindexSlug("landscaping-georgetown-tx") ? (
+                    <Link
+                      href="/services/landscaping-georgetown-tx"
+                      className="rounded-lg border border-gray-200 border-t-[3px] border-t-transparent bg-gray-50 p-4 transition hover:border-x-primary/25 hover:border-b-primary/25 hover:border-t-primary hover:bg-white"
+                    >
+                      <div className="text-sm font-semibold text-gray-900">Landscaping</div>
+                      <div className="mt-1 text-sm text-gray-700">Lawn care, beds, mulch, irrigation tuning.</div>
+                      <div className="mt-2 text-xs font-semibold text-primary">Explore landscaping →</div>
+                    </Link>
+                  ) : null}
+                  {showExtendedHomeServices() && !isNoindexSlug("pest-control-georgetown-tx") ? (
+                    <Link
+                      href="/services/pest-control-georgetown-tx"
+                      className="rounded-lg border border-gray-200 border-t-[3px] border-t-transparent bg-gray-50 p-4 transition hover:border-x-primary/25 hover:border-b-primary/25 hover:border-t-primary hover:bg-white"
+                    >
+                      <div className="text-sm font-semibold text-gray-900">Pest control</div>
+                      <div className="mt-1 text-sm text-gray-700">Ants, roaches, rodents, perimeter plans.</div>
+                      <div className="mt-2 text-xs font-semibold text-primary">Explore pest control →</div>
+                    </Link>
+                  ) : null}
+                  {showExtendedHomeServices() && !isNoindexSlug("foundation-repair-georgetown-tx") ? (
+                    <Link
+                      href="/services/foundation-repair-georgetown-tx"
+                      className="rounded-lg border border-gray-200 border-t-[3px] border-t-transparent bg-gray-50 p-4 transition hover:border-x-primary/25 hover:border-b-primary/25 hover:border-t-primary hover:bg-white"
+                    >
+                      <div className="text-sm font-semibold text-gray-900">Foundation</div>
+                      <div className="mt-1 text-sm text-gray-700">Clay soil cracks, drainage, pier and slab.</div>
+                      <div className="mt-2 text-xs font-semibold text-primary">Explore foundation →</div>
+                    </Link>
+                  ) : null}
+                  {showExtendedHomeServices() && !isNoindexSlug("house-cleaning-georgetown-tx") ? (
+                    <Link
+                      href="/services/house-cleaning-georgetown-tx"
+                      className="rounded-lg border border-gray-200 border-t-[3px] border-t-transparent bg-gray-50 p-4 transition hover:border-x-primary/25 hover:border-b-primary/25 hover:border-t-primary hover:bg-white"
+                    >
+                      <div className="text-sm font-semibold text-gray-900">House cleaning</div>
+                      <div className="mt-1 text-sm text-gray-700">Recurring maid service, deep and move-out cleans.</div>
+                      <div className="mt-2 text-xs font-semibold text-primary">Explore cleaning →</div>
+                    </Link>
                   ) : null}
                 </div>
               </div>
@@ -289,16 +302,16 @@ export default function Home() {
               <div className="mt-8 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
                 <div className="text-sm font-semibold text-gray-900">Quick links</div>
                 <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  <ButtonLink href="/services/ac-not-cooling-georgetown-tx" variant="secondary" className="w-full justify-center px-4 py-2.5 text-sm sm:w-auto">
+                  <ButtonLink href="/services/hvac-georgetown-tx" variant="secondary" className="w-full justify-center px-4 py-2.5 text-sm sm:w-auto">
                     AC not cooling
                   </ButtonLink>
-                  <ButtonLink href="/services/clogged-drain-georgetown-tx" variant="secondary" className="w-full justify-center px-4 py-2.5 text-sm sm:w-auto">
+                  <ButtonLink href="/services/plumber-georgetown-tx" variant="secondary" className="w-full justify-center px-4 py-2.5 text-sm sm:w-auto">
                     Clogged drain
                   </ButtonLink>
-                  <ButtonLink href="/services/roof-leak-repair-georgetown-tx" variant="secondary" className="w-full justify-center px-4 py-2.5 text-sm sm:w-auto">
+                  <ButtonLink href="/services/roofer-georgetown-tx" variant="secondary" className="w-full justify-center px-4 py-2.5 text-sm sm:w-auto">
                     Roof leak repair
                   </ButtonLink>
-                  <ButtonLink href="/blog/how-to-find-a-good-plumber-georgetown-tx" variant="secondary" className="w-full justify-center px-4 py-2.5 text-sm sm:w-auto">
+                  <ButtonLink href="/blog/how-to-choose-a-reliable-plumber-georgetown-tx" variant="secondary" className="w-full justify-center px-4 py-2.5 text-sm sm:w-auto">
                     How to find a good plumber
                   </ButtonLink>
                 </div>
@@ -430,6 +443,7 @@ export default function Home() {
           <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
             {best
               .filter((b) => showExtendedHomeServices() || !isExtendedBestSlug(b.slug))
+              .filter((b) => !isNoindexSlug(b.slug))
               .map((b) => (
                 <LinkCard
                   key={b.slug}

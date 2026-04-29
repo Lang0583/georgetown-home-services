@@ -1,6 +1,10 @@
 import Link from "next/link";
-import { showExtendedHomeServices } from "../lib/public-site-scope";
+import { isNoindexSlug, showExtendedHomeServices } from "../lib/public-site-scope";
 import { getBrandName } from "../lib/site-content";
+
+// Sitewide header links: only to indexable hubs. Noindex slugs are filtered
+// here because the header renders on every request, multiplying any link
+// equity drain across the entire site.
 
 const navLinkClass =
   "inline-flex min-h-11 min-w-11 items-center justify-center rounded-md px-2 text-sm font-semibold text-gray-700 underline-offset-4 transition-colors hover:bg-gray-50 hover:text-primary hover:underline hover:decoration-primary whitespace-nowrap sm:min-h-0 sm:min-w-0 sm:justify-start sm:px-0.5 sm:hover:bg-transparent";
@@ -44,24 +48,30 @@ export default function StickyHeader() {
           <Link href="/services/roofer-georgetown-tx" className={navLinkClass}>
             Roofing
           </Link>
-          {showExtendedHomeServices() ? (
-            <>
-              <Link href="/services/electrician-georgetown-tx" className={navLinkClass}>
-                Electrical
-              </Link>
-              <Link href="/services/landscaping-georgetown-tx" className={navLinkClass}>
-                Landscaping
-              </Link>
-              <Link href="/services/pest-control-georgetown-tx" className={navLinkClass}>
-                Pest
-              </Link>
-              <Link href="/services/foundation-repair-georgetown-tx" className={navLinkClass}>
-                Foundation
-              </Link>
-              <Link href="/services/house-cleaning-georgetown-tx" className={navLinkClass}>
-                Cleaning
-              </Link>
-            </>
+          {showExtendedHomeServices() && !isNoindexSlug("electrician-georgetown-tx") ? (
+            <Link href="/services/electrician-georgetown-tx" className={navLinkClass}>
+              Electrical
+            </Link>
+          ) : null}
+          {showExtendedHomeServices() && !isNoindexSlug("landscaping-georgetown-tx") ? (
+            <Link href="/services/landscaping-georgetown-tx" className={navLinkClass}>
+              Landscaping
+            </Link>
+          ) : null}
+          {showExtendedHomeServices() && !isNoindexSlug("pest-control-georgetown-tx") ? (
+            <Link href="/services/pest-control-georgetown-tx" className={navLinkClass}>
+              Pest
+            </Link>
+          ) : null}
+          {showExtendedHomeServices() && !isNoindexSlug("foundation-repair-georgetown-tx") ? (
+            <Link href="/services/foundation-repair-georgetown-tx" className={navLinkClass}>
+              Foundation
+            </Link>
+          ) : null}
+          {showExtendedHomeServices() && !isNoindexSlug("house-cleaning-georgetown-tx") ? (
+            <Link href="/services/house-cleaning-georgetown-tx" className={navLinkClass}>
+              Cleaning
+            </Link>
           ) : null}
         </nav>
       </div>

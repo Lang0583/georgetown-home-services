@@ -11,7 +11,13 @@ import {
   webPageWithDateModifiedJsonLd,
 } from "../../lib/service-best-pages-meta";
 import { CORE_SERVICE_SLUGS } from "../../lib/pageContentRegistry";
-import { isExtendedServiceSlug, showExtendedHomeServices } from "../../lib/public-site-scope";
+import {
+  isExtendedServiceSlug,
+  isNoindexSlug,
+  isRedirectedLocationSlug,
+  isRedirectedServiceSlug,
+  showExtendedHomeServices,
+} from "../../lib/public-site-scope";
 import { getBlog, getLocations, getServices } from "../../lib/site-content";
 
 export const metadata: Metadata = pageSeoMetadata({
@@ -59,8 +65,13 @@ function faqJsonLd() {
 }
 
 export default function ServicesIndexPage() {
-  const services = getServices();
-  const locations = getLocations();
+  const allServices = getServices();
+  // Hide service rows whose pages 308 to a hub or render with noindex — both
+  // would funnel link equity into URLs that crawlers either redirect or skip.
+  const services = allServices.filter(
+    (s) => !isRedirectedServiceSlug(s.slug) && !isNoindexSlug(s.slug),
+  );
+  const locations = getLocations().filter((l) => !isRedirectedLocationSlug(l.slug));
   const blog = getBlog();
 
   const core = services.filter(

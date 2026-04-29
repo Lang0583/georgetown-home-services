@@ -9,6 +9,7 @@ import {
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
+import { isNoindexSlug, isRedirectedServiceSlug } from "../../../lib/public-site-scope";
 import { getBlog, getServices } from "../../../lib/site-content";
 
 export const metadata: Metadata = pageSeoMetadata({
@@ -49,7 +50,13 @@ export default function RoofingHubPage() {
   const blog = getBlog();
 
   const core = services.find((s) => s.slug === "roofer-georgetown-tx") ?? null;
-  const supporting = services.filter((s) => s.bestSlugs?.includes("best-roofers-georgetown-tx") && s.slug !== "roofer-georgetown-tx");
+  const supporting = services.filter(
+    (s) =>
+      s.bestSlugs?.includes("best-roofers-georgetown-tx") &&
+      s.slug !== "roofer-georgetown-tx" &&
+      !isRedirectedServiceSlug(s.slug) &&
+      !isNoindexSlug(s.slug),
+  );
   const posts = blog.filter((p) => p.relatedBestSlugs?.includes("best-roofers-georgetown-tx")).slice(0, 10);
 
   return (

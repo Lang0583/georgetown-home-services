@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import TrustPage from "../../components/templates/TrustPage";
 import { pageSeoMetadata } from "../../lib/page-seo";
+import { isRedirectedLocationSlug } from "../../lib/public-site-scope";
 import { getLocations } from "../../lib/site-content";
 
 export const metadata: Metadata = pageSeoMetadata({
@@ -12,7 +13,7 @@ export const metadata: Metadata = pageSeoMetadata({
 });
 
 export default function ServiceAreasPage() {
-  const locations = getLocations();
+  const locations = getLocations().filter((l) => !isRedirectedLocationSlug(l.slug));
   const core = locations.find((l) => l.slug === "georgetown-tx") ?? null;
   const neighborhoods = locations.filter((l) => l.slug !== "georgetown-tx");
 

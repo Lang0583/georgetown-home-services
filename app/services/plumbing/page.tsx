@@ -9,6 +9,7 @@ import {
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
+import { isNoindexSlug, isRedirectedServiceSlug } from "../../../lib/public-site-scope";
 import { getBlog, getServices } from "../../../lib/site-content";
 
 export const metadata: Metadata = pageSeoMetadata({
@@ -49,7 +50,15 @@ export default function PlumbingHubPage() {
   const blog = getBlog();
 
   const core = services.find((s) => s.slug === "plumber-georgetown-tx") ?? null;
-  const supporting = services.filter((s) => s.bestSlugs?.includes("best-plumbers-georgetown-tx") && s.slug !== "plumber-georgetown-tx");
+  // Exclude redirected and noindex slugs so the hub doesn't link into 308s or
+  // pages Google has been told not to index.
+  const supporting = services.filter(
+    (s) =>
+      s.bestSlugs?.includes("best-plumbers-georgetown-tx") &&
+      s.slug !== "plumber-georgetown-tx" &&
+      !isRedirectedServiceSlug(s.slug) &&
+      !isNoindexSlug(s.slug),
+  );
   const posts = blog.filter((p) => p.relatedBestSlugs?.includes("best-plumbers-georgetown-tx")).slice(0, 10);
 
   return (

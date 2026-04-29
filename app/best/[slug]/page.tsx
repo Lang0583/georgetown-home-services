@@ -1778,21 +1778,9 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                     />
                   ) : null}
                   <LinkCard
-                    href="/locations/sun-city-georgetown-tx"
-                    title="Sun City"
-                    description="Neighborhood service area page."
-                    badge="Neighborhood"
-                  />
-                  <LinkCard
-                    href="/locations/wolf-ranch-georgetown-tx"
-                    title="Wolf Ranch"
-                    description="Neighborhood service area page."
-                    badge="Neighborhood"
-                  />
-                  <LinkCard
-                    href="/locations/berry-creek-georgetown-tx"
-                    title="Berry Creek"
-                    description="Neighborhood service area page."
+                    href="/locations/georgetown-tx"
+                    title="Georgetown, TX guide"
+                    description="Local context: neighborhoods (Sun City, Wolf Ranch, Berry Creek), climate, and what changes home services here."
                     badge="Neighborhood"
                   />
                 </div>
