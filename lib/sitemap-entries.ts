@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { neighborhoodServicePages } from "@/data/neighborhoods";
 import {
   isExtendedBestSlug,
   isExtendedServiceSlug,
@@ -33,6 +34,7 @@ const CORE_BEST_SET: ReadonlySet<string> = new Set(CORE_BEST_SLUGS);
  *   1.0    homepage
  *   0.9    core hubs, core service pages, core best-of pages
  *   0.7    supporting sub-service pages, blog posts, /locations/georgetown-tx
+ *   0.6    neighborhood × service landings (/neighborhoods/[slug]/[service])
  *   0.5    static pages (about/contact/policies), low-signal pages
  *
  * Location slugs that 308 elsewhere — keep in sync with `next.config.ts`.
@@ -150,6 +152,15 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly",
       priority: 0.7,
+    });
+  }
+
+  for (const p of neighborhoodServicePages) {
+    entries.push({
+      url: absoluteUrl(`/neighborhoods/${p.neighborhoodSlug}/${p.serviceSlug}`),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.6,
     });
   }
 
