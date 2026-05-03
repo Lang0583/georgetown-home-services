@@ -31,7 +31,7 @@ import { AUTHOR_NAME, AUTHOR_PROFILE_PATH, authorPersonSchema } from "../../../l
 const AFFILIATE_DISCLOSURE_SLUGS = new Set([
   "cost-to-replace-hvac-georgetown",
   "signs-you-need-hvac-repair-georgetown-tx",
-  "how-to-find-a-good-plumber-georgetown-tx",
+  "how-to-choose-a-reliable-plumber-georgetown-tx",
   "signs-you-may-need-a-new-roof-georgetown-tx",
 ]);
 
@@ -255,11 +255,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: "Emergency Plumber Cost in Georgetown, TX: Typical Fees, Scenarios, and Next Steps",
       description:
         "Cost ranges for emergency plumbing in Georgetown, TX—plus what to do first, what to ask on the phone, and how to avoid paying for the wrong fix.",
-    },
-    "how-to-find-a-good-plumber-georgetown-tx": {
-      title: "How to Find a Good Plumber in Georgetown, TX: Checklist and Red Flags",
-      description:
-        "A Georgetown plumber checklist: licensing, estimates, communication, and what to ask so you can compare providers and avoid common service mistakes.",
     },
     "water-heater-not-working-georgetown-tx": {
       title: "Water Heater Not Working in Georgetown TX? Here's What to Do",

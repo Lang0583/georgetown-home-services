@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { canonicalServicePathForLinks } from "../lib/public-site-scope";
 
 /**
  * Tailwind Typography base + slate palette + extra spacing so generated HTML
@@ -43,6 +44,11 @@ type Props = {
 /** Sanitize CMS / generated HTML before rendering (directory model: no lead-intake blocks). */
 export function sanitizeArticleHtml(html: string) {
   let out = html;
+
+  // Point internal links at trade hubs instead of URLs that only exist to 308.
+  out = out.replace(/href="(\/services\/[^"?#]+)"/g, (_, href: string) => {
+    return `href="${canonicalServicePathForLinks(href)}"`;
+  });
 
   // Remove obvious lead-intake remnants from older generated content.
   out = out.replace(/<p><strong>CTA:<\/strong>[\s\S]*?<\/p>/gi, "");

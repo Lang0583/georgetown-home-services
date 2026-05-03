@@ -26,10 +26,6 @@ const HERO_BY_SLUG: Record<string, BlogHeroImage> = {
     src: DEFAULT_SRC,
     alt: "HVAC replacement cost guide Georgetown TX",
   },
-  "how-to-find-a-good-plumber-georgetown-tx": {
-    src: DEFAULT_SRC,
-    alt: "Finding a reliable plumber in Georgetown TX",
-  },
   "emergency-plumber-cost-georgetown-tx": {
     src: DEFAULT_SRC,
     alt: "Emergency plumber service in Georgetown TX",

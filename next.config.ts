@@ -1,4 +1,11 @@
 import type { NextConfig } from "next";
+import { REDIRECTED_SERVICE_TO_HUB } from "./lib/public-site-scope";
+
+const serviceHubRedirects = Object.entries(REDIRECTED_SERVICE_TO_HUB).map(([slug, hub]) => ({
+  source: `/services/${slug}`,
+  destination: `/services/${hub}`,
+  permanent: true as const,
+}));
 
 const nextConfig: NextConfig = {
   async rewrites() {
@@ -19,7 +26,7 @@ const nextConfig: NextConfig = {
       {
         source: "/sitemap",
         destination: "/sitemap.xml",
-        permanent: false,
+        permanent: true,
       },
       // Legacy next-sitemap URLs (pre-aa6f22e). Google Search Console and any
       // stale external references may still hit these; redirect to the single
@@ -34,90 +41,17 @@ const nextConfig: NextConfig = {
         destination: "/sitemap.xml",
         permanent: true,
       },
-      // Neighborhood service pages had near-duplicate content with weak internal
-      // linking — consolidated into their parent core-service pages to concentrate
-      // authority signals and free crawl budget (see lib/public-site-scope.ts).
+      ...serviceHubRedirects,
+
+      // Old plumber blog URLs → single canonical post (one hop each — avoids GSC redirect chains)
       {
-        source: "/services/plumber-sun-city-georgetown-tx",
-        destination: "/services/plumber-georgetown-tx",
+        source: "/blog/how-to-find-a-good-plumber-georgetown-tx",
+        destination: "/blog/how-to-choose-a-reliable-plumber-georgetown-tx",
         permanent: true,
       },
-      {
-        source: "/services/hvac-wolf-ranch-georgetown-tx",
-        destination: "/services/hvac-georgetown-tx",
-        permanent: true,
-      },
-      {
-        source: "/services/roofer-berry-creek-georgetown-tx",
-        destination: "/services/roofer-georgetown-tx",
-        permanent: true,
-      },
-
-      // ──────────────────────────────────────────────────────────────────────
-      // Phase 1 thin-content consolidation (April 2026).
-      // 22 service pages with 87–142 word counts collapsed into the three
-      // trade hubs to address (a) AdSense "Low value content" rejection and
-      // (b) GSC "Discovered – currently not indexed" on ~67 URLs.
-      // The hubs (`roofer`/`hvac`/`plumber`-georgetown-tx) absorb the topical
-      // signal; the per-symptom variants are scheduled for substantive rewrite
-      // and may return as full guides if/when they earn the word count.
-      // Source slugs are mirrored in `lib/public-site-scope.ts`
-      // `REDIRECTED_SERVICE_SLUGS` so sitemap/static-params/internal links
-      // stay consistent. See `docs/seo-pipeline.md` and
-      // `scripts/seo/propose-consolidation.ts`.
-      // ──────────────────────────────────────────────────────────────────────
-
-      // Roofing → /services/roofer-georgetown-tx
-      { source: "/services/roof-repair-georgetown-tx",                 destination: "/services/roofer-georgetown-tx", permanent: true },
-      { source: "/services/roof-replacement-georgetown-tx",            destination: "/services/roofer-georgetown-tx", permanent: true },
-      { source: "/services/shingle-roof-repair-georgetown-tx",         destination: "/services/roofer-georgetown-tx", permanent: true },
-      { source: "/services/flashing-repair-georgetown-tx",             destination: "/services/roofer-georgetown-tx", permanent: true },
-      { source: "/services/gutter-installation-georgetown-tx",         destination: "/services/roofer-georgetown-tx", permanent: true },
-      { source: "/services/storm-damage-roof-repair-georgetown-tx",    destination: "/services/roofer-georgetown-tx", permanent: true },
-      { source: "/services/hail-damage-roof-repair-georgetown-tx",     destination: "/services/roofer-georgetown-tx", permanent: true },
-      { source: "/services/emergency-roof-tarping-georgetown-tx",      destination: "/services/roofer-georgetown-tx", permanent: true },
-
-      // HVAC → /services/hvac-georgetown-tx
-      { source: "/services/ac-repair-georgetown-tx",                   destination: "/services/hvac-georgetown-tx",   permanent: true },
-      { source: "/services/ac-replacement-georgetown-tx",              destination: "/services/hvac-georgetown-tx",   permanent: true },
-      { source: "/services/furnace-repair-georgetown-tx",              destination: "/services/hvac-georgetown-tx",   permanent: true },
-      { source: "/services/heater-repair-georgetown-tx",               destination: "/services/hvac-georgetown-tx",   permanent: true },
-      { source: "/services/hvac-maintenance-georgetown-tx",            destination: "/services/hvac-georgetown-tx",   permanent: true },
-      { source: "/services/ductwork-repair-georgetown-tx",             destination: "/services/hvac-georgetown-tx",   permanent: true },
-      { source: "/services/thermostat-repair-georgetown-tx",           destination: "/services/hvac-georgetown-tx",   permanent: true },
-      { source: "/services/indoor-air-quality-georgetown-tx",          destination: "/services/hvac-georgetown-tx",   permanent: true },
-
-      // Plumbing → /services/plumber-georgetown-tx
-      { source: "/services/water-heater-replacement-georgetown-tx",    destination: "/services/plumber-georgetown-tx", permanent: true },
-      { source: "/services/leak-detection-georgetown-tx",              destination: "/services/plumber-georgetown-tx", permanent: true },
-      { source: "/services/toilet-repair-georgetown-tx",               destination: "/services/plumber-georgetown-tx", permanent: true },
-      { source: "/services/garbage-disposal-repair-georgetown-tx",     destination: "/services/plumber-georgetown-tx", permanent: true },
-      { source: "/services/sewer-line-repair-georgetown-tx",           destination: "/services/plumber-georgetown-tx", permanent: true },
-      { source: "/services/emergency-plumber-georgetown-tx",           destination: "/services/plumber-georgetown-tx", permanent: true },
-
-      // ──────────────────────────────────────────────────────────────────────
-      // Phase 2 thin-content consolidation (April 2026, post-audit follow-up).
-      // Six service slugs that the audit flagged as thin and that previously
-      // shipped with `noindex`. Redirecting into the trade hub is the right
-      // call here: the queries are symptom-driven (e.g. "ac not cooling")
-      // and the trade hub already covers the diagnostic + booking flow with
-      // substantively rewritten content (see Phase 3 hub rewrites).
-      // ──────────────────────────────────────────────────────────────────────
-
-      // Symptom pages → relevant trade hub
-      { source: "/services/ac-not-cooling-georgetown-tx",              destination: "/services/hvac-georgetown-tx",     permanent: true },
-      { source: "/services/emergency-hvac-georgetown-tx",              destination: "/services/hvac-georgetown-tx",     permanent: true },
-      { source: "/services/clogged-drain-georgetown-tx",               destination: "/services/plumber-georgetown-tx",  permanent: true },
-      { source: "/services/drain-cleaning-georgetown-tx",              destination: "/services/plumber-georgetown-tx",  permanent: true },
-      { source: "/services/slab-leak-repair-georgetown-tx",            destination: "/services/plumber-georgetown-tx",  permanent: true },
-      { source: "/services/roof-leak-repair-georgetown-tx",            destination: "/services/roofer-georgetown-tx",   permanent: true },
-
-      // Old plumber blog → consolidated reliable-plumber guide
-      { source: "/blog/how-to-find-a-good-plumber-georgetown-tx",      destination: "/blog/how-to-choose-a-reliable-plumber-georgetown-tx", permanent: true },
-
       {
         source: "/blog/how-to-find-a-good-plumber-georgetown",
-        destination: "/blog/how-to-find-a-good-plumber-georgetown-tx",
+        destination: "/blog/how-to-choose-a-reliable-plumber-georgetown-tx",
         permanent: true,
       },
       {

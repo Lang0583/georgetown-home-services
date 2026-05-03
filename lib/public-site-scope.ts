@@ -34,77 +34,78 @@ const EXTENDED_BEST_SLUGS = new Set([
 ]);
 
 /**
- * Service slugs that 308 to a canonical hub in `next.config.ts`.
- * Listed here so sitemap/internal-link/static-params code can exclude them
- * and not ship orphan/redirecting URLs to crawlers.
- *
- * Two reasons a service slug ends up here:
- *
- *   1. Neighborhood-specific near-duplicate of a parent service
- *      (e.g. `plumber-sun-city-georgetown-tx` → `/services/plumber-georgetown-tx`).
- *   2. Thin-content consolidation (Phase 1 of AdSense / "Discovered – currently
- *      not indexed" remediation): multiple under-200-word service variants
- *      collapsed into the trade hub. See `scripts/seo/propose-consolidation.ts`
- *      and `docs/seo-pipeline.md` for the rationale.
+ * Service slugs that 308 to a trade hub. This map is the single source of truth:
+ * `next.config.ts` builds redirects from it so definitions and internal links
+ * cannot drift. Use {@link canonicalServicePathForLinks} in components when
+ * emitting `/services/...` URLs so crawlers see one hop to the hub.
  */
-export const REDIRECTED_SERVICE_SLUGS = new Set([
-  // Neighborhood near-duplicates (predates the AdSense work):
-  "plumber-sun-city-georgetown-tx",
-  "hvac-wolf-ranch-georgetown-tx",
-  "roofer-berry-creek-georgetown-tx",
+export const REDIRECTED_SERVICE_TO_HUB: Readonly<Record<string, string>> = {
+  // Neighborhood near-duplicates
+  "plumber-sun-city-georgetown-tx": "plumber-georgetown-tx",
+  "hvac-wolf-ranch-georgetown-tx": "hvac-georgetown-tx",
+  "roofer-berry-creek-georgetown-tx": "roofer-georgetown-tx",
 
-  // Roofing thin-content consolidation → /services/roofer-georgetown-tx
-  "roof-repair-georgetown-tx",
-  "roof-replacement-georgetown-tx",
-  "shingle-roof-repair-georgetown-tx",
-  "flashing-repair-georgetown-tx",
-  "gutter-installation-georgetown-tx",
-  "storm-damage-roof-repair-georgetown-tx",
-  "hail-damage-roof-repair-georgetown-tx",
-  "emergency-roof-tarping-georgetown-tx",
+  // Roofing → hub
+  "roof-repair-georgetown-tx": "roofer-georgetown-tx",
+  "roof-replacement-georgetown-tx": "roofer-georgetown-tx",
+  "shingle-roof-repair-georgetown-tx": "roofer-georgetown-tx",
+  "flashing-repair-georgetown-tx": "roofer-georgetown-tx",
+  "gutter-installation-georgetown-tx": "roofer-georgetown-tx",
+  "storm-damage-roof-repair-georgetown-tx": "roofer-georgetown-tx",
+  "hail-damage-roof-repair-georgetown-tx": "roofer-georgetown-tx",
+  "emergency-roof-tarping-georgetown-tx": "roofer-georgetown-tx",
+  "roof-leak-repair-georgetown-tx": "roofer-georgetown-tx",
 
-  // HVAC thin-content consolidation → /services/hvac-georgetown-tx
-  "ac-repair-georgetown-tx",
-  "ac-replacement-georgetown-tx",
-  "furnace-repair-georgetown-tx",
-  "heater-repair-georgetown-tx",
-  "hvac-maintenance-georgetown-tx",
-  "ductwork-repair-georgetown-tx",
-  "thermostat-repair-georgetown-tx",
-  "indoor-air-quality-georgetown-tx",
+  // HVAC → hub
+  "ac-repair-georgetown-tx": "hvac-georgetown-tx",
+  "ac-replacement-georgetown-tx": "hvac-georgetown-tx",
+  "furnace-repair-georgetown-tx": "hvac-georgetown-tx",
+  "heater-repair-georgetown-tx": "hvac-georgetown-tx",
+  "hvac-maintenance-georgetown-tx": "hvac-georgetown-tx",
+  "ductwork-repair-georgetown-tx": "hvac-georgetown-tx",
+  "thermostat-repair-georgetown-tx": "hvac-georgetown-tx",
+  "indoor-air-quality-georgetown-tx": "hvac-georgetown-tx",
+  "ac-not-cooling-georgetown-tx": "hvac-georgetown-tx",
+  "emergency-hvac-georgetown-tx": "hvac-georgetown-tx",
 
-  // Plumbing thin-content consolidation → /services/plumber-georgetown-tx
-  "water-heater-replacement-georgetown-tx",
-  "leak-detection-georgetown-tx",
-  "toilet-repair-georgetown-tx",
-  "garbage-disposal-repair-georgetown-tx",
-  "sewer-line-repair-georgetown-tx",
-  "emergency-plumber-georgetown-tx",
+  // Plumbing → hub
+  "water-heater-replacement-georgetown-tx": "plumber-georgetown-tx",
+  "leak-detection-georgetown-tx": "plumber-georgetown-tx",
+  "toilet-repair-georgetown-tx": "plumber-georgetown-tx",
+  "garbage-disposal-repair-georgetown-tx": "plumber-georgetown-tx",
+  "sewer-line-repair-georgetown-tx": "plumber-georgetown-tx",
+  "emergency-plumber-georgetown-tx": "plumber-georgetown-tx",
+  "clogged-drain-georgetown-tx": "plumber-georgetown-tx",
+  "drain-cleaning-georgetown-tx": "plumber-georgetown-tx",
+  "slab-leak-repair-georgetown-tx": "plumber-georgetown-tx",
+};
 
-  // Phase 2 (April 2026, post-audit follow-up): symptom pages folded into
-  // their trade hub instead of being kept as noindexed thin pages.
-  // See `next.config.ts` for the matching 308 redirect entries.
-  "ac-not-cooling-georgetown-tx",
-  "emergency-hvac-georgetown-tx",
-  "clogged-drain-georgetown-tx",
-  "drain-cleaning-georgetown-tx",
-  "slab-leak-repair-georgetown-tx",
-  "roof-leak-repair-georgetown-tx",
-]);
+export const REDIRECTED_SERVICE_SLUGS = new Set(Object.keys(REDIRECTED_SERVICE_TO_HUB));
+
+export function canonicalServiceSlugForLinks(slug: string): string {
+  return REDIRECTED_SERVICE_TO_HUB[slug] ?? slug;
+}
+
+/** Rewrite `/services/{slug}` to the hub when this slug only exists to 308. */
+export function canonicalServicePathForLinks(href: string): string {
+  if (!href.startsWith("/services/")) return href;
+  const pathOnly = href.split("?")[0]?.split("#")[0] ?? href;
+  const rest = pathOnly.slice("/services/".length);
+  const slug = rest.split("/")[0] ?? "";
+  if (!slug) return href;
+  const canon = canonicalServiceSlugForLinks(slug);
+  if (canon === slug) return href;
+  return href.replace(`/services/${slug}`, `/services/${canon}`);
+}
 
 /** Location slugs that 308 elsewhere — keep in sync with `next.config.ts`. */
 export const REDIRECTED_LOCATION_SLUGS = new Set<string>([]);
 
 /**
- * Blog slugs that 308 to a canonical post in `next.config.ts`. Mirrors the
- * service/location pattern: keeping a single source of truth lets sitemap
- * generation, internal-link helpers, and audit scripts skip redirected
- * blog URLs without re-encoding the redirect map.
+ * Blog slugs removed from CMS that still 308 in `next.config.ts`. Empty when
+ * every post lives only at its canonical URL in `site-content.json`.
  */
-export const REDIRECTED_BLOG_SLUGS = new Set([
-  // Old plumber-finding guide consolidated into the reliable-plumber post.
-  "how-to-find-a-good-plumber-georgetown-tx",
-]);
+export const REDIRECTED_BLOG_SLUGS = new Set<string>([]);
 
 export function isRedirectedServiceSlug(slug: string): boolean {
   return REDIRECTED_SERVICE_SLUGS.has(slug);
@@ -147,7 +148,6 @@ export function isRedirectedBlogSlug(slug: string): boolean {
 export const NOINDEX_SLUGS = new Set([
   // Blog posts (thin, no consolidation target, not in COST_POST_SUPPLEMENTS):
   "ac-not-cooling-georgetown-tx",
-  // (`how-to-find-a-good-plumber-georgetown-tx` moved to REDIRECTED_BLOG_SLUGS)
 
   // Phase 3 of the audit follow-up rewrote every remaining noindex
   // service hub and best-of page to >= the section's thin-content

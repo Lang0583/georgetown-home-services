@@ -1,4 +1,5 @@
 import type { ContentBlock } from "../lib/site-content";
+import { canonicalServicePathForLinks } from "../lib/public-site-scope";
 import { ArticleContentShell, ProseArticle } from "./GeneratedArticleBody";
 
 export function RichTextBlocks({ blocks }: { blocks: ContentBlock[] }) {
@@ -24,7 +25,7 @@ export function RichTextBlocks({ blocks }: { blocks: ContentBlock[] }) {
                   ) : (
                     <a
                       key={pidx}
-                      href={part.href}
+                      href={part.href.startsWith("/services/") ? canonicalServicePathForLinks(part.href) : part.href}
                       rel={part.rel ?? "nofollow sponsored"}
                       className="font-medium text-primary underline underline-offset-2 hover:text-primary-hover"
                     >

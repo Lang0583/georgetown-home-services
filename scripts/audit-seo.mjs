@@ -83,9 +83,9 @@ async function getSitemapUrls() {
 const sitemapPaths = await getSitemapUrls();
 
 const extras = [
-  '/about','/contact','/privacy-policy','/terms','/methodology','/editorial-policy','/service-areas','/authors/matt',
+  '/about','/contact','/privacy-policy','/terms','/methodology','/editorial-policy','/service-areas','/authors/cole-reinhardt',
   '/services/electrician-georgetown-tx','/services/landscaping-georgetown-tx','/services/pest-control-georgetown-tx','/services/foundation-repair-georgetown-tx','/services/house-cleaning-georgetown-tx',
-  '/services/ac-not-cooling-georgetown-tx','/services/clogged-drain-georgetown-tx','/services/roof-leak-repair-georgetown-tx',
+  '/services/hvac-georgetown-tx','/services/plumber-georgetown-tx','/services/roofer-georgetown-tx',
   '/best/best-electricians-georgetown-tx','/best/top-hvac-companies-georgetown-tx','/best/best-roofers-georgetown-tx',
   '/best/best-pest-control-georgetown-tx','/best/best-house-cleaning-services-georgetown-tx','/best/best-landscaping-companies-georgetown-tx','/best/best-foundation-repair-georgetown-tx',
 ];
