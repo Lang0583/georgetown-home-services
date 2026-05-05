@@ -167,19 +167,10 @@ export function showExtendedHomeServices(): boolean {
   return process.env.NEXT_PUBLIC_SHOW_EXTENDED_HOME_SERVICES !== "false";
 }
 
-export function isExtendedProviderGroup(group: ProviderGroup): boolean {
-  return (EXTENDED_PROVIDER_GROUPS as readonly string[]).includes(group);
-}
-
 export function isExtendedServiceSlug(slug: string): boolean {
   return EXTENDED_SERVICE_SLUGS.has(slug);
 }
 
 export function isExtendedBestSlug(slug: string): boolean {
   return EXTENDED_BEST_SLUGS.has(slug);
-}
-
-/** Hide placeholder directory rows + ItemList schema for extended categories until you opt in. */
-export function shouldShowExtendedDirectoryListings(): boolean {
-  return showExtendedHomeServices();
 }

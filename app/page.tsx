@@ -12,7 +12,7 @@ import FAQList from "../components/FAQList";
 import JsonLd from "../components/JsonLd";
 import { pageSeoMetadata, SITE_URL } from "../lib/page-seo";
 import { CORE_SERVICE_SLUGS } from "../lib/pageContentRegistry";
-import { EXTENDED_PROVIDER_GROUPS, isNoindexSlug, showExtendedHomeServices } from "../lib/public-site-scope";
+import { EXTENDED_PROVIDER_GROUPS, isNoindexSlug } from "../lib/public-site-scope";
 import type { Faq } from "../lib/site-content";
 import { getBlog, getServices } from "../lib/site-content";
 import businesses from "../lib/businesses.json";
@@ -112,9 +112,12 @@ export default function Home() {
   const services = getServices();
   const blog = getBlog();
   const allBusinesses = businesses as Business[];
-  const homepageTradeOrder: ProviderGroup[] = showExtendedHomeServices()
-    ? (["plumber", "hvac", "roofer", ...EXTENDED_PROVIDER_GROUPS] as ProviderGroup[])
-    : ["plumber", "hvac", "roofer"];
+  const homepageTradeOrder: ProviderGroup[] = [
+    "plumber",
+    "hvac",
+    "roofer",
+    ...EXTENDED_PROVIDER_GROUPS,
+  ] as ProviderGroup[];
   const tradeHomepageTitle: Record<ProviderGroup, string> = {
     plumber: "Plumbers",
     hvac: "HVAC",
@@ -144,7 +147,7 @@ export default function Home() {
         <section className="py-10 md:py-12">
           <div className="min-w-0">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
-              Find the Best Home Service Companies in Georgetown, TX
+              Georgetown TX Home Services Directory (2026) | Compare Local Providers
             </h1>
 
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">
@@ -152,8 +155,8 @@ export default function Home() {
             </p>
 
             <div className="mt-6">
-              <ButtonLink href="#browse-categories" className="text-sm">
-                Browse Georgetown Home Services
+              <ButtonLink href="#providers" className="text-sm">
+                Browse Local Providers
               </ButtonLink>
             </div>
 
@@ -190,13 +193,13 @@ export default function Home() {
         </section>
 
         <section
-          id="best-local-picks"
+          id="providers"
           className="scroll-mt-28 rounded-xl border border-gray-200 bg-white p-6 shadow-md sm:p-8 md:-mt-4"
         >
-          <h2 className="text-xl font-semibold tracking-tight text-gray-900">Best Local Picks</h2>
+          <h2 className="text-xl font-semibold tracking-tight text-gray-900">Top Local Providers</h2>
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-gray-700">
-            Top listings from public data by trade—use them to shortlist, then open each category&apos;s Best Of guide for
-            full comparisons and methodology.
+            Top listings from public data by category—shortlist companies here, then use each trade hub for cost guides and
+            deeper comparisons.
           </p>
           <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             {topLocalGroups.map(({ title, key }) => (
@@ -207,19 +210,6 @@ export default function Home() {
                 businesses={sortedProvidersForGroup(allBusinesses, key)}
               />
             ))}
-          </div>
-        </section>
-
-        <section className="py-10 md:py-12">
-          <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Neighborhood guides</h2>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
-            Hyper-local context for Sun City, Wolf Ranch, Berry Creek, and other Georgetown areas will live here. For
-            now, start from the service areas hub to explore location-aware guides.
-          </p>
-          <div className="mt-4">
-            <Link href="/service-areas" className="text-sm font-semibold text-primary hover:underline">
-              View service areas →
-            </Link>
           </div>
         </section>
 

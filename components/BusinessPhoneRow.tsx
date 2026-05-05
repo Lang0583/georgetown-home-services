@@ -23,24 +23,7 @@ export function businessPhoneTel(phoneRaw: string | undefined): { href: string; 
 }
 
 const linkClassName =
-  "inline-flex items-center gap-2 text-sm leading-snug text-gray-600 underline md:no-underline hover:text-gray-900 focus-visible:rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01696F]/35";
-
-function PhoneIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-    </svg>
-  );
-}
+  "text-sm leading-snug text-gray-600 underline md:no-underline hover:text-gray-900 focus-visible:rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01696F]/35";
 
 export function BusinessPhoneRow({
   phone,
@@ -64,7 +47,6 @@ export function BusinessPhoneRow({
           if (providerName) trackPhoneClick(providerName);
         }}
       >
-        <PhoneIcon className="h-4 w-4 shrink-0 text-gray-500" />
         {tel.display}
       </a>
     </div>

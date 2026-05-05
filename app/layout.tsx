@@ -43,6 +43,7 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: { index: true, follow: true },
     other: {
       "google-adsense-account": adsenseClient,
+      "impact-site-verification": "b1d76151-29e8-4a9a-9913-9ea8f5ce9cd9",
     },
     ...(googleVerification || bingVerification ? { verification } : {}),
   };

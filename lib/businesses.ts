@@ -137,7 +137,8 @@ export const BUSINESS_LISTINGS_LAST_UPDATED = "April 28, 2026";
  * Goal: avoid presenting low-signal providers (few reviews or minimal documentation)
  * as equal to well-documented, established companies.
  */
-export const PROVIDER_MIN_ESTABLISHED_REVIEWS = 50;
+/** Public GBP snapshots: treat 20+ reviews as sufficient to list as an “established” pick (re-verify periodically). */
+export const PROVIDER_MIN_ESTABLISHED_REVIEWS = 20;
 export const PROVIDER_HIGH_REVIEW_VOLUME = 200;
 
 export type ProviderQualityTier = "established" | "lower_signal";

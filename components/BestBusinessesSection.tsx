@@ -1,6 +1,7 @@
 "use client";
 
 import { BusinessListingDescription } from "./BusinessListingDescription";
+import { BusinessPhoneRow } from "./BusinessPhoneRow";
 import ExitInterstitial from "./ExitInterstitial";
 import { trackMapsClick, trackOutboundClick } from "../lib/analytics";
 import {
@@ -150,6 +151,7 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
                     </div>
                     <BusinessListingDescription text={b.description} className="" />
                     <p className="text-sm text-gray-700">{serviceAreaNote(b)}</p>
+                    <BusinessPhoneRow phone={b.phone} providerName={b.name} wrapperClassName="" />
                     <WebsiteAndMapLinks b={b} />
                   </div>
                 </li>
@@ -194,6 +196,7 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
                     </div>
                     <BusinessListingDescription text={b.description} className="" />
                     <p className="text-sm text-gray-700">{serviceAreaNote(b)}</p>
+                    <BusinessPhoneRow phone={b.phone} providerName={b.name} wrapperClassName="" />
                     <WebsiteAndMapLinks b={b} />
                   </div>
                 </li>

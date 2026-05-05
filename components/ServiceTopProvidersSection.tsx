@@ -1,6 +1,7 @@
 "use client";
 
 import { BusinessListingDescription } from "./BusinessListingDescription";
+import { BusinessPhoneRow } from "./BusinessPhoneRow";
 import ExitInterstitial from "./ExitInterstitial";
 import {
   BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS,
@@ -92,6 +93,7 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
                   </div>
                   <BusinessListingDescription text={b.description} className="" />
                   <p className="text-sm text-gray-700">{serviceAreaNote(b)}</p>
+                  <BusinessPhoneRow phone={b.phone} providerName={b.name} wrapperClassName="" />
                   <div className="flex flex-wrap gap-2 pt-0.5">
                     {website ? (
                       <ExitInterstitial
@@ -163,6 +165,7 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
                   </div>
                   <BusinessListingDescription text={b.description} className="" />
                   <p className="text-sm text-gray-700">{serviceAreaNote(b)}</p>
+                  <BusinessPhoneRow phone={b.phone} providerName={b.name} wrapperClassName="" />
                   <div className="flex flex-wrap gap-2 pt-0.5">
                     {website ? (
                       <ExitInterstitial

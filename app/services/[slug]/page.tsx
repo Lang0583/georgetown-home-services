@@ -32,12 +32,10 @@ import AuthorByline from "../../../components/AuthorByline";
 import { hubArticleJsonLd } from "../../../lib/site-author";
 import { CORE_SERVICE_SLUGS, resolveServicePage } from "../../../lib/pageContentRegistry";
 import {
-  isExtendedProviderGroup,
   isExtendedServiceSlug,
   isNoindexSlug,
   isRedirectedBlogSlug,
   isRedirectedServiceSlug,
-  shouldShowExtendedDirectoryListings,
   showExtendedHomeServices,
 } from "../../../lib/public-site-scope";
 import ServiceRequestForm from "../../../components/ServiceRequestForm";
@@ -192,10 +190,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   );
   const businessCategory = getBusinessCategoryForServiceSlug(service.slug);
   const providersFromJson =
-    businessCategory !== null &&
-    (!isExtendedProviderGroup(businessCategory) || shouldShowExtendedDirectoryListings())
-      ? getBusinessesByCategory(businessCategory)
-      : [];
+    businessCategory !== null ? getBusinessesByCategory(businessCategory) : [];
 
   const bestHref =
     bestPages.length > 0

@@ -86,11 +86,11 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
                   business.name
                 )}
               </div>
-              <BusinessListingDescription text={business.description} className="mt-1" />
               <div className="mt-1">
                 {business.rating.toFixed(1)} stars • {business.reviews.toLocaleString()} reviews
               </div>
               <BusinessPhoneRow phone={business.phone} providerName={business.name} />
+              <BusinessListingDescription text={business.description} className="mt-1" />
               {website || maps ? (
                 <div className="mt-1 flex flex-wrap gap-x-3 gap-y-0.5">
                   {website ? (

@@ -183,12 +183,12 @@ function ProviderCard({
           </div>
         </div>
 
+        <BusinessPhoneRow phone={b.phone} providerName={b.name} wrapperClassName="mt-2" />
+
         <BadgeRow badges={badges} />
 
         <BusinessListingDescription text={b.description} className="mt-1" />
         <p className="text-sm text-gray-700">{serviceAreaNote(b)}</p>
-
-        <BusinessPhoneRow phone={b.phone} providerName={b.name} />
 
         <ProviderMeta b={b} guideHref={guideHref} guideLabel={guideLabel} />
         {b.directory?.sponsored || b.directory?.featured ? (

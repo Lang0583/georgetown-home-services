@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
 import JsonLd from "../../../components/JsonLd";
@@ -10,7 +9,6 @@ import {
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
-import { showExtendedHomeServices } from "../../../lib/public-site-scope";
 import { getBlog, getServices } from "../../../lib/site-content";
 
 export const metadata: Metadata = pageSeoMetadata({
@@ -47,8 +45,6 @@ function faqJsonLd() {
 }
 
 export default function LandscapingHubPage() {
-  if (!showExtendedHomeServices()) redirect("/services");
-
   const services = getServices();
   const blog = getBlog();
 

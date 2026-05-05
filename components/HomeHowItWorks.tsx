@@ -36,28 +36,33 @@ function IconPhone({ className }: { className?: string }) {
 const STEPS = [
   {
     Icon: IconSearch,
-    heading: "Find Your Service",
+    heading: "Step 1 — Find Your Service",
     copy: "Browse by category or neighborhood to find exactly what you need — plumbing, HVAC, roofing, electrical, and more.",
   },
   {
     Icon: IconStar,
-    heading: "Compare Local Options",
+    heading: "Step 2 — Compare Local Options",
     copy: "Read verified reviews, check pricing ranges, and see which companies serve your part of Georgetown.",
   },
   {
     Icon: IconPhone,
-    heading: "Reach Out Directly",
+    heading: "Step 3 — Reach Out Directly",
     copy: "Call or visit providers directly — no middleman, no lead forms, no spam. Just the best local options, already vetted for you.",
   },
 ] as const;
 
 export default function HomeHowItWorks() {
   return (
-    <div className="mt-8 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-      <div className="text-sm font-semibold text-gray-900">How it works</div>
+    <div
+      className="mt-8 rounded-xl border border-gray-200 bg-white p-6 shadow-md sm:p-8"
+      aria-labelledby="how-it-works-heading"
+    >
+      <h2 id="how-it-works-heading" className="text-xl font-semibold tracking-tight text-gray-900">
+        How it works
+      </h2>
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-700">
-        These guides walk you through finding the right trade, comparing local companies with real data, and reaching
-        out when you&apos;re ready—no pass-through, no noise.
+        These guides walk you through finding the right trade, comparing local companies with real data, and reaching out when
+        you&apos;re ready—no pass-through, no noise.
       </p>
       <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
         {STEPS.map(({ Icon, heading, copy }) => (
