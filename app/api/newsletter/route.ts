@@ -21,6 +21,9 @@ function sanitizeText(input: string, maxLen: number) {
 }
 
 export async function POST(req: Request) {
+  // TODO: Connect to Beehiiv API — endpoint: https://api.beehiiv.com/v2/publications/{pub_id}/subscriptions
+  // Replace current form action/handler with Beehiiv API call once publication ID is available
+  // Beehiiv docs: https://developers.beehiiv.com/
   let payload: NewsletterPayload;
   try {
     payload = (await req.json()) as NewsletterPayload;

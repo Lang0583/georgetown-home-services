@@ -1,6 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import ChecklistLeadMagnetIcon from "./ChecklistLeadMagnetIcon";
+import {
+  EMAIL_CAPTURE_CTA_CHECKLIST,
+  EMAIL_CAPTURE_EMAIL_PLACEHOLDER,
+  EMAIL_CAPTURE_HEADLINE,
+  EMAIL_CAPTURE_SUBTEXT,
+  EMAIL_CAPTURE_TRUST_LINE,
+} from "../lib/site-cta";
+import { trackEmailSignup } from "../lib/analytics";
 import { LEAD_MAGNETS, type LeadMagnetKey } from "../lib/lead-magnets";
 
 type Props = {
@@ -16,8 +25,8 @@ function isValidEmail(email: string) {
 
 export default function EmailCaptureInlineBlog({
   source = "blog",
-  offer = "local_cost_guide",
-  headline = "Get the local cost guide",
+  offer = "seasonal_checklist",
+  headline = EMAIL_CAPTURE_HEADLINE,
 }: Props) {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -35,6 +44,9 @@ export default function EmailCaptureInlineBlog({
     setError(null);
 
     try {
+      // TODO: Connect to Beehiiv API — endpoint: https://api.beehiiv.com/v2/publications/{pub_id}/subscriptions
+      // Replace current form action/handler with Beehiiv API call once publication ID is available
+      // Beehiiv docs: https://developers.beehiiv.com/
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -51,6 +63,7 @@ export default function EmailCaptureInlineBlog({
         throw new Error(data?.error ?? "Something went wrong");
       }
 
+      trackEmailSignup();
       setStatus("success");
       setEmail("");
       setFirstName("");
@@ -62,12 +75,17 @@ export default function EmailCaptureInlineBlog({
 
   return (
     <aside className="my-10 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-      <div className="flex flex-col gap-2">
-        <div className="text-xs font-semibold uppercase tracking-wide text-slate-600">Newsletter</div>
-        <h3 className="text-xl font-bold text-gray-900">{headline}</h3>
-        <p className="text-slate-700">
-          {magnet.title}. Low-frequency homeowner emails for Georgetown, TX. No service intake.
-        </p>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
+        <ChecklistLeadMagnetIcon className="h-11 w-11 shrink-0 text-primary" />
+        <div className="min-w-0 flex-1">
+          <div className="text-xs font-semibold uppercase tracking-wide text-slate-600">Free guide</div>
+          <h3 className="text-xl font-bold text-gray-900">{headline}</h3>
+          <p className="mt-2 text-slate-700">
+            {offer === "seasonal_checklist"
+              ? EMAIL_CAPTURE_SUBTEXT
+              : `${magnet.title}. Low-frequency emails for Georgetown, TX. No service intake.`}
+          </p>
+        </div>
       </div>
 
       <form onSubmit={onSubmit} className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -84,7 +102,7 @@ export default function EmailCaptureInlineBlog({
           className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder={EMAIL_CAPTURE_EMAIL_PLACEHOLDER}
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -106,11 +124,11 @@ export default function EmailCaptureInlineBlog({
           disabled={!canSubmit}
           className="rounded-lg bg-primary px-5 py-3 font-semibold text-white hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60 sm:col-span-2"
         >
-          {status === "submitting" ? "Signing up..." : "Email me the guide"}
+          {status === "submitting" ? "Sending…" : EMAIL_CAPTURE_CTA_CHECKLIST}
         </button>
       </form>
 
-      <p className="mt-3 text-xs text-slate-600">Unsubscribe anytime.</p>
+      <p className="mt-3 text-xs text-slate-600">{EMAIL_CAPTURE_TRUST_LINE}</p>
     </aside>
   );
 }

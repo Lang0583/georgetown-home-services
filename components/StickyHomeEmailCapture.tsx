@@ -2,6 +2,15 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import ChecklistLeadMagnetIcon from "./ChecklistLeadMagnetIcon";
+import {
+  EMAIL_CAPTURE_CTA_CHECKLIST,
+  EMAIL_CAPTURE_EMAIL_PLACEHOLDER,
+  EMAIL_CAPTURE_HEADLINE,
+  EMAIL_CAPTURE_SUBTEXT,
+  EMAIL_CAPTURE_TRUST_LINE,
+} from "../lib/site-cta";
+import { trackEmailSignup } from "../lib/analytics";
 
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
@@ -23,6 +32,9 @@ export default function StickyHomeEmailCapture() {
     setError(null);
 
     try {
+      // TODO: Connect to Beehiiv API — endpoint: https://api.beehiiv.com/v2/publications/{pub_id}/subscriptions
+      // Replace current form action/handler with Beehiiv API call once publication ID is available
+      // Beehiiv docs: https://developers.beehiiv.com/
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -39,6 +51,7 @@ export default function StickyHomeEmailCapture() {
         throw new Error(data?.error ?? "Something went wrong");
       }
 
+      trackEmailSignup();
       setStatus("success");
       setEmail("");
       setWebsite("");
@@ -58,16 +71,20 @@ export default function StickyHomeEmailCapture() {
           <p className="text-center text-sm font-medium text-emerald-800">Thanks — you’re subscribed. Check your inbox to confirm.</p>
         ) : (
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between md:gap-8">
-            <div className="min-w-0 md:max-w-md">
-              <h2 className="text-base font-semibold tracking-tight text-gray-900 md:text-lg">
-                Get seasonal home tips for Georgetown homeowners.
-              </h2>
-              <p className="mt-1 text-sm leading-relaxed text-gray-600">
-                We send maintenance reminders and local service tips — no spam.
-              </p>
+            <div className="flex min-w-0 gap-3 md:max-w-lg">
+              <ChecklistLeadMagnetIcon className="mt-0.5 hidden h-10 w-10 shrink-0 text-primary sm:block" />
+              <div className="min-w-0">
+                <h2 className="text-base font-semibold tracking-tight text-gray-900 md:text-lg">
+                  {EMAIL_CAPTURE_HEADLINE}
+                </h2>
+                <p className="mt-1 text-sm leading-relaxed text-gray-600">{EMAIL_CAPTURE_SUBTEXT}</p>
+              </div>
             </div>
 
-            <form onSubmit={onSubmit} className="flex w-full flex-col gap-3 sm:flex-row sm:items-end md:w-auto md:min-w-[min(100%,28rem)]">
+            <form
+              onSubmit={onSubmit}
+              className="flex w-full flex-col gap-2 md:w-auto md:min-w-[min(100%,28rem)]"
+            >
               {/* Honeypot — leave off-screen; bots often fill this */}
               <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
                 <label htmlFor="sticky-newsletter-company">Company</label>
@@ -82,12 +99,12 @@ export default function StickyHomeEmailCapture() {
                 />
               </div>
 
-              <div className="flex min-w-0 flex-1 flex-col gap-2 sm:flex-row sm:items-center">
+              <div className="flex min-w-0 flex-col gap-2 sm:flex-row sm:items-stretch">
                 <input
                   type="email"
                   name="email"
                   required
-                  placeholder="Your email"
+                  placeholder={EMAIL_CAPTURE_EMAIL_PLACEHOLDER}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   autoComplete="email"
@@ -99,9 +116,10 @@ export default function StickyHomeEmailCapture() {
                   disabled={!canSubmit}
                   className="min-h-11 shrink-0 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  {status === "submitting" ? "…" : "Subscribe"}
+                  {status === "submitting" ? "…" : EMAIL_CAPTURE_CTA_CHECKLIST}
                 </button>
               </div>
+              <p className="text-center text-xs text-gray-600 sm:text-left md:text-right">{EMAIL_CAPTURE_TRUST_LINE}</p>
             </form>
           </div>
         )}

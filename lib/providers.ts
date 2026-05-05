@@ -6,6 +6,8 @@ export type Provider = {
   reviewCount: number;
   description: string;
   websiteUrl: string;
+  /** Display format, e.g. "(512) 555-1234" (not stripped). */
+  phone?: string;
 };
 
 export type ProviderComparison = {

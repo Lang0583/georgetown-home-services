@@ -6,12 +6,13 @@ import "./globals.css";
 import StickyHeader from "../components/StickyHeader";
 import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
-import { ADSENSE_CLIENT_ID } from "../lib/adsense-config";
+import { ADSENSE_PUBLISHER_ID } from "../lib/adsense-config";
 import { getBrandName, getContact } from "../lib/site-content";
 
 const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
 
-const adsenseScriptSrc = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`;
+const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID?.trim() || ADSENSE_PUBLISHER_ID;
+const adsenseScriptSrc = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`;
 
 /** Set in `.env.local` after you get your Grow site ID from Mediavine (app.mediavine.com/grow). */
 const mediavineGrowSiteId = process.env.NEXT_PUBLIC_MEDIAVINE_GROW_SITE_ID;
@@ -41,7 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description: "Local plumbing, HVAC, and roofing service in Georgetown, TX.",
     robots: { index: true, follow: true },
     other: {
-      "google-adsense-account": ADSENSE_CLIENT_ID,
+      "google-adsense-account": adsenseClient,
     },
     ...(googleVerification || bingVerification ? { verification } : {}),
   };
@@ -100,6 +101,8 @@ export default function RootLayout({
         {process.env.NODE_ENV === "production" ? (
           <link rel="preconnect" href="https://www.googletagmanager.com" />
         ) : null}
+        {/* TODO: Consider enabling AdSense Auto Ads in the AdSense dashboard for automatic ad placement optimization.
+            Enable at: https://adsense.google.com → Ads → By site → Auto ads toggle */}
         <Script
           id="google-adsense"
           src={adsenseScriptSrc}
@@ -122,8 +125,11 @@ export default function RootLayout({
         <main className="flex-1 pt-20">{children}</main>
         <SiteFooter />
       </body>
-      {process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_GA_ID ? (
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+      {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ? (
+        <>
+          {/* GA4 measurement ID: NEXT_PUBLIC_GA_MEASUREMENT_ID (e.g. G-XXXXXXXXXX). Admin: analytics.google.com */}
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        </>
       ) : null}
     </html>
   );

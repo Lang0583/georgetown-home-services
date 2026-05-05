@@ -1,4 +1,8 @@
+"use client";
+
 import { BusinessListingDescription } from "./BusinessListingDescription";
+import ExitInterstitial from "./ExitInterstitial";
+import { trackMapsClick, trackOutboundClick } from "../lib/analytics";
 import {
   BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS,
   BUSINESS_LINK_VISIT_WEBSITE,
@@ -9,8 +13,10 @@ import {
   hasBusinessRatingData,
   hasGeorgetownOfficeSignal,
   isMapOnlyProviderProfile,
+  normalizeBusinessGroup,
   type Business,
 } from "../lib/businesses";
+import { exitInterstitialLabels } from "../lib/exit-interstitial";
 
 /** Detailed cards for the top of the list; remaining rows use a compact list. */
 const FEATURED_MAX = 3;
@@ -36,10 +42,16 @@ function serviceAreaNote(b: Business) {
 
 function BusinessNameHeading({ b }: { b: Business }) {
   const href = getBusinessOutboundUrl(b);
+  const { serviceCategory } = exitInterstitialLabels(normalizeBusinessGroup(b));
   if (href) {
     return (
       <h4 className="text-lg font-semibold text-gray-900">
-        <a href={href} {...externalBusinessLinkProps} className="text-gray-900 hover:text-primary-hover hover:underline">
+        <a
+          href={href}
+          {...externalBusinessLinkProps}
+          className="text-gray-900 hover:text-primary-hover hover:underline"
+          onClick={() => trackOutboundClick(b.name, serviceCategory, href)}
+        >
           {b.name}
         </a>
       </h4>
@@ -51,16 +63,28 @@ function BusinessNameHeading({ b }: { b: Business }) {
 function WebsiteAndMapLinks({ b }: { b: Business }) {
   const website = getBusinessWebsiteUrl(b);
   const maps = getBusinessMapsUrl(b);
+  const { serviceCategory, angiCategorySlug } = exitInterstitialLabels(normalizeBusinessGroup(b));
   if (!website && !maps) return null;
   return (
     <div className="mt-2 flex flex-wrap gap-2">
       {website ? (
-        <a href={website} {...externalBusinessLinkProps} className={linkButtonClass}>
+        <ExitInterstitial
+          providerName={b.name}
+          providerUrl={website}
+          serviceCategory={serviceCategory}
+          angiCategorySlug={angiCategorySlug}
+          className={linkButtonClass}
+        >
           {BUSINESS_LINK_VISIT_WEBSITE}
-        </a>
+        </ExitInterstitial>
       ) : null}
       {maps ? (
-        <a href={maps} {...externalBusinessLinkProps} className={linkButtonClass}>
+        <a
+          href={maps}
+          {...externalBusinessLinkProps}
+          className={linkButtonClass}
+          onClick={() => trackMapsClick(b.name)}
+        >
           {BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS}
         </a>
       ) : null}
@@ -97,6 +121,7 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
           <ul className="divide-y divide-primary/25 rounded-xl border border-primary/25 bg-white shadow-sm">
             {featured.map((b, i) => {
               const href = getBusinessOutboundUrl(b);
+              const { serviceCategory } = exitInterstitialLabels(normalizeBusinessGroup(b));
               return (
                 <li key={`feat-${b.name}-${i}`} className="px-4 py-5 first:rounded-t-xl last:rounded-b-xl md:px-6">
                   <div className="flex flex-col gap-2">
@@ -106,6 +131,7 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
                           href={href}
                           {...externalBusinessLinkProps}
                           className="text-sm font-semibold text-gray-900 hover:text-primary-hover hover:underline"
+                          onClick={() => trackOutboundClick(b.name, serviceCategory, href)}
                         >
                           {b.name}
                         </a>
@@ -139,6 +165,7 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
           <ul className="mt-6 divide-y divide-gray-200 rounded-xl border border-gray-200 bg-white shadow-md">
             {remainder.map((b, i) => {
               const href = getBusinessOutboundUrl(b);
+              const { serviceCategory } = exitInterstitialLabels(normalizeBusinessGroup(b));
               return (
                 <li key={`more-${b.name}-${i}`} className="px-4 py-5 first:rounded-t-xl last:rounded-b-xl md:px-6">
                   <div className="flex flex-col gap-2">
@@ -148,6 +175,7 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
                           href={href}
                           {...externalBusinessLinkProps}
                           className="text-sm font-semibold text-gray-900 hover:text-primary-hover hover:underline"
+                          onClick={() => trackOutboundClick(b.name, serviceCategory, href)}
                         >
                           {b.name}
                         </a>

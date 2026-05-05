@@ -6,6 +6,7 @@ import PageShell from "../../components/templates/PageShell";
 import { pageSeoMetadata, SITE_URL } from "../../lib/page-seo";
 import {
   PRICING_CATEGORIES,
+  PRICING_CATEGORY_RELATED_LINKS,
   PRICING_LAST_REVIEWED_MONTH,
   PRICING_YEAR,
   formatPricingRange,
@@ -13,13 +14,15 @@ import {
 } from "../../lib/pricing-data";
 
 export const metadata: Metadata = pageSeoMetadata({
-  titleSegment: `Home Service Costs in Georgetown, TX (${PRICING_YEAR} Price Guide)`,
-  description: `Georgetown, TX pricing ranges for plumbing, HVAC, roofing, electrical, foundation, and more. Editorial ranges reviewed ${PRICING_LAST_REVIEWED_MONTH}. Not quotes — use to sanity-check bids.`,
+  absoluteTitle: `Georgetown TX Home Service Pricing Guide (${PRICING_YEAR}) — Real Cost Ranges`,
+  description:
+    "Real price ranges for plumbers, HVAC, roofers, electricians, and more in Georgetown TX. Updated 2026. Compare costs before you call — no lead forms, no spam.",
   pathname: "/pricing",
   ogType: "article",
 });
 
 function CategorySection({ category }: { category: PricingCategory }) {
+  const related = PRICING_CATEGORY_RELATED_LINKS[category.key];
   return (
     <section
       id={category.key}
@@ -66,6 +69,16 @@ function CategorySection({ category }: { category: PricingCategory }) {
           ))}
         </ul>
       </div>
+      <div className="mt-6 border-t border-gray-100 pt-5 text-sm leading-relaxed text-gray-700">
+        <span className="font-semibold text-gray-900">Keep reading: </span>
+        <Link href={related.bestHref} className="font-medium text-primary underline-offset-4 hover:underline">
+          {related.bestLabel}
+        </Link>
+        {" · "}
+        <Link href={related.guideHref} className="font-medium text-primary underline-offset-4 hover:underline">
+          {related.guideLabel}
+        </Link>
+      </div>
     </section>
   );
 }
@@ -74,17 +87,17 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "How much does a plumber cost in Georgetown, TX?",
     answer:
-      "A standard Georgetown plumber service call runs $125–$275 for diagnosis, with common repairs (drain clearing, toilet fixes, angle-stop swaps) landing between $150 and $475. Water heater replacements are the most common larger job at $1,650–$3,200 for a standard tank. Emergency and after-hours calls add $250–$650 on top of the repair.",
+      "A standard Georgetown plumber service call runs about $100–$175 for diagnosis, with typical drain clearing landing $150–$350. Straightforward tank water heater swaps often quote $900–$1,800, though many 40–50 gal installs with permits land $1,650–$3,200+. Slab leak repairs with a typical scope often fall $500–$2,500 before major re-routes. Emergency and after-hours calls add $250–$650 on top of the repair.",
   },
   {
     question: "How much does HVAC replacement cost in Georgetown, TX?",
     answer:
-      "Most Georgetown HVAC replacements fall between $4,200 and $8,500 for an AC-only swap at a standard efficiency tier. Full-system replacements (AC plus furnace or air handler) for larger 3–5 ton homes typically run $6,500–$14,000. High-efficiency or zoned systems can reach $16,000 or more.",
+      "Most Georgetown AC-only replacements at a standard efficiency tier land around $5,000–$8,500 for a 2–3 ton system. Full-system replacements (AC plus furnace or air handler) for 3–5 ton homes typically run $5,000–$14,000 depending on equipment and ductwork. High-efficiency or zoned systems can reach $16,000 or more.",
   },
   {
     question: "How much does roof replacement cost in Georgetown, TX?",
     answer:
-      "Roof replacement in Georgetown typically runs $8,500–$14,500 for a 2,000 sqft home with basic architectural shingle. Larger homes with mid-tier shingle and ventilation upgrades land at $13,000–$22,000. Insurance-scope roofs after hail or wind events follow a different pricing path than cash-pay jobs.",
+      "Full roof replacement in Georgetown often runs about $9,000–$20,000 for a typical ~2,000 sqft home with architectural shingle. Larger homes with mid-tier shingle and ventilation upgrades land at $13,000–$22,000. Insurance-scope roofs after hail or wind events follow a different pricing path than cash-pay jobs.",
   },
   {
     question: "Are these Georgetown price ranges quotes?",
@@ -144,7 +157,14 @@ export default function PricingPage() {
           <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
             Home service costs in Georgetown, TX ({PRICING_YEAR} price guide)
           </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-gray-700">
+          <aside className="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm leading-relaxed text-amber-900">
+            <p>
+              Prices below reflect typical ranges for Georgetown TX as of {PRICING_YEAR}. Your
+              actual cost will vary based on home size, job complexity, and provider. Always get
+              2–3 quotes before committing.
+            </p>
+          </aside>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-gray-700">
             Typical Georgetown price ranges for the home services homeowners in
             Williamson County ask about most. Use these as a sanity-check on written
             bids — not as quotes. Ranges reviewed {PRICING_LAST_REVIEWED_MONTH}.{" "}
@@ -157,16 +177,6 @@ export default function PricingPage() {
             to sum ranges for the jobs you are planning.
           </p>
 
-          <aside className="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm leading-relaxed text-amber-900">
-            <div className="font-semibold">Read this first</div>
-            <p className="mt-2">
-              Every Georgetown home is different. Clay soil, slab-on-grade foundations,
-              two-story layouts common in Wolf Ranch / Sun City, and Williamson County
-              permit rules all move price. These ranges are for planning. Get two written
-              estimates with itemized scope before committing to any larger job.
-            </p>
-          </aside>
-
           <nav aria-label="Pricing categories" className="mt-8">
             <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">
               Jump to a category
@@ -178,7 +188,7 @@ export default function PricingPage() {
                     href={`#${c.key}`}
                     className="inline-flex items-center rounded-full border border-gray-300 bg-white px-3 py-1 text-sm text-gray-800 hover:bg-gray-50"
                   >
-                    {c.title.replace(" pricing in Georgetown, TX", "")}
+                    {c.title.replace(/ Costs in Georgetown TX$/i, "")}
                   </Link>
                 </li>
               ))}

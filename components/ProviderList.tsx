@@ -1,15 +1,29 @@
+"use client";
+
 import { RatingStarsWithCaption } from "./BusinessRatingStars";
+import ExitInterstitial from "./ExitInterstitial";
 import {
   BUSINESS_LINK_VISIT_WEBSITE,
   externalBusinessLinkProps,
   normalizeOutboundHref,
 } from "../lib/businesses";
+import { exitInterstitialLabels } from "../lib/exit-interstitial";
+import { trackOutboundClick } from "../lib/analytics";
 import type { Provider } from "../lib/providers";
+import type { ProviderGroup } from "../lib/businesses";
 
 const websiteCtaClass =
   "inline-flex items-center justify-center rounded-lg bg-[#01696F] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#0C4E54]";
 
-export default function ProviderList({ providers }: { providers: Provider[] }) {
+export default function ProviderList({
+  providers,
+  providerGroup,
+}: {
+  providers: Provider[];
+  /** When set, Visit Website uses the exit interstitial + Angi step. */
+  providerGroup?: ProviderGroup | null;
+}) {
+  const ix = exitInterstitialLabels(providerGroup ?? null);
   return (
     <div className="mt-5 space-y-6">
       {providers.map((p, index) => {
@@ -28,6 +42,7 @@ export default function ProviderList({ providers }: { providers: Provider[] }) {
                         href={websiteHref}
                         {...externalBusinessLinkProps}
                         className="text-gray-900 hover:text-primary-hover hover:underline"
+                        onClick={() => trackOutboundClick(p.name, ix.serviceCategory, websiteHref)}
                       >
                         {p.name}
                       </a>
@@ -46,9 +61,26 @@ export default function ProviderList({ providers }: { providers: Provider[] }) {
                 </div>
               </div>
               {websiteHref ? (
-                <a href={websiteHref} {...externalBusinessLinkProps} className={`${websiteCtaClass} shrink-0 self-start`}>
-                  {BUSINESS_LINK_VISIT_WEBSITE}
-                </a>
+                providerGroup != null ? (
+                  <ExitInterstitial
+                    providerName={p.name}
+                    providerUrl={websiteHref}
+                    serviceCategory={ix.serviceCategory}
+                    angiCategorySlug={ix.angiCategorySlug}
+                    className={`${websiteCtaClass} shrink-0 self-start`}
+                  >
+                    {BUSINESS_LINK_VISIT_WEBSITE}
+                  </ExitInterstitial>
+                ) : (
+                  <a
+                    href={websiteHref}
+                    {...externalBusinessLinkProps}
+                    className={`${websiteCtaClass} shrink-0 self-start`}
+                    onClick={() => trackOutboundClick(p.name, ix.serviceCategory, websiteHref)}
+                  >
+                    {BUSINESS_LINK_VISIT_WEBSITE}
+                  </a>
+                )
               ) : null}
             </div>
             <p className="mt-4 text-sm text-gray-700">{p.description}</p>

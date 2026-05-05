@@ -1,4 +1,7 @@
+"use client";
+
 import { BusinessListingDescription } from "./BusinessListingDescription";
+import ExitInterstitial from "./ExitInterstitial";
 import {
   BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS,
   BUSINESS_LINK_VISIT_WEBSITE,
@@ -9,8 +12,11 @@ import {
   hasGeorgetownOfficeSignal,
   isMapOnlyProviderProfile,
   hasBusinessRatingData,
+  normalizeBusinessGroup,
   type Business,
 } from "../lib/businesses";
+import { exitInterstitialLabels } from "../lib/exit-interstitial";
+import { trackMapsClick, trackOutboundClick } from "../lib/analytics";
 
 function trim(s: string | undefined) {
   return (s ?? "").trim();
@@ -56,6 +62,7 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
             const website = getBusinessWebsiteUrl(b);
             const maps = getBusinessMapsUrl(b);
             const href = getBusinessOutboundUrl(b);
+            const { serviceCategory, angiCategorySlug } = exitInterstitialLabels(normalizeBusinessGroup(b));
             return (
               <li key={`featured-${b.name}-${i}`} className="px-4 py-5 first:rounded-t-xl last:rounded-b-xl md:px-6">
                 <div className="flex flex-col gap-2">
@@ -65,6 +72,7 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
                         href={href}
                         {...externalBusinessLinkProps}
                         className="text-base font-semibold text-gray-900 hover:text-primary-hover hover:underline"
+                        onClick={() => trackOutboundClick(b.name, serviceCategory, href)}
                       >
                         {b.name}
                       </a>
@@ -86,12 +94,23 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
                   <p className="text-sm text-gray-700">{serviceAreaNote(b)}</p>
                   <div className="flex flex-wrap gap-2 pt-0.5">
                     {website ? (
-                      <a href={website} {...externalBusinessLinkProps} className={linkButtonClass}>
+                      <ExitInterstitial
+                        providerName={b.name}
+                        providerUrl={website}
+                        serviceCategory={serviceCategory}
+                        angiCategorySlug={angiCategorySlug}
+                        className={linkButtonClass}
+                      >
                         {BUSINESS_LINK_VISIT_WEBSITE}
-                      </a>
+                      </ExitInterstitial>
                     ) : null}
                     {maps ? (
-                      <a href={maps} {...externalBusinessLinkProps} className={linkButtonClass}>
+                      <a
+                        href={maps}
+                        {...externalBusinessLinkProps}
+                        className={linkButtonClass}
+                        onClick={() => trackMapsClick(b.name)}
+                      >
                         {BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS}
                       </a>
                     ) : null}
@@ -114,6 +133,7 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
             const website = getBusinessWebsiteUrl(b);
             const maps = getBusinessMapsUrl(b);
             const href = getBusinessOutboundUrl(b);
+            const { serviceCategory, angiCategorySlug } = exitInterstitialLabels(normalizeBusinessGroup(b));
             return (
               <li key={`${b.name}-${i}`} className="px-4 py-5 first:rounded-t-xl last:rounded-b-xl md:px-6">
                 <div className="flex flex-col gap-2">
@@ -123,6 +143,7 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
                         href={href}
                         {...externalBusinessLinkProps}
                         className="text-base font-semibold text-gray-900 hover:text-primary-hover hover:underline"
+                        onClick={() => trackOutboundClick(b.name, serviceCategory, href)}
                       >
                         {b.name}
                       </a>
@@ -144,12 +165,23 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
                   <p className="text-sm text-gray-700">{serviceAreaNote(b)}</p>
                   <div className="flex flex-wrap gap-2 pt-0.5">
                     {website ? (
-                      <a href={website} {...externalBusinessLinkProps} className={linkButtonClass}>
+                      <ExitInterstitial
+                        providerName={b.name}
+                        providerUrl={website}
+                        serviceCategory={serviceCategory}
+                        angiCategorySlug={angiCategorySlug}
+                        className={linkButtonClass}
+                      >
                         {BUSINESS_LINK_VISIT_WEBSITE}
-                      </a>
+                      </ExitInterstitial>
                     ) : null}
                     {maps ? (
-                      <a href={maps} {...externalBusinessLinkProps} className={linkButtonClass}>
+                      <a
+                        href={maps}
+                        {...externalBusinessLinkProps}
+                        className={linkButtonClass}
+                        onClick={() => trackMapsClick(b.name)}
+                      >
                         {BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS}
                       </a>
                     ) : null}

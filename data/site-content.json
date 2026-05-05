@@ -2076,7 +2076,21 @@
       "content": [
         {
           "kind": "p",
-          "text": "Williamson County’s spring storm season is loud — hail, straight-line wind, and sudden hard rain show up every year. Most homeowners don’t need to climb a roof to gather useful information; in fact, steep, damp roofs are where avoidable injuries happen. This checklist keeps you on the ground first, documents what matters for insurance conversations, and lines up smart next steps with local roofers."
+          "parts": [
+            {
+              "type": "text",
+              "text": "Williamson County’s spring storm season is loud — hail, straight-line wind, and sudden hard rain show up every year. Roof and tree exposure differ in neighborhoods like "
+            },
+            { "type": "link", "href": "/neighborhoods/teravista/roofer", "label": "Teravista" },
+            { "type": "text", "text": ", " },
+            { "type": "link", "href": "/neighborhoods/berry-creek/roofer", "label": "Berry Creek" },
+            { "type": "text", "text": ", and " },
+            { "type": "link", "href": "/neighborhoods/sun-city/roofer", "label": "Sun City" },
+            {
+              "type": "text",
+              "text": ", but most homeowners don’t need to climb a roof to gather useful information; in fact, steep, damp roofs are where avoidable injuries happen. This checklist keeps you on the ground first, documents what matters for insurance conversations, and lines up smart next steps with local roofers."
+            }
+          ]
         },
         { "kind": "h2", "text": "Safety first: stay off steep or wet roofs" },
         {

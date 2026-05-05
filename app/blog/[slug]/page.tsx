@@ -17,7 +17,7 @@ import {
   getLocationBySlug,
   getServices,
 } from "../../../lib/site-content";
-import { adsenseInlineSlot, adsenseSidebarSlot } from "../../../lib/adsense-config";
+import { adsenseSidebarSlot } from "../../../lib/adsense-config";
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import { isNoindexSlug } from "../../../lib/public-site-scope";
 import { getGeneratedPage } from "../../../lib/generatedPages";
@@ -245,47 +245,91 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = getBlogBySlug(slug);
   if (!post) return {};
 
-  const overrides: Record<string, { title: string; description: string }> = {
-    "cost-to-replace-hvac-georgetown": {
-      title: "HVAC Replacement Cost in Georgetown, TX: Price Drivers and How to Compare Quotes",
+  const overrides: Record<string, { title?: string; absoluteTitle?: string; description: string }> = {
+    "ac-not-cooling-georgetown-tx": {
+      absoluteTitle: "AC Not Cooling in Georgetown TX? Do This First (2026 Guide)",
       description:
-        "A practical Georgetown HVAC replacement cost guide: what changes price, what questions to ask, and how to compare written bids before you commit.",
+        "Georgetown TX AC not working? Follow this homeowner checklist to diagnose the issue fast — common causes, safe DIY checks, and when to call an HVAC company. Updated May 2026.",
+    },
+    "why-your-ac-is-not-cooling-georgetown-tx": {
+      absoluteTitle: "Why Is My AC Not Cooling in Georgetown TX? 8 Common Causes",
+      description:
+        "Georgetown homeowners: find out why your AC is blowing warm air. From dirty filters to low refrigerant to failed capacitors — what to check and when to call a technician.",
+    },
+    "ac-repair-cost-georgetown-tx": {
+      absoluteTitle: "AC Repair Cost Georgetown TX (2026) — Real Price Ranges",
+      description:
+        "How much does AC repair cost in Georgetown TX? Realistic price ranges by repair type, what drives cost in Central Texas, and when repair makes more sense than replacement.",
+    },
+    "cost-to-replace-hvac-georgetown": {
+      absoluteTitle: "HVAC Replacement Cost Georgetown TX (2026) — What to Expect",
+      description:
+        "HVAC replacement costs in Georgetown TX range from $5,000–$14,000+. See what affects your price, what to include in quotes, and how Central Texas heat impacts equipment selection.",
+    },
+    "signs-you-need-hvac-repair-georgetown-tx": {
+      absoluteTitle: "9 Signs You Need HVAC Repair in Georgetown TX (2026)",
+      description:
+        "Spot HVAC trouble before it becomes a no-cool emergency. Georgetown homeowners: these are the warning signs that mean call now vs. wait — and what each symptom usually costs to fix.",
     },
     "emergency-plumber-cost-georgetown-tx": {
-      title: "Emergency Plumber Cost in Georgetown, TX: Typical Fees, Scenarios, and Next Steps",
+      absoluteTitle: "Emergency Plumber Cost Georgetown TX (2026) — Honest Ranges",
       description:
-        "Cost ranges for emergency plumbing in Georgetown, TX—plus what to do first, what to ask on the phone, and how to avoid paying for the wrong fix.",
+        "Emergency plumber in Georgetown TX costs $150–$500+ for most calls. See real price ranges by issue type, what triggers after-hours fees, and how to avoid overpaying in a crisis.",
     },
     "water-heater-not-working-georgetown-tx": {
-      title: "Water Heater Not Working in Georgetown TX? Here's What to Do",
+      absoluteTitle: "Water Heater Not Working in Georgetown TX? Do This First (2026)",
       description:
-        "Water heater stopped working in Georgetown TX? This guide walks you through the most common causes, what you can check yourself, and when to call a plumber.",
+        "Georgetown TX water heater stopped working? Check these causes before calling a plumber — pilot light, thermostat, sediment buildup — and when it's time to replace vs. repair.",
+    },
+    "how-to-choose-a-reliable-plumber-georgetown-tx": {
+      absoluteTitle: "How to Choose a Plumber in Georgetown TX (2026 Checklist)",
+      description:
+        "Don't hire the first plumber you find. This Georgetown TX checklist covers licensing, insurance, what to ask before they start, and red flags to watch for on the first call.",
+    },
+    "roof-replacement-cost-georgetown-tx": {
+      absoluteTitle: "Roof Replacement Cost Georgetown TX (2026) — Price Ranges",
+      description:
+        "Roof replacement in Georgetown TX typically costs $9,000–$20,000+. See what drives your price, how Williamson County weather affects material choices, and how to compare bids.",
+    },
+    "roof-repair-cost-georgetown-tx": {
+      absoluteTitle: "Roof Repair Cost Georgetown TX (2026) — Repair vs. Replace",
+      description:
+        "Georgetown TX roof repair costs $300–$1,500 for most jobs. See real price ranges by repair type, what hail damage typically costs, and when repair is enough vs. full replacement.",
+    },
+    "signs-you-may-need-a-new-roof-georgetown-tx": {
+      absoluteTitle: "8 Signs You Need a New Roof in Georgetown TX (2026)",
+      description:
+        "Georgetown homeowners: these roof warning signs mean it's time to call. Check for storm damage, shingle wear, and age indicators before the next Texas hail season hits.",
     },
     "foundation-crack-georgetown-tx": {
-      title: "Foundation Crack in Georgetown TX: When to Worry and Who to Call",
+      absoluteTitle: "Foundation Crack Georgetown TX — When to Worry (2026 Guide)",
       description:
-        "Seeing cracks in your Georgetown TX home's foundation or walls? Learn which types of cracks are cosmetic and which signal a serious structural problem.",
+        "Not all foundation cracks are serious — but some are. Georgetown TX homeowners: here's how to tell the difference, what causes cracking in clay soil, and when to call a contractor.",
     },
     "hvac-making-noise-georgetown-tx": {
-      title: "HVAC Making Noise in Georgetown TX? What Each Sound Means",
+      absoluteTitle: "HVAC Making Noise Georgetown TX? What Each Sound Means (2026)",
       description:
-        "Banging, squealing, or clicking from your HVAC system in Georgetown TX? This guide explains what each noise likely means and whether you need a technician.",
+        "Banging, squealing, clicking, or rattling from your Georgetown TX HVAC? Here's what each noise usually means, whether it's urgent, and what a repair typically costs to fix.",
     },
     "after-hail-roof-checklist-georgetown-tx": {
       title: "Georgetown Roof Storm Checklist: After Hail or Wind Damage",
       description:
         "Safe ground-level inspection steps, photos to take for claims, when tarping helps, and how to compare roofer scopes in Williamson County.",
     },
-    "ac-not-cooling-georgetown-tx": {
-      title: "AC Not Cooling in Georgetown TX? Here's What To Do",
-      description:
-        "Air conditioning not working in Georgetown TX? Follow these steps to diagnose the issue and find emergency HVAC repair near you.",
-    },
   };
 
   const o = overrides[slug];
-  const rawTitleSegment = o?.title ?? post.title;
   const description = o?.description ?? post.description;
+  if (o?.absoluteTitle) {
+    return pageSeoMetadata({
+      absoluteTitle: o.absoluteTitle,
+      description,
+      pathname: `/blog/${slug}`,
+      ogType: "article",
+      noindex: isNoindexSlug(slug),
+    });
+  }
+  const rawTitleSegment = o?.title ?? post.title;
   // Recency signal: for cost guides and hiring/how-to guides, append "(2026 Guide)"
   // to the `<title>` tag if not already year-stamped. Visible H1 stays unchanged
   // (see `post.h1` below) so the on-page heading doesn't pick up editorial chrome.
@@ -424,12 +468,6 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
               </div>
 
               <PracticalTakeaway bullets={takeaway} />
-
-              {adsenseInlineSlot ? (
-                <div className="mt-10">
-                  <AdSenseDisplay slot={adsenseInlineSlot} />
-                </div>
-              ) : null}
 
               <NativeInlineCta
                 title={isCostPost ? "Compare local quotes" : "See top Georgetown providers"}

@@ -37,6 +37,7 @@ import {
 import { getAlsoCompareLinksForBestSlug } from "../../../lib/best-also-compare-links";
 import { buildBestDirectoryItemListJsonLd } from "../../../lib/best-directory-item-list-schema";
 import { bestPageInternalLinks } from "../../../lib/internal-links";
+import { getBestOfPageFaqs } from "../../../lib/best-of-page-faqs";
 import {
   isExtendedBestSlug,
   isExtendedProviderGroup,
@@ -48,6 +49,8 @@ import {
 } from "../../../lib/public-site-scope";
 import BestBusinessesDirectory from "../../../components/BestBusinessesDirectory";
 import BestProvidersMethodologyCallout from "../../../components/BestProvidersMethodologyCallout";
+import AdSenseDisplay from "../../../components/AdSenseDisplay";
+import { adsenseBestOfSlot } from "../../../lib/adsense-config";
 
 /** Hero images for core `/best/[slug]` pages (Unsplash — permitted use per Unsplash License). */
 const CORE_BEST_HERO: Record<string, { src: string; alt: string }> = {
@@ -188,52 +191,61 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const best = getBestBySlug(slug);
   if (!best) return {};
 
-  const overrides: Record<string, { title: string; description: string }> = {
+  const overrides: Record<string, { title?: string; absoluteTitle?: string; description: string }> = {
     "best-plumbers-georgetown-tx": {
-      title: "Best Plumbers in Georgetown, TX: Local Picks, What to Ask, and Who to Call",
+      absoluteTitle: "Best Plumbers Georgetown TX (2026) — Verified Local Picks",
       description:
-        "Compare Georgetown plumbers using review patterns, responsiveness, and scope clarity. Includes what to ask, red flags to avoid, and how to shortlist companies for written estimates.",
+        "The top-rated plumbers in Georgetown TX ranked by reviews, local presence, and service focus. Compare options for leaks, drains, slab repair, and emergency calls — updated April 2026.",
     },
     "top-hvac-companies-georgetown-tx": {
-      title: "Top HVAC Companies in Georgetown, TX: Repairs, Replacements, and What to Ask",
+      absoluteTitle: "Best HVAC Companies Georgetown TX (2026) — AC & Heating Repair",
       description:
-        "A Georgetown HVAC comparison guide focused on diagnosis quality, communication, and value. Learn what to ask, when replacement is realistic, and how to compare quotes.",
+        "Georgetown TX's top-rated HVAC companies compared by response speed, service scope, and local reputation. Picks vetted for Central Texas summer heat and year-round reliability.",
     },
     "best-roofers-georgetown-tx": {
-      title: "Best Roofers in Georgetown, TX: Storm Damage, Leaks, and What to Verify",
+      absoluteTitle: "Best Roofers Georgetown TX (2026) — Storm, Repair & Replacement",
       description:
-        "Compare Georgetown roofers for leak repairs and replacement planning. Covers storm documentation, scope details, warranties, and how to evaluate estimates.",
+        "Top Georgetown TX roofing contractors ranked by reviews, storm damage experience, and transparency. Includes what to ask before signing any roofing contract in Williamson County.",
     },
     "best-electricians-georgetown-tx": {
-      title: "Best Electricians in Georgetown, TX: Licensing, Panels, and Written Scopes",
+      absoluteTitle: "Best Electricians Georgetown TX (2026) — Licensed & Verified",
       description:
-        "Compare Georgetown electricians for safety repairs, panel work, and new circuits. Covers licensing questions, permit basics, and how to evaluate estimates.",
+        "Top-rated electricians in Georgetown TX for panel upgrades, circuit work, and EV charger installation. Compare by licensing, reviews, and residential specialty. Updated 2026.",
     },
     "best-landscaping-companies-georgetown-tx": {
-      title: "Best Landscaping Companies in Georgetown, TX: Lawn Care, Beds, and Irrigation",
+      absoluteTitle: "Best Landscaping Companies Georgetown TX (2026) — Local Picks",
       description:
-        "Compare Georgetown landscaping companies for maintenance, cleanups, and irrigation tuning. Covers scope clarity, visit frequency, and pricing factors.",
+        "Top Georgetown TX landscaping companies for lawn care, beds, mulch, and irrigation. Ranked by local reviews, service range, and experience with Central Texas soil and climate.",
     },
     "best-pest-control-georgetown-tx": {
-      title: "Best Pest Control in Georgetown, TX: Plans, Warranties, and What to Ask",
+      absoluteTitle: "Best Pest Control Georgetown TX (2026) — Ranked & Reviewed",
       description:
-        "Compare Georgetown pest control providers for inspections, treatment plans, and re-service policies—plus questions to ask before you sign.",
+        "Georgetown TX's top pest control providers compared for perimeter plans, termite monitoring, and rodent exclusion. Local picks with verified ratings — updated April 2026.",
     },
     "best-foundation-repair-georgetown-tx": {
-      title: "Best Foundation Repair in Georgetown, TX: Clay Soil, Drainage, and Contractors",
+      absoluteTitle: "Best Foundation Repair Georgetown TX (2026) — Clay Soil Experts",
       description:
-        "Compare Georgetown foundation repair companies with Central Texas expansive clay in mind. Covers warning signs, monitoring vs repair, and warranty basics.",
+        "Top foundation repair contractors in Georgetown TX ranked by reviews, engineering credentials, and experience with Williamson County's expansive clay soil. Free inspection options listed.",
     },
     "best-house-cleaning-services-georgetown-tx": {
-      title: "Best House Cleaning Services in Georgetown, TX: Recurring, Deep, and Move-Out",
+      absoluteTitle: "Best House Cleaning Services Georgetown TX (2026) — Reviewed",
       description:
-        "Compare Georgetown house cleaners for recurring service, deep cleans, and move-out work. Covers insurance, checklists, and how to compare quotes fairly.",
+        "Georgetown TX's top-rated cleaning services for recurring maid service, deep cleans, and move-out cleans. Compare local picks by ratings, pricing transparency, and reliability.",
     },
   };
 
   const o = overrides[slug];
-  const titleSegment = o?.title ?? best.title;
   const description = o?.description ?? best.description;
+  if (o?.absoluteTitle) {
+    return pageSeoMetadata({
+      absoluteTitle: o.absoluteTitle,
+      description,
+      pathname: `/best/${slug}`,
+      ogType: "website",
+      noindex: isNoindexSlug(slug),
+    });
+  }
+  const titleSegment = o?.title ?? best.title;
   return pageSeoMetadata({
     titleSegment,
     description,
@@ -292,68 +304,8 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
   const ruleLinks = bestPageInternalLinks(best.slug);
   const hero = CORE_BEST_HERO[best.slug];
 
-  const faqsForSchema =
-    isPlumbersGeorgetown
-      ? [
-          {
-            q: "How fast can a plumber typically reach me in Georgetown, TX?",
-            a: "Many companies offer same-day options for urgent issues, but schedules tighten during freezes, heavy rain, and holidays. Describe symptoms clearly so the provider can prioritize true emergencies.",
-          },
-          {
-            q: "What should I ask before approving a plumbing estimate?",
-            a: "Ask what is included, what could change the price, and whether there are separate fees for after-hours work, disposal, or camera inspections. Request the scope in writing for larger jobs.",
-          },
-          {
-            q: "How can I reduce the chance of plumbing emergencies?",
-            a: "Know where shutoffs are, avoid flushing wipes or pouring grease down drains, and address slow drains and small leaks early instead of waiting for a backup.",
-          },
-        ]
-      : isHvacGeorgetown
-        ? [
-            {
-              q: "How often should I service my HVAC system in Georgetown, TX?",
-              a: "Many homeowners service once or twice per year, typically before peak summer and before winter. Regular drain and airflow checks help reduce mid-season failures.",
-            },
-            {
-              q: "When does it make sense to replace instead of repair?",
-              a: "If equipment is older, uses outdated refrigerant, or a major repair is a large fraction of replacement cost, it’s worth discussing replacement options and comparing total value—not just the repair price.",
-            },
-            {
-              q: "What should I say when my AC is not cooling?",
-              a: "Be specific about symptoms: warm air vs weak airflow vs uneven rooms, plus anything like water near the unit or breaker trips. Specific symptoms help providers schedule the right type of visit.",
-            },
-          ]
-        : isRoofersGeorgetown
-          ? [
-              {
-                q: "How do I know if a roof leak is urgent in Georgetown?",
-                a: "If water is actively entering (dripping, wet drywall, stains spreading after rain), treat it as urgent. Contain water, document damage, and request a roofer who can stabilize the leak and explain the permanent fix.",
-              },
-              {
-                q: "What should be included in a written roofing estimate?",
-                a: "Materials, underlayment, flashing/drip edge details, ventilation scope, tear-off/disposal, timelines, and warranty terms. Vague scopes often lead to surprises later.",
-              },
-              {
-                q: "Do I need a full roof replacement after hail in Georgetown, TX?",
-                a: "Not always. Some hail damage can be repaired, but widespread bruising, granule loss, or multiple compromised areas may justify replacement. Ask for photos and clear reasoning.",
-              },
-            ]
-          : businessCategory
-            ? [
-                {
-                  q: "How should I use this best-of guide for Georgetown, TX?",
-                  a: "Start with the related service guide for fundamentals, then shortlist a few companies below. Contact providers directly for written scopes, licensing proof, and availability.",
-                },
-                {
-                  q: "What should I ask before hiring?",
-                  a: "Ask what is included, what could change the price, how warranties or re-services work, and whether the company carries appropriate insurance for the trade.",
-                },
-                {
-                  q: "How often should I revisit this list?",
-                  a: "We update listings using publicly available business information. Always confirm current reviews, licensing, and pricing with the provider before you commit.",
-                },
-              ]
-            : [];
+  /** FAQPage JSON-LD + visible FAQ (must match). Per Next.js, `next/script` `beforeInteractive` is root-layout-only; `<JsonLd />` emits the same `application/ld+json` as elsewhere. */
+  const bestOfPageFaqs = getBestOfPageFaqs(best.slug);
 
   const editorialMethodology = {
     title: "Methodology and editorial notes",
@@ -382,13 +334,13 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
               description: best.description,
             })}
           />
-          {faqsForSchema.length ? (
+          {bestOfPageFaqs.length ? (
             <JsonLd
               data={faqJsonLd({
                 siteUrl,
                 pageUrl: `${siteUrl}/best/${best.slug}`,
                 title: `${best.title} FAQ`,
-                faqs: faqsForSchema,
+                faqs: bestOfPageFaqs,
               })}
             />
           ) : null}
@@ -763,109 +715,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       </p>
                     </section>
 
-                    <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
-                        Georgetown TX Plumbing FAQ
-                      </h2>
-                      <div className="mt-3 space-y-4 text-sm leading-relaxed text-gray-700">
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            Do I really need a licensed plumber, or can a handyman handle it?
-                          </h3>
-                          <p className="mt-1">
-                            For anything that touches supply lines, water heaters, gas, or the main drain system, a
-                            licensed plumber is the safer, code-appropriate choice. Handymen can be helpful for small
-                            fixture swaps, but licensed plumbers are accountable for work that affects safety and
-                            long-term reliability.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">How fast can a plumber typically reach me?</h3>
-                          <p className="mt-1">
-                            In Georgetown, TX many companies offer same-day or next-day service for urgent problems, but
-                            schedules tighten during freezes, heavy rain, and holidays. When you contact a company,
-                            describe the situation clearly so they can prioritize true emergencies like active flooding
-                            or sewage backups.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            What should I ask before approving a plumbing estimate?
-                          </h3>
-                          <p className="mt-1">
-                            Ask what is included in the price, what could change it, and whether there are separate fees
-                            for after-hours work, disposal, or camera inspections. It is reasonable to request the scope
-                            and estimate in writing, especially for larger or multi-phase jobs.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            How can I reduce the chance of plumbing emergencies?
-                          </h3>
-                          <p className="mt-1">
-                            Simple habits make a big difference: know where your main shutoff and fixture shutoffs are,
-                            protect hose bibs before freezes, avoid flushing wipes or pouring grease down drains, and
-                            address slow drains and small leaks early rather than waiting for a full backup.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">Are permits required for plumbing work?</h3>
-                          <p className="mt-1">
-                            Larger jobs—such as water heater replacements, major repipes, or work that ties into the
-                            city sewer—often require permits and inspections. A licensed plumber who regularly works in
-                            Georgetown, TX can explain when permits apply and how they are handled in your case.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            What are early signs of a slab leak in a Georgetown home?
-                          </h3>
-                          <p className="mt-1">
-                            Common early signals include warm spots on the floor, the sound of running water when
-                            fixtures are off, unexplained bill increases, damp carpet along interior walls, or reduced
-                            hot-water performance. Slab leaks are easiest to handle when found early—do not wait for a
-                            visible crack or pooling water.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            If multiple drains are backing up, what should I do first?
-                          </h3>
-                          <p className="mt-1">
-                            Treat it like a main-line issue: stop using water (no laundry, showers, or dishwashers),
-                            document which fixtures are affected, and request professional help. Continued water use can
-                            make a backup worse and spread contamination into tubs or floor drains.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            How do I compare multiple plumbers fairly for the same job?
-                          </h3>
-                          <p className="mt-1">
-                            Try to get written estimates that describe the same scope of work, materials, and warranty
-                            terms. Look beyond price to responsiveness, clarity of explanations, and whether each
-                            company is willing to answer your questions before and after the job. When in doubt, use the{" "}
-                            <Link
-                              href="/blog/how-to-choose-a-reliable-plumber-georgetown-tx"
-                              className="font-semibold text-primary"
-                            >
-                              plumber checklist for Georgetown
-                            </Link>{" "}
-                            as a reference while you compare.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            Should I replace shutoff valves proactively?
-                          </h3>
-                          <p className="mt-1">
-                            If a shutoff is stuck, leaking, or will not fully close, it is a liability during an
-                            emergency. Many homeowners in Georgetown replace problem shutoffs during fixture upgrades so
-                            a future leak can be contained quickly without shutting off water to the entire home.
-                          </p>
-                        </div>
-                      </div>
-                    </section>
                   </div>
                 ) : isHvacGeorgetown ? (
                   <div className="space-y-10 text-gray-800">
@@ -1147,96 +996,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       </p>
                     </section>
 
-                    <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
-                        FAQ: Georgetown HVAC Companies
-                      </h2>
-                      <div className="mt-3 space-y-4 text-sm leading-relaxed text-gray-700">
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            How often should I service my HVAC system in Georgetown, TX?
-                          </h3>
-                          <p className="mt-1">
-                            Many homeowners schedule maintenance once or twice a year—typically before peak summer and
-                            before winter. In Georgetown’s climate, regular coil cleaning and drain checks help prevent
-                            mid-season failures when systems run hardest.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            When does it make sense to replace instead of repair?
-                          </h3>
-                          <p className="mt-1">
-                            As a rough rule, if your equipment is older, uses outdated refrigerant, or the quoted repair
-                            is a large fraction of the cost of a new system, it is worth discussing replacement options.
-                            A local HVAC company can walk you through efficiency differences, warranty terms, and total
-                            cost of ownership.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            What should I ask before approving an HVAC quote?
-                          </h3>
-                          <p className="mt-1">
-                            Ask which parts are being replaced, whether there is a labor warranty, how long the work
-                            should take, and what could change the price once they start. For full replacements, ask
-                            about equipment brand, efficiency ratings, and any duct work included.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            How can I improve comfort between floors in my Georgetown home?
-                          </h3>
-                          <p className="mt-1">
-                            Uneven temperatures often come from duct design, airflow, or insulation rather than just
-                            equipment size. An HVAC company experienced with two-story homes in Georgetown, TX can look
-                            at duct layout, returns, and airflow balancing before recommending major changes.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            What can I do before an HVAC tech arrives for an emergency call?
-                          </h3>
-                          <p className="mt-1">
-                            You can check filters, confirm breakers are not tripped, and note any error codes on the
-                            thermostat or equipment. Avoid opening the refrigerant circuit or taking apart sealed
-                            components—leave that to a licensed technician.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            How do I compare multiple HVAC companies fairly?
-                          </h3>
-                          <p className="mt-1">
-                            Request written proposals that spell out equipment models, efficiency ratings, scope of
-                            duct work, and warranty terms. Compare not just the price but responsiveness, clarity of
-                            explanations, and how each company addresses your specific Georgetown, TX home and comfort
-                            goals.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            What are the most common causes of “AC running but not cooling” in Georgetown?
-                          </h3>
-                          <p className="mt-1">
-                            In peak heat, common causes include airflow restrictions (dirty filters, return issues),
-                            electrical components failing under load (like capacitors), drain/condensate safety switches
-                            tripping, and performance problems that require diagnosis. A good HVAC tech will explain what
-                            they confirmed, not just what they replaced.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            Do I need a new HVAC system if some rooms are always hotter?
-                          </h3>
-                          <p className="mt-1">
-                            Not necessarily. Two-story Georgetown homes often have comfort imbalance caused by duct
-                            design, returns, insulation, or airflow balancing. Ask a provider to evaluate airflow and
-                            room-to-room performance before recommending replacement.
-                          </p>
-                        </div>
-                      </div>
-                    </section>
                   </div>
                 ) : isRoofersGeorgetown ? (
                   <div className="space-y-10 text-gray-800">
@@ -1462,84 +1221,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       </p>
                     </section>
 
-                    <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
-                        FAQ: Best Roofers in Georgetown TX
-                      </h2>
-                      <div className="mt-3 space-y-4 text-sm leading-relaxed text-gray-700">
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            How do I know if a roof leak is urgent in Georgetown?
-                          </h3>
-                          <p className="mt-1">
-                            If water is actively entering the home (dripping, wet drywall, ceiling stains spreading after
-                            rain), treat it as urgent. Contain the water, document damage, and request a roofer who can
-                            stabilize the leak and explain the permanent fix.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            What should be included in a written roofing estimate?
-                          </h3>
-                          <p className="mt-1">
-                            A strong estimate lists materials, underlayment, flashing/drip edge details, ventilation
-                            scope, tear-off and disposal, timelines, and warranty terms. Vague scopes create surprise
-                            charges later—especially if decking needs replacement.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            Do I need a full roof replacement after hail in Georgetown, TX?
-                          </h3>
-                          <p className="mt-1">
-                            Not always. Some hail damage can be repaired, but widespread bruising, granule loss, or
-                            multiple compromised areas may justify replacement. Ask for photos and a clear explanation of
-                            how the damage affects water-shedding and lifespan.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            How long does a roof replacement usually take?
-                          </h3>
-                          <p className="mt-1">
-                            Many residential replacements are completed in a day or a few days depending on size, pitch,
-                            weather, and complexity. The right company gives you a realistic timeline and explains what
-                            could extend it (rain delays, decking repairs, material lead times).
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            What are common “red flags” when hiring a roofer?
-                          </h3>
-                          <p className="mt-1">
-                            Watch for pressure tactics, missing documentation, refusal to provide a written scope, unclear
-                            warranty terms, and bids that dodge questions about flashing or ventilation. In Georgetown
-                            storm season, also be careful with companies that are hard to reach once they leave your
-                            driveway.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            How can I compare two roofers fairly for the same project?
-                          </h3>
-                          <p className="mt-1">
-                            Compare written scopes line-by-line: materials, underlayment, flashing/edge details,
-                            ventilation, decking allowances, and warranty. Price matters, but clarity and responsiveness
-                            matter too—especially when you need a company that can explain the fix and document the scope after heavy Georgetown rain.
-                          </p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-gray-900">
-                            Should I also address gutters when I repair or replace a roof?
-                          </h3>
-                          <p className="mt-1">
-                            Often yes. Edge details, fascia, and drainage work together. If you have overflow, sagging
-                            sections, or water concentrating in one spot, ask how the roofer will coordinate gutters and
-                            drip edge so the roof system sheds water correctly.
-                          </p>
-                        </div>
-                      </div>
-                    </section>
                   </div>
                 ) : articleHtml ? (
                   <GeneratedArticleBody html={articleHtml} />
@@ -1680,6 +1361,12 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         />
                       </div>
 
+                      {adsenseBestOfSlot ? (
+                        <div className="mt-10 max-w-4xl">
+                          <AdSenseDisplay slot={adsenseBestOfSlot} />
+                        </div>
+                      ) : null}
+
                       <section className="mt-10 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
                         <h3 className="text-xl font-semibold text-gray-900">Who this is best for</h3>
                         <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-700">
@@ -1696,18 +1383,37 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         <BestProvidersMethodologyCallout />
                       </div>
                       {providerData.providers.length ? (
-                        <ProviderList providers={providerData.providers} />
+                        <ProviderList providers={providerData.providers} providerGroup={businessCategory} />
                       ) : (
                         <div className="mt-5 rounded-xl border border-gray-200 bg-white p-6 text-sm text-gray-700 shadow-md">
                           Provider listings haven’t been added yet for this guide.
                         </div>
                       )}
+                      {adsenseBestOfSlot ? (
+                        <div className="mt-10 max-w-4xl">
+                          <AdSenseDisplay slot={adsenseBestOfSlot} />
+                        </div>
+                      ) : null}
                     </>
                   )}
 
                   <section aria-label="Comparison notes">
                     <ComparisonSection comparison={providerData.comparison} />
                   </section>
+                </section>
+              ) : null}
+
+              {bestOfPageFaqs.length ? (
+                <section className="mt-12 rounded-xl border border-gray-200 bg-white p-6 shadow-md md:p-8">
+                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">FAQ</h2>
+                  <div className="mt-6 space-y-4">
+                    {bestOfPageFaqs.map((f) => (
+                      <details key={f.q} className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
+                        <summary className="cursor-pointer text-sm font-semibold text-gray-900">{f.q}</summary>
+                        <p className="mt-2 text-sm leading-relaxed text-gray-700">{f.a}</p>
+                      </details>
+                    ))}
+                  </div>
                 </section>
               ) : null}
 
@@ -1723,20 +1429,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         description={s.description}
                         badge={s.serviceType}
                       />
-                    ))}
-                  </div>
-                </section>
-              ) : null}
-
-              {faqsForSchema.length ? (
-                <section className="mt-12 rounded-xl border border-gray-200 bg-white p-6 shadow-md md:p-8">
-                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">FAQ</h2>
-                  <div className="mt-6 space-y-4">
-                    {faqsForSchema.map((f) => (
-                      <details key={f.q} className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
-                        <summary className="cursor-pointer text-sm font-semibold text-gray-900">{f.q}</summary>
-                        <p className="mt-2 text-sm leading-relaxed text-gray-700">{f.a}</p>
-                      </details>
                     ))}
                   </div>
                 </section>

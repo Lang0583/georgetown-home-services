@@ -1,6 +1,8 @@
 import type { ContentBlock } from "../lib/site-content";
+import { adsenseInlineSlot } from "../lib/adsense-config";
 import { COST_POST_SUPPLEMENTS } from "../lib/pricing-data";
 import { splitBlocksAfterNthParagraph, splitHtmlAfterNthParagraph } from "../lib/split-article-content";
+import AdSenseDisplay from "./AdSenseDisplay";
 import BlogCostSupplement from "./BlogCostSupplement";
 import BlogMidContentEmailCard from "./BlogMidContentEmailCard";
 import { ArticleContentShell, ProseArticle, sanitizeArticleHtml } from "./GeneratedArticleBody";
@@ -13,51 +15,69 @@ type Props = {
 };
 
 /**
- * Renders article HTML or block content with a mid-content email card after the third paragraph.
- *
- * For cost-guide slugs registered in `COST_POST_SUPPLEMENTS`, also injects a
- * `BlogCostSupplement` block (Georgetown pricing ranges + pricing drivers)
- * between the opening content and the mid-content email card. This addresses
- * a pattern where cost-titled posts had no dollar figures in the body — now
- * every such post renders a real pricing table before the fold.
+ * Renders article HTML or block content with:
+ * - Display ad after the 2nd paragraph
+ * - Mid-content email card after the 3rd paragraph (1st paragraph of remainder after the ad break)
+ * - Optional cost-guide pricing supplement before the email card when registered.
  */
 export default function BlogArticleBodyWithMidEmail({ slug, generated, blocks }: Props) {
   const source = `blog-mid:${slug}`;
   const hasCostSupplement = Boolean(COST_POST_SUPPLEMENTS[slug]);
 
   if (generated) {
-    const { before, after } = splitHtmlAfterNthParagraph(generated.html, 3);
-    const safeBefore = sanitizeArticleHtml(before);
-    const safeAfter = after ? sanitizeArticleHtml(after) : "";
+    const { before: open2, after: tailAfter2 } = splitHtmlAfterNthParagraph(generated.html, 2);
+    const safeOpen2 = sanitizeArticleHtml(open2);
+    const { before: para3, after: rest } = tailAfter2
+      ? splitHtmlAfterNthParagraph(tailAfter2, 1)
+      : { before: "", after: "" };
+    const safePara3 = para3 ? sanitizeArticleHtml(para3) : "";
+    const safeRest = rest ? sanitizeArticleHtml(rest) : "";
 
     return (
       <ArticleContentShell>
-        <ProseArticle dangerouslySetInnerHTML={{ __html: safeBefore }} />
+        <ProseArticle dangerouslySetInnerHTML={{ __html: safeOpen2 }} />
+        {adsenseInlineSlot ? (
+          <div className="my-8">
+            <AdSenseDisplay slot={adsenseInlineSlot} />
+          </div>
+        ) : null}
+        {safePara3 ? <ProseArticle dangerouslySetInnerHTML={{ __html: safePara3 }} /> : null}
         {hasCostSupplement ? <BlogCostSupplement slug={slug} /> : null}
         <div className="my-8">
           <BlogMidContentEmailCard source={source} />
         </div>
-        {safeAfter ? <ProseArticle dangerouslySetInnerHTML={{ __html: safeAfter }} /> : null}
+        {safeRest ? <ProseArticle dangerouslySetInnerHTML={{ __html: safeRest }} /> : null}
       </ArticleContentShell>
     );
   }
 
   if (!blocks.length) return null;
 
-  const { first, second } = splitBlocksAfterNthParagraph(blocks, 3);
+  const { first: first2, second: tail2 } = splitBlocksAfterNthParagraph(blocks, 2);
+  const { first: thirdPara, second: restBlocks } = splitBlocksAfterNthParagraph(tail2, 1);
 
   return (
     <ArticleContentShell>
       <ProseArticle>
-        <RichTextBlocks blocks={first} />
+        <RichTextBlocks blocks={first2} />
       </ProseArticle>
+      {adsenseInlineSlot ? (
+        <div className="my-8">
+          <AdSenseDisplay slot={adsenseInlineSlot} />
+        </div>
+      ) : null}
+      {thirdPara.length ? (
+        <ProseArticle>
+          <RichTextBlocks blocks={thirdPara} />
+        </ProseArticle>
+      ) : null}
       {hasCostSupplement ? <BlogCostSupplement slug={slug} /> : null}
       <div className="my-8">
         <BlogMidContentEmailCard source={source} />
       </div>
-      {second.length ? (
+      {restBlocks.length ? (
         <ProseArticle>
-          <RichTextBlocks blocks={second} />
+          <RichTextBlocks blocks={restBlocks} />
         </ProseArticle>
       ) : null}
     </ArticleContentShell>

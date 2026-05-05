@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { BusinessListingDescription } from "./BusinessListingDescription";
+import { BusinessPhoneRow } from "./BusinessPhoneRow";
+import ExitInterstitial from "./ExitInterstitial";
 import {
   BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS,
   BUSINESS_LINK_VISIT_WEBSITE,
@@ -14,6 +16,8 @@ import {
   type Business,
   type ProviderGroup,
 } from "../lib/businesses";
+import { EXIT_INTERSTITIAL_ANGI_SLUG, EXIT_INTERSTITIAL_SERVICE_LABEL } from "../lib/exit-interstitial";
+import { trackMapsClick, trackOutboundClick } from "../lib/analytics";
 
 const ROTATE_MS = 5000;
 
@@ -65,6 +69,7 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
           const outbound = getBusinessOutboundUrl(business);
           const website = getBusinessWebsiteUrl(business);
           const maps = getBusinessMapsUrl(business);
+          const serviceCategory = EXIT_INTERSTITIAL_SERVICE_LABEL[providerGroupKey];
           return (
             <li key={`${providerGroupKey}-${business.name}`} className="text-sm text-gray-700">
               <div className="font-medium text-gray-900">
@@ -73,6 +78,7 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
                     href={outbound}
                     {...externalBusinessLinkProps}
                     className="text-gray-900 hover:text-primary-hover hover:underline"
+                    onClick={() => trackOutboundClick(business.name, serviceCategory, outbound)}
                   >
                     {business.name}
                   </a>
@@ -84,22 +90,26 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
               <div className="mt-1">
                 {business.rating.toFixed(1)} stars • {business.reviews.toLocaleString()} reviews
               </div>
+              <BusinessPhoneRow phone={business.phone} providerName={business.name} />
               {website || maps ? (
                 <div className="mt-1 flex flex-wrap gap-x-3 gap-y-0.5">
                   {website ? (
-                    <a
-                      href={website}
-                      {...externalBusinessLinkProps}
+                    <ExitInterstitial
+                      providerName={business.name}
+                      providerUrl={website}
+                      serviceCategory={EXIT_INTERSTITIAL_SERVICE_LABEL[providerGroupKey]}
+                      angiCategorySlug={EXIT_INTERSTITIAL_ANGI_SLUG[providerGroupKey]}
                       className="text-primary hover:text-primary-hover"
                     >
                       {BUSINESS_LINK_VISIT_WEBSITE}
-                    </a>
+                    </ExitInterstitial>
                   ) : null}
                   {maps ? (
                     <a
                       href={maps}
                       {...externalBusinessLinkProps}
                       className="text-primary hover:text-primary-hover"
+                      onClick={() => trackMapsClick(business.name)}
                     >
                       {BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS}
                     </a>

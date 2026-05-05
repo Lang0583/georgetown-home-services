@@ -2,7 +2,17 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { CTA_EMAIL_PROVIDERS, CTA_VIEW_TOP_PROVIDERS } from "../lib/site-cta";
+import ChecklistLeadMagnetIcon from "./ChecklistLeadMagnetIcon";
+import {
+  CTA_VIEW_TOP_PROVIDERS,
+  EMAIL_CAPTURE_CTA_CHECKLIST,
+  EMAIL_CAPTURE_CTA_REMINDERS,
+  EMAIL_CAPTURE_EMAIL_PLACEHOLDER,
+  EMAIL_CAPTURE_HEADLINE,
+  EMAIL_CAPTURE_SUBTEXT,
+  EMAIL_CAPTURE_TRUST_LINE,
+} from "../lib/site-cta";
+import { trackEmailSignup } from "../lib/analytics";
 import { LEAD_MAGNETS, type LeadMagnetKey } from "../lib/lead-magnets";
 
 type Props = {
@@ -29,6 +39,12 @@ function radioLabelForBlogSidebar(k: LeadMagnetKey): string {
 
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+}
+
+function submitLabelForOffer(offer: LeadMagnetKey): string {
+  if (offer === "seasonal_checklist") return EMAIL_CAPTURE_CTA_CHECKLIST;
+  if (offer === "monthly_reminder") return EMAIL_CAPTURE_CTA_REMINDERS;
+  return "Send Me the Guide";
 }
 
 export default function EmailCaptureSitewide({
@@ -67,6 +83,9 @@ export default function EmailCaptureSitewide({
     setError(null);
 
     try {
+      // TODO: Connect to Beehiiv API — endpoint: https://api.beehiiv.com/v2/publications/{pub_id}/subscriptions
+      // Replace current form action/handler with Beehiiv API call once publication ID is available
+      // Beehiiv docs: https://developers.beehiiv.com/
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -83,6 +102,7 @@ export default function EmailCaptureSitewide({
         throw new Error(data?.error ?? "Something went wrong");
       }
 
+      trackEmailSignup();
       setStatus("success");
       setEmail("");
       setFirstName("");
@@ -102,15 +122,39 @@ export default function EmailCaptureSitewide({
   if (variant === "blog-sidebar") {
     return (
       <section id={formId} className={boxClass}>
-        <h2 className="text-base font-bold leading-snug text-gray-900">Georgetown homeowner tips by email</h2>
-        <p className="mt-1 text-xs leading-snug text-gray-600">Practical guides for local homeowners. No spam.</p>
+        <div className="flex gap-3">
+          <ChecklistLeadMagnetIcon className="mt-0.5 h-9 w-9 shrink-0 text-primary" />
+          <div className="min-w-0">
+            <h2 className="text-base font-bold leading-snug text-gray-900">{EMAIL_CAPTURE_HEADLINE}</h2>
+            <p className="mt-1 text-xs leading-snug text-gray-600">{EMAIL_CAPTURE_SUBTEXT}</p>
+          </div>
+        </div>
 
         <form onSubmit={onSubmit} className="mt-3 flex flex-col gap-2">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-700">
+            {allowedOffers.map((k) => {
+              const checked = offer === k;
+              return (
+                <label key={k} className="inline-flex cursor-pointer items-center gap-1.5">
+                  <input
+                    type="radio"
+                    name="leadMagnet"
+                    value={k}
+                    checked={checked}
+                    onChange={() => setOffer(k)}
+                    className="text-primary focus:ring-primary/30"
+                  />
+                  <span>{radioLabelForBlogSidebar(k)}</span>
+                </label>
+              );
+            })}
+          </div>
+
           <input
             className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder={EMAIL_CAPTURE_EMAIL_PLACEHOLDER}
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -132,8 +176,10 @@ export default function EmailCaptureSitewide({
             disabled={!canSubmit}
             className="w-full rounded-lg bg-[#01696F] py-2 text-sm font-semibold text-white transition-colors hover:bg-[#0C4E54] disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {status === "submitting" ? "Signing up..." : "Get free guides"}
+            {status === "submitting" ? "Sending…" : submitLabelForOffer(offer)}
           </button>
+
+          <p className="text-center text-[11px] leading-snug text-gray-600">{EMAIL_CAPTURE_TRUST_LINE}</p>
 
           {blogSidebarSecondaryHref ? (
             <p className="text-center">
@@ -145,38 +191,20 @@ export default function EmailCaptureSitewide({
               </Link>
             </p>
           ) : null}
-
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 pt-0.5 text-xs text-gray-700">
-            {allowedOffers.map((k) => {
-              const checked = offer === k;
-              return (
-                <label key={k} className="inline-flex cursor-pointer items-center gap-1.5">
-                  <input
-                    type="radio"
-                    name="leadMagnet"
-                    value={k}
-                    checked={checked}
-                    onChange={() => setOffer(k)}
-                    className="text-primary focus:ring-primary/30"
-                  />
-                  <span>{radioLabelForBlogSidebar(k)}</span>
-                </label>
-              );
-            })}
-          </div>
         </form>
-
-        <p className="mt-2 text-[11px] leading-snug text-gray-500">No phone, no service intake - just guides.</p>
       </section>
     );
   }
 
   return (
     <section id={formId} className={boxClass}>
-      <h2 className="text-2xl font-bold text-gray-900">{CTA_EMAIL_PROVIDERS}</h2>
-      <p className="mt-2 text-slate-700">
-        Low-frequency newsletter for Georgetown homeowners. No phone, no addresses, no service intake—just practical guides.
-      </p>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+        <ChecklistLeadMagnetIcon className="h-12 w-12 shrink-0 text-primary" />
+        <div className="min-w-0">
+          <h2 className="text-2xl font-bold text-gray-900">{EMAIL_CAPTURE_HEADLINE}</h2>
+          <p className="mt-2 text-slate-700">{EMAIL_CAPTURE_SUBTEXT}</p>
+        </div>
+      </div>
 
       <form onSubmit={onSubmit} className="mt-6 grid gap-4 md:grid-cols-2">
         <input
@@ -192,7 +220,7 @@ export default function EmailCaptureSitewide({
           className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder={EMAIL_CAPTURE_EMAIL_PLACEHOLDER}
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -246,11 +274,11 @@ export default function EmailCaptureSitewide({
           disabled={!canSubmit}
           className="rounded-lg bg-primary px-6 py-3 font-semibold text-white hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60 md:col-span-2"
         >
-          {status === "submitting" ? "Signing up..." : "Send me the guide"}
+          {status === "submitting" ? "Sending…" : submitLabelForOffer(offer)}
         </button>
       </form>
 
-      <p className="mt-4 text-xs leading-relaxed text-slate-600">We’ll send occasional emails. Unsubscribe anytime.</p>
+      <p className="mt-4 text-xs leading-relaxed text-slate-600">{EMAIL_CAPTURE_TRUST_LINE}</p>
     </section>
   );
 }

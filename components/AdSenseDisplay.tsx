@@ -1,13 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
-import { ADSENSE_CLIENT_ID } from "../lib/adsense-config";
+"use client";
 
-declare global {
-  interface Window {
-    adsbygoogle?: unknown[];
-  }
-}
+import AdUnit from "./AdUnit";
 
 type Props = {
   /** Ad unit slot from AdSense; when empty, nothing renders. */
@@ -16,18 +11,9 @@ type Props = {
 };
 
 /**
- * Responsive display unit. One instance = one `(adsbygoogle).push({})` after mount.
+ * Responsive display unit with labeled wrapper. One mount = one `(adsbygoogle).push({})`.
  */
 export default function AdSenseDisplay({ slot, className = "" }: Props) {
-  useEffect(() => {
-    if (!slot) return;
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch {
-      /* ignore */
-    }
-  }, [slot]);
-
   if (!slot) return null;
 
   return (
@@ -37,14 +23,7 @@ export default function AdSenseDisplay({ slot, className = "" }: Props) {
       aria-label="Advertisement"
     >
       <p className="mb-3 text-center text-[10px] font-semibold uppercase tracking-wider text-gray-400">Advertisement</p>
-      <ins
-        className="adsbygoogle block"
-        style={{ display: "block", textAlign: "center" }}
-        data-ad-client={ADSENSE_CLIENT_ID}
-        data-ad-slot={slot}
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-      />
+      <AdUnit slot={slot} format="auto" responsive />
     </div>
   );
 }

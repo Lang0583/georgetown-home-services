@@ -35,21 +35,27 @@ export const DEFAULT_OG_IMAGE = {
  * the goal is to remove the page from the index, not to orphan the rest of the site.
  */
 export function pageSeoMetadata(opts: {
-  titleSegment: string;
+  /** Used with root layout `template: "%s | Georgetown Home Services"` when `absoluteTitle` is not set. */
+  titleSegment?: string;
+  /** Full `<title>` / social titles; overrides the layout template (no extra brand suffix). */
+  absoluteTitle?: string;
   description: string;
   pathname: string;
   ogType: "website" | "article";
   noindex?: boolean;
 }): Metadata {
-  const ogTitle = documentTitleFromSegment(opts.titleSegment);
+  if (!opts.titleSegment && !opts.absoluteTitle) {
+    throw new Error("pageSeoMetadata: set titleSegment or absoluteTitle");
+  }
+  const documentTitle = opts.absoluteTitle ?? documentTitleFromSegment(opts.titleSegment!);
   const pageUrl = absolutePageUrl(opts.pathname);
   const meta: Metadata = {
-    title: opts.titleSegment,
+    title: opts.absoluteTitle ? { absolute: opts.absoluteTitle } : opts.titleSegment!,
     description: opts.description,
     alternates: { canonical: pageUrl },
     openGraph: {
       url: pageUrl,
-      title: ogTitle,
+      title: documentTitle,
       description: opts.description,
       type: opts.ogType,
       siteName: SITE_NAME,
@@ -58,7 +64,7 @@ export function pageSeoMetadata(opts: {
     },
     twitter: {
       card: "summary_large_image",
-      title: ogTitle,
+      title: documentTitle,
       description: opts.description,
       images: [DEFAULT_OG_IMAGE.url],
     },

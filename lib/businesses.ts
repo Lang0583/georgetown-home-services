@@ -16,7 +16,8 @@ export type Business = {
   name: string;
   category: string;
   type: string;
-  phone: string;
+  /** Display format, e.g. "(512) 555-1234" (not stripped). Omit when unknown. */
+  phone?: string;
   website: string;
   address: string;
   city: string;

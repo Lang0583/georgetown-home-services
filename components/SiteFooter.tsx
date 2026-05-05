@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NEIGHBORHOOD_BROWSE_ENTRIES } from "../lib/neighborhood-browse";
 import { PROVIDER_INFO_DISCLAIMER } from "../lib/provider-disclaimer";
 import { isNoindexSlug, showExtendedHomeServices } from "../lib/public-site-scope";
 import { getBrandName, getContact } from "../lib/site-content";
@@ -17,7 +18,7 @@ export default function SiteFooter() {
   return (
     <footer className="border-t border-gray-200 bg-gray-50">
       <div className="mx-auto max-w-5xl px-4 py-10">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-5">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-6">
           <div>
             <div className="text-sm font-semibold text-gray-900">{brand}</div>
             <div className="mt-1 text-sm text-gray-600">
@@ -99,6 +100,19 @@ export default function SiteFooter() {
                   </Link>
                 </li>
               ) : null}
+            </ul>
+          </div>
+
+          <div>
+            <div className="text-sm font-semibold text-gray-900">Browse by Neighborhood</div>
+            <ul className="mt-2 space-y-2 text-sm text-gray-700">
+              {NEIGHBORHOOD_BROWSE_ENTRIES.map((n) => (
+                <li key={n.href}>
+                  <Link className="hover:underline" href={n.href}>
+                    {n.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

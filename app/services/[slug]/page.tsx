@@ -20,7 +20,7 @@ import {
   getServices,
   getServiceSlugs,
 } from "../../../lib/site-content";
-import { adsenseSidebarSlot } from "../../../lib/adsense-config";
+import { adsenseServiceMainSlot, adsenseSidebarSlot } from "../../../lib/adsense-config";
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
@@ -102,52 +102,61 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const service = getServiceBySlug(slug);
   if (!service) return {};
 
-  const overrides: Record<string, { title: string; description: string }> = {
+  const overrides: Record<string, { title?: string; absoluteTitle?: string; description: string }> = {
     "plumber-georgetown-tx": {
-      title: "Plumber in Georgetown, TX: Clogs, Leaks, Costs, and What to Ask",
+      absoluteTitle: "Plumber Georgetown TX (2026) — Repairs, Leaks & Emergency Calls",
       description:
-        "A Georgetown plumbing guide for clogged drains, leak detection, and emergency scenarios—plus cost factors, repair vs replacement decisions, and questions to ask before hiring.",
+        "Find a licensed plumber in Georgetown TX for slab leaks, drain clogs, water heaters, and emergency calls. Compare local providers with verified reviews and real pricing ranges.",
     },
     "hvac-georgetown-tx": {
-      title: "AC Repair in Georgetown, TX: Common Problems, Cost Factors, and Next Steps",
+      absoluteTitle: "HVAC Companies Georgetown TX (2026) — AC Repair & Replacement",
       description:
-        "A Georgetown HVAC guide for AC not cooling, uneven cooling, and common failures—plus what drives repair cost, when replacement makes sense, and how to compare local companies.",
+        "Compare Georgetown TX HVAC companies for AC repair, replacement, and maintenance. Local picks rated for Central Texas heat, fast response, and honest pricing. Updated April 2026.",
     },
     "roofer-georgetown-tx": {
-      title: "Roof Repair in Georgetown, TX: Leaks, Storm Damage, Estimates, Next Steps",
+      absoluteTitle: "Roofers Georgetown TX (2026) — Repairs, Storm Damage & Replacement",
       description:
-        "A Georgetown roofing guide covering roof leaks, storm damage, shingle repair, and roof replacement estimates—plus what affects pricing and how to compare roofers.",
+        "Find a trusted roofer in Georgetown TX for shingle repair, storm damage, and full replacement. Local picks with verified reviews and Williamson County experience. Free estimate tips inside.",
     },
     "electrician-georgetown-tx": {
-      title: "Electrician in Georgetown, TX: Panels, Circuits, Safety, and What to Ask",
+      absoluteTitle: "Electrician Georgetown TX (2026) — Panels, Circuits & EV Chargers",
       description:
-        "A Georgetown electrical guide for breaker trips, outlets, panels, and EV circuits—plus permit basics, cost factors, and how to compare licensed electricians.",
+        "Compare licensed electricians in Georgetown TX for panel upgrades, new circuits, outlet repair, and EV charger installation. Verified local providers with safety-first track records.",
     },
     "landscaping-georgetown-tx": {
-      title: "Landscaping & Lawn Care in Georgetown, TX: Maintenance, Irrigation, Costs",
+      absoluteTitle: "Landscaping Georgetown TX (2026) — Lawn Care, Beds & Irrigation",
       description:
-        "A Georgetown landscaping guide for lawn care, beds, mulch, and irrigation—plus seasonal timing, pricing factors, and how to compare local crews.",
+        "Find Georgetown TX landscaping companies for lawn maintenance, bed work, mulch, and irrigation tuning. Compare local crews by service type, ratings, and Central Texas experience.",
     },
     "pest-control-georgetown-tx": {
-      title: "Pest Control in Georgetown, TX: Ants, Roaches, Rodents, and Treatment Plans",
+      absoluteTitle: "Pest Control Georgetown TX (2026) — Ants, Roaches & Rodents",
       description:
-        "A Georgetown pest control guide covering common pests, treatment options, warranties, and what to ask before signing a service plan.",
+        "Compare Georgetown TX pest control companies for perimeter plans, termite treatment, and rodent exclusion. Local providers with real customer ratings and Williamson County experience.",
     },
     "foundation-repair-georgetown-tx": {
-      title: "Foundation Repair in Georgetown, TX: Clay Soil, Cracks, and Contractors",
+      absoluteTitle: "Foundation Repair Georgetown TX (2026) — Clay Soil Specialists",
       description:
-        "A Georgetown foundation guide focused on expansive clay soil movement, warning signs, drainage, repair options, and how to vet foundation companies.",
+        "Georgetown TX foundation repair guide: spot warning signs, compare pier and slab contractors, and understand what Central Texas clay soil does to your home. Local picks included.",
     },
     "house-cleaning-georgetown-tx": {
-      title: "House Cleaning in Georgetown, TX: Recurring, Deep, and Move-Out Cleans",
+      absoluteTitle: "House Cleaning Georgetown TX (2026) — Recurring & Deep Clean",
       description:
-        "A Georgetown house cleaning guide for maintenance vs deep cleans, pricing factors, insurance, and how to compare reputable maid services.",
+        "Compare Georgetown TX house cleaning services for recurring maid service, deep cleans, and move-out cleaning. Local picks with verified reviews and transparent pricing ranges.",
     },
   };
 
   const o = overrides[slug];
-  const titleSegment = o?.title ?? service.title;
   const description = o?.description ?? service.description;
+  if (o?.absoluteTitle) {
+    return pageSeoMetadata({
+      absoluteTitle: o.absoluteTitle,
+      description,
+      pathname: `/services/${slug}`,
+      ogType: "website",
+      noindex: isNoindexSlug(slug),
+    });
+  }
+  const titleSegment = o?.title ?? service.title;
   return pageSeoMetadata({
     titleSegment,
     description,
@@ -304,6 +313,12 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   We publish educational guides and a provider directory. We don’t take service requests or schedule jobs.
                 </p>
               </div>
+
+              {adsenseServiceMainSlot ? (
+                <div className="mt-8">
+                  <AdSenseDisplay slot={adsenseServiceMainSlot} className="mx-auto max-w-2xl" />
+                </div>
+              ) : null}
 
               <div className="mt-8">
                 {isPlumberService ? (

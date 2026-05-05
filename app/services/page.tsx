@@ -18,6 +18,7 @@ import {
   isRedirectedServiceSlug,
   showExtendedHomeServices,
 } from "../../lib/public-site-scope";
+import { NEIGHBORHOOD_BROWSE_ENTRIES } from "../../lib/neighborhood-browse";
 import { getBlog, getLocations, getServices } from "../../lib/site-content";
 
 export const metadata: Metadata = pageSeoMetadata({
@@ -227,6 +228,24 @@ export default function ServicesIndexPage() {
                     />
                   </>
                 ) : null}
+              </div>
+            </section>
+
+            <section>
+              <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Browse by Georgetown Neighborhood</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                Each neighborhood has different home ages, soil types, and common service needs.
+              </p>
+              <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {NEIGHBORHOOD_BROWSE_ENTRIES.map((n) => (
+                  <LinkCard
+                    key={n.href}
+                    href={n.href}
+                    title={n.name}
+                    description={n.description}
+                    badge={n.badge}
+                  />
+                ))}
               </div>
             </section>
 

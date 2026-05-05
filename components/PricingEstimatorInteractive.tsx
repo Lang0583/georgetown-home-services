@@ -61,7 +61,7 @@ export default function PricingEstimatorInteractive() {
                   : "border-gray-300 bg-white text-gray-800 hover:bg-gray-50"
               }`}
             >
-              {c.title.replace(" pricing in Georgetown, TX", "")}
+              {c.title.replace(/ Costs in Georgetown TX$/i, "")}
             </button>
           ))}
         </div>

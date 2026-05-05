@@ -2,8 +2,11 @@
 
 import { useMemo, useState } from "react";
 import { BusinessListingDescription } from "./BusinessListingDescription";
+import { BusinessPhoneRow } from "./BusinessPhoneRow";
 import { RatingStarsWithCaption } from "./BusinessRatingStars";
 import Link from "next/link";
+import ExitInterstitial from "./ExitInterstitial";
+import { trackMapsClick, trackOutboundClick } from "../lib/analytics";
 import {
   BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS,
   BUSINESS_LINK_VISIT_WEBSITE,
@@ -16,9 +19,11 @@ import {
   hasBusinessRatingData,
   hasGeorgetownOfficeSignal,
   isMapOnlyProviderProfile,
+  normalizeBusinessGroup,
   type Business,
   type ProviderBadge,
 } from "../lib/businesses";
+import { exitInterstitialLabels } from "../lib/exit-interstitial";
 
 type SortKey = "recommended" | "reviews" | "rating";
 
@@ -26,10 +31,6 @@ const websiteCtaClass =
   "inline-flex items-center justify-center rounded-lg bg-[#01696F] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#0C4E54]";
 const mapsCtaClass =
   "inline-flex items-center justify-center rounded-lg border border-[#01696F] bg-white px-4 py-2 text-sm font-semibold text-[#01696F] transition-colors hover:bg-[#01696F]/5";
-
-function trim(s: string | undefined) {
-  return (s ?? "").trim();
-}
 
 function includesAny(haystack: string, needles: string[]) {
   const h = (haystack ?? "").toLowerCase();
@@ -84,16 +85,28 @@ function ProviderMeta({
 }) {
   const website = getBusinessWebsiteUrl(b);
   const maps = getBusinessMapsUrl(b);
+  const { serviceCategory, angiCategorySlug } = exitInterstitialLabels(normalizeBusinessGroup(b));
 
   return (
     <div className="mt-3 flex flex-wrap gap-2">
       {website ? (
-        <a href={website} {...externalBusinessLinkProps} className={websiteCtaClass}>
+        <ExitInterstitial
+          providerName={b.name}
+          providerUrl={website}
+          serviceCategory={serviceCategory}
+          angiCategorySlug={angiCategorySlug}
+          className={websiteCtaClass}
+        >
           {BUSINESS_LINK_VISIT_WEBSITE}
-        </a>
+        </ExitInterstitial>
       ) : null}
       {maps ? (
-        <a href={maps} {...externalBusinessLinkProps} className={mapsCtaClass}>
+        <a
+          href={maps}
+          {...externalBusinessLinkProps}
+          className={mapsCtaClass}
+          onClick={() => trackMapsClick(b.name)}
+        >
           {BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS}
         </a>
       ) : null}
@@ -115,9 +128,10 @@ function ProviderMeta({
 }
 
 function serviceAreaNote(b: Business) {
+  const t = (s: string | undefined) => (s ?? "").trim();
   if (hasGeorgetownOfficeSignal(b)) return "Service area: Georgetown, TX and nearby.";
-  const city = trim(b.city);
-  const state = trim(b.state) || "TX";
+  const city = t(b.city);
+  const state = t(b.state) || "TX";
   if (city) return `Service area: ${city}, ${state} (serves the Georgetown area).`;
   return "Service area: Georgetown, TX area.";
 }
@@ -135,6 +149,7 @@ function ProviderCard({
 }) {
   const href = getBusinessOutboundUrl(b);
   const badges = getProviderBadges(b);
+  const { serviceCategory } = exitInterstitialLabels(normalizeBusinessGroup(b));
   const topPickClass =
     "inline-flex shrink-0 items-center rounded-full bg-[#01696F] px-[10px] py-[2px] text-[12px] font-semibold leading-none text-white";
 
@@ -145,7 +160,12 @@ function ProviderCard({
           <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-1">
             <div className="text-lg font-semibold text-gray-900 inline-flex max-w-full flex-wrap items-center gap-2">
               {href ? (
-                <a href={href} {...externalBusinessLinkProps} className="text-gray-900 hover:text-primary-hover hover:underline">
+                <a
+                  href={href}
+                  {...externalBusinessLinkProps}
+                  className="text-gray-900 hover:text-primary-hover hover:underline"
+                  onClick={() => trackOutboundClick(b.name, serviceCategory, href)}
+                >
                   {b.name}
                 </a>
               ) : (
@@ -167,6 +187,8 @@ function ProviderCard({
 
         <BusinessListingDescription text={b.description} className="mt-1" />
         <p className="text-sm text-gray-700">{serviceAreaNote(b)}</p>
+
+        <BusinessPhoneRow phone={b.phone} providerName={b.name} />
 
         <ProviderMeta b={b} guideHref={guideHref} guideLabel={guideLabel} />
         {b.directory?.sponsored || b.directory?.featured ? (

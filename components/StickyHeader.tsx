@@ -44,6 +44,9 @@ export default function StickyHeader() {
           <Link href="/best" className={navLinkClass}>
             Provider directory
           </Link>
+          <Link href="/pricing" className={navLinkClass}>
+            Pricing
+          </Link>
           <Link href="/blog" className={navLinkClass}>
             Homeowner blog
           </Link>

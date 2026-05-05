@@ -62,6 +62,8 @@ export type BestPage = {
     name: string;
     href: string;
     description: string;
+    /** Display format, e.g. "(512) 555-1234" (not stripped). Omit when unknown. */
+    phone?: string;
     disclosureLabel?: string; // default: "Featured Partner (Sponsored)"
     ctaLabel?: string; // default: "Visit partner"
   };
