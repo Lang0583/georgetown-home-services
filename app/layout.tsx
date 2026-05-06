@@ -8,6 +8,7 @@ import FooterEmailCapture from "../components/FooterEmailCapture";
 import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
 import { ADSENSE_PUBLISHER_ID } from "../lib/adsense-config";
+import { getImpactPublisherTagInnerHtml } from "../lib/impact-publisher-tag";
 import { getBrandName, getContact } from "../lib/site-content";
 
 const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
@@ -21,6 +22,9 @@ const adsenseScriptSrc = `https://pagead2.googlesyndication.com/pagead/js/adsbyg
 
 /** Set in `.env.local` after you get your Grow site ID from Mediavine (app.mediavine.com/grow). */
 const mediavineGrowSiteId = process.env.NEXT_PUBLIC_MEDIAVINE_GROW_SITE_ID;
+
+/** impact.com Publisher Tag (tracking script). Paste full `<script>…</script>` or inner JS into `IMPACT_PUBLISHER_TAG`. */
+const impactPublisherTagInnerHtml = getImpactPublisherTagInnerHtml();
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -48,6 +52,8 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: { index: true, follow: true },
     other: {
       "google-adsense-account": adsenseClient,
+      /** impact.com crawlers expect <meta name="impact-site-verification" content="..."> (HTML uses `content`, not `value`). */
+      "impact-site-verification": impactSiteVerification,
     },
     ...(googleVerification || bingVerification ? { verification } : {}),
   };
@@ -100,8 +106,13 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full text-gray-900 antialiased`}
     >
       <head>
-        {/* impact.com: meta must be on homepage & early in <head> for crawler verification */}
-        <meta name="impact-site-verification" content={impactSiteVerification} />
+        {impactPublisherTagInnerHtml ? (
+          <script
+            type="text/javascript"
+            id="impact-publisher-tag"
+            dangerouslySetInnerHTML={{ __html: impactPublisherTagInnerHtml }}
+          />
+        ) : null}
         <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
