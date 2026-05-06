@@ -4,12 +4,17 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import StickyHeader from "../components/StickyHeader";
+import FooterEmailCapture from "../components/FooterEmailCapture";
 import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
 import { ADSENSE_PUBLISHER_ID } from "../lib/adsense-config";
 import { getBrandName, getContact } from "../lib/site-content";
 
 const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
+
+/** impact.com / AppImpact “HTML tag” verification — paste the `content` value only (not the full tag). */
+const impactSiteVerification =
+  process.env.IMPACT_SITE_VERIFICATION?.trim() || "b1d76151-29e8-4a9a-9913-9ea8f5ce9cd9";
 
 const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID?.trim() || ADSENSE_PUBLISHER_ID;
 const adsenseScriptSrc = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`;
@@ -43,7 +48,6 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: { index: true, follow: true },
     other: {
       "google-adsense-account": adsenseClient,
-      "impact-site-verification": "b1d76151-29e8-4a9a-9913-9ea8f5ce9cd9",
     },
     ...(googleVerification || bingVerification ? { verification } : {}),
   };
@@ -96,6 +100,8 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full text-gray-900 antialiased`}
     >
       <head>
+        {/* impact.com: meta must be on homepage & early in <head> for crawler verification */}
+        <meta name="impact-site-verification" content={impactSiteVerification} />
         <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
@@ -124,6 +130,7 @@ export default function RootLayout({
         <JsonLd data={websiteJsonLd} />
         <StickyHeader />
         <main className="flex-1 pt-20">{children}</main>
+        <FooterEmailCapture />
         <SiteFooter />
       </body>
       {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ? (

@@ -35,10 +35,9 @@ export default function PricingEstimatorInteractive() {
     let low = 0;
     let high = 0;
     for (const row of category.rows) {
-      if (selectedJobs.has(row.job)) {
-        low += row.low;
-        high += row.high;
-      }
+      if (!selectedJobs.has(row.job) || row.excludeFromEstimatorSum) continue;
+      low += row.low;
+      high += row.high;
     }
     return { low, high };
   }, [category.rows, selectedJobs]);
@@ -117,13 +116,9 @@ export default function PricingEstimatorInteractive() {
 
       <div>
         <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">
-          What moves price in Georgetown
+          Local context (Georgetown)
         </div>
-        <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-gray-700">
-          {category.priceDrivers.map((d) => (
-            <li key={d}>{d}</li>
-          ))}
-        </ul>
+        <p className="mt-2 text-sm leading-relaxed text-gray-700">{category.localContext}</p>
       </div>
 
       <p className="text-xs leading-relaxed text-gray-500">

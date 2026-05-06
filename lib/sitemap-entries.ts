@@ -33,7 +33,7 @@ const CORE_BEST_SET: ReadonlySet<string> = new Set(CORE_BEST_SLUGS);
  * Priority tiering (sitemap.org priority is relative within the site):
  *   1.0    homepage
  *   0.9    core hubs, core service pages, core best-of pages
- *   0.7    supporting sub-service pages, blog posts, /locations/georgetown-tx
+ *   0.7    /pricing, supporting sub-service pages, blog posts, /locations/georgetown-tx
  *   0.6    neighborhood × service landings (/neighborhoods/[slug]/[service])
  *   0.5    static pages (about/contact/policies), low-signal pages
  *
@@ -45,6 +45,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
 
   const staticMonthlyPaths: { path: string; priority: number }[] = [
     { path: "/", priority: 1 },
+    { path: "/pricing", priority: 0.7 },
     { path: "/about", priority: 0.5 },
     { path: AUTHOR_PROFILE_PATH, priority: 0.5 },
     { path: "/methodology", priority: 0.5 },
@@ -59,8 +60,6 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     { path: "/services", priority: 0.9 },
     { path: "/best", priority: 0.9 },
     { path: "/blog", priority: 0.7 },
-    // High priority: featured-snippet target for "[service] cost georgetown tx" queries.
-    { path: "/pricing", priority: 0.9 },
     { path: "/pricing/calculator", priority: 0.85 },
   ];
 
@@ -163,6 +162,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
       priority: 0.6,
     });
   }
+  // Source list + any `next-sitemap.config.js` reference: `data/neighborhoods.ts` (40 pages).
 
   return entries;
 }

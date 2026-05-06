@@ -22,7 +22,9 @@ export default function SiteFooter() {
           <div>
             <div className="text-sm font-semibold text-gray-900">{brand}</div>
             <div className="mt-1 text-sm text-gray-600">
-              Email: <a className="underline" href={`mailto:${contact.email}`}>{contact.email}</a>
+              <Link className={`${footerBarLinkClass} text-gray-700`} href="/contact#feedback">
+                Contact &amp; feedback
+              </Link>
             </div>
           </div>
 
@@ -48,6 +50,11 @@ export default function SiteFooter() {
               <li>
                 <Link className="hover:underline" href="/services">
                   Service guides hub
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:underline" href="/pricing">
+                  Pricing guide
                 </Link>
               </li>
               <li>

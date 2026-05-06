@@ -49,13 +49,10 @@ export default function BlogCostSupplement({ slug }: { slug: string }) {
           <thead className="border-b border-gray-200 text-xs font-semibold uppercase tracking-wide text-gray-600">
             <tr>
               <th scope="col" className="py-2 pr-4">
-                Job
+                Job type
               </th>
               <th scope="col" className="py-2 pr-4">
-                Typical Georgetown range
-              </th>
-              <th scope="col" className="py-2">
-                Notes
+                Typical cost range
               </th>
             </tr>
           </thead>
@@ -66,22 +63,12 @@ export default function BlogCostSupplement({ slug }: { slug: string }) {
                 <td className="py-3 pr-4 align-top font-semibold tabular-nums">
                   {formatPricingRange(row)}
                 </td>
-                <td className="py-3 align-top text-gray-600">{row.notes ?? "—"}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <div className="mt-5">
-        <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">
-          What moves the number in Georgetown
-        </div>
-        <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-gray-700">
-          {category.priceDrivers.map((d) => (
-            <li key={d}>{d}</li>
-          ))}
-        </ul>
-      </div>
+      <p className="mt-5 text-sm leading-relaxed text-gray-700">{category.localContext}</p>
       <p className="mt-5 text-xs leading-relaxed text-gray-500">
         These are editorial ranges for planning, not quotes. Compare at least two
         written estimates before committing. Full category tables live on the{" "}

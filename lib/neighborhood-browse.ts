@@ -27,9 +27,10 @@ export const NEIGHBORHOOD_BROWSE_ENTRIES: NeighborhoodBrowseEntry[] = [
   },
   {
     name: "Teravista",
-    href: "/neighborhoods/teravista/hvac",
-    description: "Golf-course neighborhood with mixed home ages, vaulted spaces, and fairway wind exposure.",
-    badge: "HVAC",
+    href: "/neighborhoods/teravista/foundation-repair",
+    description:
+      "Golf-course community with mixed home ages and Central Texas clay—foundation movement and drainage patterns worth monitoring.",
+    badge: "Foundation",
   },
   {
     name: "Berry Creek",

@@ -39,7 +39,7 @@ function breadcrumbJsonLd({
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
-      { "@type": "ListItem", position: 2, name: "Service Guides", item: `${siteUrl}/services` },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${siteUrl}/services` },
       { "@type": "ListItem", position: 3, name: serviceName, item: `${siteUrl}${svcPath}` },
       { "@type": "ListItem", position: 4, name: neighborhoodName, item: `${siteUrl}${pagePath}` },
     ],
@@ -114,7 +114,7 @@ export default async function NeighborhoodServicePage({
         <Breadcrumbs
           items={[
             { href: "/", label: "Home" },
-            { href: "/services", label: "Service Guides" },
+            { href: "/services", label: "Services" },
             { href: page.serviceHref, label: page.serviceName },
             { href: pathname, label: page.neighborhoodName },
           ]}
@@ -131,7 +131,7 @@ export default async function NeighborhoodServicePage({
 
         <section className="mt-10">
           <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
-            Common issues in {page.neighborhoodName}
+            Common Issues in {page.neighborhoodName}
           </h2>
           <ul className="mt-4 list-disc space-y-2 pl-6 text-base leading-relaxed text-gray-700">
             {page.commonIssues.map((item) => (
@@ -141,7 +141,7 @@ export default async function NeighborhoodServicePage({
         </section>
 
         <section className="mt-10">
-          <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Why local matters</h2>
+          <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Why Local Experience Matters</h2>
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-gray-700">{page.whyLocal}</p>
         </section>
 
@@ -153,7 +153,7 @@ export default async function NeighborhoodServicePage({
           </p>
           <div className="mt-5">
             <ButtonLink href={page.bestOfHref}>
-              Compare Top {page.serviceName} in Georgetown TX
+              Compare Top {page.serviceName} in Georgetown TX →
             </ButtonLink>
           </div>
         </div>

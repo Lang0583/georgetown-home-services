@@ -106,29 +106,47 @@ function breadcrumbJsonLd({
   };
 }
 
-function faqJsonLd({
-  siteUrl,
-  pageUrl,
-  title,
-  faqs,
-}: {
-  siteUrl: string;
-  pageUrl: string;
-  title: string;
-  faqs: { q: string; a: string }[];
-}) {
+function faqJsonLd(faqs: { q: string; a: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    name: title,
-    mainEntityOfPage: pageUrl,
-    isPartOf: { "@type": "WebSite", url: siteUrl, name: "Georgetown Home Services" },
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
       name: f.q,
       acceptedAnswer: { "@type": "Answer", text: f.a },
     })),
   };
+}
+
+function BestOfFaqSection({ faqs }: { faqs: readonly { q: string; a: string }[] }) {
+  if (!faqs.length) return null;
+  return (
+    <section className="mt-12 rounded-xl border border-gray-200 bg-white p-6 shadow-md md:p-8">
+      <h2 className="text-3xl font-semibold tracking-tight text-gray-900">FAQ</h2>
+      <div className="mt-6 space-y-3">
+        {faqs.map((f) => (
+          <details key={f.q} className="group rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
+            <summary className="flex cursor-pointer list-none items-start gap-2 text-sm font-semibold text-gray-900 [&::-webkit-details-marker]:hidden">
+              <span
+                className="mt-0.5 inline-flex w-5 shrink-0 justify-center font-mono text-base font-normal leading-none text-gray-500 group-open:hidden"
+                aria-hidden
+              >
+                +
+              </span>
+              <span
+                className="mt-0.5 hidden w-5 shrink-0 justify-center font-mono text-base font-normal leading-none text-gray-500 group-open:inline"
+                aria-hidden
+              >
+                −
+              </span>
+              <span>{f.q}</span>
+            </summary>
+            <p className="mt-2 border-t border-gray-200 pt-2 pl-7 text-sm leading-relaxed text-gray-700">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  );
 }
 
 function FeaturedPartnerCard({
@@ -193,42 +211,42 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     "best-plumbers-georgetown-tx": {
       absoluteTitle: "Best Plumbers Georgetown TX (2026) — Verified Local Picks",
       description:
-        "The top-rated plumbers in Georgetown TX ranked by reviews, local presence, and service focus. Compare options for leaks, drains, slab repair, and emergency calls — updated April 2026.",
+        "The top-rated plumbers in Georgetown TX ranked by reviews, local presence, and service focus. Compare options for leaks, drains, slab repair, and emergency calls.",
     },
     "top-hvac-companies-georgetown-tx": {
       absoluteTitle: "Best HVAC Companies Georgetown TX (2026) — AC & Heating Repair",
       description:
-        "Georgetown TX's top-rated HVAC companies compared by response speed, service scope, and local reputation. Picks vetted for Central Texas summer heat and year-round reliability.",
+        "Georgetown TX's top-rated HVAC companies compared by response speed, service scope, and local reputation. Picks vetted for Central Texas summer heat.",
     },
     "best-roofers-georgetown-tx": {
       absoluteTitle: "Best Roofers Georgetown TX (2026) — Storm, Repair & Replacement",
       description:
-        "Top Georgetown TX roofing contractors ranked by reviews, storm damage experience, and transparency. Includes what to ask before signing any roofing contract in Williamson County.",
+        "Top Georgetown TX roofing contractors ranked by reviews, storm damage experience, and transparency. Includes what to ask before signing any roofing contract.",
     },
     "best-electricians-georgetown-tx": {
       absoluteTitle: "Best Electricians Georgetown TX (2026) — Licensed & Verified",
       description:
-        "Top-rated electricians in Georgetown TX for panel upgrades, circuit work, and EV charger installation. Compare by licensing, reviews, and residential specialty. Updated 2026.",
+        "Top-rated electricians in Georgetown TX for panel upgrades, circuit work, and EV charger installation. Compare by licensing, reviews, and residential specialty.",
     },
     "best-landscaping-companies-georgetown-tx": {
       absoluteTitle: "Best Landscaping Companies Georgetown TX (2026) — Local Picks",
       description:
-        "Top Georgetown TX landscaping companies for lawn care, beds, mulch, and irrigation. Ranked by local reviews, service range, and experience with Central Texas soil and climate.",
+        "Top Georgetown TX landscaping companies for lawn care, beds, mulch, and irrigation. Ranked by local reviews, service range, and Central Texas experience.",
     },
     "best-pest-control-georgetown-tx": {
       absoluteTitle: "Best Pest Control Georgetown TX (2026) — Ranked & Reviewed",
       description:
-        "Georgetown TX's top pest control providers compared for perimeter plans, termite monitoring, and rodent exclusion. Local picks with verified ratings — updated April 2026.",
+        "Georgetown TX's top pest control providers compared for perimeter plans, termite monitoring, and rodent exclusion. Local picks with verified ratings.",
     },
     "best-foundation-repair-georgetown-tx": {
       absoluteTitle: "Best Foundation Repair Georgetown TX (2026) — Clay Soil Experts",
       description:
-        "Top foundation repair contractors in Georgetown TX ranked by reviews, engineering credentials, and experience with Williamson County's expansive clay soil. Free inspection options listed.",
+        "Top foundation repair contractors in Georgetown TX ranked by reviews, engineering credentials, and experience with Williamson County's expansive clay soil.",
     },
     "best-house-cleaning-services-georgetown-tx": {
       absoluteTitle: "Best House Cleaning Services Georgetown TX (2026) — Reviewed",
       description:
-        "Georgetown TX's top-rated cleaning services for recurring maid service, deep cleans, and move-out cleans. Compare local picks by ratings, pricing transparency, and reliability.",
+        "Georgetown TX's top-rated cleaning services for recurring maid service, deep cleans, and move-out cleans. Compare local picks by ratings and reliability.",
     },
   };
 
@@ -325,14 +343,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
             })}
           />
           {bestOfPageFaqs.length ? (
-            <JsonLd
-              data={faqJsonLd({
-                siteUrl,
-                pageUrl: `${siteUrl}/best/${best.slug}`,
-                title: `${best.title} FAQ`,
-                faqs: bestOfPageFaqs,
-              })}
-            />
+            <JsonLd data={faqJsonLd(bestOfPageFaqs)} />
           ) : null}
           {businessesForPage?.length ? (
             <JsonLd
@@ -1342,6 +1353,8 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         </div>
                       ) : null}
 
+                      <BestOfFaqSection faqs={bestOfPageFaqs} />
+
                       <section className="mt-10 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
                         <h3 className="text-xl font-semibold text-gray-900">Who this is best for</h3>
                         <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-700">
@@ -1369,26 +1382,14 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                           <AdSenseDisplay slot={adsenseBestOfSlot} />
                         </div>
                       ) : null}
+
+                      <BestOfFaqSection faqs={bestOfPageFaqs} />
                     </>
                   )}
 
                   <section aria-label="Comparison notes">
                     <ComparisonSection comparison={providerData.comparison} />
                   </section>
-                </section>
-              ) : null}
-
-              {bestOfPageFaqs.length ? (
-                <section className="mt-12 rounded-xl border border-gray-200 bg-white p-6 shadow-md md:p-8">
-                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">FAQ</h2>
-                  <div className="mt-6 space-y-4">
-                    {bestOfPageFaqs.map((f) => (
-                      <details key={f.q} className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3">
-                        <summary className="cursor-pointer text-sm font-semibold text-gray-900">{f.q}</summary>
-                        <p className="mt-2 text-sm leading-relaxed text-gray-700">{f.a}</p>
-                      </details>
-                    ))}
-                  </div>
                 </section>
               ) : null}
 

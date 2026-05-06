@@ -21,10 +21,14 @@ export const adsenseSidebarSlot =
   process.env.NEXT_PUBLIC_ADSENSE_SLOT?.trim() ||
   "";
 
-/** Optional: slot after provider lists on Best Of pages (falls back to inline slot). */
-export const adsenseBestOfSlot =
-  process.env.NEXT_PUBLIC_ADSENSE_SLOT_BEST_OF?.trim() || adsenseInlineSlot;
+/** Display unit "GHS - Blog Post" (`/blog/[slug]` sidebar). Override via `NEXT_PUBLIC_ADSENSE_SLOT_BLOG_POST`. */
+export const adsenseBlogPostSlot =
+  process.env.NEXT_PUBLIC_ADSENSE_SLOT_BLOG_POST?.trim() || "1763207646";
 
-/** Optional: main-column slot on service guide pages after intro (falls back to inline slot). */
+/** Display unit "GHS - Best Of Page" (`/best/[slug]`). Override via `NEXT_PUBLIC_ADSENSE_SLOT_BEST_OF`. */
+export const adsenseBestOfSlot =
+  process.env.NEXT_PUBLIC_ADSENSE_SLOT_BEST_OF?.trim() || "7971086444";
+
+/** Display unit "GHS - Service Page" (`/services/[slug]`). Override via `NEXT_PUBLIC_ADSENSE_SLOT_SERVICE`. */
 export const adsenseServiceMainSlot =
-  process.env.NEXT_PUBLIC_ADSENSE_SLOT_SERVICE?.trim() || adsenseInlineSlot;
+  process.env.NEXT_PUBLIC_ADSENSE_SLOT_SERVICE?.trim() || "9450125974";

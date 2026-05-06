@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CTASection from "../../../components/CTASection";
-import EmailCaptureSitewide from "../../../components/EmailCaptureSitewide";
 import FAQList from "../../../components/FAQList";
 import LinkCard from "../../../components/LinkCard";
 import RichText from "../../../components/RichText";
@@ -187,7 +186,6 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
             }
             aside={
               <>
-              <EmailCaptureSitewide source={`location:${location.slug}`} offers={["seasonal_checklist", "monthly_reminder"]} />
               <div className="mt-8">
                 <CTASection
                   eyebrow="Local guides"

@@ -3,184 +3,156 @@ import type { Faq } from "./site-content";
 
 type CoreBestSlug = (typeof CORE_BEST_SLUGS)[number];
 
+/** Shared Q2 — matches hiring guidance used across service guides; TDLR + TSBPE where applicable. */
+const FIND_RELIABLE_A =
+  "Check Google reviews for providers with 4.5+ stars and 50+ reviews. Verify state credentials where they apply (TDLR for electrical and HVAC contractors, TSBPE for licensed plumbers), confirm insurance, and ask how permits will be handled for your job. Get at least two written quotes before committing.";
+
 /**
- * Homepage + JSON-LD for `/best/[slug]` core guides. Single source: visible FAQ accordion matches FAQPage schema.
+ * Exactly four FAQs per `/best/[slug]` core guide. Single source: visible accordion and FAQPage JSON-LD must match.
  */
 const FAQs_BY_SLUG: Record<CoreBestSlug, Faq[]> = {
   "best-plumbers-georgetown-tx": [
     {
-      q: "How much does a plumber cost in Georgetown TX?",
-      a: "Most plumbing service calls in Georgetown TX range from $150–$400 for standard repairs. Emergency and after-hours visits often add $75–$150 to the base fee. Slab leak repairs and main-line work commonly run $500–$2,000+ depending on access, materials, and whether walls or flooring must be opened.",
+      q: "How much does plumbing cost in Georgetown TX?",
+      a: "Most routine plumbing repairs in Georgetown run about $150–$400 for a standard visit, in line with typical emergency call bands of $150–$500+ once trip and after-hours fees apply. Water-heater work and tougher repairs often land higher; slab leaks and main-line jobs commonly reach $500–$2,000+ depending on access, materials, and how much finish work must be opened.",
     },
     {
       q: "How do I find a reliable plumber in Georgetown TX?",
-      a: "Start with licensed providers who regularly serve Georgetown, have consistent recent reviews, and can explain your issue in plain language. Compare at least two written scopes for larger jobs, confirm insurance and warranty terms, and avoid anyone who pressures you to decide before you’ve seen a clear estimate.",
+      a: FIND_RELIABLE_A,
     },
     {
-      q: "What should I look for when hiring a plumber?",
-      a: "Look for a Texas plumbing license in good standing, clear written estimates, transparent trip or diagnostic fees, and documentation of scope (what is included, what could change the price). Strong plumbers answer questions about permits, cleanup, and how they handle callbacks if something fails soon after the visit.",
+      q: "What should I ask before hiring a plumber in Georgetown TX?",
+      a: "Ask whether they have slab leak detection experience on Williamson County slab homes, how camera inspections are priced, and what warranty applies to parts versus labor. Confirm who pulls permits for water heaters or sewer replacements, how they isolate irrigation from domestic lines in older Sun City–style yards, and what the estimate includes if concrete or flooring must be restored.",
     },
     {
       q: "How long does a typical drain cleaning or plumbing service call take in Georgetown TX?",
-      a: "Many straightforward service calls—like clearing a single clog or replacing a fixture—take about one to three hours once a tech is on site. Complex leak tracing, camera inspections, or slab-related work can take longer or require a return visit after the full scope is confirmed.",
-    },
-    {
-      q: "Are permits required for plumbing work in Georgetown TX?",
-      a: "Water heater replacements, sewer line work, major repipes, and other work that affects public systems or safety often require permits and inspections. A reputable Georgetown plumber should tell you when a permit is needed, who pulls it, and how inspections fit the timeline—never treat permits as optional for code-affected work.",
+      a: "A straightforward single-line clear or fixture repair is often done in about one to three hours on site. Camera work, leak tracing under a slab, or jobs that need a return visit after parts are ordered can stretch across a full day or a second appointment—especially during peak summer or holiday weeks when crews are booked tight.",
     },
   ],
   "top-hvac-companies-georgetown-tx": [
     {
       q: "How much does HVAC service cost in Georgetown TX?",
-      a: "Routine tune-ups and small repairs in Georgetown TX often start in the low-to-mid hundreds once you’re on site, with larger repairs scaling up if coils, motors, or refrigerant work is involved. Full system replacement is typically quoted in the many-thousands depending on tonnage, efficiency, and duct or electrical corrections.",
+      a: "Many AC repairs fall in a few hundred to low-thousands range once you account for diagnosis, refrigerant-related work, or motor and coil repairs—exactly which band you’re in depends on parts and accessibility. Full system replacements in Georgetown commonly align with the $5,000–$14,000+ range from our replacement cost guide for mid-efficiency split systems, before major duct or electrical upgrades.",
     },
     {
       q: "How do I find a reliable HVAC company in Georgetown TX?",
-      a: "Prioritize licensed, insured companies with strong local review history and clear communication in peak summer heat. Ask how they handle warranty parts, who performs the work, and whether quotes include duct, electrical, or thermostat changes—then compare written proposals, not just the headline price.",
+      a: FIND_RELIABLE_A,
     },
     {
-      q: "What should I look for when hiring an HVAC company?",
-      a: "Look for detailed written scopes (equipment model numbers when relevant), efficiency ratings, labor and manufacturer warranty terms, and realistic timelines. Good providers explain what they measured, what they ruled out, and what you should monitor after the visit instead of jumping straight to replacement without diagnosis.",
+      q: "What should I ask before hiring an HVAC contractor in Georgetown TX?",
+      a: "Ask what measurements they took (static pressure, delta-T, subcool/superheat when relevant) and whether the quote lists equipment model numbers and efficiency ratings. Confirm thermostat compatibility, warranty on labor versus manufacturer coverage, and how they handle hard-start conditions in July-August heat. If humidity is an issue, ask about coil, drain line, and airflow plans—not only refrigerant charge.",
     },
     {
       q: "How long does an AC repair visit usually take in Georgetown TX?",
-      a: "Many single-issue repairs—capacitor swaps, simple drain line fixes, or straightforward part replacements—can be completed in about one to three hours. Complex refrigerant issues, coil problems, or repeated failures may take longer or require a follow-up once parts arrive.",
-    },
-    {
-      q: "When should I repair versus replace my HVAC system in Central Texas?",
-      a: "Repair usually makes sense when the system is newer, the fix is modest relative to replacement, and efficiency still matches your comfort goals. Replacement is often worth discussing when equipment is old, repairs are frequent or expensive, refrigerant is obsolete, or summer reliability in Georgetown’s heat is no longer acceptable.",
+      a: "Simple fixes—capacitors, contactors, condensate drains, or swapping a common part—often finish in one to three hours. Coil issues, refrigerant leaks that need leak search and repair, or ordering OEM parts can turn into a half-day visit or require a follow-up once the part arrives, which is common in peak season.",
     },
   ],
   "best-roofers-georgetown-tx": [
     {
-      q: "How much does a roofer cost in Georgetown TX?",
-      a: "Small repairs in Georgetown TX often start in the low-to-mid hundreds; flashing, boot, or section repairs can land higher depending on pitch and access. Full replacements vary widely—commonly many-thousands—based on square footage, material, decking condition, and ventilation or flashing scope.",
+      q: "How much does roofing cost in Georgetown TX?",
+      a: "Typical shingle repairs often fall around $300–$1,500 depending on pitch, access, and how much flashing or decking is involved—the same band we cite in our repair cost guide. Full replacements for many Georgetown homes often track into the $9,000–$20,000+ range from our replacement guide, driven by square footage, material, decking condition, and ventilation or code updates.",
     },
     {
       q: "How do I find a reliable roofer in Georgetown TX?",
-      a: "Focus on local companies with documented storm-season experience, strong review patterns, and willingness to put materials, underlayment, and edge details in writing. After hail or wind events, compare scopes line-by-line and be cautious of high-pressure door-to-door solicitations.",
+      a: FIND_RELIABLE_A,
     },
     {
-      q: "What should I look for when hiring a roofer?",
-      a: "Expect a written estimate that lists tear-off, underlayment, flashing, ventilation, decking allowances, disposal, timelines, and workmanship plus manufacturer warranties. Ask how they document leaks, who supervises crews, and how change orders are handled if decking or structure surprises appear mid-job.",
+      q: "What should I ask before hiring a roofer in Georgetown TX?",
+      a: "Ask which shingle or flat-roof manufacturer systems they install most, whether they hold preferred or certified installer status, and how they document hail or wind damage for insurance. Confirm who pulls the permit, how tear-off and decking replacements are priced if rotten wood is found, and whether the crew has supplement experience when adjuster scopes are tight after Williamson County storms.",
     },
     {
       q: "How long does a roof replacement take in Georgetown TX?",
-      a: "Many residential re-roofs are completed in one to three days depending on size, complexity, and weather. Rain delays, decking replacement, or detailed chimney and valley work can extend the schedule—a good roofer gives a realistic range and explains what could add days.",
-    },
-    {
-      q: "Does homeowners insurance cover roof repairs in Texas?",
-      a: "Insurance may cover sudden, direct physical losses—like wind or hail damage—when your policy includes that peril and a covered claim is approved. Wear-and-tear, deferred maintenance, and gradual leaks are often excluded. Always review your policy with your carrier or agent and document damage with photos before repairs begin.",
+      a: "Many residential re-roofs take one to three days once weather holds and materials are on site. Steeper pitches, complex valleys, full decking replacement, or rain delays in spring can add time—a good contractor should give a realistic range and explain what pushes the schedule.",
     },
   ],
   "best-electricians-georgetown-tx": [
     {
-      q: "How much does an electrician cost in Georgetown TX?",
-      a: "Service calls and small tasks in Georgetown TX often start with a trip or diagnostic fee plus labor in the low-to-mid hundreds for straightforward work. Panel upgrades, rewiring, EV circuits, or whole-home projects scale into the thousands depending on materials, access, utility requirements, and how much wall finish repair is involved.",
+      q: "How much does electrical work cost in Georgetown TX?",
+      a: "Trip or diagnostic fees plus small-device swaps or short troubleshooting visits often land in the low-to-mid hundreds. Panel upgrades, whole-home rewiring segments, or new 240V runs for EV chargers typically scale into the low- to mid-thousands and beyond, depending on panel capacity, conduit paths, drywall repair scope, and whether the utility requires a service upgrade.",
     },
     {
       q: "How do I find a reliable electrician in Georgetown TX?",
-      a: "Choose a licensed journeyman or master electrician with liability insurance and a pattern of detailed estimates. For larger jobs, compare at least two written bids and confirm who obtains permits, schedules inspections, and handles fire-stopping or drywall coordination.",
+      a: FIND_RELIABLE_A,
     },
     {
-      q: "What should I look for when hiring an electrician?",
-      a: "Verify license status, insurance, and whether the scope includes permits when required. Strong electricians label panels clearly, explain overload risks, and specify brand or spec for critical components like panels, breakers, and GFCIs when those choices affect safety and code compliance.",
+      q: "What should I ask before hiring an electrician in Georgetown TX?",
+      a: "Ask for license verification (TDLR), proof of insurance, and whether your job requires a permit and inspection. For panel work, ask if the bid covers breakers, grounding updates, AFCI/GFCI code requirements, and labeling. For EV or kitchen additions, ask about load calculations and whether the utility needs advance notice before energizing new equipment.",
     },
     {
       q: "How long does a typical electrical service call take in Georgetown TX?",
-      a: "Simple jobs—replacing devices, diagnosing a single circuit, or minor troubleshooting—often take one to three hours. Panel upgrades, new circuit pulls across long runs, or correction of multiple hazards can take a full day or span multiple visits, especially if utility coordination is required.",
-    },
-    {
-      q: "Do I need a permit for electrical work in Georgetown TX?",
-      a: "Many alterations—new circuits, panel changes, service upgrades, and most work beyond like-for-like device swaps—require permits and inspection under local adoption of the electrical code. Your electrician should identify permit needs up front; skipping required permits can void insurance coverage and create resale problems.",
+      a: "Straightforward device replacements or single-circuit troubleshooting often takes one to three hours. Panel swaps or multi-circuit projects commonly take most of a day or span two visits when inspections, utility coordination, or sheetrock patching is sequenced separately.",
     },
   ],
   "best-landscaping-companies-georgetown-tx": [
     {
       q: "How much does landscaping cost in Georgetown TX?",
-      a: "Basic lawn maintenance or small bed refreshes in Georgetown TX may start in the low hundreds per visit or month depending on lot size. Installs involving irrigation tuning, significant planting, hardscape, or drainage corrections can range from several thousand to much more based on materials and site conditions.",
+      a: "Routine lawn and bed maintenance often starts in the low hundreds per visit for typical Williamson County lots, with monthly packages varying by crew size and scope. Installs that add irrigation tweaks, significant planting, mulch at depth, or small hardscape can jump into the low thousands and beyond depending on materials, slope, and how much soil amendment Central Texas clay needs.",
     },
     {
       q: "How do I find a reliable landscaping company in Georgetown TX?",
-      a: "Look for crews with consistent local portfolios, transparent quotes that separate labor and materials, and realistic timelines for Central Texas heat and clay soil. Ask how they handle plant warranties, irrigation adjustments, and ongoing maintenance after the initial install.",
+      a: FIND_RELIABLE_A,
     },
     {
-      q: "What should I look for when hiring a landscaping company?",
-      a: "Expect a written scope that lists plant sizes or counts, soil amendments, mulch depth, drainage intent, and irrigation changes. Good landscapers explain sun exposure, water budgets, and maintenance burden—especially in new subdivisions with HOA rules in Georgetown.",
+      q: "What should I ask before hiring a landscaping company in Georgetown TX?",
+      a: "Ask for plant sizes or counts, mulch depth, soil amendment type, and whether drip or spray zones will be adjusted. Request drainage intent for downspouts and low spots, how they’ll protect existing tree roots on established streets like Berry Creek, and what happens if plants fail under warranty. Clarify HOA timing rules in master-planned sections before work starts.",
     },
     {
       q: "How long does a typical landscaping project take in Georgetown TX?",
-      a: "A seasonal refresh or small planting job may finish in a day. Larger designs with grading, beds, trees, or patio elements can take several days to weeks depending on material lead times, crew size, and weather—your contract should spell out phasing and what happens if rain delays work.",
-    },
-    {
-      q: "When is the best time to plant or renovate in Central Texas?",
-      a: "Fall through early spring is often ideal for transplanting trees and shrubs so roots establish before peak summer heat. That said, irrigation-heavy projects and some hardscape work can be scheduled year-round if watering and crew safety plans account for Georgetown’s hottest months.",
+      a: "A seasonal refresh or small planting job may finish in a day. Larger plans with grading, beds, trees, or patio tie-ins can run several days to a few weeks depending on crew availability, material lead times, and rain delays during spring storm weeks.",
     },
   ],
   "best-pest-control-georgetown-tx": [
     {
       q: "How much does pest control cost in Georgetown TX?",
-      a: "Initial treatments and single-issue visits in Georgetown TX often land in the low-to-mid hundreds, while quarterly perimeter plans are usually priced as an annual or per-visit package. Severe infestations, attic or rodent work, and specialty treatments can cost more after inspection confirms scope.",
+      a: "Initial visits and targeted treatments for common perimeter pests often land in the low-to-mid hundreds, while quarterly perimeter programs are usually sold as an annual or per-visit plan. Heavy German roach cleanouts, attic rodent work, or termite monitoring add scope after inspection—expect a written program price rather than a phone guess.",
     },
     {
       q: "How do I find a reliable pest control company in Georgetown TX?",
-      a: "Choose licensed applicators who identify the pest before selling a program, explain treatment options in writing, and provide clear re-treatment or guarantee language. Compare companies that document entry points and moisture issues, not just spray schedules.",
+      a: FIND_RELIABLE_A,
     },
     {
-      q: "What should I look for when hiring a pest control company?",
-      a: "Look for Texas licensing, label-compliant products, integrated approaches (exclusion + environment + targeted treatment), and straightforward pricing for follow-ups. Ask how they protect pets, how soon you can re-enter treated areas, and what you should do between visits.",
+      q: "What should I ask before hiring a pest control company in Georgetown TX?",
+      a: "Ask which pests they identified before quoting, which products fit the label for your structure, and how re-treats are handled if activity returns. Request clarity on pet and kid re-entry times, whether they seal entry routes versus only spraying, and how they document exterior grading or moisture issues that invite ants and millipedes after Georgetown rains.",
     },
     {
       q: "How long does a standard pest control treatment take in Georgetown TX?",
-      a: "A typical perimeter and interior baseboard treatment often takes about 30–60 minutes for an average home, plus a short safety briefing. Structural fumigation, heavy German roach programs, or rodent exclusion may take longer or require multiple visits.",
-    },
-    {
-      q: "How often should I schedule pest control in Central Texas?",
-      a: "Many Georgetown homeowners use quarterly perimeter service to stay ahead of ants, spiders, and seasonal pressure, with indoor visits as needed. High-moisture summers and new construction zones can warrant tighter intervals until the home’s exterior is fully sealed.",
+      a: "A typical perimeter and targeted interior baseboard service for an average home often takes about 30–60 minutes including walkthrough notes. Larger German roach programs, attic rodent trapping, or crawlspace work can take longer or require scheduled return visits.",
     },
   ],
   "best-foundation-repair-georgetown-tx": [
     {
       q: "How much does foundation repair cost in Georgetown TX?",
-      a: "Minor crack stitching or drainage-related corrections may stay in the low thousands, while piering, beam replacement, or widespread leveling in Georgetown clay soils can climb quickly based on lift height, access, and engineering requirements. Always insist on a written scope tied to measurements, not a drive-by estimate.",
+      a: "Minor crack repairs or drainage-first corrections might stay in the low thousands when scope is tight and engineering is straightforward. Widespread piering, beam work, or major leveling on expansive clay in Georgetown and Teravista-style lots can escalate quickly based on lift plan, access tunnels, plumbing tests, and engineering letters—always insist on measurements tied to the quote, not a flat phone price.",
     },
     {
       q: "How do I find a reliable foundation repair company in Georgetown TX?",
-      a: "Prioritize engineers or contractors who document elevations, explain movement causes (moisture cycles, drainage, plumbing leaks), and separate cosmetic cracking from structural risk. Compare methods and warranties, and be skeptical of one-size-fits-all sales pitches without measurements.",
+      a: FIND_RELIABLE_A,
     },
     {
-      q: "What should I look for when hiring a foundation repair company?",
-      a: "Look for clear engineering letters when required, pier or shim specifications, warranty transfer terms, and post-repair maintenance guidance (watering, drainage, gutters). Strong companies coordinate plumbing tests when slab leaks are suspected instead of lifting first and asking questions later.",
+      q: "What should I ask before hiring a foundation repair company in Georgetown TX?",
+      a: "Ask for elevation documentation, whether a third-party engineer is involved when required, and how they separate cosmetic cracking from structural movement. Confirm pier or shim specs, warranty transfer rules, post-repair watering guidance for clay soil, and whether plumbing leak tests are recommended before lifts. Request photos and a written maintenance plan for gutters and drainage.",
     },
     {
       q: "How long does a foundation repair project take in Georgetown TX?",
-      a: "Smaller stabilization jobs may take a few days; larger lifts with tunneling or extensive pier runs can take a week or more depending on weather, access, and utility conflicts. Your proposal should state working hours, dust control expectations, and inspection milestones.",
-    },
-    {
-      q: "Does homeowners insurance cover foundation repair in Texas?",
-      a: "Policies usually exclude gradual settlement and typical soil movement but may cover sudden, named perils—like plumbing leaks or fire—that directly damage the foundation, subject to your deductible and policy wording. Read your declarations and endorsements with your agent; do not assume coverage without a formal claim evaluation.",
+      a: "Smaller stabilization jobs may take a few days of crew time. Larger installs with tunneling, many piers, or weather delays in wet weeks can stretch past a week—your proposal should spell out phases, dust control, and inspection milestones.",
     },
   ],
   "best-house-cleaning-services-georgetown-tx": [
     {
       q: "How much does house cleaning cost in Georgetown TX?",
-      a: "Standard cleans for typical Georgetown homes often range from roughly $100–$200+ per visit depending on square footage, frequency, and team size. Deep cleans, move-in/move-out services, and post-construction detail work usually cost more because of hours, supplies, and baseboard or appliance focus.",
+      a: "Recurring cleans for typical Georgetown homes often run roughly $100–$200+ per visit depending on square footage, bathrooms, and team size, with first-time or deep cleans higher because of hours and detail work. Move-out and post-renovation cleans scale with condition—heavy oven, blind, and baseboard focus adds labor every time.",
     },
     {
       q: "How do I find a reliable house cleaner in Georgetown TX?",
-      a: "Hire bonded and insured teams with background checks, clear cancellation policies, and consistent review history. Ask whether the same crew is assigned, what products they use, and how they handle pets, alarms, and access so expectations match reality week to week.",
+      a: FIND_RELIABLE_A,
     },
     {
-      q: "What should I look for when hiring a house cleaning service?",
-      a: "Look for a checklist or scope document, pricing that states hourly versus flat-rate assumptions, and policies for breakage or damage. Good services clarify what is excluded (heavy clutter, biohazards, exterior windows) and how they secure keys or codes.",
+      q: "What should I ask before hiring a house cleaning service in Georgetown TX?",
+      a: "Ask for a checklist that separates standard versus deep tasks, whether supplies and equipment are included, and how they handle alarms, pets, and lockboxes in central neighborhoods like Georgetown Village. Confirm hourly versus flat-rate assumptions, cancellation windows, breakage policies, and whether the same crew is assigned for recurring service.",
     },
     {
       q: "How long does a standard house cleaning take in Georgetown TX?",
-      a: "A recurring maintenance clean for a midsize home often takes two to four person-hours; first-time or deep cleans can take longer. Exact timing depends on tidiness, pets, flooring mix, and whether you add tasks like ovens, blinds, or inside refrigerators.",
-    },
-    {
-      q: "What is included in a deep clean versus a standard cleaning?",
-      a: "Standard cleaning usually covers routine dusting, vacuuming, mopping, kitchen and bath surfaces, and general tidying. Deep cleaning adds detail work—baseboards, interior appliances, light fixtures, grout touch-ups, and inside cabinets—on a preset checklist so both sides agree before booking.",
+      a: "Maintenance cleans for a midsize home often take about two to four person-hours; first visits or deep cleans with appliance interiors and neglected baseboards can run much longer. Timing shifts with kids, pets, and cluttered surfaces—even a reliable crew slows down when pick-up isn’t done first.",
     },
   ],
 };

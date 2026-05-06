@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AdSenseDisplay from "../../../components/AdSenseDisplay";
-import EmailCaptureSitewide from "../../../components/EmailCaptureSitewide";
 import BlogArticleBodyWithMidEmail from "../../../components/BlogArticleBodyWithMidEmail";
 import LinkCard from "../../../components/LinkCard";
 import JsonLd from "../../../components/JsonLd";
@@ -17,7 +16,7 @@ import {
   getLocationBySlug,
   getServices,
 } from "../../../lib/site-content";
-import { adsenseSidebarSlot } from "../../../lib/adsense-config";
+import { adsenseBlogPostSlot } from "../../../lib/adsense-config";
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import { isNoindexSlug } from "../../../lib/public-site-scope";
 import { getGeneratedPage } from "../../../lib/generatedPages";
@@ -249,12 +248,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     "ac-not-cooling-georgetown-tx": {
       absoluteTitle: "AC Not Cooling in Georgetown TX? Do This First (2026 Guide)",
       description:
-        "Georgetown TX AC not working? Follow this homeowner checklist to diagnose the issue fast — common causes, safe DIY checks, and when to call an HVAC company. Updated May 2026.",
+        "Georgetown TX AC not working? Follow this homeowner checklist to diagnose the issue fast — common causes, safe DIY checks, and when to call an HVAC company.",
     },
     "why-your-ac-is-not-cooling-georgetown-tx": {
       absoluteTitle: "Why Is My AC Not Cooling in Georgetown TX? 8 Common Causes",
       description:
-        "Georgetown homeowners: find out why your AC is blowing warm air. From dirty filters to low refrigerant to failed capacitors — what to check and when to call a technician.",
+        "Georgetown homeowners: find out why your AC is blowing warm air. From dirty filters to low refrigerant to failed capacitors — what to check and when to call.",
     },
     "ac-repair-cost-georgetown-tx": {
       absoluteTitle: "AC Repair Cost Georgetown TX (2026) — Real Price Ranges",
@@ -264,52 +263,52 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     "cost-to-replace-hvac-georgetown": {
       absoluteTitle: "HVAC Replacement Cost Georgetown TX (2026) — What to Expect",
       description:
-        "HVAC replacement costs in Georgetown TX range from $5,000–$14,000+. See what affects your price, what to include in quotes, and how Central Texas heat impacts equipment selection.",
+        "HVAC replacement in Georgetown TX costs $5,000–$14,000+. See what affects your price, what to include in quotes, and how Central Texas heat impacts equipment selection.",
     },
     "signs-you-need-hvac-repair-georgetown-tx": {
       absoluteTitle: "9 Signs You Need HVAC Repair in Georgetown TX (2026)",
       description:
-        "Spot HVAC trouble before it becomes a no-cool emergency. Georgetown homeowners: these are the warning signs that mean call now vs. wait — and what each symptom usually costs to fix.",
+        "Spot HVAC trouble before it becomes a no-cool emergency. Georgetown homeowners: warning signs that mean call now vs. wait — and what each symptom usually costs.",
     },
     "emergency-plumber-cost-georgetown-tx": {
       absoluteTitle: "Emergency Plumber Cost Georgetown TX (2026) — Honest Ranges",
       description:
-        "Emergency plumber in Georgetown TX costs $150–$500+ for most calls. See real price ranges by issue type, what triggers after-hours fees, and how to avoid overpaying in a crisis.",
+        "Emergency plumber in Georgetown TX costs $150–$500+ for most calls. Real price ranges by issue type, what triggers after-hours fees, and how to avoid overpaying.",
     },
     "water-heater-not-working-georgetown-tx": {
       absoluteTitle: "Water Heater Not Working in Georgetown TX? Do This First (2026)",
       description:
-        "Georgetown TX water heater stopped working? Check these causes before calling a plumber — pilot light, thermostat, sediment buildup — and when it's time to replace vs. repair.",
+        "Georgetown TX water heater stopped working? Check these causes before calling a plumber — pilot light, thermostat, sediment buildup — and when to replace vs. repair.",
     },
     "how-to-choose-a-reliable-plumber-georgetown-tx": {
       absoluteTitle: "How to Choose a Plumber in Georgetown TX (2026 Checklist)",
       description:
-        "Don't hire the first plumber you find. This Georgetown TX checklist covers licensing, insurance, what to ask before they start, and red flags to watch for on the first call.",
+        "Don't hire the first plumber you find. This Georgetown TX checklist covers licensing, insurance, what to ask before they start, and red flags to watch for.",
     },
     "roof-replacement-cost-georgetown-tx": {
       absoluteTitle: "Roof Replacement Cost Georgetown TX (2026) — Price Ranges",
       description:
-        "Roof replacement in Georgetown TX typically costs $9,000–$20,000+. See what drives your price, how Williamson County weather affects material choices, and how to compare bids.",
+        "Roof replacement in Georgetown TX costs $9,000–$20,000+. See what drives your price, how Williamson County weather affects material choices, and how to compare bids.",
     },
     "roof-repair-cost-georgetown-tx": {
       absoluteTitle: "Roof Repair Cost Georgetown TX (2026) — Repair vs. Replace",
       description:
-        "Georgetown TX roof repair costs $300–$1,500 for most jobs. See real price ranges by repair type, what hail damage typically costs, and when repair is enough vs. full replacement.",
+        "Georgetown TX roof repair costs $300–$1,500 for most jobs. Real price ranges by repair type, what hail damage typically costs, and when repair is enough vs. replacement.",
     },
     "signs-you-may-need-a-new-roof-georgetown-tx": {
       absoluteTitle: "8 Signs You Need a New Roof in Georgetown TX (2026)",
       description:
-        "Georgetown homeowners: these roof warning signs mean it's time to call. Check for storm damage, shingle wear, and age indicators before the next Texas hail season hits.",
+        "Georgetown homeowners: these roof warning signs mean it's time to call. Check for storm damage, shingle wear, and age indicators before the next Texas hail season.",
     },
     "foundation-crack-georgetown-tx": {
       absoluteTitle: "Foundation Crack Georgetown TX — When to Worry (2026 Guide)",
       description:
-        "Not all foundation cracks are serious — but some are. Georgetown TX homeowners: here's how to tell the difference, what causes cracking in clay soil, and when to call a contractor.",
+        "Not all foundation cracks are serious — but some are. Georgetown TX homeowners: how to tell the difference, what causes cracking in clay soil, and when to call.",
     },
     "hvac-making-noise-georgetown-tx": {
       absoluteTitle: "HVAC Making Noise Georgetown TX? What Each Sound Means (2026)",
       description:
-        "Banging, squealing, clicking, or rattling from your Georgetown TX HVAC? Here's what each noise usually means, whether it's urgent, and what a repair typically costs to fix.",
+        "Banging, squealing, clicking, or rattling from your Georgetown TX HVAC? What each noise usually means, whether it's urgent, and what a repair typically costs.",
     },
     "after-hail-roof-checklist-georgetown-tx": {
       title: "Georgetown Roof Storm Checklist: After Hail or Wind Damage",
@@ -547,14 +546,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
             }
             aside={
               <>
-                <EmailCaptureSitewide
-                  variant="blog-sidebar"
-                  source={`blog-sidebar:${post.slug}`}
-                  offers={["seasonal_checklist", "monthly_reminder"]}
-                  defaultOffer="seasonal_checklist"
-                  blogSidebarSecondaryHref={topProvidersHref}
-                />
-                {adsenseSidebarSlot ? <AdSenseDisplay slot={adsenseSidebarSlot} className="mt-8" /> : null}
+                {adsenseBlogPostSlot ? <AdSenseDisplay slot={adsenseBlogPostSlot} className="mt-8" /> : null}
               </>
             }
           />

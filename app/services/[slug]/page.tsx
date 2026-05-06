@@ -109,37 +109,37 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     "hvac-georgetown-tx": {
       absoluteTitle: "HVAC Companies Georgetown TX (2026) — AC Repair & Replacement",
       description:
-        "Compare Georgetown TX HVAC companies for AC repair, replacement, and maintenance. Local picks rated for Central Texas heat, fast response, and honest pricing. Updated April 2026.",
+        "Compare Georgetown TX HVAC companies for AC repair, replacement, and maintenance. Local picks rated for Central Texas heat, fast response, and honest pricing. Updated 2026.",
     },
     "roofer-georgetown-tx": {
       absoluteTitle: "Roofers Georgetown TX (2026) — Repairs, Storm Damage & Replacement",
       description:
-        "Find a trusted roofer in Georgetown TX for shingle repair, storm damage, and full replacement. Local picks with verified reviews and Williamson County experience. Free estimate tips inside.",
+        "Find a trusted roofer in Georgetown TX for shingle repair, storm damage, and full replacement. Local picks with verified reviews and Williamson County experience.",
     },
     "electrician-georgetown-tx": {
       absoluteTitle: "Electrician Georgetown TX (2026) — Panels, Circuits & EV Chargers",
       description:
-        "Compare licensed electricians in Georgetown TX for panel upgrades, new circuits, outlet repair, and EV charger installation. Verified local providers with safety-first track records.",
+        "Compare licensed electricians in Georgetown TX for panel upgrades, new circuits, outlet repair, and EV charger installation. Verified local providers.",
     },
     "landscaping-georgetown-tx": {
       absoluteTitle: "Landscaping Georgetown TX (2026) — Lawn Care, Beds & Irrigation",
       description:
-        "Find Georgetown TX landscaping companies for lawn maintenance, bed work, mulch, and irrigation tuning. Compare local crews by service type, ratings, and Central Texas experience.",
+        "Find Georgetown TX landscaping companies for lawn maintenance, bed work, mulch, and irrigation tuning. Compare local crews by service type and ratings.",
     },
     "pest-control-georgetown-tx": {
       absoluteTitle: "Pest Control Georgetown TX (2026) — Ants, Roaches & Rodents",
       description:
-        "Compare Georgetown TX pest control companies for perimeter plans, termite treatment, and rodent exclusion. Local providers with real customer ratings and Williamson County experience.",
+        "Compare Georgetown TX pest control companies for perimeter plans, termite treatment, and rodent exclusion. Local providers with real customer ratings.",
     },
     "foundation-repair-georgetown-tx": {
       absoluteTitle: "Foundation Repair Georgetown TX (2026) — Clay Soil Specialists",
       description:
-        "Georgetown TX foundation repair guide: spot warning signs, compare pier and slab contractors, and understand what Central Texas clay soil does to your home. Local picks included.",
+        "Georgetown TX foundation repair guide: spot warning signs, compare pier and slab contractors, and understand what Central Texas clay soil does to your home.",
     },
     "house-cleaning-georgetown-tx": {
       absoluteTitle: "House Cleaning Georgetown TX (2026) — Recurring & Deep Clean",
       description:
-        "Compare Georgetown TX house cleaning services for recurring maid service, deep cleans, and move-out cleaning. Local picks with verified reviews and transparent pricing ranges.",
+        "Compare Georgetown TX house cleaning services for recurring maid service, deep cleans, and move-out cleaning. Local picks with verified reviews and transparent pricing.",
     },
   };
 

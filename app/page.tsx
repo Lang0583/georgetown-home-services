@@ -1,6 +1,4 @@
 import Container from "../components/Container";
-import EmailCaptureSitewide from "../components/EmailCaptureSitewide";
-import StickyHomeEmailCapture from "../components/StickyHomeEmailCapture";
 import LinkCard from "../components/LinkCard";
 import { ButtonLink } from "../components/Button";
 import Link from "next/link";
@@ -232,12 +230,7 @@ export default function Home() {
           <FAQList faqs={HOME_PAGE_FAQS} variant="plain" />
         </section>
 
-        <section className="py-10 md:py-12">
-          <EmailCaptureSitewide source="home" offers={["seasonal_checklist", "monthly_reminder"]} defaultOffer="seasonal_checklist" />
-        </section>
       </Container>
-
-      <StickyHomeEmailCapture />
     </div>
   );
 }
