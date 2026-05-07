@@ -129,7 +129,7 @@ export function normalizeBusinessGroup(b: Business): ProviderGroup | null {
  * and should be re-verified periodically — refresh by re-running the
  * verification pass and bumping this constant.
  */
-export const BUSINESS_LISTINGS_LAST_UPDATED = "April 28, 2026";
+export const BUSINESS_LISTINGS_LAST_UPDATED = "May 7, 2026";
 
 /**
  * Provider listing quality thresholds.

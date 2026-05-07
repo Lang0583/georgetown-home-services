@@ -85,8 +85,33 @@
     }
   },
   "best-landscaping-companies-georgetown-tx": {
-    "evaluatedIntro": "Providers below are editorial placeholders maintained in-repo. Compare visit frequency, bed scope, and irrigation tuning before you sign seasonal agreements.",
-    "providers": [],
+    "evaluatedIntro": "Providers below are listed as a starting point for Georgetown homeowners. Evaluation focuses on service area coverage in Georgetown, clarity of lawn and landscape offerings, and ease of contacting the company through their official website. Ratings and review counts are public snapshots—confirm details directly before hiring.",
+    "providers": [
+      {
+        "name": "Just Right Lawns",
+        "rating": 4.7,
+        "reviewCount": 2100,
+        "description": "Lawn care and turf programs serving Georgetown: mowing, fertilization, weed control, aeration, and recurring landscape maintenance from an established Central Texas operator.",
+        "websiteUrl": "https://justrightlawns.com/austin-tx/lawn-care-georgetown",
+        "phone": "(512) 861-7802"
+      },
+      {
+        "name": "The Grounds Guys of Georgetown",
+        "rating": 4.9,
+        "reviewCount": 42,
+        "description": "Full-service lawn and grounds care for Georgetown: mowing, seasonal cleanups, bed and tree work, landscape maintenance, and holiday lighting.",
+        "websiteUrl": "https://www.groundsguys.com/georgetown/",
+        "phone": "(512) 409-2817"
+      },
+      {
+        "name": "TCB Quality Landscaping",
+        "rating": 4.7,
+        "reviewCount": 31,
+        "description": "Georgetown-based landscape contractor since 2004: design and installation, irrigation, outdoor living, and seasonal maintenance for residential and commercial properties.",
+        "websiteUrl": "https://www.tcblandscapinginc.com/",
+        "phone": "(512) 864-2722"
+      }
+    ],
     "comparison": {
       "pricingExpectations": [
         "Weekly vs biweekly mowing changes total season cost significantly.",

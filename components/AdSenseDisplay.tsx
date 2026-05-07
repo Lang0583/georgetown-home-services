@@ -1,7 +1,5 @@
 "use client";
 
-"use client";
-
 import AdUnit from "./AdUnit";
 
 type Props = {

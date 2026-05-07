@@ -1,3 +1,4 @@
+import { angiGeorgetownListUrl } from "./affiliates";
 import type { ProviderGroup } from "./businesses";
 
 const SESSION_PREFIX = "gths:exit-interstitial:";
@@ -14,7 +15,9 @@ export const EXIT_INTERSTITIAL_SERVICE_LABEL: Record<ProviderGroup, string> = {
   house_cleaning: "house cleaning",
 };
 
-/** Path segment before `-contractors.htm` on Angi Georgetown company lists. */
+/**
+ * Category keys for Angi — must match paths in `lib/affiliates.ts` (not every list uses `*-contractors.htm`).
+ */
 export const EXIT_INTERSTITIAL_ANGI_SLUG: Record<ProviderGroup, string> = {
   plumber: "plumbing",
   hvac: "hvac",
@@ -30,8 +33,9 @@ export function exitInterstitialSessionKey(providerUrl: string, providerName: st
   return SESSION_PREFIX + encodeURIComponent(providerUrl) + "::" + encodeURIComponent(providerName);
 }
 
+/** @deprecated Use {@link angiGeorgetownListUrl} from `lib/affiliates.ts`; kept for import stability. */
 export function angiGeorgetownContractorsUrl(angiCategorySlug: string): string {
-  return `https://www.angi.com/companylist/us/tx/georgetown/${angiCategorySlug}-contractors.htm`;
+  return angiGeorgetownListUrl(angiCategorySlug);
 }
 
 export function exitInterstitialLabels(group: ProviderGroup | null): {

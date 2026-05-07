@@ -4,7 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import StickyHeader from "../components/StickyHeader";
-import FooterEmailCapture from "../components/FooterEmailCapture";
+import EmailCaptureSitewide from "../components/EmailCaptureSitewide";
 import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
 import { ADSENSE_PUBLISHER_ID } from "../lib/adsense-config";
@@ -18,7 +18,6 @@ const impactSiteVerification =
   process.env.IMPACT_SITE_VERIFICATION?.trim() || "b1d76151-29e8-4a9a-9913-9ea8f5ce9cd9";
 
 const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID?.trim() || ADSENSE_PUBLISHER_ID;
-const adsenseScriptSrc = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`;
 
 /** Set in `.env.local` after you get your Grow site ID from Mediavine (app.mediavine.com/grow). */
 const mediavineGrowSiteId = process.env.NEXT_PUBLIC_MEDIAVINE_GROW_SITE_ID;
@@ -119,13 +118,10 @@ export default function RootLayout({
         {process.env.NODE_ENV === "production" ? (
           <link rel="preconnect" href="https://www.googletagmanager.com" />
         ) : null}
-        {/* TODO: Consider enabling AdSense Auto Ads in the AdSense dashboard for automatic ad placement optimization.
-            Enable at: https://adsense.google.com → Ads → By site → Auto ads toggle */}
-        <Script
-          id="google-adsense"
-          src={adsenseScriptSrc}
-          strategy="afterInteractive"
+        {/* Google AdSense Auto Ads — same snippet as Adsense “Sites → Get code” (async in <head>, every page). */}
+        <script
           async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
           crossOrigin="anonymous"
         />
         {mediavineGrowSiteId ? (
@@ -141,7 +137,7 @@ export default function RootLayout({
         <JsonLd data={websiteJsonLd} />
         <StickyHeader />
         <main className="flex-1 pt-20">{children}</main>
-        <FooterEmailCapture />
+        <EmailCaptureSitewide />
         <SiteFooter />
       </body>
       {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ? (
