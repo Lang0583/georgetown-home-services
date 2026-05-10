@@ -19,6 +19,10 @@ const impactSiteVerification =
 
 const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID?.trim() || ADSENSE_PUBLISHER_ID;
 
+/** GA4 default stream (override with `NEXT_PUBLIC_GA_MEASUREMENT_ID`). */
+const GA_MEASUREMENT_ID =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || "G-4KH0ZSXVCP";
+
 /** Set in `.env.local` after you get your Grow site ID from Mediavine (app.mediavine.com/grow). */
 const mediavineGrowSiteId = process.env.NEXT_PUBLIC_MEDIAVINE_GROW_SITE_ID;
 
@@ -115,9 +119,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
-        {process.env.NODE_ENV === "production" ? (
-          <link rel="preconnect" href="https://www.googletagmanager.com" />
-        ) : null}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
         {/* Google AdSense Auto Ads — same snippet as Adsense “Sites → Get code” (async in <head>, every page). */}
         <script
           async
@@ -140,12 +142,8 @@ export default function RootLayout({
         <EmailCaptureSitewide />
         <SiteFooter />
       </body>
-      {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ? (
-        <>
-          {/* GA4 measurement ID: NEXT_PUBLIC_GA_MEASUREMENT_ID (e.g. G-XXXXXXXXXX). Admin: analytics.google.com */}
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
-        </>
-      ) : null}
+      {/* GA4 (gtag.js) via @next/third-parties/google — same as manual <GoogleAnalytics /> / gtag snippet. */}
+      <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
     </html>
   );
 }
