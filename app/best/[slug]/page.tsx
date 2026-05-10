@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import AffiliateOutboundCta from "../../../components/AffiliateOutboundCta";
 import BestAlsoCompareBar from "../../../components/BestAlsoCompareBar";
 import { notFound } from "next/navigation";
 import LinkCard from "../../../components/LinkCard";
@@ -167,14 +168,13 @@ function FeaturedPartnerCard({
           <div className="text-lg font-semibold text-gray-900">{partner.name}</div>
           <p className="mt-1 text-sm leading-relaxed text-gray-700">{partner.description}</p>
         </div>
-        <a
+        <AffiliateOutboundCta
           href={partner.href}
-          target="_blank"
-          rel="noopener noreferrer"
+          affiliateName={partner.name}
           className="shrink-0 rounded-lg border border-amber-300 bg-white px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-amber-50"
         >
           {cta}
-        </a>
+        </AffiliateOutboundCta>
       </div>
     </section>
   );

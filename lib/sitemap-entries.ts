@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { neighborhoodServicePages } from "@/data/neighborhoods";
+import { NEIGHBORHOOD_HOME_SERVICES_HUBS } from "@/data/neighborhood-home-services-hubs";
 import {
   isExtendedBestSlug,
   isExtendedServiceSlug,
@@ -34,6 +35,7 @@ const CORE_BEST_SET: ReadonlySet<string> = new Set(CORE_BEST_SLUGS);
  *   1.0    homepage
  *   0.9    core hubs, core service pages, core best-of pages
  *   0.7    /pricing, supporting sub-service pages, blog posts, /locations/georgetown-tx
+ *   0.65    neighborhood home-services hubs (plumber+HVAC+roofer tri-trade)
  *   0.6    neighborhood × service landings (/neighborhoods/[slug]/[service])
  *   0.5    static pages (about/contact/policies), low-signal pages
  *
@@ -162,7 +164,16 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
       priority: 0.6,
     });
   }
-  // Source list + any `next-sitemap.config.js` reference: `data/neighborhoods.ts` (40 pages).
+
+  for (const hub of NEIGHBORHOOD_HOME_SERVICES_HUBS) {
+    entries.push({
+      url: absoluteUrl(`/neighborhoods/${hub.neighborhoodSlug}/home-services`),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.65,
+    });
+  }
+  // Source lists: `data/neighborhoods.ts` (40 × service pages) + `data/neighborhood-home-services-hubs.ts` (5 hubs).
 
   return entries;
 }

@@ -13,6 +13,8 @@ const nextConfig: NextConfig = {
       beforeFiles: [{ source: "/sitemap.xml", destination: "/api/sitemap-xml" }],
     };
   },
+  /** Default false: Next also normalizes trailing slashes on matched routes; we still 301 common alias paths below. */
+  trailingSlash: false,
   images: {
     remotePatterns: [
       {
@@ -23,6 +25,64 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // —— Duplicate / alias paths → canonical (301) ——
+      {
+        source: "/home",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/index",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/index.html",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/privacy",
+        destination: "/privacy-policy",
+        permanent: true,
+      },
+      // Harmless `?page=1` on non-paginated hubs equals the bare URL — strip the param.
+      {
+        source: "/blog",
+        has: [{ type: "query", key: "page", value: "1" }],
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/services",
+        has: [{ type: "query", key: "page", value: "1" }],
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/best",
+        has: [{ type: "query", key: "page", value: "1" }],
+        destination: "/best",
+        permanent: true,
+      },
+      {
+        source: "/pricing",
+        has: [{ type: "query", key: "page", value: "1" }],
+        destination: "/pricing",
+        permanent: true,
+      },
+      {
+        source: "/service-areas",
+        has: [{ type: "query", key: "page", value: "1" }],
+        destination: "/service-areas",
+        permanent: true,
+      },
+      {
+        source: "/blog/:slug",
+        has: [{ type: "query", key: "page", value: "1" }],
+        destination: "/blog/:slug",
+        permanent: true,
+      },
       {
         source: "/sitemap",
         destination: "/sitemap.xml",

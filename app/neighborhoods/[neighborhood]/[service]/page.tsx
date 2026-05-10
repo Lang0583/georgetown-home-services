@@ -4,13 +4,15 @@ import { notFound } from "next/navigation";
 import AuthorByline from "@/components/AuthorByline";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { ButtonLink } from "@/components/Button";
+import FAQList from "@/components/FAQList";
+import FAQSchema from "@/components/FAQSchema";
 import JsonLd from "@/components/JsonLd";
 import PageShell from "@/components/templates/PageShell";
 import {
   getNeighborhoodServicePage,
   getNeighborhoodServiceStaticParams,
 } from "@/data/neighborhoods";
-import { pageSeoMetadata } from "@/lib/page-seo";
+import { pageSeoMetadata, absolutePageUrl } from "@/lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_ISO,
@@ -18,6 +20,7 @@ import {
   webPageWithDateModifiedJsonLd,
 } from "@/lib/service-best-pages-meta";
 import { hubArticleJsonLd } from "@/lib/site-author";
+import { buildNeighborhoodGuideFaqs } from "@/lib/georgetown-page-faqs";
 
 function breadcrumbJsonLd({
   siteUrl,
@@ -81,6 +84,7 @@ export default async function NeighborhoodServicePage({
 
   const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
   const pathname = `/neighborhoods/${neighborhood}/${service}`;
+  const neighborhoodFaqs = buildNeighborhoodGuideFaqs(page);
 
   return (
     <PageShell>
@@ -109,6 +113,11 @@ export default async function NeighborhoodServicePage({
             datePublished: SERVICE_BEST_LAST_UPDATED_ISO,
             dateModified: SERVICE_BEST_LAST_UPDATED_ISO,
           })}
+        />
+        <FAQSchema
+          pageUrl={absolutePageUrl(pathname)}
+          name={`${page.serviceName} in ${page.neighborhoodName}, Georgetown TX — FAQ`}
+          faqs={neighborhoodFaqs}
         />
 
         <Breadcrumbs
@@ -143,6 +152,19 @@ export default async function NeighborhoodServicePage({
         <section className="mt-10">
           <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Why Local Experience Matters</h2>
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-gray-700">{page.whyLocal}</p>
+        </section>
+
+        <section className="mt-12 max-w-3xl">
+          <p className="text-sm leading-relaxed text-gray-700">
+            Practical questions we hear from neighbors comparing {page.serviceCategory} work in Georgetown—not a substitute
+            for an on-site inspection.
+          </p>
+          <FAQList
+            faqs={neighborhoodFaqs}
+            variant="bordered"
+            title={`FAQ for ${page.neighborhoodName} homeowners`}
+            className="!mt-4"
+          />
         </section>
 
         <div className="mt-10 rounded-xl border border-gray-200 bg-white p-6 shadow-md">

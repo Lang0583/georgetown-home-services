@@ -5,6 +5,7 @@ import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
 import JsonLd from "../../../components/JsonLd";
 import { pageSeoMetadata } from "../../../lib/page-seo";
+import { buildTradeHubSeo } from "../../../lib/service-page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
@@ -13,10 +14,11 @@ import {
 import { showExtendedHomeServices } from "../../../lib/public-site-scope";
 import { getBlog, getServices } from "../../../lib/site-content";
 
+const hubSeo = buildTradeHubSeo({ label: "Pest Control", pricingKey: "pest" });
+
 export const metadata: Metadata = pageSeoMetadata({
-  titleSegment: "Pest Control Guides for Georgetown, TX",
-  description:
-    "Pest control planning for Georgetown homeowners: inspections, treatment plans, warranties, and a directory of local providers to compare.",
+  absoluteTitle: hubSeo.absoluteTitle,
+  description: hubSeo.description,
   pathname: "/services/pest-control",
   ogType: "website",
 });

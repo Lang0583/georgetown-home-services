@@ -4,14 +4,30 @@ export const SITE_URL = process.env.SITE_URL ?? "https://www.georgetownhomeservi
 
 const SITE_NAME = "Georgetown Home Services";
 
+/**
+ * Single canonical pathname for metadata and JSON-LD: leading slash, no trailing slash (except `/`),
+ * no query or hash (duplicate URLs like `/foo?page=1` still canonicalize to `/foo`).
+ */
+export function normalizeSeoPathname(pathname: string): string {
+  let p = pathname.trim();
+  if (!p.startsWith("/")) p = `/${p}`;
+  const q = p.indexOf("?");
+  const h = p.indexOf("#");
+  const end = Math.min(q === -1 ? p.length : q, h === -1 ? p.length : h);
+  p = p.slice(0, end);
+  if (p.length > 1 && p.endsWith("/")) p = p.slice(0, -1);
+  return p || "/";
+}
+
 /** Absolute page URL for the configured origin (same base as canonical tags). */
 export function absolutePageUrl(pathname: string): string {
+  const path = normalizeSeoPathname(pathname);
   const base = SITE_URL.replace(/\/$/, "");
-  if (pathname === "" || pathname === "/") {
+  if (path === "" || path === "/") {
     return `${base}/`;
   }
-  const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
-  return new URL(path, `${base}/`).href;
+  const pathPart = path.startsWith("/") ? path : `/${path}`;
+  return new URL(pathPart, `${base}/`).href;
 }
 
 /** Full `<title>` / `og:title` text (includes brand suffix). */
@@ -48,7 +64,8 @@ export function pageSeoMetadata(opts: {
     throw new Error("pageSeoMetadata: set titleSegment or absoluteTitle");
   }
   const documentTitle = opts.absoluteTitle ?? documentTitleFromSegment(opts.titleSegment!);
-  const pageUrl = absolutePageUrl(opts.pathname);
+  const path = normalizeSeoPathname(opts.pathname);
+  const pageUrl = absolutePageUrl(path);
   const meta: Metadata = {
     title: opts.absoluteTitle ? { absolute: opts.absoluteTitle } : opts.titleSegment!,
     description: opts.description,

@@ -44,7 +44,7 @@ export function BusinessPhoneRow({
         href={tel.href}
         className={linkClassName}
         onClick={() => {
-          if (providerName) trackPhoneClick(providerName);
+          trackPhoneClick(providerName?.trim() || "unknown_provider");
         }}
       >
         {tel.display}

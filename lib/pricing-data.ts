@@ -102,7 +102,7 @@ export const PRICING_CATEGORIES: readonly PricingCategory[] = [
     rows: [
       { job: "Service call / diagnostic", low: 100, high: 175 },
       { job: "Drain clearing", low: 150, high: 350 },
-      { job: "Water heater replacement", low: 900, high: 1800 },
+      { job: "Water heater replacement", low: 800, high: 1500 },
       { job: "Slab leak repair", low: 500, high: 2500 },
       { job: "Full repipe (avg home)", low: 4000, high: 12000 },
       {
@@ -277,6 +277,57 @@ export function findCategory(key: PricingCategory["key"]): PricingCategory {
   const c = PRICING_CATEGORIES.find((cat) => cat.key === key);
   if (!c) throw new Error(`[pricing-data] Unknown category: ${key}`);
   return c;
+}
+
+/** Rows we can express as numeric min/max offers for ItemList JSON-LD (skip % / per-sq-ft-only lines). */
+function pricingRowToOfferBounds(row: PricingRow): { min: number; max: number } | null {
+  if (row.excludeFromEstimatorSum && row.low === 0 && row.high === 0) return null;
+  if (row.low === 0 && row.high === 0) return null;
+  if (row.high < row.low) return null;
+  return { min: row.low, max: row.high };
+}
+
+/**
+ * Schema.org ItemList of Offer items with UnitPriceSpecification (USD ranges).
+ * Use on trade hub pages; aligns visually with `PRICING_CATEGORIES` tables.
+ */
+export function serviceHubPricingItemListJsonLd(opts: {
+  category: PricingCategory;
+  pageUrl: string;
+}): Record<string, unknown> {
+  const offerItems = opts.category.rows
+    .map((row) => {
+      const b = pricingRowToOfferBounds(row);
+      if (!b) return null;
+      return { row, b };
+    })
+    .filter((x): x is NonNullable<typeof x> => x !== null)
+    .map((x, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Offer",
+        name: x.row.job,
+        description: `Typical all-in range in the Georgetown, TX area for: ${x.row.job}. Not a quote.`,
+        url: opts.pageUrl,
+        priceCurrency: "USD",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          priceCurrency: "USD",
+          minPrice: x.b.min,
+          maxPrice: x.b.max,
+        },
+      },
+    }));
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: opts.category.title,
+    description: opts.category.localContext,
+    numberOfItems: offerItems.length,
+    itemListElement: offerItems,
+  };
 }
 
 export type CostPostSupplement = {

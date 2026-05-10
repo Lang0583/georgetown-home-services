@@ -501,6 +501,47 @@ export function getBusinessCategoryForServiceSlug(slug: string): ProviderGroup |
   return SERVICE_SLUG_MAP[slug] ?? null;
 }
 
+/**
+ * Infer trade bucket for symptom / long-tail service slugs when `SERVICE_SLUG_MAP` misses.
+ * Uses `bestSlugs` first, then slug keyword heuristics (Georgetown hub taxonomy).
+ */
+export function inferProviderGroupFromServicePage(slug: string, bestSlugs: readonly string[] | undefined): ProviderGroup {
+  const direct = SERVICE_SLUG_MAP[slug];
+  if (direct) return direct;
+  for (const b of bestSlugs ?? []) {
+    const g = BEST_SLUG_MAP[b];
+    if (g) return g;
+  }
+  const s = slug.toLowerCase();
+  if (
+    /(plumber|drain|water-heater|slab|toilet|sewer|disposal|clog|leak|septic)/.test(s)
+  ) {
+    return "plumber";
+  }
+  if (/(hvac|furnace|heater|duct|thermostat|ac-repair|ac-replace|ac-not|emergency-hvac)/.test(s)) {
+    return "hvac";
+  }
+  if (/(roof|gutter|shingle|flashing|hail|storm|tarp)/.test(s)) {
+    return "roofer";
+  }
+  if (/(electric|panel|breaker|outlet|ev-)/.test(s)) {
+    return "electrician";
+  }
+  if (/(landscap|lawn|irrigation|mulch|sod)/.test(s)) {
+    return "landscaping";
+  }
+  if (/(pest|termite|rodent|mosquito|ant)/.test(s)) {
+    return "pest_control";
+  }
+  if (/(foundation|pier|slab-settle|drainage)/.test(s)) {
+    return "foundation_repair";
+  }
+  if (/(cleaning|maid|deep-clean)/.test(s)) {
+    return "house_cleaning";
+  }
+  return "plumber";
+}
+
 /** Service page slug for internal links from a best-of guide slug. */
 export function getRelatedServiceSlugForBestSlug(slug: string): string | null {
   const g = getBusinessCategoryForBestSlug(slug);

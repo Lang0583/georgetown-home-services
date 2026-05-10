@@ -4,6 +4,7 @@ import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
 import JsonLd from "../../../components/JsonLd";
 import { pageSeoMetadata } from "../../../lib/page-seo";
+import { buildTradeHubSeo } from "../../../lib/service-page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
@@ -11,10 +12,11 @@ import {
 } from "../../../lib/service-best-pages-meta";
 import { getBlog, getServices } from "../../../lib/site-content";
 
+const hubSeo = buildTradeHubSeo({ label: "Landscaping", pricingKey: "landscaping" });
+
 export const metadata: Metadata = pageSeoMetadata({
-  titleSegment: "Landscaping & Lawn Care Guides for Georgetown, TX",
-  description:
-    "Landscaping and lawn care guidance for Georgetown: maintenance, irrigation, seasonal timing, and a directory of local companies to compare.",
+  absoluteTitle: hubSeo.absoluteTitle,
+  description: hubSeo.description,
   pathname: "/services/landscaping",
   ogType: "website",
 });

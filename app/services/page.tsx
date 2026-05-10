@@ -18,6 +18,7 @@ import {
   isRedirectedServiceSlug,
   showExtendedHomeServices,
 } from "../../lib/public-site-scope";
+import { neighborhoodServicePages } from "../../data/neighborhoods";
 import { NEIGHBORHOOD_BROWSE_ENTRIES } from "../../lib/neighborhood-browse";
 import { getBlog, getLocations, getServices } from "../../lib/site-content";
 
@@ -246,6 +247,51 @@ export default function ServicesIndexPage() {
                     badge={n.badge}
                   />
                 ))}
+              </div>
+            </section>
+
+            <section className="mt-12 border-t border-gray-200 pt-12" aria-labelledby="all-neighborhood-guides-heading">
+              <h2 id="all-neighborhood-guides-heading" className="text-2xl font-semibold tracking-tight text-gray-900">
+                All neighborhood-specific guides
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                Deep dives by area and trade—each page ties local home patterns (slab, clay soil, mature trees, new build duct runs) to what to watch for before you call a pro.
+              </p>
+              <div className="mt-8 space-y-10">
+                {Object.entries(
+                  neighborhoodServicePages.reduce<Record<string, (typeof neighborhoodServicePages)[number][]>>(
+                    (acc, row) => {
+                      (acc[row.neighborhoodSlug] ??= []).push(row);
+                      return acc;
+                    },
+                    {},
+                  ),
+                )
+                  .sort(([a], [b]) => a.localeCompare(b))
+                  .map(([slug, rows]) => {
+                    const name = rows[0]?.neighborhoodName ?? slug;
+                    const sorted = [...rows].sort((x, y) => x.serviceName.localeCompare(y.serviceName));
+                    return (
+                      <div key={slug}>
+                        <h3 className="text-lg font-semibold text-gray-900">{name}</h3>
+                        <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                          {sorted.map((p) => {
+                            const href = `/neighborhoods/${p.neighborhoodSlug}/${p.serviceSlug}`;
+                            return (
+                              <li key={href}>
+                                <Link
+                                  href={href}
+                                  className="text-sm font-medium text-primary underline-offset-4 hover:text-primary-hover hover:underline"
+                                >
+                                  {p.serviceName} in {p.neighborhoodName}
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    );
+                  })}
               </div>
             </section>
 

@@ -9,7 +9,7 @@ import {
   EMAIL_CAPTURE_SUBTEXT,
   EMAIL_CAPTURE_TRUST_LINE,
 } from "../lib/site-cta";
-import { trackEmailSignup } from "../lib/analytics";
+import { trackNewsletterSubmit } from "../lib/analytics";
 
 type Props = {
   /** e.g. `blog-mid:slug` or `blog-index-mid` */
@@ -57,7 +57,7 @@ export default function BlogMidContentEmailCard({ source, className }: Props) {
         throw new Error(data?.error ?? "Something went wrong");
       }
 
-      trackEmailSignup();
+      trackNewsletterSubmit(source, { leadMagnet: "seasonal_checklist" });
       setStatus("success");
       setEmail("");
       setWebsite("");

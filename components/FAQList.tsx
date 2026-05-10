@@ -4,15 +4,21 @@ type FAQListProps = {
   faqs: Faq[];
   /** Bordered cards (default) or compact plain list (e.g. homepage). */
   variant?: "bordered" | "plain";
+  /** Overrides default "Frequently Asked Questions" heading. */
+  title?: string;
+  /** Omit outer top margin when embedding inside a parent section. */
+  className?: string;
 };
 
-export default function FAQList({ faqs, variant = "bordered" }: FAQListProps) {
+export default function FAQList({ faqs, variant = "bordered", title, className = "" }: FAQListProps) {
   if (!faqs.length) return null;
+
+  const heading = title ?? "Frequently Asked Questions";
 
   if (variant === "plain") {
     return (
-      <div>
-        <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Frequently Asked Questions</h2>
+      <div className={className}>
+        <h2 className="text-3xl font-semibold tracking-tight text-gray-900">{heading}</h2>
         <div className="mt-6 flex flex-col gap-5">
           {faqs.map((faq, idx) => (
             <div key={idx}>
@@ -26,8 +32,8 @@ export default function FAQList({ faqs, variant = "bordered" }: FAQListProps) {
   }
 
   return (
-    <div className="mt-12 rounded-xl border border-gray-200 bg-white p-6 shadow-md md:p-8">
-      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Frequently Asked Questions</h2>
+    <div className={["mt-12 rounded-xl border border-gray-200 bg-white p-6 shadow-md md:p-8", className].filter(Boolean).join(" ")}>
+      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">{heading}</h2>
       <div className="mt-8 flex flex-col gap-6">
         {faqs.map((faq, idx) => (
           <div

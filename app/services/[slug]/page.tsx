@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import AdSenseDisplay from "../../../components/AdSenseDisplay";
 import FAQList from "../../../components/FAQList";
+import FAQSchema from "../../../components/FAQSchema";
 import { ButtonLink } from "../../../components/Button";
 import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
@@ -21,7 +22,7 @@ import {
   getServiceSlugs,
 } from "../../../lib/site-content";
 import { adsenseServiceMainSlot, adsenseSidebarSlot } from "../../../lib/adsense-config";
-import { pageSeoMetadata } from "../../../lib/page-seo";
+import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_ISO,
@@ -48,6 +49,8 @@ import {
   getBusinessesByCategory,
 } from "../../../lib/businesses";
 import { servicePageInternalLinks } from "../../../lib/internal-links";
+import { resolveServiceGuideFaqs } from "../../../lib/georgetown-page-faqs";
+import { buildServicePageSeo } from "../../../lib/service-page-seo";
 
 function breadcrumbJsonLd({
   siteUrl,
@@ -69,20 +72,6 @@ function breadcrumbJsonLd({
   };
 }
 
-function faqPageJsonLd(siteUrl: string, title: string, faqs: { q: string; a: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-    mainEntityOfPage: siteUrl,
-    name: title,
-  };
-}
-
 /**
  * Allow runtime resolution for `[slug]` so `getServiceBySlug` + `notFound()` control 404s.
  * (With `false`, Next can 404 before the page runs if static params are out of sync.)
@@ -100,63 +89,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const service = getServiceBySlug(slug);
   if (!service) return {};
 
-  const overrides: Record<string, { title?: string; absoluteTitle?: string; description: string }> = {
-    "plumber-georgetown-tx": {
-      absoluteTitle: "Plumber Georgetown TX (2026) — Repairs, Leaks & Emergency Calls",
-      description:
-        "Find a licensed plumber in Georgetown TX for slab leaks, drain clogs, water heaters, and emergency calls. Compare local providers with verified reviews and real pricing ranges.",
-    },
-    "hvac-georgetown-tx": {
-      absoluteTitle: "HVAC Companies Georgetown TX (2026) — AC Repair & Replacement",
-      description:
-        "Compare Georgetown TX HVAC companies for AC repair, replacement, and maintenance. Local picks rated for Central Texas heat, fast response, and honest pricing. Updated 2026.",
-    },
-    "roofer-georgetown-tx": {
-      absoluteTitle: "Roofers Georgetown TX (2026) — Repairs, Storm Damage & Replacement",
-      description:
-        "Find a trusted roofer in Georgetown TX for shingle repair, storm damage, and full replacement. Local picks with verified reviews and Williamson County experience.",
-    },
-    "electrician-georgetown-tx": {
-      absoluteTitle: "Electrician Georgetown TX (2026) — Panels, Circuits & EV Chargers",
-      description:
-        "Compare licensed electricians in Georgetown TX for panel upgrades, new circuits, outlet repair, and EV charger installation. Verified local providers.",
-    },
-    "landscaping-georgetown-tx": {
-      absoluteTitle: "Landscaping Georgetown TX (2026) — Lawn Care, Beds & Irrigation",
-      description:
-        "Find Georgetown TX landscaping companies for lawn maintenance, bed work, mulch, and irrigation tuning. Compare local crews by service type and ratings.",
-    },
-    "pest-control-georgetown-tx": {
-      absoluteTitle: "Pest Control Georgetown TX (2026) — Ants, Roaches & Rodents",
-      description:
-        "Compare Georgetown TX pest control companies for perimeter plans, termite treatment, and rodent exclusion. Local providers with real customer ratings.",
-    },
-    "foundation-repair-georgetown-tx": {
-      absoluteTitle: "Foundation Repair Georgetown TX (2026) — Clay Soil Specialists",
-      description:
-        "Georgetown TX foundation repair guide: spot warning signs, compare pier and slab contractors, and understand what Central Texas clay soil does to your home.",
-    },
-    "house-cleaning-georgetown-tx": {
-      absoluteTitle: "House Cleaning Georgetown TX (2026) — Recurring & Deep Clean",
-      description:
-        "Compare Georgetown TX house cleaning services for recurring maid service, deep cleans, and move-out cleaning. Local picks with verified reviews and transparent pricing.",
-    },
-  };
-
-  const o = overrides[slug];
-  const description = o?.description ?? service.description;
-  if (o?.absoluteTitle) {
-    return pageSeoMetadata({
-      absoluteTitle: o.absoluteTitle,
-      description,
-      pathname: `/services/${slug}`,
-      ogType: "website",
-      noindex: isNoindexSlug(slug),
-    });
-  }
-  const titleSegment = o?.title ?? service.title;
+  const { absoluteTitle, description } = buildServicePageSeo(service);
   return pageSeoMetadata({
-    titleSegment,
+    absoluteTitle,
     description,
     pathname: `/services/${slug}`,
     ogType: "website",
@@ -216,6 +151,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     .filter((s): s is { label: string; slug: string; best: string } => Boolean(s));
   const explore = CORE_SERVICES.filter((s) => s.slug !== service.slug);
   const ruleLinks = servicePageInternalLinks(service.slug);
+  const serviceFaqs = resolveServiceGuideFaqs(service);
 
   return (
     <PageShell>
@@ -237,15 +173,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               dateModified: SERVICE_BEST_LAST_UPDATED_ISO,
             })}
           />
-          {service.faqs?.length ? (
-            <JsonLd
-              data={faqPageJsonLd(
-                `${siteUrl}/services/${service.slug}`,
-                `${service.title} FAQ`,
-                service.faqs
-              )}
-            />
-          ) : null}
+          <FAQSchema
+            pageUrl={absolutePageUrl(`/services/${service.slug}`)}
+            name={`${service.title} — FAQ`}
+            faqs={serviceFaqs}
+          />
           <TwoColumnPage
             main={
               <>
@@ -886,7 +818,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     them as a starting point, then confirm details with any professional you choose to work with.
                   </p>
                   <div className="mt-6">
-                    <FAQList faqs={service.faqs} />
+                    <FAQList faqs={serviceFaqs} />
                   </div>
                 </section>
               </div>

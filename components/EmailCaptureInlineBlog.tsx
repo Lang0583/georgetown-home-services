@@ -9,7 +9,7 @@ import {
   EMAIL_CAPTURE_SUBTEXT,
   EMAIL_CAPTURE_TRUST_LINE,
 } from "../lib/site-cta";
-import { trackEmailSignup } from "../lib/analytics";
+import { trackNewsletterSubmit } from "../lib/analytics";
 import { LEAD_MAGNETS, type LeadMagnetKey } from "../lib/lead-magnets";
 
 type Props = {
@@ -63,7 +63,7 @@ export default function EmailCaptureInlineBlog({
         throw new Error(data?.error ?? "Something went wrong");
       }
 
-      trackEmailSignup();
+      trackNewsletterSubmit(source, { leadMagnet: offer });
       setStatus("success");
       setEmail("");
       setFirstName("");

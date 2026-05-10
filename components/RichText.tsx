@@ -1,6 +1,7 @@
 import type { ContentBlock } from "../lib/site-content";
 import { canonicalServicePathForLinks } from "../lib/public-site-scope";
 import { ArticleContentShell, ProseArticle } from "./GeneratedArticleBody";
+import { TrackableProseLink } from "./TrackableProseLink";
 
 export function RichTextBlocks({ blocks }: { blocks: ContentBlock[] }) {
   if (!blocks.length) return null;
@@ -23,14 +24,18 @@ export function RichTextBlocks({ blocks }: { blocks: ContentBlock[] }) {
                   part.type === "text" ? (
                     <span key={pidx}>{part.text}</span>
                   ) : (
-                    <a
+                    <TrackableProseLink
                       key={pidx}
-                      href={part.href.startsWith("/services/") ? canonicalServicePathForLinks(part.href) : part.href}
+                      href={
+                        part.href.startsWith("/services/")
+                          ? canonicalServicePathForLinks(part.href)
+                          : part.href
+                      }
                       rel={part.rel ?? "nofollow sponsored"}
                       className="font-medium text-primary underline underline-offset-2 hover:text-primary-hover"
                     >
                       {part.label}
-                    </a>
+                    </TrackableProseLink>
                   )
                 )}
               </p>

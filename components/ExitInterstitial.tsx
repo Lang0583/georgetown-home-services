@@ -7,7 +7,7 @@ import {
 } from "../lib/exit-interstitial";
 import { externalBusinessLinkProps } from "../lib/businesses";
 import {
-  trackAffiliateClick,
+  trackAffiliateCtaClick,
   trackAffiliateShown,
   trackOutboundClick,
 } from "../lib/analytics";
@@ -54,7 +54,7 @@ export function ExitInterstitialModal({
 
   const openAngi = () => {
     // TODO: add affiliate UTM params here once the Angi affiliate account is active
-    trackAffiliateClick(providerName, serviceCategory);
+    trackAffiliateCtaClick("Angi", { providerName, serviceCategory });
     window.open(angiHref, "_blank", "noopener,noreferrer");
     onClose();
   };

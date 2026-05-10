@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
+import ServiceHubPricingSection from "../../../components/ServiceHubPricingSection";
 import JsonLd from "../../../components/JsonLd";
 import { pageSeoMetadata } from "../../../lib/page-seo";
+import { buildTradeHubSeo } from "../../../lib/service-page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
@@ -12,10 +14,11 @@ import {
 import { isNoindexSlug, isRedirectedServiceSlug } from "../../../lib/public-site-scope";
 import { getBlog, getServices } from "../../../lib/site-content";
 
+const hubSeo = buildTradeHubSeo({ label: "HVAC", pricingKey: "hvac" });
+
 export const metadata: Metadata = pageSeoMetadata({
-  titleSegment: "HVAC Guides for Georgetown, TX",
-  description:
-    "Practical HVAC guides for Georgetown homeowners: AC not cooling, repair vs replacement, cost drivers, and how to compare local HVAC companies.",
+  absoluteTitle: hubSeo.absoluteTitle,
+  description: hubSeo.description,
   pathname: "/services/hvac",
   ogType: "website",
 });
@@ -93,6 +96,8 @@ export default function HvacHubPage() {
                 </Link>
               </div>
             </div>
+
+            <ServiceHubPricingSection categoryKey="hvac" />
 
             {core ? (
               <section>

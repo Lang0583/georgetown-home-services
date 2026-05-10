@@ -5,6 +5,7 @@ import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
 import JsonLd from "../../../components/JsonLd";
 import { pageSeoMetadata } from "../../../lib/page-seo";
+import { buildTradeHubSeo } from "../../../lib/service-page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
@@ -13,10 +14,11 @@ import {
 import { showExtendedHomeServices } from "../../../lib/public-site-scope";
 import { getBlog, getServices } from "../../../lib/site-content";
 
+const hubSeo = buildTradeHubSeo({ label: "Foundation Repair", pricingKey: "foundation" });
+
 export const metadata: Metadata = pageSeoMetadata({
-  titleSegment: "Foundation Repair Guides for Georgetown, TX",
-  description:
-    "Foundation repair guidance for Georgetown, TX: expansive clay soil, drainage, crack patterns, and how to compare foundation contractors.",
+  absoluteTitle: hubSeo.absoluteTitle,
+  description: hubSeo.description,
   pathname: "/services/foundation",
   ogType: "website",
 });

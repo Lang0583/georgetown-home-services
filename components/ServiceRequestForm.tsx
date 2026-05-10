@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
+import { trackNewsletterSubmit } from "../lib/analytics";
 
 type Props = {
   serviceSlug: string;
@@ -46,6 +47,9 @@ export default function ServiceRequestForm({ serviceSlug }: Props) {
         throw new Error(data?.error ?? "Something went wrong");
       }
 
+      if (seasonalTipsOptIn) {
+        trackNewsletterSubmit(`service-request:${serviceSlug}`, { leadMagnet: "seasonal_opt_in" });
+      }
       setStatus("success");
       setMessage("");
     } catch (err) {
