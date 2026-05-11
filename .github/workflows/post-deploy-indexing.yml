@@ -1,0 +1,44 @@
+name: Post-deploy — sitemap & Google Indexing API
+
+# Runs after changes land on `main` (e.g. Vercel deploy). Regenerates static
+# sitemap files and pings Google Indexing API for new hail-related URLs.
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: post-deploy-indexing-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sitemap-and-indexing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Regenerate next-sitemap (public sitemap XML)
+        run: npx next-sitemap
+
+      - name: Write Google service account key
+        env:
+          SA_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -z "$SA_JSON" ]; then
+            echo "::error::Set repository secret GOOGLE_SERVICE_ACCOUNT_JSON (full service account JSON)."
+            exit 1
+          fi
+          printf '%s' "$SA_JSON" > "${RUNNER_TEMP}/indexing-sa.json"
+
+      - name: Submit URLs to Google Indexing API
+        env:
+          GOOGLE_SERVICE_ACCOUNT_KEY_PATH: ${{ runner.temp }}/indexing-sa.json
+        run: npx ts-node scripts/submit-to-indexing-api.ts

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import AdSenseDisplay from "../../../components/AdSenseDisplay";
 import BlogArticleBodyWithMidEmail from "../../../components/BlogArticleBodyWithMidEmail";
+import StormInspectionLeadForm from "../../../components/StormInspectionLeadForm";
 import LinkCard from "../../../components/LinkCard";
 import JsonLd from "../../../components/JsonLd";
 import Breadcrumbs from "../../../components/Breadcrumbs";
@@ -36,6 +37,14 @@ const AFFILIATE_DISCLOSURE_SLUGS = new Set([
 
 const AFFILIATE_DISCLOSURE_TEXT =
   "Disclosure: This post contains affiliate links. If you purchase through our links, we may earn a small commission at no extra cost to you.";
+
+const STORM_INSPECTION_LEAD_SLUGS = new Set([
+  "hail-damage-georgetown-williamson-may-2026",
+  "hail-damage-sun-city-georgetown-tx",
+  "hail-damage-teravista-georgetown-tx",
+  "hail-damage-wolf-ranch-georgetown-tx",
+  "hail-damage-georgetown-village-tx",
+]);
 
 function breadcrumbJsonLd({
   siteUrl,
@@ -315,6 +324,31 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description:
         "Safe ground-level inspection steps, photos to take for claims, when tarping helps, and how to compare roofer scopes in Williamson County.",
     },
+    "hail-damage-georgetown-williamson-may-2026": {
+      absoluteTitle: "Hail Damage Repair Georgetown TX | May 2026 Storm Guide",
+      description:
+        "Georgetown TX hail damage guide for May 2026 storms in Williamson County—safe roof checks, insurance basics, and next steps for roofing and HVAC repair.",
+    },
+    "hail-damage-sun-city-georgetown-tx": {
+      absoluteTitle: "Hail Damage Repair Sun City Georgetown TX | May 2026",
+      description:
+        "Did the May 2026 hail storm damage your Sun City home? Find Georgetown TX roofing contractors and get a free inspection. Act before your insurance window closes.",
+    },
+    "hail-damage-teravista-georgetown-tx": {
+      absoluteTitle: "Hail Damage Repair Teravista Georgetown TX | May 2026",
+      description:
+        "Did the May 2026 hail storm damage your Teravista home? Find Georgetown TX roofing contractors and get a free inspection. Act before your insurance window closes.",
+    },
+    "hail-damage-wolf-ranch-georgetown-tx": {
+      absoluteTitle: "Hail Damage Repair Wolf Ranch Georgetown TX | May 2026",
+      description:
+        "Did the May 2026 hail storm damage your Wolf Ranch home? Find Georgetown TX roofing contractors and get a free inspection. Act before your insurance window closes.",
+    },
+    "hail-damage-georgetown-village-tx": {
+      absoluteTitle: "Hail Damage Repair Georgetown Village Georgetown TX | May 2026",
+      description:
+        "Did the May 2026 hail storm damage your Georgetown Village home? Find Georgetown TX roofing contractors and get a free inspection. Act before your insurance window closes.",
+    },
   };
 
   const o = overrides[slug];
@@ -461,6 +495,12 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
               ) : null}
               <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">{post.description}</p>
               <div className="mt-2 text-sm text-gray-500">Estimated read time: {post.readTime}</div>
+
+              {STORM_INSPECTION_LEAD_SLUGS.has(post.slug) ? (
+                <div className="not-prose mt-8 max-w-xl">
+                  <StormInspectionLeadForm source={`blog:${post.slug}`} />
+                </div>
+              ) : null}
 
               <div className="mt-8">
                 <BlogArticleBodyWithMidEmail slug={post.slug} generated={generated} blocks={post.content} />

@@ -46,6 +46,22 @@ const nextConfig: NextConfig = {
         destination: "/privacy-policy",
         permanent: true,
       },
+      {
+        source: "/blog/hail-damage-georgetown-tx-may-2026",
+        destination: "/blog/hail-damage-georgetown-williamson-may-2026",
+        permanent: true,
+      },
+      // Short CTAs from blog / campaigns → trade hub canonical URLs.
+      {
+        source: "/roofing",
+        destination: "/services/roofing",
+        permanent: false,
+      },
+      {
+        source: "/hvac",
+        destination: "/services/hvac",
+        permanent: false,
+      },
       // Harmless `?page=1` on non-paginated hubs equals the bare URL — strip the param.
       {
         source: "/blog",

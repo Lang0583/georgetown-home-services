@@ -58,6 +58,26 @@ const HERO_BY_SLUG: Record<string, BlogHeroImage> = {
     src: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=1200&q=80",
     alt: "Storm clouds over Texas neighborhood — roof checklist after hail",
   },
+  "hail-damage-georgetown-williamson-may-2026": {
+    src: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=1200&q=80",
+    alt: "Dark storm clouds over Central Texas — hail damage checklist May 2026",
+  },
+  "hail-damage-sun-city-georgetown-tx": {
+    src: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=1200&q=80",
+    alt: "Storm clouds over Texas — Sun City hail damage May 2026",
+  },
+  "hail-damage-teravista-georgetown-tx": {
+    src: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=1200&q=80",
+    alt: "Storm clouds over Texas — Teravista hail damage May 2026",
+  },
+  "hail-damage-wolf-ranch-georgetown-tx": {
+    src: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=1200&q=80",
+    alt: "Storm clouds over Texas — Wolf Ranch hail damage May 2026",
+  },
+  "hail-damage-georgetown-village-tx": {
+    src: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=1200&q=80",
+    alt: "Storm clouds over Texas — Georgetown Village hail damage May 2026",
+  },
   "how-to-choose-a-reliable-plumber-georgetown-tx": {
     src: DEFAULT_SRC,
     alt: "How to choose a plumber Georgetown TX",

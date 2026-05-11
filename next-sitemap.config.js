@@ -8,4 +8,15 @@ module.exports = {
   robotsTxtOptions: {
     policies: [{ userAgent: '*', allow: '/' }],
   },
+  /** Ensures neighborhood hail blog URLs appear in post-build sitemap (live `/sitemap.xml` also lists them via `getBlogSlugs()`). */
+  additionalPaths: async (config) => {
+    const paths = [
+      '/blog/hail-damage-georgetown-tx-may-2026',
+      '/blog/hail-damage-sun-city-georgetown-tx',
+      '/blog/hail-damage-teravista-georgetown-tx',
+      '/blog/hail-damage-wolf-ranch-georgetown-tx',
+      '/blog/hail-damage-georgetown-village-tx',
+    ];
+    return Promise.all(paths.map((path) => config.transform(config, path)));
+  },
 };

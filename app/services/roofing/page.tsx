@@ -13,6 +13,7 @@ import {
 } from "../../../lib/service-best-pages-meta";
 import { isNoindexSlug, isRedirectedServiceSlug } from "../../../lib/public-site-scope";
 import { getBlog, getServices } from "../../../lib/site-content";
+import StormInspectionLeadForm from "../../../components/StormInspectionLeadForm";
 
 const hubSeo = buildTradeHubSeo({ label: "Roofing", pricingKey: "roofing" });
 
@@ -84,7 +85,10 @@ export default function RoofingHubPage() {
                 Use these pages to understand roof leaks, storm damage, when to stabilize vs repair, and what changes replacement costs in Georgetown.
                 When you’re ready, compare roofers in the directory and contact providers directly.
               </p>
-              <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
+              <div className="mt-6 max-w-xl">
+                <StormInspectionLeadForm source="hub:services-roofing" />
+              </div>
+              <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold">
                 <Link href="/best/best-roofers-georgetown-tx" className="text-primary hover:underline">
                   Browse Roof Repair Options
                 </Link>

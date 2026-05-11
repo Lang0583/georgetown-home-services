@@ -3,6 +3,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import HomeHailAlertBanner from "../components/HomeHailAlertBanner";
 import StickyHeader from "../components/StickyHeader";
 import EmailCaptureSitewide from "../components/EmailCaptureSitewide";
 import SiteFooter from "../components/SiteFooter";
@@ -137,6 +138,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-gray-50 text-gray-900">
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
+        <HomeHailAlertBanner />
         <StickyHeader />
         <main className="flex-1 pt-20">{children}</main>
         <EmailCaptureSitewide />

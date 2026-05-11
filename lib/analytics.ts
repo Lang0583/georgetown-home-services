@@ -102,3 +102,12 @@ export function trackAffiliateShown(providerName: string, serviceCategory: strin
     page_location: pageLocation(),
   });
 }
+
+/** Storm inspection contact form (`/api/contact`). */
+export function trackContactFormSubmit(source: string): void {
+  trackEvent("contact_form_submit", {
+    event_category: "lead",
+    event_label: source,
+    page_location: pageLocation(),
+  });
+}
