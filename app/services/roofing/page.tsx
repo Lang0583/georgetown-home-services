@@ -3,8 +3,13 @@ import Link from "next/link";
 import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
 import ServiceHubPricingSection from "../../../components/ServiceHubPricingSection";
+import FlagshipYouTubeEmbed from "../../../components/FlagshipYouTubeEmbed";
 import JsonLd from "../../../components/JsonLd";
-import { pageSeoMetadata } from "../../../lib/page-seo";
+import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
+import {
+  FLAGSHIP_VIDEO_ROOFING_HUB,
+  flagshipVideoObjectJsonLd,
+} from "../../../lib/flagship-videos";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
@@ -52,6 +57,7 @@ function faqJsonLd() {
 export default function RoofingHubPage() {
   const services = getServices();
   const blog = getBlog();
+  const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
 
   const core = services.find((s) => s.slug === "roofer-georgetown-tx") ?? null;
   const supporting = services.filter(
@@ -75,6 +81,13 @@ export default function RoofingHubPage() {
               description:
                 "Practical roofing guides for Georgetown homeowners: roof leaks, storm damage checklists, replacement cost drivers, and how to compare roofers.",
             })}
+          />
+          <JsonLd
+            data={flagshipVideoObjectJsonLd(
+              siteUrl,
+              absolutePageUrl("/services/roofing"),
+              FLAGSHIP_VIDEO_ROOFING_HUB,
+            )}
           />
           <div className="flex flex-col gap-10">
             <div>
@@ -102,6 +115,16 @@ export default function RoofingHubPage() {
             </div>
 
             <ServiceHubPricingSection categoryKey="roofing" />
+
+            <div className="not-prose mt-10">
+            <FlagshipYouTubeEmbed
+              id="flagship-video-roofing-hub"
+              heading="Video: inspecting a roof after hail"
+              summary="How inspectors often think about hail hits, collateral metal denting, and what belongs in photo documentation before you compare Georgetown bids."
+              youtubeId={FLAGSHIP_VIDEO_ROOFING_HUB.youtubeId}
+              iframeTitle="YouTube video: how to inspect a roof for hail damage"
+            />
+            </div>
 
             {core ? (
               <section>

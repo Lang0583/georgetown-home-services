@@ -7,6 +7,7 @@ import BlogArticleBodyWithMidEmail from "../../../components/BlogArticleBodyWith
 import StormInspectionLeadForm from "../../../components/StormInspectionLeadForm";
 import LinkCard from "../../../components/LinkCard";
 import JsonLd from "../../../components/JsonLd";
+import FlagshipYouTubeEmbed from "../../../components/FlagshipYouTubeEmbed";
 import Breadcrumbs from "../../../components/Breadcrumbs";
 import PageShell from "../../../components/templates/PageShell";
 import TwoColumnPage from "../../../components/templates/TwoColumnPage";
@@ -18,12 +19,16 @@ import {
   getServices,
 } from "../../../lib/site-content";
 import { adsenseBlogPostSlot } from "../../../lib/adsense-config";
-import { pageSeoMetadata } from "../../../lib/page-seo";
+import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import { isNoindexSlug } from "../../../lib/public-site-scope";
 import { getGeneratedPage } from "../../../lib/generatedPages";
 import { blogPageInternalLinks } from "../../../lib/internal-links";
 import { getBlogHeroImage } from "../../../lib/blog-hero-images";
 import { extractFaqPairs, faqPageJsonLd } from "../../../lib/extract-faq-schema";
+import {
+  FLAGSHIP_VIDEO_HAIL_WILLIAMSON_BLOG,
+  flagshipVideoObjectJsonLd,
+} from "../../../lib/flagship-videos";
 import { PRICING_YEAR } from "../../../lib/pricing-data";
 import { AUTHOR_NAME, AUTHOR_PROFILE_PATH, authorPersonSchema } from "../../../lib/site-author";
 
@@ -450,6 +455,15 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
             })}
           />
           {faqPairs.length > 0 ? <JsonLd data={faqPageJsonLd(faqPairs)} /> : null}
+          {post.slug === "hail-damage-georgetown-williamson-may-2026" ? (
+            <JsonLd
+              data={flagshipVideoObjectJsonLd(
+                siteUrl,
+                absolutePageUrl(`/blog/${post.slug}`),
+                FLAGSHIP_VIDEO_HAIL_WILLIAMSON_BLOG,
+              )}
+            />
+          ) : null}
           <TwoColumnPage
             main={
               <article className="min-w-0">
@@ -499,6 +513,18 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
               {STORM_INSPECTION_LEAD_SLUGS.has(post.slug) ? (
                 <div className="not-prose mt-8 max-w-xl">
                   <StormInspectionLeadForm source={`blog:${post.slug}`} />
+                </div>
+              ) : null}
+
+              {post.slug === "hail-damage-georgetown-williamson-may-2026" ? (
+                <div className="not-prose mt-10">
+                  <FlagshipYouTubeEmbed
+                    id="flagship-video-hail-williamson"
+                    heading="Video: spotting hail damage safely"
+                    summary="A visual overview of common hail signatures on shingles and metal trim—helpful context before you book a Georgetown inspection or compare repair scopes."
+                    youtubeId={FLAGSHIP_VIDEO_HAIL_WILLIAMSON_BLOG.youtubeId}
+                    iframeTitle="YouTube video: how to spot hail damage on a roof"
+                  />
                 </div>
               ) : null}
 

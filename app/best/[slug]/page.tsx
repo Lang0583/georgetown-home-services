@@ -20,7 +20,7 @@ import {
   getServiceBySlug,
   getServices,
 } from "../../../lib/site-content";
-import { pageSeoMetadata } from "../../../lib/page-seo";
+import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
@@ -49,7 +49,12 @@ import {
 import BestBusinessesDirectory from "../../../components/BestBusinessesDirectory";
 import BestProvidersMethodologyCallout from "../../../components/BestProvidersMethodologyCallout";
 import AdSenseDisplay from "../../../components/AdSenseDisplay";
+import FlagshipYouTubeEmbed from "../../../components/FlagshipYouTubeEmbed";
 import { adsenseBestOfSlot } from "../../../lib/adsense-config";
+import {
+  FLAGSHIP_VIDEO_BEST_ROOFERS,
+  flagshipVideoObjectJsonLd,
+} from "../../../lib/flagship-videos";
 
 /** Hero images for core `/best/[slug]` pages (Unsplash — permitted use per Unsplash License). */
 const CORE_BEST_HERO: Record<string, { src: string; alt: string }> = {
@@ -353,6 +358,15 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
               )}
             />
           ) : null}
+          {isRoofersGeorgetown ? (
+            <JsonLd
+              data={flagshipVideoObjectJsonLd(
+                siteUrl,
+                absolutePageUrl(`/best/${best.slug}`),
+                FLAGSHIP_VIDEO_BEST_ROOFERS,
+              )}
+            />
+          ) : null}
           <TwoColumnPage
             main={
               <div className="min-w-0">
@@ -443,6 +457,18 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
               ) : (
                 <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">{best.description}</p>
               )}
+
+              {isRoofersGeorgetown ? (
+                <div className="not-prose mt-10">
+                  <FlagshipYouTubeEmbed
+                    id="flagship-video-best-roofers"
+                    heading="Video: what hail damage can look like"
+                    summary="Real-world examples help you ask sharper questions when roofers explain scopes, deductibles, and whether damage is localized or widespread."
+                    youtubeId={FLAGSHIP_VIDEO_BEST_ROOFERS.youtubeId}
+                    iframeTitle="YouTube video: examples of roof hail damage"
+                  />
+                </div>
+              ) : null}
 
               <div className="mt-8">
                 {isPlumbersGeorgetown ? (
