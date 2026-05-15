@@ -145,19 +145,7 @@ export function isRedirectedBlogSlug(slug: string): boolean {
  * output. There is no auto-update script — this file is the human-curated
  * source of truth.
  */
-export const NOINDEX_SLUGS = new Set([
-  // Blog posts (thin, no consolidation target, not in COST_POST_SUPPLEMENTS):
-  "ac-not-cooling-georgetown-tx",
-
-  // Phase 3 of the audit follow-up rewrote every remaining noindex
-  // service hub and best-of page to >= the section's thin-content
-  // threshold (800 words for service, 500 for best). The bodies live
-  // in `lib/generatedPages.json` and now include Williamson-County-
-  // specific licensing, soil/climate, and pricing context. Slugs that
-  // used to live here (8 service hubs + 7 best-of pages) are now
-  // indexable; this set is intentionally empty and serves as a marker
-  // that the site has no thin-content opt-out pages remaining.
-]);
+export const NOINDEX_SLUGS = new Set<string>();
 
 export function isNoindexSlug(slug: string): boolean {
   return NOINDEX_SLUGS.has(slug);

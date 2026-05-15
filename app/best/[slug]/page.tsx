@@ -53,6 +53,7 @@ import FlagshipYouTubeEmbed from "../../../components/FlagshipYouTubeEmbed";
 import BestOfRooferEditorialDepth from "../../../components/BestOfRooferEditorialDepth";
 import BestOfPlumberEditorialDepth from "../../../components/BestOfPlumberEditorialDepth";
 import BestOfHvacEditorialDepth from "../../../components/BestOfHvacEditorialDepth";
+import BestOfExtendedTradeEditorialDepth from "../../../components/BestOfExtendedTradeEditorialDepth";
 import { adsenseBestOfSlot } from "../../../lib/adsense-config";
 import {
   FLAGSHIP_VIDEO_BEST_ROOFERS,
@@ -463,6 +464,9 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
 
               {isPlumbersGeorgetown ? <BestOfPlumberEditorialDepth /> : null}
               {isHvacGeorgetown ? <BestOfHvacEditorialDepth /> : null}
+              {showExtendedHomeServices() && isExtendedBestSlug(slug) ? (
+                <BestOfExtendedTradeEditorialDepth slug={slug} />
+              ) : null}
 
               {isRoofersGeorgetown ? (
                 <div className="not-prose mt-10">
