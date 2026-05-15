@@ -50,6 +50,9 @@ import BestBusinessesDirectory from "../../../components/BestBusinessesDirectory
 import BestProvidersMethodologyCallout from "../../../components/BestProvidersMethodologyCallout";
 import AdSenseDisplay from "../../../components/AdSenseDisplay";
 import FlagshipYouTubeEmbed from "../../../components/FlagshipYouTubeEmbed";
+import BestOfRooferEditorialDepth from "../../../components/BestOfRooferEditorialDepth";
+import BestOfPlumberEditorialDepth from "../../../components/BestOfPlumberEditorialDepth";
+import BestOfHvacEditorialDepth from "../../../components/BestOfHvacEditorialDepth";
 import { adsenseBestOfSlot } from "../../../lib/adsense-config";
 import {
   FLAGSHIP_VIDEO_BEST_ROOFERS,
@@ -458,6 +461,9 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                 <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">{best.description}</p>
               )}
 
+              {isPlumbersGeorgetown ? <BestOfPlumberEditorialDepth /> : null}
+              {isHvacGeorgetown ? <BestOfHvacEditorialDepth /> : null}
+
               {isRoofersGeorgetown ? (
                 <div className="not-prose mt-10">
                   <FlagshipYouTubeEmbed
@@ -469,6 +475,8 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                   />
                 </div>
               ) : null}
+
+              {isRoofersGeorgetown ? <BestOfRooferEditorialDepth /> : null}
 
               <div className="mt-8">
                 {isPlumbersGeorgetown ? (

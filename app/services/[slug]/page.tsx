@@ -51,6 +51,7 @@ import {
 import { servicePageInternalLinks } from "../../../lib/internal-links";
 import { resolveServiceGuideFaqs } from "../../../lib/georgetown-page-faqs";
 import { buildServicePageSeo } from "../../../lib/service-page-seo";
+import CoreServiceGuideDecisionFramework from "../../../components/CoreServiceGuideDecisionFramework";
 
 function breadcrumbJsonLd({
   siteUrl,
@@ -220,6 +221,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               ) : (
                 <p className="mt-4 text-lg leading-relaxed text-gray-700">{service.description}</p>
               )}
+
+              {isPlumberService ? <CoreServiceGuideDecisionFramework trade="plumber" /> : null}
+              {isHvacService ? <CoreServiceGuideDecisionFramework trade="hvac" /> : null}
+              {isRooferService ? <CoreServiceGuideDecisionFramework trade="roofer" /> : null}
 
               <div className="mt-6 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
                 <div className="text-sm font-semibold text-gray-900">What this guide covers</div>

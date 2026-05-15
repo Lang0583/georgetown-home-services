@@ -29,6 +29,7 @@ import {
   FLAGSHIP_VIDEO_HAIL_WILLIAMSON_BLOG,
   flagshipVideoObjectJsonLd,
 } from "../../../lib/flagship-videos";
+import HailPillarNeighborhoodHub from "../../../components/HailPillarNeighborhoodHub";
 import { PRICING_YEAR } from "../../../lib/pricing-data";
 import { AUTHOR_NAME, AUTHOR_PROFILE_PATH, authorPersonSchema } from "../../../lib/site-author";
 
@@ -527,6 +528,8 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
                   />
                 </div>
               ) : null}
+
+              {post.slug === "hail-damage-georgetown-williamson-may-2026" ? <HailPillarNeighborhoodHub /> : null}
 
               <div className="mt-8">
                 <BlogArticleBodyWithMidEmail slug={post.slug} generated={generated} blocks={post.content} />

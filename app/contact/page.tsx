@@ -33,6 +33,24 @@ export default function ContactPage() {
       title={`Contact ${brand}`}
       description={<>Questions about this site, corrections, or ideas—we read every message.</>}
     >
+      <section className="rounded-xl border border-gray-200 bg-gray-50/80 p-5 md:p-6">
+        <h2 className="text-lg font-semibold text-gray-900">What to expect when you reach out</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-700">
+          <li>
+            <strong>Site feedback &amp; corrections:</strong> we route these to editorial review. We cannot respond to
+            every note, but we prioritize verifiable factual errors (wrong phone, dead URL, misleading map association).
+          </li>
+          <li>
+            <strong>Urgent home emergencies:</strong> call <strong>911</strong> or a <strong>licensed local provider</strong>{" "}
+            directly—this inbox is not monitored for dispatch.
+          </li>
+          <li>
+            <strong>Provider disputes:</strong> if you represent a business, include a plain-English summary plus a link to
+            your official site or state license lookup so we can validate before editing copy.
+          </li>
+        </ul>
+      </section>
+
       <div id="feedback" className="scroll-mt-24">
         <SiteFeedbackForm />
       </div>
@@ -47,11 +65,19 @@ export default function ContactPage() {
           . The form above helps us route and track feedback so we can improve the site faster.
         </p>
         <p className="mt-4 text-sm leading-relaxed text-gray-700">
+          <strong>Privacy:</strong> Feedback and optional lead forms are handled as described in our{" "}
+          <Link href="/privacy-policy" className="font-semibold text-primary underline underline-offset-2 hover:text-primary-hover">
+            Privacy Policy
+          </Link>
+          . We do not sell personal data.
+        </p>
+        <p className="mt-4 text-sm leading-relaxed text-gray-700">
           <strong>Home service needs:</strong> Each{" "}
           <Link href="/services" className="font-semibold text-primary underline underline-offset-2 hover:text-primary-hover">
             service guide
           </Link>{" "}
-          includes a short request form so you can describe the job and your contact details. You can also reach providers directly from the{" "}
+          includes a short request form so you can describe the job and your contact details. You can also reach providers
+          directly from the{" "}
           <Link href="/best" className="font-semibold text-primary underline underline-offset-2 hover:text-primary-hover">
             Best Of
           </Link>{" "}

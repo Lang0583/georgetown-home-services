@@ -39,6 +39,35 @@ export default function PrivacyPolicyPage() {
       }
     >
       <section>
+        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Storm / inspection lead requests</h2>
+        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+          Some pages include an optional form to request <strong>follow-up from local contractors</strong> after storms or
+          for roof/HVAC questions. When you submit, we collect the fields shown on the form (for example name, phone,
+          neighborhood, and service type) and transmit them to operational email inboxes so a human can respond—see our{" "}
+          <Link href="/contact" className="font-medium text-primary underline-offset-4 hover:underline">
+            Contact
+          </Link>{" "}
+          page for limitations. We do not use those messages to train third-party models.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Site feedback storage</h2>
+        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+          Feedback you submit through the contact page may be logged in a secure server-side store (for example append-only
+          JSON lines) so we can reproduce bugs or confirm corrections. Retention is operational, not for resale.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Children&apos;s privacy</h2>
+        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+          The site is intended for adults making homeowner decisions. We do not knowingly collect personal information from
+          children under 13.
+        </p>
+      </section>
+
+      <section>
         <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Google AdSense and advertising</h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
           We use <strong>Google AdSense</strong> to show ads on some pages. Google and its partners may use cookies or
@@ -153,7 +182,7 @@ export default function PrivacyPolicyPage() {
           We may update this policy from time to time. The &quot;Last updated&quot; note on this page will change when we
           do. Continued use of the site after changes means you accept the updated policy.
         </p>
-        <p className="mt-3 text-sm text-gray-600">Last updated: April 2026</p>
+        <p className="mt-3 text-sm text-gray-600">Last updated: May 2026</p>
       </section>
     </TrustPage>
   );

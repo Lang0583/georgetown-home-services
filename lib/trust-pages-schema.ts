@@ -1,7 +1,7 @@
 import { SITE_URL } from "./page-seo";
 
 /** Single ISO date for `dateModified` on static trust/legal/editorial pages. Bump when copy changes. */
-export const TRUST_PAGES_LAST_MODIFIED_ISO = "2026-04-28";
+export const TRUST_PAGES_LAST_MODIFIED_ISO = "2026-05-06";
 
 function pageUrl(pathname: string): string {
   const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
