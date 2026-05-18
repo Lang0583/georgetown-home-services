@@ -123,9 +123,9 @@ export function fullAuthorPersonSchema(siteUrl: string = SITE_URL) {
 
 /**
  * Article schema for editorial hub pages (services, locations) that carry
- * substantive guide-style content. Pairs with the existing WebPage schema —
- * WebPage establishes page identity; Article asserts editorial provenance
- * with a named author, which is the E-E-A-T signal Google rewards.
+ * substantive guide-style content. Optionally includes `aggregateRating`
+ * when the page publishes verified placeholder or live review aggregates
+ * (see `RatingSchema` on `/services/[slug]`).
  */
 export function hubArticleJsonLd(opts: {
   pathname: string;
@@ -135,10 +135,18 @@ export function hubArticleJsonLd(opts: {
   dateModified: string;
   publisherName?: string;
   siteUrl?: string;
+  /** Community/editorial aggregate rating (e.g. service guides). Omit when not verified. */
+  aggregateRating?: {
+    ratingValue: number;
+    reviewCount: number;
+    bestRating: number;
+    worstRating?: number;
+  };
 }) {
   const siteUrl = opts.siteUrl ?? SITE_URL;
   const path = opts.pathname.startsWith("/") ? opts.pathname : `/${opts.pathname}`;
   const url = new URL(path, siteUrl).href;
+  const ar = opts.aggregateRating;
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -160,6 +168,17 @@ export function hubArticleJsonLd(opts: {
     },
     datePublished: opts.datePublished,
     dateModified: opts.dateModified,
+    ...(ar
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: ar.ratingValue,
+            reviewCount: ar.reviewCount,
+            bestRating: ar.bestRating,
+            worstRating: ar.worstRating ?? 1,
+          },
+        }
+      : {}),
   };
 }
 

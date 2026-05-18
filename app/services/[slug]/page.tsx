@@ -10,6 +10,8 @@ import LinkCard from "../../../components/LinkCard";
 import GeneratedArticleBody from "../../../components/GeneratedArticleBody";
 import RichText from "../../../components/RichText";
 import JsonLd from "../../../components/JsonLd";
+import RatingSchema from "../../../components/RatingSchema";
+import AggregateRatingBadge from "../../../components/AggregateRatingBadge";
 import Breadcrumbs from "../../../components/Breadcrumbs";
 import PageShell from "../../../components/templates/PageShell";
 import TwoColumnPage from "../../../components/templates/TwoColumnPage";
@@ -27,10 +29,8 @@ import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_ISO,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
-  webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import AuthorByline from "../../../components/AuthorByline";
-import { hubArticleJsonLd } from "../../../lib/site-author";
 import { CORE_SERVICE_SLUGS, resolveServicePage } from "../../../lib/pageContentRegistry";
 import {
   isExtendedServiceSlug,
@@ -51,6 +51,7 @@ import {
 import { servicePageInternalLinks } from "../../../lib/internal-links";
 import { resolveServiceGuideFaqs } from "../../../lib/georgetown-page-faqs";
 import { buildServicePageSeo } from "../../../lib/service-page-seo";
+import { SERVICE_GUIDE_AGGREGATE_RATING_DEFAULTS } from "../../../lib/service-guide-rating-defaults";
 import CoreServiceGuideDecisionFramework from "../../../components/CoreServiceGuideDecisionFramework";
 
 function breadcrumbJsonLd({
@@ -153,26 +154,22 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const explore = CORE_SERVICES.filter((s) => s.slug !== service.slug);
   const ruleLinks = servicePageInternalLinks(service.slug);
   const serviceFaqs = resolveServiceGuideFaqs(service);
+  const guideRating = SERVICE_GUIDE_AGGREGATE_RATING_DEFAULTS;
 
   return (
     <PageShell>
         <section className="py-10 md:py-12">
           <JsonLd data={breadcrumbJsonLd({ siteUrl, serviceTitle: service.title, serviceSlug: service.slug })} />
-          <JsonLd
-            data={webPageWithDateModifiedJsonLd({
-              pathname: `/services/${service.slug}`,
-              name: service.title,
-              description: service.description,
-            })}
-          />
-          <JsonLd
-            data={hubArticleJsonLd({
-              pathname: `/services/${service.slug}`,
-              headline: service.h1 ?? service.title,
-              description: service.description,
-              datePublished: SERVICE_BEST_LAST_UPDATED_ISO,
-              dateModified: SERVICE_BEST_LAST_UPDATED_ISO,
-            })}
+          <RatingSchema
+            pathname={`/services/${service.slug}`}
+            headline={service.h1 ?? service.title}
+            description={service.description}
+            datePublished={SERVICE_BEST_LAST_UPDATED_ISO}
+            dateModified={SERVICE_BEST_LAST_UPDATED_ISO}
+            ratingValue={guideRating.ratingValue}
+            reviewCount={guideRating.reviewCount}
+            bestRating={guideRating.bestRating}
+            worstRating={guideRating.worstRating}
           />
           <FAQSchema
             pageUrl={absolutePageUrl(`/services/${service.slug}`)}
@@ -193,6 +190,12 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 {service.serviceType} • {location?.title ?? "Georgetown, TX"}
               </div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{service.h1}</h1>
+              <AggregateRatingBadge
+                className="mt-2"
+                ratingValue={guideRating.ratingValue}
+                reviewCount={guideRating.reviewCount}
+                bestRating={guideRating.bestRating}
+              />
               <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               <AuthorByline className="mt-3" compact />
 
