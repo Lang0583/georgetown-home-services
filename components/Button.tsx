@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ComponentProps } from "react";
 
-const styles = {
+export const buttonStyles = {
   primary:
     [
       "inline-flex items-center justify-center rounded-lg",
@@ -22,14 +22,14 @@ const styles = {
     ].join(" "),
 } as const;
 
-type Variant = keyof typeof styles;
+type Variant = keyof typeof buttonStyles;
 
 export function ButtonLink({
   className,
   variant = "primary",
   ...props
 }: ComponentProps<typeof Link> & { variant?: Variant }) {
-  return <Link {...props} className={[styles[variant], className].filter(Boolean).join(" ")} />;
+  return <Link {...props} className={[buttonStyles[variant], className].filter(Boolean).join(" ")} />;
 }
 
 export function Button({
@@ -37,6 +37,6 @@ export function Button({
   variant = "primary",
   ...props
 }: ComponentProps<"button"> & { variant?: Variant }) {
-  return <button {...props} className={[styles[variant], className].filter(Boolean).join(" ")} />;
+  return <button {...props} className={[buttonStyles[variant], className].filter(Boolean).join(" ")} />;
 }
 

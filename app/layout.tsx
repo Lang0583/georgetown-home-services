@@ -8,8 +8,9 @@ import StickyHeader from "../components/StickyHeader";
 import EmailCaptureSitewide from "../components/EmailCaptureSitewide";
 import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
-import { ADSENSE_PUBLISHER_ID } from "../lib/adsense-config";
+import { ADSENSE_ACTIVE, ADSENSE_PUBLISHER_ID } from "../lib/adsense-config";
 import { getImpactPublisherTagInnerHtml } from "../lib/impact-publisher-tag";
+import { clipMetaDescription } from "../lib/seo-meta";
 import { getBrandName, getContact } from "../lib/site-content";
 
 const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
@@ -18,7 +19,8 @@ const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com"
 const impactSiteVerification =
   process.env.IMPACT_SITE_VERIFICATION?.trim() || "b1d76151-29e8-4a9a-9913-9ea8f5ce9cd9";
 
-const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID?.trim() || ADSENSE_PUBLISHER_ID;
+/** Resolved from env or production default (`ca-pub-2692091044925789`). */
+const adsenseClient = ADSENSE_PUBLISHER_ID;
 
 /** GA4 default stream (override with `NEXT_PUBLIC_GA_MEASUREMENT_ID`). */
 const GA_MEASUREMENT_ID =
@@ -52,10 +54,12 @@ export async function generateMetadata(): Promise<Metadata> {
       default: "Georgetown Home Services",
       template: "%s | Georgetown Home Services",
     },
-    description: "Local plumbing, HVAC, and roofing service in Georgetown, TX.",
+    description: clipMetaDescription(
+      "Compare vetted Georgetown plumbers, HVAC, and roofers. Real Google ratings, cost guides, and Best Of lists—request quotes direct from local pros.",
+    ),
     robots: { index: true, follow: true },
     other: {
-      "google-adsense-account": adsenseClient,
+      ...(ADSENSE_ACTIVE ? { "google-adsense-account": adsenseClient } : {}),
       /** impact.com crawlers expect <meta name="impact-site-verification" content="..."> (HTML uses `content`, not `value`). */
       "impact-site-verification": impactSiteVerification,
     },
@@ -117,16 +121,19 @@ export default function RootLayout({
             dangerouslySetInnerHTML={{ __html: impactPublisherTagInnerHtml }}
           />
         ) : null}
-        <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
+        {ADSENSE_ACTIVE ? (
+          <>
+            <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
+            <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
+            <script
+              async
+              src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
+              crossOrigin="anonymous"
+            />
+          </>
+        ) : null}
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        {/* Google AdSense Auto Ads — same snippet as Adsense “Sites → Get code” (async in <head>, every page). */}
-        <script
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
-          crossOrigin="anonymous"
-        />
         {mediavineGrowSiteId ? (
           <Script
             id="mediavine-grow"

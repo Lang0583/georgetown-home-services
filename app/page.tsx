@@ -7,8 +7,10 @@ import HomeTopProvidersColumn from "../components/HomeTopProvidersColumn";
 import HomeTrustBar from "../components/HomeTrustBar";
 import HomeHowItWorks from "../components/HomeHowItWorks";
 import FAQList from "../components/FAQList";
+import FAQSchema from "../components/FAQSchema";
 import JsonLd from "../components/JsonLd";
-import { pageSeoMetadata, SITE_URL } from "../lib/page-seo";
+import LocalBusinessSchema from "../components/LocalBusinessSchema";
+import { pageSeoMetadata, SITE_URL, absolutePageUrl } from "../lib/page-seo";
 import { CORE_SERVICE_SLUGS } from "../lib/pageContentRegistry";
 import { EXTENDED_PROVIDER_GROUPS, isNoindexSlug } from "../lib/public-site-scope";
 import type { Faq } from "../lib/site-content";
@@ -24,30 +26,6 @@ function sortedProvidersForGroup(list: Business[], group: ProviderGroup) {
   return list
     .filter((b) => normalizeBusinessGroup(b) === group)
     .sort((a, b) => (b.rating !== a.rating ? b.rating - a.rating : b.reviews - a.reviews));
-}
-
-function homeLocalBusinessJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "Georgetown Home Services",
-    url: SITE_URL,
-    description:
-      "Compare top-rated plumbers, HVAC companies, roofers, electricians, and more in Georgetown TX. Verified local providers, real Google ratings, and honest cost guides.",
-    areaServed: [
-      { "@type": "City", name: "Georgetown", containedInPlace: { "@type": "State", name: "Texas" } },
-      { "@type": "City", name: "Round Rock", containedInPlace: { "@type": "State", name: "Texas" } },
-      { "@type": "City", name: "Cedar Park", containedInPlace: { "@type": "State", name: "Texas" } },
-      { "@type": "City", name: "Leander", containedInPlace: { "@type": "State", name: "Texas" } },
-    ],
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Georgetown",
-      addressRegion: "TX",
-      addressCountry: "US",
-    },
-    sameAs: [] as string[],
-  };
 }
 
 function homeWebPageJsonLd() {
@@ -85,18 +63,6 @@ const HOME_PAGE_FAQS: Faq[] = [
     a: "Key signs include a system older than 15 years, frequent repairs, uneven cooling, or energy bills rising without explanation. Georgetown summers regularly exceed 100 degrees, making a functioning HVAC essential.",
   },
 ];
-
-function homeFaqPageJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: HOME_PAGE_FAQS.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
-}
 
 export const metadata: Metadata = pageSeoMetadata({
   absoluteTitle: "Georgetown TX Home Services Directory (2026) | Compare Local Providers",
@@ -138,9 +104,9 @@ export default function Home() {
 
   return (
     <div className="bg-gray-50 pb-40 md:pb-44">
-      <JsonLd data={homeLocalBusinessJsonLd()} />
+      <LocalBusinessSchema />
       <JsonLd data={homeWebPageJsonLd()} />
-      <JsonLd data={homeFaqPageJsonLd()} />
+      <FAQSchema pageUrl={absolutePageUrl("/")} name="Georgetown TX home services — FAQ" faqs={HOME_PAGE_FAQS} />
       <Container>
         <section className="py-10 md:py-12">
           <div className="min-w-0">

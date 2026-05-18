@@ -161,7 +161,7 @@ export default function BestIndexPage() {
                     <span className="text-gray-300" aria-hidden>
                       ·
                     </span>
-                    <Link href="/blog/how-to-choose-a-reliable-plumber-georgetown-tx" className="hover:underline">
+                    <Link href="/blog/how-to-choose-reliable-plumber-georgetown-tx" className="hover:underline">
                       Hiring checklist (plumber)
                     </Link>
                   </div>

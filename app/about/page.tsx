@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "../../components/JsonLd";
+import LocalBusinessSchema from "../../components/LocalBusinessSchema";
 import TrustPage from "../../components/templates/TrustPage";
 import { pageSeoMetadata } from "../../lib/page-seo";
 import { getBrandName } from "../../lib/site-content";
@@ -10,7 +11,7 @@ import { aboutPageJsonLd } from "../../lib/trust-pages-schema";
 export const metadata: Metadata = pageSeoMetadata({
   titleSegment: "About Georgetown Home Services",
   description:
-    "Georgetown Home Services is an independent homeowner guide and provider directory focused on Georgetown, Texas and Williamson County—editorial standards, funding, and how to use the site safely.",
+    "Locally owned Georgetown TX home services directory—mission, how plumbing/HVAC/roofing listings are vetted, and why Williamson County homeowners use this guide.",
   pathname: "/about",
   ogType: "website",
 });
@@ -20,32 +21,80 @@ export default function AboutPage() {
   return (
     <TrustPage
       topSlot={
-        <JsonLd
-          data={aboutPageJsonLd({
+        <>
+          <LocalBusinessSchema />
+          <JsonLd
+            data={aboutPageJsonLd({
             name: `About ${brand}`,
             description:
-              "Independent homeowner guide and provider directory for Georgetown, TX and Williamson County: editorial mission, geographic focus, and what we do not do.",
+              "Locally owned Georgetown, Texas home services directory helping homeowners find vetted plumbing, HVAC, and roofing professionals.",
           })}
         />
+        </>
       }
       eyebrow="About"
       title={`About ${brand}`}
       description={
         <>
-          {brand} is a <strong>local editorial publication</strong> for homeowners—not a contractor, broker, or
-          dispatch desk. We write durable guides (plumbing, HVAC, roofing, and related trades), maintain a public-facing
-          directory using verifiable information, and aim to help you ask sharper questions before you hire anyone.
+          {brand} is a <strong>locally owned directory and homeowner guide</strong> built for{" "}
+          <strong>Georgetown, Texas</strong> and surrounding Williamson County neighborhoods. We help residents cut through
+          noisy search results and find <strong>vetted plumbing, HVAC, and roofing</strong> professionals they can call with
+          confidence—without acting as a contractor, broker, or dispatch desk.
         </>
       }
     >
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Geographic focus</h2>
+        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Our mission</h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          Our primary lens is <strong>Georgetown, Texas</strong> inside <strong>Williamson County</strong>, including
-          neighborhoods people search by name—Sun City, Teravista, Wolf Ranch, Georgetown Village, Berry Creek, and the
-          historic Square-adjacent blocks. When we reference &quot;Central Texas&quot; weather (heat, UV, hail season,
-          clay soils), it is to explain why local hiring questions differ from generic national advice—not to pretend we
-          cover the entire state equally.
+          Home repairs are stressful enough. Our mission is simple: give Georgetown homeowners{" "}
+          <strong>clear, honest context</strong> about the trades that keep houses safe and comfortable—water lines, attic
+          loads, refrigerant circuits, hail-prone roofs—and then point you to <strong>shortlists of reputable local companies</strong>{" "}
+          you can interview on your own terms. We believe a small-city market like Georgetown deserves publisher-backed
+          curation: fewer &quot;mystery leads,&quot; more transparent signals, and copy that respects Texas weather, soil,
+          and building realities instead of recycled national fluff.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Why Georgetown—and why a directory</h2>
+        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+          From the historic Square to fast-growing master-planned communities, Georgetown mixes older pier-and-beam stock,
+          tight attic HVAC retrofits, and rooflines that see real Central Texas sun and spring hail. National marketplaces
+          rarely explain those nuances; they often optimize for whoever bought the click. We write for neighbors: Sun City,
+          Teravista, Wolf Ranch, Georgetown Village, Berry Creek, and the many blocks in between—people who want a{" "}
+          <strong>short list of serious pros</strong>, not a firehose of unverified ads. {brand} is editorial-first: guides
+          explain how failures show up in local homes, what belongs in a written estimate, and the questions a prudent
+          homeowner asks before signing.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">How listings are vetted</h2>
+        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+          We do not take pay-to-play placement for organic directory rankings. When we include a plumbing, HVAC, or roofing
+          company in a curated hub, we ground the pick in <strong>verifiable public signals</strong>: consistent business
+          identity across official websites and state or local license databases where applicable, longevity and geographic
+          service-area fit for Georgetown and Williamson County, documented customer feedback patterns (volume and
+          recency—not a single cherry-picked star), and whether stated offerings match what Georgetown homeowners typically
+          need (for example slab leak experience, heat-pump sizing conversations, impact-resistant roofing options after
+          storms). We also screen for obvious red flags: phantom addresses, wildly mismatched trade names, or patterns that
+          suggest lead-churn rather than accountable service.
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+          <strong>Limitations:</strong> vetting reduces risk; it does not guarantee outcomes. Licensing, insurance, warranties,
+          workmanship, and code compliance are between you and the provider you hire. Always verify credentials
+          independently and get proposals in writing.
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+          Methodology details:{" "}
+          <Link href="/methodology" className="font-semibold text-primary hover:underline">
+            How we review and rank providers
+          </Link>
+          . Editorial separation from ads:{" "}
+          <Link href="/editorial-policy" className="font-semibold text-primary hover:underline">
+            Editorial policy
+          </Link>
+          .
         </p>
       </section>
 
@@ -56,94 +105,37 @@ export default function AboutPage() {
           <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-primary hover:underline">
             {AUTHOR_NAME}
           </Link>
-          , founder and editor. {AUTHOR_NAME} is{" "}
-          <strong>not</strong> a licensed plumber, electrician, HVAC technician, or roofer. Content is written for
-          research and comparison; it is <strong>not</strong> a substitute for on-site diagnosis, code compliance
-          review, or insurance/legal advice. The{" "}
-          <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-primary hover:underline">
-            editor profile
+          . {AUTHOR_NAME} is <strong>not</strong> a licensed plumber, electrician, HVAC technician, or roofer. Content is for
+          research and comparison—not a substitute for on-site diagnosis, code review, or insurance/legal advice. Corrections
+          matter to us: if you see a factual error in a listing, use the{" "}
+          <Link href="/contact" className="font-semibold text-primary hover:underline">
+            contact page
           </Link>{" "}
-          explains background, sourcing habits, and how we use drafting tools responsibly.
+          with evidence we can verify.
         </p>
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">What we are</h2>
-        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-700">
-          <li>
-            <strong>Homeowner guides</strong> that explain categories, failure modes, cost drivers, and what belongs in a
-            written estimate.
-          </li>
-          <li>
-            <strong>Best Of comparison hubs</strong> that help you shortlist companies using publicly available signals
-            (reviews, listing consistency, and stated service fit)—with methodology documented separately.
-          </li>
-          <li>
-            <strong>Repeat-use checklists</strong> (seasonal maintenance, storm aftermath, hiring scripts) designed to
-            stay useful months after publishing.
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">What we are not</h2>
-        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-700">
-          <li>We do not perform home services, employ tradespeople for hire, or dispatch technicians.</li>
-          <li>We do not guarantee outcomes: pricing, timing, licensing, insurance, warranties, or code compliance.</li>
-          <li>
-            We are not a party to your contract with any provider—disputes, scheduling, and workmanship questions belong
-            between you and the company you hire.
-          </li>
-        </ul>
       </section>
 
       <section>
         <h2 className="text-2xl font-semibold tracking-tight text-gray-900">How the site is funded</h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          Like many publishers, we use <strong>advertising</strong> (for example, Google AdSense display ads) and may use
-          clearly labeled <strong>affiliate or sponsored placements</strong> where noted on individual pages. Ads do{" "}
-          <strong>not</strong> dictate who appears in organic directory shortlists; see{" "}
-          <Link href="/editorial-policy" className="font-semibold text-primary hover:underline">
-            Editorial Policy
-          </Link>{" "}
-          and{" "}
-          <Link href="/methodology" className="font-semibold text-primary hover:underline">
-            Methodology
-          </Link>{" "}
-          for how we separate editorial ranking logic from paid modules.
+          Like many independent publishers, we use <strong>advertising</strong> (including Google AdSense) and may use
+          clearly disclosed <strong>affiliate or sponsored modules</strong> on specific pages. Paid placements do not dictate
+          who earns an organic spot in our shortlists; they are labeled when they appear.
         </p>
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Corrections and provider data</h2>
+        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Start here</h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          Public listings drift—phones change, brands merge, service areas tighten. If you spot a factual error
-          (wrong phone, defunct brand name, misleading map pin) or believe your company should be represented differently,
-          use{" "}
-          <Link href="/contact#feedback" className="font-semibold text-primary hover:underline">
-            Contact &amp; feedback
-          </Link>{" "}
-          with evidence we can verify (link to official site, Secretary of State filing, or a dated listing screenshot).
-          We cannot promise immediate edits, but we do correct verifiable mistakes as capacity allows.
-        </p>
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Where to start</h2>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          New to the site? Begin with{" "}
+          New to the site? Browse{" "}
           <Link href="/services" className="font-semibold text-primary hover:underline">
             service guides
           </Link>{" "}
-          if you are still narrowing the problem, or jump to the{" "}
+          or jump to the{" "}
           <Link href="/best" className="font-semibold text-primary hover:underline">
             provider directory
           </Link>{" "}
-          if you already know the trade. Read{" "}
-          <Link href="/methodology" className="font-semibold text-primary hover:underline">
-            how we rank providers
-          </Link>{" "}
-          before treating any shortlist as final.
+          for plumbing, HVAC, and roofing hubs tailored to Georgetown homeowners.
         </p>
       </section>
     </TrustPage>

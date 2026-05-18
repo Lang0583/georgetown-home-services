@@ -6,6 +6,7 @@ import FAQList from "../../../components/FAQList";
 import LinkCard from "../../../components/LinkCard";
 import RichText from "../../../components/RichText";
 import JsonLd from "../../../components/JsonLd";
+import FAQSchema from "../../../components/FAQSchema";
 import PageShell from "../../../components/templates/PageShell";
 import TwoColumnPage from "../../../components/templates/TwoColumnPage";
 import {
@@ -15,7 +16,7 @@ import {
   isRedirectedLocationSlug,
   showExtendedHomeServices,
 } from "../../../lib/public-site-scope";
-import { pageSeoMetadata } from "../../../lib/page-seo";
+import { absolutePageUrl, pageSeoMetadata } from "../../../lib/page-seo";
 import {
   getBestBySlug,
   getLocationBySlug,
@@ -47,20 +48,6 @@ function breadcrumbJsonLd({
       { "@type": "ListItem", position: 2, name: "Service areas", item: `${siteUrl}/service-areas` },
       { "@type": "ListItem", position: 3, name: locationTitle, item: `${siteUrl}/locations/${locationSlug}` },
     ],
-  };
-}
-
-function faqPageJsonLd(siteUrl: string, title: string, faqs: { q: string; a: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-    mainEntityOfPage: siteUrl,
-    name: title,
   };
 }
 
@@ -121,12 +108,10 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
             })}
           />
           {location.faqs?.length ? (
-            <JsonLd
-              data={faqPageJsonLd(
-                `${siteUrl}/locations/${location.slug}`,
-                `${location.title} FAQ`,
-                location.faqs
-              )}
+            <FAQSchema
+              pageUrl={absolutePageUrl(`/locations/${location.slug}`)}
+              name={`${location.title} FAQ`}
+              faqs={location.faqs}
             />
           ) : null}
           <TwoColumnPage

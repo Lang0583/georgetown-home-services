@@ -21,11 +21,23 @@ export default function SiteFooter() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-6">
           <div>
             <div className="text-sm font-semibold text-gray-900">{brand}</div>
-            <div className="mt-1 text-sm text-gray-600">
-              <Link className={`${footerBarLinkClass} text-gray-700`} href="/contact#feedback">
-                Contact &amp; feedback
-              </Link>
-            </div>
+            <ul className="mt-2 space-y-2 text-sm text-gray-600">
+              <li>
+                <Link className={`${footerBarLinkClass} text-gray-700`} href="/about">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link className={`${footerBarLinkClass} text-gray-700`} href="/privacy-policy">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link className={`${footerBarLinkClass} text-gray-700`} href="/contact#feedback">
+                  Contact &amp; feedback
+                </Link>
+              </li>
+            </ul>
           </div>
 
           <div>

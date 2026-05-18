@@ -50,7 +50,7 @@ const HERO_BY_SLUG: Record<string, BlogHeroImage> = {
     src: DEFAULT_SRC,
     alt: "Roof repair Georgetown TX home",
   },
-  "signs-you-may-need-a-new-roof-georgetown-tx": {
+  "signs-you-may-need-new-roof-georgetown-tx": {
     src: DEFAULT_SRC,
     alt: "Roof inspection signs Georgetown TX",
   },
@@ -78,7 +78,7 @@ const HERO_BY_SLUG: Record<string, BlogHeroImage> = {
     src: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=1200&q=80",
     alt: "Storm clouds over Texas — Georgetown Village hail damage May 2026",
   },
-  "how-to-choose-a-reliable-plumber-georgetown-tx": {
+  "how-to-choose-reliable-plumber-georgetown-tx": {
     src: DEFAULT_SRC,
     alt: "How to choose a plumber Georgetown TX",
   },
