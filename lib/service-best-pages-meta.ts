@@ -16,9 +16,17 @@ export function webPageWithDateModifiedJsonLd(opts: {
   pathname: string;
   name: string;
   description?: string;
+  /** Optional editorial / community aggregate rating for rich-result eligibility when guidelines are met. */
+  aggregateRating?: {
+    ratingValue: number;
+    reviewCount: number;
+    bestRating: number;
+    worstRating?: number;
+  };
 }): Record<string, unknown> {
   const path = opts.pathname.startsWith("/") ? opts.pathname : `/${opts.pathname}`;
   const url = new URL(path, SITE_URL).href;
+  const ar = opts.aggregateRating;
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -27,5 +35,16 @@ export function webPageWithDateModifiedJsonLd(opts: {
     name: opts.name,
     ...(opts.description ? { description: opts.description } : {}),
     dateModified: SERVICE_BEST_LAST_UPDATED_ISO,
+    ...(ar
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: ar.ratingValue,
+            reviewCount: ar.reviewCount,
+            bestRating: ar.bestRating,
+            worstRating: ar.worstRating ?? 1,
+          },
+        }
+      : {}),
   };
 }

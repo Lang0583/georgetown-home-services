@@ -25,6 +25,8 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Path hygiene: run `npm run seo:urls`. Add 301s here when slugs change;
+      // keep `pageSeoMetadata({ pathname })` and internal links on the destination path.
       // —— Duplicate / alias paths → canonical (301) ——
       {
         source: "/home",
@@ -122,12 +124,12 @@ const nextConfig: NextConfig = {
       // Old plumber blog URLs → single canonical post (one hop each — avoids GSC redirect chains)
       {
         source: "/blog/how-to-find-a-good-plumber-georgetown-tx",
-        destination: "/blog/how-to-choose-a-reliable-plumber-georgetown-tx",
+        destination: "/blog/how-to-choose-reliable-plumber-georgetown-tx",
         permanent: true,
       },
       {
         source: "/blog/how-to-find-a-good-plumber-georgetown",
-        destination: "/blog/how-to-choose-a-reliable-plumber-georgetown-tx",
+        destination: "/blog/how-to-choose-reliable-plumber-georgetown-tx",
         permanent: true,
       },
       {
@@ -137,7 +139,18 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/blog/how-to-choose-plumber-georgetown-tx",
-        destination: "/blog/how-to-choose-a-reliable-plumber-georgetown-tx",
+        destination: "/blog/how-to-choose-reliable-plumber-georgetown-tx",
+        permanent: true,
+      },
+      // Stop-word slug cleanup (`-a-`) → canonical URLs (sitemap + metadata use new paths)
+      {
+        source: "/blog/how-to-choose-a-reliable-plumber-georgetown-tx",
+        destination: "/blog/how-to-choose-reliable-plumber-georgetown-tx",
+        permanent: true,
+      },
+      {
+        source: "/blog/signs-you-may-need-a-new-roof-georgetown-tx",
+        destination: "/blog/signs-you-may-need-new-roof-georgetown-tx",
         permanent: true,
       },
       // Author byline moved from a single-name slug to the full pen-name slug

@@ -37,6 +37,9 @@
     "seo:consolidate:patch": "tsx scripts/seo/apply-consolidation.ts",
     "seo:all": "npm run seo:pull && npm run seo:audit && npm run seo:freshness && npm run seo:digest",
     "seo:check": "npm run seo:audit && npm run seo:freshness",
+    "seo:urls": "tsx scripts/seo/audit-url-paths.ts",
+    "links:check": "tsx scripts/check-internal-links.ts",
+    "links:crawl": "node scripts/crawl-internal-links.mjs --broken-table",
     "submit-indexing-api": "ts-node scripts/submit-to-indexing-api.ts"
   },
   "dependencies": {

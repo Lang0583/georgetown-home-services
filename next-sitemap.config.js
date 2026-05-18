@@ -11,6 +11,9 @@ module.exports = {
   /** Ensures neighborhood hail blog URLs appear in post-build sitemap (live `/sitemap.xml` also lists them via `getBlogSlugs()`). */
   additionalPaths: async (config) => {
     const paths = [
+      '/privacy-policy',
+      '/about',
+      '/contact',
       '/blog/hail-damage-georgetown-tx-may-2026',
       '/blog/hail-damage-sun-city-georgetown-tx',
       '/blog/hail-damage-teravista-georgetown-tx',
