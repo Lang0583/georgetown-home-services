@@ -154,7 +154,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const explore = CORE_SERVICES.filter((s) => s.slug !== service.slug);
   const ruleLinks = servicePageInternalLinks(service.slug);
   const serviceFaqs = resolveServiceGuideFaqs(service);
-  const guideRating = SERVICE_GUIDE_AGGREGATE_RATING_DEFAULTS;
 
   return (
     <PageShell>
@@ -166,10 +165,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             description={service.description}
             datePublished={SERVICE_BEST_LAST_UPDATED_ISO}
             dateModified={SERVICE_BEST_LAST_UPDATED_ISO}
-            ratingValue={guideRating.ratingValue}
-            reviewCount={guideRating.reviewCount}
-            bestRating={guideRating.bestRating}
-            worstRating={guideRating.worstRating}
+            aggregateRating={{ ...SERVICE_GUIDE_AGGREGATE_RATING_DEFAULTS }}
           />
           <FAQSchema
             pageUrl={absolutePageUrl(`/services/${service.slug}`)}
@@ -192,9 +188,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{service.h1}</h1>
               <AggregateRatingBadge
                 className="mt-2"
-                ratingValue={guideRating.ratingValue}
-                reviewCount={guideRating.reviewCount}
-                bestRating={guideRating.bestRating}
+                rating={{ ...SERVICE_GUIDE_AGGREGATE_RATING_DEFAULTS }}
               />
               <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               <AuthorByline className="mt-3" compact />

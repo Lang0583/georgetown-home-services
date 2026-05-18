@@ -1,6 +1,9 @@
 import JsonLd from "./JsonLd";
 import { hubArticleJsonLd } from "../lib/site-author";
-import type { ServiceGuideAggregateRatingProps } from "../lib/service-guide-rating-defaults";
+import {
+  resolveServiceGuideAggregateRating,
+  type ServiceGuideAggregateRatingProps,
+} from "../lib/service-guide-rating-defaults";
 
 export type RatingSchemaProps = {
   pathname: string;
@@ -11,11 +14,18 @@ export type RatingSchemaProps = {
   dateModified: string;
   publisherName?: string;
   siteUrl?: string;
-} & ServiceGuideAggregateRatingProps;
+  /** Shorthand — merged with `aggregateRating` (explicit props win). */
+  ratingValue?: number;
+  reviewCount?: number;
+  bestRating?: number;
+  worstRating?: number;
+  /** Partial override; omit to use `SERVICE_GUIDE_AGGREGATE_RATING_DEFAULTS` in `lib/service-guide-rating-defaults`. */
+  aggregateRating?: Partial<ServiceGuideAggregateRatingProps>;
+};
 
 /**
- * Service guide Article JSON-LD including `aggregateRating` for star-rich-result eligibility
- * when guidelines are met. Pass live `ratingValue` / `reviewCount` when you wire real data.
+ * Service guide **Article** JSON-LD with nested **`aggregateRating`** (`@type: AggregateRating`).
+ * Stars in Google depend on eligibility and their policies; use real `reviewCount` / `ratingValue` when you have verified data.
  */
 export default function RatingSchema({
   pathname,
@@ -28,8 +38,16 @@ export default function RatingSchema({
   ratingValue,
   reviewCount,
   bestRating,
-  worstRating = 1,
+  worstRating,
+  aggregateRating: aggregateRatingPartial,
 }: RatingSchemaProps) {
+  const { ratingValue: rv, reviewCount: rc, bestRating: br, worstRating: wr } = resolveServiceGuideAggregateRating({
+    ...aggregateRatingPartial,
+    ...(ratingValue != null ? { ratingValue } : {}),
+    ...(reviewCount != null ? { reviewCount } : {}),
+    ...(bestRating != null ? { bestRating } : {}),
+    ...(worstRating != null ? { worstRating } : {}),
+  });
   return (
     <JsonLd
       data={hubArticleJsonLd({
@@ -40,7 +58,7 @@ export default function RatingSchema({
         dateModified,
         publisherName,
         siteUrl,
-        aggregateRating: { ratingValue, reviewCount, bestRating, worstRating },
+        aggregateRating: { ratingValue: rv, reviewCount: rc, bestRating: br, worstRating: wr },
       })}
     />
   );

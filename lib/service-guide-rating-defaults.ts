@@ -15,3 +15,15 @@ export type ServiceGuideAggregateRatingProps = {
   bestRating: number;
   worstRating?: number;
 };
+
+/** Resolved rating props — use when merging defaults with optional overrides. */
+export function resolveServiceGuideAggregateRating(
+  overrides?: Partial<ServiceGuideAggregateRatingProps>,
+): ServiceGuideAggregateRatingProps {
+  return {
+    ratingValue: overrides?.ratingValue ?? SERVICE_GUIDE_AGGREGATE_RATING_DEFAULTS.ratingValue,
+    reviewCount: overrides?.reviewCount ?? SERVICE_GUIDE_AGGREGATE_RATING_DEFAULTS.reviewCount,
+    bestRating: overrides?.bestRating ?? SERVICE_GUIDE_AGGREGATE_RATING_DEFAULTS.bestRating,
+    worstRating: overrides?.worstRating ?? SERVICE_GUIDE_AGGREGATE_RATING_DEFAULTS.worstRating,
+  };
+}
