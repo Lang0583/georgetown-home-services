@@ -12,6 +12,7 @@ import {
   getNeighborhoodHailPage,
   neighborhoodHailDamageStaticParams,
 } from "@/data/neighborhood-hail-pages";
+import { buildNeighborhoodHailMeta } from "@/lib/neighborhood-seo";
 import { absolutePageUrl, pageSeoMetadata } from "@/lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
@@ -71,9 +72,10 @@ export async function generateMetadata({
   const page = getNeighborhoodHailPage(neighborhood);
   if (!page) return {};
 
+  const { absoluteTitle, description } = buildNeighborhoodHailMeta(page);
   return pageSeoMetadata({
-    titleSegment: page.metaTitle,
-    description: page.metaDescription,
+    absoluteTitle,
+    description,
     pathname: `/neighborhoods/${neighborhood}/hail-damage`,
     ogType: "website",
   });
@@ -91,6 +93,7 @@ export default async function NeighborhoodHailDamagePage({
   const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
   const pathname = `/neighborhoods/${neighborhood}/hail-damage`;
   const homeServicesPath = `/neighborhoods/${neighborhood}/home-services`;
+  const { description: hailMetaDescription } = buildNeighborhoodHailMeta(page);
 
   return (
     <PageShell>
@@ -107,14 +110,14 @@ export default async function NeighborhoodHailDamagePage({
           data={webPageWithDateModifiedJsonLd({
             pathname,
             name: page.h1,
-            description: page.metaDescription,
+            description: hailMetaDescription,
           })}
         />
         <JsonLd
           data={hubArticleJsonLd({
             pathname,
             headline: page.h1,
-            description: page.metaDescription,
+            description: hailMetaDescription,
             datePublished: SERVICE_BEST_LAST_UPDATED_ISO,
             dateModified: SERVICE_BEST_LAST_UPDATED_ISO,
           })}
@@ -166,7 +169,7 @@ export default async function NeighborhoodHailDamagePage({
         </div>
 
         <p className="mt-8 text-sm text-gray-600">
-          <Link href="/blog/hail-damage-georgetown-tx-may-2026" className="font-medium text-primary hover:underline">
+          <Link href="/blog/hail-damage-georgetown-williamson-may-2026" className="font-medium text-primary hover:underline">
             Read the full May 2026 Williamson County hail guide →
           </Link>
         </p>

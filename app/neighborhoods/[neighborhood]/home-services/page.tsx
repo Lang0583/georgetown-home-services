@@ -16,6 +16,7 @@ import {
 } from "@/data/neighborhood-home-services-hubs";
 import { buildNeighborhoodHomeServicesHubFaqs } from "@/lib/georgetown-page-faqs";
 import { absolutePageUrl, pageSeoMetadata } from "@/lib/page-seo";
+import { PRICING_YEAR } from "@/lib/pricing-data";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_ISO,
@@ -87,8 +88,9 @@ export async function generateMetadata({
   const hub = getNeighborhoodHomeServicesHub(neighborhood);
   if (!hub) return {};
 
+  const titleSegment = `${hub.neighborhoodName} Plumber/HVAC/Roofer | Georgetown TX Home Services [${PRICING_YEAR}]`;
   return pageSeoMetadata({
-    titleSegment: hub.metaTitle,
+    titleSegment,
     description: hub.metaDescription,
     pathname: `/neighborhoods/${neighborhood}/home-services`,
     ogType: "website",

@@ -6,7 +6,7 @@ import CTASection from "../../components/CTASection";
 import LinkCard from "../../components/LinkCard";
 import BlogMidContentEmailCard from "../../components/BlogMidContentEmailCard";
 import JsonLd from "../../components/JsonLd";
-import { adsenseInlineSlot } from "../../lib/adsense-config";
+import { adsenseInlineSlot, ADSENSE_UNITS_ENABLED } from "../../lib/adsense-config";
 import { pageSeoMetadata } from "../../lib/page-seo";
 import { getBlog } from "../../lib/site-content";
 
@@ -177,7 +177,7 @@ export default function BlogIndexPage() {
               </div>
             </div>
 
-            {adsenseInlineSlot ? (
+            {ADSENSE_UNITS_ENABLED && adsenseInlineSlot ? (
               <div className="mx-auto max-w-2xl">
                 <AdSenseDisplay slot={adsenseInlineSlot} />
               </div>

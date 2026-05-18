@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { ADSENSE_PUBLISHER_ID } from "../lib/adsense-config";
+import { ADSENSE_PUBLISHER_ID, ADSENSE_UNITS_ENABLED } from "../lib/adsense-config";
 
 declare global {
   interface Window {
@@ -19,8 +19,8 @@ type Props = {
 };
 
 /**
- * Single AdSense display slot (`ins.adsbygoogle`). Create ad units in AdSense
- * (Ads → By ad unit) and pass the numeric slot ID here.
+ * Responsive AdSense display unit (`ins.adsbygoogle`).
+ * Renders only when `NEXT_PUBLIC_ADSENSE_ID` is set and `slot` is non-empty.
  */
 export default function AdUnit({
   slot,
@@ -29,7 +29,7 @@ export default function AdUnit({
   className = "block",
 }: Props) {
   useEffect(() => {
-    if (!slot || !ADSENSE_PUBLISHER_ID) return;
+    if (!ADSENSE_UNITS_ENABLED || !slot || !ADSENSE_PUBLISHER_ID) return;
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch {
@@ -37,7 +37,7 @@ export default function AdUnit({
     }
   }, [slot]);
 
-  if (!slot || !ADSENSE_PUBLISHER_ID) return null;
+  if (!ADSENSE_UNITS_ENABLED || !slot || !ADSENSE_PUBLISHER_ID) return null;
 
   return (
     <ins

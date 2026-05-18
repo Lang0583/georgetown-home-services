@@ -7,6 +7,7 @@ import {
   type PricingCategory,
 } from "./pricing-data";
 import type { ServicePage } from "./site-content";
+import { clipMetaDescription } from "./seo-meta";
 
 const PROVIDER_TO_PRICING: Record<ProviderGroup, PricingCategory["key"]> = {
   plumber: "plumbing",
@@ -56,32 +57,55 @@ function metaPricePhrase(cat: PricingCategory, serviceLabelLower: string): strin
   const p1 = `${a.job.toLowerCase()} (${formatPricingRange(a)})`;
   if (!b) return p1;
   const p2 = `${b.job.toLowerCase()} (${formatPricingRange(b)})`;
-  return `${p1} and ${p2}`;
+  return `${p1}; ${p2}`;
 }
 
-const DEFAULT_CTA =
-  "Compare vetted Georgetown companies in our Best Of directory and request written estimates before you hire.";
+/** Flagship geo guides — match CTR audit headline hooks. */
+const SERVICE_SLUG_ABSOLUTE_TITLE: Record<string, string> = {
+  "plumber-georgetown-tx": `Plumber Georgetown TX — $75-250/hr | Licensed Local Pros [${PRICING_YEAR}]`,
+  "hvac-georgetown-tx": `HVAC Repair Georgetown TX — $85-175/hr | AC & Heating [${PRICING_YEAR}]`,
+  "roofer-georgetown-tx": `Roofer Georgetown TX — $350-600/sq | Free Estimates [${PRICING_YEAR}]`,
+};
+
+const SERVICE_SLUG_META_LEAD: Record<string, string> = {
+  "plumber-georgetown-tx":
+    "Licensed Georgetown plumbers often charge ~$75-250/hr on repairs; service calls commonly ~$100-175.",
+  "hvac-georgetown-tx":
+    "Georgetown HVAC repairs often run ~$85-175/hr plus parts; diagnostics commonly ~$75-150.",
+  "roofer-georgetown-tx":
+    "Georgetown roofing often runs ~$350-600/sq on replacements; repairs commonly several hundred up.",
+};
+
+function defaultServiceAbsoluteTitle(service: ServicePage): string {
+  const label = serviceLabelForMeta(service);
+  const year = PRICING_YEAR;
+  return `${label} Georgetown TX — Costs, Reviews & Local Pros [${year}]`;
+}
+
+function serviceMetaDescription155(service: ServicePage, cat: PricingCategory, label: string): string {
+  const slugLead = SERVICE_SLUG_META_LEAD[service.slug];
+  const prices = metaPricePhrase(cat, label.toLowerCase());
+  const hookRaw = firstSentenceFromLocalContext(cat.localContext);
+  const trust = trimForMeta(hookRaw, 72);
+  const cta = "Get 3 free quotes from vetted local pros in minutes. No obligation.";
+  const body = slugLead
+    ? `${slugLead} ${trust} ${cta}`
+    : `Typical ${label.toLowerCase()} planning ranges: ${prices}. ${trust} ${cta}`;
+  return clipMetaDescription(body);
+}
 
 /**
- * Title: `[Service] Georgetown TX | Prices, Reviews & Local Pros [2026]` (absolute, no layout suffix).
- * Description: Williamson County hook + two price bands + CTA.
+ * Title: `[Service] Georgetown TX — Costs, Reviews & Local Pros [2026]` (or flagship hook variants).
+ * Description: ≤155 chars — price band + Williamson context + CTA.
  */
 export function buildServicePageSeo(service: ServicePage): { absoluteTitle: string; description: string } {
   const label = serviceLabelForMeta(service);
-  const year = PRICING_YEAR;
-  const absoluteTitle = `${label} Georgetown TX | Prices, Reviews & Local Pros [${year}]`;
+  const absoluteTitle = SERVICE_SLUG_ABSOLUTE_TITLE[service.slug] ?? defaultServiceAbsoluteTitle(service);
 
   const group = inferProviderGroupFromServicePage(service.slug, service.bestSlugs);
   const pKey = PROVIDER_TO_PRICING[group];
   const cat = findCategory(pKey);
-  const hookRaw = firstSentenceFromLocalContext(cat.localContext);
-  const hook = trimForMeta(hookRaw, 220);
-  const afterHook = hook.endsWith("…") ? " " : hook.match(/[.!?]$/) ? " " : ". ";
-  const prices = metaPricePhrase(cat, label.toLowerCase());
-  const description = trimForMeta(
-    `${hook}${afterHook}Typical Georgetown ${label.toLowerCase()} planning ranges include ${prices}. ${DEFAULT_CTA}`,
-    320,
-  );
+  const description = serviceMetaDescription155(service, cat, label);
 
   return { absoluteTitle, description };
 }
@@ -93,15 +117,14 @@ export function buildTradeHubSeo(opts: {
 }): { absoluteTitle: string; description: string } {
   const { label, pricingKey } = opts;
   const year = PRICING_YEAR;
-  const absoluteTitle = `${label} Georgetown TX | Prices, Reviews & Local Pros [${year}]`;
+  const absoluteTitle = `${label} Georgetown TX — Costs, Reviews & Local Pros [${year}]`;
   const cat = findCategory(pricingKey);
-  const hookRaw = firstSentenceFromLocalContext(cat.localContext);
-  const hook = trimForMeta(hookRaw, 220);
-  const afterHook = hook.endsWith("…") ? " " : hook.match(/[.!?]$/) ? " " : ". ";
   const prices = metaPricePhrase(cat, label.toLowerCase());
-  const description = trimForMeta(
-    `${hook}${afterHook}Typical Georgetown ${label.toLowerCase()} planning ranges include ${prices}. ${DEFAULT_CTA}`,
-    320,
+  const hookRaw = firstSentenceFromLocalContext(cat.localContext);
+  const trust = trimForMeta(hookRaw, 72);
+  const cta = "Get 3 free quotes from vetted local pros in minutes. No obligation.";
+  const description = clipMetaDescription(
+    `Typical ${label.toLowerCase()} planning ranges: ${prices}. ${trust} ${cta}`,
   );
   return { absoluteTitle, description };
 }

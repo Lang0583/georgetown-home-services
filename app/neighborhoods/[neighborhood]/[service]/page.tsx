@@ -12,6 +12,7 @@ import {
   getNeighborhoodServicePage,
   getNeighborhoodServiceStaticParams,
 } from "@/data/neighborhoods";
+import { buildNeighborhoodServiceListingMeta } from "@/lib/neighborhood-seo";
 import { pageSeoMetadata, absolutePageUrl } from "@/lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
@@ -65,9 +66,10 @@ export async function generateMetadata({
   const page = getNeighborhoodServicePage(neighborhood, service);
   if (!page) return {};
 
+  const { titleSegment, description } = buildNeighborhoodServiceListingMeta(page);
   return pageSeoMetadata({
-    titleSegment: page.metaTitle,
-    description: page.metaDescription,
+    titleSegment,
+    description,
     pathname: `/neighborhoods/${neighborhood}/${service}`,
     ogType: "website",
   });
@@ -84,6 +86,7 @@ export default async function NeighborhoodServicePage({
 
   const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
   const pathname = `/neighborhoods/${neighborhood}/${service}`;
+  const { description: listingMetaDescription } = buildNeighborhoodServiceListingMeta(page);
   const neighborhoodFaqs = buildNeighborhoodGuideFaqs(page);
 
   return (
@@ -102,14 +105,14 @@ export default async function NeighborhoodServicePage({
           data={webPageWithDateModifiedJsonLd({
             pathname,
             name: page.h1,
-            description: page.metaDescription,
+            description: listingMetaDescription,
           })}
         />
         <JsonLd
           data={hubArticleJsonLd({
             pathname,
             headline: page.h1,
-            description: page.metaDescription,
+            description: listingMetaDescription,
             datePublished: SERVICE_BEST_LAST_UPDATED_ISO,
             dateModified: SERVICE_BEST_LAST_UPDATED_ISO,
           })}

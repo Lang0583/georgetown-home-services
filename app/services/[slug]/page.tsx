@@ -7,7 +7,7 @@ import FAQSchema from "../../../components/FAQSchema";
 import { ButtonLink } from "../../../components/Button";
 import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
-import GeneratedArticleBody from "../../../components/GeneratedArticleBody";
+import GeneratedArticleBodyWithLeadAd from "../../../components/GeneratedArticleBodyWithLeadAd";
 import RichText from "../../../components/RichText";
 import JsonLd from "../../../components/JsonLd";
 import RatingSchema from "../../../components/RatingSchema";
@@ -23,7 +23,7 @@ import {
   getServices,
   getServiceSlugs,
 } from "../../../lib/site-content";
-import { adsenseServiceMainSlot, adsenseSidebarSlot } from "../../../lib/adsense-config";
+import { adsenseServiceMainSlot, adsenseSidebarSlot, ADSENSE_UNITS_ENABLED } from "../../../lib/adsense-config";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
@@ -249,12 +249,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 </p>
               </div>
 
-              {adsenseServiceMainSlot ? (
-                <div className="mt-8">
-                  <AdSenseDisplay slot={adsenseServiceMainSlot} className="mx-auto max-w-2xl" />
-                </div>
-              ) : null}
-
               <div className="mt-8">
                 {isPlumberService ? (
                   <div className="space-y-10 text-gray-800">
@@ -282,6 +276,12 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         </li>
                       </ul>
                     </section>
+
+                    {ADSENSE_UNITS_ENABLED && adsenseServiceMainSlot ? (
+                      <div className="not-prose flex justify-center">
+                        <AdSenseDisplay slot={adsenseServiceMainSlot} className="mx-auto w-full max-w-2xl" />
+                      </div>
+                    ) : null}
 
                     <section>
                       <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
@@ -359,7 +359,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         </li>
                         <li>
                           <Link
-                            href="/blog/how-to-choose-a-reliable-plumber-georgetown-tx"
+                            href="/blog/how-to-choose-reliable-plumber-georgetown-tx"
                             className="font-semibold hover:underline"
                           >
                             How to Choose a Reliable Plumber in Georgetown
@@ -375,7 +375,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         </li>
                         <li>
                           <Link
-                            href="/blog/how-to-choose-a-reliable-plumber-georgetown-tx"
+                            href="/blog/how-to-choose-reliable-plumber-georgetown-tx"
                             className="font-semibold hover:underline"
                           >
                             How to choose a reliable plumber in Georgetown TX
@@ -453,6 +453,12 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         ask for airflow observations instead of only equipment notes.
                       </p>
                     </section>
+
+                    {ADSENSE_UNITS_ENABLED && adsenseServiceMainSlot ? (
+                      <div className="not-prose flex justify-center">
+                        <AdSenseDisplay slot={adsenseServiceMainSlot} className="mx-auto w-full max-w-2xl" />
+                      </div>
+                    ) : null}
 
                     <section>
                       <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
@@ -602,6 +608,12 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                       </div>
                     </section>
 
+                    {ADSENSE_UNITS_ENABLED && adsenseServiceMainSlot ? (
+                      <div className="not-prose flex justify-center">
+                        <AdSenseDisplay slot={adsenseServiceMainSlot} className="mx-auto w-full max-w-2xl" />
+                      </div>
+                    ) : null}
+
                     <section>
                       <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Roof repair in Georgetown</h2>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
@@ -740,7 +752,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         </li>
                         <li>
                           <Link
-                            href="/blog/signs-you-may-need-a-new-roof-georgetown-tx"
+                            href="/blog/signs-you-may-need-new-roof-georgetown-tx"
                             className="font-semibold hover:underline"
                           >
                             Signs you may need a new roof in Georgetown TX
@@ -750,7 +762,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     </section>
                   </div>
                 ) : articleHtml ? (
-                  <GeneratedArticleBody html={articleHtml} />
+                  <GeneratedArticleBodyWithLeadAd html={articleHtml} />
                 ) : (
                   <RichText blocks={service.content} />
                 )}
@@ -928,7 +940,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 <div className="mt-2 text-sm leading-relaxed text-gray-700">{location?.title ?? "Georgetown, TX"}</div>
               </div>
 
-              {adsenseSidebarSlot ? <AdSenseDisplay slot={adsenseSidebarSlot} className="mt-8" /> : null}
+              {ADSENSE_UNITS_ENABLED && adsenseSidebarSlot ? (
+                <AdSenseDisplay slot={adsenseSidebarSlot} className="mt-8" />
+              ) : null}
               </>
             }
           />

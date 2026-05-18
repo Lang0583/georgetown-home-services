@@ -54,7 +54,7 @@ import BestOfRooferEditorialDepth from "../../../components/BestOfRooferEditoria
 import BestOfPlumberEditorialDepth from "../../../components/BestOfPlumberEditorialDepth";
 import BestOfHvacEditorialDepth from "../../../components/BestOfHvacEditorialDepth";
 import BestOfExtendedTradeEditorialDepth from "../../../components/BestOfExtendedTradeEditorialDepth";
-import { adsenseBestOfSlot } from "../../../lib/adsense-config";
+import { adsenseBestOfSlot, ADSENSE_UNITS_ENABLED } from "../../../lib/adsense-config";
 import {
   FLAGSHIP_VIDEO_BEST_ROOFERS,
   flagshipVideoObjectJsonLd,
@@ -686,7 +686,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                           </Link>
                           . For a step-by-step hiring checklist, see{" "}
                           <Link
-                            href="/blog/how-to-choose-a-reliable-plumber-georgetown-tx"
+                            href="/blog/how-to-choose-reliable-plumber-georgetown-tx"
                             className="font-semibold text-primary"
                           >
                             how to choose a reliable plumber in Georgetown TX
@@ -1253,7 +1253,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                           roof repair cost in Georgetown
                         </Link>{" "}
                         and{" "}
-                        <Link href="/blog/signs-you-may-need-a-new-roof-georgetown-tx" className="font-semibold text-primary">
+                        <Link href="/blog/signs-you-may-need-new-roof-georgetown-tx" className="font-semibold text-primary">
                           signs you may need a new roof
                         </Link>
                         .
@@ -1336,7 +1336,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         {isPlumbersGeorgetown ? (
                           <p>
                             Looking for a step-by-step checklist? Read{" "}
-                            <Link href="/blog/how-to-choose-a-reliable-plumber-georgetown-tx" className="font-semibold text-primary hover:text-primary-hover">
+                            <Link href="/blog/how-to-choose-reliable-plumber-georgetown-tx" className="font-semibold text-primary hover:text-primary-hover">
                               how to choose a reliable plumber in Georgetown
                             </Link>
                             .
@@ -1385,7 +1385,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         />
                       </div>
 
-                      {adsenseBestOfSlot ? (
+                      {ADSENSE_UNITS_ENABLED && adsenseBestOfSlot ? (
                         <div className="mt-10 max-w-4xl">
                           <AdSenseDisplay slot={adsenseBestOfSlot} />
                         </div>
@@ -1415,7 +1415,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                           Provider listings haven’t been added yet for this guide.
                         </div>
                       )}
-                      {adsenseBestOfSlot ? (
+                      {ADSENSE_UNITS_ENABLED && adsenseBestOfSlot ? (
                         <div className="mt-10 max-w-4xl">
                           <AdSenseDisplay slot={adsenseBestOfSlot} />
                         </div>

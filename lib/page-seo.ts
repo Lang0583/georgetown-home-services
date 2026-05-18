@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { clipMetaDescription } from "./seo-meta";
 
 export const SITE_URL = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
 
@@ -66,9 +67,10 @@ export function pageSeoMetadata(opts: {
   const documentTitle = opts.absoluteTitle ?? documentTitleFromSegment(opts.titleSegment!);
   const path = normalizeSeoPathname(opts.pathname);
   const pageUrl = absolutePageUrl(path);
+  const description = clipMetaDescription(opts.description);
   const meta: Metadata = {
     title: opts.absoluteTitle ? { absolute: opts.absoluteTitle } : opts.titleSegment!,
-    description: opts.description,
+    description,
     alternates: { canonical: pageUrl },
     openGraph: {
       url: pageUrl,

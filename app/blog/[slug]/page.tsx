@@ -18,27 +18,29 @@ import {
   getLocationBySlug,
   getServices,
 } from "../../../lib/site-content";
-import { adsenseBlogPostSlot } from "../../../lib/adsense-config";
+import { adsenseBlogPostSlot, ADSENSE_UNITS_ENABLED } from "../../../lib/adsense-config";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import { isNoindexSlug } from "../../../lib/public-site-scope";
 import { getGeneratedPage } from "../../../lib/generatedPages";
 import { blogPageInternalLinks } from "../../../lib/internal-links";
 import { getBlogHeroImage } from "../../../lib/blog-hero-images";
-import { extractFaqPairs, faqPageJsonLd } from "../../../lib/extract-faq-schema";
+import FAQSchema from "../../../components/FAQSchema";
+import { extractFaqPairs } from "../../../lib/extract-faq-schema";
 import {
   FLAGSHIP_VIDEO_HAIL_WILLIAMSON_BLOG,
   flagshipVideoObjectJsonLd,
 } from "../../../lib/flagship-videos";
 import HailPillarNeighborhoodHub from "../../../components/HailPillarNeighborhoodHub";
-import { PRICING_YEAR } from "../../../lib/pricing-data";
+import HowToSchema from "../../../components/HowToSchema";
+import { buildBlogPostMeta } from "../../../lib/blog-seo";
 import { AUTHOR_NAME, AUTHOR_PROFILE_PATH, authorPersonSchema } from "../../../lib/site-author";
 
 /** Posts with Amazon affiliate links in body copy — disclosure shown below byline. */
 const AFFILIATE_DISCLOSURE_SLUGS = new Set([
   "cost-to-replace-hvac-georgetown",
   "signs-you-need-hvac-repair-georgetown-tx",
-  "how-to-choose-a-reliable-plumber-georgetown-tx",
-  "signs-you-may-need-a-new-roof-georgetown-tx",
+  "how-to-choose-reliable-plumber-georgetown-tx",
+  "signs-you-may-need-new-roof-georgetown-tx",
 ]);
 
 const AFFILIATE_DISCLOSURE_TEXT =
@@ -259,141 +261,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = getBlogBySlug(slug);
   if (!post) return {};
 
-  const overrides: Record<string, { title?: string; absoluteTitle?: string; description: string }> = {
-    "ac-not-cooling-georgetown-tx": {
-      absoluteTitle: "AC Not Cooling in Georgetown TX? Do This First (2026 Guide)",
-      description:
-        "Georgetown TX AC not working? Follow this homeowner checklist to diagnose the issue fast — common causes, safe DIY checks, and when to call an HVAC company.",
-    },
-    "why-your-ac-is-not-cooling-georgetown-tx": {
-      absoluteTitle: "Why Is My AC Not Cooling in Georgetown TX? 8 Common Causes",
-      description:
-        "Georgetown homeowners: find out why your AC is blowing warm air. From dirty filters to low refrigerant to failed capacitors — what to check and when to call.",
-    },
-    "ac-repair-cost-georgetown-tx": {
-      absoluteTitle: "AC Repair Cost Georgetown TX (2026) — Real Price Ranges",
-      description:
-        "How much does AC repair cost in Georgetown TX? Realistic price ranges by repair type, what drives cost in Central Texas, and when repair makes more sense than replacement.",
-    },
-    "cost-to-replace-hvac-georgetown": {
-      absoluteTitle: "HVAC Replacement Cost Georgetown TX (2026) — What to Expect",
-      description:
-        "HVAC replacement in Georgetown TX costs $5,000–$14,000+. See what affects your price, what to include in quotes, and how Central Texas heat impacts equipment selection.",
-    },
-    "signs-you-need-hvac-repair-georgetown-tx": {
-      absoluteTitle: "9 Signs You Need HVAC Repair in Georgetown TX (2026)",
-      description:
-        "Spot HVAC trouble before it becomes a no-cool emergency. Georgetown homeowners: warning signs that mean call now vs. wait — and what each symptom usually costs.",
-    },
-    "emergency-plumber-cost-georgetown-tx": {
-      absoluteTitle: "Emergency Plumber Cost Georgetown TX (2026) — Honest Ranges",
-      description:
-        "Emergency plumber in Georgetown TX costs $150–$500+ for most calls. Real price ranges by issue type, what triggers after-hours fees, and how to avoid overpaying.",
-    },
-    "water-heater-not-working-georgetown-tx": {
-      absoluteTitle: "Water Heater Not Working in Georgetown TX? Do This First (2026)",
-      description:
-        "Georgetown TX water heater stopped working? Check these causes before calling a plumber — pilot light, thermostat, sediment buildup — and when to replace vs. repair.",
-    },
-    "how-to-choose-a-reliable-plumber-georgetown-tx": {
-      absoluteTitle: "How to Choose a Plumber in Georgetown TX (2026 Checklist)",
-      description:
-        "Don't hire the first plumber you find. This Georgetown TX checklist covers licensing, insurance, what to ask before they start, and red flags to watch for.",
-    },
-    "roof-replacement-cost-georgetown-tx": {
-      absoluteTitle: "Roof Replacement Cost Georgetown TX (2026) — Price Ranges",
-      description:
-        "Roof replacement in Georgetown TX costs $9,000–$20,000+. See what drives your price, how Williamson County weather affects material choices, and how to compare bids.",
-    },
-    "roof-repair-cost-georgetown-tx": {
-      absoluteTitle: "Roof Repair Cost Georgetown TX (2026) — Repair vs. Replace",
-      description:
-        "Georgetown TX roof repair costs $300–$1,500 for most jobs. Real price ranges by repair type, what hail damage typically costs, and when repair is enough vs. replacement.",
-    },
-    "signs-you-may-need-a-new-roof-georgetown-tx": {
-      absoluteTitle: "8 Signs You Need a New Roof in Georgetown TX (2026)",
-      description:
-        "Georgetown homeowners: these roof warning signs mean it's time to call. Check for storm damage, shingle wear, and age indicators before the next Texas hail season.",
-    },
-    "foundation-crack-georgetown-tx": {
-      absoluteTitle: "Foundation Crack Georgetown TX — When to Worry (2026 Guide)",
-      description:
-        "Not all foundation cracks are serious — but some are. Georgetown TX homeowners: how to tell the difference, what causes cracking in clay soil, and when to call.",
-    },
-    "hvac-making-noise-georgetown-tx": {
-      absoluteTitle: "HVAC Making Noise Georgetown TX? What Each Sound Means (2026)",
-      description:
-        "Banging, squealing, clicking, or rattling from your Georgetown TX HVAC? What each noise usually means, whether it's urgent, and what a repair typically costs.",
-    },
-    "after-hail-roof-checklist-georgetown-tx": {
-      title: "Georgetown Roof Storm Checklist: After Hail or Wind Damage",
-      description:
-        "Safe ground-level inspection steps, photos to take for claims, when tarping helps, and how to compare roofer scopes in Williamson County.",
-    },
-    "hail-damage-georgetown-williamson-may-2026": {
-      absoluteTitle: "Hail Damage Repair Georgetown TX | May 2026 Storm Guide",
-      description:
-        "Georgetown TX hail damage guide for May 2026 storms in Williamson County—safe roof checks, insurance basics, and next steps for roofing and HVAC repair.",
-    },
-    "hail-damage-sun-city-georgetown-tx": {
-      absoluteTitle: "Hail Damage Repair Sun City Georgetown TX | May 2026",
-      description:
-        "Did the May 2026 hail storm damage your Sun City home? Find Georgetown TX roofing contractors and get a free inspection. Act before your insurance window closes.",
-    },
-    "hail-damage-teravista-georgetown-tx": {
-      absoluteTitle: "Hail Damage Repair Teravista Georgetown TX | May 2026",
-      description:
-        "Did the May 2026 hail storm damage your Teravista home? Find Georgetown TX roofing contractors and get a free inspection. Act before your insurance window closes.",
-    },
-    "hail-damage-wolf-ranch-georgetown-tx": {
-      absoluteTitle: "Hail Damage Repair Wolf Ranch Georgetown TX | May 2026",
-      description:
-        "Did the May 2026 hail storm damage your Wolf Ranch home? Find Georgetown TX roofing contractors and get a free inspection. Act before your insurance window closes.",
-    },
-    "hail-damage-georgetown-village-tx": {
-      absoluteTitle: "Hail Damage Repair Georgetown Village Georgetown TX | May 2026",
-      description:
-        "Did the May 2026 hail storm damage your Georgetown Village home? Find Georgetown TX roofing contractors and get a free inspection. Act before your insurance window closes.",
-    },
-  };
-
-  const o = overrides[slug];
-  const description = o?.description ?? post.description;
-  if (o?.absoluteTitle) {
-    return pageSeoMetadata({
-      absoluteTitle: o.absoluteTitle,
-      description,
-      pathname: `/blog/${slug}`,
-      ogType: "article",
-      noindex: isNoindexSlug(slug),
-    });
-  }
-  const rawTitleSegment = o?.title ?? post.title;
-  // Recency signal: for cost guides and hiring/how-to guides, append "(2026 Guide)"
-  // to the `<title>` tag if not already year-stamped. Visible H1 stays unchanged
-  // (see `post.h1` below) so the on-page heading doesn't pick up editorial chrome.
-  const titleSegment = appendYearSignalIfApplicable(rawTitleSegment, slug);
+  const { absoluteTitle, description } = buildBlogPostMeta(post);
   return pageSeoMetadata({
-    titleSegment,
+    absoluteTitle,
     description,
     pathname: `/blog/${slug}`,
     ogType: "article",
     noindex: isNoindexSlug(slug),
   });
-}
-
-/**
- * Append " (YEAR Guide)" to titles for cost and how-to posts that don't already
- * carry a year. Skips titles already containing a 4-digit year so we never
- * double-stamp. Pure string function — safe to call at build time.
- */
-function appendYearSignalIfApplicable(title: string, slug: string): string {
-  if (/\b20\d{2}\b/.test(title)) return title;
-  const isCost = /cost|price|how[- ]much/i.test(slug) || /cost|price|how much/i.test(title);
-  const isHowTo = /how[- ]to|guide|checklist|signs/i.test(slug);
-  if (!isCost && !isHowTo) return title;
-  const suffix = isCost ? `${PRICING_YEAR} Guide` : `${PRICING_YEAR}`;
-  return `${title} (${suffix})`;
 }
 
 export default async function BlogPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -436,6 +311,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
           : "plumbing";
   const takeaway = takeawayBullets(recurringType, serviceLabel);
   const hero = getBlogHeroImage(post.slug);
+  const { description: blogMetaDescription } = buildBlogPostMeta(post);
   // Auto-extract FAQPage JSON-LD from generated article HTML. Posts with no
   // `?`-terminated H3s (e.g. pure listicles) simply emit no FAQ schema.
   const faqPairs = generated ? extractFaqPairs(generated.html) : [];
@@ -449,13 +325,26 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
               siteUrl,
               publisherName,
               headline: post.title,
-              description: post.description,
+              description: blogMetaDescription,
               url: `${siteUrl}/blog/${post.slug}`,
               datePublished,
               dateModified,
             })}
           />
-          {faqPairs.length > 0 ? <JsonLd data={faqPageJsonLd(faqPairs)} /> : null}
+          {faqPairs.length > 0 ? (
+            <FAQSchema
+              pageUrl={absolutePageUrl(`/blog/${post.slug}`)}
+              name={`${post.title} — FAQ`}
+              questions={faqPairs}
+            />
+          ) : null}
+          <HowToSchema
+            slug={post.slug}
+            pageUrl={absolutePageUrl(`/blog/${post.slug}`)}
+            title={post.title}
+            description={blogMetaDescription}
+            html={generated?.html ?? null}
+          />
           {post.slug === "hail-damage-georgetown-williamson-may-2026" ? (
             <JsonLd
               data={flagshipVideoObjectJsonLd(
@@ -532,7 +421,12 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
               {post.slug === "hail-damage-georgetown-williamson-may-2026" ? <HailPillarNeighborhoodHub /> : null}
 
               <div className="mt-8">
-                <BlogArticleBodyWithMidEmail slug={post.slug} generated={generated} blocks={post.content} />
+                <BlogArticleBodyWithMidEmail
+                  slug={post.slug}
+                  generated={generated}
+                  blocks={post.content}
+                  affiliateServiceLabel={serviceLabel}
+                />
               </div>
 
               <PracticalTakeaway bullets={takeaway} />
@@ -614,9 +508,11 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
               </article>
             }
             aside={
-              <>
-                {adsenseBlogPostSlot ? <AdSenseDisplay slot={adsenseBlogPostSlot} className="mt-8" /> : null}
-              </>
+              ADSENSE_UNITS_ENABLED && adsenseBlogPostSlot ? (
+                <div className="hidden md:block lg:sticky lg:top-28">
+                  <AdSenseDisplay slot={adsenseBlogPostSlot} />
+                </div>
+              ) : undefined
             }
           />
       </section>
