@@ -9,6 +9,7 @@ import {
   serviceHubPricingItemListJsonLd,
   type PricingCategory,
 } from "../lib/pricing-data";
+import { buildGeorgetownTradeServiceJsonLd } from "../lib/trade-service-schema";
 import { absolutePageUrl } from "../lib/page-seo";
 
 type HubCategoryKey = Extract<PricingCategory["key"], "plumbing" | "hvac" | "roofing">;
@@ -27,6 +28,7 @@ export default function ServiceHubPricingSection({ categoryKey }: { categoryKey:
 
   return (
     <>
+      <JsonLd data={buildGeorgetownTradeServiceJsonLd(categoryKey, pageUrl)} />
       <JsonLd
         data={serviceHubPricingItemListJsonLd({
           category: cat,

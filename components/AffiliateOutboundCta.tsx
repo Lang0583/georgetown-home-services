@@ -18,7 +18,7 @@ export default function AffiliateOutboundCta({
     <a
       href={href}
       target="_blank"
-      rel="noopener noreferrer"
+      rel="nofollow sponsored noopener noreferrer"
       className={className}
       onClick={() => trackAffiliateCtaClick(affiliateName)}
     >

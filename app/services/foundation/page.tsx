@@ -3,8 +3,9 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
+import FAQSchema from "../../../components/FAQSchema";
 import JsonLd from "../../../components/JsonLd";
-import { pageSeoMetadata } from "../../../lib/page-seo";
+import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
@@ -12,7 +13,18 @@ import {
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import { showExtendedHomeServices } from "../../../lib/public-site-scope";
-import { getBlog, getServices } from "../../../lib/site-content";
+import { getBlog, getServices, type Faq } from "../../../lib/site-content";
+
+const FOUNDATION_HUB_FAQS: Faq[] = [
+  {
+    q: "Do you perform foundation repairs?",
+    a: "No. This site is a directory and homeowner guide. Use the Best Of page to compare foundation repair companies and contact providers directly.",
+  },
+  {
+    q: "Why is clay soil mentioned so often?",
+    a: "Central Texas expansive clay swells when wet and shrinks in drought, which stresses slabs and footings. Good contractors pair repairs with moisture and drainage planning.",
+  },
+];
 
 const hubSeo = buildTradeHubSeo({ label: "Foundation Repair", pricingKey: "foundation" });
 
@@ -22,31 +34,6 @@ export const metadata: Metadata = pageSeoMetadata({
   pathname: "/services/foundation",
   ogType: "website",
 });
-
-function faqJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Do you perform foundation repairs?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. This site is a directory and homeowner guide. Use the Best Of page to compare foundation repair companies and contact providers directly.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Why is clay soil mentioned so often?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Central Texas expansive clay swells when wet and shrinks in drought, which stresses slabs and footings. Good contractors pair repairs with moisture and drainage planning.",
-        },
-      },
-    ],
-  };
-}
 
 export default function FoundationHubPage() {
   if (!showExtendedHomeServices()) redirect("/services");
@@ -64,7 +51,11 @@ export default function FoundationHubPage() {
     <div className="bg-gray-50">
       <Container>
         <section className="py-10 md:py-12">
-          <JsonLd data={faqJsonLd()} />
+          <FAQSchema
+            pageUrl={absolutePageUrl("/services/foundation")}
+            name="Foundation repair in Georgetown TX — FAQ"
+            faqs={FOUNDATION_HUB_FAQS}
+          />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: "/services/foundation",

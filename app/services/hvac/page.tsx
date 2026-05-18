@@ -3,9 +3,17 @@ import Link from "next/link";
 import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
 import ServiceHubPricingSection from "../../../components/ServiceHubPricingSection";
+import FAQSchema from "../../../components/FAQSchema";
+import FAQList from "../../../components/FAQList";
 import JsonLd from "../../../components/JsonLd";
-import { pageSeoMetadata } from "../../../lib/page-seo";
+import TradeServiceSchema from "../../../components/TradeServiceSchema";
+import AffiliateTrackedAnchor from "../../../components/AffiliateTrackedAnchor";
+import ServiceAffiliateEngagement from "../../../components/ServiceAffiliateEngagement";
+import ServiceCompareQuotesThumbtack from "../../../components/ServiceCompareQuotesThumbtack";
+import { AFFILIATE_ANGI_URL } from "../../../lib/affiliate-config";
+import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
+import { HVAC_TRADE_HUB_FAQS } from "../../../lib/service-trade-hub-faqs";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
@@ -23,31 +31,6 @@ export const metadata: Metadata = pageSeoMetadata({
   ogType: "website",
 });
 
-function faqJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Do you schedule HVAC service?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. This site is a directory and homeowner guide. Use the Best Of page to compare HVAC companies and contact providers directly.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What should I do if my AC is not cooling?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Start with the AC not cooling guide to clarify symptoms and likely causes, then compare providers in the directory if you need a professional visit.",
-        },
-      },
-    ],
-  };
-}
-
 export default function HvacHubPage() {
   const services = getServices();
   const blog = getBlog();
@@ -63,10 +46,15 @@ export default function HvacHubPage() {
   const posts = blog.filter((p) => p.relatedBestSlugs?.includes("top-hvac-companies-georgetown-tx")).slice(0, 10);
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 pb-24 md:pb-0">
       <Container>
         <section className="py-10 md:py-12">
-          <JsonLd data={faqJsonLd()} />
+          <FAQSchema
+            pageUrl={absolutePageUrl("/services/hvac")}
+            name="HVAC in Georgetown TX — FAQ"
+            faqs={HVAC_TRADE_HUB_FAQS}
+          />
+          <TradeServiceSchema categoryKey="hvac" pageUrl={absolutePageUrl("/services/hvac")} />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: "/services/hvac",
@@ -84,6 +72,19 @@ export default function HvacHubPage() {
                 Use these pages to diagnose common HVAC problems (AC not cooling, uneven temperatures), understand cost drivers, and choose who to call.
                 When you’re ready, compare local HVAC companies and contact providers directly.
               </p>
+              <div className="mt-5 flex flex-wrap items-center gap-3">
+                <AffiliateTrackedAnchor
+                  href={AFFILIATE_ANGI_URL}
+                  affiliate="angi"
+                  placement="hub-hvac-hero"
+                  buttonVariant="primary"
+                >
+                  Get 3 Free Quotes
+                </AffiliateTrackedAnchor>
+                <span className="max-w-xl text-xs leading-relaxed text-gray-500">
+                  Sponsored — compare local pros on Angi. We may earn a commission when you request quotes.
+                </span>
+              </div>
               <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
                 <Link href="/best/top-hvac-companies-georgetown-tx" className="text-primary hover:underline">
                   See Top HVAC Companies
@@ -98,6 +99,17 @@ export default function HvacHubPage() {
             </div>
 
             <ServiceHubPricingSection categoryKey="hvac" />
+
+            <ServiceCompareQuotesThumbtack />
+
+            <section className="max-w-3xl">
+              <p className="text-sm leading-relaxed text-gray-700">
+                This site is a homeowner guide and directory—we do not dispatch HVAC crews. The answers below reflect common
+                Google “People also ask” searches for Georgetown / Williamson County; use them for budgeting and talking
+                points with licensed contractors.
+              </p>
+              <FAQList faqs={HVAC_TRADE_HUB_FAQS} title="HVAC in Georgetown, TX — quick answers" className="!mt-4" />
+            </section>
 
             {core ? (
               <section>
@@ -144,6 +156,7 @@ export default function HvacHubPage() {
           </div>
         </section>
       </Container>
+      <ServiceAffiliateEngagement />
     </div>
   );
 }

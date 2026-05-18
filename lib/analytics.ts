@@ -31,6 +31,22 @@ export function trackEvent(eventName: string, params?: TrackEventParams): void {
   gtag("event", eventName, payload);
 }
 
+/**
+ * Partner outbound taps (Angi, Thumbtack, etc.). Sends `affiliate_click` with an `affiliate` param
+ * for GA4 exploration—equivalent intent to `gtag('event','affiliate_click',{ affiliate:'angi' })`.
+ */
+export function trackAffiliatePartnerClick(
+  affiliate: "angi" | "thumbtack",
+  extra?: { placement?: string },
+): void {
+  const p: TrackEventParams = {
+    affiliate,
+    page_location: pageLocation(),
+  };
+  if (extra?.placement) p.placement = extra.placement;
+  trackEvent("affiliate_click", p);
+}
+
 /** Affiliate / sponsored outbound CTA (Angi, featured partner, Amazon in guides, etc.). */
 export function trackAffiliateCtaClick(
   affiliateName: string,

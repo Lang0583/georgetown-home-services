@@ -53,6 +53,10 @@ import { resolveServiceGuideFaqs } from "../../../lib/georgetown-page-faqs";
 import { buildServicePageSeo } from "../../../lib/service-page-seo";
 import { SERVICE_GUIDE_AGGREGATE_RATING_DEFAULTS } from "../../../lib/service-guide-rating-defaults";
 import CoreServiceGuideDecisionFramework from "../../../components/CoreServiceGuideDecisionFramework";
+import AffiliateTrackedAnchor from "../../../components/AffiliateTrackedAnchor";
+import ServiceCompareQuotesThumbtack from "../../../components/ServiceCompareQuotesThumbtack";
+import ServiceAffiliateEngagement from "../../../components/ServiceAffiliateEngagement";
+import { AFFILIATE_ANGI_URL } from "../../../lib/affiliate-config";
 
 function breadcrumbJsonLd({
   siteUrl,
@@ -157,6 +161,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
   return (
     <PageShell>
+      <div className="pb-20 md:pb-0">
+        <ServiceAffiliateEngagement
+          stickyPlacement="service-guide-mobile-sticky"
+          scrollModalPlacement="service-guide-scroll-modal"
+        />
         <section className="py-10 md:py-12">
           <JsonLd data={breadcrumbJsonLd({ siteUrl, serviceTitle: service.title, serviceSlug: service.slug })} />
           <RatingSchema
@@ -190,6 +199,20 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 className="mt-2"
                 rating={{ ...SERVICE_GUIDE_AGGREGATE_RATING_DEFAULTS }}
               />
+              <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
+                <AffiliateTrackedAnchor
+                  href={AFFILIATE_ANGI_URL}
+                  affiliate="angi"
+                  placement="service-guide-hero"
+                  buttonVariant="primary"
+                  className="w-full sm:w-auto"
+                >
+                  Get 3 Free Quotes
+                </AffiliateTrackedAnchor>
+                <span className="text-xs leading-relaxed text-gray-500">
+                  Sponsored — compare pros on Angi. We may earn a commission.
+                </span>
+              </div>
               <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               <AuthorByline className="mt-3" compact />
 
@@ -762,6 +785,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 )}
               </div>
 
+              <ServiceCompareQuotesThumbtack />
+
               {providersFromJson.length ? (
                 <section id="providers" className="mt-12 scroll-mt-24">
                   <h2 className="text-3xl font-semibold tracking-tight text-gray-900">
@@ -987,6 +1012,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </div>
           </div>
         </section>
+      </div>
     </PageShell>
   );
 }

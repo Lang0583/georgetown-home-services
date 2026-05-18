@@ -3,8 +3,9 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
+import FAQSchema from "../../../components/FAQSchema";
 import JsonLd from "../../../components/JsonLd";
-import { pageSeoMetadata } from "../../../lib/page-seo";
+import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
@@ -12,7 +13,18 @@ import {
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import { showExtendedHomeServices } from "../../../lib/public-site-scope";
-import { getBlog, getServices } from "../../../lib/site-content";
+import { getBlog, getServices, type Faq } from "../../../lib/site-content";
+
+const ELECTRICAL_HUB_FAQS: Faq[] = [
+  {
+    q: "Do you schedule electrical work?",
+    a: "No. This site is a directory and homeowner guide. Use the Best Of page to compare electricians and contact providers directly.",
+  },
+  {
+    q: "Where should I start?",
+    a: "Start with the main electrician guide for Georgetown, then open the Best Electricians directory when you are ready to request written scopes.",
+  },
+];
 
 const hubSeo = buildTradeHubSeo({ label: "Electrical", pricingKey: "electrical" });
 
@@ -22,31 +34,6 @@ export const metadata: Metadata = pageSeoMetadata({
   pathname: "/services/electrical",
   ogType: "website",
 });
-
-function faqJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Do you schedule electrical work?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. This site is a directory and homeowner guide. Use the Best Of page to compare electricians and contact providers directly.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Where should I start?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Start with the main electrician guide for Georgetown, then open the Best Electricians directory when you are ready to request written scopes.",
-        },
-      },
-    ],
-  };
-}
 
 export default function ElectricalHubPage() {
   if (!showExtendedHomeServices()) redirect("/services");
@@ -64,7 +51,11 @@ export default function ElectricalHubPage() {
     <div className="bg-gray-50">
       <Container>
         <section className="py-10 md:py-12">
-          <JsonLd data={faqJsonLd()} />
+          <FAQSchema
+            pageUrl={absolutePageUrl("/services/electrical")}
+            name="Electrical in Georgetown TX — FAQ"
+            faqs={ELECTRICAL_HUB_FAQS}
+          />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: "/services/electrical",
