@@ -38,7 +38,7 @@ export function buildNeighborhoodServiceListingMeta(
     NEIGHBORHOOD_DESC_LEAD[page.serviceSlug] ??
     "Compare planning ranges on the Georgetown service guide—not quotes.";
   const description = clipMetaDescription(
-    `${lead} Vetted ${page.neighborhoodName} lists. Request 3 written quotes—no obligation.`,
+    `${lead} Vetted ${page.neighborhoodName} lists. Get 3 free quotes from vetted local pros in minutes. No obligation.`,
   );
   return { titleSegment, description };
 }
@@ -49,7 +49,7 @@ export function buildNeighborhoodHailMeta(page: NeighborhoodHailPage): {
 } {
   const absoluteTitle = `${page.neighborhoodName} Hail Damage: What Georgetown TX Homeowners Need to Know in ${PRICING_YEAR}`;
   const description = clipMetaDescription(
-    `May 2026 Williamson hail near ${page.neighborhoodName}: doc soft-metal dents, book roof walks early. Vetted Georgetown roofers—3 quotes, no obligation.`,
+    `May 2026 Williamson hail near ${page.neighborhoodName}: doc soft-metal dents, book roof walks early. Vetted Georgetown roofers. Get 3 free quotes from vetted local pros in minutes. No obligation.`,
   );
   return { absoluteTitle, description };
 }

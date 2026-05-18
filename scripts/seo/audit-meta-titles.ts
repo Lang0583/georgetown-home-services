@@ -16,10 +16,22 @@ import {
 import { buildBlogPostMeta } from "../../lib/blog-seo";
 import { buildNeighborhoodHailMeta, buildNeighborhoodServiceListingMeta } from "../../lib/neighborhood-seo";
 import { documentTitleFromSegment } from "../../lib/page-seo";
-import { PRICING_YEAR } from "../../lib/pricing-data";
-import { buildServicePageSeo } from "../../lib/service-page-seo";
+import type { PricingCategory } from "../../lib/pricing-data";
+import { PRICING_LAST_REVIEWED_MONTH, PRICING_YEAR } from "../../lib/pricing-data";
+import { isNoindexSlug } from "../../lib/public-site-scope";
+import { buildServicePageSeo, buildTradeHubSeo } from "../../lib/service-page-seo";
 import { clipMetaDescription } from "../../lib/seo-meta";
-import { getBlogBySlug, getBlogSlugs, getServiceBySlug, getServiceSlugs } from "../../lib/site-content";
+import { AUTHOR_JOB_TITLE, AUTHOR_NAME, AUTHOR_PROFILE_PATH } from "../../lib/site-author";
+import {
+  getBestBySlug,
+  getBestSlugs,
+  getBlogBySlug,
+  getBlogSlugs,
+  getLocationBySlug,
+  getLocationSlugs,
+  getServiceBySlug,
+  getServiceSlugs,
+} from "../../lib/site-content";
 
 const OLD_SERVICE_OVERRIDES: Record<string, { title?: string; absoluteTitle?: string; description: string }> = {
   "plumber-georgetown-tx": {
@@ -166,6 +178,77 @@ function oldBlogDocumentMeta(slug: string) {
   return { title, description };
 }
 
+/** Mirrors `app/best/[slug]/page.tsx` overrides (stable; listed for full-site audit). */
+const BEST_OVERRIDES: Record<string, { title?: string; absoluteTitle?: string; description: string }> = {
+  "best-plumbers-georgetown-tx": {
+    absoluteTitle: "Best Plumbers Georgetown TX (2026) — Verified Local Picks",
+    description:
+      "The top-rated plumbers in Georgetown TX ranked by reviews, local presence, and service focus. Compare options for leaks, drains, slab repair, and emergency calls.",
+  },
+  "top-hvac-companies-georgetown-tx": {
+    absoluteTitle: "Best HVAC Companies Georgetown TX (2026) — AC & Heating Repair",
+    description:
+      "Georgetown TX's top-rated HVAC companies compared by response speed, service scope, and local reputation. Picks vetted for Central Texas summer heat.",
+  },
+  "best-roofers-georgetown-tx": {
+    absoluteTitle: "Best Roofers Georgetown TX (2026) — Storm, Repair & Replacement",
+    description:
+      "Top Georgetown TX roofing contractors ranked by reviews, storm damage experience, and transparency. Includes what to ask before signing any roofing contract.",
+  },
+  "best-electricians-georgetown-tx": {
+    absoluteTitle: "Best Electricians Georgetown TX (2026) — Licensed & Verified",
+    description:
+      "Top-rated electricians in Georgetown TX for panel upgrades, circuit work, and EV charger installation. Compare by licensing, reviews, and residential specialty.",
+  },
+  "best-landscaping-companies-georgetown-tx": {
+    absoluteTitle: "Best Landscaping Companies Georgetown TX (2026) — Local Picks",
+    description:
+      "Top Georgetown TX landscaping companies for lawn care, beds, mulch, and irrigation. Ranked by local reviews, service range, and Central Texas experience.",
+  },
+  "best-pest-control-georgetown-tx": {
+    absoluteTitle: "Best Pest Control Georgetown TX (2026) — Ranked & Reviewed",
+    description:
+      "Georgetown TX's top pest control providers compared for perimeter plans, termite monitoring, and rodent exclusion. Local picks with verified ratings.",
+  },
+  "best-foundation-repair-georgetown-tx": {
+    absoluteTitle: "Best Foundation Repair Georgetown TX (2026) — Clay Soil Experts",
+    description:
+      "Top foundation repair contractors in Georgetown TX ranked by reviews, engineering credentials, and experience with Williamson County's expansive clay soil.",
+  },
+  "best-house-cleaning-services-georgetown-tx": {
+    absoluteTitle: "Best House Cleaning Services Georgetown TX (2026) — Reviewed",
+    description:
+      "Georgetown TX's top-rated cleaning services for recurring maid service, deep cleans, and move-out cleans. Compare local picks by ratings and reliability.",
+  },
+};
+
+function bestDocumentMeta(slug: string) {
+  const best = getBestBySlug(slug);
+  if (!best) return null;
+  const o = BEST_OVERRIDES[slug];
+  const description = clipMetaDescription(o?.description ?? best.description);
+  const title = o?.absoluteTitle ?? documentTitleFromSegment(o?.title ?? best.title);
+  return { title, description };
+}
+
+const TRADE_HUBS: { path: string; label: string; pricingKey: PricingCategory["key"] }[] = [
+  { path: "/services/plumbing", label: "Plumbing", pricingKey: "plumbing" },
+  { path: "/services/hvac", label: "HVAC", pricingKey: "hvac" },
+  { path: "/services/roofing", label: "Roofing", pricingKey: "roofing" },
+  { path: "/services/electrical", label: "Electrical", pricingKey: "electrical" },
+  { path: "/services/landscaping", label: "Landscaping", pricingKey: "landscaping" },
+  { path: "/services/pest-control", label: "Pest Control", pricingKey: "pest" },
+  { path: "/services/foundation", label: "Foundation Repair", pricingKey: "foundation" },
+  { path: "/services/house-cleaning", label: "House Cleaning", pricingKey: "cleaning" },
+];
+
+function printCurrentMeta(path: string, title: string, description: string) {
+  console.log(`### ${path}`);
+  console.log(`title: ${title}`);
+  console.log(`meta:  ${description}`);
+  console.log("");
+}
+
 function printDiff(path: string, before: { title: string; description: string }, after: { title: string; description: string }) {
   console.log(`--- a${path} (before)`);
   console.log(`+++ b${path} (after)`);
@@ -242,6 +325,133 @@ function main() {
     console.log(`+meta:  ${after.description}`);
     console.log("");
   }
+
+  console.log(
+    "\n# —— Best Of directory pages ——\n# (Current titles; no historical “before” in this audit — same as `app/best/[slug]/page.tsx`.)\n",
+  );
+  for (const slug of getBestSlugs()) {
+    const meta = bestDocumentMeta(slug);
+    if (!meta || isNoindexSlug(slug)) continue;
+    printCurrentMeta(`/best/${slug}`, meta.title, meta.description);
+  }
+
+  console.log("# —— Location pages ——\n");
+  for (const slug of getLocationSlugs()) {
+    if (isNoindexSlug(slug)) continue;
+    const loc = getLocationBySlug(slug);
+    if (!loc) continue;
+    const titleSegment = `${loc.title}: Service Guides and Local Provider Lists`;
+    const rawDesc = `${loc.description} Browse service guides and best-of comparisons for this area, then contact providers directly for availability and estimates.`;
+    printCurrentMeta(
+      `/locations/${slug}`,
+      documentTitleFromSegment(titleSegment),
+      clipMetaDescription(rawDesc),
+    );
+  }
+
+  console.log("# —— Trade hub pages (`buildTradeHubSeo`) ——\n");
+  for (const h of TRADE_HUBS) {
+    const { absoluteTitle, description } = buildTradeHubSeo({ label: h.label, pricingKey: h.pricingKey });
+    printCurrentMeta(h.path, absoluteTitle, description);
+  }
+
+  console.log("# —— Static / index routes ——\n");
+  printCurrentMeta(
+    "/",
+    "Georgetown TX Home Services Directory (2026) | Compare Local Providers",
+    clipMetaDescription(
+      "Compare top-rated plumbers, HVAC companies, roofers, electricians, and more in Georgetown TX. Verified local providers, real Google ratings, and honest cost guides. No lead forms.",
+    ),
+  );
+  printCurrentMeta(
+    "/services",
+    documentTitleFromSegment("Service Guides for Georgetown, TX Homeowners"),
+    clipMetaDescription(
+      "Browse Georgetown service guides for electrical, landscaping, pest control, foundation repair, house cleaning, plumbing, HVAC, and roofing—including common problems and neighborhood-specific pages.",
+    ),
+  );
+  printCurrentMeta(
+    "/blog",
+    documentTitleFromSegment("Georgetown, TX Homeowner Blog: Costs, Maintenance, and Hiring Tips"),
+    clipMetaDescription(
+      "Repeat-use homeowner content for Georgetown, TX: monthly maintenance, seasonal checklists, cost guides, after-storm steps, warning signs, and contractor hiring checklists.",
+    ),
+  );
+  printCurrentMeta(
+    "/best",
+    documentTitleFromSegment("Provider Directory: Top Home Service Companies in Georgetown, TX"),
+    clipMetaDescription(
+      "Browse provider directory and comparison pages for electricians, landscapers, pest control, foundation repair, house cleaners, plumbers, HVAC companies, and roofers serving Georgetown, Texas.",
+    ),
+  );
+  printCurrentMeta(
+    "/pricing",
+    `Georgetown TX Home Service Pricing Guide (${PRICING_YEAR}) — Real Cost Ranges`,
+    clipMetaDescription(
+      "Real price ranges for plumbers, HVAC, roofers, electricians, and more in Georgetown TX. Updated 2026. Compare costs before you call — no lead forms, no spam.",
+    ),
+  );
+  printCurrentMeta(
+    "/pricing/calculator",
+    documentTitleFromSegment(`Interactive Home Service Cost Estimator (${PRICING_YEAR})`),
+    clipMetaDescription(
+      `Sum editorial Georgetown, TX price ranges by trade and job type for planning. Ranges reviewed ${PRICING_LAST_REVIEWED_MONTH} — not quotes.`,
+    ),
+  );
+  printCurrentMeta(
+    "/contact",
+    documentTitleFromSegment("Contact"),
+    clipMetaDescription(
+      "Contact Georgetown Home Services by mail or message. For repairs and estimates, use service guide request forms or reach providers from the directory.",
+    ),
+  );
+  printCurrentMeta(
+    "/about",
+    documentTitleFromSegment("About Georgetown Home Services"),
+    clipMetaDescription(
+      "Locally owned Georgetown TX home services directory—mission, how plumbing/HVAC/roofing listings are vetted, and why Williamson County homeowners use this guide.",
+    ),
+  );
+  printCurrentMeta(
+    "/methodology",
+    documentTitleFromSegment("How We Review and Rank Providers"),
+    clipMetaDescription(
+      "How Georgetown Home Services builds provider shortlists for Georgetown, TX: public data we use, de-emphasis rules, update cadence, sponsored placements, and what you must verify yourself.",
+    ),
+  );
+  printCurrentMeta(
+    "/editorial-policy",
+    documentTitleFromSegment("Editorial Policy"),
+    clipMetaDescription(
+      "Editorial standards for Georgetown Home Services: AI use, human review, rejection rubric, fact-checking, sponsored labels, and review cadence for AdSense-quality content.",
+    ),
+  );
+  printCurrentMeta(
+    "/terms",
+    documentTitleFromSegment("Terms of Use"),
+    clipMetaDescription(
+      "Terms of use for Georgetown Home Services: no professional advice, no service fulfillment, advertising disclaimer, limitation of liability, and third-party links.",
+    ),
+  );
+  printCurrentMeta(
+    "/privacy-policy",
+    documentTitleFromSegment("Privacy Policy"),
+    clipMetaDescription(
+      "Privacy policy for Georgetown Home Services: data we collect, cookies, Google AdSense & Analytics, affiliate links, and your GDPR/CCPA rights.",
+    ),
+  );
+  printCurrentMeta(
+    "/service-areas",
+    documentTitleFromSegment("Service Areas"),
+    clipMetaDescription("Neighborhood and service area pages for Georgetown, TX homeowners."),
+  );
+  printCurrentMeta(
+    AUTHOR_PROFILE_PATH,
+    documentTitleFromSegment(`${AUTHOR_NAME}, ${AUTHOR_JOB_TITLE}`),
+    clipMetaDescription(
+      `${AUTHOR_NAME} is the founding editor of Georgetown Home Services. Background, editorial principles, how content gets made, and how to get in touch.`,
+    ),
+  );
 }
 
 main();

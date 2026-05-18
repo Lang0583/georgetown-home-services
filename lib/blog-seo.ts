@@ -41,7 +41,7 @@ export function buildBlogPostMeta(post: BlogPage): { absoluteTitle: string; desc
   const core = firstSentence(post.description);
   const lead = /[.!?]$/.test(core) ? core : `${core}.`;
   const description = clipMetaDescription(
-    `${lead} Vetted Georgetown & Williamson pros. Get 3 free quotes in minutes—no obligation.`,
+    `${lead} Get 3 free quotes from vetted local pros in minutes. No obligation.`,
   );
   return { absoluteTitle, description };
 }
