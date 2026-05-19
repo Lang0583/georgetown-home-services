@@ -10,8 +10,6 @@ import LinkCard from "../../../components/LinkCard";
 import GeneratedArticleBodyWithLeadAd from "../../../components/GeneratedArticleBodyWithLeadAd";
 import RichText from "../../../components/RichText";
 import JsonLd from "../../../components/JsonLd";
-import RatingSchema from "../../../components/RatingSchema";
-import AggregateRatingBadge from "../../../components/AggregateRatingBadge";
 import Breadcrumbs from "../../../components/Breadcrumbs";
 import PageShell from "../../../components/templates/PageShell";
 import TwoColumnPage from "../../../components/templates/TwoColumnPage";
@@ -27,7 +25,6 @@ import { adsenseServiceMainSlot, adsenseSidebarSlot, ADSENSE_UNITS_ENABLED } fro
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
-  SERVICE_BEST_LAST_UPDATED_ISO,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
 } from "../../../lib/service-best-pages-meta";
 import AuthorByline from "../../../components/AuthorByline";
@@ -51,11 +48,10 @@ import {
 import { servicePageInternalLinks } from "../../../lib/internal-links";
 import { resolveServiceGuideFaqs } from "../../../lib/georgetown-page-faqs";
 import { buildServicePageSeo } from "../../../lib/service-page-seo";
-import { SERVICE_GUIDE_AGGREGATE_RATING_DEFAULTS } from "../../../lib/service-guide-rating-defaults";
 import CoreServiceGuideDecisionFramework from "../../../components/CoreServiceGuideDecisionFramework";
 import AffiliateTrackedAnchor from "../../../components/AffiliateTrackedAnchor";
 import ServiceCompareQuotesThumbtack from "../../../components/ServiceCompareQuotesThumbtack";
-import ServiceAffiliateEngagement from "../../../components/ServiceAffiliateEngagement";
+import EditorialGuideTrustNote from "../../../components/EditorialGuideTrustNote";
 import { AFFILIATE_ANGI_URL } from "../../../lib/affiliate-config";
 
 function breadcrumbJsonLd({
@@ -161,21 +157,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
   return (
     <PageShell>
-      <div className="pb-20 md:pb-0">
-        <ServiceAffiliateEngagement
-          stickyPlacement="service-guide-mobile-sticky"
-          scrollModalPlacement="service-guide-scroll-modal"
-        />
         <section className="py-10 md:py-12">
           <JsonLd data={breadcrumbJsonLd({ siteUrl, serviceTitle: service.title, serviceSlug: service.slug })} />
-          <RatingSchema
-            pathname={`/services/${service.slug}`}
-            headline={service.h1 ?? service.title}
-            description={service.description}
-            datePublished={SERVICE_BEST_LAST_UPDATED_ISO}
-            dateModified={SERVICE_BEST_LAST_UPDATED_ISO}
-            aggregateRating={{ ...SERVICE_GUIDE_AGGREGATE_RATING_DEFAULTS }}
-          />
           <FAQSchema
             pageUrl={absolutePageUrl(`/services/${service.slug}`)}
             name={`${service.title} — FAQ`}
@@ -195,10 +178,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 {service.serviceType} • {location?.title ?? "Georgetown, TX"}
               </div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{service.h1}</h1>
-              <AggregateRatingBadge
-                className="mt-2"
-                rating={{ ...SERVICE_GUIDE_AGGREGATE_RATING_DEFAULTS }}
-              />
+              <EditorialGuideTrustNote />
               <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
                 <AffiliateTrackedAnchor
                   href={AFFILIATE_ANGI_URL}
@@ -1012,7 +992,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </div>
           </div>
         </section>
-      </div>
     </PageShell>
   );
 }

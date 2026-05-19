@@ -114,6 +114,12 @@ export default function PrivacyPolicyPage() {
           You can control cookies through your browser (block, delete, or prompt) and through industry tools linked in the
           advertising sections below. Blocking some cookies may limit analytics or ad features.
         </p>
+        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+          When you first visit, we may show a <strong>cookie preference banner</strong> at the bottom of the screen. Your
+          choice is stored locally in your browser and aligns with{" "}
+          <strong>Google Consent Mode</strong> defaults for Google Analytics and Google AdSense (non-essential cookies stay
+          off unless you accept analytics and ads). You can clear site data in your browser to see the banner again.
+        </p>
       </section>
 
       <section>

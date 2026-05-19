@@ -14,7 +14,7 @@ export type AggregateRatingBadgeProps = {
   rating?: Partial<ServiceGuideAggregateRatingProps>;
 };
 
-/** Visible stars badge aligned with `RatingSchema` / Article `aggregateRating` JSON-LD. */
+/** Visible stars badge — use only when values match **verifiable** data (pair with `RatingSchema` + real aggregates). */
 export default function AggregateRatingBadge({
   rating: ratingPartial,
   ratingValue,

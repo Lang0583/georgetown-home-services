@@ -4,7 +4,8 @@ const BULLETS = [
   "Verified active service in Georgetown, TX and surrounding areas",
   "Minimum 4.5 stars based on Google Business Profile ratings",
   "At least 75 verified reviews at time of listing",
-  "No paid placements - rankings based solely on review data",
+  "No paid placements — rankings use the methodology below, not sponsorships",
+  "Sponsored quote links (Angi, Thumbtack, etc.) on other pages do not change this list order",
 ] as const;
 
 /**

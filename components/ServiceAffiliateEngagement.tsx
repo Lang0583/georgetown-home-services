@@ -7,7 +7,7 @@ import AffiliateTrackedAnchor from "./AffiliateTrackedAnchor";
 
 const STORAGE_PREFIX = "ghs-service-affiliate-scroll-modal:";
 const SUPPRESS_MS = 7 * 24 * 60 * 60 * 1000;
-const SCROLL_THRESHOLD = 0.7;
+const SCROLL_THRESHOLD = 0.85;
 
 type Props = {
   /** GA4 `placement` on the mobile sticky bar (default: `service-sticky-mobile`). */

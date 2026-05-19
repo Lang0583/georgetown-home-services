@@ -124,8 +124,7 @@ export function fullAuthorPersonSchema(siteUrl: string = SITE_URL) {
 /**
  * Article schema for editorial hub pages (services, locations) that carry
  * substantive guide-style content. Optionally includes `aggregateRating`
- * when the page publishes verified placeholder or live review aggregates
- * (see `RatingSchema` on `/services/[slug]`).
+ * when **explicit, verifiable** `ratingValue` + `reviewCount` are passed via `RatingSchema`.
  */
 export function hubArticleJsonLd(opts: {
   pathname: string;

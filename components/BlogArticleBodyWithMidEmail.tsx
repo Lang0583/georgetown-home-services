@@ -38,7 +38,7 @@ function midArticleStack(source: string, slug: string): ReactNode {
 
 /**
  * Renders article HTML or block content with display ad + email after the 3rd paragraph,
- * inline Thumbtack CTAs after every 3rd paragraph, and optional cost supplement.
+ * inline Thumbtack CTAs after every 6th paragraph (lighter than every 3rd for monetization density), and optional cost supplement.
  */
 export default function BlogArticleBodyWithMidEmail({
   slug,
@@ -62,7 +62,7 @@ export default function BlogArticleBodyWithMidEmail({
           ];
           if (isParagraphChunk) {
             paragraphIndex += 1;
-            if (paragraphIndex % 3 === 0) {
+            if (paragraphIndex % 6 === 0) {
               nodes.push(
                 <BlogThumbtackInlineCta key={`tb-html-${paragraphIndex}`} serviceLabel={affiliateServiceLabel} />,
               );
@@ -105,7 +105,7 @@ export default function BlogArticleBodyWithMidEmail({
     buf.push(block);
     if (block.kind === "p") {
       pCount += 1;
-      if (pCount % 3 === 0) {
+      if (pCount % 6 === 0) {
         flush();
         out.push(<BlogThumbtackInlineCta key={`tb-blk-${pCount}`} serviceLabel={affiliateServiceLabel} />);
         if (pCount === 3) {

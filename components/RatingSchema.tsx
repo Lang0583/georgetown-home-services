@@ -1,9 +1,6 @@
 import JsonLd from "./JsonLd";
 import { hubArticleJsonLd } from "../lib/site-author";
-import {
-  resolveServiceGuideAggregateRating,
-  type ServiceGuideAggregateRatingProps,
-} from "../lib/service-guide-rating-defaults";
+import type { ServiceGuideAggregateRatingProps } from "../lib/service-guide-rating-defaults";
 
 export type RatingSchemaProps = {
   pathname: string;
@@ -19,13 +16,13 @@ export type RatingSchemaProps = {
   reviewCount?: number;
   bestRating?: number;
   worstRating?: number;
-  /** Partial override; omit to use `SERVICE_GUIDE_AGGREGATE_RATING_DEFAULTS` in `lib/service-guide-rating-defaults`. */
+  /** Verifiable CMS/review data only — both `ratingValue` and `reviewCount` must end up set or schema omits ratings. */
   aggregateRating?: Partial<ServiceGuideAggregateRatingProps>;
 };
 
 /**
- * Service guide **Article** JSON-LD with nested **`aggregateRating`** (`@type: AggregateRating`).
- * Stars in Google depend on eligibility and their policies; use real `reviewCount` / `ratingValue` when you have verified data.
+ * Service guide **Article** JSON-LD. **`aggregateRating`** is emitted only when `ratingValue` and `reviewCount`
+ * are explicitly supplied (no silent defaults).
  */
 export default function RatingSchema({
   pathname,
@@ -41,13 +38,12 @@ export default function RatingSchema({
   worstRating,
   aggregateRating: aggregateRatingPartial,
 }: RatingSchemaProps) {
-  const { ratingValue: rv, reviewCount: rc, bestRating: br, worstRating: wr } = resolveServiceGuideAggregateRating({
-    ...aggregateRatingPartial,
-    ...(ratingValue != null ? { ratingValue } : {}),
-    ...(reviewCount != null ? { reviewCount } : {}),
-    ...(bestRating != null ? { bestRating } : {}),
-    ...(worstRating != null ? { worstRating } : {}),
-  });
+  const rv = ratingValue ?? aggregateRatingPartial?.ratingValue;
+  const rc = reviewCount ?? aggregateRatingPartial?.reviewCount;
+  const hasCore = typeof rv === "number" && typeof rc === "number";
+  const br = bestRating ?? aggregateRatingPartial?.bestRating ?? 5;
+  const wr = worstRating ?? aggregateRatingPartial?.worstRating ?? 1;
+
   return (
     <JsonLd
       data={hubArticleJsonLd({
@@ -58,7 +54,9 @@ export default function RatingSchema({
         dateModified,
         publisherName,
         siteUrl,
-        aggregateRating: { ratingValue: rv, reviewCount: rc, bestRating: br, worstRating: wr },
+        ...(hasCore
+          ? { aggregateRating: { ratingValue: rv, reviewCount: rc, bestRating: br, worstRating: wr } }
+          : {}),
       })}
     />
   );

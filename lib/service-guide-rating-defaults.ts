@@ -1,6 +1,6 @@
 /**
- * Placeholder aggregate rating for `/services/[slug]` guides until real review data is wired in.
- * Wire from CMS or analytics and pass through `RatingSchema` / `AggregateRatingBadge`.
+ * Defaults for future **verified** aggregate ratings on service guides — do not use placeholder
+ * values in live JSON-LD or UI; {@link resolveServiceGuideAggregateRating} is for CMS-backed data only.
  */
 export const SERVICE_GUIDE_AGGREGATE_RATING_DEFAULTS = {
   ratingValue: 4.8,

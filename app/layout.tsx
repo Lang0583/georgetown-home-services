@@ -7,8 +7,10 @@ import HomeHailAlertBanner from "../components/HomeHailAlertBanner";
 import StickyHeader from "../components/StickyHeader";
 import EmailCaptureSitewide from "../components/EmailCaptureSitewide";
 import SiteFooter from "../components/SiteFooter";
+import CookieConsentBar from "../components/CookieConsentBar";
 import JsonLd from "../components/JsonLd";
 import { ADSENSE_ACTIVE, ADSENSE_PUBLISHER_ID } from "../lib/adsense-config";
+import { getGoogleConsentDefaultBootstrapScript } from "../lib/cookie-consent";
 import { getImpactPublisherTagInnerHtml } from "../lib/impact-publisher-tag";
 import { clipMetaDescription } from "../lib/seo-meta";
 import { getBrandName, getContact } from "../lib/site-content";
@@ -121,6 +123,13 @@ export default function RootLayout({
             dangerouslySetInnerHTML={{ __html: impactPublisherTagInnerHtml }}
           />
         ) : null}
+        <Script
+          id="google-consent-default"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: getGoogleConsentDefaultBootstrapScript(),
+          }}
+        />
         {ADSENSE_ACTIVE ? (
           <>
             <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
@@ -149,6 +158,7 @@ export default function RootLayout({
         <StickyHeader />
         <main className="flex-1 pt-20">{children}</main>
         <EmailCaptureSitewide />
+        <CookieConsentBar />
         <SiteFooter />
       </body>
       {/* GA4 (gtag.js) via @next/third-parties/google — same as manual <GoogleAnalytics /> / gtag snippet. */}
