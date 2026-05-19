@@ -62,6 +62,9 @@ export default function StickyHeader() {
           <Link href="/services/roofer-georgetown-tx" className={navLinkClass}>
             Roofing
           </Link>
+          <Link href="/services/roofing" className={navLinkClass} title="Storm inspections & roofing hub">
+            Severe weather
+          </Link>
           {showExtendedHomeServices() && !isNoindexSlug("electrician-georgetown-tx") ? (
             <Link href="/services/electrician-georgetown-tx" className={navLinkClass}>
               Electrical

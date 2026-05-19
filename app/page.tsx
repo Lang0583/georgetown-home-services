@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import HomeTopProvidersColumn from "../components/HomeTopProvidersColumn";
 import HomeTrustBar from "../components/HomeTrustBar";
+import HomeSevereWeatherStrip from "../components/HomeSevereWeatherStrip";
 import HomeHowItWorks from "../components/HomeHowItWorks";
 import FAQList from "../components/FAQList";
 import FAQSchema from "../components/FAQSchema";
@@ -36,7 +37,7 @@ function homeWebPageJsonLd() {
     url: SITE_URL,
     description:
       "Compare top-rated plumbers, HVAC companies, roofers, electricians, and more in Georgetown TX. Verified local providers, real Google ratings, and honest cost guides. No lead forms.",
-    dateModified: "2026-04-13",
+    dateModified: "2026-05-18",
   };
 }
 
@@ -125,6 +126,8 @@ export default function Home() {
             </div>
 
             <HomeTrustBar />
+
+            <HomeSevereWeatherStrip />
 
             <section
               id="browse-categories"
