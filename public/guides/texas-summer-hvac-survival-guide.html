@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Texas Summer HVAC Survival Guide — Georgetown, TX | Georgetown Home Services</title>
+  <meta name="description" content="Printable checklist: prep your AC for Central Texas summer—filters, thermostat, warning signs, and when to call a pro in Georgetown, TX." />
+  <!--
+    Brand colors (Georgetown Home Services — from app/globals.css @theme)
+    Primary:       #075985
+    Primary hover: #054061
+    Primary light: #f0f9ff
+    Text:          #171717
+    Background:    #ffffff
+  -->
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --brand-primary: #075985;
+      --brand-primary-dark: #054061;
+      --brand-primary-light: #f0f9ff;
+      --text: #171717;
+      --text-muted: #4b5563;
+      --border: #e5e7eb;
+      --white: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.45;
+      color: var(--text);
+      background: var(--white);
+    }
+
+    .page {
+      max-width: 8.5in;
+      margin: 0 auto;
+      padding: 0.55in 0.6in;
+    }
+
+    header.doc-header {
+      border-bottom: 3px solid var(--brand-primary);
+      padding-bottom: 0.65rem;
+      margin-bottom: 1rem;
+    }
+
+    .logo-line {
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--brand-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    h1 {
+      font-size: 21pt;
+      font-weight: 800;
+      line-height: 1.15;
+      margin: 0 0 0.35rem;
+      color: var(--text);
+    }
+
+    .subtitle {
+      font-size: 11pt;
+      color: var(--text-muted);
+      margin: 0;
+      max-width: 36rem;
+    }
+
+    .local-context {
+      background: var(--brand-primary-light);
+      border-left: 4px solid var(--brand-primary);
+      padding: 0.65rem 0.85rem;
+      margin: 1rem 0;
+      font-size: 10pt;
+    }
+
+    .local-context strong {
+      color: var(--brand-primary-dark);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 2.35in;
+      gap: 1rem 1.1rem;
+      align-items: start;
+    }
+
+    @media (max-width: 720px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .main h2 {
+      font-size: 11pt;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--brand-primary);
+      margin: 1rem 0 0.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.2rem;
+    }
+
+    .main h2:first-child {
+      margin-top: 0;
+    }
+
+    ol.tips {
+      margin: 0;
+      padding-left: 1.2rem;
+      counter-reset: tip;
+    }
+
+    ol.tips > li {
+      margin-bottom: 0.55rem;
+      padding-left: 0.25rem;
+    }
+
+    ol.tips > li::marker {
+      font-weight: 800;
+      color: var(--brand-primary);
+    }
+
+    ol.tips li strong {
+      color: var(--text);
+    }
+
+    aside.sidebar {
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.65rem 0.75rem;
+      font-size: 9.5pt;
+    }
+
+    aside.sidebar h3 {
+      margin: 0 0 0.5rem;
+      font-size: 10pt;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--brand-primary);
+      border-bottom: 2px solid var(--brand-primary);
+      padding-bottom: 0.35rem;
+    }
+
+    .checklist {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .checklist li {
+      position: relative;
+      padding-left: 1.15rem;
+      margin-bottom: 0.4rem;
+      line-height: 1.35;
+    }
+
+    .checklist li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.2rem;
+      width: 0.55rem;
+      height: 0.55rem;
+      border: 2px solid var(--brand-primary);
+      border-radius: 2px;
+      background: var(--white);
+    }
+
+    footer.cta {
+      margin-top: 1.1rem;
+      padding: 0.85rem 1rem;
+      background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-dark) 100%);
+      color: var(--white);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    footer.cta p {
+      margin: 0 0 0.5rem;
+      font-size: 11pt;
+      font-weight: 600;
+    }
+
+    footer.cta a {
+      display: inline-block;
+      background: var(--white);
+      color: var(--brand-primary-dark);
+      font-weight: 700;
+      text-decoration: none;
+      padding: 0.45rem 1.1rem;
+      border-radius: 6px;
+      font-size: 10.5pt;
+    }
+
+    footer.cta .fine {
+      margin: 0.6rem 0 0;
+      font-size: 8.5pt;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+
+    .footer-note {
+      margin-top: 0.65rem;
+      font-size: 8pt;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Print / PDF */
+    @page {
+      size: letter;
+      margin: 0.45in;
+    }
+
+    @media print {
+      body {
+        font-size: 10.5pt;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .page {
+        max-width: none;
+        padding: 0;
+      }
+
+      a[href]::after {
+        content: none !important;
+      }
+
+      footer.cta a {
+        color: var(--brand-primary-dark);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="doc-header">
+      <div class="logo-line">Georgetown Home Services</div>
+      <h1>Texas Summer HVAC Survival Guide</h1>
+      <p class="subtitle">A practical, one-page playbook for Georgetown, TX homeowners—get ahead of triple-digit heat before your AC is under peak load.</p>
+    </header>
+
+    <div class="local-context">
+      <strong>Georgetown &amp; Williamson County reality check:</strong> Long cooling seasons, afternoon heat indexes past 100°F, and humidity from the Gulf mean your system runs hard for months—not a few weeks. Many neighborhood homes carry 12–18+ year split systems; hard starts, weak capacitors, and dirty coils show up on the first serious heat wave. This guide helps you catch issues in April–May, not July 4th weekend.
+    </div>
+
+    <div class="layout">
+      <div class="main">
+        <h2>10 ways to prep your AC before summer hits</h2>
+        <ol class="tips">
+          <li><strong>Swap or clean filters on schedule.</strong> In Central Texas dust and pollen load filters fast—often every 1–3 months. A choked filter mimics “low refrigerant” with weak airflow and can freeze the coil.</li>
+          <li><strong>Clear the outdoor condenser.</strong> Remove leaves, cottonwood fluff, and vegetation within ~2 feet. Dirty coils can’t shed heat efficiently when Georgetown afternoons bake the yard.</li>
+          <li><strong>Open and unblock all supply and return grilles.</strong> Don’t block returns with furniture or rugs; upstairs returns matter for two-story comfort.</li>
+          <li><strong>Set realistic thermostat expectations.</strong> Many homes stabilize best around 74–78°F when occupied; aggressive setbacks force long afternoon recovery when it’s 102°F outside.</li>
+          <li><strong>Use ceiling fans correctly.</strong> Fans cool people, not thermostats—run them in occupied rooms only so you’re not adding motor heat to an already loaded home.</li>
+          <li><strong>Flush or verify the condensate line before humidity spikes.</strong> Algae and crud in trap lines back up water and can shut the system off—or damage ceilings.</li>
+          <li><strong>Listen and note the “first hot day” behavior.</strong> First 95°F+ day reveals weak capacitors and marginal charge. Write down symptoms (which rooms, what time of day) before you call—that speeds diagnosis.</li>
+          <li><strong>Check insulation on exposed refrigerant lines (if safely visible).</strong> Sun-baked, deteriorated line insulation on the exterior can hurt efficiency; don’t disturb sealed equipment—note it for your tech.</li>
+          <li><strong>Plan a professional tune-up in spring—not August.</strong> A real tune-up checks refrigerant approach, electrical draws, drain safety, and basics you can’t see from the hallway.</li>
+          <li><strong>Know when to stop DIY.</strong> Ice on the system, repeated breaker trips, gas furnace smell (heating season), or major water intrusion—shut it off and call a licensed contractor; don’t chase refrigerant or high-voltage issues yourself.</li>
+        </ol>
+      </div>
+
+      <aside class="sidebar" aria-label="Warning signs checklist">
+        <h3>Warning signs checklist</h3>
+        <p style="margin: 0 0 0.5rem; font-size: 8.5pt; color: var(--text-muted);">Check any that apply—if several are true, schedule a licensed HVAC pro before peak summer.</p>
+        <ul class="checklist">
+          <li>AC runs constantly but house won’t get below ~78–80°F on hot afternoons</li>
+          <li>Weak airflow from some vents; rooms never “catch up” upstairs</li>
+          <li>Ice or heavy frost on the outdoor line set or indoor coil area</li>
+          <li>Water pooling near the indoor unit (clogged condensate / safety switch trips)</li>
+          <li>Musty smell, grilles, or temps swing when it storms</li>
+          <li>Breaker trips or burning smell from the air handler closet</li>
+          <li>Thermostat shows “cooling” but air feels room-temperature</li>
+          <li>Unusual grinding, squealing, or buzzing from outdoor condenser</li>
+          <li>Electric bill jumped sharply with no lifestyle change</li>
+          <li>System is 12+ years old and hasn’t had a documented tune-up in 2+ years</li>
+        </ul>
+      </aside>
+    </div>
+
+    <footer class="cta">
+      <p>More Georgetown-specific HVAC guidance, cost context &amp; how to compare providers</p>
+      <a href="https://www.georgetownhomeservices.com/hvac">georgetownhomeservices.com/hvac</a>
+      <p class="fine">Educational resource only—not a substitute for an on-site inspection. Verify licensing (TDLR) and insurance with any company you hire.</p>
+    </footer>
+
+    <p class="footer-note">© Georgetown Home Services · Texas Summer HVAC Survival Guide · Printable / save as PDF from your browser (Print → Save as PDF)</p>
+  </div>
+</body>
+</html>
