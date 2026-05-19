@@ -9,9 +9,9 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#0a5c64",
-          hover: "#084249",
-          light: "#e6f2f2",
+          DEFAULT: "#075985",
+          hover: "#054061",
+          light: "#f0f9ff",
         },
       },
     },

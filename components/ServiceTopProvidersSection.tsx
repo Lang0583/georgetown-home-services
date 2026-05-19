@@ -56,9 +56,9 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
         licensing and availability before hiring.
       </p>
 
-      <div className="mt-6 rounded-xl border border-primary/25 bg-primary-light/60 p-4 shadow-sm md:p-5">
-        <div className="text-sm font-semibold uppercase tracking-wide text-primary">Featured Providers</div>
-        <ul className="mt-3 divide-y divide-primary/25 rounded-xl border border-primary/25 bg-white shadow-sm">
+      <div className="mt-6 rounded-xl border border-gray-200 border-l-[3px] border-l-primary bg-slate-50 p-4 shadow-md ring-1 ring-gray-950/[0.04] md:p-5">
+        <div className="text-sm font-semibold uppercase tracking-wide text-gray-900">Featured Providers</div>
+        <ul className="mt-3 divide-y divide-gray-200 rounded-xl border border-gray-200 bg-white shadow-sm">
           {featured.map((b, i) => {
             const website = getBusinessWebsiteUrl(b);
             const maps = getBusinessMapsUrl(b);

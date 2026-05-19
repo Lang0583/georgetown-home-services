@@ -118,8 +118,8 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
           Top {Math.min(FEATURED_MAX, businesses.length)} by rating, then review count
           {businesses.length > FEATURED_MAX ? ` (${businesses.length} total in this category)` : ""}.
         </p>
-        <div className="mt-6 rounded-xl border border-primary/25 bg-primary-light/60 p-4 shadow-sm md:p-5">
-          <ul className="divide-y divide-primary/25 rounded-xl border border-primary/25 bg-white shadow-sm">
+        <div className="mt-6 rounded-xl border border-gray-200 border-l-[3px] border-l-primary bg-slate-50 p-4 shadow-md ring-1 ring-gray-950/[0.04] md:p-5">
+          <ul className="divide-y divide-gray-200 rounded-xl border border-gray-200 bg-white shadow-sm">
             {featured.map((b, i) => {
               const href = getBusinessOutboundUrl(b);
               const { serviceCategory } = exitInterstitialLabels(normalizeBusinessGroup(b));

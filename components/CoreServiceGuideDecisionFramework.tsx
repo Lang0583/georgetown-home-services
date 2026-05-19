@@ -94,7 +94,10 @@ const copy: Record<
 export default function CoreServiceGuideDecisionFramework({ trade }: { trade: Trade }) {
   const block = copy[trade];
   return (
-    <section className="mt-6 rounded-xl border border-primary/25 bg-primary/5 p-6 shadow-sm" aria-labelledby={`framework-${trade}`}>
+    <section
+      className="mt-6 rounded-xl border border-gray-200 border-l-[3px] border-l-primary bg-slate-50 p-6 shadow-sm ring-1 ring-gray-950/[0.04]"
+      aria-labelledby={`framework-${trade}`}
+    >
       <h2 id={`framework-${trade}`} className="text-xl font-semibold tracking-tight text-gray-900">
         {block.title}
       </h2>

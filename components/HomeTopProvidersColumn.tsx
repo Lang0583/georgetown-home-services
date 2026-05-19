@@ -57,14 +57,14 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
   const visible = chunks.length ? chunks[chunkIndex % chunks.length] : [];
 
   return (
-    <div className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5">
-      <div className="flex items-baseline justify-between gap-3 border-b border-gray-100 pb-3">
+    <div className="overflow-hidden rounded-xl border border-gray-300 bg-white shadow-md ring-1 ring-gray-950/[0.06]">
+      <div className="flex items-baseline justify-between gap-3 border-b border-gray-200 bg-slate-100 px-4 py-3 sm:px-5">
         <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-900">{title}</h3>
         <Link href={bestHref} className="shrink-0 text-xs font-semibold text-primary hover:underline">
           Top Providers
         </Link>
       </div>
-      <ul className="mt-4 space-y-4">
+      <ul className="space-y-4 px-4 py-4 sm:px-5 sm:py-5">
         {visible.map((business) => {
           const outbound = getBusinessOutboundUrl(business);
           const website = getBusinessWebsiteUrl(business);
@@ -73,7 +73,7 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
           return (
             <li
               key={`${providerGroupKey}-${business.name}`}
-              className="rounded-lg border border-gray-200 bg-gray-50/50 p-4 shadow-sm"
+              className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm ring-1 ring-gray-950/[0.04]"
             >
               <div className="font-medium text-gray-900">
                 {outbound ? (
@@ -128,7 +128,7 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
           );
         })}
       </ul>
-      <div className="mt-4 flex flex-wrap gap-x-3 gap-y-1 border-t border-gray-100 pt-3 text-xs">
+      <div className="flex flex-wrap gap-x-3 gap-y-1 border-t border-gray-200 bg-slate-50 px-4 py-3 text-xs sm:px-5">
         <Link href={serviceHref} className="font-semibold text-gray-900 hover:underline">
           View service page
         </Link>
