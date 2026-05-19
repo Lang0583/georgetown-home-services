@@ -158,14 +158,14 @@ export default function Home() {
 
         <section
           id="providers"
-          className="scroll-mt-28 rounded-xl border border-gray-200 bg-white p-6 shadow-md sm:p-8 md:-mt-4"
+          className="mt-10 scroll-mt-28 rounded-xl border border-gray-200 bg-white p-6 shadow-md sm:p-8 md:mt-12 md:-mt-4 md:py-10"
         >
-          <h2 className="text-xl font-semibold tracking-tight text-gray-900">Top Local Providers</h2>
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-gray-700">
+          <h2 className="text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">Top Local Providers</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-gray-700 md:text-base">
             Top listings from public data by category—shortlist companies here, then use each trade hub for cost guides and
             deeper comparisons.
           </p>
-          <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-x-8 md:gap-y-10 lg:grid-cols-4 lg:gap-x-6">
             {topLocalGroups.map(({ title, key }) => (
               <HomeTopProvidersColumn
                 key={key}
@@ -177,7 +177,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-10 md:py-12">
+        <section className="mt-12 border-t border-gray-200 py-10 md:mt-14 md:py-12">
           <h2 className="text-3xl font-semibold tracking-tight text-gray-900">From the Blog</h2>
           <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
             {blog.map((p) => (
@@ -192,7 +192,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-10 md:py-12">
+        <section className="border-t border-gray-200 py-10 md:py-12">
           <FAQList faqs={HOME_PAGE_FAQS} variant="plain" />
         </section>
 

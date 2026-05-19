@@ -73,7 +73,7 @@ export default function HomeTrustBar() {
           <li
             key={title}
             className={[
-              "flex min-w-0 flex-1 items-center gap-3 py-3 first:pt-0 last:pb-0 md:h-full md:py-0 md:pl-4 md:pr-4 lg:pl-5 lg:pr-5",
+              "flex min-w-0 flex-1 items-center gap-3 py-4 first:pt-2 last:pb-2 md:h-full md:py-0 md:pl-4 md:pr-4 lg:pl-5 lg:pr-5",
               index > 0 ? "md:border-l md:border-gray-300/80" : "",
             ]
               .filter(Boolean)

@@ -57,21 +57,24 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
   const visible = chunks.length ? chunks[chunkIndex % chunks.length] : [];
 
   return (
-    <div className="rounded-lg bg-gray-50 p-4">
-      <div className="flex items-baseline justify-between gap-3">
+    <div className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5">
+      <div className="flex items-baseline justify-between gap-3 border-b border-gray-100 pb-3">
         <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-900">{title}</h3>
-        <Link href={bestHref} className="text-xs font-semibold text-primary hover:underline">
+        <Link href={bestHref} className="shrink-0 text-xs font-semibold text-primary hover:underline">
           Top Providers
         </Link>
       </div>
-      <ul className="mt-3 space-y-3">
+      <ul className="mt-4 space-y-4">
         {visible.map((business) => {
           const outbound = getBusinessOutboundUrl(business);
           const website = getBusinessWebsiteUrl(business);
           const maps = getBusinessMapsUrl(business);
           const serviceCategory = EXIT_INTERSTITIAL_SERVICE_LABEL[providerGroupKey];
           return (
-            <li key={`${providerGroupKey}-${business.name}`} className="text-sm text-gray-700">
+            <li
+              key={`${providerGroupKey}-${business.name}`}
+              className="rounded-lg border border-gray-200 bg-gray-50/50 p-4 shadow-sm"
+            >
               <div className="font-medium text-gray-900">
                 {outbound ? (
                   <a
@@ -86,20 +89,25 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
                   business.name
                 )}
               </div>
-              <div className="mt-1">
-                {business.rating.toFixed(1)} stars • {business.reviews.toLocaleString()} reviews
+              <div className="mt-2 inline-flex flex-wrap items-center gap-x-2 gap-y-0.5 rounded-md border border-amber-200/80 bg-amber-50/90 px-2 py-1 text-xs font-medium text-amber-950 tabular-nums">
+                <span className="text-amber-600" aria-hidden>
+                  ★
+                </span>
+                <span>{business.rating.toFixed(1)} Google rating</span>
+                <span className="text-gray-500">·</span>
+                <span className="text-gray-800">{business.reviews.toLocaleString()} reviews</span>
               </div>
               <BusinessPhoneRow phone={business.phone} providerName={business.name} />
-              <BusinessListingDescription text={business.description} className="mt-1" />
+              <BusinessListingDescription text={business.description} className="mt-2" />
               {website || maps ? (
-                <div className="mt-1 flex flex-wrap gap-x-3 gap-y-0.5">
+                <div className="mt-3 flex flex-wrap gap-x-3 gap-y-0.5 border-t border-gray-200/80 pt-3 text-xs">
                   {website ? (
                     <ExitInterstitial
                       providerName={business.name}
                       providerUrl={website}
                       serviceCategory={EXIT_INTERSTITIAL_SERVICE_LABEL[providerGroupKey]}
                       angiCategorySlug={EXIT_INTERSTITIAL_ANGI_SLUG[providerGroupKey]}
-                      className="text-primary hover:text-primary-hover"
+                      className="font-semibold text-primary hover:text-primary-hover"
                     >
                       {BUSINESS_LINK_VISIT_WEBSITE}
                     </ExitInterstitial>
@@ -108,7 +116,7 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
                     <a
                       href={maps}
                       {...externalBusinessLinkProps}
-                      className="text-primary hover:text-primary-hover"
+                      className="font-semibold text-primary hover:text-primary-hover"
                       onClick={() => trackMapsClick(business.name)}
                     >
                       {BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS}
@@ -120,7 +128,7 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
           );
         })}
       </ul>
-      <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs">
+      <div className="mt-4 flex flex-wrap gap-x-3 gap-y-1 border-t border-gray-100 pt-3 text-xs">
         <Link href={serviceHref} className="font-semibold text-gray-900 hover:underline">
           View service page
         </Link>
