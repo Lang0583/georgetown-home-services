@@ -1,0 +1,21 @@
+{
+  "name": "ghs-seo-agent",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Autonomous SEO agent: GSC + Claude + Indexing API + Resend (run via repo-root tsx).",
+  "type": "module",
+  "scripts": {
+    "start": "cd ../.. && npx tsx scripts/agent/index.ts",
+    "typecheck": "tsc --noEmit -p ../../tsconfig.json"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "google-auth-library": "^10.6.2",
+    "googleapis": "^171.4.0",
+    "resend": "^6.11.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.21.0",
+    "typescript": "^5"
+  }
+}
