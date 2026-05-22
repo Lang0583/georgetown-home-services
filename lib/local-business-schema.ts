@@ -1,8 +1,10 @@
+import { SITE_URL } from "./page-seo";
+
 /**
  * LocalBusiness JSON-LD for Georgetown Home Services (publisher / directory).
- * Canonical URL matches marketing domain (non-www) per site requirements.
+ * Uses the same origin as page canonicals (`SITE_URL`, typically `www`).
  */
-export const GEORGETOWN_HOME_SERVICES_BUSINESS_URL = "https://georgetownhomeservices.com";
+export const GEORGETOWN_HOME_SERVICES_BUSINESS_URL = SITE_URL.replace(/\/$/, "");
 
 export function buildGeorgetownHomeServicesLocalBusinessJsonLd(): Record<string, unknown> {
   return {

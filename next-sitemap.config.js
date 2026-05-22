@@ -1,6 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://georgetownhomeservices.com',
+  /** MUST match crawled canonical origin (`SITE_URL` / metadataBase), usually `www` for this property. */
+  siteUrl: 'https://www.georgetownhomeservices.com',
   generateRobotsTxt: true,
   changefreq: 'weekly',
   priority: 0.7,

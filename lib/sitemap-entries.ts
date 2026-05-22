@@ -13,9 +13,11 @@ import {
 } from "@/lib/public-site-scope";
 import { SITE_URL } from "@/lib/page-seo";
 import { CORE_BEST_SLUGS, CORE_SERVICE_SLUGS } from "@/lib/pageContentRegistry";
+import { SERVICE_BEST_LAST_UPDATED_ISO } from "@/lib/service-best-pages-meta";
 import { AUTHOR_PROFILE_PATH } from "@/lib/site-author";
 import {
   getBestSlugs,
+  getBlogBySlug,
   getBlogSlugs,
   getLocationSlugs,
   getServiceSlugs,
@@ -28,6 +30,18 @@ function absoluteUrl(path: string): string {
 
 const CORE_SERVICE_SET: ReadonlySet<string> = new Set(CORE_SERVICE_SLUGS);
 const CORE_BEST_SET: ReadonlySet<string> = new Set(CORE_BEST_SLUGS);
+
+/** Sitewide hub refresh — trade/best/location/neighborhood landings (matches visible “Last updated”). */
+const HUB_LAST_MOD = new Date(`${SERVICE_BEST_LAST_UPDATED_ISO}T12:00:00.000Z`);
+
+function lastModForBlogPost(slug: string): Date {
+  const post = getBlogBySlug(slug);
+  const iso = post?.dateModified?.trim() || post?.datePublished?.trim();
+  if (iso && /^\d{4}-\d{2}-\d{2}$/.test(iso)) {
+    return new Date(`${iso}T12:00:00.000Z`);
+  }
+  return HUB_LAST_MOD;
+}
 
 /**
  * Sitemap URL list (used by `/sitemap.xml` → `/api/sitemap-xml` rewrite).
@@ -44,7 +58,8 @@ const CORE_BEST_SET: ReadonlySet<string> = new Set(CORE_BEST_SLUGS);
  * (Empty when all neighborhood location pages are indexable.)
  */
 export function buildSitemapEntries(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+  const homeLastMod = new Date();
+  const listingIndexLastMod = new Date();
 
   const staticMonthlyPaths: { path: string; priority: number }[] = [
     { path: "/", priority: 1 },
@@ -86,7 +101,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
   for (const { path, priority } of staticMonthlyPaths) {
     entries.push({
       url: absoluteUrl(path),
-      lastModified,
+      lastModified: path === "/" ? homeLastMod : HUB_LAST_MOD,
       changeFrequency: "monthly",
       priority,
     });
@@ -95,7 +110,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
   for (const { path, priority } of listingWeekly) {
     entries.push({
       url: absoluteUrl(path),
-      lastModified,
+      lastModified: listingIndexLastMod,
       changeFrequency: "weekly",
       priority,
     });
@@ -104,7 +119,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
   for (const path of serviceHubMonthly) {
     entries.push({
       url: absoluteUrl(path),
-      lastModified,
+      lastModified: HUB_LAST_MOD,
       changeFrequency: "monthly",
       priority: 0.9,
     });
@@ -117,7 +132,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     const isCore = CORE_SERVICE_SET.has(slug);
     entries.push({
       url: absoluteUrl(`/services/${slug}`),
-      lastModified,
+      lastModified: HUB_LAST_MOD,
       changeFrequency: isCore ? "monthly" : "yearly",
       priority: isCore ? 0.9 : 0.6,
     });
@@ -128,7 +143,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     if (isNoindexSlug(slug)) continue;
     entries.push({
       url: absoluteUrl(`/locations/${slug}`),
-      lastModified,
+      lastModified: HUB_LAST_MOD,
       changeFrequency: "monthly",
       priority: 0.7,
     });
@@ -140,7 +155,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     const isCore = CORE_BEST_SET.has(slug);
     entries.push({
       url: absoluteUrl(`/best/${slug}`),
-      lastModified,
+      lastModified: HUB_LAST_MOD,
       changeFrequency: "monthly",
       priority: isCore ? 0.9 : 0.7,
     });
@@ -151,7 +166,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     if (isNoindexSlug(slug)) continue;
     entries.push({
       url: absoluteUrl(`/blog/${slug}`),
-      lastModified,
+      lastModified: lastModForBlogPost(slug),
       changeFrequency: "monthly",
       priority: 0.7,
     });
@@ -160,7 +175,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
   for (const p of neighborhoodServicePages) {
     entries.push({
       url: absoluteUrl(`/neighborhoods/${p.neighborhoodSlug}/${p.serviceSlug}`),
-      lastModified,
+      lastModified: HUB_LAST_MOD,
       changeFrequency: "monthly",
       priority: 0.6,
     });
@@ -169,7 +184,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
   for (const hub of NEIGHBORHOOD_HOME_SERVICES_HUBS) {
     entries.push({
       url: absoluteUrl(`/neighborhoods/${hub.neighborhoodSlug}/home-services`),
-      lastModified,
+      lastModified: HUB_LAST_MOD,
       changeFrequency: "monthly",
       priority: 0.65,
     });
@@ -178,7 +193,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
   for (const p of NEIGHBORHOOD_HAIL_PAGES) {
     entries.push({
       url: absoluteUrl(`/neighborhoods/${p.neighborhoodSlug}/hail-damage`),
-      lastModified,
+      lastModified: HUB_LAST_MOD,
       changeFrequency: "monthly",
       priority: 0.65,
     });

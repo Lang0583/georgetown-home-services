@@ -3,9 +3,12 @@
  * All NEXT_PUBLIC_* values are inlined at build time.
  */
 
-const DEFAULT_EXPIRY_YMD = "2026-06-01";
-const DEFAULT_DISMISS_SUFFIX = "may2026";
-const DEFAULT_ALERT_LABEL = "Hail Storm Alert — Williamson County May 2026";
+/** Extend through recurrent early-summer convection; override per deployment in `.env.local` / CI. */
+const DEFAULT_EXPIRY_YMD = "2026-06-30";
+/** Bump when rotating copy/end dates so dismissed visitors see fresh urgency. */
+const DEFAULT_DISMISS_SUFFIX = "may2026-surge-wave2";
+const DEFAULT_ALERT_LABEL =
+  "Storm alert — Williamson County (May/June ’26 surge): hail, wind & tree debris; document soft metals early";
 
 /** June 1, 2026 local midnight — legacy default when env date is invalid. */
 function legacyJuneFirst2026Ms(): number {

@@ -49,7 +49,7 @@ export function buildNeighborhoodHailMeta(page: NeighborhoodHailPage): {
 } {
   const absoluteTitle = `${page.neighborhoodName} Hail Damage: What Georgetown TX Homeowners Need to Know in ${PRICING_YEAR}`;
   const description = clipMetaDescription(
-    `May 2026 Williamson hail near ${page.neighborhoodName}: doc soft-metal dents, book roof walks early. Vetted Georgetown roofers. Get 3 free quotes from vetted local pros in minutes. No obligation.`,
+    `Late May 2026 storm recurrence near ${page.neighborhoodName}: doc wind-hail/tree debris, tarp timing, HOA + insurance pacing. Georgetown roofing hubs + vetted roofers.`,
   );
   return { absoluteTitle, description };
 }

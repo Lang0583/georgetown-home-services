@@ -9,7 +9,10 @@ export default function CanonicalFromPathname() {
   useLayoutEffect(() => {
     if (pathname == null) return;
 
-    const href = `https://www.georgetownhomeservices.com${pathname}`;
+    const raw =
+      process.env.NEXT_PUBLIC_SITE_URL?.trim() ?? "https://www.georgetownhomeservices.com";
+    const base = raw.replace(/\/$/, "");
+    const href = `${base}${pathname}`;
     let link = document.querySelector<HTMLLinkElement>(
       'link[data-canonical-from-pathname="true"]',
     );

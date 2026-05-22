@@ -107,4 +107,36 @@ export const ROOFING_TRADE_HUB_FAQS: Faq[] = [
     q: "Should I get multiple roofing estimates in Georgetown, TX?",
     a: "Yes—secure at least two bids that name shingle brand, underlayment, starter, ridge, valleys, and ventilation. Flag vague allowances and storm-chaser pressure. Prefer established Williamson County crews with traceable addresses, check permit rules with Georgetown, and never pay large deposits before you verify insurance and lien-risk practices.",
   },
+  {
+    q: "How do I schedule a hail damage roof inspection in Georgetown, TX?",
+    a: "After county-wide hail, book two or three established local roofers for written inspections—not same-day driveway sales. Ask for slope-by-slope photos, soft-metal notes, and whether they recommend repair, monitor, or replacement. Respect lightning and ladder safety; ground-level documentation still helps timelines before the next soaking rain.",
+  },
+  {
+    q: "What should I photograph for a roof hail insurance claim in Williamson County?",
+    a: "Take wide elevation shots, dented gutters, fence caps and mailbox posts, shingle closes with scale when safe, outdoor HVAC fins from the ground, and any ceiling stains—all time-stamped. Pair images with local storm statements so carriers can tie damage to specific weather, not guesses after cleanup.",
+  },
+  {
+    q: "How can I tell hail damage on shingles versus normal wear?",
+    a: "Hail bruising tends to scatter randomly with crushed granules and exposed mat spots, while aging often tracks sun and traffic patterns uniformly. Matching soft-metal hits the same night adds credibility—but only a cautious walk determines functional damage versus cosmetic chatter you can monitor.",
+  },
+  {
+    q: "What line items should a written hail estimate include?",
+    a: "Demand tear-off allowances, decking rules, synthetic or felt spec, valleys, drip edge and flashing transitions, chimney or skylight detail, ridge and starter courses, ventilation math, dumpsters, permits, and code upgrades if quoted—not a single vague per-square rate. Align language with insurer scopes before signing.",
+  },
+  {
+    q: "How do I align a carrier adjuster’s scope with a roofer’s estimate after hail?",
+    a: "Export both PDFs, diff decking allowances, ridge vent replacements, drip edge resets, flashing at walls/boots, waste factors, permit fees. Ask roofers for an annotated discrepancy memo citing manufacturer or IRC language so supplements cite specifics—not narrative-only pushback.",
+  },
+  {
+    q: "Should I photograph ridge vents and wall flashings even if shingles look fine?",
+    a: "Yes—wind plus hail fractures plastic ridge vents, pops hip/ridge caps, and lifts counter-flashing before field bruising reveals itself. Shoot context + close-ups; attic pinholes near penetrations help justify those line items.",
+  },
+  {
+    q: "Why does clogged gutter debris matter for Williamson County hail timelines?",
+    a: "Because overflow dams water against fascia and soaks sheathings—paths carriers might mis-attribute to maintenance if you rake leaves before photographing. Timestamp gutter blockage next to hail-dented metal.",
+  },
+  {
+    q: "Do Texas HO policies automatically cover ridge vents or drip edge resets after hail?",
+    a: "Only when documented storm compromise exists and your form lacks cosmetic carve-outs denying functional metal. Matching and code-upgrade endorsements also shift payouts—tie photos to estimator line items explicitly.",
+  },
 ];

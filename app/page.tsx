@@ -37,7 +37,7 @@ function homeWebPageJsonLd() {
     url: SITE_URL,
     description:
       "Compare top-rated plumbers, HVAC companies, roofers, electricians, and more in Georgetown TX. Verified local providers, real Google ratings, and honest cost guides. No lead forms.",
-    dateModified: "2026-05-18",
+    dateModified: "2026-05-29",
   };
 }
 

@@ -314,7 +314,12 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
   const { description: blogMetaDescription } = buildBlogPostMeta(post);
   // Auto-extract FAQPage JSON-LD from generated article HTML. Posts with no
   // `?`-terminated H3s (e.g. pure listicles) simply emit no FAQ schema.
-  const faqPairs = generated ? extractFaqPairs(generated.html) : [];
+  const faqPairs = generated
+    ? extractFaqPairs(
+        generated.html,
+        post.slug === "hail-damage-georgetown-williamson-may-2026" ? 24 : 5,
+      )
+    : [];
 
   return (
     <PageShell>

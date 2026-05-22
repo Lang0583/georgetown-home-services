@@ -18,14 +18,41 @@ import { GoogleAuth } from "google-auth-library";
 const INDEXING_SCOPE = "https://www.googleapis.com/auth/indexing";
 const INDEXING_PUBLISH_URL = "https://indexing.googleapis.com/v3/urlNotifications:publish";
 
-/** Canonical marketing URLs to notify Google about after publishes. */
-const URLS_TO_SUBMIT: readonly string[] = [
-  "https://georgetownhomeservices.com/blog/hail-damage-georgetown-tx-may-2026",
-  "https://georgetownhomeservices.com/blog/hail-damage-sun-city-georgetown-tx",
-  "https://georgetownhomeservices.com/blog/hail-damage-teravista-georgetown-tx",
-  "https://georgetownhomeservices.com/blog/hail-damage-wolf-ranch-georgetown-tx",
-  "https://georgetownhomeservices.com/blog/hail-damage-georgetown-village-tx",
-];
+function siteOrigin(): string {
+  const raw =
+    process.env.SITE_URL?.trim() ||
+    process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
+    "https://www.georgetownhomeservices.com";
+  return raw.replace(/\/$/, "");
+}
+
+/**
+ * Canonical URLs after each deploy — keep aligned with `{@link pageSeoMetadata}` / `SITE_URL`.
+ * Use for post-deploy pings only (respect daily Indexing API quotas — do not add dozens here).
+ */
+function urlsToSubmit(): readonly string[] {
+  const base = siteOrigin();
+  const u = (...paths: string[]) => paths.map((p) => `${base}${p.startsWith("/") ? p : `/${p}`}`);
+  return u(
+    "/",
+    "/service-areas",
+    "/services",
+    "/services/roofing",
+    "/services/plumber-georgetown-tx",
+    "/services/hvac-georgetown-tx",
+    "/services/roofer-georgetown-tx",
+    "/blog/hail-damage-georgetown-williamson-may-2026",
+    "/blog/hail-damage-sun-city-georgetown-tx",
+    "/blog/hail-damage-teravista-georgetown-tx",
+    "/blog/hail-damage-wolf-ranch-georgetown-tx",
+    "/blog/hail-damage-georgetown-village-tx",
+    "/locations/georgetown-tx",
+    "/neighborhoods/sun-city/hail-damage",
+    "/neighborhoods/teravista/hail-damage",
+    "/neighborhoods/wolf-ranch/hail-damage",
+    "/neighborhoods/georgetown-village/hail-damage",
+  );
+}
 
 function resolveKeyPath(): string {
   const keyPath = process.env.GOOGLE_SERVICE_ACCOUNT_KEY_PATH?.trim();
@@ -83,7 +110,7 @@ async function main() {
   const accessToken = await getAccessToken(keyFile);
 
   let anyFailed = false;
-  for (const url of URLS_TO_SUBMIT) {
+  for (const url of urlsToSubmit()) {
     try {
       const result = await publishUrl(accessToken, url);
       if (result.ok) {

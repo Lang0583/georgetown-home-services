@@ -13,6 +13,7 @@ import ServiceAffiliateEngagement from "../../../components/ServiceAffiliateEnga
 import ServiceCompareQuotesThumbtack from "../../../components/ServiceCompareQuotesThumbtack";
 import { AFFILIATE_ANGI_URL } from "../../../lib/affiliate-config";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
+import { clipMetaDescription } from "../../../lib/seo-meta";
 import {
   FLAGSHIP_VIDEO_ROOFING_HUB,
   flagshipVideoObjectJsonLd,
@@ -27,12 +28,15 @@ import {
 import { isNoindexSlug, isRedirectedServiceSlug } from "../../../lib/public-site-scope";
 import { getBlog, getServices } from "../../../lib/site-content";
 import StormInspectionLeadForm from "../../../components/StormInspectionLeadForm";
+import StormCycleRoofingEditorial from "../../../components/StormCycleRoofingEditorial";
 
 const hubSeo = buildTradeHubSeo({ label: "Roofing", pricingKey: "roofing" });
 
 export const metadata: Metadata = pageSeoMetadata({
   absoluteTitle: hubSeo.absoluteTitle,
-  description: hubSeo.description,
+  description: clipMetaDescription(
+    "Late May 2026 Williamson County hail & wind surge: documentation, tarp vs monitor, HOA & insurance pacing. Asphalt ranges + storm checklists.",
+  ),
   pathname: "/services/roofing",
   ogType: "website",
 });
@@ -102,6 +106,9 @@ export default function RoofingHubPage() {
               <div className="mt-6 max-w-xl">
                 <StormInspectionLeadForm source="hub:services-roofing" />
               </div>
+
+              <StormCycleRoofingEditorial />
+
               <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold">
                 <Link href="/best/best-roofers-georgetown-tx" className="text-primary hover:underline">
                   Browse Roof Repair Options
@@ -122,8 +129,9 @@ export default function RoofingHubPage() {
             <section className="max-w-3xl">
               <p className="text-sm leading-relaxed text-gray-700">
                 This site is a homeowner guide and directory—we do not send roofing crews. These answers track frequent Google
-                “People also ask” queries for Georgetown / Williamson County. Pair them with the storm checklist posts and itemized
-                bids from local contractors—never skip independent inspections after hail.
+                “People also ask” queries plus longer hail-season questions people type for Georgetown / Williamson County.
+                Pair them with the storm checklist posts and itemized bids from local contractors—never skip independent
+                inspections after hail.
               </p>
               <FAQList faqs={ROOFING_TRADE_HUB_FAQS} title="Roofing in Georgetown, TX — quick answers" className="!mt-4" />
             </section>

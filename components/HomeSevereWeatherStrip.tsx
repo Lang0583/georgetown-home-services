@@ -1,21 +1,21 @@
 import Link from "next/link";
-import { SEVERE_WEATHER_LINKS } from "../lib/severe-weather-links";
+import { NEIGHBORHOOD_HAIL_HUB_ROUTES, SEVERE_WEATHER_LINKS } from "../lib/severe-weather-links";
 
 const links = [
   {
     href: SEVERE_WEATHER_LINKS.roofingHub,
     title: "Roofing hub",
-    description: "Inspection checklist, hub video, and roof inspection request.",
+    description: "Tarp-vs-monitor framing, HOA/insurance pacing, inspection lead form & video checklist.",
   },
   {
     href: SEVERE_WEATHER_LINKS.hailGuideBlog,
     title: "Williamson County hail guide",
-    description: "Timeline, FAQs, and what to document after a storm.",
+    description: "Active May 2026 storm-cycle notes plus deep FAQs—start here before neighborhood drill-downs.",
   },
   {
     href: SEVERE_WEATHER_LINKS.bestRoofers,
     title: "Best roofers shortlist",
-    description: "Compare vetted Georgetown roofers before you book inspections.",
+    description: "Vetted inspectors for apples-to-apples scopes—not drive-by canvassers chasing renewals.",
   },
 ] as const;
 
@@ -33,10 +33,19 @@ export default function HomeSevereWeatherStrip() {
           <h2 id="severe-weather-heading" className="text-xl font-semibold tracking-tight text-gray-900">
             Severe weather & hail in Georgetown
           </h2>
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-700">
-            Central Texas storm season swings fast—document damage early, compare written scopes, and line up reputable
-            inspectors. These hubs stay live year-round (not only during breaking alerts).
-          </p>
+          <div className="mt-3 max-w-3xl space-y-3 text-sm leading-relaxed text-gray-700">
+            <p>
+              The last few nights of <strong>May 2026</strong> have stacked damaging hail, straight-line wind, and saturated
+              ground across Williamson County—especially where mature tree canopies shed debris into valleys, scuppers, and
+              gutters faster than homeowners can clear them. That combination turns “small” hail into chronic moisture contact
+              on shingle butts, flashing terminations, and ridge vent lips even before the next cell trains overhead.
+            </p>
+            <p>
+              Use the county guide for narrative context, the roofing hub for planning language, then drop into the
+              neighborhood hail pages that match your microclimate—Sun City’s oak load, Teravista’s fairway wind channeling,
+              Wolf Ranch’s ARC cadence, or Georgetown Village’s tight setbacks—so documentation and HOA packets stay accurate.
+            </p>
+          </div>
         </div>
       </div>
       <ul className="mt-6 grid list-none gap-3 sm:grid-cols-3">
@@ -53,6 +62,26 @@ export default function HomeSevereWeatherStrip() {
           </li>
         ))}
       </ul>
+
+      <div className="mt-8 border-t border-sky-200/80 pt-6">
+        <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-600">Neighborhood hail hubs</h3>
+        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-gray-700">
+          Each page layers microclimate notes (trees, wind fetch, HOA logistics) on top of the county narrative—read the guide
+          first, then pick your neighborhood for street-level nuance.
+        </p>
+        <ul className="mt-4 flex flex-wrap gap-2">
+          {NEIGHBORHOOD_HAIL_HUB_ROUTES.map((n) => (
+            <li key={n.href}>
+              <Link
+                href={n.href}
+                className="inline-flex rounded-full border border-sky-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-900 shadow-sm transition hover:border-primary/40 hover:bg-sky-50"
+              >
+                {n.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }
