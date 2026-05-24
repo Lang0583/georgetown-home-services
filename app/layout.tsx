@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
@@ -16,6 +16,16 @@ import { clipMetaDescription } from "../lib/seo-meta";
 import { getBrandName, getContact } from "../lib/site-content";
 
 const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
+
+/** Stable mobile layout across iOS Safari / Chrome Android; avoids relying on implicit defaults only. */
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f9fafb" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c4a6e" },
+  ],
+};
 
 /** impact.com / AppImpact “HTML tag” verification — paste the `content` value only (not the full tag). */
 const impactSiteVerification =
