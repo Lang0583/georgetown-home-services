@@ -786,6 +786,17 @@ export const PROVIDERS: Provider[] = [
   },
 ];
 
+export const PROVIDER_CATEGORY_LABELS: Record<ProviderCategory, string> = {
+  plumbing: "Plumbing",
+  hvac: "HVAC",
+  roofing: "Roofing",
+  electrical: "Electrical",
+  landscaping: "Landscaping",
+  "pest-control": "Pest Control",
+  foundation: "Foundation Repair",
+  cleaning: "House Cleaning",
+};
+
 export function getProvidersByCategory(category: ProviderCategory): Provider[] {
   return PROVIDERS.filter((p) => p.category === category);
 }

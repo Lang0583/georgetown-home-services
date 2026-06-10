@@ -1,5 +1,6 @@
 const subServicePaths = require('./data/sub-service-paths.json');
 const costGuidePaths = require('./data/cost-guide-paths.json');
+const comparisonPaths = require('./data/comparison-paths.json');
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
@@ -14,6 +15,8 @@ module.exports = {
   /** Ensures neighborhood hail blog URLs appear in post-build sitemap (live `/sitemap.xml` also lists them via `getBlogSlugs()`). */
   additionalPaths: async (config) => {
     const paths = [
+      '/compare',
+      ...comparisonPaths,
       '/blog/hail-damage-georgetown-williamson-may-2026',
       '/blog/hail-damage-sun-city-georgetown-tx',
       '/blog/hail-damage-teravista-georgetown-tx',
