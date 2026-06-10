@@ -14,6 +14,21 @@ type Props = {
   blocks: ContentBlock[];
 };
 
+/** CMS-expanded posts that should not be overridden by legacy generated HTML. */
+const CMS_BODY_SLUGS = new Set([
+  "hail-damage-georgetown-williamson-may-2026",
+  "hail-damage-sun-city-georgetown-tx",
+  "hail-damage-teravista-georgetown-tx",
+  "hail-damage-wolf-ranch-georgetown-tx",
+  "hail-damage-georgetown-village-tx",
+]);
+
+function useGeneratedHtml(slug: string, generated: { html: string } | null, blocks: ContentBlock[]) {
+  if (!generated) return null;
+  if (CMS_BODY_SLUGS.has(slug) && blocks.length > 0) return null;
+  return generated;
+}
+
 /**
  * Renders article HTML or block content with:
  * - Display ad after the 2nd paragraph
@@ -23,9 +38,10 @@ type Props = {
 export default function BlogArticleBodyWithMidEmail({ slug, generated, blocks }: Props) {
   const source = `blog-mid:${slug}`;
   const hasCostSupplement = Boolean(COST_POST_SUPPLEMENTS[slug]);
+  const generatedBody = useGeneratedHtml(slug, generated, blocks);
 
-  if (generated) {
-    const { before: open2, after: tailAfter2 } = splitHtmlAfterNthParagraph(generated.html, 2);
+  if (generatedBody) {
+    const { before: open2, after: tailAfter2 } = splitHtmlAfterNthParagraph(generatedBody.html, 2);
     const safeOpen2 = sanitizeArticleHtml(open2);
     const { before: para3, after: rest } = tailAfter2
       ? splitHtmlAfterNthParagraph(tailAfter2, 1)

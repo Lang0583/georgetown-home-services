@@ -111,7 +111,7 @@ export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
         </section>
 
         <section className="mt-12 max-w-3xl">
-          <FAQList faqs={faqs} variant="bordered" title={`People also ask: ${page.serviceName} costs`} className="!mt-0" />
+          <FAQList faqs={faqs} variant="bordered" title={`Common questions: ${page.serviceName} costs`} className="!mt-0" />
         </section>
 
         <section className="mt-12 max-w-3xl">

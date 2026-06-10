@@ -55,7 +55,7 @@ export type ContentHealthItem = {
   slug: string;
   title: string;
   /** `/blog/…`, `/services/…`, `/best/…`, `/locations/…`. */
-  section: "blog" | "service" | "best" | "location";
+  section: "blog" | "service" | "best" | "location" | "sub-service" | "cost-guide";
   wordCount: number;
   /** How many occurrences of "$" + digit we found in rendered article text. */
   dollarFigureCount: number;
@@ -77,7 +77,7 @@ export type ContentHealthReport = {
 export type FreshnessItem = {
   slug: string;
   title: string;
-  section: "blog" | "service" | "best" | "location";
+  section: "blog" | "service" | "best" | "location" | "sub-service" | "cost-guide";
   /** ISO date of last commit touching this slug's content, or `null` if unknown. */
   lastContentChange: string | null;
   daysSinceChange: number | null;

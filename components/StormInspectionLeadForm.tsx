@@ -88,10 +88,11 @@ export default function StormInspectionLeadForm({ source }: Props) {
   return (
     <div className="not-prose relative rounded-2xl border-2 border-amber-400 bg-amber-50/90 p-6 shadow-md">
       <h2 className="text-lg font-semibold tracking-tight text-gray-900 md:text-xl">
-        Storm Damage? Get a Free Inspection Today
+        Request a storm damage inspection
       </h2>
       <p className="mt-2 text-sm leading-relaxed text-gray-800">
-        Georgetown &amp; Williamson County homeowners — act before your insurance window closes.
+        Georgetown and Williamson County homeowners: note the storm date, photograph damage from the ground, and file
+        timely notice with your carrier if you plan to claim. We pass your request to local contractors for follow-up.
       </p>
 
       <form onSubmit={onSubmit} className="mt-5 space-y-4">

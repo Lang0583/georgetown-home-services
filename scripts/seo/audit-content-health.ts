@@ -16,6 +16,8 @@ import {
   getServiceBySlug,
   getServiceSlugs,
 } from "../../lib/site-content";
+import { costGuidePages } from "../../data/cost-guides";
+import { subServicePages } from "../../data/sub-services";
 import { getGeneratedPage } from "../../lib/generatedPages";
 import { COST_POST_SUPPLEMENTS } from "../../lib/pricing-data";
 import { auditContentItem, getRenderedText } from "./lib/content-audit";
@@ -80,6 +82,58 @@ function buildItems(): ContentHealthItem[] {
     const page = getLocationBySlug(slug);
     if (page) pushItem(slug, page.title, "location", page);
   }
+
+  for (const page of subServicePages) {
+    const rendered = [
+      page.h1,
+      page.metaDescription,
+      ...page.bodyParagraphs,
+      page.pricing.notes,
+      page.faqs.map((f) => `${f.question} ${f.answer}`).join(" "),
+    ].join(" ");
+    const a = auditContentItem({
+      slug: `${page.serviceSlug}/${page.slug}`,
+      title: page.h1,
+      section: "sub-service",
+      renderedText: rendered,
+    });
+    items.push({
+      slug: `${page.serviceSlug}/${page.slug}`,
+      title: page.h1,
+      section: "sub-service",
+      wordCount: a.wordCount,
+      dollarFigureCount: a.dollarFigureCount,
+      isCostTitle: a.isCostTitle,
+      flags: a.flags,
+    });
+  }
+
+  for (const page of costGuidePages) {
+    const rendered = [
+      page.h1,
+      page.metaDescription,
+      page.pricingIntro,
+      ...page.bodyParagraphs,
+      page.priceRows.map((r) => `${r.serviceType} ${r.low} ${r.average} ${r.high}`).join(" "),
+      page.faqs.map((f) => `${f.question} ${f.answer}`).join(" "),
+    ].join(" ");
+    const a = auditContentItem({
+      slug: page.slug,
+      title: page.h1,
+      section: "cost-guide",
+      renderedText: rendered,
+    });
+    items.push({
+      slug: page.slug,
+      title: page.h1,
+      section: "cost-guide",
+      wordCount: a.wordCount,
+      dollarFigureCount: a.dollarFigureCount,
+      isCostTitle: a.isCostTitle,
+      flags: a.flags,
+    });
+  }
+
   return items;
 }
 

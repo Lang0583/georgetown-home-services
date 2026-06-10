@@ -336,24 +336,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         "Georgetown TX hail damage guide for May 2026 storms in Williamson County—safe roof checks, insurance basics, and next steps for roofing and HVAC repair.",
     },
     "hail-damage-sun-city-georgetown-tx": {
-      absoluteTitle: "Hail Damage Repair Sun City Georgetown TX | May 2026",
+      absoluteTitle: "Sun City Hail Damage May 2026 | Georgetown TX Roof Guide",
       description:
-        "Did the May 2026 hail storm damage your Sun City home? Find Georgetown TX roofing contractors and get a free inspection. Act before your insurance window closes.",
+        "May 2026 hail in Sun City, Georgetown TX: ground-level roof checks, photos for adjusters, insurance basics, and how to compare written roofing scopes.",
     },
     "hail-damage-teravista-georgetown-tx": {
-      absoluteTitle: "Hail Damage Repair Teravista Georgetown TX | May 2026",
+      absoluteTitle: "Teravista Hail Damage May 2026 | Georgetown TX Roof Guide",
       description:
-        "Did the May 2026 hail storm damage your Teravista home? Find Georgetown TX roofing contractors and get a free inspection. Act before your insurance window closes.",
+        "May 2026 hail in Teravista, Georgetown TX: inspection timing, fairway wind effects, insurance notes, and links to Georgetown roofer comparisons.",
     },
     "hail-damage-wolf-ranch-georgetown-tx": {
-      absoluteTitle: "Hail Damage Repair Wolf Ranch Georgetown TX | May 2026",
+      absoluteTitle: "Wolf Ranch Hail Damage May 2026 | Georgetown TX Roof Guide",
       description:
-        "Did the May 2026 hail storm damage your Wolf Ranch home? Find Georgetown TX roofing contractors and get a free inspection. Act before your insurance window closes.",
+        "May 2026 hail in Wolf Ranch, Georgetown TX: newer-roof bruising, HOA timing, documentation tips, and how to compare hail repair scopes.",
     },
     "hail-damage-georgetown-village-tx": {
-      absoluteTitle: "Hail Damage Repair Georgetown Village Georgetown TX | May 2026",
+      absoluteTitle: "Georgetown Village Hail Damage May 2026 | Roof Guide",
       description:
-        "Did the May 2026 hail storm damage your Georgetown Village home? Find Georgetown TX roofing contractors and get a free inspection. Act before your insurance window closes.",
+        "May 2026 hail near downtown Georgetown Village: tight-lot access, tree debris, insurance context, and next steps with local roofers.",
     },
   };
 

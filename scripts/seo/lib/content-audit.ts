@@ -119,7 +119,7 @@ export function getRenderedText(
 export function auditContentItem(opts: {
   slug: string;
   title: string;
-  section: "blog" | "service" | "best" | "location";
+  section: "blog" | "service" | "best" | "location" | "sub-service" | "cost-guide";
   renderedText: string;
   hasInjectedPricing?: boolean;
 }): { wordCount: number; dollarFigureCount: number; isCostTitle: boolean; flags: string[] } {
@@ -138,7 +138,14 @@ export function auditContentItem(opts: {
   //   blog/service: Google's helpful-content signals favor 800+ words on
   //     competitive local queries; flag under 800.
   //   best/location: shorter is acceptable (lists, directory pages). Flag under 500.
-  const thinThreshold = section === "best" || section === "location" ? 500 : 800;
+  const thinThreshold =
+    section === "best" || section === "location"
+      ? 500
+      : section === "sub-service"
+        ? 300
+        : section === "cost-guide"
+          ? 420
+          : 800;
   if (wordCount < thinThreshold) {
     flags.push(`thin:${wordCount}w`);
   }

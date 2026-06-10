@@ -591,14 +591,56 @@ function budgetPhrase(g) {
 function buildBody(g) {
   const license = LICENSE_HINT[g.serviceLabel] ?? "appropriate licensing and insurance";
   const includedLine = g.included.endsWith(".") ? g.included : `${g.included}.`;
+  const season =
+    g.serviceLabel === "HVAC"
+      ? "July heat and first cold snaps fill HVAC calendars—spring and fall tune-ups book easier than emergency August slots."
+      : g.serviceLabel === "Roofing"
+        ? "Hail season stacks roofing demand across Williamson County; documented photos help you compare scopes without rush signing."
+        : g.serviceLabel === "Plumbing"
+          ? "Guest weeks in Sun City and holiday cooking loads spike drain calls—schedule non-emergency work between peaks when you can."
+          : "Off-peak weeks outside major storms and holidays usually mean better availability and steadier pricing.";
   return [
     `If you are budgeting for ${budgetPhrase(g)} in Georgetown, TX, most jobs fall between ${fmt(g.summaryLow)} and ${fmt(g.summaryHigh)}—use the table below as a ${YEAR} planning band before you sign anything. ${g.local}`,
-    `What moves the number in Williamson County: ${g.factors} Trip charges, material lead times, and summer storm backlogs differ between Sun City, Teravista, and older Georgetown Village streets.`,
-    `Solid quotes clearly list ${includedLine.charAt(0).toLowerCase()}${includedLine.slice(1)} If the scope changes after opening a roof deck, panel, or slab access point, you want change-order rules in writing—not a verbal “we’ll see.”`,
-    `Watch for trouble: ${g.redFlags} Compare two estimates, verify ${license}, and avoid same-day pressure discounts.`,
-    `DIY or pro? ${g.diy} Georgetown permits and HOA rules still apply to major systems even when the work looks simple from the curb.`,
-    `Seasonality matters—hail season, July AC outages, and holiday guest weeks in Sun City tighten calendars. Off-peak scheduling can save money when the job is not an emergency.`,
-    `When you are ready, use our ${g.serviceLabel.toLowerCase()} hub, linked sub-service pages, and neighborhood guides to compare scopes—or request quotes below.`,
+    `What moves the number in Williamson County: ${g.factors}`,
+    `Solid quotes clearly list ${includedLine.charAt(0).toLowerCase()}${includedLine.slice(1)} Ask how change orders are handled if the scope grows after opening a roof deck, panel, or slab access.`,
+    `Watch for trouble: ${g.redFlags} Compare two estimates and verify ${license}.`,
+    `DIY or pro? ${g.diy}`,
+    season,
+    `Neighborhood context: ${g.hoods.map((p) => p.replace("/", " — ")).join("; ")} pricing can differ from downtown Georgetown bungalows when access, HOA rules, or lot size change crew time.`,
+    `Use the ${g.serviceLabel.toLowerCase()} hub and linked sub-service pages below to compare scopes before you authorize work.`,
+  ];
+}
+
+function buildFaqs(g) {
+  const whyLocal =
+    g.whyLocal ??
+    `${g.local} Labor, materials, and scheduling in Georgetown and Williamson County sit above many national averages because of heat load, clay soil, and population growth.`;
+  const insurance =
+    g.insuranceFaq ??
+    (g.serviceLabel === "Foundation"
+      ? "Gradual soil movement and maintenance cracks are usually excluded; sudden plumbing leaks under a slab may be a separate claim—document dates and get plumber findings in writing."
+      : g.serviceLabel === "Roofing"
+        ? "Sudden hail or wind damage may be covered subject to your wind/hail deductible; cosmetic-only endorsements can limit payout—photograph soft metals and file timely notice."
+        : g.serviceLabel === "Cleaning" || g.serviceLabel === "Landscaping"
+          ? "Routine cleaning and lawn care are maintenance expenses and are not typically covered by homeowners insurance."
+          : "Sudden and accidental damage—like certain storm or pipe burst events—may be covered, while wear and gradual failures usually are not. Call your adjuster before major work.");
+  return [
+    {
+      question: `How much does ${g.shortName} cost in Georgetown, TX?`,
+      answer: `Most ${g.shortName} projects in Georgetown fall between ${fmt(g.summaryLow)} and ${fmt(g.summaryHigh)}. The table above breaks out common job types; emergencies, permits, and access issues can push totals higher.`,
+    },
+    {
+      question: `Why does ${g.shortName} cost more in Georgetown than national averages?`,
+      answer: whyLocal,
+    },
+    {
+      question: `How do I compare ${g.shortName} quotes fairly?`,
+      answer: `Request the same scope from each bidder: ${g.included} Match warranty terms, permit responsibility, and cleanup—not just the bottom line.`,
+    },
+    {
+      question: `Is ${g.shortName} covered by homeowners insurance?`,
+      answer: insurance,
+    },
   ];
 }
 
@@ -644,24 +686,7 @@ const pages = GUIDES.map((g) => {
     bodyParagraphs: buildBody(g),
     priceRows: g.priceRows,
     summaryRange: { low: g.summaryLow, high: g.summaryHigh },
-    faqs: [
-      {
-        question: `How much does ${g.shortName} cost in Georgetown, TX?`,
-        answer: `Most ${g.shortName} projects in Georgetown fall between ${fmt(g.summaryLow)} and ${fmt(g.summaryHigh)}, with the table above showing low, average, and high rows for common job types. Emergency calls, permits, and access issues can push jobs above these bands.`,
-      },
-      {
-        question: `Why are ${g.shortName} prices higher in Central Texas?`,
-        answer: `Texas heat, expansive clay soil, hard water, and strong population growth in Williamson County keep labor and materials demand high. Storm season and summer cooling peaks also create scheduling surcharges for many ${g.serviceLabel.toLowerCase()} contractors.`,
-      },
-      {
-        question: `How can I avoid overpaying for ${g.shortName} in Georgetown?`,
-        answer: `Get two written quotes that list labor, parts, permits, and warranty terms. Verify Texas licensing where required, check recent local reviews, and be wary of door-to-door storm or panic pricing.`,
-      },
-      {
-        question: `Is ${g.shortName} covered by homeowners insurance in Georgetown?`,
-        answer: `Sudden and accidental damage—like certain storm or pipe burst events—may be covered, while wear, maintenance, and gradual foundation movement usually are not. Document photos and call your adjuster before authorizing major work.`,
-      },
-    ],
+    faqs: buildFaqs(g),
     internalLinks,
   };
 });

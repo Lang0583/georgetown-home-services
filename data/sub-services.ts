@@ -143,12 +143,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Drain Cleaning in Georgetown, TX — Williamson County hard water leaves mineral film in kitchen and bath lines, and mature trees… Pricing, FAQs, and local plu…",
     "bodyParagraphs": [
       "Williamson County hard water leaves mineral film in kitchen and bath lines, and mature trees in Berry Creek and Georgetown Village send roots toward older clay laterals. In Sun City slab homes, slow tubs often trace to venting or long horizontal runs—not a single clog at the trap.",
-      "In Sun City and Teravista, drain cleaning quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Sun City and Teravista often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "Most drain cleaning calls in Georgetown start with shutting off water at the fixture or main, then isolating whether the issue is a branch line, vent, or supply failure before parts are ordered.",
+      "On drain cleaning, expect shutoff confirmation, floor protection, and a pressure or flow test before walls are closed.",
       "Hard water and drought-stressed clay can turn a small drain cleaning scope into a larger repair once a plumber opens a wall chase or tests under a slab.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written drain cleaning scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Verify a valid TSBPE plumbing license and general liability insurance before work starts.",
-      "Drain Cleaning is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our plumbing hub and neighborhood guides when you want to compare drain cleaning with related work."
+      "Skip DIY on Drain Cleaning when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the plumbing hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 125,
@@ -198,12 +200,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Water Heater Installation in Georgetown, TX — Hard water in Georgetown shortens anode life and scales elements on electric tanks common in… Pricing, FAQs, an…",
     "bodyParagraphs": [
       "Hard water in Georgetown shortens anode life and scales elements on electric tanks common in Teravista garages. Heat-pump and tankless upgrades are popular in Wolf Ranch high-efficiency builds but need correct gas line or electrical capacity in older Sun City slabs.",
-      "In Sun City and Teravista, water heater installation quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Sun City and Teravista mixes slab and two-story stock; water heater installation access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "Most water heater installation calls in Georgetown start with shutting off water at the fixture or main, then isolating whether the issue is a branch line, vent, or supply failure before parts are ordered.",
+      "On water heater installation, expect shutoff confirmation, floor protection, and a pressure or flow test before walls are closed.",
       "Hard water and drought-stressed clay can turn a small water heater installation scope into a larger repair once a plumber opens a wall chase or tests under a slab.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid water heater installation bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Verify a valid TSBPE plumbing license and general liability insurance before work starts.",
-      "Water Heater Installation is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our plumbing hub and neighborhood guides when you want to compare water heater installation with related work."
+      "Water Heater Installation on live systems needs licensed pros in Texas—budget for permits where the city requires them.",
+      "Use the price table as a 2026 planning band, then open the plumbing hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 1200,
@@ -253,12 +257,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Pipe Repair in Georgetown, TX — Copper pinholes and polybutylene remnants still surface in 1990s Georgetown subdivisions, wh… Pricing, FAQs, and local plumbi…",
     "bodyParagraphs": [
       "Copper pinholes and polybutylene remnants still surface in 1990s Georgetown subdivisions, while newer Teravista homes more often see nail-plate nicks or irrigation cross-connections. Slab leaks in Sun City demand isolation tests before jackhammer work.",
-      "In Sun City and Teravista, pipe repair quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects pipe repair scheduling in Sun City and Teravista—book non-emergency work before summer storm surges if you can.",
+      "Most pipe repair calls in Georgetown start with shutting off water at the fixture or main, then isolating whether the issue is a branch line, vent, or supply failure before parts are ordered.",
+      "On pipe repair, expect shutoff confirmation, floor protection, and a pressure or flow test before walls are closed.",
       "Hard water and drought-stressed clay can turn a small pipe repair scope into a larger repair once a plumber opens a wall chase or tests under a slab.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For pipe repair, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Verify a valid TSBPE plumbing license and general liability insurance before work starts.",
-      "Pipe Repair is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our plumbing hub and neighborhood guides when you want to compare pipe repair with related work."
+      "Pipe Repair crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the plumbing hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 175,
@@ -308,12 +314,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Leak Detection in Georgetown, TX — Summer irrigation runtimes in Wolf Ranch and Georgetown Village can mask domestic leaks unti… Pricing, FAQs, and local plu…",
     "bodyParagraphs": [
       "Summer irrigation runtimes in Wolf Ranch and Georgetown Village can mask domestic leaks until the water bill spikes. Acoustic and thermal tools help separate slab supply leaks from attic condensate stains after long Texas cooling seasons.",
-      "In Sun City and Teravista, leak detection quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects leak detection scheduling in Sun City and Teravista—book non-emergency work before summer storm surges if you can.",
+      "Most leak detection calls in Georgetown start with shutting off water at the fixture or main, then isolating whether the issue is a branch line, vent, or supply failure before parts are ordered.",
+      "Ask whether camera footage is included on leak detection—Georgetown clay lines often need video before hydro-jetting.",
       "Hard water and drought-stressed clay can turn a small leak detection scope into a larger repair once a plumber opens a wall chase or tests under a slab.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For leak detection, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Verify a valid TSBPE plumbing license and general liability insurance before work starts.",
-      "Leak Detection is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our plumbing hub and neighborhood guides when you want to compare leak detection with related work."
+      "Leak Detection crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the plumbing hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 200,
@@ -363,12 +371,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Sewer Line Repair in Georgetown, TX — Clay sewer laterals shift in expansive Georgetown soils after drought-breaking rains. Pricing, FAQs, and local plumbing…",
     "bodyParagraphs": [
       "Clay sewer laterals shift in expansive Georgetown soils after drought-breaking rains. Berry Creek’s mature canopy is notorious for root balls, while Teravista infill sometimes shares easements that complicate trenchless access.",
-      "In Sun City and Teravista, sewer line repair quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Sun City and Teravista mixes slab and two-story stock; sewer line repair access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "Most sewer line repair calls in Georgetown start with shutting off water at the fixture or main, then isolating whether the issue is a branch line, vent, or supply failure before parts are ordered.",
+      "Ask whether camera footage is included on sewer line repair—Georgetown clay lines often need video before hydro-jetting.",
       "Hard water and drought-stressed clay can turn a small sewer line repair scope into a larger repair once a plumber opens a wall chase or tests under a slab.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid sewer line repair bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Verify a valid TSBPE plumbing license and general liability insurance before work starts.",
-      "Sewer Line Repair is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our plumbing hub and neighborhood guides when you want to compare sewer line repair with related work."
+      "Sewer Line Repair on live systems needs licensed pros in Texas—budget for permits where the city requires them.",
+      "Use the price table as a 2026 planning band, then open the plumbing hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 2500,
@@ -418,12 +428,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Toilet Installation in Georgetown, TX — Guest baths in Sun City see heavy weekend use; wax rings and closet flanges fail faster when… Pricing, FAQs, and loca…",
     "bodyParagraphs": [
       "Guest baths in Sun City see heavy weekend use; wax rings and closet flanges fail faster when floors settle on slab. High-efficiency models help Teravista homes on municipal conservation tiers without sacrificing flush performance.",
-      "In Sun City and Teravista, toilet installation quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Sun City and Teravista often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "Most toilet installation calls in Georgetown start with shutting off water at the fixture or main, then isolating whether the issue is a branch line, vent, or supply failure before parts are ordered.",
+      "On toilet installation, expect shutoff confirmation, floor protection, and a pressure or flow test before walls are closed.",
       "Hard water and drought-stressed clay can turn a small toilet installation scope into a larger repair once a plumber opens a wall chase or tests under a slab.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written toilet installation scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Verify a valid TSBPE plumbing license and general liability insurance before work starts.",
-      "Toilet Installation is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our plumbing hub and neighborhood guides when you want to compare toilet installation with related work."
+      "Skip DIY on Toilet Installation when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the plumbing hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 225,
@@ -473,12 +485,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Emergency Plumber in Georgetown, TX — Frozen hose bibs are rare, but burst washers on aging stops and AC condensate overflows duri… Pricing, FAQs, and local …",
     "bodyParagraphs": [
       "Frozen hose bibs are rare, but burst washers on aging stops and AC condensate overflows during July heat waves drive after-hours calls across Georgetown. Know your main shutoff before storms roll through Williamson County.",
-      "In Sun City and Teravista, emergency plumber quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Sun City and Teravista mixes slab and two-story stock; emergency plumber access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "Most emergency plumber calls in Georgetown start with shutting off water at the fixture or main, then isolating whether the issue is a branch line, vent, or supply failure before parts are ordered.",
+      "Ask whether camera footage is included on emergency plumber—Georgetown clay lines often need video before hydro-jetting.",
       "Hard water and drought-stressed clay can turn a small emergency plumber scope into a larger repair once a plumber opens a wall chase or tests under a slab.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid emergency plumber bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Verify a valid TSBPE plumbing license and general liability insurance before work starts.",
-      "Emergency Plumber is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our plumbing hub and neighborhood guides when you want to compare emergency plumber with related work."
+      "Emergency Plumber on live systems needs licensed pros in Texas—budget for permits where the city requires them.",
+      "Use the price table as a 2026 planning band, then open the plumbing hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 175,
@@ -528,12 +542,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Water Filtration in Georgetown, TX — Georgetown’s moderately hard water leaves spotting on Wolf Ranch black fixtures and shortens… Pricing, FAQs, and local p…",
     "bodyParagraphs": [
       "Georgetown’s moderately hard water leaves spotting on Wolf Ranch black fixtures and shortens ice maker life in Teravista kitchens. Whole-home softeners plus under-sink RO are common pairings when families want both appliance protection and drinking taste.",
-      "In Sun City and Teravista, water filtration quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects water filtration scheduling in Sun City and Teravista—book non-emergency work before summer storm surges if you can.",
+      "Most water filtration calls in Georgetown start with shutting off water at the fixture or main, then isolating whether the issue is a branch line, vent, or supply failure before parts are ordered.",
+      "On water filtration, expect shutoff confirmation, floor protection, and a pressure or flow test before walls are closed.",
       "Hard water and drought-stressed clay can turn a small water filtration scope into a larger repair once a plumber opens a wall chase or tests under a slab.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For water filtration, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Verify a valid TSBPE plumbing license and general liability insurance before work starts.",
-      "Water Filtration is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our plumbing hub and neighborhood guides when you want to compare water filtration with related work."
+      "Water Filtration crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the plumbing hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 800,
@@ -583,12 +599,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "AC Repair in Georgetown, TX — AC Repair spikes when Georgetown heat indexes top 105°F—capacitors, contactors, and low refr… Pricing, FAQs, and local hvac pros.",
     "bodyParagraphs": [
       "AC Repair spikes when Georgetown heat indexes top 105°F—capacitors, contactors, and low refrigerant are the usual suspects before anyone talks full replacement.",
-      "In Sun City and Wolf Ranch, ac repair quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects ac repair scheduling in Sun City and Wolf Ranch—book non-emergency work before summer storm surges if you can.",
+      "Technicians usually measure temperature split and static pressure on ac repair visits here before recommending capacitors, refrigerant work, or airflow fixes—guesswork is common on busy August afternoons.",
+      "A solid ac repair visit records supply/return temps and documents part numbers before replacement is recommended.",
       "July heat and cedar pollen often expose weak capacitors or clogged coils during ac repair—symptoms that looked minor in spring can fail under full summer load.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For ac repair, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Verify a TDLR HVAC license, EPA refrigerant certification where applicable, and insurance.",
-      "AC Repair is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our hvac hub and neighborhood guides when you want to compare ac repair with related work."
+      "AC Repair crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the hvac hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 150,
@@ -638,12 +656,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "AC Installation in Georgetown, TX — AC Installation must be sized for long Central Texas cooling seasons; undersized equipment s… Pricing, FAQs, and local hv…",
     "bodyParagraphs": [
       "AC Installation must be sized for long Central Texas cooling seasons; undersized equipment struggles in Sun City guest weeks and two-story Teravista plans.",
-      "In Sun City and Wolf Ranch, ac installation quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects ac installation scheduling in Sun City and Wolf Ranch—book non-emergency work before summer storm surges if you can.",
+      "Technicians usually measure temperature split and static pressure on ac installation visits here before recommending capacitors, refrigerant work, or airflow fixes—guesswork is common on busy August afternoons.",
+      "For ac installation, confirm whether refrigerant work is itemized by pound and if the diagnostic fee applies to repair labor.",
       "July heat and cedar pollen often expose weak capacitors or clogged coils during ac installation—symptoms that looked minor in spring can fail under full summer load.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For ac installation, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Verify a TDLR HVAC license, EPA refrigerant certification where applicable, and insurance.",
-      "AC Installation is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our hvac hub and neighborhood guides when you want to compare ac installation with related work."
+      "AC Installation crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the hvac hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 150,
@@ -693,12 +713,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Furnace Repair in Georgetown, TX — Furnace Repair shows up on the coldest Georgetown nights—flame sensors, inducer motors, and … Pricing, FAQs, and local hva…",
     "bodyParagraphs": [
       "Furnace Repair shows up on the coldest Georgetown nights—flame sensors, inducer motors, and cracked heat exchangers are common on furnaces that sit idle most of the year.",
-      "In Sun City and Wolf Ranch, furnace repair quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects furnace repair scheduling in Sun City and Wolf Ranch—book non-emergency work before summer storm surges if you can.",
+      "Technicians usually measure temperature split and static pressure on furnace repair visits here before recommending capacitors, refrigerant work, or airflow fixes—guesswork is common on busy August afternoons.",
+      "A solid furnace repair visit records supply/return temps and documents part numbers before replacement is recommended.",
       "July heat and cedar pollen often expose weak capacitors or clogged coils during furnace repair—symptoms that looked minor in spring can fail under full summer load.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For furnace repair, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Verify a TDLR HVAC license, EPA refrigerant certification where applicable, and insurance.",
-      "Furnace Repair is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our hvac hub and neighborhood guides when you want to compare furnace repair with related work."
+      "Furnace Repair crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the hvac hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 150,
@@ -748,12 +770,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Heat Pump Installation in Georgetown, TX — Heat Pump Installation pairs heating and cooling in one box; Wolf Ranch high-efficiency buil… Pricing, FAQs, and l…",
     "bodyParagraphs": [
       "Heat Pump Installation pairs heating and cooling in one box; Wolf Ranch high-efficiency builds often need electrical and line-set planning before install day.",
-      "In Sun City and Wolf Ranch, heat pump installation quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects heat pump installation scheduling in Sun City and Wolf Ranch—book non-emergency work before summer storm surges if you can.",
+      "Technicians usually measure temperature split and static pressure on heat pump installation visits here before recommending capacitors, refrigerant work, or airflow fixes—guesswork is common on busy August afternoons.",
+      "A solid heat pump installation visit records supply/return temps and documents part numbers before replacement is recommended.",
       "July heat and cedar pollen often expose weak capacitors or clogged coils during heat pump installation—symptoms that looked minor in spring can fail under full summer load.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For heat pump installation, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Verify a TDLR HVAC license, EPA refrigerant certification where applicable, and insurance.",
-      "Heat Pump Installation is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our hvac hub and neighborhood guides when you want to compare heat pump installation with related work."
+      "Heat Pump Installation crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the hvac hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 150,
@@ -803,12 +827,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Air Duct Cleaning in Georgetown, TX — Air Duct Cleaning targets cedar pollen, drywall dust, and pet dander in return runs—especial… Pricing, FAQs, and local …",
     "bodyParagraphs": [
       "Air Duct Cleaning targets cedar pollen, drywall dust, and pet dander in return runs—especially in homes with long attic trunks and rarely changed filters.",
-      "In Sun City and Wolf Ranch, air duct cleaning quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects air duct cleaning scheduling in Sun City and Wolf Ranch—book non-emergency work before summer storm surges if you can.",
+      "Technicians usually measure temperature split and static pressure on air duct cleaning visits here before recommending capacitors, refrigerant work, or airflow fixes—guesswork is common on busy August afternoons.",
+      "For air duct cleaning, confirm whether refrigerant work is itemized by pound and if the diagnostic fee applies to repair labor.",
       "July heat and cedar pollen often expose weak capacitors or clogged coils during air duct cleaning—symptoms that looked minor in spring can fail under full summer load.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For air duct cleaning, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Verify a TDLR HVAC license, EPA refrigerant certification where applicable, and insurance.",
-      "Air Duct Cleaning is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our hvac hub and neighborhood guides when you want to compare air duct cleaning with related work."
+      "Air Duct Cleaning crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the hvac hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 150,
@@ -858,12 +884,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Emergency HVAC in Georgetown, TX — Emergency HVAC calls jump in July when systems run near continuously; know your shutoffs and… Pricing, FAQs, and local hva…",
     "bodyParagraphs": [
       "Emergency HVAC calls jump in July when systems run near continuously; know your shutoffs and filter size before the after-hours truck rolls.",
-      "In Sun City and Wolf Ranch, emergency hvac quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects emergency hvac scheduling in Sun City and Wolf Ranch—book non-emergency work before summer storm surges if you can.",
+      "Technicians usually measure temperature split and static pressure on emergency hvac visits here before recommending capacitors, refrigerant work, or airflow fixes—guesswork is common on busy August afternoons.",
+      "A solid emergency hvac visit records supply/return temps and documents part numbers before replacement is recommended.",
       "July heat and cedar pollen often expose weak capacitors or clogged coils during emergency hvac—symptoms that looked minor in spring can fail under full summer load.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For emergency hvac, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Verify a TDLR HVAC license, EPA refrigerant certification where applicable, and insurance.",
-      "Emergency HVAC is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our hvac hub and neighborhood guides when you want to compare emergency hvac with related work."
+      "Emergency HVAC crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the hvac hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 150,
@@ -913,12 +941,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "HVAC Maintenance in Georgetown, TX — HVAC Maintenance before summer focuses on coil cleaning, drain lines, and amp draws—not just… Pricing, FAQs, and local h…",
     "bodyParagraphs": [
       "HVAC Maintenance before summer focuses on coil cleaning, drain lines, and amp draws—not just swapping a filter.",
-      "In Sun City and Wolf Ranch, hvac maintenance quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Sun City and Wolf Ranch often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "Technicians usually measure temperature split and static pressure on hvac maintenance visits here before recommending capacitors, refrigerant work, or airflow fixes—guesswork is common on busy August afternoons.",
+      "A solid hvac maintenance visit records supply/return temps and documents part numbers before replacement is recommended.",
       "July heat and cedar pollen often expose weak capacitors or clogged coils during hvac maintenance—symptoms that looked minor in spring can fail under full summer load.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written hvac maintenance scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Verify a TDLR HVAC license, EPA refrigerant certification where applicable, and insurance.",
-      "HVAC Maintenance is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our hvac hub and neighborhood guides when you want to compare hvac maintenance with related work."
+      "Skip DIY on HVAC Maintenance when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the hvac hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 150,
@@ -968,12 +998,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Mini Split Installation in Georgetown, TX — Mini Split Installation helps room additions and garage conversions where duct extensions ar… Pricing, FAQs, and …",
     "bodyParagraphs": [
       "Mini Split Installation helps room additions and garage conversions where duct extensions are impractical; line-set routing through brick and stucco matters in Georgetown Village.",
-      "In Sun City and Wolf Ranch, mini split installation quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Sun City and Wolf Ranch mixes slab and two-story stock; mini split installation access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "Technicians usually measure temperature split and static pressure on mini split installation visits here before recommending capacitors, refrigerant work, or airflow fixes—guesswork is common on busy August afternoons.",
+      "For mini split installation, confirm whether refrigerant work is itemized by pound and if the diagnostic fee applies to repair labor.",
       "July heat and cedar pollen often expose weak capacitors or clogged coils during mini split installation—symptoms that looked minor in spring can fail under full summer load.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid mini split installation bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Verify a TDLR HVAC license, EPA refrigerant certification where applicable, and insurance.",
-      "Mini Split Installation is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our hvac hub and neighborhood guides when you want to compare mini split installation with related work."
+      "Mini Split Installation on live systems needs licensed pros in Texas—budget for permits where the city requires them.",
+      "Use the price table as a 2026 planning band, then open the hvac hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 150,
@@ -1023,12 +1055,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Roof Repair in Georgetown, TX — For roof repair, hail history and HOA shingle rules in Sun City and Wolf Ranch affect both m… Pricing, FAQs, and local roofin…",
     "bodyParagraphs": [
       "For roof repair, hail history and HOA shingle rules in Sun City and Wolf Ranch affect both materials and labor.",
-      "In Sun City and Wolf Ranch, roof repair quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Sun City and Wolf Ranch mixes slab and two-story stock; roof repair access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "Roof Repair estimates should note shingle class, underlayment, flashing at penetrations, and whether decking allowance is included—Georgetown hail history makes those line items non-optional on many slopes.",
+      "roof repair work should include photos of decking and penetrations before materials are ordered.",
       "Spring hail and wind can widen a roof repair scope once tear-off exposes soft decking or bruised mats that were invisible from the curb.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid roof repair bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Confirm insurance, local references, and written warranty terms—Texas does not license roofers at the state level.",
-      "Roof Repair is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our roofing hub and neighborhood guides when you want to compare roof repair with related work."
+      "Roof Repair on live systems needs licensed pros in Texas—budget for permits where the city requires them.",
+      "Use the price table as a 2026 planning band, then open the roofing hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 350,
@@ -1078,12 +1112,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Roof Replacement in Georgetown, TX — For roof replacement, hail history and HOA shingle rules in Sun City and Wolf Ranch affect b… Pricing, FAQs, and local r…",
     "bodyParagraphs": [
       "For roof replacement, hail history and HOA shingle rules in Sun City and Wolf Ranch affect both materials and labor.",
-      "In Sun City and Wolf Ranch, roof replacement quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Sun City and Wolf Ranch mixes slab and two-story stock; roof replacement access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "Roof Replacement estimates should note shingle class, underlayment, flashing at penetrations, and whether decking allowance is included—Georgetown hail history makes those line items non-optional on many slopes.",
+      "On roof replacement, verify whether tear-off debris haul-away and permit pulls are in the base price.",
       "Spring hail and wind can widen a roof replacement scope once tear-off exposes soft decking or bruised mats that were invisible from the curb.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid roof replacement bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Confirm insurance, local references, and written warranty terms—Texas does not license roofers at the state level.",
-      "Roof Replacement is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our roofing hub and neighborhood guides when you want to compare roof replacement with related work."
+      "Roof Replacement on live systems needs licensed pros in Texas—budget for permits where the city requires them.",
+      "Use the price table as a 2026 planning band, then open the roofing hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 350,
@@ -1133,12 +1169,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Hail Damage Repair in Georgetown, TX — Hail Damage Repair follows Williamson County spring storms; document with photos before insu… Pricing, FAQs, and local…",
     "bodyParagraphs": [
       "Hail Damage Repair follows Williamson County spring storms; document with photos before insurers or roofers scope repairs.",
-      "In Sun City and Wolf Ranch, hail damage repair quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Sun City and Wolf Ranch often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "Hail Damage Repair estimates should note shingle class, underlayment, flashing at penetrations, and whether decking allowance is included—Georgetown hail history makes those line items non-optional on many slopes.",
+      "hail damage repair work should include photos of decking and penetrations before materials are ordered.",
       "Spring hail and wind can widen a hail damage repair scope once tear-off exposes soft decking or bruised mats that were invisible from the curb.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written hail damage repair scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Confirm insurance, local references, and written warranty terms—Texas does not license roofers at the state level.",
-      "Hail Damage Repair is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our roofing hub and neighborhood guides when you want to compare hail damage repair with related work."
+      "Skip DIY on Hail Damage Repair when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the roofing hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 350,
@@ -1188,12 +1226,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Gutter Installation in Georgetown, TX — For gutter installation, hail history and HOA shingle rules in Sun City and Wolf Ranch affec… Pricing, FAQs, and loca…",
     "bodyParagraphs": [
       "For gutter installation, hail history and HOA shingle rules in Sun City and Wolf Ranch affect both materials and labor.",
-      "In Sun City and Wolf Ranch, gutter installation quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects gutter installation scheduling in Sun City and Wolf Ranch—book non-emergency work before summer storm surges if you can.",
+      "Gutter Installation estimates should note shingle class, underlayment, flashing at penetrations, and whether decking allowance is included—Georgetown hail history makes those line items non-optional on many slopes.",
+      "gutter installation work should include photos of decking and penetrations before materials are ordered.",
       "Spring hail and wind can widen a gutter installation scope once tear-off exposes soft decking or bruised mats that were invisible from the curb.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For gutter installation, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Confirm insurance, local references, and written warranty terms—Texas does not license roofers at the state level.",
-      "Gutter Installation is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our roofing hub and neighborhood guides when you want to compare gutter installation with related work."
+      "Gutter Installation crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the roofing hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 350,
@@ -1243,12 +1283,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Emergency Roof Repair in Georgetown, TX — For emergency roof repair, hail history and HOA shingle rules in Sun City and Wolf Ranch aff… Pricing, FAQs, and lo…",
     "bodyParagraphs": [
       "For emergency roof repair, hail history and HOA shingle rules in Sun City and Wolf Ranch affect both materials and labor.",
-      "In Sun City and Wolf Ranch, emergency roof repair quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Sun City and Wolf Ranch often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "Emergency Roof Repair estimates should note shingle class, underlayment, flashing at penetrations, and whether decking allowance is included—Georgetown hail history makes those line items non-optional on many slopes.",
+      "emergency roof repair work should include photos of decking and penetrations before materials are ordered.",
       "Spring hail and wind can widen a emergency roof repair scope once tear-off exposes soft decking or bruised mats that were invisible from the curb.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written emergency roof repair scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Confirm insurance, local references, and written warranty terms—Texas does not license roofers at the state level.",
-      "Emergency Roof Repair is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our roofing hub and neighborhood guides when you want to compare emergency roof repair with related work."
+      "Skip DIY on Emergency Roof Repair when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the roofing hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 350,
@@ -1298,12 +1340,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Metal Roofing in Georgetown, TX — Metal Roofing handles hail better than asphalt in some cases but needs correct flashing at G… Pricing, FAQs, and local roof…",
     "bodyParagraphs": [
       "Metal Roofing handles hail better than asphalt in some cases but needs correct flashing at Georgetown's hard-driving rain.",
-      "In Sun City and Wolf Ranch, metal roofing quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Sun City and Wolf Ranch often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "Metal Roofing estimates should note shingle class, underlayment, flashing at penetrations, and whether decking allowance is included—Georgetown hail history makes those line items non-optional on many slopes.",
+      "metal roofing work should include photos of decking and penetrations before materials are ordered.",
       "Spring hail and wind can widen a metal roofing scope once tear-off exposes soft decking or bruised mats that were invisible from the curb.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written metal roofing scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Confirm insurance, local references, and written warranty terms—Texas does not license roofers at the state level.",
-      "Metal Roofing is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our roofing hub and neighborhood guides when you want to compare metal roofing with related work."
+      "Skip DIY on Metal Roofing when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the roofing hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 350,
@@ -1353,12 +1397,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Flat Roofing in Georgetown, TX — Flat Roofing on porches and low-slope additions needs drainage planning—ponding shows up aft… Pricing, FAQs, and local roofi…",
     "bodyParagraphs": [
       "Flat Roofing on porches and low-slope additions needs drainage planning—ponding shows up after slow Texas rains.",
-      "In Sun City and Wolf Ranch, flat roofing quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Sun City and Wolf Ranch mixes slab and two-story stock; flat roofing access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "Flat Roofing estimates should note shingle class, underlayment, flashing at penetrations, and whether decking allowance is included—Georgetown hail history makes those line items non-optional on many slopes.",
+      "flat roofing work should include photos of decking and penetrations before materials are ordered.",
       "Spring hail and wind can widen a flat roofing scope once tear-off exposes soft decking or bruised mats that were invisible from the curb.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid flat roofing bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Confirm insurance, local references, and written warranty terms—Texas does not license roofers at the state level.",
-      "Flat Roofing is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our roofing hub and neighborhood guides when you want to compare flat roofing with related work."
+      "Flat Roofing on live systems needs licensed pros in Texas—budget for permits where the city requires them.",
+      "Use the price table as a 2026 planning band, then open the roofing hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 350,
@@ -1408,12 +1454,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Roof Inspection in Georgetown, TX — For roof inspection, hail history and HOA shingle rules in Sun City and Wolf Ranch affect bo… Pricing, FAQs, and local ro…",
     "bodyParagraphs": [
       "For roof inspection, hail history and HOA shingle rules in Sun City and Wolf Ranch affect both materials and labor.",
-      "In Sun City and Wolf Ranch, roof inspection quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Sun City and Wolf Ranch often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "Roof Inspection estimates should note shingle class, underlayment, flashing at penetrations, and whether decking allowance is included—Georgetown hail history makes those line items non-optional on many slopes.",
+      "On roof inspection, verify whether tear-off debris haul-away and permit pulls are in the base price.",
       "Spring hail and wind can widen a roof inspection scope once tear-off exposes soft decking or bruised mats that were invisible from the curb.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written roof inspection scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Confirm insurance, local references, and written warranty terms—Texas does not license roofers at the state level.",
-      "Roof Inspection is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our roofing hub and neighborhood guides when you want to compare roof inspection with related work."
+      "Skip DIY on Roof Inspection when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the roofing hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 350,
@@ -1463,12 +1511,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Panel Upgrade in Georgetown, TX — For panel upgrade, panel age and permit requirements in Georgetown city limits can add time … Pricing, FAQs, and local elec…",
     "bodyParagraphs": [
       "For panel upgrade, panel age and permit requirements in Georgetown city limits can add time beyond the visible repair.",
-      "In Teravista and Wolf Ranch, panel upgrade quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Teravista and Wolf Ranch mixes slab and two-story stock; panel upgrade access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "Licensed electricians document panel capacity, wire gauge, and permit needs on panel upgrade jobs—older Georgetown homes near the Square often need arc-fault upgrades when circuits are extended.",
+      "For panel upgrade, confirm permit responsibility and whether drywall patching is excluded on older Georgetown walls.",
       "Summer AC load and storm outages stress panels during panel upgrade; heat in attics and garages slows safe wire pulls in two-story Teravista homes.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid panel upgrade bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Verify a Texas electrical license and insurance; panel and new-circuit work usually requires permits in Georgetown.",
-      "Panel Upgrade is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our electrical hub and neighborhood guides when you want to compare panel upgrade with related work."
+      "Panel Upgrade on live systems needs licensed pros in Texas—budget for permits where the city requires them.",
+      "Use the price table as a 2026 planning band, then open the electrical hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 150,
@@ -1518,12 +1568,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Outlet Installation in Georgetown, TX — For outlet installation, panel age and permit requirements in Georgetown city limits can add… Pricing, FAQs, and loca…",
     "bodyParagraphs": [
       "For outlet installation, panel age and permit requirements in Georgetown city limits can add time beyond the visible repair.",
-      "In Teravista and Wolf Ranch, outlet installation quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Teravista and Wolf Ranch often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "Licensed electricians document panel capacity, wire gauge, and permit needs on outlet installation jobs—older Georgetown homes near the Square often need arc-fault upgrades when circuits are extended.",
+      "outlet installation should end with labeled circuits, passed inspection when required, and written warranty terms.",
       "Summer AC load and storm outages stress panels during outlet installation; heat in attics and garages slows safe wire pulls in two-story Teravista homes.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written outlet installation scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Verify a Texas electrical license and insurance; panel and new-circuit work usually requires permits in Georgetown.",
-      "Outlet Installation is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our electrical hub and neighborhood guides when you want to compare outlet installation with related work."
+      "Skip DIY on Outlet Installation when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the electrical hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 150,
@@ -1573,12 +1625,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "EV Charger Installation in Georgetown, TX — EV Charger Installation often triggers panel evaluations in Teravista and Wolf Ranch garages… Pricing, FAQs, and …",
     "bodyParagraphs": [
       "EV Charger Installation often triggers panel evaluations in Teravista and Wolf Ranch garages built before EV load was common.",
-      "In Teravista and Wolf Ranch, ev charger installation quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Teravista and Wolf Ranch often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "Licensed electricians document panel capacity, wire gauge, and permit needs on ev charger installation jobs—older Georgetown homes near the Square often need arc-fault upgrades when circuits are extended.",
+      "For ev charger installation, confirm permit responsibility and whether drywall patching is excluded on older Georgetown walls.",
       "Summer AC load and storm outages stress panels during ev charger installation; heat in attics and garages slows safe wire pulls in two-story Teravista homes.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written ev charger installation scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Verify a Texas electrical license and insurance; panel and new-circuit work usually requires permits in Georgetown.",
-      "EV Charger Installation is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our electrical hub and neighborhood guides when you want to compare ev charger installation with related work."
+      "Skip DIY on EV Charger Installation when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the electrical hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 150,
@@ -1628,12 +1682,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Ceiling Fan Installation in Georgetown, TX — For ceiling fan installation, panel age and permit requirements in Georgetown city limits ca… Pricing, FAQs, and…",
     "bodyParagraphs": [
       "For ceiling fan installation, panel age and permit requirements in Georgetown city limits can add time beyond the visible repair.",
-      "In Teravista and Wolf Ranch, ceiling fan installation quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Teravista and Wolf Ranch mixes slab and two-story stock; ceiling fan installation access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "Licensed electricians document panel capacity, wire gauge, and permit needs on ceiling fan installation jobs—older Georgetown homes near the Square often need arc-fault upgrades when circuits are extended.",
+      "ceiling fan installation should end with labeled circuits, passed inspection when required, and written warranty terms.",
       "Summer AC load and storm outages stress panels during ceiling fan installation; heat in attics and garages slows safe wire pulls in two-story Teravista homes.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid ceiling fan installation bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Verify a Texas electrical license and insurance; panel and new-circuit work usually requires permits in Georgetown.",
-      "Ceiling Fan Installation is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our electrical hub and neighborhood guides when you want to compare ceiling fan installation with related work."
+      "Ceiling Fan Installation on live systems needs licensed pros in Texas—budget for permits where the city requires them.",
+      "Use the price table as a 2026 planning band, then open the electrical hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 150,
@@ -1683,12 +1739,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Generator Installation in Georgetown, TX — Generator Installation rises after outage seasons; transfer switches and gas line work must … Pricing, FAQs, and l…",
     "bodyParagraphs": [
       "Generator Installation rises after outage seasons; transfer switches and gas line work must be permitted.",
-      "In Teravista and Wolf Ranch, generator installation quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Teravista and Wolf Ranch mixes slab and two-story stock; generator installation access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "Licensed electricians document panel capacity, wire gauge, and permit needs on generator installation jobs—older Georgetown homes near the Square often need arc-fault upgrades when circuits are extended.",
+      "generator installation should end with labeled circuits, passed inspection when required, and written warranty terms.",
       "Summer AC load and storm outages stress panels during generator installation; heat in attics and garages slows safe wire pulls in two-story Teravista homes.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid generator installation bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Verify a Texas electrical license and insurance; panel and new-circuit work usually requires permits in Georgetown.",
-      "Generator Installation is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our electrical hub and neighborhood guides when you want to compare generator installation with related work."
+      "Generator Installation on live systems needs licensed pros in Texas—budget for permits where the city requires them.",
+      "Use the price table as a 2026 planning band, then open the electrical hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 150,
@@ -1738,12 +1796,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Emergency Electrician in Georgetown, TX — For emergency electrician, panel age and permit requirements in Georgetown city limits can a… Pricing, FAQs, and lo…",
     "bodyParagraphs": [
       "For emergency electrician, panel age and permit requirements in Georgetown city limits can add time beyond the visible repair.",
-      "In Teravista and Wolf Ranch, emergency electrician quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects emergency electrician scheduling in Teravista and Wolf Ranch—book non-emergency work before summer storm surges if you can.",
+      "Licensed electricians document panel capacity, wire gauge, and permit needs on emergency electrician jobs—older Georgetown homes near the Square often need arc-fault upgrades when circuits are extended.",
+      "For emergency electrician, confirm permit responsibility and whether drywall patching is excluded on older Georgetown walls.",
       "Summer AC load and storm outages stress panels during emergency electrician; heat in attics and garages slows safe wire pulls in two-story Teravista homes.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For emergency electrician, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Verify a Texas electrical license and insurance; panel and new-circuit work usually requires permits in Georgetown.",
-      "Emergency Electrician is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our electrical hub and neighborhood guides when you want to compare emergency electrician with related work."
+      "Emergency Electrician crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the electrical hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 150,
@@ -1793,12 +1853,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Whole Home Rewiring in Georgetown, TX — For whole home rewiring, panel age and permit requirements in Georgetown city limits can add… Pricing, FAQs, and loca…",
     "bodyParagraphs": [
       "For whole home rewiring, panel age and permit requirements in Georgetown city limits can add time beyond the visible repair.",
-      "In Teravista and Wolf Ranch, whole home rewiring quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Teravista and Wolf Ranch often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "Licensed electricians document panel capacity, wire gauge, and permit needs on whole home rewiring jobs—older Georgetown homes near the Square often need arc-fault upgrades when circuits are extended.",
+      "For whole home rewiring, confirm permit responsibility and whether drywall patching is excluded on older Georgetown walls.",
       "Summer AC load and storm outages stress panels during whole home rewiring; heat in attics and garages slows safe wire pulls in two-story Teravista homes.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written whole home rewiring scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Verify a Texas electrical license and insurance; panel and new-circuit work usually requires permits in Georgetown.",
-      "Whole Home Rewiring is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our electrical hub and neighborhood guides when you want to compare whole home rewiring with related work."
+      "Skip DIY on Whole Home Rewiring when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the electrical hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 150,
@@ -1848,12 +1910,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Lighting Installation in Georgetown, TX — For lighting installation, panel age and permit requirements in Georgetown city limits can a… Pricing, FAQs, and lo…",
     "bodyParagraphs": [
       "For lighting installation, panel age and permit requirements in Georgetown city limits can add time beyond the visible repair.",
-      "In Teravista and Wolf Ranch, lighting installation quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Teravista and Wolf Ranch often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "Licensed electricians document panel capacity, wire gauge, and permit needs on lighting installation jobs—older Georgetown homes near the Square often need arc-fault upgrades when circuits are extended.",
+      "For lighting installation, confirm permit responsibility and whether drywall patching is excluded on older Georgetown walls.",
       "Summer AC load and storm outages stress panels during lighting installation; heat in attics and garages slows safe wire pulls in two-story Teravista homes.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written lighting installation scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Verify a Texas electrical license and insurance; panel and new-circuit work usually requires permits in Georgetown.",
-      "Lighting Installation is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our electrical hub and neighborhood guides when you want to compare lighting installation with related work."
+      "Skip DIY on Lighting Installation when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the electrical hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 150,
@@ -1903,12 +1967,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Lawn Mowing in Georgetown, TX — For lawn mowing, clay soil and watering rules change how crews schedule installs and mainten… Pricing, FAQs, and local landsc…",
     "bodyParagraphs": [
       "For lawn mowing, clay soil and watering rules change how crews schedule installs and maintenance.",
-      "In Berry Creek and Georgetown Village, lawn mowing quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Berry Creek and Georgetown Village mixes slab and two-story stock; lawn mowing access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "lawn mowing scopes should spell out visit frequency, mulch depth, irrigation zones, and who hauls debris—clay soil and watering restrictions change what survives a Georgetown summer.",
+      "lawn mowing visits should note irrigation runtimes and any city watering restrictions that affect scheduling.",
       "Drought restrictions and heavy rain swings affect lawn mowing timing—clay soil in Berry Creek and Georgetown Village holds or sheds water differently than newer Wolf Ranch lots.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid lawn mowing bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Confirm workers' compensation and liability insurance, plus a written scope for visit frequency and bed work.",
-      "Lawn Mowing is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our landscaping hub and neighborhood guides when you want to compare lawn mowing with related work."
+      "Light lawn mowing prep is fine DIY; equipment rental, chemical, or height work belongs on a pro's scope.",
+      "Use the price table as a 2026 planning band, then open the landscaping hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 45,
@@ -1958,12 +2024,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Sprinkler Installation in Georgetown, TX — For sprinkler installation, clay soil and watering rules change how crews schedule installs … Pricing, FAQs, and l…",
     "bodyParagraphs": [
       "For sprinkler installation, clay soil and watering rules change how crews schedule installs and maintenance.",
-      "In Berry Creek and Georgetown Village, sprinkler installation quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Berry Creek and Georgetown Village often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "sprinkler installation scopes should spell out visit frequency, mulch depth, irrigation zones, and who hauls debris—clay soil and watering restrictions change what survives a Georgetown summer.",
+      "On sprinkler installation, confirm plant warranty length and who waters new installs during the first dry week.",
       "Drought restrictions and heavy rain swings affect sprinkler installation timing—clay soil in Berry Creek and Georgetown Village holds or sheds water differently than newer Wolf Ranch lots.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written sprinkler installation scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Confirm workers' compensation and liability insurance, plus a written scope for visit frequency and bed work.",
-      "Sprinkler Installation is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our landscaping hub and neighborhood guides when you want to compare sprinkler installation with related work."
+      "Skip DIY on Sprinkler Installation when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the landscaping hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 45,
@@ -2013,12 +2081,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Tree Trimming in Georgetown, TX — For tree trimming, clay soil and watering rules change how crews schedule installs and maint… Pricing, FAQs, and local land…",
     "bodyParagraphs": [
       "For tree trimming, clay soil and watering rules change how crews schedule installs and maintenance.",
-      "In Berry Creek and Georgetown Village, tree trimming quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects tree trimming scheduling in Berry Creek and Georgetown Village—book non-emergency work before summer storm surges if you can.",
+      "tree trimming scopes should spell out visit frequency, mulch depth, irrigation zones, and who hauls debris—clay soil and watering restrictions change what survives a Georgetown summer.",
+      "tree trimming visits should note irrigation runtimes and any city watering restrictions that affect scheduling.",
       "Drought restrictions and heavy rain swings affect tree trimming timing—clay soil in Berry Creek and Georgetown Village holds or sheds water differently than newer Wolf Ranch lots.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For tree trimming, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Confirm workers' compensation and liability insurance, plus a written scope for visit frequency and bed work.",
-      "Tree Trimming is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our landscaping hub and neighborhood guides when you want to compare tree trimming with related work."
+      "Tree Trimming crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the landscaping hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 45,
@@ -2068,12 +2138,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Sod Installation in Georgetown, TX — For sod installation, clay soil and watering rules change how crews schedule installs and ma… Pricing, FAQs, and local l…",
     "bodyParagraphs": [
       "For sod installation, clay soil and watering rules change how crews schedule installs and maintenance.",
-      "In Berry Creek and Georgetown Village, sod installation quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects sod installation scheduling in Berry Creek and Georgetown Village—book non-emergency work before summer storm surges if you can.",
+      "sod installation scopes should spell out visit frequency, mulch depth, irrigation zones, and who hauls debris—clay soil and watering restrictions change what survives a Georgetown summer.",
+      "On sod installation, confirm plant warranty length and who waters new installs during the first dry week.",
       "Drought restrictions and heavy rain swings affect sod installation timing—clay soil in Berry Creek and Georgetown Village holds or sheds water differently than newer Wolf Ranch lots.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For sod installation, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Confirm workers' compensation and liability insurance, plus a written scope for visit frequency and bed work.",
-      "Sod Installation is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our landscaping hub and neighborhood guides when you want to compare sod installation with related work."
+      "Sod Installation crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the landscaping hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 45,
@@ -2123,12 +2195,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Landscape Design in Georgetown, TX — For landscape design, clay soil and watering rules change how crews schedule installs and ma… Pricing, FAQs, and local l…",
     "bodyParagraphs": [
       "For landscape design, clay soil and watering rules change how crews schedule installs and maintenance.",
-      "In Berry Creek and Georgetown Village, landscape design quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Berry Creek and Georgetown Village mixes slab and two-story stock; landscape design access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "landscape design scopes should spell out visit frequency, mulch depth, irrigation zones, and who hauls debris—clay soil and watering restrictions change what survives a Georgetown summer.",
+      "landscape design visits should note irrigation runtimes and any city watering restrictions that affect scheduling.",
       "Drought restrictions and heavy rain swings affect landscape design timing—clay soil in Berry Creek and Georgetown Village holds or sheds water differently than newer Wolf Ranch lots.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid landscape design bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Confirm workers' compensation and liability insurance, plus a written scope for visit frequency and bed work.",
-      "Landscape Design is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our landscaping hub and neighborhood guides when you want to compare landscape design with related work."
+      "Light landscape design prep is fine DIY; equipment rental, chemical, or height work belongs on a pro's scope.",
+      "Use the price table as a 2026 planning band, then open the landscaping hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 45,
@@ -2178,12 +2252,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Irrigation Repair in Georgetown, TX — For irrigation repair, clay soil and watering rules change how crews schedule installs and m… Pricing, FAQs, and local …",
     "bodyParagraphs": [
       "For irrigation repair, clay soil and watering rules change how crews schedule installs and maintenance.",
-      "In Berry Creek and Georgetown Village, irrigation repair quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Berry Creek and Georgetown Village mixes slab and two-story stock; irrigation repair access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "irrigation repair scopes should spell out visit frequency, mulch depth, irrigation zones, and who hauls debris—clay soil and watering restrictions change what survives a Georgetown summer.",
+      "irrigation repair visits should note irrigation runtimes and any city watering restrictions that affect scheduling.",
       "Drought restrictions and heavy rain swings affect irrigation repair timing—clay soil in Berry Creek and Georgetown Village holds or sheds water differently than newer Wolf Ranch lots.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid irrigation repair bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Confirm workers' compensation and liability insurance, plus a written scope for visit frequency and bed work.",
-      "Irrigation Repair is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our landscaping hub and neighborhood guides when you want to compare irrigation repair with related work."
+      "Light irrigation repair prep is fine DIY; equipment rental, chemical, or height work belongs on a pro's scope.",
+      "Use the price table as a 2026 planning band, then open the landscaping hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 45,
@@ -2233,12 +2309,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Mulching in Georgetown, TX — For mulching, clay soil and watering rules change how crews schedule installs and maintenance. Pricing, FAQs, and local landscap…",
     "bodyParagraphs": [
       "For mulching, clay soil and watering rules change how crews schedule installs and maintenance.",
-      "In Berry Creek and Georgetown Village, mulching quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Berry Creek and Georgetown Village often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "mulching scopes should spell out visit frequency, mulch depth, irrigation zones, and who hauls debris—clay soil and watering restrictions change what survives a Georgetown summer.",
+      "On mulching, confirm plant warranty length and who waters new installs during the first dry week.",
       "Drought restrictions and heavy rain swings affect mulching timing—clay soil in Berry Creek and Georgetown Village holds or sheds water differently than newer Wolf Ranch lots.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written mulching scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Confirm workers' compensation and liability insurance, plus a written scope for visit frequency and bed work.",
-      "Mulching is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our landscaping hub and neighborhood guides when you want to compare mulching with related work."
+      "Skip DIY on Mulching when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the landscaping hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 45,
@@ -2288,12 +2366,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Seasonal Cleanup in Georgetown, TX — For seasonal cleanup, clay soil and watering rules change how crews schedule installs and ma… Pricing, FAQs, and local l…",
     "bodyParagraphs": [
       "For seasonal cleanup, clay soil and watering rules change how crews schedule installs and maintenance.",
-      "In Berry Creek and Georgetown Village, seasonal cleanup quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects seasonal cleanup scheduling in Berry Creek and Georgetown Village—book non-emergency work before summer storm surges if you can.",
+      "seasonal cleanup scopes should spell out visit frequency, mulch depth, irrigation zones, and who hauls debris—clay soil and watering restrictions change what survives a Georgetown summer.",
+      "On seasonal cleanup, confirm plant warranty length and who waters new installs during the first dry week.",
       "Drought restrictions and heavy rain swings affect seasonal cleanup timing—clay soil in Berry Creek and Georgetown Village holds or sheds water differently than newer Wolf Ranch lots.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For seasonal cleanup, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Confirm workers' compensation and liability insurance, plus a written scope for visit frequency and bed work.",
-      "Seasonal Cleanup is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our landscaping hub and neighborhood guides when you want to compare seasonal cleanup with related work."
+      "Seasonal Cleanup crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the landscaping hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 45,
@@ -2343,12 +2423,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Termite Treatment in Georgetown, TX — For termite treatment, Central Texas species and seasonal humidity drive treatment plans—not… Pricing, FAQs, and local …",
     "bodyParagraphs": [
       "For termite treatment, Central Texas species and seasonal humidity drive treatment plans—not one chemical fits every eave.",
-      "In Berry Creek and Georgetown Village, termite treatment quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Berry Creek and Georgetown Village mixes slab and two-story stock; termite treatment access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "Good termite treatment plans name target species, interior vs exterior treatment, re-service windows, and drying times—fire ants and roof rats flare differently after Williamson County rain.",
+      "For termite treatment, ask how entry points are sealed—not only where bait or spray is applied.",
       "Rain pushes ants and roaches toward slabs after termite treatment; Central Texas humidity changes how long perimeter barriers stay effective.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid termite treatment bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Verify a TPCL applicator license and ask which products will be used indoors vs along the perimeter.",
-      "Termite Treatment is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our pest control hub and neighborhood guides when you want to compare termite treatment with related work."
+      "Termite Treatment on live systems needs licensed pros in Texas—budget for permits where the city requires them.",
+      "Use the price table as a 2026 planning band, then open the pest control hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 95,
@@ -2398,12 +2480,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Mosquito Control in Georgetown, TX — For mosquito control, Central Texas species and seasonal humidity drive treatment plans—not … Pricing, FAQs, and local p…",
     "bodyParagraphs": [
       "For mosquito control, Central Texas species and seasonal humidity drive treatment plans—not one chemical fits every eave.",
-      "In Berry Creek and Georgetown Village, mosquito control quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Berry Creek and Georgetown Village mixes slab and two-story stock; mosquito control access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "Good mosquito control plans name target species, interior vs exterior treatment, re-service windows, and drying times—fire ants and roof rats flare differently after Williamson County rain.",
+      "For mosquito control, ask how entry points are sealed—not only where bait or spray is applied.",
       "Rain pushes ants and roaches toward slabs after mosquito control; Central Texas humidity changes how long perimeter barriers stay effective.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid mosquito control bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Verify a TPCL applicator license and ask which products will be used indoors vs along the perimeter.",
-      "Mosquito Control is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our pest control hub and neighborhood guides when you want to compare mosquito control with related work."
+      "Mosquito Control on live systems needs licensed pros in Texas—budget for permits where the city requires them.",
+      "Use the price table as a 2026 planning band, then open the pest control hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 95,
@@ -2453,12 +2537,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Rodent Control in Georgetown, TX — For rodent control, Central Texas species and seasonal humidity drive treatment plans—not on… Pricing, FAQs, and local pes…",
     "bodyParagraphs": [
       "For rodent control, Central Texas species and seasonal humidity drive treatment plans—not one chemical fits every eave.",
-      "In Berry Creek and Georgetown Village, rodent control quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Berry Creek and Georgetown Village often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "Good rodent control plans name target species, interior vs exterior treatment, re-service windows, and drying times—fire ants and roof rats flare differently after Williamson County rain.",
+      "rodent control plans should list products used indoors, re-entry time, and how many follow-ups are included.",
       "Rain pushes ants and roaches toward slabs after rodent control; Central Texas humidity changes how long perimeter barriers stay effective.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written rodent control scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Verify a TPCL applicator license and ask which products will be used indoors vs along the perimeter.",
-      "Rodent Control is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our pest control hub and neighborhood guides when you want to compare rodent control with related work."
+      "Skip DIY on Rodent Control when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the pest control hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 95,
@@ -2508,12 +2594,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Bed Bug Treatment in Georgetown, TX — For bed bug treatment, Central Texas species and seasonal humidity drive treatment plans—not… Pricing, FAQs, and local …",
     "bodyParagraphs": [
       "For bed bug treatment, Central Texas species and seasonal humidity drive treatment plans—not one chemical fits every eave.",
-      "In Berry Creek and Georgetown Village, bed bug treatment quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Berry Creek and Georgetown Village mixes slab and two-story stock; bed bug treatment access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "Good bed bug treatment plans name target species, interior vs exterior treatment, re-service windows, and drying times—fire ants and roof rats flare differently after Williamson County rain.",
+      "For bed bug treatment, ask how entry points are sealed—not only where bait or spray is applied.",
       "Rain pushes ants and roaches toward slabs after bed bug treatment; Central Texas humidity changes how long perimeter barriers stay effective.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid bed bug treatment bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Verify a TPCL applicator license and ask which products will be used indoors vs along the perimeter.",
-      "Bed Bug Treatment is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our pest control hub and neighborhood guides when you want to compare bed bug treatment with related work."
+      "Bed Bug Treatment on live systems needs licensed pros in Texas—budget for permits where the city requires them.",
+      "Use the price table as a 2026 planning band, then open the pest control hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 95,
@@ -2563,12 +2651,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Scorpion Control in Georgetown, TX — Scorpion Control targets species active along limestone edges and patio lights in warm Georg… Pricing, FAQs, and local p…",
     "bodyParagraphs": [
       "Scorpion Control targets species active along limestone edges and patio lights in warm Georgetown evenings.",
-      "In Berry Creek and Georgetown Village, scorpion control quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Berry Creek and Georgetown Village mixes slab and two-story stock; scorpion control access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "Good scorpion control plans name target species, interior vs exterior treatment, re-service windows, and drying times—fire ants and roof rats flare differently after Williamson County rain.",
+      "For scorpion control, ask how entry points are sealed—not only where bait or spray is applied.",
       "Rain pushes ants and roaches toward slabs after scorpion control; Central Texas humidity changes how long perimeter barriers stay effective.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid scorpion control bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Verify a TPCL applicator license and ask which products will be used indoors vs along the perimeter.",
-      "Scorpion Control is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our pest control hub and neighborhood guides when you want to compare scorpion control with related work."
+      "Scorpion Control on live systems needs licensed pros in Texas—budget for permits where the city requires them.",
+      "Use the price table as a 2026 planning band, then open the pest control hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 95,
@@ -2618,12 +2708,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Ant Control in Georgetown, TX — For ant control, Central Texas species and seasonal humidity drive treatment plans—not one c… Pricing, FAQs, and local pest c…",
     "bodyParagraphs": [
       "For ant control, Central Texas species and seasonal humidity drive treatment plans—not one chemical fits every eave.",
-      "In Berry Creek and Georgetown Village, ant control quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects ant control scheduling in Berry Creek and Georgetown Village—book non-emergency work before summer storm surges if you can.",
+      "Good ant control plans name target species, interior vs exterior treatment, re-service windows, and drying times—fire ants and roof rats flare differently after Williamson County rain.",
+      "For ant control, ask how entry points are sealed—not only where bait or spray is applied.",
       "Rain pushes ants and roaches toward slabs after ant control; Central Texas humidity changes how long perimeter barriers stay effective.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For ant control, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Verify a TPCL applicator license and ask which products will be used indoors vs along the perimeter.",
-      "Ant Control is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our pest control hub and neighborhood guides when you want to compare ant control with related work."
+      "Ant Control crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the pest control hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 95,
@@ -2673,12 +2765,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Cockroach Control in Georgetown, TX — For cockroach control, Central Texas species and seasonal humidity drive treatment plans—not… Pricing, FAQs, and local …",
     "bodyParagraphs": [
       "For cockroach control, Central Texas species and seasonal humidity drive treatment plans—not one chemical fits every eave.",
-      "In Berry Creek and Georgetown Village, cockroach control quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects cockroach control scheduling in Berry Creek and Georgetown Village—book non-emergency work before summer storm surges if you can.",
+      "Good cockroach control plans name target species, interior vs exterior treatment, re-service windows, and drying times—fire ants and roof rats flare differently after Williamson County rain.",
+      "For cockroach control, ask how entry points are sealed—not only where bait or spray is applied.",
       "Rain pushes ants and roaches toward slabs after cockroach control; Central Texas humidity changes how long perimeter barriers stay effective.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For cockroach control, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Verify a TPCL applicator license and ask which products will be used indoors vs along the perimeter.",
-      "Cockroach Control is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our pest control hub and neighborhood guides when you want to compare cockroach control with related work."
+      "Cockroach Control crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the pest control hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 95,
@@ -2728,12 +2822,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Wasp Removal in Georgetown, TX — For wasp removal, Central Texas species and seasonal humidity drive treatment plans—not one … Pricing, FAQs, and local pest …",
     "bodyParagraphs": [
       "For wasp removal, Central Texas species and seasonal humidity drive treatment plans—not one chemical fits every eave.",
-      "In Berry Creek and Georgetown Village, wasp removal quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Berry Creek and Georgetown Village often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "Good wasp removal plans name target species, interior vs exterior treatment, re-service windows, and drying times—fire ants and roof rats flare differently after Williamson County rain.",
+      "wasp removal plans should list products used indoors, re-entry time, and how many follow-ups are included.",
       "Rain pushes ants and roaches toward slabs after wasp removal; Central Texas humidity changes how long perimeter barriers stay effective.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written wasp removal scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Verify a TPCL applicator license and ask which products will be used indoors vs along the perimeter.",
-      "Wasp Removal is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our pest control hub and neighborhood guides when you want to compare wasp removal with related work."
+      "Skip DIY on Wasp Removal when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the pest control hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 95,
@@ -2783,12 +2879,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Foundation Repair in Georgetown, TX — For foundation repair, expansive clay movement is the backdrop—drainage and pier counts matt… Pricing, FAQs, and local …",
     "bodyParagraphs": [
       "For foundation repair, expansive clay movement is the backdrop—drainage and pier counts matter as much as crack width.",
-      "In Wolf Ranch and Teravista, foundation repair quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects foundation repair scheduling in Wolf Ranch and Teravista—book non-emergency work before summer storm surges if you can.",
+      "foundation repair evaluations should include elevation or crack monitoring data, pier type, and drainage recommendations—clay movement without moisture control often retriggers repairs.",
+      "foundation repair proposals should show pier locations, lift tolerances, and plumbing tests after stabilization.",
       "Dry summers shrink clay and wet winters swell it—foundation repair quotes should account for seasonal movement, not just today's crack width.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For foundation repair, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Ask for a documented repair plan, pier specifications, and transferable warranty terms—not a verbal walk-through only.",
-      "Foundation Repair is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our foundation hub and neighborhood guides when you want to compare foundation repair with related work."
+      "Foundation Repair crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the foundation hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 500,
@@ -2838,12 +2936,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Pier And Beam Repair in Georgetown, TX — For pier and beam repair, expansive clay movement is the backdrop—drainage and pier counts m… Pricing, FAQs, and loc…",
     "bodyParagraphs": [
       "For pier and beam repair, expansive clay movement is the backdrop—drainage and pier counts matter as much as crack width.",
-      "In Wolf Ranch and Teravista, pier and beam repair quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects pier and beam repair scheduling in Wolf Ranch and Teravista—book non-emergency work before summer storm surges if you can.",
+      "pier and beam repair evaluations should include elevation or crack monitoring data, pier type, and drainage recommendations—clay movement without moisture control often retriggers repairs.",
+      "On pier and beam repair, drainage corrections belong in the same conversation as pier counts for clay soil.",
       "Dry summers shrink clay and wet winters swell it—pier and beam repair quotes should account for seasonal movement, not just today's crack width.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For pier and beam repair, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Ask for a documented repair plan, pier specifications, and transferable warranty terms—not a verbal walk-through only.",
-      "Pier And Beam Repair is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our foundation hub and neighborhood guides when you want to compare pier and beam repair with related work."
+      "Pier And Beam Repair crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the foundation hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 500,
@@ -2893,12 +2993,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Crack Repair in Georgetown, TX — Crack Repair starts with monitoring—hairline shrinkage cracks differ from widening gaps tied… Pricing, FAQs, and local found…",
     "bodyParagraphs": [
       "Crack Repair starts with monitoring—hairline shrinkage cracks differ from widening gaps tied to clay movement.",
-      "In Wolf Ranch and Teravista, crack repair quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Wolf Ranch and Teravista mixes slab and two-story stock; crack repair access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "crack repair evaluations should include elevation or crack monitoring data, pier type, and drainage recommendations—clay movement without moisture control often retriggers repairs.",
+      "On crack repair, drainage corrections belong in the same conversation as pier counts for clay soil.",
       "Dry summers shrink clay and wet winters swell it—crack repair quotes should account for seasonal movement, not just today's crack width.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid crack repair bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Ask for a documented repair plan, pier specifications, and transferable warranty terms—not a verbal walk-through only.",
-      "Crack Repair is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our foundation hub and neighborhood guides when you want to compare crack repair with related work."
+      "Crack Repair on live systems needs licensed pros in Texas—budget for permits where the city requires them.",
+      "Use the price table as a 2026 planning band, then open the foundation hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 500,
@@ -2948,12 +3050,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Drainage Correction in Georgetown, TX — For drainage correction, expansive clay movement is the backdrop—drainage and pier counts ma… Pricing, FAQs, and loca…",
     "bodyParagraphs": [
       "For drainage correction, expansive clay movement is the backdrop—drainage and pier counts matter as much as crack width.",
-      "In Wolf Ranch and Teravista, drainage correction quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Wolf Ranch and Teravista often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "drainage correction evaluations should include elevation or crack monitoring data, pier type, and drainage recommendations—clay movement without moisture control often retriggers repairs.",
+      "On drainage correction, drainage corrections belong in the same conversation as pier counts for clay soil.",
       "Dry summers shrink clay and wet winters swell it—drainage correction quotes should account for seasonal movement, not just today's crack width.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written drainage correction scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Ask for a documented repair plan, pier specifications, and transferable warranty terms—not a verbal walk-through only.",
-      "Drainage Correction is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our foundation hub and neighborhood guides when you want to compare drainage correction with related work."
+      "Skip DIY on Drainage Correction when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the foundation hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 500,
@@ -3003,12 +3107,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Slab Leak Repair in Georgetown, TX — For slab leak repair, expansive clay movement is the backdrop—drainage and pier counts matte… Pricing, FAQs, and local f…",
     "bodyParagraphs": [
       "For slab leak repair, expansive clay movement is the backdrop—drainage and pier counts matter as much as crack width.",
-      "In Wolf Ranch and Teravista, slab leak repair quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Wolf Ranch and Teravista often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "slab leak repair evaluations should include elevation or crack monitoring data, pier type, and drainage recommendations—clay movement without moisture control often retriggers repairs.",
+      "On slab leak repair, drainage corrections belong in the same conversation as pier counts for clay soil.",
       "Dry summers shrink clay and wet winters swell it—slab leak repair quotes should account for seasonal movement, not just today's crack width.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written slab leak repair scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Ask for a documented repair plan, pier specifications, and transferable warranty terms—not a verbal walk-through only.",
-      "Slab Leak Repair is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our foundation hub and neighborhood guides when you want to compare slab leak repair with related work."
+      "Skip DIY on Slab Leak Repair when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the foundation hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 500,
@@ -3058,12 +3164,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Foundation Inspection in Georgetown, TX — For foundation inspection, expansive clay movement is the backdrop—drainage and pier counts … Pricing, FAQs, and lo…",
     "bodyParagraphs": [
       "For foundation inspection, expansive clay movement is the backdrop—drainage and pier counts matter as much as crack width.",
-      "In Wolf Ranch and Teravista, foundation inspection quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Wolf Ranch and Teravista mixes slab and two-story stock; foundation inspection access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "foundation inspection evaluations should include elevation or crack monitoring data, pier type, and drainage recommendations—clay movement without moisture control often retriggers repairs.",
+      "On foundation inspection, drainage corrections belong in the same conversation as pier counts for clay soil.",
       "Dry summers shrink clay and wet winters swell it—foundation inspection quotes should account for seasonal movement, not just today's crack width.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid foundation inspection bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Ask for a documented repair plan, pier specifications, and transferable warranty terms—not a verbal walk-through only.",
-      "Foundation Inspection is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our foundation hub and neighborhood guides when you want to compare foundation inspection with related work."
+      "Foundation Inspection on live systems needs licensed pros in Texas—budget for permits where the city requires them.",
+      "Use the price table as a 2026 planning band, then open the foundation hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 500,
@@ -3113,12 +3221,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Waterproofing in Georgetown, TX — Waterproofing pairs with drainage when clay swells against slabs after heavy Williamson Coun… Pricing, FAQs, and local foun…",
     "bodyParagraphs": [
       "Waterproofing pairs with drainage when clay swells against slabs after heavy Williamson County rains.",
-      "In Wolf Ranch and Teravista, waterproofing quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects waterproofing scheduling in Wolf Ranch and Teravista—book non-emergency work before summer storm surges if you can.",
+      "waterproofing evaluations should include elevation or crack monitoring data, pier type, and drainage recommendations—clay movement without moisture control often retriggers repairs.",
+      "waterproofing proposals should show pier locations, lift tolerances, and plumbing tests after stabilization.",
       "Dry summers shrink clay and wet winters swell it—waterproofing quotes should account for seasonal movement, not just today's crack width.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For waterproofing, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Ask for a documented repair plan, pier specifications, and transferable warranty terms—not a verbal walk-through only.",
-      "Waterproofing is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our foundation hub and neighborhood guides when you want to compare waterproofing with related work."
+      "Waterproofing crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the foundation hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 500,
@@ -3168,12 +3278,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Soil Stabilization in Georgetown, TX — For soil stabilization, expansive clay movement is the backdrop—drainage and pier counts mat… Pricing, FAQs, and local…",
     "bodyParagraphs": [
       "For soil stabilization, expansive clay movement is the backdrop—drainage and pier counts matter as much as crack width.",
-      "In Wolf Ranch and Teravista, soil stabilization quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Wolf Ranch and Teravista often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "soil stabilization evaluations should include elevation or crack monitoring data, pier type, and drainage recommendations—clay movement without moisture control often retriggers repairs.",
+      "soil stabilization proposals should show pier locations, lift tolerances, and plumbing tests after stabilization.",
       "Dry summers shrink clay and wet winters swell it—soil stabilization quotes should account for seasonal movement, not just today's crack width.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written soil stabilization scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Ask for a documented repair plan, pier specifications, and transferable warranty terms—not a verbal walk-through only.",
-      "Soil Stabilization is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our foundation hub and neighborhood guides when you want to compare soil stabilization with related work."
+      "Skip DIY on Soil Stabilization when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the foundation hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 500,
@@ -3223,12 +3335,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "House Cleaning in Georgetown, TX — For house cleaning, cedar pollen and limestone dust mean more frequent deep work than in sof… Pricing, FAQs, and local cle…",
     "bodyParagraphs": [
       "For house cleaning, cedar pollen and limestone dust mean more frequent deep work than in softer-water markets.",
-      "In Sun City and Georgetown Village, house cleaning quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Sun City and Georgetown Village often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "House Cleaning checklists should list rooms, baseboards, supplies, and cancellation rules—hard-water film and cedar pollen mean Georgetown deep cleans take longer than national checklists suggest.",
+      "For house cleaning, confirm whether ovens, fridges, and interior windows are in scope or priced separately.",
       "Pollen season and hard-water film make house cleaning tougher than in softer-water markets; plan deep work after spring storms if guests are coming.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written house cleaning scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Confirm liability insurance, background-check policy, and a written checklist for standard vs deep cleans.",
-      "House Cleaning is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our cleaning hub and neighborhood guides when you want to compare house cleaning with related work."
+      "Skip DIY on House Cleaning when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the cleaning hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 120,
@@ -3278,12 +3392,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Deep Cleaning in Georgetown, TX — Deep Cleaning tackles pollen, hard-water film, and baseboards that standard visits skip in b… Pricing, FAQs, and local clea…",
     "bodyParagraphs": [
       "Deep Cleaning tackles pollen, hard-water film, and baseboards that standard visits skip in busy Sun City households.",
-      "In Sun City and Georgetown Village, deep cleaning quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Sun City and Georgetown Village often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "Deep Cleaning checklists should list rooms, baseboards, supplies, and cancellation rules—hard-water film and cedar pollen mean Georgetown deep cleans take longer than national checklists suggest.",
+      "For deep cleaning, confirm whether ovens, fridges, and interior windows are in scope or priced separately.",
       "Pollen season and hard-water film make deep cleaning tougher than in softer-water markets; plan deep work after spring storms if guests are coming.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written deep cleaning scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Confirm liability insurance, background-check policy, and a written checklist for standard vs deep cleans.",
-      "Deep Cleaning is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our cleaning hub and neighborhood guides when you want to compare deep cleaning with related work."
+      "Skip DIY on Deep Cleaning when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the cleaning hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 120,
@@ -3333,12 +3449,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Move In Move Out Cleaning in Georgetown, TX — For move in move out cleaning, cedar pollen and limestone dust mean more frequent deep work … Pricing, FAQs, an…",
     "bodyParagraphs": [
       "For move in move out cleaning, cedar pollen and limestone dust mean more frequent deep work than in softer-water markets.",
-      "In Sun City and Georgetown Village, move in move out cleaning quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Sun City and Georgetown Village mixes slab and two-story stock; move in move out cleaning access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "Move In Move Out Cleaning checklists should list rooms, baseboards, supplies, and cancellation rules—hard-water film and cedar pollen mean Georgetown deep cleans take longer than national checklists suggest.",
+      "For move in move out cleaning, confirm whether ovens, fridges, and interior windows are in scope or priced separately.",
       "Pollen season and hard-water film make move in move out cleaning tougher than in softer-water markets; plan deep work after spring storms if guests are coming.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid move in move out cleaning bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Confirm liability insurance, background-check policy, and a written checklist for standard vs deep cleans.",
-      "Move In Move Out Cleaning is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our cleaning hub and neighborhood guides when you want to compare move in move out cleaning with related work."
+      "Light move in move out cleaning prep is fine DIY; equipment rental, chemical, or height work belongs on a pro's scope.",
+      "Use the price table as a 2026 planning band, then open the cleaning hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 120,
@@ -3388,12 +3506,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Post Construction Cleaning in Georgetown, TX — For post construction cleaning, cedar pollen and limestone dust mean more frequent deep work… Pricing, FAQs, a…",
     "bodyParagraphs": [
       "For post construction cleaning, cedar pollen and limestone dust mean more frequent deep work than in softer-water markets.",
-      "In Sun City and Georgetown Village, post construction cleaning quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Sun City and Georgetown Village often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "Post Construction Cleaning checklists should list rooms, baseboards, supplies, and cancellation rules—hard-water film and cedar pollen mean Georgetown deep cleans take longer than national checklists suggest.",
+      "For post construction cleaning, confirm whether ovens, fridges, and interior windows are in scope or priced separately.",
       "Pollen season and hard-water film make post construction cleaning tougher than in softer-water markets; plan deep work after spring storms if guests are coming.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written post construction cleaning scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Confirm liability insurance, background-check policy, and a written checklist for standard vs deep cleans.",
-      "Post Construction Cleaning is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our cleaning hub and neighborhood guides when you want to compare post construction cleaning with related work."
+      "Skip DIY on Post Construction Cleaning when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the cleaning hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 120,
@@ -3443,12 +3563,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Recurring Cleaning in Georgetown, TX — For recurring cleaning, cedar pollen and limestone dust mean more frequent deep work than in… Pricing, FAQs, and local…",
     "bodyParagraphs": [
       "For recurring cleaning, cedar pollen and limestone dust mean more frequent deep work than in softer-water markets.",
-      "In Sun City and Georgetown Village, recurring cleaning quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Sun City and Georgetown Village mixes slab and two-story stock; recurring cleaning access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "Recurring Cleaning checklists should list rooms, baseboards, supplies, and cancellation rules—hard-water film and cedar pollen mean Georgetown deep cleans take longer than national checklists suggest.",
+      "recurring cleaning crews should walk the home with you on first visit to agree on rooms, supplies, and off-limit areas.",
       "Pollen season and hard-water film make recurring cleaning tougher than in softer-water markets; plan deep work after spring storms if guests are coming.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid recurring cleaning bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Confirm liability insurance, background-check policy, and a written checklist for standard vs deep cleans.",
-      "Recurring Cleaning is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our cleaning hub and neighborhood guides when you want to compare recurring cleaning with related work."
+      "Light recurring cleaning prep is fine DIY; equipment rental, chemical, or height work belongs on a pro's scope.",
+      "Use the price table as a 2026 planning band, then open the cleaning hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 120,
@@ -3498,12 +3620,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Carpet Cleaning in Georgetown, TX — For carpet cleaning, cedar pollen and limestone dust mean more frequent deep work than in so… Pricing, FAQs, and local cl…",
     "bodyParagraphs": [
       "For carpet cleaning, cedar pollen and limestone dust mean more frequent deep work than in softer-water markets.",
-      "In Sun City and Georgetown Village, carpet cleaning quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Quotes in Sun City and Georgetown Village often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
+      "Carpet Cleaning checklists should list rooms, baseboards, supplies, and cancellation rules—hard-water film and cedar pollen mean Georgetown deep cleans take longer than national checklists suggest.",
+      "carpet cleaning crews should walk the home with you on first visit to agree on rooms, supplies, and off-limit areas.",
       "Pollen season and hard-water film make carpet cleaning tougher than in softer-water markets; plan deep work after spring storms if guests are coming.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "Compare two written carpet cleaning scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
       "Confirm liability insurance, background-check policy, and a written checklist for standard vs deep cleans.",
-      "Carpet Cleaning is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our cleaning hub and neighborhood guides when you want to compare carpet cleaning with related work."
+      "Skip DIY on Carpet Cleaning when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.",
+      "Use the price table as a 2026 planning band, then open the cleaning hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 120,
@@ -3553,12 +3677,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Window Cleaning in Georgetown, TX — For window cleaning, cedar pollen and limestone dust mean more frequent deep work than in so… Pricing, FAQs, and local cl…",
     "bodyParagraphs": [
       "For window cleaning, cedar pollen and limestone dust mean more frequent deep work than in softer-water markets.",
-      "In Sun City and Georgetown Village, window cleaning quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Sun City and Georgetown Village mixes slab and two-story stock; window cleaning access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
+      "Window Cleaning checklists should list rooms, baseboards, supplies, and cancellation rules—hard-water film and cedar pollen mean Georgetown deep cleans take longer than national checklists suggest.",
+      "For window cleaning, confirm whether ovens, fridges, and interior windows are in scope or priced separately.",
       "Pollen season and hard-water film make window cleaning tougher than in softer-water markets; plan deep work after spring storms if guests are coming.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "A solid window cleaning bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
       "Confirm liability insurance, background-check policy, and a written checklist for standard vs deep cleans.",
-      "Window Cleaning is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our cleaning hub and neighborhood guides when you want to compare window cleaning with related work."
+      "Light window cleaning prep is fine DIY; equipment rental, chemical, or height work belongs on a pro's scope.",
+      "Use the price table as a 2026 planning band, then open the cleaning hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 120,
@@ -3608,12 +3734,14 @@ export const subServicePages: SubServicePage[] = [
     "metaDescription": "Pressure Washing in Georgetown, TX — For pressure washing, cedar pollen and limestone dust mean more frequent deep work than in s… Pricing, FAQs, and local c…",
     "bodyParagraphs": [
       "For pressure washing, cedar pollen and limestone dust mean more frequent deep work than in softer-water markets.",
-      "In Sun City and Georgetown Village, pressure washing quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.",
+      "Drive time from west Williamson County affects pressure washing scheduling in Sun City and Georgetown Village—book non-emergency work before summer storm surges if you can.",
+      "Pressure Washing checklists should list rooms, baseboards, supplies, and cancellation rules—hard-water film and cedar pollen mean Georgetown deep cleans take longer than national checklists suggest.",
+      "pressure washing crews should walk the home with you on first visit to agree on rooms, supplies, and off-limit areas.",
       "Pollen season and hard-water film make pressure washing tougher than in softer-water markets; plan deep work after spring storms if guests are coming.",
-      "Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.",
+      "For pressure washing, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
       "Confirm liability insurance, background-check policy, and a written checklist for standard vs deep cleans.",
-      "Pressure Washing is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.",
-      "Use the price table as a planning band, then follow links to our cleaning hub and neighborhood guides when you want to compare pressure washing with related work."
+      "Pressure Washing crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.",
+      "Use the price table as a 2026 planning band, then open the cleaning hub for related guides and neighborhood pages."
     ],
     "pricing": {
       "low": 120,

@@ -379,6 +379,60 @@ const WEATHER_CONTEXT = {
     `Pollen season and hard-water film make ${job} tougher than in softer-water markets; plan deep work after spring storms if guests are coming.`,
 };
 
+const WORKFLOW = {
+  plumbing: [
+    (job) => `On ${job}, expect shutoff confirmation, floor protection, and a pressure or flow test before walls are closed.`,
+    (job) => `Ask whether camera footage is included on ${job}—Georgetown clay lines often need video before hydro-jetting.`,
+  ],
+  hvac: [
+    (job) => `A solid ${job} visit records supply/return temps and documents part numbers before replacement is recommended.`,
+    (job) => `For ${job}, confirm whether refrigerant work is itemized by pound and if the diagnostic fee applies to repair labor.`,
+  ],
+  roofing: [
+    (job) => `${job} work should include photos of decking and penetrations before materials are ordered.`,
+    (job) => `On ${job}, verify whether tear-off debris haul-away and permit pulls are in the base price.`,
+  ],
+  electrical: [
+    (job) => `${job} should end with labeled circuits, passed inspection when required, and written warranty terms.`,
+    (job) => `For ${job}, confirm permit responsibility and whether drywall patching is excluded on older Georgetown walls.`,
+  ],
+  landscaping: [
+    (job) => `${job} visits should note irrigation runtimes and any city watering restrictions that affect scheduling.`,
+    (job) => `On ${job}, confirm plant warranty length and who waters new installs during the first dry week.`,
+  ],
+  "pest-control": [
+    (job) => `${job} plans should list products used indoors, re-entry time, and how many follow-ups are included.`,
+    (job) => `For ${job}, ask how entry points are sealed—not only where bait or spray is applied.`,
+  ],
+  foundation: [
+    (job) => `${job} proposals should show pier locations, lift tolerances, and plumbing tests after stabilization.`,
+    (job) => `On ${job}, drainage corrections belong in the same conversation as pier counts for clay soil.`,
+  ],
+  cleaning: [
+    (job) => `${job} crews should walk the home with you on first visit to agree on rooms, supplies, and off-limit areas.`,
+    (job) => `For ${job}, confirm whether ovens, fridges, and interior windows are in scope or priced separately.`,
+  ],
+};
+
+const TYPICAL_SCOPE = {
+  plumbing: (name, job) =>
+    `Most ${job} calls in Georgetown start with shutting off water at the fixture or main, then isolating whether the issue is a branch line, vent, or supply failure before parts are ordered.`,
+  hvac: (name, job) =>
+    `Technicians usually measure temperature split and static pressure on ${job} visits here before recommending capacitors, refrigerant work, or airflow fixes—guesswork is common on busy August afternoons.`,
+  roofing: (name, job) =>
+    `${name} estimates should note shingle class, underlayment, flashing at penetrations, and whether decking allowance is included—Georgetown hail history makes those line items non-optional on many slopes.`,
+  electrical: (name, job) =>
+    `Licensed electricians document panel capacity, wire gauge, and permit needs on ${job} jobs—older Georgetown homes near the Square often need arc-fault upgrades when circuits are extended.`,
+  landscaping: (name, job) =>
+    `${job} scopes should spell out visit frequency, mulch depth, irrigation zones, and who hauls debris—clay soil and watering restrictions change what survives a Georgetown summer.`,
+  "pest-control": (name, job) =>
+    `Good ${job} plans name target species, interior vs exterior treatment, re-service windows, and drying times—fire ants and roof rats flare differently after Williamson County rain.`,
+  foundation: (name, job) =>
+    `${job} evaluations should include elevation or crack monitoring data, pier type, and drainage recommendations—clay movement without moisture control often retriggers repairs.`,
+  cleaning: (name, job) =>
+    `${name} checklists should list rooms, baseboards, supplies, and cancellation rules—hard-water film and cedar pollen mean Georgetown deep cleans take longer than national checklists suggest.`,
+};
+
 const LICENSE_LINE = {
   plumbing: "Verify a valid TSBPE plumbing license and general liability insurance before work starts.",
   hvac: "Verify a TDLR HVAC license, EPA refrigerant certification where applicable, and insurance.",
@@ -390,21 +444,60 @@ const LICENSE_LINE = {
   cleaning: "Confirm liability insurance, background-check policy, and a written checklist for standard vs deep cleans.",
 };
 
+function slugHash(key) {
+  let h = 0;
+  for (let i = 0; i < key.length; i++) h = (h * 31 + key.charCodeAt(i)) >>> 0;
+  return h;
+}
+
+const HOOD_LINES = [
+  (hoodNames, job) =>
+    `Quotes in ${hoodNames} often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.`,
+  (hoodNames, job) =>
+    `${hoodNames} mixes slab and two-story stock; ${job} access through garages, crawl spaces, or steep roof planes changes labor more than parts.`,
+  (hoodNames, job) =>
+    `Drive time from west Williamson County affects ${job} scheduling in ${hoodNames}—book non-emergency work before summer storm surges if you can.`,
+];
+
+const HIRING_LINES = [
+  (job) =>
+    `Compare two written ${job} scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.`,
+  (job) =>
+    `A solid ${job} bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.`,
+  (job) =>
+    `For ${job}, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.`,
+];
+
+const DIY_LINES = [
+  (name, serviceSlug) =>
+    `${name} crosses permit or safety lines in most Georgetown homes—DIY makes sense only for tasks your city explicitly allows homeowners to perform.`,
+  (name) =>
+    `Skip DIY on ${name} when manufacturer warranties, gas, refrigerant, or structural loads are involved; the savings rarely cover a failed inspection.`,
+  (name, serviceSlug) =>
+    serviceSlug === "landscaping" || serviceSlug === "cleaning"
+      ? `Light ${name.toLowerCase()} prep is fine DIY; equipment rental, chemical, or height work belongs on a pro's scope.`
+      : `${name} on live systems needs licensed pros in Texas—budget for permits where the city requires them.`,
+];
+
 function buildBody(name, serviceLabel, local, serviceSlug, slug, hoods) {
   const hoodNames = hoods.map((h) => NEIGHBORHOODS[h]).join(" and ");
   const job = slug.replace(/-/g, " ");
+  const key = `${serviceSlug}/${slug}`;
+  const h = slugHash(key);
   const weather =
     WEATHER_CONTEXT[serviceSlug]?.(job) ??
     `Local weather and soil still shape ${job} outcomes in Williamson County—plan for heat, storms, and access limits.`;
   const license = LICENSE_LINE[serviceSlug] ?? "Verify appropriate licensing and insurance for this trade.";
   return [
     local,
-    `In ${hoodNames}, ${job} quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.`,
+    HOOD_LINES[h % HOOD_LINES.length](hoodNames, job),
+    (TYPICAL_SCOPE[serviceSlug] ?? ((n, j) => `Scope ${j} clearly before authorizing work.`))(name, job),
+    (WORKFLOW[serviceSlug]?.[(h + 1) % 2] ?? ((j) => `Document the ${j} scope in writing before work starts.`))(job),
     weather,
-    `Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.`,
+    HIRING_LINES[(h + 3) % HIRING_LINES.length](job),
     license,
-    `${name} is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.`,
-    `Use the price table as a planning band, then follow links to our ${serviceLabel.toLowerCase()} hub and neighborhood guides when you want to compare ${job} with related work.`,
+    DIY_LINES[(h + 7) % DIY_LINES.length](name, serviceSlug),
+    `Use the price table as a ${new Date().getFullYear()} planning band, then open the ${serviceLabel.toLowerCase()} hub for related guides and neighborhood pages.`,
   ];
 }
 
