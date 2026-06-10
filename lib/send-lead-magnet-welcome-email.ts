@@ -1,8 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import { Resend } from "resend";
+import { getSeasonalGuide } from "@/data/seasonal-guides";
 import { LEAD_MAGNET_DOWNLOAD_PATHS, LEAD_MAGNET_PDF_FILENAMES } from "./lead-magnet-downloads";
 import { SITE_URL } from "./page-seo";
+import { getTexasSeason } from "./texas-seasons";
+import { seasonalPdfPath } from "./seasonal-downloads";
 
 function absoluteUrl(pathname: string): string {
   const p = pathname.startsWith("/") ? pathname : `/${pathname}`;
@@ -27,6 +30,9 @@ export async function sendLeadMagnetWelcomeEmail(params: {
   const greet = params.firstName ? `Hi ${params.firstName},` : "Hi there,";
   const seasonalUrl = absoluteUrl(LEAD_MAGNET_DOWNLOAD_PATHS.seasonal);
   const monthlyUrl = absoluteUrl(LEAD_MAGNET_DOWNLOAD_PATHS.monthly);
+  const currentSeason = getTexasSeason();
+  const currentGuide = getSeasonalGuide(currentSeason);
+  const currentSeasonUrl = absoluteUrl(seasonalPdfPath(currentSeason));
 
   let choice: string;
   if (params.leadMagnet === "monthly_reminder") {
@@ -45,7 +51,8 @@ export async function sendLeadMagnetWelcomeEmail(params: {
     `Thanks for joining Georgetown Home Services. ${choice}`,
     "",
     "Download your PDFs (also attached):",
-    `- Seasonal: ${seasonalUrl}`,
+    `- Full-year seasonal: ${seasonalUrl}`,
+    `- ${currentGuide.label} checklist (current season): ${currentSeasonUrl}`,
     `- Monthly reminder: ${monthlyUrl}`,
     "",
     "We’ll only send occasional homeowner tips. You can unsubscribe anytime from any email.",
@@ -61,7 +68,8 @@ export async function sendLeadMagnetWelcomeEmail(params: {
   <p>Thanks for joining <strong>Georgetown Home Services</strong>. ${choice}</p>
   <p><strong>Your PDFs (also attached to this email)</strong></p>
   <ul>
-    <li><a href="${seasonalUrl}" style="color:#01696F;">Seasonal maintenance checklist</a></li>
+    <li><a href="${seasonalUrl}" style="color:#01696F;">Full-year seasonal maintenance checklist</a></li>
+    <li><a href="${currentSeasonUrl}" style="color:#01696F;">${currentGuide.label} checklist (current season)</a></li>
     <li><a href="${monthlyUrl}" style="color:#01696F;">Monthly home maintenance reminder</a></li>
   </ul>
   <p style="font-size: 14px; color: #6b7280;">Print them or save to your phone. We’ll only send occasional tips you can unsubscribe from anytime.</p>
@@ -72,8 +80,9 @@ export async function sendLeadMagnetWelcomeEmail(params: {
   const root = process.cwd();
   const seasonalPath = path.join(root, "public", "downloads", LEAD_MAGNET_PDF_FILENAMES.seasonal);
   const monthlyPath = path.join(root, "public", "downloads", LEAD_MAGNET_PDF_FILENAMES.monthly);
+  const currentSeasonPath = path.join(root, "public", "downloads", currentGuide.pdfFilename);
 
-  if (!fs.existsSync(seasonalPath) || !fs.existsSync(monthlyPath)) {
+  if (!fs.existsSync(seasonalPath) || !fs.existsSync(monthlyPath) || !fs.existsSync(currentSeasonPath)) {
     console.warn("[newsletter] Lead magnet PDFs missing under public/downloads — run npm run generate:lead-pdfs");
     return;
   }
@@ -82,6 +91,10 @@ export async function sendLeadMagnetWelcomeEmail(params: {
     {
       filename: LEAD_MAGNET_PDF_FILENAMES.seasonal,
       content: fs.readFileSync(seasonalPath),
+    },
+    {
+      filename: currentGuide.pdfFilename,
+      content: fs.readFileSync(currentSeasonPath),
     },
     {
       filename: LEAD_MAGNET_PDF_FILENAMES.monthly,

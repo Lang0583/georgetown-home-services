@@ -53,6 +53,9 @@ export default function StickyHeader() {
           <Link href="/costs" className={navLinkClass}>
             Cost guides
           </Link>
+          <Link href="/seasonal" className={navLinkClass}>
+            Seasonal tips
+          </Link>
           <Link href="/blog" className={navLinkClass}>
             Homeowner blog
           </Link>

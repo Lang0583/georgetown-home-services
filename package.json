@@ -20,8 +20,8 @@
   },
   "scripts": {
     "dev": "next dev --turbopack",
-    "generate:lead-pdfs": "node scripts/generate-lead-magnet-pdfs.mjs",
-    "prebuild": "node scripts/write-indexnow-key.cjs && node scripts/write-impact-site-verification.cjs",
+    "generate:lead-pdfs": "tsx scripts/generate-lead-magnet-pdfs.ts",
+    "prebuild": "node scripts/write-indexnow-key.cjs && node scripts/write-impact-site-verification.cjs && npm run generate:lead-pdfs",
     "build": "next build --webpack && node scripts/vercel-mirror-next.cjs",
     "postbuild": "npx next-sitemap && npx tsx scripts/submit-indexnow.ts",
     "vercel-build": "npm run build",

@@ -21,6 +21,7 @@ import {
   getLocationSlugs,
   getServiceSlugs,
 } from "@/lib/site-content";
+import { TEXAS_SEASON_ORDER } from "@/lib/texas-seasons";
 
 function absoluteUrl(path: string): string {
   if (path === "/") return `${SITE_URL}/`;
@@ -51,6 +52,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     { path: "/", priority: 1 },
     { path: "/pricing", priority: 0.7 },
     { path: "/costs", priority: 0.85 },
+    { path: "/seasonal", priority: 0.8 },
     { path: "/about", priority: 0.5 },
     { path: AUTHOR_PROFILE_PATH, priority: 0.5 },
     { path: "/methodology", priority: 0.5 },
@@ -203,6 +205,15 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
+    });
+  }
+
+  for (const season of TEXAS_SEASON_ORDER) {
+    entries.push({
+      url: absoluteUrl(`/seasonal/${season}`),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.75,
     });
   }
 

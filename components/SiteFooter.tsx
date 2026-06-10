@@ -41,6 +41,11 @@ export default function SiteFooter() {
                   Blog
                 </Link>
               </li>
+              <li>
+                <Link className="hover:underline" href="/seasonal">
+                  Seasonal maintenance
+                </Link>
+              </li>
             </ul>
           </div>
 

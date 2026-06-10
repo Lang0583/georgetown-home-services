@@ -7,6 +7,7 @@ import HomeTopProvidersColumn from "../components/HomeTopProvidersColumn";
 import HomeTrustBar from "../components/HomeTrustBar";
 import HomeHowItWorks from "../components/HomeHowItWorks";
 import HomeCostGuidesSection from "../components/HomeCostGuidesSection";
+import SeasonalHomeSection from "../components/SeasonalHomeSection";
 import FAQList from "../components/FAQList";
 import JsonLd from "../components/JsonLd";
 import { pageSeoMetadata, SITE_URL } from "../lib/page-seo";
@@ -188,6 +189,8 @@ export default function Home() {
             </section>
 
             <HomeCostGuidesSection />
+
+            <SeasonalHomeSection />
 
             <HomeHowItWorks />
           </div>
