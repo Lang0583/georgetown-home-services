@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { SeasonalGuide } from "@/data/seasonal-guides";
-import { seasonalPdfPath } from "@/lib/seasonal-downloads";
-import ChecklistLeadMagnetIcon from "./ChecklistLeadMagnetIcon";
+import { pdfLeadKeyForSeason } from "@/lib/seasonal-downloads";
+import PdfEmailDownload from "./PdfEmailDownload";
 
 type Props = {
   guide: SeasonalGuide;
@@ -9,22 +9,17 @@ type Props = {
 };
 
 export default function SeasonalGuideBody({ guide, showPrep = true }: Props) {
-  const pdfHref = seasonalPdfPath(guide.season);
-
   return (
     <div className="space-y-8">
       <p className="text-lg leading-relaxed text-gray-700">{guide.intro}</p>
 
-      <div className="not-prose flex flex-wrap items-center gap-3">
-        <a
-          href={pdfHref}
-          download
-          className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-primary-dark"
-        >
-          <ChecklistLeadMagnetIcon className="h-5 w-5 text-white" />
-          Download {guide.label} checklist (PDF)
-        </a>
-        <span className="text-sm text-gray-600">Free · no signup required</span>
+      <div className="not-prose">
+        <PdfEmailDownload
+          pdfKey={pdfLeadKeyForSeason(guide.season)}
+          source={`seasonal:${guide.season}`}
+          label={`Download ${guide.label} checklist (PDF)`}
+          variant="primary"
+        />
       </div>
 
       {guide.tasks.map((group) => (

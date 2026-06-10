@@ -82,7 +82,7 @@ const SEASONAL_GUIDES: SeasonalGuide[] = [
     relatedLinks: [
       { label: "HVAC repair cost guide", href: "/costs/hvac-repair-cost-georgetown-tx" },
       { label: "After-hail roof checklist", href: "/blog/after-hail-roof-checklist-georgetown-tx" },
-      { label: "Full-year seasonal PDF", href: "/downloads/georgetown-seasonal-home-maintenance-checklist.pdf" },
+      { label: "Full-year seasonal checklists", href: "/seasonal#email-capture" },
     ],
   },
   {

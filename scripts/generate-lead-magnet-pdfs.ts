@@ -1,14 +1,14 @@
 /**
- * Generates lead-magnet and per-season PDFs into public/downloads/.
+ * Generates lead-magnet and per-season PDFs into private/lead-magnets/ (email-gated).
  * Run: npm run generate:lead-pdfs
  */
 import fs from "node:fs";
 import path from "node:path";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import { getAllSeasonalGuides, seasonalGuidePdfSections } from "../data/seasonal-guides";
-import { LEAD_MAGNET_PDF_FILENAMES } from "../lib/lead-magnet-downloads";
+import { LEAD_MAGNET_PDF_DIR } from "../lib/pdf-lead-assets";
 
-const outDir = path.join(process.cwd(), "public", "downloads");
+const outDir = path.join(process.cwd(), LEAD_MAGNET_PDF_DIR);
 
 type PdfSection = { heading: string; bullets: string[] };
 
@@ -156,13 +156,13 @@ async function main() {
 
   const fullYearSections: PdfSection[] = guides.flatMap((guide) => seasonalGuidePdfSections(guide));
   await writePdf(
-    LEAD_MAGNET_PDF_FILENAMES.seasonal,
+    "georgetown-seasonal-home-maintenance-checklist.pdf",
     "Georgetown Homeowner Seasonal Maintenance Checklist",
     fullYearSections,
   );
 
   await writePdf(
-    LEAD_MAGNET_PDF_FILENAMES.monthly,
+    "georgetown-monthly-home-maintenance-reminder.pdf",
     "Monthly Georgetown Home Maintenance Reminder",
     monthlySections,
   );

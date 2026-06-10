@@ -1,10 +1,7 @@
-/** Public paths (served from `public/`) for lead-magnet PDFs. */
-export const LEAD_MAGNET_DOWNLOAD_PATHS = {
-  seasonal: "/downloads/georgetown-seasonal-home-maintenance-checklist.pdf",
-  monthly: "/downloads/georgetown-monthly-home-maintenance-reminder.pdf",
-} as const;
+import { PDF_LEAD_ASSETS } from "@/lib/pdf-lead-assets";
 
+/** Filenames for legacy references and email attachments. */
 export const LEAD_MAGNET_PDF_FILENAMES = {
-  seasonal: "georgetown-seasonal-home-maintenance-checklist.pdf",
-  monthly: "georgetown-monthly-home-maintenance-reminder.pdf",
+  seasonal: PDF_LEAD_ASSETS.seasonal_full.filename,
+  monthly: PDF_LEAD_ASSETS.monthly.filename,
 } as const;

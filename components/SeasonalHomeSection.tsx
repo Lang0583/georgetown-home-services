@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { getSeasonalGuide } from "@/data/seasonal-guides";
 import { getSeasonSchedule } from "@/lib/texas-seasons";
-import { seasonalPdfPath } from "@/lib/seasonal-downloads";
+import { pdfLeadKeyForSeason } from "@/lib/seasonal-downloads";
 import ChecklistLeadMagnetIcon from "./ChecklistLeadMagnetIcon";
+import PdfEmailDownload from "./PdfEmailDownload";
 
 /** Homepage block — auto-highlights current Central Texas season + next-season prep. */
 export default function SeasonalHomeSection() {
@@ -49,13 +50,12 @@ export default function SeasonalHomeSection() {
         >
           {current.label} checklist & tips
         </Link>
-        <a
-          href={seasonalPdfPath(schedule.current)}
-          download
-          className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50"
-        >
-          Download PDF
-        </a>
+        <PdfEmailDownload
+          pdfKey={pdfLeadKeyForSeason(schedule.current)}
+          source="homepage-seasonal"
+          label="Download PDF"
+          variant="secondary"
+        />
         <Link href="/seasonal" className="inline-flex items-center text-sm font-semibold text-primary hover:underline">
           All four seasons →
         </Link>
