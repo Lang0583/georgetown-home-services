@@ -15,6 +15,10 @@ module.exports = {
   additionalPaths: async (config) => {
     const paths = [
       '/blog/hail-damage-georgetown-williamson-may-2026',
+      '/blog/hail-damage-sun-city-georgetown-tx',
+      '/blog/hail-damage-teravista-georgetown-tx',
+      '/blog/hail-damage-wolf-ranch-georgetown-tx',
+      '/blog/hail-damage-georgetown-village-tx',
       ...subServicePaths,
       ...costGuidePaths,
     ];

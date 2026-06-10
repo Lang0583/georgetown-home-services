@@ -360,16 +360,50 @@ function localForSlug(serviceSlug, slug, name) {
   return tradeLead[serviceSlug] ?? `${name} in Georgetown varies by home age, access, and whether the job is emergency or planned.`;
 }
 
+const WEATHER_CONTEXT = {
+  plumbing: (job) =>
+    `Hard water and drought-stressed clay can turn a small ${job} scope into a larger repair once a plumber opens a wall chase or tests under a slab.`,
+  hvac: (job) =>
+    `July heat and cedar pollen often expose weak capacitors or clogged coils during ${job}—symptoms that looked minor in spring can fail under full summer load.`,
+  roofing: (job) =>
+    `Spring hail and wind can widen a ${job} scope once tear-off exposes soft decking or bruised mats that were invisible from the curb.`,
+  electrical: (job) =>
+    `Summer AC load and storm outages stress panels during ${job}; heat in attics and garages slows safe wire pulls in two-story Teravista homes.`,
+  landscaping: (job) =>
+    `Drought restrictions and heavy rain swings affect ${job} timing—clay soil in Berry Creek and Georgetown Village holds or sheds water differently than newer Wolf Ranch lots.`,
+  "pest-control": (job) =>
+    `Rain pushes ants and roaches toward slabs after ${job}; Central Texas humidity changes how long perimeter barriers stay effective.`,
+  foundation: (job) =>
+    `Dry summers shrink clay and wet winters swell it—${job} quotes should account for seasonal movement, not just today's crack width.`,
+  cleaning: (job) =>
+    `Pollen season and hard-water film make ${job} tougher than in softer-water markets; plan deep work after spring storms if guests are coming.`,
+};
+
+const LICENSE_LINE = {
+  plumbing: "Verify a valid TSBPE plumbing license and general liability insurance before work starts.",
+  hvac: "Verify a TDLR HVAC license, EPA refrigerant certification where applicable, and insurance.",
+  roofing: "Confirm insurance, local references, and written warranty terms—Texas does not license roofers at the state level.",
+  electrical: "Verify a Texas electrical license and insurance; panel and new-circuit work usually requires permits in Georgetown.",
+  landscaping: "Confirm workers' compensation and liability insurance, plus a written scope for visit frequency and bed work.",
+  "pest-control": "Verify a TPCL applicator license and ask which products will be used indoors vs along the perimeter.",
+  foundation: "Ask for a documented repair plan, pier specifications, and transferable warranty terms—not a verbal walk-through only.",
+  cleaning: "Confirm liability insurance, background-check policy, and a written checklist for standard vs deep cleans.",
+};
+
 function buildBody(name, serviceLabel, local, serviceSlug, slug, hoods) {
   const hoodNames = hoods.map((h) => NEIGHBORHOODS[h]).join(" and ");
   const job = slug.replace(/-/g, " ");
+  const weather =
+    WEATHER_CONTEXT[serviceSlug]?.(job) ??
+    `Local weather and soil still shape ${job} outcomes in Williamson County—plan for heat, storms, and access limits.`;
+  const license = LICENSE_LINE[serviceSlug] ?? "Verify appropriate licensing and insurance for this trade.";
   return [
     local,
-    `In ${hoodNames}, ${job} quotes often differ from downtown bungalows—drive time, HOA exterior rules, and whether the home is slab or pier-and-beam change how crews stage equipment.`,
-    `Williamson County weather still matters: summer heat, hail season, drought-stressed clay, and cedar pollen can turn a small ${job} scope into a larger repair once a tech opens an attic, roof plane, or cleanout.`,
-    `Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall or roof deck, you want that policy in writing before work starts.`,
-    `Verify insurance and Texas licensing where the trade requires it (plumbing, HVAC, electrical, and pest control each have different state rules). Recent reviews from Georgetown neighbors beat a single star average on any one app.`,
-    `${name} is rarely a good DIY save when code, safety, or manufacturer warranties apply—especially in active-adult communities where access windows and cleanup expectations are strict.`,
+    `In ${hoodNames}, ${job} quotes often differ from downtown bungalows—drive time, HOA rules, and whether the home is slab or pier-and-beam change how crews stage equipment.`,
+    weather,
+    `Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall, attic, or roof deck, get that policy in writing first.`,
+    license,
+    `${name} is rarely a good DIY project when code, safety, or manufacturer warranties apply—especially in active-adult communities with strict access windows.`,
     `Use the price table as a planning band, then follow links to our ${serviceLabel.toLowerCase()} hub and neighborhood guides when you want to compare ${job} with related work.`,
   ];
 }

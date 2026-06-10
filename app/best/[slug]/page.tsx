@@ -42,7 +42,6 @@ import { getBestOfPageFaqs } from "../../../lib/best-of-page-faqs";
 import {
   isExtendedBestSlug,
   isNoindexSlug,
-  isRedirectedBlogSlug,
   isRedirectedServiceSlug,
   showExtendedHomeServices,
 } from "../../../lib/public-site-scope";
@@ -304,7 +303,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
     .map((s) => services.find((x) => x.slug === s))
     .filter((s): s is (typeof services)[number] => Boolean(s));
   const helpfulGuides = getBlogsForBestSlug(best.slug).filter(
-    (b) => !isRedirectedBlogSlug(b.slug) && !isNoindexSlug(b.slug),
+    (b) => !isNoindexSlug(b.slug),
   );
 
   const CORE_BEST = (CORE_BEST_SLUGS as readonly string[])

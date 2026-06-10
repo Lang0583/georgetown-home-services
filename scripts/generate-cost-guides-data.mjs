@@ -10,7 +10,7 @@ const SITE_NAME = "Georgetown Home Services";
 const GUIDES = [
   {
     slug: "plumber-cost-georgetown-tx",
-    serviceName: "a Plumber",
+    serviceName: "Plumber",
     shortName: "Plumber",
     serviceLabel: "Plumbing",
     parentServicePath: "/services/plumbing",
@@ -35,7 +35,7 @@ const GUIDES = [
     factors:
       "Hard water scale, tree roots in clay laterals near Berry Creek, after-hours demand in active-adult communities, and whether the job needs a camera inspection before clearing.",
     included:
-      "A typical quote should list trip or diagnostic fees, labor hours, parts, permit pulls for water heaters, and whether drywall or concrete restoration is excluded.",
+      "Trip or diagnostic fees, labor hours, parts, permit pulls for water heaters, and whether drywall or concrete restoration is excluded.",
     redFlags:
       "Beware flat-rate phone quotes without a site visit, cash-only requests with no license number, and any company that won't isolate a slab leak before demolition.",
     diy:
@@ -582,12 +582,19 @@ const LICENSE_HINT = {
   Cleaning: "workers’ compensation and liability insurance",
 };
 
+function budgetPhrase(g) {
+  const n = g.serviceName.toLowerCase();
+  if (n.startsWith("a ") || n.startsWith("an ")) return g.serviceName;
+  return `${g.serviceLabel.toLowerCase()} work`;
+}
+
 function buildBody(g) {
   const license = LICENSE_HINT[g.serviceLabel] ?? "appropriate licensing and insurance";
+  const includedLine = g.included.endsWith(".") ? g.included : `${g.included}.`;
   return [
-    `If you are budgeting for ${g.shortName} in Georgetown, TX, most jobs fall between ${fmt(g.summaryLow)} and ${fmt(g.summaryHigh)}—use the table below as a ${YEAR} planning band before you sign anything. ${g.local}`,
+    `If you are budgeting for ${budgetPhrase(g)} in Georgetown, TX, most jobs fall between ${fmt(g.summaryLow)} and ${fmt(g.summaryHigh)}—use the table below as a ${YEAR} planning band before you sign anything. ${g.local}`,
     `What moves the number in Williamson County: ${g.factors} Trip charges, material lead times, and summer storm backlogs differ between Sun City, Teravista, and older Georgetown Village streets.`,
-    `A solid quote should spell out: ${g.included} If the scope changes after opening a roof deck, panel, or slab access point, you want change-order rules in writing—not a verbal “we’ll see.”`,
+    `Solid quotes clearly list ${includedLine.charAt(0).toLowerCase()}${includedLine.slice(1)} If the scope changes after opening a roof deck, panel, or slab access point, you want change-order rules in writing—not a verbal “we’ll see.”`,
     `Watch for trouble: ${g.redFlags} Compare two estimates, verify ${license}, and avoid same-day pressure discounts.`,
     `DIY or pro? ${g.diy} Georgetown permits and HOA rules still apply to major systems even when the work looks simple from the curb.`,
     `Seasonality matters—hail season, July AC outages, and holiday guest weeks in Sun City tighten calendars. Off-peak scheduling can save money when the job is not an emergency.`,
@@ -609,7 +616,7 @@ function titleCaseShort(short) {
 }
 
 const pages = GUIDES.map((g) => {
-  const absoluteTitle = `Cost to ${titleCaseShort(g.shortName)} in Georgetown TX (${YEAR}) | ${SITE_NAME}`;
+  const absoluteTitle = `${titleCaseShort(g.shortName)} Cost in Georgetown, TX (${YEAR}) | ${SITE_NAME}`;
   const internalLinks = [
     { label: `${g.serviceLabel} service hub`, href: g.parentServicePath },
     ...g.subLinks.map((href) => ({
@@ -630,7 +637,7 @@ const pages = GUIDES.map((g) => {
     featured: g.featured,
     indexBlurb: g.indexBlurb,
     year: YEAR,
-    h1: `How Much Does ${capitalizeService(g.serviceName)} Cost in Georgetown, TX? (${YEAR} Guide)`,
+    h1: `How Much Does ${costGuideHeading(g)} Cost in Georgetown, TX? (${YEAR} Guide)`,
     absoluteTitle,
     metaDescription: metaDesc(g),
     pricingIntro: `Typical ${g.shortName} price bands reported by Georgetown-area homeowners and aligned with Williamson County contractor estimates (${YEAR}).`,
@@ -666,6 +673,14 @@ function capitalizeService(name) {
     return `${article} ${rest.charAt(0).toUpperCase()}${rest.slice(1)}`;
   }
   return name.charAt(0).toUpperCase() + name.slice(1);
+}
+
+function costGuideHeading(g) {
+  if (g.shortName.toLowerCase() === "plumber") return "a Plumber";
+  if (g.serviceName.startsWith("a ") || g.serviceName.startsWith("an ")) {
+    return capitalizeService(g.serviceName);
+  }
+  return capitalizeService(g.shortName);
 }
 
 const out = `/**

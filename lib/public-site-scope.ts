@@ -101,19 +101,6 @@ export function canonicalServicePathForLinks(href: string): string {
 /** Location slugs that 308 elsewhere — keep in sync with `next.config.ts`. */
 export const REDIRECTED_LOCATION_SLUGS = new Set<string>([]);
 
-/**
- * Thin neighborhood hail blog stubs → canonical neighborhood hail hubs.
- * Keeps one indexable URL per neighborhood intent (see `data/neighborhood-hail-pages.ts`).
- */
-export const REDIRECTED_BLOG_TO_PATH: Readonly<Record<string, string>> = {
-  "hail-damage-sun-city-georgetown-tx": "/neighborhoods/sun-city/hail-damage",
-  "hail-damage-teravista-georgetown-tx": "/neighborhoods/teravista/hail-damage",
-  "hail-damage-wolf-ranch-georgetown-tx": "/neighborhoods/wolf-ranch/hail-damage",
-  "hail-damage-georgetown-village-tx": "/neighborhoods/georgetown-village/hail-damage",
-};
-
-export const REDIRECTED_BLOG_SLUGS = new Set<string>(Object.keys(REDIRECTED_BLOG_TO_PATH));
-
 export function isRedirectedServiceSlug(slug: string): boolean {
   return REDIRECTED_SERVICE_SLUGS.has(slug);
 }
@@ -122,44 +109,14 @@ export function isRedirectedLocationSlug(slug: string): boolean {
   return REDIRECTED_LOCATION_SLUGS.has(slug);
 }
 
-export function isRedirectedBlogSlug(slug: string): boolean {
-  return REDIRECTED_BLOG_SLUGS.has(slug);
-}
-
 /**
  * Slugs that should render with `<meta name="robots" content="noindex">`.
  *
- * Phase 2 of AdSense / indexation remediation: pages flagged thin in the
- * weekly content-health audit that have no consolidation target. We hide them
- * from Google until they are substantively rewritten.
- *
- * Rules used to populate this list (see `scripts/seo/audit-content-health.ts`):
- *   - The slug appears in `.reports/content-health.json` with a `thin:` flag.
- *   - The slug is NOT in `REDIRECTED_SERVICE_SLUGS` (a redirect supersedes
- *     noindex).
- *   - The slug is NOT a consolidation HUB (`roofer-georgetown-tx`,
- *     `hvac-georgetown-tx`, `plumber-georgetown-tx`, `georgetown-tx` location).
- *     Those pages must remain indexable as the redirect destinations.
- *   - The slug is NOT a cost guide that gets a `BlogCostSupplement` injected
- *     at render time (see `lib/pricing-data.ts` `COST_POST_SUPPLEMENTS`) —
- *     those have real pricing the audit's static word-count cannot see.
- *
- * Remove a slug from this set the moment its content is rewritten to clear
- * the thin-content threshold (~800 words for blog/service, ~500 for best/
- * location). Then resubmit the URL via Search Console URL Inspection.
- *
- * Regenerating: run `npm run seo:audit` and reconcile against the audit
- * output. There is no auto-update script — this file is the human-curated
- * source of truth.
+ * Populated only when a page is intentionally withheld from indexation (thin
+ * stub with no rewrite yet, legal hold, etc.). Remove slugs once content is
+ * expanded. See `scripts/seo/audit-content-health.ts` and `docs/seo-pipeline.md`.
  */
-export const NOINDEX_SLUGS = new Set<string>([
-  // Thin extended-trade service guides — trade hubs (/services/electrical, etc.) are canonical until rewritten.
-  "electrician-georgetown-tx",
-  "landscaping-georgetown-tx",
-  "pest-control-georgetown-tx",
-  "foundation-repair-georgetown-tx",
-  "house-cleaning-georgetown-tx",
-]);
+export const NOINDEX_SLUGS = new Set<string>([]);
 
 export function isNoindexSlug(slug: string): boolean {
   return NOINDEX_SLUGS.has(slug);

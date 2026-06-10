@@ -35,7 +35,6 @@ import { CORE_SERVICE_SLUGS, resolveServicePage } from "../../../lib/pageContent
 import {
   isExtendedServiceSlug,
   isNoindexSlug,
-  isRedirectedBlogSlug,
   isRedirectedServiceSlug,
   showExtendedHomeServices,
 } from "../../../lib/public-site-scope";
@@ -122,7 +121,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     .map((s) => getBestBySlug(s))
     .filter((b): b is NonNullable<typeof b> => Boolean(b));
   const helpfulGuides = getBlogsForServiceSlug(service.slug).filter(
-    (b) => !isRedirectedBlogSlug(b.slug) && !isNoindexSlug(b.slug),
+    (b) => !isNoindexSlug(b.slug),
   );
   const businessCategory = getBusinessCategoryForServiceSlug(service.slug);
   const providersFromJson =
