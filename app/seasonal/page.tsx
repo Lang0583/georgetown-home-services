@@ -7,12 +7,13 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { getAllSeasonalGuides, getSeasonalGuide } from "@/data/seasonal-guides";
 import { pageSeoMetadata } from "@/lib/page-seo";
 import { getSeasonSchedule, TEXAS_SEASON_ORDER, type TexasSeason } from "@/lib/texas-seasons";
-import { seasonalPdfPath } from "@/lib/seasonal-downloads";
+import PdfEmailDownload from "@/components/PdfEmailDownload";
+import { pdfLeadKeyForSeason } from "@/lib/seasonal-downloads";
 
 export const metadata: Metadata = pageSeoMetadata({
   absoluteTitle: "Georgetown TX Seasonal Home Maintenance (2026) | Spring–Winter Checklists",
   description:
-    "Automatic seasonal home maintenance for Georgetown, TX: spring, summer, fall, and winter checklists with next-season prep tips and free downloadable PDFs for Central Texas homeowners.",
+    "Automatic seasonal home maintenance for Georgetown, TX: spring, summer, fall, and winter checklists with next-season prep tips and downloadable PDF checklists for Central Texas homeowners.",
   pathname: "/seasonal",
   ogType: "website",
 });
@@ -42,9 +43,11 @@ function SeasonCard({ season, active }: { season: TexasSeason; active: boolean }
         <span className="text-gray-300" aria-hidden>
           ·
         </span>
-        <a href={seasonalPdfPath(season)} download className="text-gray-800 hover:text-primary hover:underline">
-          PDF
-        </a>
+        <PdfEmailDownload
+          pdfKey={pdfLeadKeyForSeason(season)}
+          source={`seasonal-hub:${season}`}
+          variant="link"
+        />
       </div>
     </article>
   );
@@ -86,7 +89,7 @@ export default function SeasonalHubPage() {
             All four seasons
           </h2>
           <p className="mt-2 text-sm text-gray-700">
-            Pages and PDFs update by calendar—no account required for downloads.
+            Pages update by calendar; enter your email once to download any checklist PDF.
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             {TEXAS_SEASON_ORDER.map((season) => (
@@ -103,8 +106,7 @@ export default function SeasonalHubPage() {
             defaultOffer="seasonal_checklist"
           />
           <p className="mt-2 text-xs text-gray-600">
-            Email signup includes the full-year seasonal PDF plus monthly reminders—optional if you only need the current
-            season PDF above.
+            Prefer the full-year bundle? Sign up here for the complete seasonal guide plus monthly reminders.
           </p>
         </section>
       </div>

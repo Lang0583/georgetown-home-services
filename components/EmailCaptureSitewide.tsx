@@ -97,8 +97,9 @@ export default function EmailCaptureSitewide({
         }),
       });
 
+      const data = (await res.json().catch(() => null)) as { error?: string; downloadUrl?: string } | null;
+
       if (!res.ok) {
-        const data = (await res.json().catch(() => null)) as { error?: string } | null;
         throw new Error(data?.error ?? "Something went wrong");
       }
 
@@ -106,6 +107,10 @@ export default function EmailCaptureSitewide({
       setStatus("success");
       setEmail("");
       setFirstName("");
+
+      if (data?.downloadUrl) {
+        window.location.assign(data.downloadUrl);
+      }
     } catch (err) {
       setStatus("error");
       setError(err instanceof Error ? err.message : "Something went wrong");

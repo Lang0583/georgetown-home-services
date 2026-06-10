@@ -33,7 +33,7 @@ export async function generateMetadata({
     guide.intro.length > 152 ? `${guide.intro.slice(0, 152)}…` : guide.intro;
   return pageSeoMetadata({
     absoluteTitle: `${guide.label} Home Checklist Georgetown TX (${guide.monthsLabel})`,
-    description: `${intro} Free PDF download.${isCurrent ? " Updated for the current season." : ""}`,
+    description: `${intro} Email for the PDF checklist.${isCurrent ? " Updated for the current season." : ""}`,
     pathname: `/seasonal/${raw}`,
     ogType: "website",
   });
