@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { subServicePages } from "@/data/sub-services";
 import { neighborhoodServicePages } from "@/data/neighborhoods";
 import { NEIGHBORHOOD_HOME_SERVICES_HUBS } from "@/data/neighborhood-home-services-hubs";
 import { NEIGHBORHOOD_HAIL_PAGES } from "@/data/neighborhood-hail-pages";
@@ -184,6 +185,16 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     });
   }
   // Source lists: `data/neighborhoods.ts` (40 × service pages) + `data/neighborhood-home-services-hubs.ts` (5 hubs) + `data/neighborhood-hail-pages.ts`.
+
+  for (const p of subServicePages) {
+    if (!showExtendedHomeServices() && p.extended) continue;
+    entries.push({
+      url: absoluteUrl(`/${p.serviceSlug}/${p.slug}`),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+  }
 
   return entries;
 }

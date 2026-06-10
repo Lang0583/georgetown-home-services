@@ -1,3 +1,5 @@
+const subServicePaths = require('./data/sub-service-paths.json');
+
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: 'https://georgetownhomeservices.com',
@@ -16,6 +18,7 @@ module.exports = {
       '/blog/hail-damage-teravista-georgetown-tx',
       '/blog/hail-damage-wolf-ranch-georgetown-tx',
       '/blog/hail-damage-georgetown-village-tx',
+      ...subServicePaths,
     ];
     return Promise.all(paths.map((path) => config.transform(config, path)));
   },

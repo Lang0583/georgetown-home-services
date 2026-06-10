@@ -65,3 +65,9 @@ export function angiGeorgetownListUrl(angiCategorySlug: string): string {
 // Apply at: https://app.impact.com — search "Angi" or partner name in marketplace
 export const HOMEADVISOR_GEORGETOWN_URL =
   "https://www.homeadvisor.com/c.html?state=TX&city=Georgetown";
+
+/** Thumbtack category pages for Georgetown, TX (non-affiliate until Impact tag is live). */
+export function thumbtackGeorgetownUrl(categoryPath: string): string {
+  const segment = categoryPath.trim().replace(/^\/+|\/+$/g, "");
+  return `https://www.thumbtack.com/tx/georgetown/${segment}/`;
+}
