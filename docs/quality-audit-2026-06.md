@@ -19,7 +19,17 @@ Full pass prioritizing **AI slop removal**, **editorial depth**, and **measurabl
 2. **Blog posts** — 8 posts under 800w (mostly cost adjuncts with injected pricing at render time).
 3. **Neighborhood × service (×42)** — Not in automated audit yet; spot-check `data/neighborhoods.ts` for formulaic `whyLocal` blocks.
 4. **AdSense** — Manual dashboard check for Auto Ads vs manual unit overlap.
-5. **Production link crawl** — Run `node scripts/audit-links.mjs` against production when convenient.
+5. **Production link crawl** — `BASE_URL=https://www.georgetownhomeservices.com node scripts/audit-links.mjs` (June 10, 2026: fixed `/services/plumbing-georgetown-tx` 404 on seasonal pages; added 301 to plumber hub).
+
+## June 10 follow-up audit
+
+| Area | Finding | Action |
+|------|---------|--------|
+| Broken internal links | `/services/plumbing-georgetown-tx` linked from seasonal guides (404) | Fixed to `plumber-georgetown-tx`; 301 redirect added |
+| Roofing sub-services | Identical “non-optional on many slopes” line on 8 pages | Varied `TYPICAL_SCOPE` in generator; regenerated `sub-services.ts` |
+| PDF lead magnets | Welcome email sent only 3 of 6 PDFs | Welcome email now attaches **all six** gated PDFs + signed links |
+| Signup paths | Service-request seasonal opt-in skipped welcome email | Now calls `sendLeadMagnetWelcomeEmail` after list signup |
+| Thin generated pages | 45 pages under 800w in `seo:audit` | Hubs OK; sub-service stubs remain backlog (no deletes) |
 
 ## Commands
 

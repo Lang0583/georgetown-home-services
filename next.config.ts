@@ -62,6 +62,11 @@ const nextConfig: NextConfig = {
         destination: "/services/hvac",
         permanent: true,
       },
+      {
+        source: "/services/plumbing-georgetown-tx",
+        destination: "/services/plumber-georgetown-tx",
+        permanent: true,
+      },
       // Harmless `?page=1` on non-paginated hubs equals the bare URL — strip the param.
       {
         source: "/blog",

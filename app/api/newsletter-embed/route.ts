@@ -37,14 +37,11 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: result.error }, { status });
   }
 
+  let emailed = false;
   if (result.recorded) {
     const to = (body.email ?? "").replace(/\s+/g, " ").trim();
-    try {
-      await sendLeadMagnetWelcomeEmail({ to });
-    } catch {
-      /* signup already succeeded */
-    }
+    emailed = await sendLeadMagnetWelcomeEmail({ to, leadMagnet: "seasonal_checklist" });
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, emailed });
 }

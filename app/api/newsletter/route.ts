@@ -87,20 +87,15 @@ export async function POST(req: Request) {
     (leadMagnet ? pdfLeadAssetForLeadMagnet(leadMagnet as LeadMagnetKey)?.key : undefined);
   const downloadUrl = resolvedPdfKey
     ? createImmediatePdfDownloadUrl(resolvedPdfKey, email)
-    : undefined;
+    : createImmediatePdfDownloadUrl("seasonal_full", email);
 
-  try {
-    await sendLeadMagnetWelcomeEmail({
-      to: email,
-      firstName,
-      leadMagnet,
-      pdfKey: resolvedPdfKey,
-    });
-    return NextResponse.json({ ok: true, emailed: true, recorded: true, downloadUrl });
-  } catch {
-    // Never fail signup if transactional email errors, but surface status to the client.
-  }
+  const emailed = await sendLeadMagnetWelcomeEmail({
+    to: email,
+    firstName,
+    leadMagnet,
+    pdfKey: resolvedPdfKey,
+  });
 
-  return NextResponse.json({ ok: true, emailed: false, recorded: true, downloadUrl });
+  return NextResponse.json({ ok: true, emailed, recorded: true, downloadUrl });
 }
 

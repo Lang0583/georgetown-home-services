@@ -169,7 +169,7 @@ export default function EmailCaptureSitewide({
 
           {status === "success" ? (
             <div className="rounded-md border border-emerald-500/30 bg-emerald-50 px-3 py-2 text-xs text-emerald-900">
-              Thanks — check your inbox for the guide.
+              Thanks — your PDF is downloading and the full library is headed to your inbox.
             </div>
           ) : null}
           {status === "error" && error ? (
@@ -267,7 +267,7 @@ export default function EmailCaptureSitewide({
 
         {status === "success" ? (
           <div className="rounded-lg border border-emerald-500/30 bg-emerald-50 p-4 text-sm text-emerald-900 md:col-span-2">
-            Thanks{firstName.trim() ? `, ${firstName.trim()}` : ""} — check your inbox for the guide.
+            Thanks{firstName.trim() ? `, ${firstName.trim()}` : ""} — your PDF is downloading and the full checklist library is on its way to your inbox.
           </div>
         ) : null}
         {status === "error" && error ? (

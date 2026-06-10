@@ -1056,7 +1056,7 @@ export const subServicePages: SubServicePage[] = [
     "bodyParagraphs": [
       "For roof repair, hail history and HOA shingle rules in Sun City and Wolf Ranch affect both materials and labor.",
       "Sun City and Wolf Ranch mixes slab and two-story stock; roof repair access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
-      "Roof Repair estimates should note shingle class, underlayment, flashing at penetrations, and whether decking allowance is included—Georgetown hail history makes those line items non-optional on many slopes.",
+      "roof repair scopes in Georgetown should spell out shingle class, underlayment, and flashing at penetrations—hail seasons make vague allowances expensive later.",
       "roof repair work should include photos of decking and penetrations before materials are ordered.",
       "Spring hail and wind can widen a roof repair scope once tear-off exposes soft decking or bruised mats that were invisible from the curb.",
       "A solid roof repair bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
@@ -1113,7 +1113,7 @@ export const subServicePages: SubServicePage[] = [
     "bodyParagraphs": [
       "For roof replacement, hail history and HOA shingle rules in Sun City and Wolf Ranch affect both materials and labor.",
       "Sun City and Wolf Ranch mixes slab and two-story stock; roof replacement access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
-      "Roof Replacement estimates should note shingle class, underlayment, flashing at penetrations, and whether decking allowance is included—Georgetown hail history makes those line items non-optional on many slopes.",
+      "Roof Replacement quotes should note ventilation balance and whether ridge caps are replaced in a full run—not spot patches after wind events.",
       "On roof replacement, verify whether tear-off debris haul-away and permit pulls are in the base price.",
       "Spring hail and wind can widen a roof replacement scope once tear-off exposes soft decking or bruised mats that were invisible from the curb.",
       "A solid roof replacement bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
@@ -1170,7 +1170,7 @@ export const subServicePages: SubServicePage[] = [
     "bodyParagraphs": [
       "Hail Damage Repair follows Williamson County spring storms; document with photos before insurers or roofers scope repairs.",
       "Quotes in Sun City and Wolf Ranch often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
-      "Hail Damage Repair estimates should note shingle class, underlayment, flashing at penetrations, and whether decking allowance is included—Georgetown hail history makes those line items non-optional on many slopes.",
+      "Hail Damage Repair quotes should note ventilation balance and whether ridge caps are replaced in a full run—not spot patches after wind events.",
       "hail damage repair work should include photos of decking and penetrations before materials are ordered.",
       "Spring hail and wind can widen a hail damage repair scope once tear-off exposes soft decking or bruised mats that were invisible from the curb.",
       "Compare two written hail damage repair scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
@@ -1227,7 +1227,7 @@ export const subServicePages: SubServicePage[] = [
     "bodyParagraphs": [
       "For gutter installation, hail history and HOA shingle rules in Sun City and Wolf Ranch affect both materials and labor.",
       "Drive time from west Williamson County affects gutter installation scheduling in Sun City and Wolf Ranch—book non-emergency work before summer storm surges if you can.",
-      "Gutter Installation estimates should note shingle class, underlayment, flashing at penetrations, and whether decking allowance is included—Georgetown hail history makes those line items non-optional on many slopes.",
+      "gutter installation scopes in Georgetown should spell out shingle class, underlayment, and flashing at penetrations—hail seasons make vague allowances expensive later.",
       "gutter installation work should include photos of decking and penetrations before materials are ordered.",
       "Spring hail and wind can widen a gutter installation scope once tear-off exposes soft decking or bruised mats that were invisible from the curb.",
       "For gutter installation, ask whether the trip or diagnostic fee applies toward repair if you proceed the same day—policies differ across Georgetown shops.",
@@ -1284,7 +1284,7 @@ export const subServicePages: SubServicePage[] = [
     "bodyParagraphs": [
       "For emergency roof repair, hail history and HOA shingle rules in Sun City and Wolf Ranch affect both materials and labor.",
       "Quotes in Sun City and Wolf Ranch often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
-      "Emergency Roof Repair estimates should note shingle class, underlayment, flashing at penetrations, and whether decking allowance is included—Georgetown hail history makes those line items non-optional on many slopes.",
+      "Emergency Roof Repair quotes should note ventilation balance and whether ridge caps are replaced in a full run—not spot patches after wind events.",
       "emergency roof repair work should include photos of decking and penetrations before materials are ordered.",
       "Spring hail and wind can widen a emergency roof repair scope once tear-off exposes soft decking or bruised mats that were invisible from the curb.",
       "Compare two written emergency roof repair scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
@@ -1341,7 +1341,7 @@ export const subServicePages: SubServicePage[] = [
     "bodyParagraphs": [
       "Metal Roofing handles hail better than asphalt in some cases but needs correct flashing at Georgetown's hard-driving rain.",
       "Quotes in Sun City and Wolf Ranch often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
-      "Metal Roofing estimates should note shingle class, underlayment, flashing at penetrations, and whether decking allowance is included—Georgetown hail history makes those line items non-optional on many slopes.",
+      "metal roofing scopes in Georgetown should spell out shingle class, underlayment, and flashing at penetrations—hail seasons make vague allowances expensive later.",
       "metal roofing work should include photos of decking and penetrations before materials are ordered.",
       "Spring hail and wind can widen a metal roofing scope once tear-off exposes soft decking or bruised mats that were invisible from the curb.",
       "Compare two written metal roofing scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",
@@ -1398,7 +1398,7 @@ export const subServicePages: SubServicePage[] = [
     "bodyParagraphs": [
       "Flat Roofing on porches and low-slope additions needs drainage planning—ponding shows up after slow Texas rains.",
       "Sun City and Wolf Ranch mixes slab and two-story stock; flat roofing access through garages, crawl spaces, or steep roof planes changes labor more than parts.",
-      "Flat Roofing estimates should note shingle class, underlayment, flashing at penetrations, and whether decking allowance is included—Georgetown hail history makes those line items non-optional on many slopes.",
+      "Flat Roofing quotes should note ventilation balance and whether ridge caps are replaced in a full run—not spot patches after wind events.",
       "flat roofing work should include photos of decking and penetrations before materials are ordered.",
       "Spring hail and wind can widen a flat roofing scope once tear-off exposes soft decking or bruised mats that were invisible from the curb.",
       "A solid flat roofing bid states what happens if hidden damage appears after tear-off or wall opening; get that in writing before work starts.",
@@ -1455,7 +1455,7 @@ export const subServicePages: SubServicePage[] = [
     "bodyParagraphs": [
       "For roof inspection, hail history and HOA shingle rules in Sun City and Wolf Ranch affect both materials and labor.",
       "Quotes in Sun City and Wolf Ranch often run higher than central Georgetown when crews factor HOA gates, narrow lots, or long attic runs—ask what is included in the trip fee.",
-      "Roof Inspection estimates should note shingle class, underlayment, flashing at penetrations, and whether decking allowance is included—Georgetown hail history makes those line items non-optional on many slopes.",
+      "Roof Inspection quotes should note ventilation balance and whether ridge caps are replaced in a full run—not spot patches after wind events.",
       "On roof inspection, verify whether tear-off debris haul-away and permit pulls are in the base price.",
       "Spring hail and wind can widen a roof inspection scope once tear-off exposes soft decking or bruised mats that were invisible from the curb.",
       "Compare two written roof inspection scopes with line items for labor, materials, permits, and warranty—verbal allowances invite change orders.",

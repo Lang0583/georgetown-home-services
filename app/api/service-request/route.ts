@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { NextResponse } from "next/server";
 import { runNewsletterEmbedSignup } from "../../../lib/newsletter-embed-core";
+import { sendLeadMagnetWelcomeEmail } from "../../../lib/send-lead-magnet-welcome-email";
 
 type Body = {
   name?: string;
@@ -84,6 +85,7 @@ export async function POST(req: Request) {
     }
   }
 
+  let emailed = false;
   if (seasonalTipsOptIn) {
     const tag = process.env.NEWSLETTER_SEASONAL_TIPS_TAG?.trim() || "seasonal-maintenance-georgetown";
     const sub = await runNewsletterEmbedSignup({
@@ -93,8 +95,15 @@ export async function POST(req: Request) {
     });
     if (!sub.ok) {
       console.warn("[service-request] Seasonal tips list signup failed:", sub.error);
+    } else if (sub.recorded) {
+      const firstName = name.split(/\s+/)[0];
+      emailed = await sendLeadMagnetWelcomeEmail({
+        to: email,
+        firstName: firstName.length > 1 ? firstName : undefined,
+        leadMagnet: "seasonal_checklist",
+      });
     }
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, emailed });
 }
