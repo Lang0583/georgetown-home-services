@@ -8,6 +8,7 @@ import BlogMidContentEmailCard from "../../components/BlogMidContentEmailCard";
 import JsonLd from "../../components/JsonLd";
 import { adsenseInlineSlot } from "../../lib/adsense-config";
 import { pageSeoMetadata } from "../../lib/page-seo";
+import { BLOG_EXPANSION_POSTS } from "../../data/blog-posts";
 import { getBlog } from "../../lib/site-content";
 
 export const metadata: Metadata = pageSeoMetadata({
@@ -35,17 +36,41 @@ const CATEGORY_META: Record<
     matcher: (slug, title) =>
       slug.includes("repair") ||
       slug.includes("not-cooling") ||
-      title.toLowerCase().includes("repair"),
+      slug.includes("not-heating") ||
+      slug.includes("not-working") ||
+      slug.includes("-signs") ||
+      slug.includes("scorpion") ||
+      slug.includes("heat-pump-vs") ||
+      slug.includes("electrical-problems") ||
+      slug.includes("crack-types") ||
+      slug.includes("pier-vs-slab") ||
+      title.toLowerCase().includes("repair") ||
+      title.toLowerCase().includes("warning sign") ||
+      title.toLowerCase().includes("troubleshoot"),
   },
   maintenance: {
     title: "Maintenance",
     description: "Preventative tips to reduce breakdowns and extend system life.",
-    matcher: (slug, title) => slug.includes("maintenance") || slug.includes("tune") || title.toLowerCase().includes("maintenance"),
+    matcher: (slug, title) =>
+      slug.includes("maintenance") ||
+      slug.includes("tune-up") ||
+      slug.includes("worth-it") ||
+      slug.includes("when-to-water") ||
+      slug.includes("watering-guide") ||
+      slug.includes("deep-clean") ||
+      slug.includes("recurring-cleaning") ||
+      title.toLowerCase().includes("maintenance") ||
+      title.toLowerCase().includes("worth it") ||
+      title.toLowerCase().includes("how often"),
   },
   emergency: {
     title: "Emergency issues",
     description: "When to treat a problem as urgent and what it typically costs.",
-    matcher: (slug, title) => slug.includes("emergency") || title.toLowerCase().includes("emergency"),
+    matcher: (slug, title) =>
+      slug.includes("emergency") ||
+      slug.includes("hail-damage-roof-claim") ||
+      title.toLowerCase().includes("emergency") ||
+      title.toLowerCase().includes("insurance claim"),
   },
   hiring: {
     title: "Hiring guides",
@@ -53,10 +78,20 @@ const CATEGORY_META: Record<
     matcher: (slug, title) =>
       slug.includes("how-to-find") ||
       slug.includes("how-to-choose") ||
+      slug.includes("best-pest-control-plan") ||
       title.toLowerCase().includes("how to find") ||
-      title.toLowerCase().includes("how to choose"),
+      title.toLowerCase().includes("how to choose") ||
+      title.toLowerCase().includes("choose the best"),
   },
 };
+
+const EXPANSION_SECTION_BY_SLUG = Object.fromEntries(
+  BLOG_EXPANSION_POSTS.flatMap((p) => {
+    const entries: [string, BlogCategoryKey][] = [[p.slug, p.blogSection]];
+    if (p.canonicalSlug) entries.push([p.canonicalSlug, p.blogSection]);
+    return entries;
+  }),
+) as Record<string, BlogCategoryKey>;
 
 function categorizePosts(posts: ReturnType<typeof getBlog>) {
   const categories: Record<BlogCategoryKey, typeof posts> = {
@@ -72,9 +107,10 @@ function categorizePosts(posts: ReturnType<typeof getBlog>) {
     const slug = p.slug.toLowerCase();
     const title = p.title.toLowerCase();
 
-    const key = (Object.keys(CATEGORY_META) as BlogCategoryKey[]).find((k) =>
-      CATEGORY_META[k].matcher(slug, title)
-    );
+    const expansionSection = EXPANSION_SECTION_BY_SLUG[p.slug];
+    const key =
+      expansionSection ??
+      (Object.keys(CATEGORY_META) as BlogCategoryKey[]).find((k) => CATEGORY_META[k].matcher(slug, title));
     if (key) categories[key].push(p);
     else uncategorized.push(p);
   }

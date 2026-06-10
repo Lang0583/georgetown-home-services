@@ -14,6 +14,10 @@ const HERO_BY_SLUG: Record<string, BlogHeroImage> = {
     src: "https://images.unsplash.com/photo-1599045118108-bf9954418b76?w=1200&q=80",
     alt: "Water heater repair in Georgetown TX home",
   },
+  "slab-leak-signs-georgetown-tx": {
+    src: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=80",
+    alt: "Plumber inspecting for slab leak signs in Georgetown TX home",
+  },
   "foundation-crack-georgetown-tx": {
     src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
     alt: "Foundation inspection in Georgetown TX home",
