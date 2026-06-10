@@ -12,20 +12,26 @@ type AffiliateCTAProps = {
   /** Thumbtack category path segment (e.g. `plumbers`, `hvac-contractors`). */
   thumbtackCategory: string;
   serviceLabel: string;
+  /** Optional H2 override (default: "Get quotes from Georgetown-area …"). */
+  heading?: string;
 };
 
 /**
  * Angi, Thumbtack, and HomeAdvisor outbound buttons for sub-service landing pages.
  */
-export default function AffiliateCTA({ angiCategorySlug, thumbtackCategory, serviceLabel }: AffiliateCTAProps) {
+export default function AffiliateCTA({
+  angiCategorySlug,
+  thumbtackCategory,
+  serviceLabel,
+  heading,
+}: AffiliateCTAProps) {
+  const title = heading ?? `Get quotes from Georgetown-area ${serviceLabel.toLowerCase()}`;
   return (
     <section
       className="not-prose mt-12 rounded-2xl border border-gray-200 bg-gray-50 p-6 md:p-8"
       aria-label={`Compare ${serviceLabel} pros in Georgetown, TX`}
     >
-      <h2 className="text-xl font-semibold tracking-tight text-gray-900 md:text-2xl">
-        Get quotes from Georgetown-area {serviceLabel.toLowerCase()}
-      </h2>
+      <h2 className="text-xl font-semibold tracking-tight text-gray-900 md:text-2xl">{title}</h2>
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-700">
         Compare licensed pros with public reviews before you book. We may earn a fee when you use these partner links—it
         does not change what you pay.

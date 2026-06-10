@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import HomeTopProvidersColumn from "../components/HomeTopProvidersColumn";
 import HomeTrustBar from "../components/HomeTrustBar";
 import HomeHowItWorks from "../components/HomeHowItWorks";
+import HomeCostGuidesSection from "../components/HomeCostGuidesSection";
 import FAQList from "../components/FAQList";
 import JsonLd from "../components/JsonLd";
 import { pageSeoMetadata, SITE_URL } from "../lib/page-seo";
@@ -185,6 +186,8 @@ export default function Home() {
                 ))}
               </div>
             </section>
+
+            <HomeCostGuidesSection />
 
             <HomeHowItWorks />
           </div>

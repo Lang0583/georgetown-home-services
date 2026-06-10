@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { costGuidePages } from "@/data/cost-guides";
 import { subServicePages } from "@/data/sub-services";
 import { neighborhoodServicePages } from "@/data/neighborhoods";
 import { NEIGHBORHOOD_HOME_SERVICES_HUBS } from "@/data/neighborhood-home-services-hubs";
@@ -50,6 +51,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
   const staticMonthlyPaths: { path: string; priority: number }[] = [
     { path: "/", priority: 1 },
     { path: "/pricing", priority: 0.7 },
+    { path: "/costs", priority: 0.85 },
     { path: "/about", priority: 0.5 },
     { path: AUTHOR_PROFILE_PATH, priority: 0.5 },
     { path: "/methodology", priority: 0.5 },
@@ -193,6 +195,16 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly",
       priority: 0.7,
+    });
+  }
+
+  for (const p of costGuidePages) {
+    if (!showExtendedHomeServices() && p.extended) continue;
+    entries.push({
+      url: absoluteUrl(`/costs/${p.slug}`),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
     });
   }
 

@@ -58,6 +58,11 @@ export default function SiteFooter() {
                 </Link>
               </li>
               <li>
+                <Link className="hover:underline" href="/costs">
+                  Cost guides
+                </Link>
+              </li>
+              <li>
                 <Link className="hover:underline" href="/services/plumber-georgetown-tx">
                   Plumbing
                 </Link>
@@ -253,6 +258,9 @@ export default function SiteFooter() {
             </Link>
             <Link className={footerBarLinkClass} href="/blog">
               Homeowner blog
+            </Link>
+            <Link className={footerBarLinkClass} href="/costs">
+              Cost guides
             </Link>
             <Link className={footerBarLinkClass} href="/contact">
               Contact

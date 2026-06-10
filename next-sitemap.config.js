@@ -1,4 +1,5 @@
 const subServicePaths = require('./data/sub-service-paths.json');
+const costGuidePaths = require('./data/cost-guide-paths.json');
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
@@ -19,6 +20,7 @@ module.exports = {
       '/blog/hail-damage-wolf-ranch-georgetown-tx',
       '/blog/hail-damage-georgetown-village-tx',
       ...subServicePaths,
+      ...costGuidePaths,
     ];
     return Promise.all(paths.map((path) => config.transform(config, path)));
   },
