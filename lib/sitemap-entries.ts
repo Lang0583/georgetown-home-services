@@ -1,3 +1,5 @@
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import type { MetadataRoute } from "next";
 import { costGuidePages } from "@/data/cost-guides";
 import { subServicePages } from "@/data/sub-services";
@@ -31,44 +33,69 @@ function absoluteUrl(path: string): string {
 const CORE_SERVICE_SET: ReadonlySet<string> = new Set(CORE_SERVICE_SLUGS);
 const CORE_BEST_SET: ReadonlySet<string> = new Set(CORE_BEST_SLUGS);
 
+type SitemapOpts = {
+  changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
+  priority: number;
+};
+
+function push(
+  entries: MetadataRoute.Sitemap,
+  path: string,
+  { changeFrequency, priority }: SitemapOpts,
+  lastModified = new Date(),
+) {
+  entries.push({ url: absoluteUrl(path), lastModified, changeFrequency, priority });
+}
+
+/** Optional expansion routes (zip / compare / blog batch) — empty when JSON file absent. */
+function optionalJsonPaths(filename: string): string[] {
+  const filePath = join(process.cwd(), "data", filename);
+  if (!existsSync(filePath)) return [];
+  try {
+    const data = JSON.parse(readFileSync(filePath, "utf8")) as unknown;
+    return Array.isArray(data) ? (data as string[]) : [];
+  } catch {
+    return [];
+  }
+}
+
 /**
- * Sitemap URL list (used by `/sitemap.xml` → `/api/sitemap-xml` rewrite).
+ * Sitemap URL list for `app/sitemap.ts` (and legacy XML helper).
  *
- * Priority tiering (sitemap.org priority is relative within the site):
- *   1.0    homepage
- *   0.9    core hubs, core service pages, core best-of pages
- *   0.7    /pricing, supporting sub-service pages, blog posts, /locations/georgetown-tx
- *   0.65    neighborhood home-services hubs (plumber+HVAC+roofer tri-trade); neighborhood hail guides
- *   0.6    neighborhood × service landings (/neighborhoods/[slug]/[service])
- *   0.5    static pages (about/contact/policies), low-signal pages
- *
- * Location slugs that 308 elsewhere — keep in sync with `next.config.ts`.
- * (Empty when all neighborhood location pages are indexable.)
+ * Priority tiers (per technical SEO spec):
+ *   1.0  homepage (weekly)
+ *   0.9  core service pages (weekly)
+ *   0.8  Best Of + cost guides (monthly)
+ *   0.7  sub-service, zip, comparison, hubs (monthly)
+ *   0.6  blog posts (monthly)
  */
 export function buildSitemapEntries(): MetadataRoute.Sitemap {
   const lastModified = new Date();
+  const entries: MetadataRoute.Sitemap = [];
 
-  const staticMonthlyPaths: { path: string; priority: number }[] = [
-    { path: "/", priority: 1 },
-    { path: "/pricing", priority: 0.7 },
-    { path: "/costs", priority: 0.85 },
-    { path: "/seasonal", priority: 0.8 },
-    { path: "/about", priority: 0.5 },
-    { path: AUTHOR_PROFILE_PATH, priority: 0.5 },
-    { path: "/methodology", priority: 0.5 },
-    { path: "/editorial-policy", priority: 0.5 },
-    { path: "/service-areas", priority: 0.5 },
-    { path: "/contact", priority: 0.5 },
-    { path: "/privacy-policy", priority: 0.3 },
-    { path: "/terms", priority: 0.3 },
-  ];
+  push(entries, "/", { changeFrequency: "weekly", priority: 1 }, lastModified);
+  push(entries, "/search", { changeFrequency: "monthly", priority: 0.5 }, lastModified);
 
-  const listingWeekly: { path: string; priority: number }[] = [
-    { path: "/services", priority: 0.9 },
-    { path: "/best", priority: 0.9 },
-    { path: "/blog", priority: 0.7 },
-    { path: "/pricing/calculator", priority: 0.85 },
-  ];
+  const hubMonthly: SitemapOpts = { changeFrequency: "monthly", priority: 0.7 };
+  for (const path of [
+    "/services",
+    "/best",
+    "/costs",
+    "/blog",
+    "/pricing",
+    "/seasonal",
+    "/pricing/calculator",
+    "/about",
+    "/contact",
+    "/methodology",
+    "/editorial-policy",
+    "/service-areas",
+    AUTHOR_PROFILE_PATH,
+    "/privacy-policy",
+    "/terms",
+  ]) {
+    push(entries, path, hubMonthly, lastModified);
+  }
 
   const serviceHubMonthly: string[] = [
     "/services/plumbing",
@@ -84,34 +111,8 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
         ]
       : []),
   ];
-
-  const entries: MetadataRoute.Sitemap = [];
-
-  for (const { path, priority } of staticMonthlyPaths) {
-    entries.push({
-      url: absoluteUrl(path),
-      lastModified,
-      changeFrequency: "monthly",
-      priority,
-    });
-  }
-
-  for (const { path, priority } of listingWeekly) {
-    entries.push({
-      url: absoluteUrl(path),
-      lastModified,
-      changeFrequency: "weekly",
-      priority,
-    });
-  }
-
   for (const path of serviceHubMonthly) {
-    entries.push({
-      url: absoluteUrl(path),
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    });
+    push(entries, path, { changeFrequency: "weekly", priority: 0.7 }, lastModified);
   }
 
   for (const slug of getServiceSlugs()) {
@@ -119,105 +120,95 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     if (isRedirectedServiceSlug(slug)) continue;
     if (isNoindexSlug(slug)) continue;
     const isCore = CORE_SERVICE_SET.has(slug);
-    entries.push({
-      url: absoluteUrl(`/services/${slug}`),
+    push(
+      entries,
+      `/services/${slug}`,
+      {
+        changeFrequency: isCore ? "weekly" : "monthly",
+        priority: isCore ? 0.9 : 0.7,
+      },
       lastModified,
-      changeFrequency: isCore ? "monthly" : "yearly",
-      priority: isCore ? 0.9 : 0.6,
-    });
-  }
-
-  for (const slug of getLocationSlugs()) {
-    if (isRedirectedLocationSlug(slug)) continue;
-    if (isNoindexSlug(slug)) continue;
-    entries.push({
-      url: absoluteUrl(`/locations/${slug}`),
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    });
+    );
   }
 
   for (const slug of getBestSlugs()) {
     if (!showExtendedHomeServices() && isExtendedBestSlug(slug)) continue;
     if (isNoindexSlug(slug)) continue;
-    const isCore = CORE_BEST_SET.has(slug);
-    entries.push({
-      url: absoluteUrl(`/best/${slug}`),
-      lastModified,
-      changeFrequency: "monthly",
-      priority: isCore ? 0.9 : 0.7,
-    });
-  }
-
-  for (const slug of getBlogSlugs()) {
-    if (isNoindexSlug(slug)) continue;
-    entries.push({
-      url: absoluteUrl(`/blog/${slug}`),
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    });
-  }
-
-  for (const p of neighborhoodServicePages) {
-    entries.push({
-      url: absoluteUrl(`/neighborhoods/${p.neighborhoodSlug}/${p.serviceSlug}`),
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    });
-  }
-
-  for (const hub of NEIGHBORHOOD_HOME_SERVICES_HUBS) {
-    entries.push({
-      url: absoluteUrl(`/neighborhoods/${hub.neighborhoodSlug}/home-services`),
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.65,
-    });
-  }
-
-  for (const p of NEIGHBORHOOD_HAIL_PAGES) {
-    entries.push({
-      url: absoluteUrl(`/neighborhoods/${p.neighborhoodSlug}/hail-damage`),
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.65,
-    });
-  }
-  // Source lists: `data/neighborhoods.ts` (40 × service pages) + `data/neighborhood-home-services-hubs.ts` (5 hubs) + `data/neighborhood-hail-pages.ts`.
-
-  for (const p of subServicePages) {
-    if (!showExtendedHomeServices() && p.extended) continue;
-    entries.push({
-      url: absoluteUrl(`/${p.serviceSlug}/${p.slug}`),
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    });
+    push(entries, `/best/${slug}`, { changeFrequency: "monthly", priority: 0.8 }, lastModified);
   }
 
   for (const p of costGuidePages) {
     if (!showExtendedHomeServices() && p.extended) continue;
-    entries.push({
-      url: absoluteUrl(`/costs/${p.slug}`),
+    push(entries, `/costs/${p.slug}`, { changeFrequency: "monthly", priority: 0.8 }, lastModified);
+  }
+
+  for (const p of subServicePages) {
+    if (!showExtendedHomeServices() && p.extended) continue;
+    push(entries, `/${p.serviceSlug}/${p.slug}`, { changeFrequency: "monthly", priority: 0.7 }, lastModified);
+  }
+
+  for (const path of optionalJsonPaths("blog-paths.json")) {
+    push(entries, path, { changeFrequency: "monthly", priority: 0.6 }, lastModified);
+  }
+
+  for (const path of optionalJsonPaths("comparison-paths.json")) {
+    push(entries, path, { changeFrequency: "monthly", priority: 0.7 }, lastModified);
+  }
+  push(entries, "/compare", { changeFrequency: "monthly", priority: 0.7 }, lastModified);
+
+  for (const path of optionalJsonPaths("zip-paths.json")) {
+    push(entries, path, { changeFrequency: "monthly", priority: 0.7 }, lastModified);
+  }
+  push(entries, "/zip", { changeFrequency: "monthly", priority: 0.7 }, lastModified);
+
+  for (const slug of getBlogSlugs()) {
+    if (isNoindexSlug(slug)) continue;
+    push(entries, `/blog/${slug}`, { changeFrequency: "monthly", priority: 0.6 }, lastModified);
+  }
+
+  for (const slug of getLocationSlugs()) {
+    if (isRedirectedLocationSlug(slug)) continue;
+    if (isNoindexSlug(slug)) continue;
+    push(entries, `/locations/${slug}`, { changeFrequency: "monthly", priority: 0.7 }, lastModified);
+  }
+
+  for (const p of neighborhoodServicePages) {
+    push(
+      entries,
+      `/neighborhoods/${p.neighborhoodSlug}/${p.serviceSlug}`,
+      { changeFrequency: "monthly", priority: 0.6 },
       lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    });
+    );
+  }
+
+  for (const hub of NEIGHBORHOOD_HOME_SERVICES_HUBS) {
+    push(
+      entries,
+      `/neighborhoods/${hub.neighborhoodSlug}/home-services`,
+      { changeFrequency: "monthly", priority: 0.65 },
+      lastModified,
+    );
+  }
+
+  for (const p of NEIGHBORHOOD_HAIL_PAGES) {
+    push(
+      entries,
+      `/neighborhoods/${p.neighborhoodSlug}/hail-damage`,
+      { changeFrequency: "monthly", priority: 0.65 },
+      lastModified,
+    );
   }
 
   for (const season of TEXAS_SEASON_ORDER) {
-    entries.push({
-      url: absoluteUrl(`/seasonal/${season}`),
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.75,
-    });
+    push(entries, `/seasonal/${season}`, { changeFrequency: "monthly", priority: 0.7 }, lastModified);
   }
 
-  return entries;
+  const seen = new Set<string>();
+  return entries.filter((entry) => {
+    if (seen.has(entry.url)) return false;
+    seen.add(entry.url);
+    return true;
+  });
 }
 
 function escapeXml(text: string): string {
@@ -231,7 +222,7 @@ function lastModIso(entry: MetadataRoute.Sitemap[number]): string {
   return new Date().toISOString();
 }
 
-/** sitemap.org XML for crawlers (explicit `Content-Type`, no RSC/HTML shell). */
+/** sitemap.org XML for crawlers (legacy `/api/sitemap-xml` route). */
 export function sitemapEntriesToXml(entries: MetadataRoute.Sitemap): string {
   const urls = entries
     .map((e) => {

@@ -10,7 +10,7 @@ import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
 import { ADSENSE_PUBLISHER_ID } from "../lib/adsense-config";
 import { getImpactPublisherTagInnerHtml } from "../lib/impact-publisher-tag";
-import { getBrandName, getContact } from "../lib/site-content";
+import { organizationSchema, websiteSchema } from "../lib/schema";
 
 const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
 
@@ -69,41 +69,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const brand = getBrandName();
-  const { email: orgEmail } = getContact();
-  const organizationJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: brand,
-    url: siteUrl,
-    description:
-      "A local directory and homeowner guide for trusted home service companies in Georgetown, Texas, covering plumbing, HVAC, roofing, electrical, landscaping, pest control, foundation repair, and house cleaning.",
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "customer support",
-      email: orgEmail,
-      areaServed: "US",
-      availableLanguage: ["English", "en-US"],
-    },
-    knowsAbout: [
-      "Plumbing",
-      "HVAC",
-      "Roofing",
-      "Electrical",
-      "Landscaping",
-      "Pest control",
-      "Foundation repair",
-      "House cleaning",
-    ],
-  };
-
-  const websiteJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: brand,
-    url: siteUrl,
-    // SearchAction is omitted because the site does not currently provide on-site search.
-  };
+  const organizationJsonLd = organizationSchema();
+  const websiteJsonLd = websiteSchema();
 
   return (
     <html
@@ -135,10 +102,10 @@ export default function RootLayout({
             strategy="lazyOnload"
           />
         ) : null}
-      </head>
-      <body className="min-h-full flex flex-col bg-gray-50 text-gray-900">
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
+      </head>
+      <body className="min-h-full flex flex-col bg-gray-50 text-gray-900">
         <HomeHailAlertBanner />
         <StickyHeader />
         <main className="flex-1 pt-20">{children}</main>

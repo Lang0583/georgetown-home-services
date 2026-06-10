@@ -51,26 +51,7 @@ import { servicePageInternalLinks } from "../../../lib/internal-links";
 import { resolveServiceGuideFaqs } from "../../../lib/georgetown-page-faqs";
 import { buildServicePageSeo } from "../../../lib/service-page-seo";
 import CoreServiceGuideDecisionFramework from "../../../components/CoreServiceGuideDecisionFramework";
-
-function breadcrumbJsonLd({
-  siteUrl,
-  serviceTitle,
-  serviceSlug,
-}: {
-  siteUrl: string;
-  serviceTitle: string;
-  serviceSlug: string;
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
-      { "@type": "ListItem", position: 2, name: "Services", item: `${siteUrl}/services` },
-      { "@type": "ListItem", position: 3, name: serviceTitle, item: `${siteUrl}/services/${serviceSlug}` },
-    ],
-  };
-}
+import { breadcrumbSchemaForService, serviceDirectoryLocalBusinessSchema } from "../../../lib/schema";
 
 /**
  * Allow runtime resolution for `[slug]` so `getServiceBySlug` + `notFound()` control 404s.
@@ -152,11 +133,17 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const explore = CORE_SERVICES.filter((s) => s.slug !== service.slug);
   const ruleLinks = servicePageInternalLinks(service.slug);
   const serviceFaqs = resolveServiceGuideFaqs(service);
+  const serviceLocalBusiness = serviceDirectoryLocalBusinessSchema({
+    serviceSlug: service.slug,
+    serviceType: service.serviceType,
+    serviceTitle: service.title,
+  });
 
   return (
     <PageShell>
         <section className="py-10 md:py-12">
-          <JsonLd data={breadcrumbJsonLd({ siteUrl, serviceTitle: service.title, serviceSlug: service.slug })} />
+          <JsonLd data={breadcrumbSchemaForService(service.title, service.slug)} />
+          {serviceLocalBusiness ? <JsonLd data={serviceLocalBusiness} /> : null}
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: `/services/${service.slug}`,
