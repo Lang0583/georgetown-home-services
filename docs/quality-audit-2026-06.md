@@ -31,6 +31,19 @@ Full pass prioritizing **AI slop removal**, **editorial depth**, and **measurabl
 | Signup paths | Service-request seasonal opt-in skipped welcome email | Now calls `sendLeadMagnetWelcomeEmail` after list signup |
 | Thin generated pages | 45 pages under 800w in `seo:audit` | Hubs OK; sub-service stubs remain backlog (no deletes) |
 
+## GSC “6 pages not indexed” (June 10)
+
+Search Console showed **3 page with redirect**, **2 redirect error**, **1 crawled not indexed**. Root causes:
+
+1. **`next-sitemap` postbuild** wrote `public/sitemap.xml` (index → `sitemap-0.xml`) and listed `/api/sitemap-xml` — confused crawlers.
+2. **Legacy sitemap URLs** (`/sitemap-0.xml`) used relative `Location` headers → redirect errors.
+3. **`/services/plumbing-georgetown-tx`** returned 404 (wrong slug; now 308 → plumber hub).
+4. **`/downloads/*.pdf`** were still crawlable as 200 PDFs (now 308 → `/seasonal`).
+
+**Fix:** Removed `next-sitemap` from postbuild; single dynamic sitemap via `lib/sitemap-entries.ts`; absolute sitemap redirects; `robots.txt` disallows `/api/`.
+
+After deploy: in GSC → Page indexing → open each row → **Validate fix**.
+
 ## Commands
 
 ```bash

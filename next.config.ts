@@ -1,5 +1,8 @@
 import type { NextConfig } from "next";
+import { SITE_URL } from "./lib/page-seo";
 import { REDIRECTED_SERVICE_TO_HUB } from "./lib/public-site-scope";
+
+const siteBase = SITE_URL.replace(/\/$/, "");
 
 const serviceHubRedirects = Object.entries(REDIRECTED_SERVICE_TO_HUB).map(([slug, hub]) => ({
   source: `/services/${slug}`,
@@ -62,9 +65,10 @@ const nextConfig: NextConfig = {
         destination: "/services/hvac",
         permanent: true,
       },
+      // Legacy PDF paths (email-gated) → seasonal hub for crawlers that bookmarked old URLs.
       {
-        source: "/services/plumbing-georgetown-tx",
-        destination: "/services/plumber-georgetown-tx",
+        source: "/downloads/:filename(.*\\.pdf)",
+        destination: `${siteBase}/seasonal`,
         permanent: true,
       },
       // Harmless `?page=1` on non-paginated hubs equals the bare URL — strip the param.
@@ -106,20 +110,18 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/sitemap",
-        destination: "/sitemap.xml",
+        destination: `${siteBase}/sitemap.xml`,
         permanent: true,
       },
-      // Legacy next-sitemap URLs (pre-aa6f22e). Google Search Console and any
-      // stale external references may still hit these; redirect to the single
-      // flat sitemap so crawlers self-heal instead of getting a 404 HTML page.
+      // Legacy next-sitemap URLs (pre-aa6f22e). Absolute destinations avoid GSC redirect errors.
       {
         source: "/sitemap-:index(\\d+).xml",
-        destination: "/sitemap.xml",
+        destination: `${siteBase}/sitemap.xml`,
         permanent: true,
       },
       {
         source: "/sitemap_index.xml",
-        destination: "/sitemap.xml",
+        destination: `${siteBase}/sitemap.xml`,
         permanent: true,
       },
       ...serviceHubRedirects,

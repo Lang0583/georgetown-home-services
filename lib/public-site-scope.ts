@@ -69,6 +69,7 @@ export const REDIRECTED_SERVICE_TO_HUB: Readonly<Record<string, string>> = {
   "emergency-hvac-georgetown-tx": "hvac-georgetown-tx",
 
   // Plumbing → hub
+  "plumbing-georgetown-tx": "plumber-georgetown-tx",
   "water-heater-replacement-georgetown-tx": "plumber-georgetown-tx",
   "leak-detection-georgetown-tx": "plumber-georgetown-tx",
   "toilet-repair-georgetown-tx": "plumber-georgetown-tx",
