@@ -20,11 +20,11 @@ const INDEXING_PUBLISH_URL = "https://indexing.googleapis.com/v3/urlNotification
 
 /** Canonical marketing URLs to notify Google about after publishes. */
 const URLS_TO_SUBMIT: readonly string[] = [
-  "https://georgetownhomeservices.com/blog/hail-damage-georgetown-tx-may-2026",
-  "https://georgetownhomeservices.com/blog/hail-damage-sun-city-georgetown-tx",
-  "https://georgetownhomeservices.com/blog/hail-damage-teravista-georgetown-tx",
-  "https://georgetownhomeservices.com/blog/hail-damage-wolf-ranch-georgetown-tx",
-  "https://georgetownhomeservices.com/blog/hail-damage-georgetown-village-tx",
+  "https://www.georgetownhomeservices.com/blog/hail-damage-georgetown-williamson-may-2026",
+  "https://www.georgetownhomeservices.com/neighborhoods/sun-city/hail-damage",
+  "https://www.georgetownhomeservices.com/neighborhoods/teravista/hail-damage",
+  "https://www.georgetownhomeservices.com/neighborhoods/wolf-ranch/hail-damage",
+  "https://www.georgetownhomeservices.com/neighborhoods/georgetown-village/hail-damage",
 ];
 
 function resolveKeyPath(): string {

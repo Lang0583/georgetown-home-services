@@ -318,26 +318,59 @@ function metaDescription(name, serviceLabel, localSnippet) {
   return base.length <= 160 ? base : base.slice(0, 157) + "…";
 }
 
+function localForSlug(serviceSlug, slug, name) {
+  const key = `${serviceSlug}/${slug}`;
+  if (PAGE[key]?.local) return PAGE[key].local;
+
+  const job = slug.replace(/-/g, " ");
+  const bySlug = {
+    "hvac/ac-repair": `${name} spikes when Georgetown heat indexes top 105°F—capacitors, contactors, and low refrigerant are the usual suspects before anyone talks full replacement.`,
+    "hvac/ac-installation": `${name} must be sized for long Central Texas cooling seasons; undersized equipment struggles in Sun City guest weeks and two-story Teravista plans.`,
+    "hvac/furnace-repair": `${name} shows up on the coldest Georgetown nights—flame sensors, inducer motors, and cracked heat exchangers are common on furnaces that sit idle most of the year.`,
+    "hvac/heat-pump-installation": `${name} pairs heating and cooling in one box; Wolf Ranch high-efficiency builds often need electrical and line-set planning before install day.`,
+    "hvac/air-duct-cleaning": `${name} targets cedar pollen, drywall dust, and pet dander in return runs—especially in homes with long attic trunks and rarely changed filters.`,
+    "hvac/emergency-hvac": `${name} calls jump in July when systems run near continuously; know your shutoffs and filter size before the after-hours truck rolls.`,
+    "hvac/hvac-maintenance": `${name} before summer focuses on coil cleaning, drain lines, and amp draws—not just swapping a filter.`,
+    "hvac/mini-split-installation": `${name} helps room additions and garage conversions where duct extensions are impractical; line-set routing through brick and stucco matters in Georgetown Village.`,
+    "plumbing/pipe-repair": `${name} in older Georgetown stock may mean copper pinholes, polybutylene, or irrigation cross-connections—not every leak is a slab job.`,
+    "plumbing/leak-detection": `${name} separates irrigation losses from domestic lines before anyone cuts concrete in Sun City slab homes.`,
+    "plumbing/water-filtration": `${name} pairs with hard Edwards Aquifer water—softeners protect fixtures while RO improves drinking taste.`,
+    "roofing/hail-damage-repair": `${name} follows Williamson County spring storms; document with photos before insurers or roofers scope repairs.`,
+    "roofing/metal-roofing": `${name} handles hail better than asphalt in some cases but needs correct flashing at Georgetown's hard-driving rain.`,
+    "roofing/flat-roofing": `${name} on porches and low-slope additions needs drainage planning—ponding shows up after slow Texas rains.`,
+    "electrical/ev-charger-installation": `${name} often triggers panel evaluations in Teravista and Wolf Ranch garages built before EV load was common.`,
+    "electrical/generator-installation": `${name} rises after outage seasons; transfer switches and gas line work must be permitted.`,
+    "foundation/crack-repair": `${name} starts with monitoring—hairline shrinkage cracks differ from widening gaps tied to clay movement.`,
+    "foundation/waterproofing": `${name} pairs with drainage when clay swells against slabs after heavy Williamson County rains.`,
+    "cleaning/deep-cleaning": `${name} tackles pollen, hard-water film, and baseboards that standard visits skip in busy Sun City households.`,
+    "pest-control/scorpion-control": `${name} targets species active along limestone edges and patio lights in warm Georgetown evenings.`,
+  };
+  if (bySlug[key]) return bySlug[key];
+
+  const tradeLead = {
+    plumbing: `For ${job}, hard water and mature sewer lines in Georgetown mean mineral buildup and roots show up sooner than national averages suggest.`,
+    hvac: `For ${job}, equipment runs longer here than in northern climates—pollen, heat, and attic access shape every quote.`,
+    roofing: `For ${job}, hail history and HOA shingle rules in Sun City and Wolf Ranch affect both materials and labor.`,
+    electrical: `For ${job}, panel age and permit requirements in Georgetown city limits can add time beyond the visible repair.`,
+    landscaping: `For ${job}, clay soil and watering rules change how crews schedule installs and maintenance.`,
+    "pest-control": `For ${job}, Central Texas species and seasonal humidity drive treatment plans—not one chemical fits every eave.`,
+    foundation: `For ${job}, expansive clay movement is the backdrop—drainage and pier counts matter as much as crack width.`,
+    cleaning: `For ${job}, cedar pollen and limestone dust mean more frequent deep work than in softer-water markets.`,
+  };
+  return tradeLead[serviceSlug] ?? `${name} in Georgetown varies by home age, access, and whether the job is emergency or planned.`;
+}
+
 function buildBody(name, serviceLabel, local, serviceSlug, slug, hoods) {
   const hoodNames = hoods.map((h) => NEIGHBORHOODS[h]).join(" and ");
-  const hoodMention =
-    serviceSlug === "foundation" || serviceSlug === "landscaping"
-      ? "Wolf Ranch and Teravista sit on expansive clay that moves with Texas drought cycles, while Berry Creek’s tree canopy and Georgetown Village’s established lots each create different maintenance rhythms."
-      : serviceSlug === "pest-control"
-        ? "Cedar pollen season and warm evenings push pests toward eaves and patio lights from Sun City to Georgetown Village—perimeter treatments need to account for Texas heat and seasonal humidity swings."
-        : serviceSlug === "cleaning"
-          ? "Sun City’s active households and Georgetown Village’s larger floor plans mean dust from limestone trails and cedar pollen shows up fast on baseboards and fan blades."
-          : "From Sun City’s mature slabs to Teravista’s newer builds and Wolf Ranch’s family traffic, Georgetown neighborhoods each stress home systems differently through long Texas summers.";
-
-  const slugWords = slug.replace(/-/g, " ");
+  const job = slug.replace(/-/g, " ");
   return [
-    `Homeowners searching for ${name.toLowerCase()} in Georgetown, TX usually want a clear scope, realistic pricing, and a contractor who knows Williamson County homes—not a generic national script. ${local}`,
-    hoodMention,
-    `In ${hoodNames}, ${slugWords} jobs often differ from downtown Georgetown bungalows: lot grading, HOA exterior rules, and the age of mechanical systems all change how a crew stages equipment and prices labor. Mention your neighborhood when you request quotes so pros can account for drive time, permit jurisdiction, and the housing stock they see every week.`,
-    `Central Texas weather still shapes the job: long cooling seasons, sudden hail, drought-stressed clay, and cedar pollen can each affect how ${slugWords} is scoped, sequenced, and warranted. A neighbor in Berry Creek or Georgetown Village may need different prep than a newer build in Teravista or Wolf Ranch—even when the headline service is the same.`,
-    `Before you hire, compare at least two written quotes that list materials, warranty length, and who pulls permits. Ask how the crew handles ${serviceLabel.toLowerCase()} work in homes like yours—pier-and-beam versus slab, two-story supply runs, and summer heat loads that stress Texas installations all change the plan.`,
-    `Georgetown’s ${name.toLowerCase()} market includes owner-occupied homes, rentals, and active-adult communities where scheduling windows matter. Request proof of insurance, a line-item estimate, and whether labor is warranted separately from parts. If expansive clay, mature trees, or recent storm damage applies, say so upfront—crews price access and backlog differently across Williamson County.`,
-    `Use the pricing table below as a planning band for Georgetown, then shortlist pros with verifiable Texas licensing (where required), recent reviews from neighbors, and clear communication. Our ${serviceLabel.toLowerCase()} hub and neighborhood guides link deeper resources when you are ready to compare ${slugWords} against related jobs.`,
+    local,
+    `In ${hoodNames}, ${job} quotes often differ from downtown bungalows—drive time, HOA exterior rules, and whether the home is slab or pier-and-beam change how crews stage equipment.`,
+    `Williamson County weather still matters: summer heat, hail season, drought-stressed clay, and cedar pollen can turn a small ${job} scope into a larger repair once a tech opens an attic, roof plane, or cleanout.`,
+    `Ask for two itemized estimates listing parts, labor, permits, and warranty terms. If the price changes after opening a wall or roof deck, you want that policy in writing before work starts.`,
+    `Verify insurance and Texas licensing where the trade requires it (plumbing, HVAC, electrical, and pest control each have different state rules). Recent reviews from Georgetown neighbors beat a single star average on any one app.`,
+    `${name} is rarely a good DIY save when code, safety, or manufacturer warranties apply—especially in active-adult communities where access windows and cleanup expectations are strict.`,
+    `Use the price table as a planning band, then follow links to our ${serviceLabel.toLowerCase()} hub and neighborhood guides when you want to compare ${job} with related work.`,
   ];
 }
 
@@ -364,14 +397,28 @@ function defaultPricing(serviceSlug, slug) {
   return { low, average, high, unit, year: "2026" };
 }
 
-function defaultFaqs(name, serviceLabel) {
+function defaultFaqs(name, serviceLabel, serviceSlug, slug) {
+  const job = slug.replace(/-/g, " ");
+  const licenseHint =
+    serviceSlug === "plumbing"
+      ? "a TSBPE-licensed plumber"
+      : serviceSlug === "hvac"
+        ? "a TDLR-licensed HVAC contractor"
+        : serviceSlug === "electrical"
+          ? "a licensed electrician"
+          : serviceSlug === "pest-control"
+            ? "a TPCL-licensed applicator"
+            : "a insured contractor with verifiable local references";
   return {
-    faq1: `How much does ${name.toLowerCase()} cost in Georgetown, TX?`,
-    faq1a: `Most homeowners land near the average column in our table, but ${serviceLabel.toLowerCase()} pricing shifts with access, materials, and whether permits are required in Williamson County.`,
-    faq2: `How do I vet a ${serviceLabel.toLowerCase()} contractor locally?`,
-    faq2a: "Confirm licensing where Texas law requires it, read recent Georgetown-area reviews, and insist on a written scope with warranty terms before work starts.",
-    faq3: `When should I schedule ${name.toLowerCase()} in Central Texas?`,
-    faq3a: "Spring and fall are popular for non-emergency work; summer heat and storm season can affect outdoor trades and emergency availability—book early for peak weeks.",
+    faq1: `How much does ${job} cost in Georgetown, TX?`,
+    faq1a: `Use the table on this page as a ${new Date().getFullYear()} planning range. Final ${job} pricing depends on access, parts, permits, and whether the call is emergency or scheduled.`,
+    faq2: `Who should I hire for ${job} in Georgetown?`,
+    faq2a: `Shortlist ${licenseHint}, compare two written scopes, and read recent reviews from Williamson County homeowners—not just national brand advertising.`,
+    faq3: `When is the best time to schedule ${job}?`,
+    faq3a:
+      serviceSlug === "hvac" || serviceSlug === "roofing"
+        ? "Book non-emergency work in spring or fall; summer AC failures and post-hail roofing stack schedules quickly."
+        : "Off-peak weeks outside holidays and storm surges usually mean better availability and steadier pricing.",
   };
 }
 
@@ -396,7 +443,7 @@ for (const [serviceSlug, slugs] of Object.entries(SLUGS)) {
     const key = `${serviceSlug}/${slug}`;
     const custom = PAGE[key];
     const name = custom?.name ?? titleCase(slug);
-    const local = custom?.local ?? defaultLocal(name, serviceSlug);
+    const local = localForSlug(serviceSlug, slug, name);
     const pricing = custom?.pricing ?? defaultPricing(serviceSlug, slug);
     const faqs = custom
       ? {
@@ -407,7 +454,7 @@ for (const [serviceSlug, slugs] of Object.entries(SLUGS)) {
           faq3: custom.faq3,
           faq3a: custom.faq3a,
         }
-      : defaultFaqs(name, cfg.label);
+      : defaultFaqs(name, cfg.label, serviceSlug, slug);
     const hoods = custom?.hoods ?? cfg.defaultHoods;
     const bodyParagraphs = buildBody(name, cfg.label, local, serviceSlug, slug, hoods);
     const neighborhoodLinks = hoods.map((h) => ({

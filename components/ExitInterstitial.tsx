@@ -84,7 +84,8 @@ export function ExitInterstitialModal({
           Before you go — get a free quote in 60 seconds
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          Compare {providerName} with other top-rated {serviceCategory} companies on Angi — free, no obligation.
+          Compare {providerName} with other top-rated {serviceCategory} companies on Angi — free, no obligation. We may
+          earn a fee if you hire through this partner link.
         </p>
         <div className="mt-6 flex flex-col gap-3">
           <button

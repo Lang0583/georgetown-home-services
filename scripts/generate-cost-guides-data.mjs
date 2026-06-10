@@ -571,17 +571,27 @@ function hoodLabel(path) {
   return { label: `${svcNames[svc] ?? svc} in ${names[hood] ?? hood}`, href: `/neighborhoods/${hood}/${svc}` };
 }
 
+const LICENSE_HINT = {
+  Plumbing: "a valid TSBPE plumbing license",
+  HVAC: "a TDLR HVAC license",
+  Roofing: "proof of insurance and local references (Texas does not license roofers at the state level)",
+  Electrical: "a Texas licensed electrician",
+  Landscaping: "general liability insurance and a written scope",
+  "Pest Control": "a TPCL applicator license",
+  Foundation: "a documented repair plan and transferable warranty terms",
+  Cleaning: "workers’ compensation and liability insurance",
+};
+
 function buildBody(g) {
-  const avg = g.priceRows[0]?.average ?? g.summaryLow;
+  const license = LICENSE_HINT[g.serviceLabel] ?? "appropriate licensing and insurance";
   return [
-    `If you are pricing ${g.shortName} in Georgetown, TX, expect most homeowners to land between ${fmt(g.summaryLow)} and ${fmt(g.summaryHigh)} depending on scope—before you compare bids, use the table below as a ${YEAR} planning band. ${g.local}`,
-    `Georgetown sits in one of the fastest-growing corridors in Texas, and that shapes contractor pricing: skilled ${g.serviceLabel.toLowerCase()} labor is in demand from Sun City to Wolf Ranch, while material lead times can extend after regional hail events or summer heat waves. Homeowners in Teravista and Berry Creek often see different trip charges than downtown bungalows simply because of drive time and lot complexity.`,
-    `Several Williamson County factors move your final invoice: ${g.factors} Labor demand rises in summer for HVAC and roofing, while Sun City’s 55+ community often needs narrower appointment windows and clear walk-through access notes. Cedar pollen, limestone dust, and hard water—common across Georgetown—can accelerate wear and turn a “small” job into a larger scope once a tech opens a panel, roof plane, or access hatch.`,
-    `What should a typical quote include? ${g.included} Reputable Georgetown contractors itemize labor, parts, permits, and exclusions instead of a single vague line item. Ask whether the price holds if the crew discovers rotted decking, outdated wiring, or clay-soil drainage issues that were not visible during the first walkthrough—those surprises are common in Central Texas homes built across multiple decades.`,
-    `Red flags that suggest overcharging or risk: ${g.redFlags} Always compare two written scopes—Georgetown’s tight-knit neighborhoods mean referral quality varies, and the lowest cash bid is not always insurable or permitted. Walk away from anyone who refuses to put warranty terms in writing, will not share a Texas license or TPCL number when required, or pressures same-day contracts after a “limited time” discount.`,
-    `DIY vs hiring a pro: ${g.diy} When safety, Texas licensing, or manufacturer warranties are on the line, paying a local pro usually costs less than fixing a failed DIY attempt—especially under Texas heat and on clay soil that hides drainage issues until the next storm. Georgetown’s DIY-friendly weekend culture works for basic maintenance, but code enforcement and HOA rules in master-planned communities still expect permitted work for major systems.`,
-    `Timing also moves price: spring hail season, July AC outages, and holiday guest weeks in Sun City compress schedules and can add after-hours or premium scheduling fees. If your project is flexible, request quotes for off-peak weeks and ask whether the company offers maintenance memberships that credit diagnostic fees toward repairs.`,
-    `For context, many neighbors start with our ${g.serviceLabel.toLowerCase()} service hub, compare sub-service pages for related jobs, and read neighborhood guides before they book—planning with realistic ${fmt(avg)}-class averages helps you spot outliers before you sign. Use the FAQ below for People Also Ask-style questions, then request free quotes when you are ready to compare vetted Georgetown contractors.`,
+    `If you are budgeting for ${g.shortName} in Georgetown, TX, most jobs fall between ${fmt(g.summaryLow)} and ${fmt(g.summaryHigh)}—use the table below as a ${YEAR} planning band before you sign anything. ${g.local}`,
+    `What moves the number in Williamson County: ${g.factors} Trip charges, material lead times, and summer storm backlogs differ between Sun City, Teravista, and older Georgetown Village streets.`,
+    `A solid quote should spell out: ${g.included} If the scope changes after opening a roof deck, panel, or slab access point, you want change-order rules in writing—not a verbal “we’ll see.”`,
+    `Watch for trouble: ${g.redFlags} Compare two estimates, verify ${license}, and avoid same-day pressure discounts.`,
+    `DIY or pro? ${g.diy} Georgetown permits and HOA rules still apply to major systems even when the work looks simple from the curb.`,
+    `Seasonality matters—hail season, July AC outages, and holiday guest weeks in Sun City tighten calendars. Off-peak scheduling can save money when the job is not an emergency.`,
+    `When you are ready, use our ${g.serviceLabel.toLowerCase()} hub, linked sub-service pages, and neighborhood guides to compare scopes—or request quotes below.`,
   ];
 }
 
@@ -590,12 +600,16 @@ function fmt(n) {
 }
 
 function metaDesc(g) {
-  const base = `How much does ${g.shortName} cost in Georgetown TX? ${YEAR} typical range ${fmt(g.summaryLow)}–${fmt(g.summaryHigh)}. Low, average & high price tables plus Williamson County hiring tips and FAQs.`;
+  const base = `How much does ${g.shortName} cost in Georgetown TX? ${YEAR} range ${fmt(g.summaryLow)}–${fmt(g.summaryHigh)}. Local low, average & high tables, hiring tips, and FAQs for Williamson County.`;
   return base.length <= 160 ? base : base.slice(0, 157) + "…";
 }
 
+function titleCaseShort(short) {
+  return short.replace(/\b\w/g, (c) => c.toUpperCase()).replace(/\bAc\b/g, "AC").replace(/\bHvac\b/g, "HVAC");
+}
+
 const pages = GUIDES.map((g) => {
-  const absoluteTitle = `Cost to ${capitalizeService(g.serviceName)} in Georgetown TX (${YEAR}) | ${SITE_NAME}`;
+  const absoluteTitle = `Cost to ${titleCaseShort(g.shortName)} in Georgetown TX (${YEAR}) | ${SITE_NAME}`;
   const internalLinks = [
     { label: `${g.serviceLabel} service hub`, href: g.parentServicePath },
     ...g.subLinks.map((href) => ({

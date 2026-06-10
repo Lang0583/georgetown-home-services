@@ -1,9 +1,15 @@
 import type { NextConfig } from "next";
-import { REDIRECTED_SERVICE_TO_HUB } from "./lib/public-site-scope";
+import { REDIRECTED_BLOG_TO_PATH, REDIRECTED_SERVICE_TO_HUB } from "./lib/public-site-scope";
 
 const serviceHubRedirects = Object.entries(REDIRECTED_SERVICE_TO_HUB).map(([slug, hub]) => ({
   source: `/services/${slug}`,
   destination: `/services/${hub}`,
+  permanent: true as const,
+}));
+
+const blogRedirects = Object.entries(REDIRECTED_BLOG_TO_PATH).map(([slug, path]) => ({
+  source: `/blog/${slug}`,
+  destination: path,
   permanent: true as const,
 }));
 
@@ -55,12 +61,12 @@ const nextConfig: NextConfig = {
       {
         source: "/roofing",
         destination: "/services/roofing",
-        permanent: false,
+        permanent: true,
       },
       {
         source: "/hvac",
         destination: "/services/hvac",
-        permanent: false,
+        permanent: true,
       },
       // Harmless `?page=1` on non-paginated hubs equals the bare URL — strip the param.
       {
@@ -118,6 +124,7 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       ...serviceHubRedirects,
+      ...blogRedirects,
 
       // Old plumber blog URLs → single canonical post (one hop each — avoids GSC redirect chains)
       {

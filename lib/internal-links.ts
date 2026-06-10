@@ -1,5 +1,6 @@
 import { CORE_BEST_SLUGS, CORE_SERVICE_SLUGS } from "./pageContentRegistry";
 import {
+  canonicalServicePathForLinks,
   isRedirectedLocationSlug,
 } from "./public-site-scope";
 import { getBestBySlug, getBlog, getBlogBySlug, getBlogsForBestSlug, getBlogsForServiceSlug, getLocations, getServices, type BlogPage, type BestPage, type LocationPage, type ServicePage } from "./site-content";
@@ -28,7 +29,11 @@ function siblingCoreServices(currentSlug: string): InternalLink[] {
   return siblings
     .map((slug) => services.find((s) => s.slug === slug))
     .filter((s): s is ServicePage => Boolean(s))
-    .map((s) => ({ href: `/services/${s.slug}`, label: s.title, description: s.description }));
+    .map((s) => ({
+      href: canonicalServicePathForLinks(`/services/${s.slug}`),
+      label: s.title,
+      description: s.description,
+    }));
 }
 
 function bestOfForService(service: ServicePage): InternalLink | null {
@@ -108,7 +113,13 @@ export function blogPageInternalLinks(blogSlug: string) {
   const relatedPosts = relatedPostsForBlog(post);
 
   return {
-    service: service ? { href: `/services/${service.slug}`, label: service.title, description: service.description } : null,
+    service: service
+      ? {
+          href: canonicalServicePathForLinks(`/services/${service.slug}`),
+          label: service.title,
+          description: service.description,
+        }
+      : null,
     bestOf: best ? { href: `/best/${best.slug}`, label: best.title, description: best.description } : { href: "/best", label: "Best Of hub" },
     relatedPosts,
   };
@@ -125,7 +136,11 @@ export function bestPageInternalLinks(bestSlug: string) {
       .map((s) => services.find((x) => x.slug === s))
       .filter((s): s is ServicePage => Boolean(s)),
     2
-  ).map((s) => ({ href: `/services/${s.slug}`, label: s.title, description: s.description }));
+  ).map((s) => ({
+    href: canonicalServicePathForLinks(`/services/${s.slug}`),
+    label: s.title,
+    description: s.description,
+  }));
 
   const methodology: InternalLink = {
     href: "/methodology",

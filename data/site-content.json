@@ -2379,9 +2379,7 @@
         { "kind": "p", "text": "Use this guide to shortlist electricians, then request written estimates you can compare line-by-line." }
       ],
       "recommendedServiceSlugs": [
-        "electrician-georgetown-tx",
-        "landscaping-georgetown-tx",
-        "pest-control-georgetown-tx"
+        "electrician-georgetown-tx"
       ]
     },
     {
@@ -2406,9 +2404,7 @@
         { "kind": "p", "text": "Start with the landscaping service guide, then compare companies below." }
       ],
       "recommendedServiceSlugs": [
-        "landscaping-georgetown-tx",
-        "foundation-repair-georgetown-tx",
-        "house-cleaning-georgetown-tx"
+        "landscaping-georgetown-tx"
       ]
     },
     {
@@ -2433,9 +2429,7 @@
         { "kind": "p", "text": "Read the pest control guide, then contact a short list for plans and pricing." }
       ],
       "recommendedServiceSlugs": [
-        "pest-control-georgetown-tx",
-        "foundation-repair-georgetown-tx",
-        "electrician-georgetown-tx"
+        "pest-control-georgetown-tx"
       ]
     },
     {
@@ -2460,9 +2454,7 @@
         { "kind": "p", "text": "Pair this directory with our foundation repair service guide for warning signs and next steps." }
       ],
       "recommendedServiceSlugs": [
-        "foundation-repair-georgetown-tx",
-        "landscaping-georgetown-tx",
-        "pest-control-georgetown-tx"
+        "foundation-repair-georgetown-tx"
       ]
     },
     {
@@ -2487,9 +2479,7 @@
         { "kind": "p", "text": "Use the house cleaning guide to define scope, then compare providers here." }
       ],
       "recommendedServiceSlugs": [
-        "house-cleaning-georgetown-tx",
-        "landscaping-georgetown-tx",
-        "pest-control-georgetown-tx"
+        "house-cleaning-georgetown-tx"
       ]
     }
   ]

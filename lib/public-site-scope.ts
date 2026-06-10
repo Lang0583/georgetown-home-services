@@ -102,10 +102,17 @@ export function canonicalServicePathForLinks(href: string): string {
 export const REDIRECTED_LOCATION_SLUGS = new Set<string>([]);
 
 /**
- * Blog slugs removed from CMS that still 308 in `next.config.ts`. Empty when
- * every post lives only at its canonical URL in `site-content.json`.
+ * Thin neighborhood hail blog stubs → canonical neighborhood hail hubs.
+ * Keeps one indexable URL per neighborhood intent (see `data/neighborhood-hail-pages.ts`).
  */
-export const REDIRECTED_BLOG_SLUGS = new Set<string>([]);
+export const REDIRECTED_BLOG_TO_PATH: Readonly<Record<string, string>> = {
+  "hail-damage-sun-city-georgetown-tx": "/neighborhoods/sun-city/hail-damage",
+  "hail-damage-teravista-georgetown-tx": "/neighborhoods/teravista/hail-damage",
+  "hail-damage-wolf-ranch-georgetown-tx": "/neighborhoods/wolf-ranch/hail-damage",
+  "hail-damage-georgetown-village-tx": "/neighborhoods/georgetown-village/hail-damage",
+};
+
+export const REDIRECTED_BLOG_SLUGS = new Set<string>(Object.keys(REDIRECTED_BLOG_TO_PATH));
 
 export function isRedirectedServiceSlug(slug: string): boolean {
   return REDIRECTED_SERVICE_SLUGS.has(slug);
@@ -145,7 +152,14 @@ export function isRedirectedBlogSlug(slug: string): boolean {
  * output. There is no auto-update script — this file is the human-curated
  * source of truth.
  */
-export const NOINDEX_SLUGS = new Set<string>();
+export const NOINDEX_SLUGS = new Set<string>([
+  // Thin extended-trade service guides — trade hubs (/services/electrical, etc.) are canonical until rewritten.
+  "electrician-georgetown-tx",
+  "landscaping-georgetown-tx",
+  "pest-control-georgetown-tx",
+  "foundation-repair-georgetown-tx",
+  "house-cleaning-georgetown-tx",
+]);
 
 export function isNoindexSlug(slug: string): boolean {
   return NOINDEX_SLUGS.has(slug);

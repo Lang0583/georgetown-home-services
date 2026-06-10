@@ -124,6 +124,16 @@ export default function PrivacyPolicyPage() {
       </section>
 
       <section>
+        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Affiliate and partner links</h2>
+        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+          Some pages link to third-party marketplaces (for example Angi, Thumbtack, HomeAdvisor, and Amazon) so you can
+          compare contractors or buy products we mention. If you click those links and complete a purchase or booking, we
+          may earn a referral fee. That does not change the price you pay. Partner sites have their own privacy policies
+          and may set cookies when you leave our site.
+        </p>
+      </section>
+
+      <section>
         <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Cookies and similar technologies</h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
           In addition to Google services above, our hosting and fonts may use standard technologies needed to run the

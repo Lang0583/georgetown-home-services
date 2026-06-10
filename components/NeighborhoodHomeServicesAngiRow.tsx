@@ -8,10 +8,14 @@ import { angiGeorgetownListUrl } from "../lib/affiliates";
  */
 export default function NeighborhoodHomeServicesAngiRow({ neighborhoodName }: { neighborhoodName: string }) {
   return (
-    <div
-      className="not-prose mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
-      aria-label={`Angi directory links for ${neighborhoodName} homeowners`}
-    >
+    <div className="not-prose mt-6">
+      <p className="mb-3 text-xs leading-relaxed text-gray-600">
+        Partner links below may earn us a fee if you hire through Angi—it does not change what you pay.
+      </p>
+      <div
+        className="flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+        aria-label={`Angi directory links for ${neighborhoodName} homeowners`}
+      >
       <AffiliateOutboundCta
         href={angiGeorgetownListUrl("plumbing")}
         affiliateName="Angi"
@@ -33,6 +37,7 @@ export default function NeighborhoodHomeServicesAngiRow({ neighborhoodName }: { 
       >
         Compare roofers on Angi →
       </AffiliateOutboundCta>
+      </div>
     </div>
   );
 }

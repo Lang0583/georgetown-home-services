@@ -166,7 +166,7 @@ export default async function NeighborhoodHailDamagePage({
         </div>
 
         <p className="mt-8 text-sm text-gray-600">
-          <Link href="/blog/hail-damage-georgetown-tx-may-2026" className="font-medium text-primary hover:underline">
+          <Link href="/blog/hail-damage-georgetown-williamson-may-2026" className="font-medium text-primary hover:underline">
             Read the full May 2026 Williamson County hail guide →
           </Link>
         </p>

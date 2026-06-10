@@ -52,7 +52,8 @@ export async function generateMetadata(): Promise<Metadata> {
       default: "Georgetown Home Services",
       template: "%s | Georgetown Home Services",
     },
-    description: "Local plumbing, HVAC, and roofing service in Georgetown, TX.",
+    description:
+      "Independent Georgetown TX home services directory—compare plumbers, HVAC, roofers, and more with real reviews and local cost guides.",
     robots: { index: true, follow: true },
     other: {
       "google-adsense-account": adsenseClient,
