@@ -117,7 +117,7 @@ export default function EmailCaptureInlineBlog({
 
         {status === "success" ? (
           <div className="rounded-lg border border-emerald-500/30 bg-emerald-50 p-3 text-sm text-emerald-900 sm:col-span-2">
-            You’re in — check your inbox for the guide.
+            You’re in — your PDF is downloading and the full checklist library is on its way to your inbox.
           </div>
         ) : null}
         {status === "error" && error ? (

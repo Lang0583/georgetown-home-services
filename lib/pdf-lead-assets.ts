@@ -82,5 +82,15 @@ export function pdfLeadAssetForLeadMagnet(leadMagnet: LeadMagnetKey): PdfLeadAss
   return null;
 }
 
+/** Every gated PDF — attached in welcome emails. */
+export const ALL_PDF_LEAD_KEYS: readonly PdfLeadKey[] = [
+  "seasonal_full",
+  "season_spring",
+  "season_summer",
+  "season_fall",
+  "season_winter",
+  "monthly",
+] as const;
+
 /** On-disk directory (not web-accessible). */
 export const LEAD_MAGNET_PDF_DIR = "private/lead-magnets";

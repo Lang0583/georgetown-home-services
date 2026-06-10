@@ -1,7 +1,12 @@
 import fs from "node:fs";
 import { Resend } from "resend";
 import { getSeasonalGuide } from "@/data/seasonal-guides";
-import { PDF_LEAD_ASSETS, pdfLeadKeyForSeason, type PdfLeadKey } from "@/lib/pdf-lead-assets";
+import {
+  ALL_PDF_LEAD_KEYS,
+  PDF_LEAD_ASSETS,
+  pdfLeadKeyForSeason,
+  type PdfLeadKey,
+} from "@/lib/pdf-lead-assets";
 import { leadMagnetPdfFilePath } from "@/lib/lead-magnet-pdf-path";
 import { createEmailPdfDownloadUrl } from "@/lib/pdf-download-url";
 import { SITE_URL } from "./page-seo";
@@ -16,11 +21,11 @@ function readPdfAttachment(pdfKey: PdfLeadKey) {
   const asset = PDF_LEAD_ASSETS[pdfKey];
   const filePath = leadMagnetPdfFilePath(asset.filename);
   if (!fs.existsSync(filePath)) return null;
-  return { filename: asset.filename, content: fs.readFileSync(filePath), title: asset.title };
+  return { pdfKey, filename: asset.filename, content: fs.readFileSync(filePath), title: asset.title };
 }
 
 /**
- * Sends a thank-you email with PDFs attached (and signed download links in the body).
+ * Sends a thank-you email with all lead-magnet PDFs attached (and signed download links).
  * Requires `RESEND_API_KEY` and `NEWSLETTER_FROM_EMAIL` (verified sender in Resend).
  * No-op if either is missing — signup still succeeds via `/api/newsletter`.
  */
@@ -29,51 +34,49 @@ export async function sendLeadMagnetWelcomeEmail(params: {
   firstName?: string;
   leadMagnet?: string;
   pdfKey?: PdfLeadKey;
-}): Promise<void> {
+}): Promise<boolean> {
   const apiKey = process.env.RESEND_API_KEY?.trim();
   const from = process.env.NEWSLETTER_FROM_EMAIL?.trim();
-  if (!apiKey || !from) return;
+  if (!apiKey || !from) return false;
 
   const resend = new Resend(apiKey);
   const greet = params.firstName ? `Hi ${params.firstName},` : "Hi there,";
 
-  const seasonPdfKey =
-    params.pdfKey?.startsWith("season_") === true
-      ? params.pdfKey
-      : pdfLeadKeyForSeason(getTexasSeason());
+  const highlightedKey =
+    params.pdfKey ??
+    (params.leadMagnet === "monthly_reminder" ? "monthly" : pdfLeadKeyForSeason(getTexasSeason()));
+  const highlighted = PDF_LEAD_ASSETS[highlightedKey];
   const seasonGuide = getSeasonalGuide(getTexasSeason());
 
-  const attachmentKeys: PdfLeadKey[] = ["seasonal_full", seasonPdfKey, "monthly"];
-  const uniqueKeys = Array.from(new Set(attachmentKeys));
-
-  const attachments = uniqueKeys
-    .map((key) => readPdfAttachment(key))
-    .filter((a): a is NonNullable<typeof a> => Boolean(a));
+  const attachments = ALL_PDF_LEAD_KEYS.map((key) => readPdfAttachment(key)).filter(
+    (a): a is NonNullable<typeof a> => Boolean(a),
+  );
 
   if (!attachments.length) {
     console.warn("[newsletter] Lead magnet PDFs missing under private/lead-magnets — run npm run generate:lead-pdfs");
-    return;
+    return false;
   }
 
-  const linkLines = uniqueKeys.map((key) => {
-    const asset = PDF_LEAD_ASSETS[key];
-    const href = absoluteUrl(createEmailPdfDownloadUrl(key, params.to));
-    return { title: asset.title, href };
+  const linkLines = attachments.map((a) => {
+    const href = absoluteUrl(createEmailPdfDownloadUrl(a.pdfKey, params.to));
+    return { title: a.title, href, highlighted: a.pdfKey === highlightedKey };
   });
 
   const textLinks = linkLines.map((l) => `- ${l.title}: ${l.href}`).join("\n");
   const htmlLinks = linkLines
-    .map((l) => `<li><a href="${l.href}" style="color:#01696F;">${l.title}</a></li>`)
+    .map((l) => {
+      const label = l.highlighted ? `<strong>${l.title}</strong> (your pick)` : l.title;
+      return `<li><a href="${l.href}" style="color:#01696F;">${label}</a></li>`;
+    })
     .join("");
 
   let choice: string;
   if (params.leadMagnet === "monthly_reminder") {
-    choice =
-      "You chose the monthly reminder track—we’ve attached the monthly sheet plus seasonal checklists.";
-  } else if (params.leadMagnet === "seasonal_checklist") {
-    choice = `You chose the seasonal checklist—we’ve attached the full-year guide, ${seasonGuide.label.toLowerCase()} checklist, and monthly reminder.`;
+    choice = "You asked for monthly reminders—we’ve attached every Georgetown homeowner checklist PDF below.";
+  } else if (params.leadMagnet === "seasonal_checklist" || params.pdfKey?.startsWith("season_")) {
+    choice = `Thanks for grabbing the ${highlighted.title.toLowerCase()}. Every seasonal checklist plus the full-year and monthly guides are attached.`;
   } else {
-    choice = "Here are your Georgetown homeowner guides:";
+    choice = `Here is the complete Georgetown homeowner PDF library—full-year, all four seasons, and the monthly reminder.`;
   }
 
   const text = [
@@ -81,7 +84,7 @@ export async function sendLeadMagnetWelcomeEmail(params: {
     "",
     `Thanks for joining Georgetown Home Services. ${choice}`,
     "",
-    "Download your PDFs (also attached):",
+    "Download links (same files are attached):",
     textLinks,
     "",
     "We’ll only send occasional homeowner tips. You can unsubscribe anytime from any email.",
@@ -95,9 +98,9 @@ export async function sendLeadMagnetWelcomeEmail(params: {
 <body style="font-family: system-ui, -apple-system, Segoe UI, sans-serif; line-height: 1.55; color: #1f2937; max-width: 560px;">
   <p>${greet}</p>
   <p>Thanks for joining <strong>Georgetown Home Services</strong>. ${choice}</p>
-  <p><strong>Your PDFs (also attached to this email)</strong></p>
+  <p><strong>Your PDF library (${attachments.length} checklists — also attached)</strong></p>
   <ul>${htmlLinks}</ul>
-  <p style="font-size: 14px; color: #6b7280;">Print them or save to your phone. Download links expire after seven days; attachments are yours to keep.</p>
+  <p style="font-size: 14px; color: #6b7280;">Current season in Georgetown: <strong>${seasonGuide.label}</strong>. Download links expire after seven days; attachments are yours to keep.</p>
   <p style="font-size: 12px; color: #9ca3af;">Georgetown Home Services · <a href="${SITE_URL}" style="color:#01696F;">${SITE_URL.replace(/^https?:\/\//, "")}</a></p>
 </body>
 </html>`;
@@ -106,13 +109,18 @@ export async function sendLeadMagnetWelcomeEmail(params: {
     const { error } = await resend.emails.send({
       from,
       to: params.to,
-      subject: "Your Georgetown homeowner guides (PDFs inside)",
+      subject: "Your Georgetown homeowner PDF library",
       text,
       html,
       attachments: attachments.map((a) => ({ filename: a.filename, content: a.content })),
     });
-    if (error) console.warn("[newsletter] Resend:", error.message);
+    if (error) {
+      console.warn("[newsletter] Resend:", error.message);
+      return false;
+    }
+    return true;
   } catch (e) {
     console.warn("[newsletter] Resend send failed:", e);
+    return false;
   }
 }

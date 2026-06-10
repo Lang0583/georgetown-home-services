@@ -52,7 +52,7 @@ const SEASONAL_GUIDES: SeasonalGuide[] = [
       },
       {
         trade: "Plumbing",
-        href: "/services/plumbing-georgetown-tx",
+        href: "/services/plumber-georgetown-tx",
         items: [
           "Exercise the main water shutoff gently; label it if guests or renters are in the home.",
           "Inspect hose bibs and irrigation lines after the last freeze risk—slow leaks often show up first on the bill.",
@@ -113,7 +113,7 @@ const SEASONAL_GUIDES: SeasonalGuide[] = [
       },
       {
         trade: "Plumbing",
-        href: "/services/plumbing-georgetown-tx",
+        href: "/services/plumber-georgetown-tx",
         items: [
           "Watch the water bill for unexplained jumps—irrigation leaks and slab supply lines show here first.",
           "Insulate exposed pipes in hot attics and garages where cold-water lines can sweat heavily.",
@@ -172,7 +172,7 @@ const SEASONAL_GUIDES: SeasonalGuide[] = [
       },
       {
         trade: "Plumbing",
-        href: "/services/plumbing-georgetown-tx",
+        href: "/services/plumber-georgetown-tx",
         items: [
           "Drain and shut off hose bibs; insulate exposed lines on pier-and-beam homes.",
           "Flush water heater sediment if your model recommends it—hard water builds scale in Georgetown.",

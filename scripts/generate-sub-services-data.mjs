@@ -419,8 +419,15 @@ const TYPICAL_SCOPE = {
     `Most ${job} calls in Georgetown start with shutting off water at the fixture or main, then isolating whether the issue is a branch line, vent, or supply failure before parts are ordered.`,
   hvac: (name, job) =>
     `Technicians usually measure temperature split and static pressure on ${job} visits here before recommending capacitors, refrigerant work, or airflow fixes—guesswork is common on busy August afternoons.`,
-  roofing: (name, job) =>
-    `${name} estimates should note shingle class, underlayment, flashing at penetrations, and whether decking allowance is included—Georgetown hail history makes those line items non-optional on many slopes.`,
+  roofing: (name, job) => {
+    const lines = [
+      `${job} scopes in Georgetown should spell out shingle class, underlayment, and flashing at penetrations—hail seasons make vague allowances expensive later.`,
+      `On ${job}, confirm whether decking replacement is itemized separately and how pipe boots and drip edge are handled.`,
+      `${name} quotes should note ventilation balance and whether ridge caps are replaced in a full run—not spot patches after wind events.`,
+      `For ${job}, ask how valleys and wall transitions will be sealed; slow Texas rains expose shortcuts within a season.`,
+    ];
+    return lines[slugHash(`${name}:${job}`) % lines.length];
+  },
   electrical: (name, job) =>
     `Licensed electricians document panel capacity, wire gauge, and permit needs on ${job} jobs—older Georgetown homes near the Square often need arc-fault upgrades when circuits are extended.`,
   landscaping: (name, job) =>
