@@ -179,7 +179,7 @@ export default function BlogIndexPage() {
 
             {adsenseInlineSlot ? (
               <div className="mx-auto max-w-2xl">
-                <AdSenseDisplay slot={adsenseInlineSlot} />
+                <AdSenseDisplay slotId={adsenseInlineSlot} />
               </div>
             ) : null}
 

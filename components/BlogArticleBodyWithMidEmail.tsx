@@ -1,5 +1,5 @@
 import type { ContentBlock } from "../lib/site-content";
-import { adsenseInlineSlot } from "../lib/adsense-config";
+import { adsenseBlogMidPostSlot } from "../lib/adsense-config";
 import { COST_POST_SUPPLEMENTS } from "../lib/pricing-data";
 import { splitBlocksAfterNthParagraph, splitHtmlAfterNthParagraph } from "../lib/split-article-content";
 import AdSenseDisplay from "./AdSenseDisplay";
@@ -52,9 +52,9 @@ export default function BlogArticleBodyWithMidEmail({ slug, generated, blocks }:
     return (
       <ArticleContentShell>
         <ProseArticle dangerouslySetInnerHTML={{ __html: safeOpen2 }} />
-        {adsenseInlineSlot ? (
+        {adsenseBlogMidPostSlot ? (
           <div className="my-8">
-            <AdSenseDisplay slot={adsenseInlineSlot} />
+            <AdSenseDisplay slotId={adsenseBlogMidPostSlot} />
           </div>
         ) : null}
         {safePara3 ? <ProseArticle dangerouslySetInnerHTML={{ __html: safePara3 }} /> : null}
@@ -77,9 +77,9 @@ export default function BlogArticleBodyWithMidEmail({ slug, generated, blocks }:
       <ProseArticle>
         <RichTextBlocks blocks={first2} />
       </ProseArticle>
-      {adsenseInlineSlot ? (
+      {adsenseBlogMidPostSlot ? (
         <div className="my-8">
-          <AdSenseDisplay slot={adsenseInlineSlot} />
+          <AdSenseDisplay slotId={adsenseBlogMidPostSlot} />
         </div>
       ) : null}
       {thirdPara.length ? (

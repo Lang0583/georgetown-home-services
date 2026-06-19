@@ -615,7 +615,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
             }
             aside={
               <>
-                {adsenseBlogPostSlot ? <AdSenseDisplay slot={adsenseBlogPostSlot} className="mt-8" /> : null}
+                {adsenseBlogPostSlot ? <AdSenseDisplay slotId={adsenseBlogPostSlot} className="mt-8" /> : null}
               </>
             }
           />

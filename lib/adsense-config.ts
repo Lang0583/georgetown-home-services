@@ -32,3 +32,15 @@ export const adsenseBestOfSlot =
 /** Display unit "GHS - Service Page" (`/services/[slug]`). Override via `NEXT_PUBLIC_ADSENSE_SLOT_SERVICE`. */
 export const adsenseServiceMainSlot =
   process.env.NEXT_PUBLIC_ADSENSE_SLOT_SERVICE?.trim() || "9450125974";
+
+/** Display unit "service-page-top" — below H1 on core `/services/[slug]` guides. Override via `NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_PAGE_TOP`. */
+export const adsenseServicePageTopSlot =
+  process.env.NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_PAGE_TOP?.trim() || "5422703282";
+
+/** Display unit "blog-mid-post" — between paragraphs 2 and 3 on `/blog/[slug]`. Override via `NEXT_PUBLIC_ADSENSE_SLOT_BLOG_MID_POST`. */
+export const adsenseBlogMidPostSlot =
+  process.env.NEXT_PUBLIC_ADSENSE_SLOT_BLOG_MID_POST?.trim() || "3059695606";
+
+/** Display unit "neighborhood-page-inline" — mid-page on `/neighborhoods/*`. Override via `NEXT_PUBLIC_ADSENSE_SLOT_NEIGHBORHOOD_INLINE`. */
+export const adsenseNeighborhoodPageInlineSlot =
+  process.env.NEXT_PUBLIC_ADSENSE_SLOT_NEIGHBORHOOD_INLINE?.trim() || "4109621613";

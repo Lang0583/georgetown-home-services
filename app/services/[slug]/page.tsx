@@ -21,7 +21,7 @@ import {
   getServices,
   getServiceSlugs,
 } from "../../../lib/site-content";
-import { adsenseServiceMainSlot, adsenseSidebarSlot } from "../../../lib/adsense-config";
+import { adsenseServicePageTopSlot, adsenseSidebarSlot } from "../../../lib/adsense-config";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
@@ -192,6 +192,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 {service.serviceType} • {location?.title ?? "Georgetown, TX"}
               </div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{service.h1}</h1>
+              {(CORE_SERVICE_SLUGS as readonly string[]).includes(service.slug) && adsenseServicePageTopSlot ? (
+                <div className="mt-6">
+                  <AdSenseDisplay slotId={adsenseServicePageTopSlot} className="mx-auto max-w-2xl" />
+                </div>
+              ) : null}
               <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               <AuthorByline className="mt-3" compact />
 
@@ -244,12 +249,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   We publish educational guides and a provider directory. We don’t take service requests or schedule jobs.
                 </p>
               </div>
-
-              {adsenseServiceMainSlot ? (
-                <div className="mt-8">
-                  <AdSenseDisplay slot={adsenseServiceMainSlot} className="mx-auto max-w-2xl" />
-                </div>
-              ) : null}
 
               <div className="mt-8">
                 {isPlumberService ? (
@@ -924,7 +923,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 <div className="mt-2 text-sm leading-relaxed text-gray-700">{location?.title ?? "Georgetown, TX"}</div>
               </div>
 
-              {adsenseSidebarSlot ? <AdSenseDisplay slot={adsenseSidebarSlot} className="mt-8" /> : null}
+              {adsenseSidebarSlot ? <AdSenseDisplay slotId={adsenseSidebarSlot} className="mt-8" /> : null}
               </>
             }
           />
