@@ -1,4 +1,5 @@
 import { CORE_BEST_SLUGS, CORE_SERVICE_SLUGS } from "./pageContentRegistry";
+import { neighborhoodLandingLinksForCoreService } from "./core-service-enrichment";
 import {
   canonicalServicePathForLinks,
   isRedirectedLocationSlug,
@@ -82,6 +83,7 @@ export function servicePageInternalLinks(serviceSlug: string) {
   const siblings = siblingCoreServices(service.slug);
   const bestOf = bestOfForService(service);
   const neighborhood = neighborhoodForService(service);
+  const neighborhoodLandings = neighborhoodLandingLinksForCoreService(service.slug);
   const blogs = blogLinksForService(service.slug);
 
   return {
@@ -89,6 +91,7 @@ export function servicePageInternalLinks(serviceSlug: string) {
     siblings,
     bestOf,
     neighborhood,
+    neighborhoodLandings,
     blogs,
   };
 }

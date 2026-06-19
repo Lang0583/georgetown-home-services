@@ -33,6 +33,10 @@ import AuthorByline from "../../../components/AuthorByline";
 import { hubArticleJsonLd } from "../../../lib/site-author";
 import { CORE_SERVICE_SLUGS, resolveServicePage } from "../../../lib/pageContentRegistry";
 import {
+  getCoreServiceEnrichment,
+  isCoreServiceEnrichmentSlug,
+} from "../../../lib/core-service-enrichment";
+import {
   isExtendedServiceSlug,
   isNoindexSlug,
   isRedirectedServiceSlug,
@@ -51,6 +55,7 @@ import { servicePageInternalLinks } from "../../../lib/internal-links";
 import { resolveServiceGuideFaqs } from "../../../lib/georgetown-page-faqs";
 import { buildServicePageSeo } from "../../../lib/service-page-seo";
 import CoreServiceGuideDecisionFramework from "../../../components/CoreServiceGuideDecisionFramework";
+import CoreServiceGuideEnrichment from "../../../components/CoreServiceGuideEnrichment";
 
 function breadcrumbJsonLd({
   siteUrl,
@@ -152,6 +157,16 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const explore = CORE_SERVICES.filter((s) => s.slug !== service.slug);
   const ruleLinks = servicePageInternalLinks(service.slug);
   const serviceFaqs = resolveServiceGuideFaqs(service);
+  const coreEnrichment = getCoreServiceEnrichment(service.slug);
+  const faqHeading = coreEnrichment
+    ? `${coreEnrichment.tradeLabel} FAQ for Georgetown TX Homeowners`
+    : isPlumberService
+      ? "Plumbing FAQ for Georgetown TX Homeowners"
+      : isHvacService
+        ? "HVAC FAQ for Georgetown TX Homeowners"
+        : isRooferService
+          ? "Roofing FAQ for Georgetown TX Homeowners"
+          : "Frequently Asked Questions";
 
   return (
     <PageShell>
@@ -277,40 +292,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                           hammering pipes, stuck angle stops, and outdoor hose bibs that leak at the wall.
                         </li>
                       </ul>
-                    </section>
-
-                    <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
-                        Plumbing Pricing Expectations in Georgetown TX
-                      </h2>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
-                        Every company prices work differently, but homeowners around Georgetown, TX commonly see:
-                      </p>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
-                        <li>
-                          <span className="font-semibold text-gray-900">Standard service calls:</span> a diagnostic fee
-                          in the low-to-mid hundreds, sometimes credited toward approved repairs on the same visit.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-gray-900">Smaller repairs:</span> fixing a leaking
-                          shutoff, swapping a supply line, or clearing a simple clog often lands in the lower hundreds
-                          depending on access and parts.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-gray-900">Water heater replacements:</span> full
-                          replacements—especially for larger or tankless units—are typically quoted in the
-                          many-thousands, including labor and haul-away.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-gray-900">Sewer and drain work:</span> cabling or jetting
-                          a main line is usually a few hundred dollars; repairs that require digging or pipe
-                          replacement are significantly more.
-                        </li>
-                      </ul>
-                      <p className="mt-3 text-sm leading-relaxed text-gray-700">
-                        These are not quotes—always request a written estimate for your specific situation and ask what
-                        could change the price.
-                      </p>
                     </section>
 
                     <section>
@@ -447,42 +428,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         reduce breakdown risk by checking airflow basics, cleaning where appropriate, and confirming the
                         condensate drain is clear. If your home has persistent hot rooms (common in two-story layouts),
                         ask for airflow observations instead of only equipment notes.
-                      </p>
-                    </section>
-
-                    <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
-                        Typical HVAC Costs in Georgetown TX
-                      </h2>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
-                        Pricing depends on equipment brand/age, access, and timing, but Georgetown, TX homeowners often
-                        see:
-                      </p>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
-                        <li>
-                          <span className="font-semibold text-gray-900">Service call and diagnosis:</span> commonly a fee
-                          in the low-to-mid hundreds, sometimes credited toward approved repairs.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-gray-900">Typical repairs:</span> smaller parts and drain
-                          clears often in the lower hundreds depending on access and brand.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-gray-900">Major repairs:</span> coils, compressors, or
-                          control boards can be significantly more and may approach replacement-level pricing on older
-                          systems.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-gray-900">Replacement:</span> full system swaps are quoted
-                          in the many-thousands depending on tonnage, efficiency, and ductwork scope.
-                        </li>
-                      </ul>
-                      <p className="mt-3 text-sm leading-relaxed text-gray-700">
-                        For a deeper replacement budget breakdown, read{" "}
-                        <Link href="/blog/cost-to-replace-hvac-georgetown" className="font-semibold hover:underline">
-                          cost to replace HVAC in Georgetown
-                        </Link>
-                        .
                       </p>
                     </section>
 
@@ -746,11 +691,18 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     </section>
                   </div>
                 ) : articleHtml ? (
-                  <GeneratedArticleBody html={articleHtml} />
+                  <GeneratedArticleBody
+                    html={articleHtml}
+                    stripPricingAndFaq={isCoreServiceEnrichmentSlug(service.slug)}
+                  />
                 ) : (
                   <RichText blocks={service.content} />
                 )}
               </div>
+
+              {isCoreServiceEnrichmentSlug(service.slug) ? (
+                <CoreServiceGuideEnrichment serviceSlug={service.slug} />
+              ) : null}
 
               {providersFromJson.length ? (
                 <section id="providers" className="mt-12 scroll-mt-24">
@@ -808,15 +760,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
               <div>
                 <section className="mt-12">
-                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">
-                    {isPlumberService
-                      ? "Plumbing FAQ for Georgetown TX Homeowners"
-                      : isHvacService
-                      ? "HVAC FAQ for Georgetown TX Homeowners"
-                      : isRooferService
-                      ? "Roofing FAQ for Georgetown TX Homeowners"
-                      : "Frequently Asked Questions"}
-                  </h2>
+                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">{faqHeading}</h2>
                   <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
                     These answers summarize common questions we hear from homeowners in and around Georgetown, TX. Use
                     them as a starting point, then confirm details with any professional you choose to work with.
@@ -873,6 +817,15 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         badge="Neighborhood"
                       />
                     ) : null}
+                    {ruleLinks.neighborhoodLandings?.map((l) => (
+                      <LinkCard
+                        key={l.href}
+                        href={l.href}
+                        title={l.label}
+                        description={l.description ?? "Neighborhood service landing page."}
+                        badge="Neighborhood guide"
+                      />
+                    ))}
                     {ruleLinks.siblings.map((l) => (
                       <LinkCard
                         key={l.href}
