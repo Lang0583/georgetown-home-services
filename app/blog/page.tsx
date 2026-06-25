@@ -150,25 +150,25 @@ export default function BlogIndexPage() {
                 <a className="hover:underline" href="#costs">
                   Costs
                 </a>
-                <span className="text-gray-300" aria-hidden>
+                <span className="text-[#6b7280]" aria-hidden>
                   ·
                 </span>
                 <a className="hover:underline" href="#repair">
                   Repair advice
                 </a>
-                <span className="text-gray-300" aria-hidden>
+                <span className="text-[#6b7280]" aria-hidden>
                   ·
                 </span>
                 <a className="hover:underline" href="#maintenance">
                   Maintenance
                 </a>
-                <span className="text-gray-300" aria-hidden>
+                <span className="text-[#6b7280]" aria-hidden>
                   ·
                 </span>
                 <a className="hover:underline" href="#emergency">
                   Emergency
                 </a>
-                <span className="text-gray-300" aria-hidden>
+                <span className="text-[#6b7280]" aria-hidden>
                   ·
                 </span>
                 <a className="hover:underline" href="#hiring">

@@ -144,8 +144,15 @@ export default function RootLayout({
           <>
             <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
             <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
-            <script
-              async
+            {/*
+              Google AdSense bootstrap. `strategy="afterInteractive"` defers
+              the script until after hydration so it does not block paint or
+              interfere with React's mount; AdUnit's `useEffect` then pushes
+              individual slots into `adsbygoogle` once this is loaded.
+            */}
+            <Script
+              id="google-adsense"
+              strategy="afterInteractive"
               src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
               crossOrigin="anonymous"
             />

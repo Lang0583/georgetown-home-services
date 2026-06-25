@@ -124,7 +124,7 @@ export default function ContactGeneralForm() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="How can we help?"
-            className="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light"
+            className="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none placeholder:text-[#6b7280] focus:border-primary focus:ring-2 focus:ring-primary-light"
           />
         </div>
 

@@ -81,7 +81,7 @@ export default function BestAlsoCompareBar({ links }: { links: AlsoCompareLink[]
           <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-2 sm:gap-x-2">
             {links.flatMap((l, i) => [
               i > 0 ? (
-                <span key={`sep-${l.href}`} className="text-gray-300" aria-hidden>
+                <span key={`sep-${l.href}`} className="text-[#6b7280]" aria-hidden>
                   ·
                 </span>
               ) : null,

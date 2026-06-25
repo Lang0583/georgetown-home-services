@@ -135,13 +135,13 @@ export default function BestIndexPage() {
                     <Link href="/services/hvac-georgetown-tx" className="hover:underline">
                       AC &amp; HVAC issues
                     </Link>
-                    <span className="text-gray-300" aria-hidden>
+                    <span className="text-[#6b7280]" aria-hidden>
                       ·
                     </span>
                     <Link href="/services/plumber-georgetown-tx" className="hover:underline">
                       Plumbing issues
                     </Link>
-                    <span className="text-gray-300" aria-hidden>
+                    <span className="text-[#6b7280]" aria-hidden>
                       ·
                     </span>
                     <Link href="/services/roofer-georgetown-tx" className="hover:underline">
@@ -158,7 +158,7 @@ export default function BestIndexPage() {
                     <Link href="/blog/cost-to-replace-hvac-georgetown" className="hover:underline">
                       HVAC replacement cost
                     </Link>
-                    <span className="text-gray-300" aria-hidden>
+                    <span className="text-[#6b7280]" aria-hidden>
                       ·
                     </span>
                     <Link href="/blog/how-to-choose-reliable-plumber-georgetown-tx" className="hover:underline">

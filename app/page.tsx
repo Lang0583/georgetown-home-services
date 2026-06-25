@@ -7,6 +7,9 @@ import HomeTopProvidersColumn from "../components/HomeTopProvidersColumn";
 import HomeTrustBar from "../components/HomeTrustBar";
 import HomeSevereWeatherStrip from "../components/HomeSevereWeatherStrip";
 import HomeHowItWorks from "../components/HomeHowItWorks";
+import AffiliateCTA from "../components/AffiliateCTA";
+import AdSenseDisplay from "../components/AdSenseDisplay";
+import { ADSENSE_UNITS_ENABLED, adsenseHomeMidSlot } from "../lib/adsense-config";
 import FAQList from "../components/FAQList";
 import FAQSchema from "../components/FAQSchema";
 import JsonLd from "../components/JsonLd";
@@ -159,6 +162,15 @@ export default function Home() {
           </div>
         </section>
 
+        {ADSENSE_UNITS_ENABLED ? (
+          <section className="mt-10 md:mt-12" aria-label="Sponsored">
+            {/* SLOT: home-mid (horizontal). Replace `SLOT_ID_PLACEHOLDER`
+                in `lib/adsense-config.ts` → `adsenseHomeMidSlot` or set
+                `NEXT_PUBLIC_ADSENSE_SLOT_HOME_MID` once minted. */}
+            <AdSenseDisplay slot={adsenseHomeMidSlot} />
+          </section>
+        ) : null}
+
         <section
           id="providers"
           className="mt-10 scroll-mt-28 rounded-xl border border-gray-200 bg-white p-6 shadow-md ring-1 ring-gray-950/[0.05] sm:p-8 md:mt-12 md:-mt-4 md:py-10"
@@ -197,6 +209,10 @@ export default function Home() {
 
         <section className="border-t border-gray-200 py-10 md:py-12">
           <FAQList faqs={HOME_PAGE_FAQS} variant="plain" />
+        </section>
+
+        <section className="border-t border-gray-200 py-10 md:py-12">
+          <AffiliateCTA placement="home-bottom" />
         </section>
 
       </Container>

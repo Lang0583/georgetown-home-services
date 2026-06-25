@@ -18,7 +18,14 @@ export function buildFaqPageJsonLd(opts: {
   faqs: FaqItem[];
 }): Record<string, unknown> | null {
   if (!opts.faqs.length) return null;
-  const faqs = opts.faqs.map(normalizeFaq);
+  // Drop any entry with a missing/blank question or answer so Google never
+  // sees a `Question` with an empty `acceptedAnswer.text`. Trim whitespace
+  // before length-checking so " " is treated as empty.
+  const faqs = opts.faqs
+    .map(normalizeFaq)
+    .map((f) => ({ q: (f.q ?? "").trim(), a: (f.a ?? "").trim() }))
+    .filter((f) => f.q.length > 0 && f.a.length > 0);
+  if (!faqs.length) return null;
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",

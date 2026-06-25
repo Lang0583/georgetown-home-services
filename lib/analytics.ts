@@ -36,7 +36,7 @@ export function trackEvent(eventName: string, params?: TrackEventParams): void {
  * for GA4 exploration—equivalent intent to `gtag('event','affiliate_click',{ affiliate:'angi' })`.
  */
 export function trackAffiliatePartnerClick(
-  affiliate: "angi" | "thumbtack",
+  affiliate: "angi" | "thumbtack" | "homeadvisor",
   extra?: { placement?: string },
 ): void {
   const p: TrackEventParams = {

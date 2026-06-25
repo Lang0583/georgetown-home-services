@@ -13,6 +13,7 @@ function resolveAdsensePublisherId(): string {
   const fromEnv =
     process.env.NEXT_PUBLIC_ADSENSE_ID?.trim() ||
     process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID?.trim() ||
+    process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID?.trim() ||
     process.env.NEXT_PUBLIC_ADSENSE_CLIENT?.trim() ||
     "";
   if (fromEnv) return fromEnv;
@@ -31,8 +32,24 @@ export const ADSENSE_ACTIVE = Boolean(ADSENSE_PUBLISHER_ID);
 /**
  * Display units (`<AdUnit>` / `AdSenseDisplay`) only when this env is set — keeps ads off
  * local dev, preview deploys, and staging unless you explicitly opt in.
+ *
+ * Accepts any of the supported publisher-ID env names so a single opt-in flag
+ * controls both the bootstrap script and per-page ad units.
  */
-export const ADSENSE_UNITS_ENABLED = Boolean(process.env.NEXT_PUBLIC_ADSENSE_ID?.trim());
+export const ADSENSE_UNITS_ENABLED = Boolean(
+  process.env.NEXT_PUBLIC_ADSENSE_ID?.trim() ||
+    process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID?.trim() ||
+    process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID?.trim() ||
+    process.env.NEXT_PUBLIC_ADSENSE_CLIENT?.trim(),
+);
+
+/**
+ * Sentinel value used in slot getters before real AdSense unit IDs are minted.
+ * `<AdUnit>` short-circuits on this value so the placeholder never reaches
+ * `adsbygoogle.push()`. Swap with the real numeric slot from the AdSense
+ * dashboard (Ad units → Display ads → copy the `data-ad-slot` value).
+ */
+export const ADSENSE_SLOT_PLACEHOLDER = "SLOT_ID_PLACEHOLDER";
 
 /** @deprecated Use `ADSENSE_PUBLISHER_ID` (from `NEXT_PUBLIC_ADSENSE_ID`). */
 export const ADSENSE_CLIENT_ID = ADSENSE_PUBLISHER_ID;
@@ -62,3 +79,33 @@ export const adsenseBestOfSlot =
 /** Display unit "GHS - Service Page" (`/services/[slug]`). Override via `NEXT_PUBLIC_ADSENSE_SLOT_SERVICE`. */
 export const adsenseServiceMainSlot =
   process.env.NEXT_PUBLIC_ADSENSE_SLOT_SERVICE?.trim() || "9450125974";
+
+/**
+ * Below-H1 horizontal banner on every service page. New unit — placeholder
+ * stays until you mint the slot in AdSense and either set
+ * `NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_HERO` or hard-code it here.
+ */
+export const adsenseServiceHeroSlot =
+  process.env.NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_HERO?.trim() || ADSENSE_SLOT_PLACEHOLDER;
+
+/**
+ * Rectangle between the AffiliateCTA and the provider listings on service
+ * pages. New unit — see `NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_INTERSTITIAL`.
+ */
+export const adsenseServiceAffiliateInterstitialSlot =
+  process.env.NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_INTERSTITIAL?.trim() ||
+  ADSENSE_SLOT_PLACEHOLDER;
+
+/**
+ * Horizontal banner on the homepage between "Browse by Category" and
+ * "Top Local Providers". New unit — see `NEXT_PUBLIC_ADSENSE_SLOT_HOME_MID`.
+ */
+export const adsenseHomeMidSlot =
+  process.env.NEXT_PUBLIC_ADSENSE_SLOT_HOME_MID?.trim() || ADSENSE_SLOT_PLACEHOLDER;
+
+/**
+ * Rectangle between the intro / methodology callout and the provider list on
+ * Best Of pages. New unit — see `NEXT_PUBLIC_ADSENSE_SLOT_BEST_OF_INTRO`.
+ */
+export const adsenseBestOfIntroSlot =
+  process.env.NEXT_PUBLIC_ADSENSE_SLOT_BEST_OF_INTRO?.trim() || ADSENSE_SLOT_PLACEHOLDER;

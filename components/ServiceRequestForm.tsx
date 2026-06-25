@@ -75,9 +75,10 @@ export default function ServiceRequestForm({ serviceSlug }: Props) {
   return (
     <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
       <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">Request service</div>
-      <h2 className="mt-2 text-lg font-semibold text-gray-900">Tell us what you need</h2>
+      <h2 className="mt-2 text-lg font-semibold text-gray-900">Get Connected with Georgetown Contractors</h2>
       <p className="mt-2 text-sm leading-relaxed text-gray-700">
-        Share a short note and your contact details. Local providers use this to respond with availability and next steps.
+        Share a short note and your contact details so local Georgetown providers can reach out directly with
+        availability and pricing for your project.
       </p>
 
       <form onSubmit={onSubmit} className="mt-5 space-y-4">
@@ -152,7 +153,7 @@ export default function ServiceRequestForm({ serviceSlug }: Props) {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="What’s going on at your home? (issue, timeline, location in Georgetown area)"
-            className="mt-1 w-full resize-y rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light"
+            className="mt-1 w-full resize-y rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none placeholder:text-[#6b7280] focus:border-primary focus:ring-2 focus:ring-primary-light"
           />
         </div>
 
@@ -180,8 +181,13 @@ export default function ServiceRequestForm({ serviceSlug }: Props) {
           disabled={!canSubmit}
           className="w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {status === "submitting" ? "Sending…" : "Send request"}
+          {status === "submitting" ? "Sending…" : "Find Local Providers"}
         </button>
+
+        <p className="text-xs leading-relaxed text-[#4b5563]">
+          Submitting connects you with local providers who may follow up directly. Georgetown Home Services does not
+          manage the booking process.
+        </p>
       </form>
     </div>
   );

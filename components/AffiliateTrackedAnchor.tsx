@@ -4,7 +4,7 @@ import type { ComponentProps } from "react";
 import { buttonStyles } from "./Button";
 import { trackAffiliatePartnerClick } from "../lib/analytics";
 
-type AffiliateId = "angi" | "thumbtack";
+type AffiliateId = "angi" | "thumbtack" | "homeadvisor";
 
 type Props = Omit<ComponentProps<"a">, "href" | "rel" | "target" | "onClick"> & {
   href: string;

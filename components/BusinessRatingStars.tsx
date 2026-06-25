@@ -9,7 +9,7 @@ function StarCell({ fillFraction }: { fillFraction: number }) {
       <svg className="h-4 w-4 text-gray-200" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
         <path d={STAR_PATH} />
       </svg>
-      <div className="absolute left-0 top-0 h-full overflow-hidden text-amber-400" style={{ width: `${w}%` }}>
+      <div className="absolute left-0 top-0 h-full overflow-hidden text-[#b45309]" style={{ width: `${w}%` }}>
         <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
           <path d={STAR_PATH} />
         </svg>

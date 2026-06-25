@@ -91,7 +91,7 @@ export default function HvacHubPage() {
                 <Link href="/best/top-hvac-companies-georgetown-tx" className="text-primary hover:underline">
                   See Top HVAC Companies
                 </Link>
-                <span className="text-gray-300" aria-hidden>
+                <span className="text-[#6b7280]" aria-hidden>
                   ·
                 </span>
                 <Link href="/services" className="text-gray-700 hover:underline">

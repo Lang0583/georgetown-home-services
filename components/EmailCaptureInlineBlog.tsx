@@ -90,7 +90,7 @@ export default function EmailCaptureInlineBlog({
 
       <form onSubmit={onSubmit} className="mt-5 grid gap-3 sm:grid-cols-2">
         <input
-          className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
+          className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-[#6b7280] focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
           type="text"
           name="firstName"
           placeholder="First name (optional)"
@@ -99,7 +99,7 @@ export default function EmailCaptureInlineBlog({
           autoComplete="given-name"
         />
         <input
-          className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
+          className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-[#6b7280] focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
           type="email"
           name="email"
           placeholder={EMAIL_CAPTURE_EMAIL_PLACEHOLDER}

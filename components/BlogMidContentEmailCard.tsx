@@ -85,7 +85,7 @@ export default function BlogMidContentEmailCard({ source, className }: Props) {
             <ChecklistLeadMagnetIcon className="mt-0.5 h-9 w-9 shrink-0 text-white" />
             <div className="min-w-0">
               <h2 className="text-lg font-bold leading-snug text-white sm:text-xl">{EMAIL_CAPTURE_HEADLINE}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-white/90">{EMAIL_CAPTURE_SUBTEXT}</p>
+              <p className="mt-2 text-sm leading-relaxed text-[#ffffff]">{EMAIL_CAPTURE_SUBTEXT}</p>
             </div>
           </div>
           <form onSubmit={onSubmit} className="flex flex-col gap-4 sm:flex-row sm:items-end sm:gap-4">
@@ -114,18 +114,18 @@ export default function BlogMidContentEmailCard({ source, className }: Props) {
                 onChange={(e) => setEmail(e.target.value)}
                 autoComplete="email"
                 inputMode="email"
-                className="w-full rounded-lg border border-primary/25 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none placeholder:text-gray-400 focus:border-primary focus:ring-2 focus:ring-primary-light"
+                className="w-full rounded-lg border border-primary/25 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none placeholder:text-[#6b7280] focus:border-primary focus:ring-2 focus:ring-primary-light"
               />
             </div>
             <button
               type="submit"
               disabled={!canSubmit}
-              className="shrink-0 rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-[#01696F] shadow-sm transition-colors hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-60"
+              className="shrink-0 rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-[#01696F] shadow-sm transition-colors hover:bg-[#e5f0f1] disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === "submitting" ? "…" : EMAIL_CAPTURE_CTA_CHECKLIST}
             </button>
           </form>
-          <p className="mt-3 text-center text-xs text-white/85 sm:text-left">{EMAIL_CAPTURE_TRUST_LINE}</p>
+          <p className="mt-3 text-center text-xs text-[#ffffff] sm:text-left">{EMAIL_CAPTURE_TRUST_LINE}</p>
         </>
       )}
       {status === "error" && error ? <p className="mt-2 text-sm font-medium text-rose-100">{error}</p> : null}

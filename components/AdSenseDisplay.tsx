@@ -22,7 +22,7 @@ export default function AdSenseDisplay({ slot, className = "" }: Props) {
       role="complementary"
       aria-label="Advertisement"
     >
-      <p className="mb-3 text-center text-[10px] font-semibold uppercase tracking-wider text-gray-400">Advertisement</p>
+      <p className="mb-3 text-center text-[10px] font-semibold uppercase tracking-wider text-[#6b7280]">Advertisement</p>
       <AdUnit slot={slot} format="auto" responsive />
     </div>
   );

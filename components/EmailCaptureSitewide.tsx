@@ -151,7 +151,7 @@ export default function EmailCaptureSitewide({
           </div>
 
           <input
-            className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
+            className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none ring-0 placeholder:text-[#6b7280] focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
             type="email"
             name="email"
             placeholder={EMAIL_CAPTURE_EMAIL_PLACEHOLDER}
@@ -208,7 +208,7 @@ export default function EmailCaptureSitewide({
 
       <form onSubmit={onSubmit} className="mt-6 grid gap-4 md:grid-cols-2">
         <input
-          className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
+          className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-[#6b7280] focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
           type="text"
           name="firstName"
           placeholder="First name (optional)"
@@ -217,7 +217,7 @@ export default function EmailCaptureSitewide({
           autoComplete="given-name"
         />
         <input
-          className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
+          className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-[#6b7280] focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
           type="email"
           name="email"
           placeholder={EMAIL_CAPTURE_EMAIL_PLACEHOLDER}

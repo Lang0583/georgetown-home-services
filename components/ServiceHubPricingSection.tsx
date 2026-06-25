@@ -77,13 +77,13 @@ export default function ServiceHubPricingSection({ categoryKey }: { categoryKey:
           <Link href="/pricing" className="hover:underline">
             Full pricing hub &amp; calculator →
           </Link>
-          <span className="hidden text-gray-300 sm:inline" aria-hidden>
+          <span className="hidden text-[#6b7280] sm:inline" aria-hidden>
             ·
           </span>
           <Link href={links.guideHref} className="hover:underline">
             {links.guideLabel} →
           </Link>
-          <span className="hidden text-gray-300 sm:inline" aria-hidden>
+          <span className="hidden text-[#6b7280] sm:inline" aria-hidden>
             ·
           </span>
           <Link href={links.bestHref} className="hover:underline">

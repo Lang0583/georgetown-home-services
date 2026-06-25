@@ -75,7 +75,7 @@ export default function PestControlHubPage() {
                 <Link href="/best/best-pest-control-georgetown-tx" className="text-primary hover:underline">
                   Best Pest Control in Georgetown, TX
                 </Link>
-                <span className="text-gray-300" aria-hidden>
+                <span className="text-[#6b7280]" aria-hidden>
                   ·
                 </span>
                 <Link href="/services" className="text-gray-700 hover:underline">

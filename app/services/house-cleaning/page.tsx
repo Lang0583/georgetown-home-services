@@ -75,7 +75,7 @@ export default function HouseCleaningHubPage() {
                 <Link href="/best/best-house-cleaning-services-georgetown-tx" className="text-primary hover:underline">
                   Best House Cleaning Services in Georgetown, TX
                 </Link>
-                <span className="text-gray-300" aria-hidden>
+                <span className="text-[#6b7280]" aria-hidden>
                   ·
                 </span>
                 <Link href="/services" className="text-gray-700 hover:underline">

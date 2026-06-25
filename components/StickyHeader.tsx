@@ -35,6 +35,7 @@ export default function StickyHeader() {
         </Link>
 
         <nav className="flex max-w-full min-w-0 flex-1 items-center gap-3 overflow-x-auto sm:gap-4 md:gap-6" aria-label="Main navigation">
+          {/* Primary nav — always visible at every breakpoint */}
           <Link href="/" className={navLinkClass}>
             Home
           </Link>
@@ -53,43 +54,53 @@ export default function StickyHeader() {
           <Link href="/blog" className={navLinkClass}>
             Homeowner blog
           </Link>
-          <Link href="/services/plumber-georgetown-tx" className={navLinkClass}>
-            Plumbing
-          </Link>
-          <Link href="/services/hvac-georgetown-tx" className={navLinkClass}>
-            HVAC
-          </Link>
-          <Link href="/services/roofer-georgetown-tx" className={navLinkClass}>
-            Roofing
-          </Link>
-          <Link href="/services/roofing" className={navLinkClass} title="Storm inspections & roofing hub">
-            Severe weather
-          </Link>
-          {showExtendedHomeServices() && !isNoindexSlug("electrician-georgetown-tx") ? (
-            <Link href="/services/electrician-georgetown-tx" className={navLinkClass}>
-              Electrical
+
+          {/*
+            Service shortcut row — hidden below md (768px) so the mobile header
+            doesn't wrap into a cluttered second row. Mobile users still reach
+            every service from the "Service guides" link above (/services hub).
+            `display: contents` lets children continue to flow as direct
+            children of the parent flex container at md+.
+          */}
+          <div className="hidden md:contents">
+            <Link href="/services/plumber-georgetown-tx" className={navLinkClass}>
+              Plumbing
             </Link>
-          ) : null}
-          {showExtendedHomeServices() && !isNoindexSlug("landscaping-georgetown-tx") ? (
-            <Link href="/services/landscaping-georgetown-tx" className={navLinkClass}>
-              Landscaping
+            <Link href="/services/hvac-georgetown-tx" className={navLinkClass}>
+              HVAC
             </Link>
-          ) : null}
-          {showExtendedHomeServices() && !isNoindexSlug("pest-control-georgetown-tx") ? (
-            <Link href="/services/pest-control-georgetown-tx" className={navLinkClass}>
-              Pest
+            <Link href="/services/roofer-georgetown-tx" className={navLinkClass}>
+              Roofing
             </Link>
-          ) : null}
-          {showExtendedHomeServices() && !isNoindexSlug("foundation-repair-georgetown-tx") ? (
-            <Link href="/services/foundation-repair-georgetown-tx" className={navLinkClass}>
-              Foundation
+            <Link href="/services/roofing" className={navLinkClass} title="Storm inspections & roofing hub">
+              Severe weather
             </Link>
-          ) : null}
-          {showExtendedHomeServices() && !isNoindexSlug("house-cleaning-georgetown-tx") ? (
-            <Link href="/services/house-cleaning-georgetown-tx" className={navLinkClass}>
-              Cleaning
-            </Link>
-          ) : null}
+            {showExtendedHomeServices() && !isNoindexSlug("electrician-georgetown-tx") ? (
+              <Link href="/services/electrician-georgetown-tx" className={navLinkClass}>
+                Electrical
+              </Link>
+            ) : null}
+            {showExtendedHomeServices() && !isNoindexSlug("landscaping-georgetown-tx") ? (
+              <Link href="/services/landscaping-georgetown-tx" className={navLinkClass}>
+                Landscaping
+              </Link>
+            ) : null}
+            {showExtendedHomeServices() && !isNoindexSlug("pest-control-georgetown-tx") ? (
+              <Link href="/services/pest-control-georgetown-tx" className={navLinkClass}>
+                Pest
+              </Link>
+            ) : null}
+            {showExtendedHomeServices() && !isNoindexSlug("foundation-repair-georgetown-tx") ? (
+              <Link href="/services/foundation-repair-georgetown-tx" className={navLinkClass}>
+                Foundation
+              </Link>
+            ) : null}
+            {showExtendedHomeServices() && !isNoindexSlug("house-cleaning-georgetown-tx") ? (
+              <Link href="/services/house-cleaning-georgetown-tx" className={navLinkClass}>
+                Cleaning
+              </Link>
+            ) : null}
+          </div>
         </nav>
       </div>
     </header>

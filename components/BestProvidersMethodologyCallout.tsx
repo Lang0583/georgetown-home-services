@@ -15,7 +15,7 @@ export default function BestProvidersMethodologyCallout() {
   return (
     <div className="rounded-lg border border-white/20 bg-[#01696F] px-5 py-4 shadow-sm">
       <h3 className="text-sm font-semibold text-white">How we selected these providers</h3>
-      <ul className="mt-2 list-disc space-y-1 pl-4 text-xs leading-snug text-white/95 marker:text-white/90 sm:text-sm">
+      <ul className="mt-2 list-disc space-y-1 pl-4 text-xs leading-snug text-[#ffffff] marker:text-[#ffffff] sm:text-sm">
         {BULLETS.map((text) => (
           <li key={text} className="pl-0.5">
             {text}
@@ -25,7 +25,7 @@ export default function BestProvidersMethodologyCallout() {
       <p className="mt-2">
         <Link
           href="/methodology"
-          className="text-sm font-semibold text-white underline underline-offset-2 decoration-white/80 hover:text-white hover:decoration-white"
+          className="text-sm font-semibold text-[#ffffff] underline underline-offset-2 decoration-[#ffffff] hover:text-[#ffffff] hover:decoration-[#ffffff]"
         >
           Read our full methodology →
         </Link>

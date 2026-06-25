@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import AffiliateOutboundCta from "../../../components/AffiliateOutboundCta";
+import AffiliateCTA from "../../../components/AffiliateCTA";
 import BestAlsoCompareBar from "../../../components/BestAlsoCompareBar";
 import { notFound } from "next/navigation";
 import LinkCard from "../../../components/LinkCard";
@@ -54,7 +55,11 @@ import BestOfRooferEditorialDepth from "../../../components/BestOfRooferEditoria
 import BestOfPlumberEditorialDepth from "../../../components/BestOfPlumberEditorialDepth";
 import BestOfHvacEditorialDepth from "../../../components/BestOfHvacEditorialDepth";
 import BestOfExtendedTradeEditorialDepth from "../../../components/BestOfExtendedTradeEditorialDepth";
-import { adsenseBestOfSlot, ADSENSE_UNITS_ENABLED } from "../../../lib/adsense-config";
+import {
+  adsenseBestOfSlot,
+  adsenseBestOfIntroSlot,
+  ADSENSE_UNITS_ENABLED,
+} from "../../../lib/adsense-config";
 import {
   FLAGSHIP_VIDEO_BEST_ROOFERS,
   flagshipVideoObjectJsonLd,
@@ -1408,6 +1413,16 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       <div className="mt-4">
                         <BestProvidersMethodologyCallout />
                       </div>
+                      {ADSENSE_UNITS_ENABLED && adsenseBestOfIntroSlot ? (
+                        <div className="mt-6 max-w-3xl" aria-label="Sponsored">
+                          {/* SLOT: best-of-intro (rectangle). Replace
+                              `SLOT_ID_PLACEHOLDER` in
+                              `lib/adsense-config.ts` →
+                              `adsenseBestOfIntroSlot` or set
+                              `NEXT_PUBLIC_ADSENSE_SLOT_BEST_OF_INTRO`. */}
+                          <AdSenseDisplay slot={adsenseBestOfIntroSlot} />
+                        </div>
+                      ) : null}
                       {providerData.providers.length ? (
                         <ProviderList providers={providerData.providers} providerGroup={businessCategory} />
                       ) : (
@@ -1534,6 +1549,10 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                   </div>
                 </section>
               ) : null}
+
+              <div className="mt-12">
+                <AffiliateCTA placement={`best-bottom:${best.slug}`} />
+              </div>
               </div>
             }
             aside={

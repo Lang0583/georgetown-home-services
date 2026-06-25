@@ -90,7 +90,7 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
                 )}
               </div>
               <div className="mt-2 inline-flex flex-wrap items-center gap-x-2 gap-y-0.5 rounded-md border border-amber-200/80 bg-amber-50/90 px-2 py-1 text-xs font-medium text-amber-950 tabular-nums">
-                <span className="text-amber-600" aria-hidden>
+                <span className="text-[#b45309]" aria-hidden>
                   ★
                 </span>
                 <span>{business.rating.toFixed(1)} Google rating</span>
@@ -132,7 +132,7 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
         <Link href={serviceHref} className="font-semibold text-gray-900 hover:underline">
           View service page
         </Link>
-        <span className="text-gray-400">·</span>
+        <span className="text-[#6b7280]" aria-hidden>·</span>
         <Link href={bestHref} className="font-semibold text-gray-900 hover:underline">
           Compare top providers
         </Link>

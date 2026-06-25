@@ -21,7 +21,13 @@ import {
   getServices,
   getServiceSlugs,
 } from "../../../lib/site-content";
-import { adsenseServiceMainSlot, adsenseSidebarSlot, ADSENSE_UNITS_ENABLED } from "../../../lib/adsense-config";
+import {
+  adsenseServiceMainSlot,
+  adsenseSidebarSlot,
+  adsenseServiceHeroSlot,
+  adsenseServiceAffiliateInterstitialSlot,
+  ADSENSE_UNITS_ENABLED,
+} from "../../../lib/adsense-config";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
@@ -51,6 +57,7 @@ import { buildServicePageSeo } from "../../../lib/service-page-seo";
 import CoreServiceGuideDecisionFramework from "../../../components/CoreServiceGuideDecisionFramework";
 import AffiliateTrackedAnchor from "../../../components/AffiliateTrackedAnchor";
 import ServiceCompareQuotesThumbtack from "../../../components/ServiceCompareQuotesThumbtack";
+import AffiliateCTA from "../../../components/AffiliateCTA";
 import EditorialGuideTrustNote from "../../../components/EditorialGuideTrustNote";
 import { AFFILIATE_ANGI_URL } from "../../../lib/affiliate-config";
 
@@ -178,6 +185,15 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 {service.serviceType} • {location?.title ?? "Georgetown, TX"}
               </div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{service.h1}</h1>
+              {ADSENSE_UNITS_ENABLED ? (
+                <div className="mt-5" aria-label="Sponsored">
+                  {/* SLOT: service-hero (horizontal). Replace
+                      `SLOT_ID_PLACEHOLDER` in `lib/adsense-config.ts` →
+                      `adsenseServiceHeroSlot` or set
+                      `NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_HERO`. */}
+                  <AdSenseDisplay slot={adsenseServiceHeroSlot} />
+                </div>
+              ) : null}
               <EditorialGuideTrustNote />
               <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
                 <AffiliateTrackedAnchor
@@ -768,8 +784,25 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <ServiceCompareQuotesThumbtack />
 
               {providersFromJson.length ? (
-                <section id="providers" className="mt-12 scroll-mt-24">
-                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">
+                <>
+                  <div className="mt-12">
+                    <AffiliateCTA placement={`service-guide-top:${service.slug}`} />
+                  </div>
+                  {ADSENSE_UNITS_ENABLED ? (
+                    <div className="mt-8" aria-label="Sponsored">
+                      {/* SLOT: service-affiliate-interstitial (rectangle).
+                          Replace `SLOT_ID_PLACEHOLDER` in
+                          `lib/adsense-config.ts` →
+                          `adsenseServiceAffiliateInterstitialSlot` or set
+                          `NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_INTERSTITIAL`. */}
+                      <AdSenseDisplay
+                        slot={adsenseServiceAffiliateInterstitialSlot}
+                        className="mx-auto w-full max-w-2xl"
+                      />
+                    </div>
+                  ) : null}
+                  <section id="providers" className="mt-10 scroll-mt-24">
+                    <h2 className="text-3xl font-semibold tracking-tight text-gray-900">
                     {businessCategory ? PROVIDER_SECTION_HEADING[businessCategory] : "Top Providers Serving Georgetown"}
                   </h2>
                   <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
@@ -780,7 +813,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   <div className="mt-6">
                     <ServiceTopProvidersSection businesses={providersFromJson} />
                   </div>
-                </section>
+                  </section>
+                </>
               ) : null}
 
               <section className="mt-12">
@@ -840,6 +874,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     <FAQList faqs={serviceFaqs} />
                   </div>
                 </section>
+
+                <div className="mt-12">
+                  <AffiliateCTA placement={`service-guide-bottom:${service.slug}`} />
+                </div>
               </div>
 
               {relatedServices.length ? (

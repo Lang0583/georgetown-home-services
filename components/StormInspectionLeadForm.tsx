@@ -79,7 +79,8 @@ export default function StormInspectionLeadForm({ source }: Props) {
         role="status"
       >
         <p className="text-sm font-semibold text-amber-950">
-          Thanks! A local contractor will follow up within 24 hours.
+          Thanks — your request was sent. Local contractors who receive it may follow up directly; Georgetown Home
+          Services does not manage the booking process.
         </p>
       </div>
     );
@@ -138,7 +139,7 @@ export default function StormInspectionLeadForm({ source }: Props) {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             placeholder="512-555-0100"
-            className="mt-1 w-full rounded-lg border border-amber-200 bg-white px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light"
+            className="mt-1 w-full rounded-lg border border-amber-200 bg-white px-3 py-2 text-sm text-gray-900 outline-none placeholder:text-[#6b7280] focus:border-primary focus:ring-2 focus:ring-primary-light"
           />
         </div>
 
@@ -154,7 +155,7 @@ export default function StormInspectionLeadForm({ source }: Props) {
             value={neighborhood}
             onChange={(e) => setNeighborhood(e.target.value)}
             placeholder="e.g. Sun City, Teravista"
-            className="mt-1 w-full rounded-lg border border-amber-200 bg-white px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light"
+            className="mt-1 w-full rounded-lg border border-amber-200 bg-white px-3 py-2 text-sm text-gray-900 outline-none placeholder:text-[#6b7280] focus:border-primary focus:ring-2 focus:ring-primary-light"
           />
         </div>
 
