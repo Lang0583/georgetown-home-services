@@ -29,7 +29,7 @@ export const viewport: Viewport = {
 
 /** impact.com / AppImpact “HTML tag” verification — paste the `content` value only (not the full tag). */
 const impactSiteVerification =
-  process.env.IMPACT_SITE_VERIFICATION?.trim() || "b1d76151-29e8-4a9a-9913-9ea8f5ce9cd9";
+  process.env.IMPACT_SITE_VERIFICATION?.trim() || "39b02bdb-a798-4816-965f-955369ad9bc7";
 
 /** Resolved from env or production default (`ca-pub-2692091044925789`). */
 const adsenseClient = ADSENSE_PUBLISHER_ID;

@@ -7,7 +7,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 /** Same default as `app/layout.tsx` when `IMPACT_SITE_VERIFICATION` is unset. */
-const key = process.env.IMPACT_SITE_VERIFICATION?.trim() || "b1d76151-29e8-4a9a-9913-9ea8f5ce9cd9";
+const key = process.env.IMPACT_SITE_VERIFICATION?.trim() || "39b02bdb-a798-4816-965f-955369ad9bc7";
 
 const publicDir = path.join(process.cwd(), "public");
 const out = path.join(publicDir, `${key}.txt`);
