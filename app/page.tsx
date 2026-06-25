@@ -164,9 +164,9 @@ export default function Home() {
 
         {ADSENSE_UNITS_ENABLED ? (
           <section className="mt-10 md:mt-12" aria-label="Sponsored">
-            {/* SLOT: home-mid (horizontal). Replace `SLOT_ID_PLACEHOLDER`
-                in `lib/adsense-config.ts` → `adsenseHomeMidSlot` or set
-                `NEXT_PUBLIC_ADSENSE_SLOT_HOME_MID` once minted. */}
+            {/* SLOT: home-mid (horizontal). Real slot id 8872001893; see
+                `adsenseHomeMidSlot` in `lib/adsense-config.ts`. Override via
+                `NEXT_PUBLIC_ADSENSE_SLOT_HOME_MID`. */}
             <AdSenseDisplay slot={adsenseHomeMidSlot} />
           </section>
         ) : null}

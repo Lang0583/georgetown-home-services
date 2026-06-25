@@ -81,31 +81,33 @@ export const adsenseServiceMainSlot =
   process.env.NEXT_PUBLIC_ADSENSE_SLOT_SERVICE?.trim() || "9450125974";
 
 /**
- * Below-H1 horizontal banner on every service page. New unit — placeholder
- * stays until you mint the slot in AdSense and either set
- * `NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_HERO` or hard-code it here.
+ * Below-H1 horizontal banner on every service page.
+ * Real AdSense slot id: 5729200328.
+ * Override via `NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_HERO`.
  */
 export const adsenseServiceHeroSlot =
-  process.env.NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_HERO?.trim() || ADSENSE_SLOT_PLACEHOLDER;
+  process.env.NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_HERO?.trim() || "5729200328";
 
 /**
  * Rectangle between the AffiliateCTA and the provider listings on service
- * pages. New unit — see `NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_INTERSTITIAL`.
+ * pages. Real AdSense slot id: 8458892759 (in-content rectangle).
+ * Override via `NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_INTERSTITIAL`.
  */
 export const adsenseServiceAffiliateInterstitialSlot =
-  process.env.NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_INTERSTITIAL?.trim() ||
-  ADSENSE_SLOT_PLACEHOLDER;
+  process.env.NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_INTERSTITIAL?.trim() || "8458892759";
 
 /**
  * Horizontal banner on the homepage between "Browse by Category" and
- * "Top Local Providers". New unit — see `NEXT_PUBLIC_ADSENSE_SLOT_HOME_MID`.
+ * "Top Local Providers". Real AdSense slot id: 8872001893.
+ * Override via `NEXT_PUBLIC_ADSENSE_SLOT_HOME_MID`.
  */
 export const adsenseHomeMidSlot =
-  process.env.NEXT_PUBLIC_ADSENSE_SLOT_HOME_MID?.trim() || ADSENSE_SLOT_PLACEHOLDER;
+  process.env.NEXT_PUBLIC_ADSENSE_SLOT_HOME_MID?.trim() || "8872001893";
 
 /**
  * Rectangle between the intro / methodology callout and the provider list on
- * Best Of pages. New unit — see `NEXT_PUBLIC_ADSENSE_SLOT_BEST_OF_INTRO`.
+ * Best Of pages. Reuses the in-content rectangle slot (8458892759) until a
+ * dedicated slot is minted. Override via `NEXT_PUBLIC_ADSENSE_SLOT_BEST_OF_INTRO`.
  */
 export const adsenseBestOfIntroSlot =
-  process.env.NEXT_PUBLIC_ADSENSE_SLOT_BEST_OF_INTRO?.trim() || ADSENSE_SLOT_PLACEHOLDER;
+  process.env.NEXT_PUBLIC_ADSENSE_SLOT_BEST_OF_INTRO?.trim() || "8458892759";

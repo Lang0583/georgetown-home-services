@@ -1415,10 +1415,10 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       </div>
                       {ADSENSE_UNITS_ENABLED && adsenseBestOfIntroSlot ? (
                         <div className="mt-6 max-w-3xl" aria-label="Sponsored">
-                          {/* SLOT: best-of-intro (rectangle). Replace
-                              `SLOT_ID_PLACEHOLDER` in
-                              `lib/adsense-config.ts` →
-                              `adsenseBestOfIntroSlot` or set
+                          {/* SLOT: best-of-intro (rectangle). Defaults to the
+                              in-content rectangle slot 8458892759 — see
+                              `adsenseBestOfIntroSlot` in `lib/adsense-config.ts`.
+                              Override via
                               `NEXT_PUBLIC_ADSENSE_SLOT_BEST_OF_INTRO`. */}
                           <AdSenseDisplay slot={adsenseBestOfIntroSlot} />
                         </div>

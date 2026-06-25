@@ -187,10 +187,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{service.h1}</h1>
               {ADSENSE_UNITS_ENABLED ? (
                 <div className="mt-5" aria-label="Sponsored">
-                  {/* SLOT: service-hero (horizontal). Replace
-                      `SLOT_ID_PLACEHOLDER` in `lib/adsense-config.ts` →
-                      `adsenseServiceHeroSlot` or set
-                      `NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_HERO`. */}
+                  {/* SLOT: service-hero (horizontal). Real slot id 5729200328;
+                      see `adsenseServiceHeroSlot` in `lib/adsense-config.ts`.
+                      Override via `NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_HERO`. */}
                   <AdSenseDisplay slot={adsenseServiceHeroSlot} />
                 </div>
               ) : null}
@@ -791,9 +790,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   {ADSENSE_UNITS_ENABLED ? (
                     <div className="mt-8" aria-label="Sponsored">
                       {/* SLOT: service-affiliate-interstitial (rectangle).
-                          Replace `SLOT_ID_PLACEHOLDER` in
-                          `lib/adsense-config.ts` →
-                          `adsenseServiceAffiliateInterstitialSlot` or set
+                          Real slot id 8458892759; see
+                          `adsenseServiceAffiliateInterstitialSlot` in
+                          `lib/adsense-config.ts`. Override via
                           `NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_INTERSTITIAL`. */}
                       <AdSenseDisplay
                         slot={adsenseServiceAffiliateInterstitialSlot}
