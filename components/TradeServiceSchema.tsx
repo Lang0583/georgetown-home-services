@@ -1,10 +1,11 @@
 import JsonLd from "./JsonLd";
 import { buildGeorgetownTradeServiceJsonLd } from "../lib/trade-service-schema";
+import type { PricingCategory } from "../lib/pricing-data";
 
-type CoreTradeHubKey = "plumbing" | "hvac" | "roofing";
+type TradeHubKey = PricingCategory["key"];
 
 type Props = {
-  categoryKey: CoreTradeHubKey;
+  categoryKey: TradeHubKey;
   /** Canonical absolute URL for the hub (must match page metadata). */
   pageUrl: string;
 };

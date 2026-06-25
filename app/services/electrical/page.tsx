@@ -3,28 +3,23 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
+import ServiceHubPricingSection from "../../../components/ServiceHubPricingSection";
 import FAQSchema from "../../../components/FAQSchema";
+import FAQList from "../../../components/FAQList";
 import JsonLd from "../../../components/JsonLd";
+import TradeServiceSchema from "../../../components/TradeServiceSchema";
+import WhyHireServiceSection from "../../../components/WhyHireServiceSection";
+import NeighborhoodHighlightLinks from "../../../components/NeighborhoodHighlightLinks";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
+import { ELECTRICAL_TRADE_HUB_FAQS } from "../../../lib/service-trade-hub-faqs";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import { showExtendedHomeServices } from "../../../lib/public-site-scope";
-import { getBlog, getServices, type Faq } from "../../../lib/site-content";
-
-const ELECTRICAL_HUB_FAQS: Faq[] = [
-  {
-    q: "Do you schedule electrical work?",
-    a: "No. This site is a directory and homeowner guide. Use the Best Of page to compare electricians and contact providers directly.",
-  },
-  {
-    q: "Where should I start?",
-    a: "Start with the main electrician guide for Georgetown, then open the Best Electricians directory when you are ready to request written scopes.",
-  },
-];
+import { getBlog, getServices } from "../../../lib/site-content";
 
 const hubSeo = buildTradeHubSeo({ label: "Electrical", pricingKey: "electrical" });
 
@@ -48,14 +43,15 @@ export default function ElectricalHubPage() {
   const posts = blog.filter((p) => p.relatedBestSlugs?.includes("best-electricians-georgetown-tx")).slice(0, 10);
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 pb-24 md:pb-0">
       <Container>
         <section className="py-10 md:py-12">
           <FAQSchema
             pageUrl={absolutePageUrl("/services/electrical")}
             name="Electrical in Georgetown TX — FAQ"
-            faqs={ELECTRICAL_HUB_FAQS}
+            faqs={ELECTRICAL_TRADE_HUB_FAQS}
           />
+          <TradeServiceSchema categoryKey="electrical" pageUrl={absolutePageUrl("/services/electrical")} />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: "/services/electrical",
@@ -71,7 +67,8 @@ export default function ElectricalHubPage() {
               <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
                 Use these pages to understand when electrical work is safety-critical, what belongs in a written scope, and how to compare licensed
-                electricians serving Georgetown. When you are ready, compare companies in the directory and contact providers directly.
+                electricians serving Georgetown. Older Sun City and Georgetown Village panels handle today&apos;s EV, induction, and solar loads very
+                differently than newer Wolf Ranch and Teravista builds — knowing your starting point matters before you call.
               </p>
               <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
                 <Link href="/best/best-electricians-georgetown-tx" className="text-primary hover:underline">
@@ -85,6 +82,21 @@ export default function ElectricalHubPage() {
                 </Link>
               </div>
             </div>
+
+            <WhyHireServiceSection categoryKey="electrical" />
+
+            <ServiceHubPricingSection categoryKey="electrical" />
+
+            <NeighborhoodHighlightLinks categoryKey="electrical" serviceLabel="electrician" />
+
+            <section className="max-w-3xl">
+              <p className="text-sm leading-relaxed text-gray-700">
+                This site is a homeowner guide and directory — we do not dispatch electricians. The answers below mirror common
+                Google &ldquo;People also ask&rdquo; topics for Georgetown / Williamson County and are intended to support
+                budgeting, permit conversations, and interview questions before you hire a licensed TDLR contractor.
+              </p>
+              <FAQList faqs={ELECTRICAL_TRADE_HUB_FAQS} title="Electrical in Georgetown, TX — quick answers" className="!mt-4" />
+            </section>
 
             {core ? (
               <section>

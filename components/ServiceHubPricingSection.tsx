@@ -12,12 +12,17 @@ import {
 import { buildGeorgetownTradeServiceJsonLd } from "../lib/trade-service-schema";
 import { absolutePageUrl } from "../lib/page-seo";
 
-type HubCategoryKey = Extract<PricingCategory["key"], "plumbing" | "hvac" | "roofing">;
+type HubCategoryKey = PricingCategory["key"];
 
 const HUB_PATH: Record<HubCategoryKey, string> = {
   plumbing: "/services/plumbing",
   hvac: "/services/hvac",
   roofing: "/services/roofing",
+  electrical: "/services/electrical",
+  landscaping: "/services/landscaping",
+  pest: "/services/pest-control",
+  foundation: "/services/foundation",
+  cleaning: "/services/house-cleaning",
 };
 
 export default function ServiceHubPricingSection({ categoryKey }: { categoryKey: HubCategoryKey }) {

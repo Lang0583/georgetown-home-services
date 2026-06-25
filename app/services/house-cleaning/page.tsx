@@ -3,28 +3,23 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
+import ServiceHubPricingSection from "../../../components/ServiceHubPricingSection";
 import FAQSchema from "../../../components/FAQSchema";
+import FAQList from "../../../components/FAQList";
 import JsonLd from "../../../components/JsonLd";
+import TradeServiceSchema from "../../../components/TradeServiceSchema";
+import WhyHireServiceSection from "../../../components/WhyHireServiceSection";
+import NeighborhoodHighlightLinks from "../../../components/NeighborhoodHighlightLinks";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
+import { HOUSE_CLEANING_TRADE_HUB_FAQS } from "../../../lib/service-trade-hub-faqs";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import { showExtendedHomeServices } from "../../../lib/public-site-scope";
-import { getBlog, getServices, type Faq } from "../../../lib/site-content";
-
-const CLEANING_HUB_FAQS: Faq[] = [
-  {
-    q: "Do you schedule cleaning appointments?",
-    a: "No. This site is a directory and homeowner guide. Use the Best Of page to compare house cleaning services and contact providers directly.",
-  },
-  {
-    q: "Where should I start?",
-    a: "Start with the house cleaning service guide for Georgetown, then open the Best House Cleaning Services directory when you want quotes.",
-  },
-];
+import { getBlog, getServices } from "../../../lib/site-content";
 
 const hubSeo = buildTradeHubSeo({ label: "House Cleaning", pricingKey: "cleaning" });
 
@@ -48,14 +43,15 @@ export default function HouseCleaningHubPage() {
   const posts = blog.filter((p) => p.relatedBestSlugs?.includes("best-house-cleaning-services-georgetown-tx")).slice(0, 10);
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 pb-24 md:pb-0">
       <Container>
         <section className="py-10 md:py-12">
           <FAQSchema
             pageUrl={absolutePageUrl("/services/house-cleaning")}
             name="House cleaning in Georgetown TX — FAQ"
-            faqs={CLEANING_HUB_FAQS}
+            faqs={HOUSE_CLEANING_TRADE_HUB_FAQS}
           />
+          <TradeServiceSchema categoryKey="cleaning" pageUrl={absolutePageUrl("/services/house-cleaning")} />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: "/services/house-cleaning",
@@ -70,8 +66,10 @@ export default function HouseCleaningHubPage() {
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">House Cleaning in Georgetown, TX</h1>
               <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
-                Clear checklists prevent surprises: which rooms, how often, who supplies products, and what happens for skips or cancellations. These
-                pages help you scope work, then compare reputable cleaners serving Georgetown.
+                Clear checklists prevent surprises: which rooms, how often, who supplies products, and what happens for skips or cancellations.
+                Hard water from the Edwards Aquifer, cedar and cottonwood pollen seasons, and Sun City guest weeks all shape what a good
+                Georgetown clean looks like. These pages help you scope work, then compare reputable cleaners serving Wolf Ranch, Teravista,
+                the historic district, and beyond.
               </p>
               <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
                 <Link href="/best/best-house-cleaning-services-georgetown-tx" className="text-primary hover:underline">
@@ -85,6 +83,21 @@ export default function HouseCleaningHubPage() {
                 </Link>
               </div>
             </div>
+
+            <WhyHireServiceSection categoryKey="cleaning" />
+
+            <ServiceHubPricingSection categoryKey="cleaning" />
+
+            <NeighborhoodHighlightLinks categoryKey="cleaning" serviceLabel="house cleaning" />
+
+            <section className="max-w-3xl">
+              <p className="text-sm leading-relaxed text-gray-700">
+                This site is a homeowner guide and directory — we do not schedule cleaning appointments. The answers below mirror
+                common Google &ldquo;People also ask&rdquo; topics for Georgetown / Williamson County, covering hard-water
+                descaling, recurring-versus-deep clean differences, insurance requirements, and tipping norms.
+              </p>
+              <FAQList faqs={HOUSE_CLEANING_TRADE_HUB_FAQS} title="House cleaning in Georgetown, TX — quick answers" className="!mt-4" />
+            </section>
 
             {core ? (
               <section>

@@ -2,27 +2,22 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
+import ServiceHubPricingSection from "../../../components/ServiceHubPricingSection";
 import FAQSchema from "../../../components/FAQSchema";
+import FAQList from "../../../components/FAQList";
 import JsonLd from "../../../components/JsonLd";
+import TradeServiceSchema from "../../../components/TradeServiceSchema";
+import WhyHireServiceSection from "../../../components/WhyHireServiceSection";
+import NeighborhoodHighlightLinks from "../../../components/NeighborhoodHighlightLinks";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
+import { LANDSCAPING_TRADE_HUB_FAQS } from "../../../lib/service-trade-hub-faqs";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
-import { getBlog, getServices, type Faq } from "../../../lib/site-content";
-
-const LANDSCAPING_HUB_FAQS: Faq[] = [
-  {
-    q: "Do you schedule landscaping crews?",
-    a: "No. This site is a directory and homeowner guide. Use the Best Of page to compare landscapers and contact providers directly.",
-  },
-  {
-    q: "Where should I start?",
-    a: "Start with the main landscaping guide for Georgetown, then open the Best Landscaping Companies directory when you want to compare quotes.",
-  },
-];
+import { getBlog, getServices } from "../../../lib/site-content";
 
 const hubSeo = buildTradeHubSeo({ label: "Landscaping", pricingKey: "landscaping" });
 
@@ -44,14 +39,15 @@ export default function LandscapingHubPage() {
   const posts = blog.filter((p) => p.relatedBestSlugs?.includes("best-landscaping-companies-georgetown-tx")).slice(0, 10);
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 pb-24 md:pb-0">
       <Container>
         <section className="py-10 md:py-12">
           <FAQSchema
             pageUrl={absolutePageUrl("/services/landscaping")}
             name="Landscaping in Georgetown TX — FAQ"
-            faqs={LANDSCAPING_HUB_FAQS}
+            faqs={LANDSCAPING_TRADE_HUB_FAQS}
           />
+          <TradeServiceSchema categoryKey="landscaping" pageUrl={absolutePageUrl("/services/landscaping")} />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: "/services/landscaping",
@@ -68,8 +64,9 @@ export default function LandscapingHubPage() {
               </h1>
               <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
-                Plan maintenance, irrigation, and curb appeal with Central Texas seasons in mind. These pages help you define scope, compare visit
-                frequency, and shortlist reputable crews serving Georgetown.
+                Plan maintenance, irrigation, and curb appeal with Williamson County&apos;s expansive clay soil and Central Texas seasons in
+                mind. These pages help you define scope, compare visit frequency, and shortlist reputable crews who already know the
+                Sun City, Wolf Ranch, Teravista, and historic district design rules you may need to follow.
               </p>
               <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
                 <Link href="/best/best-landscaping-companies-georgetown-tx" className="text-primary hover:underline">
@@ -83,6 +80,21 @@ export default function LandscapingHubPage() {
                 </Link>
               </div>
             </div>
+
+            <WhyHireServiceSection categoryKey="landscaping" />
+
+            <ServiceHubPricingSection categoryKey="landscaping" />
+
+            <NeighborhoodHighlightLinks categoryKey="landscaping" serviceLabel="landscaping" />
+
+            <section className="max-w-3xl">
+              <p className="text-sm leading-relaxed text-gray-700">
+                This site is a homeowner guide and directory — we do not schedule landscaping crews. The answers below
+                reflect common Google &ldquo;People also ask&rdquo; searches for Georgetown / Williamson County: grass
+                selection, irrigation, HOA rules, and seasonal timing for fertilization and overseeding.
+              </p>
+              <FAQList faqs={LANDSCAPING_TRADE_HUB_FAQS} title="Landscaping in Georgetown, TX — quick answers" className="!mt-4" />
+            </section>
 
             {core ? (
               <section>

@@ -3,28 +3,23 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
+import ServiceHubPricingSection from "../../../components/ServiceHubPricingSection";
 import FAQSchema from "../../../components/FAQSchema";
+import FAQList from "../../../components/FAQList";
 import JsonLd from "../../../components/JsonLd";
+import TradeServiceSchema from "../../../components/TradeServiceSchema";
+import WhyHireServiceSection from "../../../components/WhyHireServiceSection";
+import NeighborhoodHighlightLinks from "../../../components/NeighborhoodHighlightLinks";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
+import { FOUNDATION_TRADE_HUB_FAQS } from "../../../lib/service-trade-hub-faqs";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import { showExtendedHomeServices } from "../../../lib/public-site-scope";
-import { getBlog, getServices, type Faq } from "../../../lib/site-content";
-
-const FOUNDATION_HUB_FAQS: Faq[] = [
-  {
-    q: "Do you perform foundation repairs?",
-    a: "No. This site is a directory and homeowner guide. Use the Best Of page to compare foundation repair companies and contact providers directly.",
-  },
-  {
-    q: "Why is clay soil mentioned so often?",
-    a: "Central Texas expansive clay swells when wet and shrinks in drought, which stresses slabs and footings. Good contractors pair repairs with moisture and drainage planning.",
-  },
-];
+import { getBlog, getServices } from "../../../lib/site-content";
 
 const hubSeo = buildTradeHubSeo({ label: "Foundation Repair", pricingKey: "foundation" });
 
@@ -48,14 +43,15 @@ export default function FoundationHubPage() {
   const posts = blog.filter((p) => p.relatedBestSlugs?.includes("best-foundation-repair-georgetown-tx")).slice(0, 10);
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 pb-24 md:pb-0">
       <Container>
         <section className="py-10 md:py-12">
           <FAQSchema
             pageUrl={absolutePageUrl("/services/foundation")}
             name="Foundation repair in Georgetown TX — FAQ"
-            faqs={FOUNDATION_HUB_FAQS}
+            faqs={FOUNDATION_TRADE_HUB_FAQS}
           />
+          <TradeServiceSchema categoryKey="foundation" pageUrl={absolutePageUrl("/services/foundation")} />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: "/services/foundation",
@@ -70,9 +66,10 @@ export default function FoundationHubPage() {
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">Foundation Repair in Georgetown, TX</h1>
               <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
-                Expansive clay around Georgetown means foundation conversations should include moisture swings, drainage, and measured movement—not
-                guesswork from a single crack photo. Use these pages to learn warning signs, then compare contractors with clear scopes and warranty
-                terms.
+                Expansive Houston Black clay around Georgetown means foundation conversations should include moisture swings, drainage,
+                and measured movement — not guesswork from a single crack photo. After the 2011 and 2022 droughts, repair calls spiked
+                across Sun City, Berry Creek, and Georgetown Village. Use these pages to learn warning signs, then compare contractors
+                with clear scopes and warranty terms.
               </p>
               <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
                 <Link href="/best/best-foundation-repair-georgetown-tx" className="text-primary hover:underline">
@@ -86,6 +83,21 @@ export default function FoundationHubPage() {
                 </Link>
               </div>
             </div>
+
+            <WhyHireServiceSection categoryKey="foundation" />
+
+            <ServiceHubPricingSection categoryKey="foundation" />
+
+            <NeighborhoodHighlightLinks categoryKey="foundation" serviceLabel="foundation repair" />
+
+            <section className="max-w-3xl">
+              <p className="text-sm leading-relaxed text-gray-700">
+                This site is a homeowner guide and directory — we do not perform foundation repairs. The answers below mirror
+                common Google &ldquo;People also ask&rdquo; topics for Georgetown / Williamson County, designed to help you
+                budget, evaluate independent engineer reports, and compare apples-to-apples contractor bids.
+              </p>
+              <FAQList faqs={FOUNDATION_TRADE_HUB_FAQS} title="Foundation repair in Georgetown, TX — quick answers" className="!mt-4" />
+            </section>
 
             {core ? (
               <section>

@@ -1,9 +1,9 @@
 import { findCategory, type PricingCategory } from "./pricing-data";
 import { GEORGETOWN_HOME_SERVICES_BUSINESS_URL } from "./local-business-schema";
 
-type CoreTradeKey = Extract<PricingCategory["key"], "plumbing" | "hvac" | "roofing">;
+type TradeKey = PricingCategory["key"];
 
-const TRADE_SERVICE_NAMES: Record<CoreTradeKey, { name: string; serviceType: string }> = {
+const TRADE_SERVICE_NAMES: Record<TradeKey, { name: string; serviceType: string }> = {
   plumbing: {
     name: "Residential plumbing services in Georgetown, TX",
     serviceType: "Plumbing",
@@ -15,6 +15,26 @@ const TRADE_SERVICE_NAMES: Record<CoreTradeKey, { name: string; serviceType: str
   roofing: {
     name: "Residential roofing services in Georgetown, TX",
     serviceType: "Roofing",
+  },
+  electrical: {
+    name: "Residential electrical services in Georgetown, TX",
+    serviceType: "Electrical",
+  },
+  landscaping: {
+    name: "Residential landscaping & lawn care in Georgetown, TX",
+    serviceType: "Landscaping",
+  },
+  pest: {
+    name: "Residential pest control in Georgetown, TX",
+    serviceType: "PestControl",
+  },
+  foundation: {
+    name: "Residential foundation repair in Georgetown, TX",
+    serviceType: "FoundationRepair",
+  },
+  cleaning: {
+    name: "Residential house cleaning in Georgetown, TX",
+    serviceType: "HouseCleaning",
   },
 };
 
@@ -37,7 +57,7 @@ function planningBoundsForCategory(cat: PricingCategory): { lowPrice: number; hi
  * `Service` + `AggregateOffer` for core trade hub pages (/services/plumbing, hvac, roofing).
  */
 export function buildGeorgetownTradeServiceJsonLd(
-  categoryKey: CoreTradeKey,
+  categoryKey: TradeKey,
   /** Same URL as the hub page canonical (e.g. absolutePageUrl("/services/plumbing")). */
   serviceUrl: string,
 ): Record<string, unknown> {

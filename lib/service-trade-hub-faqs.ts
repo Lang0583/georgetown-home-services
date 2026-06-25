@@ -140,3 +140,178 @@ export const ROOFING_TRADE_HUB_FAQS: Faq[] = [
     a: "Only when documented storm compromise exists and your form lacks cosmetic carve-outs denying functional metal. Matching and code-upgrade endorsements also shift payouts—tie photos to estimator line items explicitly.",
   },
 ];
+
+/**
+ * Electrical hub FAQs — Georgetown TX context: older Sun City panels, fast new construction (Wolf Ranch),
+ * EV/solar growth, and Texas TDLR licensing rules. Answers stay ~40–60 words for FAQSchema compatibility.
+ */
+export const ELECTRICAL_TRADE_HUB_FAQS: Faq[] = [
+  {
+    q: "How much does an electrician cost in Georgetown, TX?",
+    a: "Most Georgetown electricians charge $100–175 for a service call or diagnostic, then $85–125/hr labor on top. Simple outlet, switch, or breaker swaps often flat-price between $150–300. Panel upgrades and EV chargers run into four figures. Confirm whether the trip fee credits toward the repair before you authorize work.",
+  },
+  {
+    q: "Do electricians need to be licensed in Texas?",
+    a: "Yes—Texas regulates electrical work through TDLR, and any wiring beyond simple plug-in fixtures should be performed by a licensed Master or Journeyman Electrician. Verify the license number online before signing for panel, service, or generator work. Unlicensed electrical can void homeowners insurance and complicate future Georgetown permit pulls.",
+  },
+  {
+    q: "How much does a panel upgrade cost in Georgetown, TX?",
+    a: "Upgrading a 100A to 200A panel in a Williamson County home typically runs $1,500–4,000 installed, depending on meter location, mast condition, and whether Oncor coordination or city inspection is required. Older Georgetown Village and historic district homes can push higher when grounding electrodes or service mast also need replacement.",
+  },
+  {
+    q: "How much does an EV charger install cost in Georgetown, TX?",
+    a: "A typical Level 2 EV charger install in Georgetown runs $500–1,200, mostly driven by panel headroom and conduit run length to the garage. Wolf Ranch and Sun City homes with attached garages and adequate panel capacity sit near the low end; long detached runs or panel upgrades push costs higher.",
+  },
+  {
+    q: "Why do older Georgetown homes need rewiring or panel work?",
+    a: "Many 1980s–1990s Georgetown Village and original Sun City homes were built with 100-amp panels, aluminum branch wiring, or undersized service for today's loads—central AC, EVs, induction ranges, and tankless water heaters. Heat-stressed Texas attics also degrade old THHN insulation faster than national averages.",
+  },
+  {
+    q: "Do I need a permit for electrical work in Georgetown, TX?",
+    a: "Yes—the City of Georgetown requires permits for panel changes, new circuits, service upgrades, generators, and EV chargers, with inspections by city or Oncor depending on the scope. A licensed electrician pulls the permit; insist on it for resale-protection. Sun City homes inside Williamson County jurisdiction follow the same rules.",
+  },
+  {
+    q: "What's a fair price for whole-home surge protection in Georgetown?",
+    a: "Whole-home surge protective devices installed at the panel typically run $300–700 in Williamson County—worth it given Central Texas thunderstorm and grid-switching transients. Pair with point-of-use strips for AV gear and computer offices. Ask for a device with at least a 5-year manufacturer warranty and a visible status LED.",
+  },
+];
+
+/**
+ * Landscaping hub FAQs — Georgetown TX context: clay soil, summer triple digits, watering restrictions,
+ * Bermuda vs St. Augustine, Sun City HOA expectations. Answers stay ~40–60 words for FAQSchema compatibility.
+ */
+export const LANDSCAPING_TRADE_HUB_FAQS: Faq[] = [
+  {
+    q: "How much does lawn care cost in Georgetown, TX?",
+    a: "A typical Georgetown lawn-mowing visit runs $40–80 for an average lot; monthly recurring maintenance bundles edging, blowing, and basic bed care for $120–250. Larger Wolf Ranch and Berry Creek lots, or estates inside the historic district, run higher. Confirm whether bagging, fertilization, and weed control are included.",
+  },
+  {
+    q: "Should I plant Bermuda or St. Augustine in Georgetown, TX?",
+    a: "Bermuda handles Georgetown's full sun and triple-digit Julys well but struggles under live oaks; St. Augustine tolerates Sun City and Georgetown Village shade but needs more water and is prone to chinch bug and gray leaf spot. Match the grass to your light, irrigation, and HOA rules—not just the showroom photo.",
+  },
+  {
+    q: "How does Georgetown's clay soil affect landscaping?",
+    a: "Williamson County's expansive clay swells when wet and cracks during drought, which heaves beds, breaks irrigation glue joints, and stresses tree roots. Good crews amend planting holes with compost, set drip lines on flexible loops, and avoid raised beds over slab edges where soil movement is highest.",
+  },
+  {
+    q: "When does Georgetown enforce watering restrictions?",
+    a: "The City of Georgetown utility customers run on a year-round twice-weekly watering schedule by address—stricter in declared drought stages. Sun City and other Williamson County water suppliers may follow different schedules. Check your provider before installing irrigation; a Texas-licensed irrigator will program controllers to comply automatically.",
+  },
+  {
+    q: "How much does irrigation installation cost in Georgetown, TX?",
+    a: "A full residential irrigation install in Georgetown typically runs $3,000–8,000, depending on zones, head type, and clay-soil trenching difficulty. Spring tune-ups run $75–150. Texas requires a licensed irrigator (LI) for installs—verify the license, ask for a zone map, and confirm rain/freeze sensors are included for code compliance.",
+  },
+  {
+    q: "When should I overseed or fertilize in Georgetown?",
+    a: "Most Georgetown Bermuda lawns get pre-emergent in February and September, light nitrogen in April–May once soil temps stay above 65°F, and a fall potassium feed in October. St. Augustine prefers slow-release nitrogen in late spring and early fall. Skip summer fertilization during 100°F stretches—you'll burn turf you're trying to feed.",
+  },
+  {
+    q: "Do Sun City and HOA neighborhoods restrict landscaping?",
+    a: "Yes—Sun City, Wolf Ranch, Teravista, and Berry Creek all enforce HOA design rules covering grass type, front-yard tree species, mulch color, and visible irrigation. Submit landscape plans before installing turf or beds; using an HOA-experienced Georgetown landscaper avoids stop-work letters and forced replacements after the fact.",
+  },
+];
+
+/**
+ * Pest control hub FAQs — Georgetown TX context: fire ants, termites in expansive clay, scorpions,
+ * mosquitoes near the San Gabriel river corridor, rodents in fast-growth construction edges.
+ */
+export const PEST_CONTROL_TRADE_HUB_FAQS: Faq[] = [
+  {
+    q: "How much does pest control cost in Georgetown, TX?",
+    a: "An initial inspection-and-treatment visit typically runs $150–300 in Georgetown; quarterly perimeter plans land around $75–150 per visit. Annual termite monitoring contracts run $200–400 per year, while full termite treatment on an average Williamson County home can range $500–2,500 depending on linear feet and slab access.",
+  },
+  {
+    q: "Are termites a real risk in Georgetown, TX?",
+    a: "Yes—Eastern subterranean termites are widespread across Williamson County and thrive against slabs that sit on damp expansive clay. Annual inspections matter on older Georgetown Village and historic-district homes especially. Look for mud tubes on pier-and-beam footings or interior baseboards; pair any treatment with drainage and grading fixes.",
+  },
+  {
+    q: "What pests are most common in Georgetown, TX?",
+    a: "Fire ants, scorpions, brown recluse spiders, German roaches, rodents during fall cool-downs, and mosquito surges after spring rain are the year-round Georgetown roster. Sun City's irrigated greenbelts increase mosquito and snake pressure, while fast-growth Wolf Ranch and Teravista construction edges push rodents into garages and attics.",
+  },
+  {
+    q: "How do I get rid of fire ants in a Georgetown yard?",
+    a: "A two-step program works best in Williamson County: broadcast a bait like hydramethylnon or indoxacarb in spring and fall, then spot-treat visible mounds. Watering bait in defeats the strategy—apply on dry soil with no rain forecast. Most Georgetown pest plans include fire-ant programs in their quarterly tier.",
+  },
+  {
+    q: "Do scorpions and snakes show up in Georgetown homes?",
+    a: "Yes—Texas bark scorpions and rat snakes both turn up in Sun City, Berry Creek, and rural Georgetown homes near cedar breaks and limestone outcrops. Reduce harborage by sealing weep holes with stainless mesh, trimming foundation plantings, and keeping firewood off slab. Pest pros can add IGR-based scorpion treatments to quarterly plans.",
+  },
+  {
+    q: "Is mosquito control worth it in Georgetown, TX?",
+    a: "If you back up to greenbelt, drainage easements, or the San Gabriel river corridor, yes. Most Georgetown providers spray IGR plus contact treatments to foliage every 21–28 days April–October for roughly $60–120 per visit. Skip foggers right before rain; reapplication after >0.5 inch storms keeps coverage usable.",
+  },
+  {
+    q: "What should a pest control warranty cover in Georgetown?",
+    a: "Look for written re-service guarantees inside the contract period, named pests included versus excluded (carpenter ants, bed bugs, and termites often carve out), and clear termite renewal pricing. Verify the company's TDA structural pest license number, and require notice before any chemistry change to your home environment.",
+  },
+];
+
+/**
+ * Foundation repair hub FAQs — Georgetown TX context: Central Texas expansive Houston Black clay,
+ * drought-rain cycles, slab-on-grade construction in Sun City and Wolf Ranch, historic pier-and-beam.
+ */
+export const FOUNDATION_TRADE_HUB_FAQS: Faq[] = [
+  {
+    q: "How much does foundation repair cost in Georgetown, TX?",
+    a: "Most Williamson County foundation jobs land $4,000–15,000 for a typical slab home. Pressed concrete piers run $1,200–1,800 each; steel piers $1,800–3,000. Drainage corrections add $1,500–5,000. Engineer inspections often run $0–300 (many contractors offer free, but an independent structural engineer is worth the cost on six-figure homes).",
+  },
+  {
+    q: "Why is clay soil such a problem for Georgetown foundations?",
+    a: "The Houston Black and similar clays under Georgetown swell up to 30% volume when wet and shrink in drought, lifting and dropping slabs season by season. After the 2011 and 2022 droughts, repair calls spiked across Sun City, Berry Creek, and Georgetown Village. Moisture management often matters more than pier counts.",
+  },
+  {
+    q: "What are warning signs my Georgetown home needs foundation work?",
+    a: "Watch for stair-step brick cracks wider than a nickel, doors that bind seasonally on the same hinge, sloped floors you can feel barefoot, separating crown molding, or fresh sheetrock cracks above doors and windows. Photograph and date them—movement that recurs after wet/dry cycles signals soil rather than settlement.",
+  },
+  {
+    q: "Should I get an independent engineer or rely on a contractor's inspection?",
+    a: "For repairs over $5,000, hire an independent Texas-licensed Professional Engineer ($400–800) to write the scope—contractor 'free inspections' often default to maximum pier counts. The engineer designs to your specific elevations and soil; contractors then bid the same scope, which makes apples-to-apples comparison realistic.",
+  },
+  {
+    q: "Are foundation problems worse in older Georgetown neighborhoods?",
+    a: "Yes—original Sun City sections (early-1990s), Berry Creek, and historic district pier-and-beam homes have had decades of soil cycling. But fast-growth Wolf Ranch and Teravista slabs aren't immune; cut-and-fill grading on newer lots can create early movement when builders skip drainage detail. Age matters less than drainage and soil prep.",
+  },
+  {
+    q: "Does homeowners insurance cover foundation repair in Texas?",
+    a: "Standard Texas HO-3 policies exclude earth movement, settling, and expansive soil damage, which is most Georgetown foundation work. Plumbing leaks under the slab that cause movement may be partially covered—document with leak-detection reports. Foundation warranties from prior repairs typically transfer with the home; verify before purchase.",
+  },
+  {
+    q: "What drainage fixes help Georgetown foundations?",
+    a: "Most Williamson County homes benefit from extended downspouts (6+ feet from the slab), regrading to 6 inches of fall in the first 10 feet, French drains on low sides, and root barriers between mature trees and slab. Skip flower beds against the foundation—they trap moisture against the very edge that matters.",
+  },
+];
+
+/**
+ * House cleaning hub FAQs — Georgetown TX context: hard water from Edwards Aquifer, Sun City visit
+ * weeks, vacation rentals near the square, large Wolf Ranch new builds, fast-growth move-in cleans.
+ */
+export const HOUSE_CLEANING_TRADE_HUB_FAQS: Faq[] = [
+  {
+    q: "How much does house cleaning cost in Georgetown, TX?",
+    a: "A standard recurring clean on an average Georgetown home runs $120–200; deep cleans land $200–350; move-out or move-in cleans typically $250–400. Recurring weekly service usually prices 15–20% below one-time rates; bi-weekly 10–15% below. Larger Wolf Ranch and Berry Creek homes price higher by square footage or bedroom count.",
+  },
+  {
+    q: "Why does Georgetown water leave so much buildup on glass and fixtures?",
+    a: "Georgetown's municipal water draws from the Edwards Aquifer and is moderately hard, so calcium and magnesium scale build on shower glass, faucet aerators, and toilet rims faster than softer markets. Ask cleaners whether they use a CLR-type descaler in their standard rotation or charge it as a deep-clean upgrade.",
+  },
+  {
+    q: "What's the difference between a standard clean and a deep clean?",
+    a: "Standard cleans cover surfaces, floors, kitchens, baths, and quick dusting on a 2–4 hour visit. Deep cleans add baseboards, blinds, fan blades, inside the oven and fridge, grout scrubbing, hard-water descaling, and detailed bath buildup removal. First visits, post-construction Wolf Ranch homes, and seasonal resets almost always justify the deep option.",
+  },
+  {
+    q: "Should I tip my house cleaner in Georgetown, TX?",
+    a: "Tipping isn't required, but $10–30 per visit (or 15–20% on deep and move-out jobs) is common in Georgetown. For recurring teams, holiday cash bonuses equal to one visit are typical. Independent owner-operators often prefer reviews and referrals over cash—ask which helps their Sun City or Wolf Ranch route more.",
+  },
+  {
+    q: "Are cleaners insured and bonded—does it matter in Georgetown?",
+    a: "Yes—ask for proof of general liability and a bond before letting any company carry keys or codes. Georgetown's growing short-term rental market near the historic square has seen more theft and damage claims, so insurance matters for both sides. Reputable cleaners email a certificate of insurance on request.",
+  },
+  {
+    q: "How often should I schedule cleaning in Georgetown, TX?",
+    a: "Most Georgetown households land on bi-weekly. Sun City retirees with low traffic often stretch to monthly with quarterly deep cleans; growing families in Wolf Ranch and Teravista often need weekly. Texas dust loads (cedar, cottonwood, construction sites) push frequency higher in spring and early summer—plan ahead during allergy season.",
+  },
+  {
+    q: "What should a move-out clean include for a Georgetown sale or rental?",
+    a: "Expect inside cabinets and drawers, oven and microwave, fridge and freezer, blinds and ceiling fans, baseboards, window tracks, garage sweeps, and deep bathroom descaling. Confirm patio and entry door details if listing photos are coming. Williamson County title companies sometimes require move-out cleans before closing—document with photos.",
+  },
+];

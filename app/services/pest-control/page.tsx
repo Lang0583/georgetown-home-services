@@ -3,28 +3,23 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
+import ServiceHubPricingSection from "../../../components/ServiceHubPricingSection";
 import FAQSchema from "../../../components/FAQSchema";
+import FAQList from "../../../components/FAQList";
 import JsonLd from "../../../components/JsonLd";
+import TradeServiceSchema from "../../../components/TradeServiceSchema";
+import WhyHireServiceSection from "../../../components/WhyHireServiceSection";
+import NeighborhoodHighlightLinks from "../../../components/NeighborhoodHighlightLinks";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
+import { PEST_CONTROL_TRADE_HUB_FAQS } from "../../../lib/service-trade-hub-faqs";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import { showExtendedHomeServices } from "../../../lib/public-site-scope";
-import { getBlog, getServices, type Faq } from "../../../lib/site-content";
-
-const PEST_HUB_FAQS: Faq[] = [
-  {
-    q: "Do you schedule pest treatments?",
-    a: "No. This site is a directory and homeowner guide. Use the Best Of page to compare pest control companies and contact providers directly.",
-  },
-  {
-    q: "Where should I start?",
-    a: "Start with the pest control service guide for Georgetown, then open the Best Pest Control directory when you want plans and pricing.",
-  },
-];
+import { getBlog, getServices } from "../../../lib/site-content";
 
 const hubSeo = buildTradeHubSeo({ label: "Pest Control", pricingKey: "pest" });
 
@@ -48,14 +43,15 @@ export default function PestControlHubPage() {
   const posts = blog.filter((p) => p.relatedBestSlugs?.includes("best-pest-control-georgetown-tx")).slice(0, 10);
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 pb-24 md:pb-0">
       <Container>
         <section className="py-10 md:py-12">
           <FAQSchema
             pageUrl={absolutePageUrl("/services/pest-control")}
             name="Pest control in Georgetown TX — FAQ"
-            faqs={PEST_HUB_FAQS}
+            faqs={PEST_CONTROL_TRADE_HUB_FAQS}
           />
+          <TradeServiceSchema categoryKey="pest" pageUrl={absolutePageUrl("/services/pest-control")} />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: "/services/pest-control",
@@ -70,8 +66,10 @@ export default function PestControlHubPage() {
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">Pest Control in Georgetown, TX</h1>
               <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
-                Compare inspection quality, treatment scope, and re-service policies before you commit to a plan. These pages help you ask better
-                questions for ants, roaches, rodents, and seasonal pests common around Georgetown.
+                Compare inspection quality, treatment scope, and re-service policies before you commit to a plan. These pages
+                help you ask better questions about fire ants, scorpions, mosquitoes, rodents, and termites — the year-round
+                Georgetown roster shaped by Williamson County&apos;s clay-soil cracks, cedar-rich limestone outcrops, and
+                fast-growth construction edges.
               </p>
               <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
                 <Link href="/best/best-pest-control-georgetown-tx" className="text-primary hover:underline">
@@ -85,6 +83,21 @@ export default function PestControlHubPage() {
                 </Link>
               </div>
             </div>
+
+            <WhyHireServiceSection categoryKey="pest" />
+
+            <ServiceHubPricingSection categoryKey="pest" />
+
+            <NeighborhoodHighlightLinks categoryKey="pest" serviceLabel="pest control" />
+
+            <section className="max-w-3xl">
+              <p className="text-sm leading-relaxed text-gray-700">
+                This site is a homeowner guide and directory — we do not schedule pest treatments. The answers below mirror
+                common Google &ldquo;People also ask&rdquo; topics for Georgetown / Williamson County and are intended to
+                support plan comparisons, warranty review, and seasonal treatment decisions.
+              </p>
+              <FAQList faqs={PEST_CONTROL_TRADE_HUB_FAQS} title="Pest control in Georgetown, TX — quick answers" className="!mt-4" />
+            </section>
 
             {core ? (
               <section>

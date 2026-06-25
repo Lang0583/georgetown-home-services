@@ -11,6 +11,8 @@ import TradeServiceSchema from "../../../components/TradeServiceSchema";
 import AffiliateTrackedAnchor from "../../../components/AffiliateTrackedAnchor";
 import ServiceAffiliateEngagement from "../../../components/ServiceAffiliateEngagement";
 import ServiceCompareQuotesThumbtack from "../../../components/ServiceCompareQuotesThumbtack";
+import WhyHireServiceSection from "../../../components/WhyHireServiceSection";
+import NeighborhoodHighlightLinks from "../../../components/NeighborhoodHighlightLinks";
 import { AFFILIATE_ANGI_URL } from "../../../lib/affiliate-config";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import { clipMetaDescription } from "../../../lib/seo-meta";
@@ -122,7 +124,11 @@ export default function RoofingHubPage() {
               </div>
             </div>
 
+            <WhyHireServiceSection categoryKey="roofing" />
+
             <ServiceHubPricingSection categoryKey="roofing" />
+
+            <NeighborhoodHighlightLinks categoryKey="roofing" serviceLabel="roofer" />
 
             <ServiceCompareQuotesThumbtack />
 

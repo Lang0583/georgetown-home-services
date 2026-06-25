@@ -10,6 +10,8 @@ import TradeServiceSchema from "../../../components/TradeServiceSchema";
 import AffiliateTrackedAnchor from "../../../components/AffiliateTrackedAnchor";
 import ServiceAffiliateEngagement from "../../../components/ServiceAffiliateEngagement";
 import ServiceCompareQuotesThumbtack from "../../../components/ServiceCompareQuotesThumbtack";
+import WhyHireServiceSection from "../../../components/WhyHireServiceSection";
+import NeighborhoodHighlightLinks from "../../../components/NeighborhoodHighlightLinks";
 import { AFFILIATE_ANGI_URL } from "../../../lib/affiliate-config";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
@@ -98,7 +100,11 @@ export default function HvacHubPage() {
               </div>
             </div>
 
+            <WhyHireServiceSection categoryKey="hvac" />
+
             <ServiceHubPricingSection categoryKey="hvac" />
+
+            <NeighborhoodHighlightLinks categoryKey="hvac" serviceLabel="HVAC company" />
 
             <ServiceCompareQuotesThumbtack />
 
