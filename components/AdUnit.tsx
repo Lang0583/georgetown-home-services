@@ -10,7 +10,7 @@ declare global {
 }
 
 type Props = {
-  slot: string;
+  slotId: string;
   /** AdSense `data-ad-format` (default `auto`). */
   format?: string;
   /** Sets `data-full-width-responsive` when true (default true). */
@@ -23,28 +23,28 @@ type Props = {
  * (Ads → By ad unit) and pass the numeric slot ID here.
  */
 export default function AdUnit({
-  slot,
+  slotId,
   format = "auto",
   responsive = true,
   className = "block",
 }: Props) {
   useEffect(() => {
-    if (!slot || !ADSENSE_PUBLISHER_ID) return;
+    if (!slotId || !ADSENSE_PUBLISHER_ID) return;
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch {
       /* ignore */
     }
-  }, [slot]);
+  }, [slotId]);
 
-  if (!slot || !ADSENSE_PUBLISHER_ID) return null;
+  if (!slotId || !ADSENSE_PUBLISHER_ID) return null;
 
   return (
     <ins
       className={["adsbygoogle", className].filter(Boolean).join(" ")}
       style={{ display: "block", textAlign: "center" }}
       data-ad-client={ADSENSE_PUBLISHER_ID}
-      data-ad-slot={slot}
+      data-ad-slot={slotId}
       data-ad-format={format}
       data-full-width-responsive={responsive ? "true" : "false"}
     />

@@ -66,6 +66,13 @@ export function angiGeorgetownListUrl(angiCategorySlug: string): string {
 export const HOMEADVISOR_GEORGETOWN_URL =
   "https://www.homeadvisor.com/c.html?state=TX&city=Georgetown";
 
+/** Generic Georgetown contractor quote partners for sitewide AffiliateCTA blocks. */
+export const AFFILIATE_CTA_ANGI_URL =
+  "https://www.angi.com/companylist/us/tx/georgetown/home-services-contractors.htm";
+export const AFFILIATE_CTA_THUMBTACK_URL = "https://www.thumbtack.com/tx/georgetown/";
+export const AFFILIATE_CTA_HOMEADVISOR_URL =
+  "https://www.homeadvisor.com/c.Georgetown.TX.-12046.html";
+
 /** Thumbtack category pages for Georgetown, TX (non-affiliate until Impact tag is live). */
 export function thumbtackGeorgetownUrl(categoryPath: string): string {
   const segment = categoryPath.trim().replace(/^\/+|\/+$/g, "");
