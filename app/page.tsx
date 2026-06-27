@@ -147,7 +147,7 @@ export default function Home() {
         <section className="py-10 md:py-12">
           <div className="min-w-0">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
-              Georgetown TX Home Services Directory (2026) | Compare Local Providers
+              Georgetown TX Home Services Directory (2026)
             </h1>
 
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">
