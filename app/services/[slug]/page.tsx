@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AdSenseDisplay from "../../../components/AdSenseDisplay";
+import AffiliateCTA from "../../../components/AffiliateCTA";
 import FAQList from "../../../components/FAQList";
 import FAQSchema from "../../../components/FAQSchema";
 import { ButtonLink } from "../../../components/Button";
@@ -111,6 +112,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const isPlumberService = service.slug === "plumber-georgetown-tx";
   const isHvacService = service.slug === "hvac-georgetown-tx";
   const isRooferService = service.slug === "roofer-georgetown-tx";
+  const isCoreService = (CORE_SERVICE_SLUGS as readonly string[]).includes(service.slug);
 
   const location = getLocationBySlug(service.locationSlug);
   const relatedServices = service.relatedServiceSlugs
@@ -192,7 +194,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 {service.serviceType} • {location?.title ?? "Georgetown, TX"}
               </div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{service.h1}</h1>
-              {(CORE_SERVICE_SLUGS as readonly string[]).includes(service.slug) && adsenseServicePageTopSlot ? (
+              {isCoreService && adsenseServicePageTopSlot ? (
                 <div className="mt-6">
                   <AdSenseDisplay slotId={adsenseServicePageTopSlot} className="mx-auto max-w-2xl" />
                 </div>
@@ -453,35 +455,58 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                       <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
                         Typical HVAC Costs in Georgetown TX
                       </h2>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
-                        Pricing depends on equipment brand/age, access, and timing, but Georgetown, TX homeowners often
-                        see:
+                      <div className="mt-4 overflow-x-auto">
+                        <table className="min-w-full text-left text-sm">
+                          <thead>
+                            <tr className="border-b border-gray-200 text-xs font-semibold uppercase tracking-wide text-gray-600">
+                              <th className="py-2 pr-4">Service</th>
+                              <th className="py-2">Typical Georgetown Range</th>
+                            </tr>
+                          </thead>
+                          <tbody className="text-gray-800">
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 pr-4 align-top font-medium">Service call / diagnostic</td>
+                              <td className="py-3 align-top tabular-nums text-gray-900">$75–$150</td>
+                            </tr>
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 pr-4 align-top font-medium">Refrigerant recharge (R-410A)</td>
+                              <td className="py-3 align-top tabular-nums text-gray-900">$200–$500</td>
+                            </tr>
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 pr-4 align-top font-medium">Capacitor replacement</td>
+                              <td className="py-3 align-top tabular-nums text-gray-900">$150–$350</td>
+                            </tr>
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 pr-4 align-top font-medium">Contactor replacement</td>
+                              <td className="py-3 align-top tabular-nums text-gray-900">$150–$300</td>
+                            </tr>
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 pr-4 align-top font-medium">Condensate drain clear</td>
+                              <td className="py-3 align-top tabular-nums text-gray-900">$75–$200</td>
+                            </tr>
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 pr-4 align-top font-medium">Evaporator coil replacement</td>
+                              <td className="py-3 align-top tabular-nums text-gray-900">$800–$2,000</td>
+                            </tr>
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 pr-4 align-top font-medium">Compressor replacement</td>
+                              <td className="py-3 align-top tabular-nums text-gray-900">$1,200–$2,500</td>
+                            </tr>
+                            <tr>
+                              <td className="py-3 pr-4 align-top font-medium">Full system replacement (2.5–5 ton)</td>
+                              <td className="py-3 align-top tabular-nums text-gray-900">$5,000–$12,000</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <p className="mt-4 max-w-2xl text-sm leading-relaxed text-gray-700">
+                        Prices reflect Georgetown TX market conditions as of 2026. Get written quotes from at least two
+                        local companies before approving any repair over $300.
                       </p>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
-                        <li>
-                          <span className="font-semibold text-gray-900">Service call and diagnosis:</span> commonly a fee
-                          in the low-to-mid hundreds, sometimes credited toward approved repairs.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-gray-900">Typical repairs:</span> smaller parts and drain
-                          clears often in the lower hundreds depending on access and brand.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-gray-900">Major repairs:</span> coils, compressors, or
-                          control boards can be significantly more and may approach replacement-level pricing on older
-                          systems.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-gray-900">Replacement:</span> full system swaps are quoted
-                          in the many-thousands depending on tonnage, efficiency, and ductwork scope.
-                        </li>
-                      </ul>
-                      <p className="mt-3 text-sm leading-relaxed text-gray-700">
-                        For a deeper replacement budget breakdown, read{" "}
-                        <Link href="/blog/cost-to-replace-hvac-georgetown" className="font-semibold hover:underline">
-                          cost to replace HVAC in Georgetown
+                      <p className="mt-3 text-sm font-semibold text-primary">
+                        <Link href="/blog/ac-repair-cost-georgetown-tx" className="hover:underline">
+                          See our full AC repair cost breakdown →
                         </Link>
-                        .
                       </p>
                     </section>
 
@@ -804,6 +829,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   </div>
                 </section>
               ) : null}
+
+              {isCoreService ? <AffiliateCTA /> : null}
 
               <div>
                 <section className="mt-12">
