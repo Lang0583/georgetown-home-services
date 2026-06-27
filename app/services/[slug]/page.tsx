@@ -241,7 +241,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   </ButtonLink>
                 </div>
                 <p className="mt-3 text-xs leading-relaxed text-slate-600">
-                  We publish educational guides and a provider directory. We don’t take service requests or schedule jobs.
+                  {isPlumberService
+                    ? "Georgetown Home Services publishes educational guides and a provider directory. This site does not take service requests or schedule jobs."
+                    : "We publish educational guides and a provider directory. We don’t take service requests or schedule jobs."}
                 </p>
               </div>
 
@@ -818,8 +820,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                       : "Frequently Asked Questions"}
                   </h2>
                   <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
-                    These answers summarize common questions we hear from homeowners in and around Georgetown, TX. Use
-                    them as a starting point, then confirm details with any professional you choose to work with.
+                    {isPlumberService
+                      ? "These answers summarize common questions Georgetown homeowners ask about plumbing. Use them as a starting point, then confirm details with any professional you choose to work with."
+                      : "These answers summarize common questions we hear from homeowners in and around Georgetown, TX. Use them as a starting point, then confirm details with any professional you choose to work with."}
                   </p>
                   <div className="mt-6">
                     <FAQList faqs={serviceFaqs} />
