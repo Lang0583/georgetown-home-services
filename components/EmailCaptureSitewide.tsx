@@ -7,9 +7,11 @@ import {
   CTA_VIEW_TOP_PROVIDERS,
   EMAIL_CAPTURE_CTA_CHECKLIST,
   EMAIL_CAPTURE_CTA_REMINDERS,
+  EMAIL_CAPTURE_CONSENT_LINE,
   EMAIL_CAPTURE_EMAIL_PLACEHOLDER,
   EMAIL_CAPTURE_HEADLINE,
   EMAIL_CAPTURE_SUBTEXT,
+  EMAIL_CAPTURE_SUCCESS_MESSAGE,
   EMAIL_CAPTURE_TRUST_LINE,
 } from "../lib/site-cta";
 import { trackNewsletterSubmit } from "../lib/analytics";
@@ -211,79 +213,86 @@ export default function EmailCaptureSitewide({
         </div>
       </div>
 
-      <form onSubmit={onSubmit} className="mt-6 grid gap-4 md:grid-cols-2">
-        <input
-          className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
-          type="text"
-          name="firstName"
-          placeholder="First name (optional)"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          autoComplete="given-name"
-        />
-        <input
-          className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
-          type="email"
-          name="email"
-          placeholder={EMAIL_CAPTURE_EMAIL_PLACEHOLDER}
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          autoComplete="email"
-          inputMode="email"
-        />
-
-        <div className="md:col-span-2">
-          <div className="text-sm font-semibold text-gray-900">Choose your free guide</div>
-          <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            {allowedOffers.map((k) => {
-              const m = LEAD_MAGNETS[k];
-              const checked = offer === k;
-              return (
-                <label
-                  key={k}
-                  className={[
-                    "flex cursor-pointer gap-3 rounded-xl border p-4 shadow-sm transition",
-                    checked ? "border-primary/40 bg-primary-light/60" : "border-gray-200 bg-white hover:bg-gray-50",
-                  ].join(" ")}
-                >
-                  <input
-                    type="radio"
-                    name="leadMagnet"
-                    value={k}
-                    checked={checked}
-                    onChange={() => setOffer(k)}
-                    className="mt-1"
-                  />
-                  <div className="min-w-0">
-                    <div className="text-sm font-semibold text-gray-900">{m.title}</div>
-                    <div className="mt-1 text-sm text-gray-700">{m.description}</div>
-                  </div>
-                </label>
-              );
-            })}
-          </div>
+      {status === "success" ? (
+        <div className="mt-6 rounded-lg border border-emerald-500/30 bg-emerald-50 p-6 text-sm leading-relaxed text-emerald-900">
+          {EMAIL_CAPTURE_SUCCESS_MESSAGE}
         </div>
+      ) : (
+        <>
+          <form onSubmit={onSubmit} className="mt-6 grid gap-4 md:grid-cols-2">
+            <input
+              className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
+              type="text"
+              name="firstName"
+              placeholder="First name (optional)"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              autoComplete="given-name"
+            />
+            <input
+              className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
+              type="email"
+              name="email"
+              placeholder={EMAIL_CAPTURE_EMAIL_PLACEHOLDER}
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              autoComplete="email"
+              inputMode="email"
+            />
 
-        {status === "success" ? (
-          <div className="rounded-lg border border-emerald-500/30 bg-emerald-50 p-4 text-sm text-emerald-900 md:col-span-2">
-            Thanks{firstName.trim() ? `, ${firstName.trim()}` : ""} — your PDF is downloading and the full checklist library is on its way to your inbox.
-          </div>
-        ) : null}
-        {status === "error" && error ? (
-          <div className="rounded-lg border border-rose-500/30 bg-rose-50 p-4 text-sm text-rose-900 md:col-span-2">{error}</div>
-        ) : null}
+            <div className="md:col-span-2">
+              <div className="text-sm font-semibold text-gray-900">Choose your free guide</div>
+              <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {allowedOffers.map((k) => {
+                  const m = LEAD_MAGNETS[k];
+                  const checked = offer === k;
+                  return (
+                    <label
+                      key={k}
+                      className={[
+                        "flex cursor-pointer gap-3 rounded-xl border p-4 shadow-sm transition",
+                        checked ? "border-primary/40 bg-primary-light/60" : "border-gray-200 bg-white hover:bg-gray-50",
+                      ].join(" ")}
+                    >
+                      <input
+                        type="radio"
+                        name="leadMagnet"
+                        value={k}
+                        checked={checked}
+                        onChange={() => setOffer(k)}
+                        className="mt-1"
+                      />
+                      <div className="min-w-0">
+                        <div className="text-sm font-semibold text-gray-900">{m.title}</div>
+                        <div className="mt-1 text-sm text-gray-700">{m.description}</div>
+                      </div>
+                    </label>
+                  );
+                })}
+              </div>
+            </div>
 
-        <button
-          type="submit"
-          disabled={!canSubmit}
-          className="rounded-lg bg-primary px-6 py-3 font-semibold text-white hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60 md:col-span-2"
-        >
-          {status === "submitting" ? "Sending…" : submitLabelForOffer(offer)}
-        </button>
-      </form>
+            {status === "error" && error ? (
+              <div className="rounded-lg border border-rose-500/30 bg-rose-50 p-4 text-sm text-rose-900 md:col-span-2">
+                {error}
+              </div>
+            ) : null}
 
-      <p className="mt-4 text-xs leading-relaxed text-slate-600">{EMAIL_CAPTURE_TRUST_LINE}</p>
+            <button
+              type="submit"
+              disabled={!canSubmit}
+              className="rounded-lg bg-primary px-6 py-3 font-semibold text-white hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60 md:col-span-2"
+            >
+              {status === "submitting" ? "Sending…" : submitLabelForOffer(offer)}
+            </button>
+
+            <p className="text-xs leading-relaxed text-slate-600 md:col-span-2">{EMAIL_CAPTURE_CONSENT_LINE}</p>
+          </form>
+
+          <p className="mt-4 text-xs leading-relaxed text-slate-600">{EMAIL_CAPTURE_TRUST_LINE}</p>
+        </>
+      )}
     </section>
   );
 }
