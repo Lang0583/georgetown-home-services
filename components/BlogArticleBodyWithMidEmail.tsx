@@ -54,7 +54,7 @@ export default function BlogArticleBodyWithMidEmail({ slug, generated, blocks }:
         <ProseArticle dangerouslySetInnerHTML={{ __html: safeOpen2 }} />
         {adsenseInlineSlot ? (
           <div className="my-8">
-            <AdSenseDisplay slot={adsenseInlineSlot} />
+            <AdSenseDisplay slotId={adsenseInlineSlot} />
           </div>
         ) : null}
         {safePara3 ? <ProseArticle dangerouslySetInnerHTML={{ __html: safePara3 }} /> : null}
@@ -79,7 +79,7 @@ export default function BlogArticleBodyWithMidEmail({ slug, generated, blocks }:
       </ProseArticle>
       {adsenseInlineSlot ? (
         <div className="my-8">
-          <AdSenseDisplay slot={adsenseInlineSlot} />
+          <AdSenseDisplay slotId={adsenseInlineSlot} />
         </div>
       ) : null}
       {thirdPara.length ? (
