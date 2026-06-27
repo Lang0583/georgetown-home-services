@@ -26,7 +26,7 @@
 /.indexnow-tmp/
 
 # Vercel: mirrored .next for builder path (scripts/vercel-mirror-next.cjs)
-/georgetown-home-services/
+/georgetown-home-services/.next/
 
 # production
 /build

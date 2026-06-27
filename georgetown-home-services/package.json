@@ -1,0 +1,5 @@
+{
+  "name": "georgetown-home-services",
+  "private": true,
+  "description": "Vercel root-directory shim — install and build run from the repository root."
+}
