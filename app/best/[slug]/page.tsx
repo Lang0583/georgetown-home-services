@@ -1386,7 +1386,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
 
                       {adsenseBestOfSlot ? (
                         <div className="mt-10 max-w-4xl">
-                          <AdSenseDisplay slot={adsenseBestOfSlot} />
+                          <AdSenseDisplay slotId={adsenseBestOfSlot} />
                         </div>
                       ) : null}
 
@@ -1416,7 +1416,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       )}
                       {adsenseBestOfSlot ? (
                         <div className="mt-10 max-w-4xl">
-                          <AdSenseDisplay slot={adsenseBestOfSlot} />
+                          <AdSenseDisplay slotId={adsenseBestOfSlot} />
                         </div>
                       ) : null}
 
