@@ -130,12 +130,7 @@ export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
           </ul>
         </section>
 
-        <AffiliateCTA
-          angiCategorySlug={page.angiCategorySlug}
-          thumbtackCategory={page.thumbtackCategory}
-          serviceLabel={page.serviceLabel}
-          heading="Get Free Quotes from Georgetown Contractors"
-        />
+        <AffiliateCTA />
       </article>
     </PageShell>
   );

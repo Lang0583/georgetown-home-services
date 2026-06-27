@@ -182,11 +182,7 @@ export default function SubServicePageTemplate({ page }: SubServicePageTemplateP
           </ul>
         </section>
 
-        <AffiliateCTA
-          angiCategorySlug={page.angiCategorySlug}
-          thumbtackCategory={page.thumbtackCategory}
-          serviceLabel={page.serviceLabel}
-        />
+        <AffiliateCTA />
       </article>
     </PageShell>
   );

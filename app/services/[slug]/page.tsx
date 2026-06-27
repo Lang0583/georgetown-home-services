@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AdSenseDisplay from "../../../components/AdSenseDisplay";
+import AffiliateCTA from "../../../components/AffiliateCTA";
 import FAQList from "../../../components/FAQList";
 import FAQSchema from "../../../components/FAQSchema";
 import { ButtonLink } from "../../../components/Button";
@@ -111,6 +112,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const isPlumberService = service.slug === "plumber-georgetown-tx";
   const isHvacService = service.slug === "hvac-georgetown-tx";
   const isRooferService = service.slug === "roofer-georgetown-tx";
+  const isCoreService = (CORE_SERVICE_SLUGS as readonly string[]).includes(service.slug);
 
   const location = getLocationBySlug(service.locationSlug);
   const relatedServices = service.relatedServiceSlugs
@@ -485,6 +487,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                       </p>
                     </section>
 
+                    <AffiliateCTA />
+
                     <section>
                       <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
                         When to Call an HVAC Professional
@@ -804,6 +808,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   </div>
                 </section>
               ) : null}
+
+              {isCoreService ? <AffiliateCTA /> : null}
 
               <div>
                 <section className="mt-12">
