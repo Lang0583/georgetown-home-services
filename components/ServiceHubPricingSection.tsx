@@ -51,8 +51,8 @@ export default function ServiceHubPricingSection({ categoryKey }: { categoryKey:
           <table className="min-w-full text-left text-sm">
             <thead>
               <tr className="border-b border-gray-200 text-xs font-semibold uppercase tracking-wide text-gray-600">
-                <th className="py-2 pr-4">Common job</th>
-                <th className="py-2">Typical range</th>
+                <th className="py-2 pr-4">{categoryKey === "hvac" ? "Service" : "Common job"}</th>
+                <th className="py-2">{categoryKey === "hvac" ? "Typical Georgetown Range" : "Typical range"}</th>
               </tr>
             </thead>
             <tbody className="text-gray-800">
@@ -65,6 +65,20 @@ export default function ServiceHubPricingSection({ categoryKey }: { categoryKey:
             </tbody>
           </table>
         </div>
+
+        {categoryKey === "hvac" ? (
+          <>
+            <p className="mt-4 max-w-3xl text-sm leading-relaxed text-gray-700">
+              Prices reflect Georgetown TX market conditions as of 2026. Get written quotes from at least two local
+              companies before approving any repair over $300.
+            </p>
+            <p className="mt-3 text-sm font-semibold text-primary">
+              <Link href="/blog/ac-repair-cost-georgetown-tx" className="hover:underline">
+                See our full AC repair cost breakdown →
+              </Link>
+            </p>
+          </>
+        ) : null}
 
         <div className="mt-6 flex flex-col gap-2 text-sm font-semibold text-primary sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4">
           <Link href="/pricing" className="hover:underline">

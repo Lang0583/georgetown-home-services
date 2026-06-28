@@ -121,8 +121,13 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <div className="text-sm font-semibold text-gray-900">Browse by Neighborhood</div>
+            <div className="text-sm font-semibold text-gray-900">Browse by Area</div>
             <ul className="mt-2 space-y-2 text-sm text-gray-700">
+              <li>
+                <Link className="hover:underline" href="/zip">
+                  Georgetown ZIP codes
+                </Link>
+              </li>
               {NEIGHBORHOOD_BROWSE_ENTRIES.map((n) => (
                 <li key={n.href}>
                   <Link className="hover:underline" href={n.href}>

@@ -35,3 +35,11 @@ export function splitBlocksAfterNthParagraph(blocks: ContentBlock[], n: number):
   }
   return { first: [...blocks], second: [] };
 }
+
+/** Split article HTML so an AffiliateCTA can render immediately before the FAQ block. */
+export function splitHtmlBeforeFaq(html: string): { body: string; faq: string } {
+  const re = /<h2[^>]*>\s*FAQ\s*<\/h2>/i;
+  const idx = html.search(re);
+  if (idx < 0) return { body: html, faq: "" };
+  return { body: html.slice(0, idx), faq: html.slice(idx) };
+}
