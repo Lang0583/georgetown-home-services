@@ -962,19 +962,27 @@
       "faqs": [
         {
           "q": "Do I need a permit for a panel upgrade in Georgetown?",
-          "a": "Panel and service upgrades in incorporated Georgetown typically require a permit and inspection. Verify requirements for your address; reputable electricians pull permits routinely."
+          "a": "Panel and service upgrades in incorporated Georgetown typically require a permit and inspection. Historic Georgetown Village bungalows and Sun City slab ranches often need scope beyond a simple swap—verify requirements for your address; reputable electricians pull permits routinely."
         },
         {
-          "q": "Can I install an EV charger myself?",
-          "a": "Texas requires licensed electricians for permanent 240-volt circuits. Plug-in Level 1 charging on an existing outlet is different from a hardwired Level 2 install that needs correct breaker sizing and wire gauge."
+          "q": "Why are panel upgrades common in older Georgetown neighborhoods?",
+          "a": "Many central Georgetown and Georgetown Village homes still run 100-amp service while today’s loads include heat pumps, EV chargers, and kitchen remodels. Sun City garages built before EV adoption may have marginal breaker spaces—ask for a written load calculation before adding a 240-volt circuit."
         },
         {
-          "q": "Why do breakers trip more in summer?",
-          "a": "HVAC compressors, pool pumps, and attic heat load the panel harder. A breaker that trips only on the hottest afternoons may be doing its job—or may be undersized for a failing compressor drawing high amps."
+          "q": "Can I install an EV charger myself in Georgetown, TX?",
+          "a": "Texas requires licensed electricians for permanent 240-volt circuits. Plug-in Level 1 charging on an existing outlet differs from a hardwired Level 2 install in a Wolf Ranch or Teravista garage that may need a panel upgrade and permit in incorporated Georgetown."
         },
         {
-          "q": "What should a written estimate include?",
-          "a": "Labor hours or flat task pricing, parts by description, permit fees, disposal of old equipment, and whether drywall repair is included after fishing wire."
+          "q": "Why do breakers trip more during Georgetown summers?",
+          "a": "Triple-digit Texas heat loads HVAC compressors, pool pumps, and attic circuits harder. A breaker that trips only on the hottest afternoons may be protecting a failing compressor—or may signal an undersized panel in an older home near downtown."
+        },
+        {
+          "q": "What should a Georgetown electrical estimate include?",
+          "a": "Labor or flat task pricing, parts by description, permit fees, disposal of old equipment, and whether drywall repair is included after fishing wire through finished walls in two-story Teravista homes."
+        },
+        {
+          "q": "Does Georgetown Home Services schedule electricians?",
+          "a": "No—we publish guides and a provider directory. Compare electricians on our Best Electricians in Georgetown, TX page and contact businesses directly for availability and written scopes."
         }
       ],
       "bestSlugs": [
@@ -1057,16 +1065,28 @@
       ],
       "faqs": [
         {
-          "q": "When should I plant shrubs in Georgetown?",
-          "a": "Fall and early spring are common windows, but species and irrigation matter more than a fixed date. Native and adapted plants generally handle Central Texas swings better than imports that need constant pampering."
+          "q": "How does Georgetown's clay soil affect lawns and beds?",
+          "a": "Williamson County clay swells when wet and cracks in drought, stressing St. Augustine and Bermuda roots and misaligning irrigation heads. Berry Creek and Teravista lots with mature trees often need aeration and drainage tweaks—not just more water during Texas heat."
         },
         {
-          "q": "How often should irrigation run in summer?",
-          "a": "Deep, infrequent cycles beat daily misting. Many homeowners overwater while still showing dry spots because heads are misaligned—an irrigation audit often saves more than upgrading plants."
+          "q": "When should I plant or sod in Georgetown, TX?",
+          "a": "Fall and early spring beat midsummer lay-down in Central Texas. Sun City HOA windows and Wolf Ranch architectural rules can affect timing—confirm what is included before crews arrive during peak heat."
         },
         {
-          "q": "Does landscaping affect foundation health?",
-          "a": "Yes—negative grade toward the slab and overflowing gutters concentrate water on one side. Coordinating landscape grading with foundation drainage recommendations is common in clay-soil neighborhoods."
+          "q": "How often should irrigation run during Georgetown summers?",
+          "a": "Deep, infrequent cycles beat daily misting that wastes Edwards Aquifer water and still leaves dry arcs when heads spray sidewalks. An irrigation audit before July triple-digit weeks often saves more than swapping plants."
+        },
+        {
+          "q": "Does landscaping affect foundation movement on clay soil?",
+          "a": "Yes—negative grade toward the slab and overflowing gutters concentrate water on one side of the home. Coordinating landscape grading with foundation drainage is common in expansive-clay neighborhoods from Georgetown Village to Wolf Ranch."
+        },
+        {
+          "q": "Do landscapers need a license for irrigation work in Texas?",
+          "a": "Maintenance mowing is unlicensed, but in-ground irrigation design, install, and repair require a TCEQ irrigator or technician license. Verify credentials before paying for a full system overhaul in Georgetown subdivisions."
+        },
+        {
+          "q": "How should I compare landscaping bids in Georgetown?",
+          "a": "Align visit frequency, bed weeding, mulch depth, and whether irrigation diagnosis is included. Ask for plant lists with botanical names so you are not comparing vague \"color spots\" across Berry Creek and Teravista bids."
         }
       ],
       "bestSlugs": [
@@ -1144,16 +1164,28 @@
       ],
       "faqs": [
         {
-          "q": "Are treatments safe for pets?",
-          "a": "Reputable companies explain product choices, drying times, and temporary precautions. Tell them about pet access areas before service."
+          "q": "What pests drive the most calls in Georgetown, TX homes?",
+          "a": "Fire ants after Williamson County rain, German roaches in warm kitchens, roof rats along Berry Creek tree lines, subterranean termites in slab-adjacent soil, and scorpions on limestone-edge lots near Sun City are repeat callers. Seasonal pressure shifts with Texas heat and pollen—not a one-spray-fits-all pattern."
         },
         {
-          "q": "Why do ants come back after rain?",
-          "a": "Colonies relocate when soil saturates. Baits and barrier timing matter; a quick spray without colony targeting often looks like failure within a week."
+          "q": "Why do ants return after Georgetown rainstorms?",
+          "a": "Expansive clay saturation pushes fire-ant colonies toward foundations and kitchens. Baits and barrier timing matter on Sun City and Wolf Ranch slabs—a contact spray without colony targeting often fails within a week of the next downpour."
         },
         {
-          "q": "Do I need pest control if I see one scorpion?",
-          "a": "One sighting may not warrant a full program, but inspecting weep holes, door seals, and exterior lighting that attracts insects is worthwhile in limestone-edge neighborhoods."
+          "q": "Are pest treatments safe for pets in Georgetown homes?",
+          "a": "Reputable TPCL-licensed companies explain product classes, drying times, and re-entry windows. Tell them about pet doors, Sun City patio access, and kids' play areas before exterior perimeter work."
+        },
+        {
+          "q": "Do I need a full tent for termites in Georgetown?",
+          "a": "Not usually for localized subterranean activity—liquid or bait systems often fit when shelter tubes are confined. Drywood termites in inaccessible voids may need fumigation. Historic Georgetown Village homes with pier-and-beam crawl spaces need inspection paths documented in writing."
+        },
+        {
+          "q": "How often should perimeter pest service happen in Central Texas?",
+          "a": "Quarterly plans are common for ant and roach pressure; heavy tree-canopy homes in Teravista or Berry Creek may need more frequent exterior sweeps during peak breeding months after hot, dry stretches."
+        },
+        {
+          "q": "Does Georgetown Home Services schedule pest control?",
+          "a": "No. Use our Best Pest Control in Georgetown, TX directory to compare companies, then contact providers directly for inspections and written treatment plans."
         }
       ],
       "bestSlugs": [
@@ -1236,16 +1268,28 @@
       ],
       "faqs": [
         {
-          "q": "Do I always need piers if I see cracks?",
-          "a": "No—hairline shrinkage cracks differ from widening structural gaps. Ask how the company documents movement over time before authorizing pier installs."
+          "q": "Why is foundation movement so common in Georgetown, TX?",
+          "a": "Williamson County expansive clay swells when wet and shrinks in drought, stressing slabs and perimeter beams. Mature trees in Berry Creek, poor drainage, and irrigation overspray against Sun City and Wolf Ranch foundations compound the cycle."
         },
         {
-          "q": "Should I fix drainage before foundation work?",
-          "a": "Often yes. Managing water around the slab is part of a durable solution in expansive clay; piers alone without drainage may not hold alignment."
+          "q": "Do I always need piers if I see cracks in Georgetown?",
+          "a": "No—hairline veneer cracks differ from widening stair-step breaks or doors that bind seasonally. Historic Georgetown Village pier-and-beam homes need different evaluation than slab ranches; ask for elevation or crack monitoring before authorizing pier counts."
         },
         {
-          "q": "Will insurance cover foundation repair?",
-          "a": "Gradual soil movement and maintenance issues are usually excluded. Sudden plumbing leaks under a slab may be a separate claim—document dates and plumber findings."
+          "q": "Should I fix drainage before foundation work on clay soil?",
+          "a": "Often yes. Gutters dumping at the slab, negative grade, and Texas gully-washer rains can undo pier lifts if water still pools on one side. Many durable Georgetown fixes pair limited structural work with drainage correction."
+        },
+        {
+          "q": "How do Sun City and Teravista homes differ for foundation repair?",
+          "a": "Sun City slab ranches often show guest-week irrigation overspray patterns; Teravista two-story layouts may present diagonal cracks at upstairs corners while the main slab moves independently. Match the repair plan to build era and soil moisture habits."
+        },
+        {
+          "q": "Will insurance cover foundation repair in Georgetown?",
+          "a": "Gradual soil movement and maintenance issues are usually excluded. Sudden plumbing leaks under a slab may be a separate claim—document dates, photos after storms, and plumber findings for adjusters."
+        },
+        {
+          "q": "How do I compare foundation bids in Williamson County?",
+          "a": "Match pier counts and depths—not lump sums. Ask how plumbing penetrations are protected, what post-lift monitoring is included, and walk away from same-day pressure after a \"free inspection\" in peak summer shrink season."
         }
       ],
       "bestSlugs": [
@@ -1328,16 +1372,28 @@
       ],
       "faqs": [
         {
-          "q": "Should a cleaning company be insured?",
-          "a": "Reputable companies carry liability coverage and can explain what happens if something is damaged during service."
+          "q": "How is house cleaning priced in Georgetown, TX?",
+          "a": "Rates scale with livable square footage, bath count, pets, and clutter. Hard Edwards Aquifer water leaves mineral film on fixtures and glass—crews who descale properly need more time than soft-water markets. Recurring Sun City plans often beat one-time deep cleans per visit."
         },
         {
-          "q": "How is pricing usually calculated?",
-          "a": "Many cleaners price by square footage, room count, or time blocks. Compare the same frequency and task list across bids."
+          "q": "What's the difference between standard and deep cleaning in Georgetown?",
+          "a": "Standard visits hit traffic areas on a rotation; deep cleans add baseboards, appliance fronts, grout brushing, and cedar-pollen dust on sills after spring storms. Georgetown Village homes with original wood trim need product discipline generic checklists ignore."
         },
         {
-          "q": "Do I need to be home?",
-          "a": "Many Georgetown clients provide garage or lockbox access for recurring service. Clarify security expectations and how teams log arrivals."
+          "q": "Do Sun City retirees need to be home for cleaning visits?",
+          "a": "Many Georgetown clients provide garage or lockbox access for recurring service—especially during guest weeks and tournament travel. Clarify security expectations, which rooms are off-limits, and how teams log arrivals."
+        },
+        {
+          "q": "How does Texas heat and hard water affect cleaning scope?",
+          "a": "Mineral buildup on showers and exterior glass, tracked clay dust from construction in Wolf Ranch and Teravista, and pollen loading after Williamson County cedar season all add time. Ask whether descaling and high-dust zones are included in deep-clean quotes."
+        },
+        {
+          "q": "Should cleaners use my supplies or theirs in Georgetown homes?",
+          "a": "Either works if expectations are clear. Hypoallergenic or historic-district homes near downtown may require your products; pros often prefer calibrated dilutions they trust on specialty stone and wood sealers."
+        },
+        {
+          "q": "Are cleaning crews insured and background-checked?",
+          "a": "Reputable Georgetown services carry liability and workers' comp and can show certificates. Read reviews mentioning no-shows and breakage handling in Sun City and Berry Creek—not only sparkle photos."
         }
       ],
       "bestSlugs": [

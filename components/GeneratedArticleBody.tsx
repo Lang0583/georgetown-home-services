@@ -39,10 +39,11 @@ export function ProseArticle({ children, ...rest }: React.ComponentPropsWithoutR
 type Props = {
   html: string;
   className?: string;
+  stripPricingAndFaq?: boolean;
 };
 
 /** Sanitize CMS / generated HTML before rendering (directory model: no lead-intake blocks). */
-export function sanitizeArticleHtml(html: string) {
+export function sanitizeArticleHtml(html: string, opts?: { stripPricingAndFaq?: boolean }) {
   let out = html;
 
   // Point internal links at trade hubs instead of URLs that only exist to 308.
@@ -56,6 +57,11 @@ export function sanitizeArticleHtml(html: string) {
   out = out.replace(/<h3>[^<]*form[^<]*<\/h3>[\s\S]*?(?=<h2>|<h3>|$)/gi, "");
   out = out.replace(/<p>[^<]*(submit the form|request service options|free quotes)[^<]*<\/p>/gi, "");
 
+  if (opts?.stripPricingAndFaq) {
+    out = out.replace(/<h2[^>]*>\s*Realistic 2026 pricing in Georgetown[\s\S]*?(?=<h2>|$)/gi, "");
+    out = out.replace(/<h2[^>]*>\s*FAQ[\s\S]*$/gi, "");
+  }
+
   // Normalize accidental extra whitespace.
   out = out.replace(/\n{3,}/g, "\n\n").trim();
   return out;
@@ -65,10 +71,10 @@ export function sanitizeArticleHtml(html: string) {
  * Wraps CMS / generated HTML in a readable article with Tailwind Typography (`prose`).
  * Outer shell is `max-w-4xl`; inner `prose max-w-none` fills the card without the default prose max-width cap.
  */
-export default function GeneratedArticleBody({ html, className }: Props) {
+export default function GeneratedArticleBody({ html, className, stripPricingAndFaq }: Props) {
   return (
     <ArticleContentShell className={className}>
-      <ProseArticle dangerouslySetInnerHTML={{ __html: sanitizeArticleHtml(html) }} />
+      <ProseArticle dangerouslySetInnerHTML={{ __html: sanitizeArticleHtml(html, { stripPricingAndFaq }) }} />
     </ArticleContentShell>
   );
 }
