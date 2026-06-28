@@ -55,7 +55,7 @@ const TRADE_FAQ_TEMPLATES: Record<ProviderGroup, Faq[]> = {
     },
     {
       q: "Will Georgetown Home Services recommend a single plumber?",
-      a: "We don’t steer you to one company. Use the Georgetown plumbing Best Of guide to compare multiple licensed operators, read how they document scope, then hire based on fit, availability, and transparent pricing—not a directory ranking alone.",
+      a: "Georgetown Home Services does not steer homeowners to one company. Use the Georgetown plumbing Best Of guide to compare multiple licensed operators, read how they document scope, then hire based on fit, availability, and transparent pricing—not a directory ranking alone.",
     },
   ],
   hvac: [

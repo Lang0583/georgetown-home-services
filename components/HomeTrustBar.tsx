@@ -1,3 +1,5 @@
+import UpdatedMonthYear from "./UpdatedMonthYear";
+
 function IconShieldCheck({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -51,11 +53,6 @@ const SIGNALS = [
     title: "Ratings from Google Reviews",
     subtext: "Real customer feedback",
   },
-  {
-    Icon: IconClock,
-    title: "Updated April 2026",
-    subtext: "Actively maintained directory",
-  },
 ] as const;
 
 /**
@@ -86,6 +83,15 @@ export default function HomeTrustBar() {
             </div>
           </li>
         ))}
+        <li className="flex min-w-0 flex-1 items-center gap-3 border-t border-gray-300/70 py-3 last:pb-0 md:h-full md:border-l md:border-t-0 md:border-gray-300/80 md:py-0 md:pl-4 md:pr-4 lg:pl-5 lg:pr-5">
+          <IconClock className="h-6 w-6 shrink-0 text-gray-600" />
+          <div className="min-w-0 leading-tight">
+            <p className="text-sm font-semibold text-gray-800">
+              <UpdatedMonthYear />
+            </p>
+            <p className="mt-0.5 text-xs text-gray-500">Actively maintained directory</p>
+          </div>
+        </li>
       </ul>
     </div>
   );
