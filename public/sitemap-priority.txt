@@ -1,0 +1,34 @@
+# Top 30 URLs for Google Search Console URL Inspection (highest priority first)
+# Generated for Georgetown Home Services — submit each in GSC → URL Inspection → Request indexing
+# Regenerate: npx tsx scripts/write-sitemap-priority.ts
+
+https://www.georgetownhomeservices.com/
+https://www.georgetownhomeservices.com/services/plumber-georgetown-tx
+https://www.georgetownhomeservices.com/services/hvac-georgetown-tx
+https://www.georgetownhomeservices.com/services/roofer-georgetown-tx
+https://www.georgetownhomeservices.com/services/electrician-georgetown-tx
+https://www.georgetownhomeservices.com/services/landscaping-georgetown-tx
+https://www.georgetownhomeservices.com/services/pest-control-georgetown-tx
+https://www.georgetownhomeservices.com/services/foundation-repair-georgetown-tx
+https://www.georgetownhomeservices.com/services/house-cleaning-georgetown-tx
+https://www.georgetownhomeservices.com/best/best-plumbers-georgetown-tx
+https://www.georgetownhomeservices.com/best/top-hvac-companies-georgetown-tx
+https://www.georgetownhomeservices.com/best/best-roofers-georgetown-tx
+https://www.georgetownhomeservices.com/best/best-electricians-georgetown-tx
+https://www.georgetownhomeservices.com/best/best-landscaping-companies-georgetown-tx
+https://www.georgetownhomeservices.com/best/best-pest-control-georgetown-tx
+https://www.georgetownhomeservices.com/best/best-foundation-repair-georgetown-tx
+https://www.georgetownhomeservices.com/best/best-house-cleaning-services-georgetown-tx
+https://www.georgetownhomeservices.com/services
+https://www.georgetownhomeservices.com/best
+https://www.georgetownhomeservices.com/costs
+https://www.georgetownhomeservices.com/blog
+https://www.georgetownhomeservices.com/pricing
+https://www.georgetownhomeservices.com/seasonal
+https://www.georgetownhomeservices.com/costs/plumber-cost-georgetown-tx
+https://www.georgetownhomeservices.com/costs/hvac-repair-cost-georgetown-tx
+https://www.georgetownhomeservices.com/costs/ac-installation-cost-georgetown-tx
+https://www.georgetownhomeservices.com/costs/roof-replacement-cost-georgetown-tx
+https://www.georgetownhomeservices.com/costs/roof-repair-cost-georgetown-tx
+https://www.georgetownhomeservices.com/costs/electrician-cost-georgetown-tx
+https://www.georgetownhomeservices.com/blog/water-heater-not-working-georgetown-tx

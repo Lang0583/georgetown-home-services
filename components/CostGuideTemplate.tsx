@@ -17,26 +17,7 @@ import {
 } from "../lib/service-best-pages-meta";
 import { hubArticleJsonLd } from "../lib/site-author";
 import type { Faq } from "../lib/site-content";
-
-function breadcrumbJsonLd({
-  siteUrl,
-  guideTitle,
-  pathname,
-}: {
-  siteUrl: string;
-  guideTitle: string;
-  pathname: string;
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
-      { "@type": "ListItem", position: 2, name: "Cost Guides", item: `${siteUrl}/costs` },
-      { "@type": "ListItem", position: 3, name: guideTitle, item: `${siteUrl}${pathname}` },
-    ],
-  };
-}
+import { breadcrumbSchemaForCostGuide } from "../lib/schema";
 
 type CostGuideTemplateProps = {
   page: CostGuidePage;
@@ -50,13 +31,7 @@ export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
   return (
     <PageShell>
       <article className="py-8 md:py-12">
-        <JsonLd
-          data={breadcrumbJsonLd({
-            siteUrl,
-            guideTitle: page.serviceName,
-            pathname,
-          })}
-        />
+        <JsonLd data={breadcrumbSchemaForCostGuide(page.serviceName, pathname)} />
         <JsonLd
           data={webPageWithDateModifiedJsonLd({
             pathname,

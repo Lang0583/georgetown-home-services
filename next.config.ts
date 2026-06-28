@@ -11,11 +11,6 @@ const serviceHubRedirects = Object.entries(REDIRECTED_SERVICE_TO_HUB).map(([slug
 }));
 
 const nextConfig: NextConfig = {
-  async rewrites() {
-    return {
-      beforeFiles: [{ source: "/sitemap.xml", destination: "/api/sitemap-xml" }],
-    };
-  },
   /** Default false: Next also normalizes trailing slashes on matched routes; we still 301 common alias paths below. */
   trailingSlash: false,
   images: {

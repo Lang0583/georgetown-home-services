@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/page-seo";
 
-/** Crawlers: allow everything; point to the flat sitemap (rewritten to `/api/sitemap-xml`). */
+/** Crawlers: allow all pages; disallow `/api/`; sitemap via native `app/sitemap.ts`. */
 export default function robots(): MetadataRoute.Robots {
   const base = SITE_URL.replace(/\/$/, "");
   return {

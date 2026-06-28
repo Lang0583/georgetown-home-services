@@ -16,31 +16,7 @@ import {
 } from "../lib/service-best-pages-meta";
 import { hubArticleJsonLd } from "../lib/site-author";
 import type { Faq } from "../lib/site-content";
-
-function breadcrumbJsonLd({
-  siteUrl,
-  serviceLabel,
-  parentHubPath,
-  subServiceName,
-  pathname,
-}: {
-  siteUrl: string;
-  serviceLabel: string;
-  parentHubPath: string;
-  subServiceName: string;
-  pathname: string;
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
-      { "@type": "ListItem", position: 2, name: "Services", item: `${siteUrl}/services` },
-      { "@type": "ListItem", position: 3, name: serviceLabel, item: `${siteUrl}${parentHubPath}` },
-      { "@type": "ListItem", position: 4, name: subServiceName, item: `${siteUrl}${pathname}` },
-    ],
-  };
-}
+import { breadcrumbSchemaForSubService } from "../lib/schema";
 
 function formatUsd(amount: number): string {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(
@@ -61,13 +37,12 @@ export default function SubServicePageTemplate({ page }: SubServicePageTemplateP
     <PageShell>
       <article className="py-8 md:py-12">
         <JsonLd
-          data={breadcrumbJsonLd({
-            siteUrl,
-            serviceLabel: page.serviceLabel,
-            parentHubPath: page.parentHubPath,
-            subServiceName: page.subServiceName,
+          data={breadcrumbSchemaForSubService(
+            page.serviceLabel,
+            page.parentHubPath,
+            page.subServiceName,
             pathname,
-          })}
+          )}
         />
         <JsonLd
           data={webPageWithDateModifiedJsonLd({

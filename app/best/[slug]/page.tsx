@@ -59,6 +59,7 @@ import {
   FLAGSHIP_VIDEO_BEST_ROOFERS,
   flagshipVideoObjectJsonLd,
 } from "../../../lib/flagship-videos";
+import { breadcrumbSchemaForBestOf } from "../../../lib/schema";
 
 /** Hero images for core `/best/[slug]` pages (Unsplash — permitted use per Unsplash License). */
 const CORE_BEST_HERO: Record<string, { src: string; alt: string }> = {
@@ -95,26 +96,6 @@ const CORE_BEST_HERO: Record<string, { src: string; alt: string }> = {
     alt: "House cleaning team working in a Georgetown TX residence",
   },
 };
-
-function breadcrumbJsonLd({
-  siteUrl,
-  bestTitle,
-  bestSlug,
-}: {
-  siteUrl: string;
-  bestTitle: string;
-  bestSlug: string;
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
-      { "@type": "ListItem", position: 2, name: "Best Of", item: `${siteUrl}/best` },
-      { "@type": "ListItem", position: 3, name: bestTitle, item: `${siteUrl}/best/${bestSlug}` },
-    ],
-  };
-}
 
 function faqJsonLd(faqs: { q: string; a: string }[]) {
   return {
@@ -345,7 +326,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
     <>
     <PageShell>
       <section className="py-10 md:py-12">
-          <JsonLd data={breadcrumbJsonLd({ siteUrl, bestTitle: best.title, bestSlug: best.slug })} />
+          <JsonLd data={breadcrumbSchemaForBestOf(best.title, best.slug)} />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: `/best/${best.slug}`,

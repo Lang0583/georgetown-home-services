@@ -32,6 +32,7 @@ import {
 import HailPillarNeighborhoodHub from "../../../components/HailPillarNeighborhoodHub";
 import { PRICING_YEAR } from "../../../lib/pricing-data";
 import { AUTHOR_NAME, AUTHOR_PROFILE_PATH, authorPersonSchema } from "../../../lib/site-author";
+import { breadcrumbSchemaForBlog } from "../../../lib/schema";
 
 /** Posts with Amazon affiliate links in body copy — disclosure shown below byline. */
 const AFFILIATE_DISCLOSURE_SLUGS = new Set([
@@ -51,26 +52,6 @@ const STORM_INSPECTION_LEAD_SLUGS = new Set([
   "hail-damage-wolf-ranch-georgetown-tx",
   "hail-damage-georgetown-village-tx",
 ]);
-
-function breadcrumbJsonLd({
-  siteUrl,
-  slug,
-  title,
-}: {
-  siteUrl: string;
-  slug: string;
-  title: string;
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
-      { "@type": "ListItem", position: 2, name: "Blog", item: `${siteUrl}/blog` },
-      { "@type": "ListItem", position: 3, name: title, item: `${siteUrl}/blog/${slug}` },
-    ],
-  };
-}
 
 function articleJsonLd({
   siteUrl,
@@ -448,7 +429,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
   return (
     <PageShell>
       <section className="py-10 md:py-12">
-          <JsonLd data={breadcrumbJsonLd({ siteUrl, slug: post.slug, title: post.title })} />
+          <JsonLd data={breadcrumbSchemaForBlog(post.title, post.slug)} />
           <JsonLd
             data={articleJsonLd({
               siteUrl,
