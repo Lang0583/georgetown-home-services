@@ -790,6 +790,35 @@ export function getProvidersByCategory(category: ProviderCategory): Provider[] {
   return PROVIDERS.filter((p) => p.category === category);
 }
 
+/** Top N providers for a category (sorted by review volume, then rating). */
+export function getTopProvidersByCategory(category: ProviderCategory, limit = 3): Provider[] {
+  return [...getProvidersByCategory(category)]
+    .sort((a, b) => b.reviewCount - a.reviewCount || b.rating - a.rating)
+    .slice(0, limit);
+}
+
+export const PROVIDER_CATEGORY_ORDER: ProviderCategory[] = [
+  "plumbing",
+  "hvac",
+  "roofing",
+  "electrical",
+  "landscaping",
+  "pest-control",
+  "foundation",
+  "cleaning",
+];
+
+export const PROVIDER_CATEGORY_LABELS: Record<ProviderCategory, string> = {
+  plumbing: "Plumbing",
+  hvac: "HVAC",
+  roofing: "Roofing",
+  electrical: "Electrical",
+  landscaping: "Landscaping",
+  "pest-control": "Pest Control",
+  foundation: "Foundation Repair",
+  cleaning: "House Cleaning",
+};
+
 export function getCategoryForBestSlug(slug: string): ProviderCategory | null {
   return BEST_SLUG_TO_CATEGORY[slug] ?? null;
 }

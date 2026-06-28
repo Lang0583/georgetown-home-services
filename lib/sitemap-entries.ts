@@ -22,6 +22,7 @@ import {
   getServiceSlugs,
 } from "@/lib/site-content";
 import { TEXAS_SEASON_ORDER } from "@/lib/texas-seasons";
+import { GEORGETOWN_ZIP_CODES } from "@/data/zip-codes";
 
 function absoluteUrl(path: string): string {
   if (path === "/") return `${SITE_URL}/`;
@@ -58,6 +59,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     { path: "/methodology", priority: 0.5 },
     { path: "/editorial-policy", priority: 0.5 },
     { path: "/service-areas", priority: 0.5 },
+    { path: "/zip", priority: 0.7 },
     { path: "/contact", priority: 0.5 },
     { path: "/privacy-policy", priority: 0.3 },
     { path: "/terms", priority: 0.3 },
@@ -214,6 +216,15 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly",
       priority: 0.75,
+    });
+  }
+
+  for (const zip of GEORGETOWN_ZIP_CODES) {
+    entries.push({
+      url: absoluteUrl(`/zip/${zip}`),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
     });
   }
 
