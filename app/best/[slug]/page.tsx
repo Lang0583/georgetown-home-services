@@ -37,6 +37,7 @@ import {
 import { getAlsoCompareLinksForBestSlug } from "../../../lib/best-also-compare-links";
 import { buildProviderItemListJsonLd } from "../../../lib/provider-item-list-schema";
 import { getDirectoryProvidersForBestSlug } from "../../../data/providers";
+import { getComparisonsForBestSlug } from "../../../data/comparisons";
 import ProviderCardSection from "../../../components/ProviderCardSection";
 import { bestPageInternalLinks } from "../../../lib/internal-links";
 import { getBestOfPageFaqs } from "../../../lib/best-of-page-faqs";
@@ -296,6 +297,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
   const businessesForPage =
     businessCategory !== null ? getBusinessesByCategory(businessCategory) : null;
   const directoryProviders = getDirectoryProvidersForBestSlug(slug);
+  const headToHeadComparisons = getComparisonsForBestSlug(best.slug);
   const relatedServiceSlug = getRelatedServiceSlugForBestSlug(slug);
   const relatedService = relatedServiceSlug ? getServiceBySlug(relatedServiceSlug) : null;
   const services = getServices();
@@ -1366,6 +1368,15 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       {directoryProviders.length ? (
                         <ProviderCardSection providers={directoryProviders} />
                       ) : null}
+                      {headToHeadComparisons.length ? (
+                        <p className="mt-5 text-sm text-gray-700">
+                          <Link href="/compare" className="font-semibold text-primary hover:underline">
+                            See head-to-head comparisons →
+                          </Link>
+                          {" "}
+                          ({headToHeadComparisons.map((c) => `${c.providerA.name} vs ${c.providerB.name}`).join("; ")})
+                        </p>
+                      ) : null}
 
                       {adsenseBestOfSlot ? (
                         <div className="mt-10 max-w-4xl">
@@ -1399,6 +1410,13 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                           Provider listings haven’t been added yet for this guide.
                         </div>
                       )}
+                      {headToHeadComparisons.length ? (
+                        <p className="mt-5 text-sm text-gray-700">
+                          <Link href="/compare" className="font-semibold text-primary hover:underline">
+                            See head-to-head comparisons →
+                          </Link>
+                        </p>
+                      ) : null}
                       {adsenseBestOfSlot ? (
                         <div className="mt-10 max-w-4xl">
                           <AdSenseDisplay slotId={adsenseBestOfSlot} />
