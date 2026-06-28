@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AuthorByline from "@/components/AuthorByline";
+import AdSenseDisplay from "@/components/AdSenseDisplay";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { ButtonLink } from "@/components/Button";
 import FAQList from "@/components/FAQList";
@@ -21,6 +22,7 @@ import {
 } from "@/lib/service-best-pages-meta";
 import { hubArticleJsonLd } from "@/lib/site-author";
 import { buildNeighborhoodGuideFaqs } from "@/lib/georgetown-page-faqs";
+import { adsenseNeighborhoodPageInlineSlot } from "@/lib/adsense-config";
 
 function breadcrumbJsonLd({
   siteUrl,
@@ -148,6 +150,12 @@ export default async function NeighborhoodServicePage({
             ))}
           </ul>
         </section>
+
+        {adsenseNeighborhoodPageInlineSlot ? (
+          <div className="my-10">
+            <AdSenseDisplay slotId={adsenseNeighborhoodPageInlineSlot} className="mx-auto max-w-3xl" />
+          </div>
+        ) : null}
 
         <section className="mt-10">
           <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Why Local Experience Matters</h2>

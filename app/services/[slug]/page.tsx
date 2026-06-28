@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AdSenseDisplay from "../../../components/AdSenseDisplay";
+import AffiliateCTA from "../../../components/AffiliateCTA";
 import FAQList from "../../../components/FAQList";
 import FAQSchema from "../../../components/FAQSchema";
 import { ButtonLink } from "../../../components/Button";
@@ -21,7 +22,7 @@ import {
   getServices,
   getServiceSlugs,
 } from "../../../lib/site-content";
-import { adsenseServiceMainSlot, adsenseSidebarSlot } from "../../../lib/adsense-config";
+import { adsenseServicePageTopSlot, adsenseSidebarSlot } from "../../../lib/adsense-config";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
@@ -116,6 +117,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const isPlumberService = service.slug === "plumber-georgetown-tx";
   const isHvacService = service.slug === "hvac-georgetown-tx";
   const isRooferService = service.slug === "roofer-georgetown-tx";
+  const isCoreService = (CORE_SERVICE_SLUGS as readonly string[]).includes(service.slug);
 
   const location = getLocationBySlug(service.locationSlug);
   const relatedServices = service.relatedServiceSlugs
@@ -207,6 +209,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 {service.serviceType} • {location?.title ?? "Georgetown, TX"}
               </div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{service.h1}</h1>
+              {isCoreService && adsenseServicePageTopSlot ? (
+                <div className="mt-6">
+                  <AdSenseDisplay slotId={adsenseServicePageTopSlot} className="mx-auto max-w-2xl" />
+                </div>
+              ) : null}
               <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
               <AuthorByline className="mt-3" compact />
 
@@ -256,15 +263,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   </ButtonLink>
                 </div>
                 <p className="mt-3 text-xs leading-relaxed text-slate-600">
-                  We publish educational guides and a provider directory. We don’t take service requests or schedule jobs.
+                  {isPlumberService
+                    ? "Georgetown Home Services publishes educational guides and a provider directory. This site does not take service requests or schedule jobs."
+                    : "We publish educational guides and a provider directory. We don’t take service requests or schedule jobs."}
                 </p>
               </div>
-
-              {adsenseServiceMainSlot ? (
-                <div className="mt-8">
-                  <AdSenseDisplay slot={adsenseServiceMainSlot} className="mx-auto max-w-2xl" />
-                </div>
-              ) : null}
 
               <div className="mt-8">
                 {isPlumberService ? (
@@ -428,6 +431,65 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         reduce breakdown risk by checking airflow basics, cleaning where appropriate, and confirming the
                         condensate drain is clear. If your home has persistent hot rooms (common in two-story layouts),
                         ask for airflow observations instead of only equipment notes.
+                      </p>
+                    </section>
+
+                    <section>
+                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
+                        Typical HVAC Costs in Georgetown TX
+                      </h2>
+                      <div className="mt-4 overflow-x-auto">
+                        <table className="min-w-full text-left text-sm">
+                          <thead>
+                            <tr className="border-b border-gray-200 text-xs font-semibold uppercase tracking-wide text-gray-600">
+                              <th className="py-2 pr-4">Service</th>
+                              <th className="py-2">Typical Georgetown Range</th>
+                            </tr>
+                          </thead>
+                          <tbody className="text-gray-800">
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 pr-4 align-top font-medium">Service call / diagnostic</td>
+                              <td className="py-3 align-top tabular-nums text-gray-900">$75–$150</td>
+                            </tr>
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 pr-4 align-top font-medium">Refrigerant recharge (R-410A)</td>
+                              <td className="py-3 align-top tabular-nums text-gray-900">$200–$500</td>
+                            </tr>
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 pr-4 align-top font-medium">Capacitor replacement</td>
+                              <td className="py-3 align-top tabular-nums text-gray-900">$150–$350</td>
+                            </tr>
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 pr-4 align-top font-medium">Contactor replacement</td>
+                              <td className="py-3 align-top tabular-nums text-gray-900">$150–$300</td>
+                            </tr>
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 pr-4 align-top font-medium">Condensate drain clear</td>
+                              <td className="py-3 align-top tabular-nums text-gray-900">$75–$200</td>
+                            </tr>
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 pr-4 align-top font-medium">Evaporator coil replacement</td>
+                              <td className="py-3 align-top tabular-nums text-gray-900">$800–$2,000</td>
+                            </tr>
+                            <tr className="border-b border-gray-100">
+                              <td className="py-3 pr-4 align-top font-medium">Compressor replacement</td>
+                              <td className="py-3 align-top tabular-nums text-gray-900">$1,200–$2,500</td>
+                            </tr>
+                            <tr>
+                              <td className="py-3 pr-4 align-top font-medium">Full system replacement (2.5–5 ton)</td>
+                              <td className="py-3 align-top tabular-nums text-gray-900">$5,000–$12,000</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <p className="mt-4 max-w-2xl text-sm leading-relaxed text-gray-700">
+                        Prices reflect Georgetown TX market conditions as of 2026. Get written quotes from at least two
+                        local companies before approving any repair over $300.
+                      </p>
+                      <p className="mt-3 text-sm font-semibold text-primary">
+                        <Link href="/blog/ac-repair-cost-georgetown-tx" className="hover:underline">
+                          See our full AC repair cost breakdown →
+                        </Link>
                       </p>
                     </section>
 
@@ -758,12 +820,15 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 </section>
               ) : null}
 
+              {isCoreService ? <AffiliateCTA /> : null}
+
               <div>
                 <section className="mt-12">
                   <h2 className="text-3xl font-semibold tracking-tight text-gray-900">{faqHeading}</h2>
                   <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
-                    These answers summarize common questions we hear from homeowners in and around Georgetown, TX. Use
-                    them as a starting point, then confirm details with any professional you choose to work with.
+                    {isPlumberService
+                      ? "These answers summarize common questions Georgetown homeowners ask about plumbing. Use them as a starting point, then confirm details with any professional you choose to work with."
+                      : "These answers summarize common questions we hear from homeowners in and around Georgetown, TX. Use them as a starting point, then confirm details with any professional you choose to work with."}
                   </p>
                   <div className="mt-6">
                     <FAQList faqs={serviceFaqs} />
@@ -877,7 +942,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 <div className="mt-2 text-sm leading-relaxed text-gray-700">{location?.title ?? "Georgetown, TX"}</div>
               </div>
 
-              {adsenseSidebarSlot ? <AdSenseDisplay slot={adsenseSidebarSlot} className="mt-8" /> : null}
+              {adsenseSidebarSlot ? <AdSenseDisplay slotId={adsenseSidebarSlot} className="mt-8" /> : null}
               </>
             }
           />

@@ -23,7 +23,7 @@
     "generate:lead-pdfs": "tsx scripts/generate-lead-magnet-pdfs.ts",
     "prebuild": "node scripts/clean-legacy-sitemap.cjs && node scripts/write-indexnow-key.cjs && node scripts/write-impact-site-verification.cjs && npm run generate:lead-pdfs",
     "build": "next build --webpack && node scripts/vercel-mirror-next.cjs",
-    "postbuild": "node scripts/clean-legacy-sitemap.cjs && npx tsx scripts/submit-indexnow.ts",
+    "postbuild": "node scripts/clean-legacy-sitemap.cjs && node scripts/ensure-vercel-next-lock.cjs && npx tsx scripts/submit-indexnow.ts",
     "vercel-build": "npm run build",
     "indexnow": "node --env-file=.env.local ./node_modules/tsx/dist/cli.mjs scripts/submit-indexnow.ts",
     "indexnow:submit": "node --env-file=.env.local ./node_modules/tsx/dist/cli.mjs scripts/submit-indexnow.ts",
