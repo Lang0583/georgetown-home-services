@@ -1,8 +1,12 @@
 import type { ContentBlock } from "../lib/site-content";
-import { adsenseInlineSlot } from "../lib/adsense-config";
 import { COST_POST_SUPPLEMENTS } from "../lib/pricing-data";
-import { splitBlocksAfterNthParagraph, splitHtmlAfterNthParagraph } from "../lib/split-article-content";
-import AdSenseDisplay from "./AdSenseDisplay";
+import {
+  splitBlocksAfterNthParagraph,
+  splitHtmlAfterNthParagraph,
+  splitHtmlBeforeFaq,
+} from "../lib/split-article-content";
+import { blogAffiliateConfigForSlug } from "../lib/blog-affiliate-config";
+import AffiliateCTA from "./AffiliateCTA";
 import BlogCostSupplement from "./BlogCostSupplement";
 import BlogMidContentEmailCard from "./BlogMidContentEmailCard";
 import { ArticleContentShell, ProseArticle, sanitizeArticleHtml } from "./GeneratedArticleBody";
@@ -31,8 +35,7 @@ function useGeneratedHtml(slug: string, generated: { html: string } | null, bloc
 
 /**
  * Renders article HTML or block content with:
- * - Display ad after the 2nd paragraph
- * - Mid-content email card after the 3rd paragraph (1st paragraph of remainder after the ad break)
+ * - Mid-content email card after the 3rd paragraph (1st paragraph of remainder after the 2nd-paragraph break)
  * - Optional cost-guide pricing supplement before the email card when registered.
  */
 export default function BlogArticleBodyWithMidEmail({ slug, generated, blocks }: Props) {
@@ -41,28 +44,37 @@ export default function BlogArticleBodyWithMidEmail({ slug, generated, blocks }:
   const generatedBody = useGeneratedHtml(slug, generated, blocks);
 
   if (generatedBody) {
-    const { before: open2, after: tailAfter2 } = splitHtmlAfterNthParagraph(generatedBody.html, 2);
+    const affiliate = blogAffiliateConfigForSlug(slug);
+    const { body: articleBody, faq: faqBlock } = affiliate
+      ? splitHtmlBeforeFaq(generatedBody.html)
+      : { body: generatedBody.html, faq: "" };
+
+    const { before: open2, after: tailAfter2 } = splitHtmlAfterNthParagraph(articleBody, 2);
     const safeOpen2 = sanitizeArticleHtml(open2);
     const { before: para3, after: rest } = tailAfter2
       ? splitHtmlAfterNthParagraph(tailAfter2, 1)
       : { before: "", after: "" };
     const safePara3 = para3 ? sanitizeArticleHtml(para3) : "";
     const safeRest = rest ? sanitizeArticleHtml(rest) : "";
+    const safeFaq = faqBlock ? sanitizeArticleHtml(faqBlock) : "";
 
     return (
       <ArticleContentShell>
         <ProseArticle dangerouslySetInnerHTML={{ __html: safeOpen2 }} />
-        {adsenseInlineSlot ? (
-          <div className="my-8">
-            <AdSenseDisplay slot={adsenseInlineSlot} />
-          </div>
-        ) : null}
         {safePara3 ? <ProseArticle dangerouslySetInnerHTML={{ __html: safePara3 }} /> : null}
         {hasCostSupplement ? <BlogCostSupplement slug={slug} /> : null}
         <div className="my-8">
           <BlogMidContentEmailCard source={source} />
         </div>
         {safeRest ? <ProseArticle dangerouslySetInnerHTML={{ __html: safeRest }} /> : null}
+        {affiliate ? (
+          <AffiliateCTA
+            angiCategorySlug={affiliate.angiCategorySlug}
+            thumbtackCategory={affiliate.thumbtackCategory}
+            serviceLabel={affiliate.serviceLabel}
+          />
+        ) : null}
+        {safeFaq ? <ProseArticle dangerouslySetInnerHTML={{ __html: safeFaq }} /> : null}
       </ArticleContentShell>
     );
   }
@@ -77,11 +89,6 @@ export default function BlogArticleBodyWithMidEmail({ slug, generated, blocks }:
       <ProseArticle>
         <RichTextBlocks blocks={first2} />
       </ProseArticle>
-      {adsenseInlineSlot ? (
-        <div className="my-8">
-          <AdSenseDisplay slot={adsenseInlineSlot} />
-        </div>
-      ) : null}
       {thirdPara.length ? (
         <ProseArticle>
           <RichTextBlocks blocks={thirdPara} />

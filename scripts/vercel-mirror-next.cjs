@@ -21,3 +21,5 @@ if (!fs.existsSync(nextDir)) {
 
 fs.mkdirSync(targetParent, { recursive: true });
 fs.cpSync(nextDir, targetNext, { recursive: true });
+
+require("./ensure-vercel-next-lock.cjs");

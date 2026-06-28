@@ -8,6 +8,7 @@ import StickyHeader from "../components/StickyHeader";
 import EmailCaptureSitewide from "../components/EmailCaptureSitewide";
 import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
+import HomeFaqPageHeadJsonLd from "../components/HomeFaqPageHeadJsonLd";
 import { ADSENSE_PUBLISHER_ID } from "../lib/adsense-config";
 import { getImpactPublisherTagInnerHtml } from "../lib/impact-publisher-tag";
 import { organizationSchema, websiteSchema } from "../lib/schema";
@@ -102,6 +103,7 @@ export default function RootLayout({
             strategy="lazyOnload"
           />
         ) : null}
+        <HomeFaqPageHeadJsonLd />
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
       </head>

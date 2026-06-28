@@ -11,6 +11,11 @@ import { buildSitemapEntries } from "@/lib/sitemap-entries";
 import { submitUrlsToIndexNow } from "@/lib/indexnow-submit";
 
 async function main() {
+  if (process.env.VERCEL_ENV === "preview") {
+    console.log("[indexnow] Skipping IndexNow on Vercel preview deployments.");
+    process.exit(0);
+  }
+
   const viaApi = process.env.INDEXNOW_SUBMIT_URL?.trim();
   const urls = buildSitemapEntries().map((e) => e.url);
 
@@ -32,6 +37,10 @@ async function main() {
     });
     const data = (await res.json().catch(() => ({}))) as { error?: string; batches?: unknown };
     console.log("[indexnow] API response", res.status, data);
+    if (!res.ok && process.env.VERCEL === "1") {
+      console.warn("[indexnow] Continuing Vercel deploy despite IndexNow API errors.");
+      process.exit(0);
+    }
     process.exit(res.ok ? 0 : 1);
     return;
   }
@@ -45,6 +54,10 @@ async function main() {
   const failed = batches.filter((b) => !b.ok);
   if (failed.length) {
     console.error("[indexnow] One or more batches failed:", failed);
+    if (process.env.VERCEL === "1") {
+      console.warn("[indexnow] Continuing Vercel deploy despite IndexNow errors.");
+      process.exit(0);
+    }
     process.exit(1);
   }
 
@@ -53,5 +66,9 @@ async function main() {
 
 main().catch((err) => {
   console.error(err);
+  if (process.env.VERCEL === "1") {
+    console.warn("[indexnow] Continuing Vercel deploy despite IndexNow exception.");
+    process.exit(0);
+  }
   process.exit(1);
 });

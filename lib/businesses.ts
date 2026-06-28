@@ -112,7 +112,7 @@ export function normalizeBusinessGroup(b: Business): ProviderGroup | null {
   if (s.includes("hvac") || s.includes("air conditioning") || s.includes("heating")) return "hvac";
   if (s.includes("roof")) return "roofer";
   if (s.includes("electric")) return "electrician";
-  if (s.includes("landscape") || s.includes("lawn")) return "landscaping";
+  if (s.includes("landscap") || s.includes("lawn")) return "landscaping";
   if (s.includes("pest")) return "pest_control";
   if (s.includes("foundation")) return "foundation_repair";
   if (s.includes("clean")) return "house_cleaning";

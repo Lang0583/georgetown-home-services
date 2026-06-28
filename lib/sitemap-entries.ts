@@ -24,6 +24,8 @@ import {
   getServiceSlugs,
 } from "@/lib/site-content";
 import { TEXAS_SEASON_ORDER } from "@/lib/texas-seasons";
+import { COMPARISON_SLUGS } from "@/data/comparisons";
+import { GEORGETOWN_ZIP_CODES } from "@/data/zip-codes";
 
 function absoluteUrl(path: string): string {
   if (path === "/") return `${SITE_URL}/`;
@@ -76,25 +78,31 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
   push(entries, "/", { changeFrequency: "weekly", priority: 1 }, lastModified);
   push(entries, "/search", { changeFrequency: "monthly", priority: 0.5 }, lastModified);
 
-  const hubMonthly: SitemapOpts = { changeFrequency: "monthly", priority: 0.7 };
-  for (const path of [
-    "/services",
-    "/best",
-    "/costs",
-    "/blog",
-    "/pricing",
-    "/seasonal",
-    "/pricing/calculator",
-    "/about",
-    "/contact",
-    "/methodology",
-    "/editorial-policy",
-    "/service-areas",
-    AUTHOR_PROFILE_PATH,
-    "/privacy-policy",
-    "/terms",
+  for (const { path, priority } of [
+    { path: "/pricing", priority: 0.7 },
+    { path: "/costs", priority: 0.85 },
+    { path: "/seasonal", priority: 0.8 },
+    { path: "/about", priority: 0.5 },
+    { path: AUTHOR_PROFILE_PATH, priority: 0.5 },
+    { path: "/methodology", priority: 0.5 },
+    { path: "/editorial-policy", priority: 0.5 },
+    { path: "/service-areas", priority: 0.5 },
+    { path: "/zip", priority: 0.7 },
+    { path: "/contact", priority: 0.5 },
+    { path: "/privacy-policy", priority: 0.3 },
+    { path: "/terms", priority: 0.3 },
   ]) {
-    push(entries, path, hubMonthly, lastModified);
+    push(entries, path, { changeFrequency: "monthly", priority }, lastModified);
+  }
+
+  for (const { path, priority } of [
+    { path: "/services", priority: 0.9 },
+    { path: "/best", priority: 0.9 },
+    { path: "/compare", priority: 0.75 },
+    { path: "/blog", priority: 0.7 },
+    { path: "/pricing/calculator", priority: 0.85 },
+  ]) {
+    push(entries, path, { changeFrequency: "weekly", priority }, lastModified);
   }
 
   const serviceHubMonthly: string[] = [
@@ -201,6 +209,14 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
 
   for (const season of TEXAS_SEASON_ORDER) {
     push(entries, `/seasonal/${season}`, { changeFrequency: "monthly", priority: 0.7 }, lastModified);
+  }
+
+  for (const slug of COMPARISON_SLUGS) {
+    push(entries, `/compare/${slug}`, { changeFrequency: "monthly", priority: 0.72 }, lastModified);
+  }
+
+  for (const zip of GEORGETOWN_ZIP_CODES) {
+    push(entries, `/zip/${zip}`, { changeFrequency: "monthly", priority: 0.7 }, lastModified);
   }
 
   const seen = new Set<string>();

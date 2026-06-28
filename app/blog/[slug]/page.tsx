@@ -272,9 +272,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         "Emergency plumber in Georgetown TX costs $150–$500+ for most calls. Real price ranges by issue type, what triggers after-hours fees, and how to avoid overpaying.",
     },
     "water-heater-not-working-georgetown-tx": {
-      absoluteTitle: "Water Heater Not Working in Georgetown TX? Do This First (2026)",
+      absoluteTitle: "Water Heater Not Working Georgetown TX? Fix Guide (2026)",
       description:
-        "Georgetown TX water heater stopped working? Check these causes before calling a plumber — pilot light, thermostat, sediment buildup — and when to replace vs. repair.",
+        "Georgetown TX water heater stopped working? Check pilot lights, breakers, and sediment first—then know when to call a plumber. Repair vs replace and local cost context.",
+    },
+    "slab-leak-signs-georgetown-tx": {
+      absoluteTitle: "Slab Leak Signs in Georgetown TX: When to Worry (2026)",
+      description:
+        "Do you have a slab leak in Georgetown TX? Hot spots, high water bills, and sound of running water are warning signs. What slab leaks mean on clay soil and when to call a plumber.",
     },
     "how-to-choose-a-reliable-plumber-georgetown-tx": {
       absoluteTitle: "How to Choose a Plumber in Georgetown TX (2026 Checklist)",
@@ -596,7 +601,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
             }
             aside={
               <>
-                {adsenseBlogPostSlot ? <AdSenseDisplay slot={adsenseBlogPostSlot} className="mt-8" /> : null}
+                {adsenseBlogPostSlot ? <AdSenseDisplay slotId={adsenseBlogPostSlot} className="mt-8" /> : null}
               </>
             }
           />
