@@ -1,5 +1,4 @@
 import type { ContentBlock } from "../lib/site-content";
-import { adsenseInlineSlot } from "../lib/adsense-config";
 import { COST_POST_SUPPLEMENTS } from "../lib/pricing-data";
 import {
   splitBlocksAfterNthParagraph,
@@ -7,7 +6,6 @@ import {
   splitHtmlBeforeFaq,
 } from "../lib/split-article-content";
 import { blogAffiliateConfigForSlug } from "../lib/blog-affiliate-config";
-import AdSenseDisplay from "./AdSenseDisplay";
 import AffiliateCTA from "./AffiliateCTA";
 import BlogCostSupplement from "./BlogCostSupplement";
 import BlogMidContentEmailCard from "./BlogMidContentEmailCard";
@@ -37,8 +35,7 @@ function useGeneratedHtml(slug: string, generated: { html: string } | null, bloc
 
 /**
  * Renders article HTML or block content with:
- * - Display ad after the 2nd paragraph
- * - Mid-content email card after the 3rd paragraph (1st paragraph of remainder after the ad break)
+ * - Mid-content email card after the 3rd paragraph (1st paragraph of remainder after the 2nd-paragraph break)
  * - Optional cost-guide pricing supplement before the email card when registered.
  */
 export default function BlogArticleBodyWithMidEmail({ slug, generated, blocks }: Props) {
@@ -64,11 +61,6 @@ export default function BlogArticleBodyWithMidEmail({ slug, generated, blocks }:
     return (
       <ArticleContentShell>
         <ProseArticle dangerouslySetInnerHTML={{ __html: safeOpen2 }} />
-        {adsenseInlineSlot ? (
-          <div className="my-8">
-            <AdSenseDisplay slotId={adsenseInlineSlot} />
-          </div>
-        ) : null}
         {safePara3 ? <ProseArticle dangerouslySetInnerHTML={{ __html: safePara3 }} /> : null}
         {hasCostSupplement ? <BlogCostSupplement slug={slug} /> : null}
         <div className="my-8">
@@ -97,11 +89,6 @@ export default function BlogArticleBodyWithMidEmail({ slug, generated, blocks }:
       <ProseArticle>
         <RichTextBlocks blocks={first2} />
       </ProseArticle>
-      {adsenseInlineSlot ? (
-        <div className="my-8">
-          <AdSenseDisplay slotId={adsenseInlineSlot} />
-        </div>
-      ) : null}
       {thirdPara.length ? (
         <ProseArticle>
           <RichTextBlocks blocks={thirdPara} />

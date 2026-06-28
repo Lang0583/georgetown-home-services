@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AuthorByline from "@/components/AuthorByline";
+import AdSenseDisplay from "@/components/AdSenseDisplay";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { ButtonLink } from "@/components/Button";
 import FAQList from "@/components/FAQList";
@@ -15,6 +16,7 @@ import {
   neighborhoodHomeServicesHubStaticParams,
 } from "@/data/neighborhood-home-services-hubs";
 import { buildNeighborhoodHomeServicesHubFaqs } from "@/lib/georgetown-page-faqs";
+import { adsenseNeighborhoodPageInlineSlot } from "@/lib/adsense-config";
 import { absolutePageUrl, pageSeoMetadata } from "@/lib/page-seo";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
@@ -172,6 +174,12 @@ export default async function NeighborhoodHomeServicesHubPage({
             <PricingEstimatorInteractive />
           </div>
         </section>
+
+        {adsenseNeighborhoodPageInlineSlot ? (
+          <div className="my-10">
+            <AdSenseDisplay slotId={adsenseNeighborhoodPageInlineSlot} className="mx-auto max-w-3xl" />
+          </div>
+        ) : null}
 
         <section className="mt-12 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
           <h2 className="text-lg font-semibold text-gray-900">Compare Georgetown companies (directories)</h2>
