@@ -32,11 +32,13 @@ import {
   BUSINESS_LISTINGS_LAST_UPDATED,
   getBusinessCategoryForBestSlug,
   getBusinessesByCategory,
-  getDefaultBestDirectoryListing,
   getRelatedServiceSlugForBestSlug,
 } from "../../../lib/businesses";
 import { getAlsoCompareLinksForBestSlug } from "../../../lib/best-also-compare-links";
-import { buildBestDirectoryItemListJsonLd } from "../../../lib/best-directory-item-list-schema";
+import { buildProviderItemListJsonLd } from "../../../lib/provider-item-list-schema";
+import { getDirectoryProvidersForBestSlug } from "../../../data/providers";
+import { getComparisonsForBestSlug } from "../../../data/comparisons";
+import ProviderCardSection from "../../../components/ProviderCardSection";
 import { bestPageInternalLinks } from "../../../lib/internal-links";
 import { getBestOfPageFaqs } from "../../../lib/best-of-page-faqs";
 import {
@@ -45,7 +47,6 @@ import {
   isRedirectedServiceSlug,
   showExtendedHomeServices,
 } from "../../../lib/public-site-scope";
-import BestBusinessesDirectory from "../../../components/BestBusinessesDirectory";
 import BestProvidersMethodologyCallout from "../../../components/BestProvidersMethodologyCallout";
 import AdSenseDisplay from "../../../components/AdSenseDisplay";
 import FlagshipYouTubeEmbed from "../../../components/FlagshipYouTubeEmbed";
@@ -295,6 +296,8 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
   const businessCategory = getBusinessCategoryForBestSlug(slug);
   const businessesForPage =
     businessCategory !== null ? getBusinessesByCategory(businessCategory) : null;
+  const directoryProviders = getDirectoryProvidersForBestSlug(slug);
+  const headToHeadComparisons = getComparisonsForBestSlug(best.slug);
   const relatedServiceSlug = getRelatedServiceSlugForBestSlug(slug);
   const relatedService = relatedServiceSlug ? getServiceBySlug(relatedServiceSlug) : null;
   const services = getServices();
@@ -353,13 +356,8 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
           {bestOfPageFaqs.length ? (
             <JsonLd data={faqJsonLd(bestOfPageFaqs)} />
           ) : null}
-          {businessesForPage?.length ? (
-            <JsonLd
-              data={buildBestDirectoryItemListJsonLd(
-                best.title,
-                getDefaultBestDirectoryListing(businessesForPage),
-              )}
-            />
+          {directoryProviders.length ? (
+            <JsonLd data={buildProviderItemListJsonLd(best.title, directoryProviders)} />
           ) : null}
           {isRoofersGeorgetown ? (
             <JsonLd
@@ -1311,7 +1309,8 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         directly with any company before hiring.
                       </p>
                       <p className="mt-2 text-sm text-gray-600">
-                        Last updated {BUSINESS_LISTINGS_LAST_UPDATED} using publicly available provider data ({businessesForPage.length.toLocaleString()} providers in this category).
+                        Editorial guide last updated {BUSINESS_LISTINGS_LAST_UPDATED}. Provider cards below are
+                        verified separately ({directoryProviders.length.toLocaleString()} listings in this category).
                       </p>
                       {best.featuredPartner ? <FeaturedPartnerCard partner={best.featuredPartner} /> : <FeaturedListingReservedSlot />}
                       <div className="mt-3 space-y-1 text-sm text-gray-700">
@@ -1366,23 +1365,18 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       <div className="mt-4">
                         <BestProvidersMethodologyCallout />
                       </div>
-                      <div id="providers" className="scroll-mt-24">
-                        <BestBusinessesDirectory
-                          businesses={businessesForPage}
-                          guideHref={relatedServiceSlug ? `/services/${relatedServiceSlug}` : null}
-                          guideLabel={
-                            relatedServiceSlug
-                              ? isPlumbersGeorgetown
-                                ? "Read our plumbing guide"
-                                : isHvacGeorgetown
-                                ? "Read our HVAC guide"
-                                : isRoofersGeorgetown
-                                ? "Read our roofing guide"
-                                : "Read our service guide"
-                              : "Read our guide"
-                          }
-                        />
-                      </div>
+                      {directoryProviders.length ? (
+                        <ProviderCardSection providers={directoryProviders} />
+                      ) : null}
+                      {headToHeadComparisons.length ? (
+                        <p className="mt-5 text-sm text-gray-700">
+                          <Link href="/compare" className="font-semibold text-primary hover:underline">
+                            See head-to-head comparisons →
+                          </Link>
+                          {" "}
+                          ({headToHeadComparisons.map((c) => `${c.providerA.name} vs ${c.providerB.name}`).join("; ")})
+                        </p>
+                      ) : null}
 
                       {adsenseBestOfSlot ? (
                         <div className="mt-10 max-w-4xl">
@@ -1407,13 +1401,22 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       <div className="mt-4">
                         <BestProvidersMethodologyCallout />
                       </div>
-                      {providerData.providers.length ? (
+                      {directoryProviders.length ? (
+                        <ProviderCardSection providers={directoryProviders} />
+                      ) : providerData.providers.length ? (
                         <ProviderList providers={providerData.providers} providerGroup={businessCategory} />
                       ) : (
                         <div className="mt-5 rounded-xl border border-gray-200 bg-white p-6 text-sm text-gray-700 shadow-md">
                           Provider listings haven’t been added yet for this guide.
                         </div>
                       )}
+                      {headToHeadComparisons.length ? (
+                        <p className="mt-5 text-sm text-gray-700">
+                          <Link href="/compare" className="font-semibold text-primary hover:underline">
+                            See head-to-head comparisons →
+                          </Link>
+                        </p>
+                      ) : null}
                       {adsenseBestOfSlot ? (
                         <div className="mt-10 max-w-4xl">
                           <AdSenseDisplay slotId={adsenseBestOfSlot} />

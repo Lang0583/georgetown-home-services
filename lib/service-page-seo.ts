@@ -62,6 +62,11 @@ function metaPricePhrase(cat: PricingCategory, serviceLabelLower: string): strin
 const DEFAULT_CTA =
   "Compare vetted Georgetown companies in our Best Of directory and request written estimates before you hire.";
 
+/** Per-slug `<title>` overrides for core service guides (absolute, no layout suffix). */
+const SERVICE_TITLE_OVERRIDES: Record<string, string> = {
+  "plumber-georgetown-tx": "Plumbers in Georgetown, TX (2026) | Reviews, Costs & Local Pros",
+};
+
 /**
  * Title: `[Service] Georgetown TX | Prices, Reviews & Local Pros [2026]` (absolute, no layout suffix).
  * Description: Williamson County hook + two price bands + CTA.
@@ -69,7 +74,8 @@ const DEFAULT_CTA =
 export function buildServicePageSeo(service: ServicePage): { absoluteTitle: string; description: string } {
   const label = serviceLabelForMeta(service);
   const year = PRICING_YEAR;
-  const absoluteTitle = `${label} Georgetown TX | Prices, Reviews & Local Pros [${year}]`;
+  const absoluteTitle =
+    SERVICE_TITLE_OVERRIDES[service.slug] ?? `${label} Georgetown TX | Prices, Reviews & Local Pros [${year}]`;
 
   const group = inferProviderGroupFromServicePage(service.slug, service.bestSlugs);
   const pKey = PROVIDER_TO_PRICING[group];

@@ -1,6 +1,12 @@
 import type { ContentBlock } from "../lib/site-content";
 import { COST_POST_SUPPLEMENTS } from "../lib/pricing-data";
-import { splitBlocksAfterNthParagraph, splitHtmlAfterNthParagraph } from "../lib/split-article-content";
+import {
+  splitBlocksAfterNthParagraph,
+  splitHtmlAfterNthParagraph,
+  splitHtmlBeforeFaq,
+} from "../lib/split-article-content";
+import { blogAffiliateConfigForSlug } from "../lib/blog-affiliate-config";
+import AffiliateCTA from "./AffiliateCTA";
 import BlogCostSupplement from "./BlogCostSupplement";
 import BlogMidContentEmailCard from "./BlogMidContentEmailCard";
 import { ArticleContentShell, ProseArticle, sanitizeArticleHtml } from "./GeneratedArticleBody";
@@ -38,13 +44,19 @@ export default function BlogArticleBodyWithMidEmail({ slug, generated, blocks }:
   const generatedBody = useGeneratedHtml(slug, generated, blocks);
 
   if (generatedBody) {
-    const { before: open2, after: tailAfter2 } = splitHtmlAfterNthParagraph(generatedBody.html, 2);
+    const affiliate = blogAffiliateConfigForSlug(slug);
+    const { body: articleBody, faq: faqBlock } = affiliate
+      ? splitHtmlBeforeFaq(generatedBody.html)
+      : { body: generatedBody.html, faq: "" };
+
+    const { before: open2, after: tailAfter2 } = splitHtmlAfterNthParagraph(articleBody, 2);
     const safeOpen2 = sanitizeArticleHtml(open2);
     const { before: para3, after: rest } = tailAfter2
       ? splitHtmlAfterNthParagraph(tailAfter2, 1)
       : { before: "", after: "" };
     const safePara3 = para3 ? sanitizeArticleHtml(para3) : "";
     const safeRest = rest ? sanitizeArticleHtml(rest) : "";
+    const safeFaq = faqBlock ? sanitizeArticleHtml(faqBlock) : "";
 
     return (
       <ArticleContentShell>
@@ -55,6 +67,14 @@ export default function BlogArticleBodyWithMidEmail({ slug, generated, blocks }:
           <BlogMidContentEmailCard source={source} />
         </div>
         {safeRest ? <ProseArticle dangerouslySetInnerHTML={{ __html: safeRest }} /> : null}
+        {affiliate ? (
+          <AffiliateCTA
+            angiCategorySlug={affiliate.angiCategorySlug}
+            thumbtackCategory={affiliate.thumbtackCategory}
+            serviceLabel={affiliate.serviceLabel}
+          />
+        ) : null}
+        {safeFaq ? <ProseArticle dangerouslySetInnerHTML={{ __html: safeFaq }} /> : null}
       </ArticleContentShell>
     );
   }
