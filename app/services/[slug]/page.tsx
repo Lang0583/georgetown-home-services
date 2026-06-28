@@ -512,6 +512,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                       </p>
                     </section>
 
+                    <AffiliateCTA />
+
                     <section>
                       <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
                         When to Call an HVAC Professional
