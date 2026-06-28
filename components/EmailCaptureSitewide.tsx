@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import ChecklistLeadMagnetIcon from "./ChecklistLeadMagnetIcon";
 import {
   CTA_VIEW_TOP_PROVIDERS,
+  EMAIL_CAPTURE_CONSENT_LINE,
   EMAIL_CAPTURE_CTA_CHECKLIST,
   EMAIL_CAPTURE_CTA_REMINDERS,
   EMAIL_CAPTURE_CONSENT_LINE,
@@ -47,6 +48,16 @@ function submitLabelForOffer(offer: LeadMagnetKey): string {
   if (offer === "seasonal_checklist") return EMAIL_CAPTURE_CTA_CHECKLIST;
   if (offer === "monthly_reminder") return EMAIL_CAPTURE_CTA_REMINDERS;
   return "Send Me the Guide";
+}
+
+function triggerPdfDownload(downloadUrl: string) {
+  const anchor = document.createElement("a");
+  anchor.href = downloadUrl;
+  anchor.rel = "noopener noreferrer";
+  anchor.target = "_blank";
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
 }
 
 export default function EmailCaptureSitewide({
@@ -111,7 +122,7 @@ export default function EmailCaptureSitewide({
       setFirstName("");
 
       if (data?.downloadUrl) {
-        window.location.assign(data.downloadUrl);
+        triggerPdfDownload(data.downloadUrl);
       }
     } catch (err) {
       setStatus("error");
