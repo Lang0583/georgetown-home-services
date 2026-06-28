@@ -117,6 +117,11 @@ export default function BestIndexPage() {
                   <LinkCard key={b.slug} href={`/best/${b.slug}`} title={b.title} description={b.description} badge="Best Of" />
                 ))}
               </div>
+              <p className="mt-5 text-sm text-gray-700">
+                <Link href="/compare" className="font-semibold text-primary hover:underline">
+                  See head-to-head comparisons →
+                </Link>
+              </p>
             </section>
 
             <section>
