@@ -121,11 +121,13 @@ export const PRICING_CATEGORIES: readonly PricingCategory[] = [
       "Georgetown summers regularly exceed 100°F, meaning HVAC systems run harder and longer than in most U.S. markets. Systems here typically need replacement every 12–15 years rather than the national average of 15–20.",
     rows: [
       { job: "Service call / diagnostic", low: 75, high: 150 },
-      { job: "Refrigerant recharge", low: 200, high: 400 },
-      { job: "Capacitor / contactor replacement", low: 150, high: 300 },
-      { job: "Coil cleaning", low: 100, high: 250 },
-      { job: "Full system replacement (3-ton)", low: 5000, high: 9000 },
-      { job: "Full system replacement (5-ton)", low: 8000, high: 14000 },
+      { job: "Refrigerant recharge (R-410A)", low: 200, high: 500 },
+      { job: "Capacitor replacement", low: 150, high: 350 },
+      { job: "Contactor replacement", low: 150, high: 300 },
+      { job: "Condensate drain clear", low: 75, high: 200 },
+      { job: "Evaporator coil replacement", low: 800, high: 2000 },
+      { job: "Compressor replacement", low: 1200, high: 2500 },
+      { job: "Full system replacement (2.5–5 ton)", low: 5000, high: 12000 },
     ],
   },
   {

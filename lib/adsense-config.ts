@@ -29,6 +29,6 @@ export const adsenseBlogPostSlot =
 export const adsenseBestOfSlot =
   process.env.NEXT_PUBLIC_ADSENSE_SLOT_BEST_OF?.trim() || "7971086444";
 
-/** Display unit "GHS - Service Page" (`/services/[slug]`). Override via `NEXT_PUBLIC_ADSENSE_SLOT_SERVICE`. */
-export const adsenseServiceMainSlot =
-  process.env.NEXT_PUBLIC_ADSENSE_SLOT_SERVICE?.trim() || "9450125974";
+/** Display unit below H1 on core `/services/[slug]` guides. Override via `NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_PAGE_TOP`. */
+export const adsenseServicePageTopSlot =
+  process.env.NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_PAGE_TOP?.trim() || "0000000000";
