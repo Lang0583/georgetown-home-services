@@ -10,24 +10,46 @@ import {
 const btnClass =
   "inline-flex min-h-11 flex-1 items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-50 sm:flex-none";
 
-const affiliateLinks = [
-  { href: AFFILIATE_CTA_ANGI_URL, label: "Get Quotes on Angi", affiliateName: "Angi" },
-  { href: AFFILIATE_CTA_THUMBTACK_URL, label: "Find Pros on Thumbtack", affiliateName: "Thumbtack" },
-  { href: AFFILIATE_CTA_HOMEADVISOR_URL, label: "Browse HomeAdvisor", affiliateName: "HomeAdvisor" },
-] as const;
+interface AffiliateCTAProps {
+  angiCategorySlug?: string;
+  thumbtackCategory?: string;
+  serviceLabel?: string;
+  heading?: string;
+}
 
 /**
  * Angi, Thumbtack, and HomeAdvisor outbound buttons for core service guides and related pages.
  */
-export default function AffiliateCTA() {
+export default function AffiliateCTA({
+  angiCategorySlug,
+  thumbtackCategory,
+  serviceLabel,
+  heading = "Compare Free Quotes from Georgetown Contractors",
+}: AffiliateCTAProps = {}) {
+  const angiUrl = angiCategorySlug
+    ? `https://www.angi.com/companylist/us/tx/georgetown/${angiCategorySlug}.htm`
+    : AFFILIATE_CTA_ANGI_URL;
+
+  const thumbtackUrl = thumbtackCategory
+    ? `https://www.thumbtack.com/tx/georgetown/${thumbtackCategory}`
+    : AFFILIATE_CTA_THUMBTACK_URL;
+
+  const affiliateLinks = [
+    { href: angiUrl, label: "Get Quotes on Angi", affiliateName: "Angi" },
+    { href: thumbtackUrl, label: "Find Pros on Thumbtack", affiliateName: "Thumbtack" },
+    { href: AFFILIATE_CTA_HOMEADVISOR_URL, label: "Browse HomeAdvisor", affiliateName: "HomeAdvisor" },
+  ] as const;
+
+  const ariaLabel = serviceLabel
+    ? `Compare free quotes for ${serviceLabel} in Georgetown`
+    : "Compare free quotes from Georgetown contractors";
+
   return (
     <section
       className="not-prose mt-12 rounded-2xl border border-gray-200 bg-gray-50 p-6 md:p-8"
-      aria-label="Compare free quotes from Georgetown contractors"
+      aria-label={ariaLabel}
     >
-      <h2 className="text-xl font-semibold tracking-tight text-gray-900 md:text-2xl">
-        Compare Free Quotes from Georgetown Contractors
-      </h2>
+      <h2 className="text-xl font-semibold tracking-tight text-gray-900 md:text-2xl">{heading}</h2>
       <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         {affiliateLinks.map(({ href, label, affiliateName }) => (
           <a
