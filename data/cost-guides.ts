@@ -1,3 +1,5 @@
+import { DIRECTORY_PAGES_LAST_UPDATED } from '../lib/last-updated';
+
 /**
  * Cost guide pages at `/costs/[slug]` — high-intent "how much does it cost" content.
  */
@@ -41,6 +43,8 @@ export type CostGuidePage = {
   summaryRange: { low: number; high: number };
   faqs: CostGuideFaq[];
   internalLinks: CostGuideInternalLink[];
+  /** ISO 8601 calendar date (YYYY-MM-DD). */
+  lastUpdated: string;
 };
 
 export const COST_GUIDE_SLUGS = [
@@ -169,7 +173,8 @@ export const costGuidePages: CostGuidePage[] = [
         "label": "Plumbing in Teravista",
         "href": "/neighborhoods/teravista/plumber"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "slug": "hvac-repair-cost-georgetown-tx",
@@ -283,7 +288,8 @@ export const costGuidePages: CostGuidePage[] = [
         "label": "HVAC in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/hvac"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "slug": "ac-installation-cost-georgetown-tx",
@@ -396,7 +402,8 @@ export const costGuidePages: CostGuidePage[] = [
         "label": "HVAC in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/hvac"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "slug": "roof-replacement-cost-georgetown-tx",
@@ -509,7 +516,8 @@ export const costGuidePages: CostGuidePage[] = [
         "label": "Roofing in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/roofer"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "slug": "roof-repair-cost-georgetown-tx",
@@ -622,7 +630,8 @@ export const costGuidePages: CostGuidePage[] = [
         "label": "hail-damage in Sun City",
         "href": "/neighborhoods/sun-city/hail-damage"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "slug": "electrician-cost-georgetown-tx",
@@ -735,7 +744,8 @@ export const costGuidePages: CostGuidePage[] = [
         "label": "Electrical in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/electrician"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "slug": "panel-upgrade-cost-georgetown-tx",
@@ -842,7 +852,8 @@ export const costGuidePages: CostGuidePage[] = [
         "label": "Electrical in Sun City",
         "href": "/neighborhoods/sun-city/electrician"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "slug": "landscaping-cost-georgetown-tx",
@@ -956,7 +967,8 @@ export const costGuidePages: CostGuidePage[] = [
         "label": "Landscaping in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/landscaping"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "slug": "lawn-care-cost-georgetown-tx",
@@ -1072,7 +1084,8 @@ export const costGuidePages: CostGuidePage[] = [
         "label": "Landscaping in Berry Creek",
         "href": "/neighborhoods/berry-creek/landscaping"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "slug": "pest-control-cost-georgetown-tx",
@@ -1181,7 +1194,8 @@ export const costGuidePages: CostGuidePage[] = [
         "label": "Pest control in Berry Creek",
         "href": "/neighborhoods/berry-creek/pest-control"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "slug": "termite-treatment-cost-georgetown-tx",
@@ -1289,7 +1303,8 @@ export const costGuidePages: CostGuidePage[] = [
         "label": "Pest control in Teravista",
         "href": "/neighborhoods/teravista/pest-control"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "slug": "foundation-repair-cost-georgetown-tx",
@@ -1402,7 +1417,8 @@ export const costGuidePages: CostGuidePage[] = [
         "label": "Foundation in Teravista",
         "href": "/neighborhoods/teravista/foundation-repair"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "slug": "house-cleaning-cost-georgetown-tx",
@@ -1516,7 +1532,8 @@ export const costGuidePages: CostGuidePage[] = [
         "label": "House cleaning in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/house-cleaning"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "slug": "water-heater-installation-cost-georgetown-tx",
@@ -1629,7 +1646,8 @@ export const costGuidePages: CostGuidePage[] = [
         "label": "Plumbing in Sun City",
         "href": "/neighborhoods/sun-city/plumber"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "slug": "drain-cleaning-cost-georgetown-tx",
@@ -1736,7 +1754,8 @@ export const costGuidePages: CostGuidePage[] = [
         "label": "Plumbing in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/plumber"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "slug": "hvac-maintenance-cost-georgetown-tx",
@@ -1850,7 +1869,8 @@ export const costGuidePages: CostGuidePage[] = [
         "label": "HVAC in Teravista",
         "href": "/neighborhoods/teravista/hvac"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   }
 ];
 

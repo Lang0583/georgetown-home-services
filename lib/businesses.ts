@@ -127,9 +127,8 @@ export function normalizeBusinessGroup(b: Business): ProviderGroup | null {
  * websites were verified directly against the provider's listing on the
  * date below. Ratings and review counts are public-snapshot approximations
  * and should be re-verified periodically — refresh by re-running the
- * verification pass and bumping this constant.
+ * verification pass.
  */
-export const BUSINESS_LISTINGS_LAST_UPDATED = "May 7, 2026";
 
 /**
  * Provider listing quality thresholds.

@@ -2,14 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import AuthorByline from "@/components/AuthorByline";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import LastUpdated from "@/components/LastUpdated";
 import PageShell from "@/components/templates/PageShell";
 import { costGuidePages } from "@/data/cost-guides";
 import { pageSeoMetadata } from "@/lib/page-seo";
 import { showExtendedHomeServices } from "@/lib/public-site-scope";
-import {
-  SERVICE_BEST_LAST_UPDATED_DISPLAY,
-  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
-} from "@/lib/service-best-pages-meta";
+import { getStaticPageLastUpdated } from "@/lib/static-pages-last-updated";
 
 export const metadata: Metadata = pageSeoMetadata({
   titleSegment: `Home Service Cost Guides for Georgetown, TX (${new Date().getFullYear()})`,
@@ -20,6 +18,7 @@ export const metadata: Metadata = pageSeoMetadata({
 });
 
 export default function CostsIndexPage() {
+  const lastUpdated = getStaticPageLastUpdated("/costs");
   const guides = costGuidePages.filter((p) => showExtendedHomeServices() || !p.extended);
 
   return (
@@ -35,7 +34,7 @@ export default function CostsIndexPage() {
         <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
           Georgetown, TX Home Service Cost Guides
         </h1>
-        <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+        <LastUpdated lastUpdated={lastUpdated} />
         <AuthorByline className="mt-3" compact />
 
         <p className="mt-6 max-w-3xl text-lg leading-relaxed text-gray-700">

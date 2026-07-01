@@ -146,7 +146,8 @@
       ],
       "bestSlugs": [
         "best-plumbers-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "sun-city-georgetown-tx",
@@ -219,7 +220,8 @@
         "best-plumbers-georgetown-tx",
         "top-hvac-companies-georgetown-tx",
         "best-roofers-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "wolf-ranch-georgetown-tx",
@@ -288,7 +290,8 @@
         "top-hvac-companies-georgetown-tx",
         "best-plumbers-georgetown-tx",
         "best-roofers-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "berry-creek-georgetown-tx",
@@ -357,7 +360,8 @@
         "best-roofers-georgetown-tx",
         "best-plumbers-georgetown-tx",
         "top-hvac-companies-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     }
   ],
   "services": [
@@ -513,7 +517,8 @@
       "bestSlugs": [
         "best-plumbers-georgetown-tx"
       ],
-      "relatedServiceSlugs": []
+      "relatedServiceSlugs": [],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "hvac-georgetown-tx",
@@ -677,7 +682,8 @@
       "bestSlugs": [
         "top-hvac-companies-georgetown-tx"
       ],
-      "relatedServiceSlugs": []
+      "relatedServiceSlugs": [],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "roofer-georgetown-tx",
@@ -871,7 +877,8 @@
       "bestSlugs": [
         "best-roofers-georgetown-tx"
       ],
-      "relatedServiceSlugs": []
+      "relatedServiceSlugs": [],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "electrician-georgetown-tx",
@@ -988,7 +995,8 @@
       "bestSlugs": [
         "best-electricians-georgetown-tx"
       ],
-      "relatedServiceSlugs": []
+      "relatedServiceSlugs": [],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "landscaping-georgetown-tx",
@@ -1092,7 +1100,8 @@
       "bestSlugs": [
         "best-landscaping-companies-georgetown-tx"
       ],
-      "relatedServiceSlugs": []
+      "relatedServiceSlugs": [],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "pest-control-georgetown-tx",
@@ -1191,7 +1200,8 @@
       "bestSlugs": [
         "best-pest-control-georgetown-tx"
       ],
-      "relatedServiceSlugs": []
+      "relatedServiceSlugs": [],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "foundation-repair-georgetown-tx",
@@ -1295,7 +1305,8 @@
       "bestSlugs": [
         "best-foundation-repair-georgetown-tx"
       ],
-      "relatedServiceSlugs": []
+      "relatedServiceSlugs": [],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "house-cleaning-georgetown-tx",
@@ -1399,7 +1410,8 @@
       "bestSlugs": [
         "best-house-cleaning-services-georgetown-tx"
       ],
-      "relatedServiceSlugs": []
+      "relatedServiceSlugs": [],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "plumber-sun-city-georgetown-tx",
@@ -1448,7 +1460,8 @@
       "relatedServiceSlugs": [
         "plumber-georgetown-tx",
         "clogged-drain-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "hvac-wolf-ranch-georgetown-tx",
@@ -1484,7 +1497,8 @@
       "relatedServiceSlugs": [
         "hvac-georgetown-tx",
         "ac-not-cooling-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "roofer-berry-creek-georgetown-tx",
@@ -1518,7 +1532,8 @@
       "relatedServiceSlugs": [
         "roofer-georgetown-tx",
         "roof-leak-repair-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "ac-not-cooling-georgetown-tx",
@@ -1567,7 +1582,8 @@
       "relatedServiceSlugs": [
         "hvac-georgetown-tx",
         "hvac-wolf-ranch-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "clogged-drain-georgetown-tx",
@@ -1615,7 +1631,8 @@
       "relatedServiceSlugs": [
         "plumber-georgetown-tx",
         "plumber-sun-city-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "roof-leak-repair-georgetown-tx",
@@ -1662,7 +1679,8 @@
       "relatedServiceSlugs": [
         "roofer-georgetown-tx",
         "roofer-berry-creek-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "drain-cleaning-georgetown-tx",
@@ -1719,7 +1737,8 @@
       "relatedServiceSlugs": [
         "clogged-drain-georgetown-tx",
         "sewer-line-repair-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "water-heater-repair-georgetown-tx",
@@ -1776,7 +1795,8 @@
       "relatedServiceSlugs": [
         "water-heater-replacement-georgetown-tx",
         "emergency-plumber-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "water-heater-replacement-georgetown-tx",
@@ -1833,7 +1853,8 @@
       "relatedServiceSlugs": [
         "water-heater-repair-georgetown-tx",
         "emergency-plumber-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "leak-detection-georgetown-tx",
@@ -1891,7 +1912,8 @@
       "relatedServiceSlugs": [
         "slab-leak-repair-georgetown-tx",
         "emergency-plumber-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "slab-leak-repair-georgetown-tx",
@@ -1948,7 +1970,8 @@
       "relatedServiceSlugs": [
         "leak-detection-georgetown-tx",
         "emergency-plumber-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "toilet-repair-georgetown-tx",
@@ -2006,7 +2029,8 @@
       "relatedServiceSlugs": [
         "drain-cleaning-georgetown-tx",
         "plumber-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "garbage-disposal-repair-georgetown-tx",
@@ -2063,7 +2087,8 @@
       "relatedServiceSlugs": [
         "drain-cleaning-georgetown-tx",
         "plumber-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "sewer-line-repair-georgetown-tx",
@@ -2120,7 +2145,8 @@
       "relatedServiceSlugs": [
         "drain-cleaning-georgetown-tx",
         "emergency-plumber-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "emergency-plumber-georgetown-tx",
@@ -2177,7 +2203,8 @@
       "relatedServiceSlugs": [
         "leak-detection-georgetown-tx",
         "sewer-line-repair-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "ac-repair-georgetown-tx",
@@ -2235,7 +2262,8 @@
       "relatedServiceSlugs": [
         "ac-not-cooling-georgetown-tx",
         "hvac-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "ac-replacement-georgetown-tx",
@@ -2293,7 +2321,8 @@
       "relatedServiceSlugs": [
         "hvac-georgetown-tx",
         "hvac-maintenance-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "furnace-repair-georgetown-tx",
@@ -2350,7 +2379,8 @@
       "relatedServiceSlugs": [
         "heater-repair-georgetown-tx",
         "emergency-hvac-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "heater-repair-georgetown-tx",
@@ -2395,7 +2425,8 @@
       "relatedServiceSlugs": [
         "furnace-repair-georgetown-tx",
         "hvac-maintenance-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "hvac-maintenance-georgetown-tx",
@@ -2440,7 +2471,8 @@
       "relatedServiceSlugs": [
         "ac-repair-georgetown-tx",
         "ductwork-repair-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "ductwork-repair-georgetown-tx",
@@ -2485,7 +2517,8 @@
       "relatedServiceSlugs": [
         "ac-repair-georgetown-tx",
         "hvac-maintenance-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "indoor-air-quality-georgetown-tx",
@@ -2530,7 +2563,8 @@
       "relatedServiceSlugs": [
         "ductwork-repair-georgetown-tx",
         "hvac-maintenance-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "thermostat-repair-georgetown-tx",
@@ -2575,7 +2609,8 @@
       "relatedServiceSlugs": [
         "ac-repair-georgetown-tx",
         "heater-repair-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "emergency-hvac-georgetown-tx",
@@ -2619,7 +2654,8 @@
       "relatedServiceSlugs": [
         "ac-repair-georgetown-tx",
         "thermostat-repair-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "roof-repair-georgetown-tx",
@@ -2664,7 +2700,8 @@
       "relatedServiceSlugs": [
         "roof-leak-repair-georgetown-tx",
         "flashing-repair-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "roof-replacement-georgetown-tx",
@@ -2709,7 +2746,8 @@
       "relatedServiceSlugs": [
         "roof-repair-georgetown-tx",
         "shingle-roof-repair-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "storm-damage-roof-repair-georgetown-tx",
@@ -2753,7 +2791,8 @@
       "relatedServiceSlugs": [
         "hail-damage-roof-repair-georgetown-tx",
         "emergency-roof-tarping-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "hail-damage-roof-repair-georgetown-tx",
@@ -2798,7 +2837,8 @@
       "relatedServiceSlugs": [
         "storm-damage-roof-repair-georgetown-tx",
         "roof-repair-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "shingle-roof-repair-georgetown-tx",
@@ -2843,7 +2883,8 @@
       "relatedServiceSlugs": [
         "roof-repair-georgetown-tx",
         "flashing-repair-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "flashing-repair-georgetown-tx",
@@ -2887,7 +2928,8 @@
       "relatedServiceSlugs": [
         "roof-leak-repair-georgetown-tx",
         "roof-repair-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "gutter-installation-georgetown-tx",
@@ -2931,7 +2973,8 @@
       "relatedServiceSlugs": [
         "roof-replacement-georgetown-tx",
         "roof-repair-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "emergency-roof-tarping-georgetown-tx",
@@ -2975,7 +3018,8 @@
       "relatedServiceSlugs": [
         "storm-damage-roof-repair-georgetown-tx",
         "roof-leak-repair-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     }
   ],
   "blog": [
@@ -4646,7 +4690,8 @@
       "recommendedServiceSlugs": [
         "plumber-georgetown-tx",
         "water-heater-repair-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "top-hvac-companies-georgetown-tx",
@@ -4679,7 +4724,8 @@
       ],
       "recommendedServiceSlugs": [
         "hvac-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "best-roofers-georgetown-tx",
@@ -4713,7 +4759,8 @@
       ],
       "recommendedServiceSlugs": [
         "roofer-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "best-electricians-georgetown-tx",
@@ -4759,7 +4806,8 @@
       ],
       "recommendedServiceSlugs": [
         "electrician-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "best-landscaping-companies-georgetown-tx",
@@ -4805,7 +4853,8 @@
       ],
       "recommendedServiceSlugs": [
         "landscaping-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "best-pest-control-georgetown-tx",
@@ -4851,7 +4900,8 @@
       ],
       "recommendedServiceSlugs": [
         "pest-control-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "best-foundation-repair-georgetown-tx",
@@ -4897,7 +4947,8 @@
       ],
       "recommendedServiceSlugs": [
         "foundation-repair-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     },
     {
       "slug": "best-house-cleaning-services-georgetown-tx",
@@ -4943,7 +4994,8 @@
       ],
       "recommendedServiceSlugs": [
         "house-cleaning-georgetown-tx"
-      ]
+      ],
+      "lastUpdated": "2026-07-01"
     }
   ]
 }

@@ -3,6 +3,8 @@
  * Routes: `/neighborhoods/{neighborhoodSlug}/home-services`
  */
 
+import { DIRECTORY_PAGES_LAST_UPDATED } from "../lib/last-updated";
+
 export type NeighborhoodHomeServicesHub = {
   neighborhoodSlug: string;
   neighborhoodName: string;
@@ -11,6 +13,8 @@ export type NeighborhoodHomeServicesHub = {
   metaDescription: string;
   /** ~400 words, unique local positioning for SEO. */
   introHtml: string;
+  /** ISO 8601 calendar date (YYYY-MM-DD). */
+  lastUpdated: string;
 };
 
 export const NEIGHBORHOOD_HOME_SERVICES_HUBS: NeighborhoodHomeServicesHub[] = [
@@ -27,6 +31,7 @@ export const NEIGHBORHOOD_HOME_SERVICES_HUBS: NeighborhoodHomeServicesHub[] = [
 <p>This page is built for neighbors comparing <strong>Sun City plumber</strong>, <strong>Sun City HVAC</strong>, and <strong>Sun City roofer</strong> resources in one place—without replacing a site visit or a written scope. Use the pricing ranges below as planning numbers, read the FAQs for hiring and safety context, then shortlist companies from our Georgetown directories when you are ready for estimates. If you need a deeper dive on a single trade, follow the neighborhood-specific guides linked at the bottom for plumbing-only, HVAC-only, or roofing-only checklists tailored to Sun City homes.</p>
 <p>Finally, remember that Williamson County’s contractor market moves in cycles: after hail outbreaks, roof crews book fast; after the first serious heat wave, honest HVAC shops run honest backlogs; after hard-freeze headlines, plumbers prioritize true emergencies. The goal of this hub is to help you prepare before you are rushed—so your comparisons are based on scope clarity, documented pricing, and verified credentials rather than whoever can arrive fastest on the worst day of summer.</p>
     `.trim(),
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "teravista",
@@ -42,6 +47,7 @@ export const NEIGHBORHOOD_HOME_SERVICES_HUBS: NeighborhoodHomeServicesHub[] = [
 <p>Teravista homeowners also benefit when they coordinate maintenance seasons: a spring HVAC tune-up before pollen peaks, a roof inspection before hail season chatter ramps up, and a plumbing check-in before heavy guest weeks can prevent stacked failures that turn minor annoyances into weekend emergencies. That rhythm does not replace licensed diagnosis, but it does align with how Central Texas weather and Georgetown growth pressures actually show up in real houses—not in generic national checklists.</p>
 <p>When you cross-reference symptoms across trades—say, a ceiling stain after a humid week—avoid jumping to the first contractor’s theory. A careful sequence (rule out simple HVAC condensate paths, verify active leaks, inspect roof details above the stain line) protects you from paying for the wrong trade first.</p>
     `.trim(),
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "wolf-ranch",
@@ -57,6 +63,7 @@ export const NEIGHBORHOOD_HOME_SERVICES_HUBS: NeighborhoodHomeServicesHub[] = [
 <p>Because Wolf Ranch remains a magnet for relocations, it is also a neighborhood where “good enough” paperwork sometimes meets Texas reality: tightened insurance standards, code updates between build phases, and homeowner upgrades that outpace original service sizing. The best outcomes we see are almost always the boring ones—two written estimates, a checklist of what is included, and a contractor willing to explain what they will not promise. Use the tools on this page to get to that conversation faster, with less anxiety and fewer surprises.</p>
 <p>If you are new to the area, remember that Georgetown permitting, HOA rulebooks, and insurer preferences can differ from where you moved from—especially for roof supplements and major mechanical changeouts. Local pros who document photos and code-compliant details save headaches at resale and during claim reviews.</p>
     `.trim(),
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "berry-creek",
@@ -72,6 +79,7 @@ export const NEIGHBORHOOD_HOME_SERVICES_HUBS: NeighborhoodHomeServicesHub[] = [
 <p>Berry Creek’s charm is tangled infrastructure under pretty streets: roots, age-hardened lateral access, and roof lines that hide small problems until they are expensive. That is not a reason to panic—it is a reason to prioritize pros who write clearly, photograph clearly, and separate “watch items” from “fix-now items.” Whether you are new to the neighborhood or a longtime resident updating systems for retirement-aged comfort, this hub is meant to support sober decision-making in a market full of loud urgency.</p>
 <p>Use the trade-specific neighborhood pages below when a single system demands more detail than a tri-trade overview can fairly cover—especially for sewer camera outcomes, attic static pressure maps, or ridge-level roofing photos that belong in your home file.</p>
     `.trim(),
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "georgetown-village",
@@ -87,6 +95,7 @@ export const NEIGHBORHOOD_HOME_SERVICES_HUBS: NeighborhoodHomeServicesHub[] = [
 <p>Living near downtown also means your home competes with traffic vibration, occasional utility work, and drainage changes that ripple out from public projects—none of which automatically means you need major repairs, but all of which make baseline documentation more valuable. If something changes suddenly after a wet month or a festival weekend, you will want dates, photos, and prior baselines so professionals can separate correlation from causation. That diligence is the difference between paying for clarity and paying for guesses.</p>
 <p>Village residents comparing <strong>plumber</strong>, <strong>HVAC</strong>, and <strong>roofer</strong> options should still verify Texas licensing where required, insurance, and warranty language the same way a Williamson County homeowner off the square would—proximity to downtown does not make shortcuts any safer.</p>
     `.trim(),
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
 ];
 

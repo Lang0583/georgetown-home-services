@@ -11,11 +11,9 @@ import {
   flagshipVideoObjectJsonLd,
 } from "../../../lib/flagship-videos";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
-import {
-  SERVICE_BEST_LAST_UPDATED_DISPLAY,
-  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
-  webPageWithDateModifiedJsonLd,
-} from "../../../lib/service-best-pages-meta";
+import LastUpdated from "../../../components/LastUpdated";
+import { webPageWithDateModifiedJsonLd } from "../../../lib/last-updated";
+import { getStaticPageLastUpdated } from "../../../lib/static-pages-last-updated";
 import { isNoindexSlug, isRedirectedServiceSlug } from "../../../lib/public-site-scope";
 import { getBlog, getServices } from "../../../lib/site-content";
 import StormInspectionLeadForm from "../../../components/StormInspectionLeadForm";
@@ -55,6 +53,7 @@ function faqJsonLd() {
 }
 
 export default function RoofingHubPage() {
+  const lastUpdated = getStaticPageLastUpdated("/services/roofing");
   const services = getServices();
   const blog = getBlog();
   const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
@@ -80,6 +79,7 @@ export default function RoofingHubPage() {
               name: "Roofing in Georgetown, TX",
               description:
                 "Practical roofing guides for Georgetown homeowners: roof leaks, storm damage checklists, replacement cost drivers, and how to compare roofers.",
+              lastUpdated,
             })}
           />
           <JsonLd
@@ -93,7 +93,7 @@ export default function RoofingHubPage() {
             <div>
               <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Services</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">Roofing in Georgetown, TX</h1>
-              <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+              <LastUpdated lastUpdated={lastUpdated} />
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
                 Use these pages to understand roof leaks, storm damage, when to stabilize vs repair, and what changes replacement costs in Georgetown.
                 When you’re ready, compare roofers in the directory and contact providers directly.

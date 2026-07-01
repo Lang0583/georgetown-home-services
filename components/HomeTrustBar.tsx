@@ -1,4 +1,5 @@
-import UpdatedMonthYear from "./UpdatedMonthYear";
+import LastUpdated from "./LastUpdated";
+import { getStaticPageLastUpdated } from "../lib/static-pages-last-updated";
 
 function IconShieldCheck({ className }: { className?: string }) {
   return (
@@ -87,7 +88,7 @@ export default function HomeTrustBar() {
           <IconClock className="h-6 w-6 shrink-0 text-gray-600" />
           <div className="min-w-0 leading-tight">
             <p className="text-sm font-semibold text-gray-800">
-              <UpdatedMonthYear />
+              <LastUpdated lastUpdated={getStaticPageLastUpdated("/")} variant="trustBar" />
             </p>
             <p className="mt-0.5 text-xs text-gray-500">Actively maintained directory</p>
           </div>

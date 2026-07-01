@@ -1,3 +1,5 @@
+import { DIRECTORY_PAGES_LAST_UPDATED } from '../lib/last-updated';
+
 /**
  * Static neighborhood × service landing pages under `/neighborhoods/[neighborhood]/[service]`.
  * `metaTitle` is the segment before the site title template (`… | Georgetown Home Services`).
@@ -18,10 +20,13 @@ export type NeighborhoodServicePage = {
   internalLinks: { label: string; href: string }[];
   bestOfHref: string;
   serviceHref: string;
+  /** ISO 8601 calendar date (YYYY-MM-DD). */
+  lastUpdated: string;
 };
 
 /** Alias for consumers that prefer the shorter type name. */
 export type NeighborhoodPage = NeighborhoodServicePage;
+
 
 const SVC = {
   plumber: { serviceHref: "/services/plumber-georgetown-tx", best: "/best/best-plumbers-georgetown-tx", cat: "plumbing" },
@@ -94,6 +99,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.plumber.best,
     serviceHref: SVC.plumber.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "sun-city",
@@ -121,6 +127,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.hvac.best,
     serviceHref: SVC.hvac.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "sun-city",
@@ -148,6 +155,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.roofer.best,
     serviceHref: SVC.roofer.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "sun-city",
@@ -175,6 +183,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.electrician.best,
     serviceHref: SVC.electrician.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "sun-city",
@@ -202,6 +211,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.landscaping.best,
     serviceHref: SVC.landscaping.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "sun-city",
@@ -229,6 +239,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC["pest-control"].best,
     serviceHref: SVC["pest-control"].serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "sun-city",
@@ -256,6 +267,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC["foundation-repair"].best,
     serviceHref: SVC["foundation-repair"].serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "sun-city",
@@ -283,6 +295,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC["house-cleaning"].best,
     serviceHref: SVC["house-cleaning"].serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
 
   // —— Wolf Ranch ——
@@ -312,6 +325,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.plumber.best,
     serviceHref: SVC.plumber.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "wolf-ranch",
@@ -339,6 +353,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.hvac.best,
     serviceHref: SVC.hvac.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "wolf-ranch",
@@ -366,6 +381,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.roofer.best,
     serviceHref: SVC.roofer.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "wolf-ranch",
@@ -393,6 +409,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.electrician.best,
     serviceHref: SVC.electrician.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "wolf-ranch",
@@ -420,6 +437,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.landscaping.best,
     serviceHref: SVC.landscaping.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "wolf-ranch",
@@ -447,6 +465,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC["pest-control"].best,
     serviceHref: SVC["pest-control"].serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "wolf-ranch",
@@ -474,6 +493,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC["foundation-repair"].best,
     serviceHref: SVC["foundation-repair"].serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "wolf-ranch",
@@ -501,6 +521,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC["house-cleaning"].best,
     serviceHref: SVC["house-cleaning"].serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
 
   // —— Teravista ——
@@ -530,6 +551,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.plumber.best,
     serviceHref: SVC.plumber.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "teravista",
@@ -557,6 +579,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.hvac.best,
     serviceHref: SVC.hvac.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "teravista",
@@ -584,6 +607,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.roofer.best,
     serviceHref: SVC.roofer.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "teravista",
@@ -611,6 +635,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.electrician.best,
     serviceHref: SVC.electrician.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "teravista",
@@ -638,6 +663,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.landscaping.best,
     serviceHref: SVC.landscaping.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "teravista",
@@ -665,6 +691,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC["pest-control"].best,
     serviceHref: SVC["pest-control"].serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "teravista",
@@ -692,6 +719,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC["foundation-repair"].best,
     serviceHref: SVC["foundation-repair"].serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "teravista",
@@ -719,6 +747,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC["house-cleaning"].best,
     serviceHref: SVC["house-cleaning"].serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
 
   // —— Berry Creek ——
@@ -748,6 +777,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.plumber.best,
     serviceHref: SVC.plumber.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "berry-creek",
@@ -775,6 +805,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.hvac.best,
     serviceHref: SVC.hvac.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "berry-creek",
@@ -802,6 +833,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.roofer.best,
     serviceHref: SVC.roofer.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "berry-creek",
@@ -829,6 +861,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.electrician.best,
     serviceHref: SVC.electrician.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "berry-creek",
@@ -856,6 +889,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.landscaping.best,
     serviceHref: SVC.landscaping.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "berry-creek",
@@ -883,6 +917,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC["pest-control"].best,
     serviceHref: SVC["pest-control"].serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "berry-creek",
@@ -910,6 +945,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC["foundation-repair"].best,
     serviceHref: SVC["foundation-repair"].serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "berry-creek",
@@ -937,6 +973,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC["house-cleaning"].best,
     serviceHref: SVC["house-cleaning"].serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
 
   // —— Georgetown Village ——
@@ -966,6 +1003,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.plumber.best,
     serviceHref: SVC.plumber.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "georgetown-village",
@@ -993,6 +1031,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.hvac.best,
     serviceHref: SVC.hvac.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "georgetown-village",
@@ -1020,6 +1059,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.roofer.best,
     serviceHref: SVC.roofer.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "georgetown-village",
@@ -1047,6 +1087,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.electrician.best,
     serviceHref: SVC.electrician.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "georgetown-village",
@@ -1074,6 +1115,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC.landscaping.best,
     serviceHref: SVC.landscaping.serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "georgetown-village",
@@ -1101,6 +1143,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC["pest-control"].best,
     serviceHref: SVC["pest-control"].serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "georgetown-village",
@@ -1128,6 +1171,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC["foundation-repair"].best,
     serviceHref: SVC["foundation-repair"].serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "georgetown-village",
@@ -1155,6 +1199,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
     ]),
     bestOfHref: SVC["house-cleaning"].best,
     serviceHref: SVC["house-cleaning"].serviceHref,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
 ];
 

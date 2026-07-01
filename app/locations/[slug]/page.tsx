@@ -23,12 +23,8 @@ import {
   getServices,
 } from "../../../lib/site-content";
 import AuthorByline from "../../../components/AuthorByline";
+import LastUpdated from "../../../components/LastUpdated";
 import { hubArticleJsonLd } from "../../../lib/site-author";
-import {
-  SERVICE_BEST_LAST_UPDATED_DISPLAY,
-  SERVICE_BEST_LAST_UPDATED_ISO,
-  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
-} from "../../../lib/service-best-pages-meta";
 
 function breadcrumbJsonLd({
   siteUrl,
@@ -116,8 +112,8 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
               pathname: `/locations/${location.slug}`,
               headline: location.h1 ?? location.title,
               description: location.description,
-              datePublished: SERVICE_BEST_LAST_UPDATED_ISO,
-              dateModified: SERVICE_BEST_LAST_UPDATED_ISO,
+              datePublished: location.lastUpdated,
+              dateModified: location.lastUpdated,
             })}
           />
           {location.faqs?.length ? (
@@ -135,7 +131,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
               <>
               <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Service locations</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{location.h1}</h1>
-              <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+              <LastUpdated lastUpdated={location.lastUpdated} />
               <AuthorByline className="mt-3" compact />
               <p className="mt-4 max-w-2xl text-lg text-gray-700">{location.description}</p>
 

@@ -6,11 +6,9 @@ import LinkCard from "../../../components/LinkCard";
 import JsonLd from "../../../components/JsonLd";
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
-import {
-  SERVICE_BEST_LAST_UPDATED_DISPLAY,
-  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
-  webPageWithDateModifiedJsonLd,
-} from "../../../lib/service-best-pages-meta";
+import LastUpdated from "../../../components/LastUpdated";
+import { webPageWithDateModifiedJsonLd } from "../../../lib/last-updated";
+import { getStaticPageLastUpdated } from "../../../lib/static-pages-last-updated";
 import { showExtendedHomeServices } from "../../../lib/public-site-scope";
 import { getBlog, getServices } from "../../../lib/site-content";
 
@@ -49,6 +47,7 @@ function faqJsonLd() {
 }
 
 export default function ElectricalHubPage() {
+  const lastUpdated = getStaticPageLastUpdated("/services/electrical");
   if (!showExtendedHomeServices()) redirect("/services");
 
   const services = getServices();
@@ -71,13 +70,14 @@ export default function ElectricalHubPage() {
               name: "Electrical in Georgetown, TX",
               description:
                 "Electrical safety and hiring guidance for Georgetown homeowners: panels, circuits, EV prep, and a directory of electricians to compare.",
+              lastUpdated,
             })}
           />
           <div className="flex flex-col gap-10">
             <div>
               <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Services</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">Electrical in Georgetown, TX</h1>
-              <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+              <LastUpdated lastUpdated={lastUpdated} />
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
                 Use these pages to understand when electrical work is safety-critical, what belongs in a written scope, and how to compare licensed
                 electricians serving Georgetown. When you are ready, compare companies in the directory and contact providers directly.

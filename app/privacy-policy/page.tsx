@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "../../components/JsonLd";
+import LastUpdated from "../../components/LastUpdated";
 import TrustPage from "../../components/templates/TrustPage";
 import { pageSeoMetadata, SITE_URL } from "../../lib/page-seo";
+import { getStaticPageLastUpdated } from "../../lib/static-pages-last-updated";
 import { webPageTrustJsonLd } from "../../lib/trust-pages-schema";
 import { getContact } from "../../lib/site-content";
 
@@ -192,7 +194,7 @@ export default function PrivacyPolicyPage() {
           We may update this policy from time to time. The &quot;Last updated&quot; note on this page will change when we
           do. Continued use of the site after changes means you accept the updated policy.
         </p>
-        <p className="mt-3 text-sm text-gray-600">Last updated: May 2026</p>
+        <LastUpdated lastUpdated={getStaticPageLastUpdated("/privacy-policy")} />
       </section>
     </TrustPage>
   );

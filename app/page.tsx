@@ -11,6 +11,7 @@ import SeasonalHomeSection from "../components/SeasonalHomeSection";
 import FAQList from "../components/FAQList";
 import JsonLd from "../components/JsonLd";
 import { pageSeoMetadata, SITE_URL } from "../lib/page-seo";
+import { getStaticPageLastUpdated } from "../lib/static-pages-last-updated";
 import { CORE_SERVICE_SLUGS } from "../lib/pageContentRegistry";
 import { EXTENDED_PROVIDER_GROUPS, isNoindexSlug } from "../lib/public-site-scope";
 import { getBlog, getServices } from "../lib/site-content";
@@ -60,7 +61,7 @@ function homeWebPageJsonLd() {
     url: SITE_URL,
     description:
       "Compare top-rated plumbers, HVAC companies, roofers, electricians, and more in Georgetown TX. Verified local providers, real Google ratings, and honest cost guides. No lead forms.",
-    dateModified: "2026-04-13",
+    dateModified: getStaticPageLastUpdated("/"),
   };
 }
 

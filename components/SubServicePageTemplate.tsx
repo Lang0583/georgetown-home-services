@@ -4,16 +4,12 @@ import Breadcrumbs from "./Breadcrumbs";
 import FAQList from "./FAQList";
 import FAQSchema from "./FAQSchema";
 import JsonLd from "./JsonLd";
+import LastUpdated from "./LastUpdated";
 import AffiliateCTA from "./AffiliateCTA";
 import PageShell from "./templates/PageShell";
 import type { SubServicePage } from "../data/sub-services";
 import { absolutePageUrl } from "../lib/page-seo";
-import {
-  SERVICE_BEST_LAST_UPDATED_DISPLAY,
-  SERVICE_BEST_LAST_UPDATED_ISO,
-  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
-  webPageWithDateModifiedJsonLd,
-} from "../lib/service-best-pages-meta";
+import { webPageWithDateModifiedJsonLd } from "../lib/last-updated";
 import { hubArticleJsonLd } from "../lib/site-author";
 import type { Faq } from "../lib/site-content";
 import { breadcrumbSchemaForSubService } from "../lib/schema";
@@ -49,6 +45,7 @@ export default function SubServicePageTemplate({ page }: SubServicePageTemplateP
             pathname,
             name: page.h1,
             description: page.metaDescription,
+            lastUpdated: page.lastUpdated,
           })}
         />
         <JsonLd
@@ -56,8 +53,8 @@ export default function SubServicePageTemplate({ page }: SubServicePageTemplateP
             pathname,
             headline: page.h1,
             description: page.metaDescription,
-            datePublished: SERVICE_BEST_LAST_UPDATED_ISO,
-            dateModified: SERVICE_BEST_LAST_UPDATED_ISO,
+            datePublished: page.lastUpdated,
+            dateModified: page.lastUpdated,
           })}
         />
         <FAQSchema
@@ -77,7 +74,7 @@ export default function SubServicePageTemplate({ page }: SubServicePageTemplateP
 
         <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">{page.serviceLabel} • Georgetown, TX</p>
         <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{page.h1}</h1>
-        <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+        <LastUpdated lastUpdated={page.lastUpdated} />
         <AuthorByline className="mt-3" compact />
 
         <div className="prose prose-gray mt-8 max-w-3xl prose-p:leading-relaxed prose-p:text-gray-700">

@@ -5,12 +5,10 @@ import Container from "../../components/Container";
 import LinkCard from "../../components/LinkCard";
 import CTASection from "../../components/CTASection";
 import JsonLd from "../../components/JsonLd";
+import LastUpdated from "../../components/LastUpdated";
 import { pageSeoMetadata } from "../../lib/page-seo";
-import {
-  SERVICE_BEST_LAST_UPDATED_DISPLAY,
-  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
-  webPageWithDateModifiedJsonLd,
-} from "../../lib/service-best-pages-meta";
+import { webPageWithDateModifiedJsonLd } from "../../lib/last-updated";
+import { getStaticPageLastUpdated } from "../../lib/static-pages-last-updated";
 import { CORE_BEST_SLUGS, CORE_SERVICE_SLUGS } from "../../lib/pageContentRegistry";
 import { isExtendedBestSlug, isExtendedServiceSlug, showExtendedHomeServices } from "../../lib/public-site-scope";
 import { getBest, getBlog, getServices } from "../../lib/site-content";
@@ -60,6 +58,7 @@ function faqJsonLd() {
 }
 
 export default function BestIndexPage() {
+  const lastUpdated = getStaticPageLastUpdated("/best");
   const bestPages = getBest();
   const services = getServices();
   const blog = getBlog();
@@ -89,6 +88,7 @@ export default function BestIndexPage() {
               name: "Best Home Service Providers in Georgetown, TX",
               description:
                 "Browse provider directory and comparison pages for electricians, landscapers, pest control, foundation repair, house cleaners, plumbers, HVAC companies, and roofers serving Georgetown, Texas.",
+              lastUpdated,
             })}
           />
           <div className="flex flex-col gap-10">
@@ -97,7 +97,7 @@ export default function BestIndexPage() {
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
                 Best Home Service Providers in Georgetown, TX
               </h1>
-              <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+              <LastUpdated lastUpdated={lastUpdated} />
               <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">
                 Use these comparison guides to shortlist providers you can contact directly. Each guide includes practical
                 criteria (scope clarity, documentation, responsiveness) so you can compare quotes and avoid common mistakes.

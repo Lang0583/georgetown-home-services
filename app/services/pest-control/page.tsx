@@ -6,11 +6,9 @@ import LinkCard from "../../../components/LinkCard";
 import JsonLd from "../../../components/JsonLd";
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
-import {
-  SERVICE_BEST_LAST_UPDATED_DISPLAY,
-  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
-  webPageWithDateModifiedJsonLd,
-} from "../../../lib/service-best-pages-meta";
+import LastUpdated from "../../../components/LastUpdated";
+import { webPageWithDateModifiedJsonLd } from "../../../lib/last-updated";
+import { getStaticPageLastUpdated } from "../../../lib/static-pages-last-updated";
 import { showExtendedHomeServices } from "../../../lib/public-site-scope";
 import { getBlog, getServices } from "../../../lib/site-content";
 
@@ -49,6 +47,7 @@ function faqJsonLd() {
 }
 
 export default function PestControlHubPage() {
+  const lastUpdated = getStaticPageLastUpdated("/services/pest-control");
   if (!showExtendedHomeServices()) redirect("/services");
 
   const services = getServices();
@@ -71,13 +70,14 @@ export default function PestControlHubPage() {
               name: "Pest Control in Georgetown, TX",
               description:
                 "Pest control planning for Georgetown homeowners: inspections, treatment plans, warranties, and a directory of local providers to compare.",
+              lastUpdated,
             })}
           />
           <div className="flex flex-col gap-10">
             <div>
               <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Services</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">Pest Control in Georgetown, TX</h1>
-              <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+              <LastUpdated lastUpdated={lastUpdated} />
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
                 Compare inspection quality, treatment scope, and re-service policies before you commit to a plan. These pages help you ask better
                 questions for ants, roaches, rodents, and seasonal pests common around Georgetown.

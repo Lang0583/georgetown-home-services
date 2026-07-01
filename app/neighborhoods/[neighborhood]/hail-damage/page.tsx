@@ -8,18 +8,14 @@ import { ButtonLink } from "@/components/Button";
 import FAQList from "@/components/FAQList";
 import FAQSchema from "@/components/FAQSchema";
 import JsonLd from "@/components/JsonLd";
+import LastUpdated from "@/components/LastUpdated";
 import PageShell from "@/components/templates/PageShell";
 import {
   getNeighborhoodHailPage,
   neighborhoodHailDamageStaticParams,
 } from "@/data/neighborhood-hail-pages";
 import { absolutePageUrl, pageSeoMetadata } from "@/lib/page-seo";
-import {
-  SERVICE_BEST_LAST_UPDATED_DISPLAY,
-  SERVICE_BEST_LAST_UPDATED_ISO,
-  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
-  webPageWithDateModifiedJsonLd,
-} from "@/lib/service-best-pages-meta";
+import { webPageWithDateModifiedJsonLd } from "@/lib/last-updated";
 import { hubArticleJsonLd } from "@/lib/site-author";
 import { adsenseNeighborhoodPageInlineSlot } from "@/lib/adsense-config";
 
@@ -110,6 +106,7 @@ export default async function NeighborhoodHailDamagePage({
             pathname,
             name: page.h1,
             description: page.metaDescription,
+            lastUpdated: page.lastUpdated,
           })}
         />
         <JsonLd
@@ -117,8 +114,8 @@ export default async function NeighborhoodHailDamagePage({
             pathname,
             headline: page.h1,
             description: page.metaDescription,
-            datePublished: SERVICE_BEST_LAST_UPDATED_ISO,
-            dateModified: SERVICE_BEST_LAST_UPDATED_ISO,
+            datePublished: page.lastUpdated,
+            dateModified: page.lastUpdated,
           })}
         />
         <FAQSchema
@@ -140,7 +137,7 @@ export default async function NeighborhoodHailDamagePage({
           Storm guide • {page.neighborhoodName} • Georgetown, TX
         </p>
         <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{page.h1}</h1>
-        <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+        <LastUpdated lastUpdated={page.lastUpdated} />
         <AuthorByline className="mt-3" compact />
 
         <div
