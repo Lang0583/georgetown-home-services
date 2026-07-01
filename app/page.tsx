@@ -12,21 +12,10 @@ import FAQList from "../components/FAQList";
 import JsonLd from "../components/JsonLd";
 import { pageSeoMetadata, SITE_URL } from "../lib/page-seo";
 import { CORE_SERVICE_SLUGS } from "../lib/pageContentRegistry";
-import { EXTENDED_PROVIDER_GROUPS, isNoindexSlug } from "../lib/public-site-scope";
+import { EXTENDED_PROVIDER_GROUPS, isNoindexSlug, showExtendedHomeServices } from "../lib/public-site-scope";
 import { getBlog, getServices } from "../lib/site-content";
 import { HOME_PAGE_FAQS } from "../lib/home-page-faqs";
-import businesses from "../lib/businesses.json";
-import {
-  normalizeBusinessGroup,
-  type Business,
-  type ProviderGroup,
-} from "../lib/businesses";
-
-function sortedProvidersForGroup(list: Business[], group: ProviderGroup) {
-  return list
-    .filter((b) => normalizeBusinessGroup(b) === group)
-    .sort((a, b) => (b.rating !== a.rating ? b.rating - a.rating : b.reviews - a.reviews));
-}
+import { getBusinessesByCategory, type ProviderGroup } from "../lib/businesses";
 
 function homeLocalBusinessJsonLd() {
   return {
@@ -75,12 +64,11 @@ export const metadata: Metadata = pageSeoMetadata({
 export default function Home() {
   const services = getServices();
   const blog = getBlog();
-  const allBusinesses = businesses as Business[];
   const homepageTradeOrder: ProviderGroup[] = [
     "plumber",
     "hvac",
     "roofer",
-    ...EXTENDED_PROVIDER_GROUPS,
+    ...(showExtendedHomeServices() ? EXTENDED_PROVIDER_GROUPS : []),
   ] as ProviderGroup[];
   const tradeHomepageTitle: Record<ProviderGroup, string> = {
     plumber: "Plumbers",
@@ -92,10 +80,13 @@ export default function Home() {
     foundation_repair: "Foundation",
     house_cleaning: "Cleaning",
   };
-  const topLocalGroups: { title: string; key: ProviderGroup }[] = homepageTradeOrder.map((key) => ({
-    title: tradeHomepageTitle[key],
-    key,
-  }));
+  const topLocalGroups = homepageTradeOrder
+    .map((key) => ({
+      title: tradeHomepageTitle[key],
+      key,
+      businesses: getBusinessesByCategory(key),
+    }))
+    .filter(({ businesses }) => businesses.length > 0);
 
   const browseCategoryServices = (CORE_SERVICE_SLUGS as readonly string[])
     .filter((slug) => !isNoindexSlug(slug))
@@ -110,7 +101,7 @@ export default function Home() {
         <section className="py-10 md:py-12">
           <div className="min-w-0">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
-              Georgetown TX Home Services Directory (2026)
+              Georgetown, TX Home Services Directory
             </h1>
 
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">
@@ -169,12 +160,12 @@ export default function Home() {
             deeper comparisons.
           </p>
           <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {topLocalGroups.map(({ title, key }) => (
+            {topLocalGroups.map(({ title, key, businesses }) => (
               <HomeTopProvidersColumn
                 key={key}
                 title={title}
                 providerGroupKey={key}
-                businesses={sortedProvidersForGroup(allBusinesses, key)}
+                businesses={businesses}
               />
             ))}
           </div>
