@@ -112,6 +112,22 @@ export function breadcrumbSchemaForComparison(comparisonTitle: string, slug: str
   ]);
 }
 
+/** Home → Provider Directory → [category] → [provider] */
+export function breadcrumbSchemaForProvider(
+  bestTitle: string,
+  bestSlug: string,
+  providerName: string,
+  providerSlug: string,
+) {
+  const root = siteRoot();
+  return generateBreadcrumbSchema([
+    { name: "Home", url: `${root}/` },
+    { name: "Provider Directory", url: `${root}/best` },
+    { name: bestTitle, url: `${root}/best/${bestSlug}` },
+    { name: providerName, url: `${root}/providers/${providerSlug}` },
+  ]);
+}
+
 function organizationSameAsFromEnv(): string[] {
   const urls: string[] = [];
   const gbp = process.env.NEXT_PUBLIC_GOOGLE_BUSINESS_PROFILE_URL?.trim();
