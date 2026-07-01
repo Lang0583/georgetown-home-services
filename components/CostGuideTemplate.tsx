@@ -5,6 +5,7 @@ import FAQList from "./FAQList";
 import FAQSchema from "./FAQSchema";
 import JsonLd from "./JsonLd";
 import AffiliateCTA from "./AffiliateCTA";
+import CostGuideAffiliateCallouts from "./CostGuideAffiliateCallouts";
 import CostGuidePriceTable from "./CostGuidePriceTable";
 import PageShell from "./templates/PageShell";
 import type { CostGuidePage } from "../data/cost-guides";
@@ -68,6 +69,8 @@ export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
             <p key={paragraph.slice(0, 48)}>{paragraph}</p>
           ))}
         </div>
+
+        <CostGuideAffiliateCallouts slug={page.slug} />
 
         <section className="mt-12 max-w-3xl rounded-2xl border border-gray-200 bg-white p-6 shadow-md md:p-8">
           <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
