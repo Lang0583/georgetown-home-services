@@ -1,8 +1,18 @@
 import type { Metadata } from "next";
+import { openGraphImagePathname } from "./og-image-path";
 
 export const SITE_URL = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
 
 const SITE_NAME = "Georgetown Home Services";
+
+/**
+ * Absolute URL for a route's file-based Open Graph image (`opengraph-image.tsx`).
+ * Next.js serves these at `{pathname}/opengraph-image`.
+ */
+export function openGraphImageUrl(pathname: string): string {
+  const path = openGraphImagePathname(normalizeSeoPathname(pathname));
+  return absolutePageUrl(path);
+}
 
 /**
  * Single canonical pathname for metadata and JSON-LD: leading slash, no trailing slash (except `/`),
@@ -35,16 +45,12 @@ export function documentTitleFromSegment(titleSegment: string): string {
   return `${titleSegment} | ${SITE_NAME}`;
 }
 
-export const DEFAULT_OG_IMAGE = {
-  url: "/og-image.jpg",
-  width: 1200,
-  height: 630,
-  alt: SITE_NAME,
-} as const;
-
 /**
  * Page-level SEO: `title` uses the root layout template; `openGraph.title` is the resolved
  * document title. `openGraph.url` is the full canonical URL for the route (`SITE_URL` + pathname).
+ *
+ * Open Graph images are generated per route segment via colocated `opengraph-image.tsx` files;
+ * do not set `openGraph.images` here so Next.js file-based metadata is used.
  *
  * Pass `noindex: true` to emit `<meta name="robots" content="noindex,follow">`. We keep
  * `follow` so internal links from the page still pass crawl signal to indexable hubs;
@@ -77,13 +83,11 @@ export function pageSeoMetadata(opts: {
       type: opts.ogType,
       siteName: SITE_NAME,
       locale: "en_US",
-      images: [{ ...DEFAULT_OG_IMAGE }],
     },
     twitter: {
       card: "summary_large_image",
       title: documentTitle,
       description: opts.description,
-      images: [DEFAULT_OG_IMAGE.url],
     },
   };
   if (opts.noindex) {
