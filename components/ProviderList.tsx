@@ -1,5 +1,6 @@
 "use client";
 
+import AdvertiseListingLink from "./AdvertiseListingLink";
 import { RatingStarsWithCaption } from "./BusinessRatingStars";
 import ExitInterstitial from "./ExitInterstitial";
 import {
@@ -87,6 +88,7 @@ export default function ProviderList({
           </div>
         );
       })}
+      <AdvertiseListingLink className="mt-2" />
     </div>
   );
 }

@@ -89,6 +89,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     { path: "/service-areas", priority: 0.5 },
     { path: "/zip", priority: 0.7 },
     { path: "/contact", priority: 0.5 },
+    { path: "/advertise", priority: 0.5 },
     { path: "/privacy-policy", priority: 0.3 },
     { path: "/terms", priority: 0.3 },
   ]) {

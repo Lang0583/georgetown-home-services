@@ -1,3 +1,4 @@
+import AdvertiseListingLink from "./AdvertiseListingLink";
 import ProviderCard from "./ProviderCard";
 import {
   PROVIDER_DISCLAIMER,
@@ -22,6 +23,8 @@ export default function ProviderCardSection({ providers }: { providers: Provider
           <ProviderCard key={`${provider.category}-${provider.name}`} provider={provider} />
         ))}
       </div>
+
+      <AdvertiseListingLink className="mt-6" />
     </div>
   );
 }

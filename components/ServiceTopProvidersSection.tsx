@@ -1,5 +1,6 @@
 "use client";
 
+import AdvertiseListingLink from "./AdvertiseListingLink";
 import { BusinessListingDescription } from "./BusinessListingDescription";
 import { BusinessPhoneRow } from "./BusinessPhoneRow";
 import ExitInterstitial from "./ExitInterstitial";
@@ -200,6 +201,8 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
           })}
         </ul>
       ) : null}
+
+      <AdvertiseListingLink className="mt-6" />
     </section>
   );
 }
