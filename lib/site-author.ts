@@ -7,7 +7,7 @@
  * should follow this same shape and live alongside this module.
  */
 
-import { SITE_URL } from "./page-seo";
+import { SITE_URL, openGraphImageUrl } from "./page-seo";
 
 function authorSameAsFromEnv(): string[] {
   const raw = process.env.NEXT_PUBLIC_AUTHOR_SAME_AS;
@@ -148,7 +148,7 @@ export function hubArticleJsonLd(opts: {
     url,
     image: {
       "@type": "ImageObject",
-      url: `${siteUrl}/og-image.jpg`,
+      url: openGraphImageUrl(opts.pathname),
       width: 1200,
       height: 630,
     },

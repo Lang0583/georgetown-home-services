@@ -19,7 +19,7 @@ import {
   getServices,
 } from "../../../lib/site-content";
 import { adsenseBlogPostSlot } from "../../../lib/adsense-config";
-import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
+import { pageSeoMetadata, absolutePageUrl, openGraphImageUrl, SITE_URL } from "../../../lib/page-seo";
 import { isNoindexSlug } from "../../../lib/public-site-scope";
 import { getGeneratedPage } from "../../../lib/generatedPages";
 import { blogPageInternalLinks } from "../../../lib/internal-links";
@@ -54,18 +54,18 @@ const STORM_INSPECTION_LEAD_SLUGS = new Set([
 ]);
 
 function articleJsonLd({
-  siteUrl,
   headline,
   description,
   url,
+  pathname,
   publisherName,
   datePublished,
   dateModified,
 }: {
-  siteUrl: string;
   headline: string;
   description: string;
   url: string;
+  pathname: string;
   publisherName: string;
   datePublished: string;
   dateModified: string;
@@ -76,14 +76,14 @@ function articleJsonLd({
     headline,
     image: {
       "@type": "ImageObject",
-      url: `${siteUrl}/og-image.jpg`,
+      url: openGraphImageUrl(pathname),
       width: 1200,
       height: 630,
     },
     description,
     mainEntityOfPage: url,
-    author: authorPersonSchema(siteUrl),
-    publisher: { "@type": "Organization", name: publisherName, url: siteUrl },
+    author: authorPersonSchema(SITE_URL),
+    publisher: { "@type": "Organization", name: publisherName, url: SITE_URL },
     datePublished,
     dateModified,
   };
@@ -432,11 +432,11 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
           <JsonLd data={breadcrumbSchemaForBlog(post.title, post.slug)} />
           <JsonLd
             data={articleJsonLd({
-              siteUrl,
               publisherName,
               headline: post.title,
               description: post.description,
               url: `${siteUrl}/blog/${post.slug}`,
+              pathname: `/blog/${post.slug}`,
               datePublished,
               dateModified,
             })}
