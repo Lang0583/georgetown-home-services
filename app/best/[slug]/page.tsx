@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import AffiliateOutboundCta from "../../../components/AffiliateOutboundCta";
 import BestAlsoCompareBar from "../../../components/BestAlsoCompareBar";
 import { notFound } from "next/navigation";
 import LinkCard from "../../../components/LinkCard";
@@ -37,8 +36,10 @@ import {
 import { getAlsoCompareLinksForBestSlug } from "../../../lib/best-also-compare-links";
 import { buildProviderItemListJsonLd } from "../../../lib/provider-item-list-schema";
 import { getDirectoryProvidersForBestSlug } from "../../../data/providers";
+import { getFeaturedListingForBestSlug } from "../../../data/featured-listings";
 import { getComparisonsForBestSlug } from "../../../data/comparisons";
 import ProviderCardSection from "../../../components/ProviderCardSection";
+import FeaturedListing from "../../../components/FeaturedListing";
 import { bestPageInternalLinks } from "../../../lib/internal-links";
 import { getBestOfPageFaqs } from "../../../lib/best-of-page-faqs";
 import {
@@ -140,48 +141,6 @@ function BestOfFaqSection({ faqs }: { faqs: readonly { q: string; a: string }[] 
   );
 }
 
-function FeaturedPartnerCard({
-  partner,
-}: {
-  partner: NonNullable<
-    NonNullable<Awaited<ReturnType<typeof resolveBestPage>>>["record"]["featuredPartner"]
-  >;
-}) {
-  const disclosure = partner.disclosureLabel?.trim() || "Featured Listing (Sponsored)";
-  const cta = partner.ctaLabel?.trim() || "Visit partner";
-
-  return (
-    <section className="mt-6 rounded-xl border border-amber-200 bg-amber-50/40 p-5 shadow-sm">
-      <div className="text-xs font-semibold uppercase tracking-wide text-amber-900">{disclosure}</div>
-      <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-        <div className="min-w-0">
-          <div className="text-lg font-semibold text-gray-900">{partner.name}</div>
-          <p className="mt-1 text-sm leading-relaxed text-gray-700">{partner.description}</p>
-        </div>
-        <AffiliateOutboundCta
-          href={partner.href}
-          affiliateName={partner.name}
-          className="shrink-0 rounded-lg border border-amber-300 bg-white px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-amber-50"
-        >
-          {cta}
-        </AffiliateOutboundCta>
-      </div>
-    </section>
-  );
-}
-
-function FeaturedListingReservedSlot() {
-  return (
-    <section className="mt-6 rounded-xl border border-amber-200 bg-amber-50/40 p-5 shadow-sm">
-      <div className="text-xs font-semibold uppercase tracking-wide text-amber-900">Featured Listing (Reserved)</div>
-      <div className="mt-2 text-sm leading-relaxed text-gray-700">
-        This top slot is reserved for a clearly labeled featured listing in the future. Today, the directory below is ordered by public signals
-        like rating, review volume, and listing documentation.
-      </div>
-    </section>
-  );
-}
-
 /**
  * Allow runtime resolution for `[slug]` so `getBestBySlug` + `notFound()` control 404s.
  * (With `false`, Next can 404 before the page runs if static params are out of sync.)
@@ -278,6 +237,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
   const businessesForPage =
     businessCategory !== null ? getBusinessesByCategory(businessCategory) : null;
   const directoryProviders = getDirectoryProvidersForBestSlug(slug);
+  const featuredListing = getFeaturedListingForBestSlug(slug);
   const headToHeadComparisons = getComparisonsForBestSlug(best.slug);
   const relatedServiceSlug = getRelatedServiceSlugForBestSlug(slug);
   const relatedService = relatedServiceSlug ? getServiceBySlug(relatedServiceSlug) : null;
@@ -1293,7 +1253,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         Editorial guide last updated {BUSINESS_LISTINGS_LAST_UPDATED}. Provider cards below are
                         verified separately ({directoryProviders.length.toLocaleString()} listings in this category).
                       </p>
-                      {best.featuredPartner ? <FeaturedPartnerCard partner={best.featuredPartner} /> : <FeaturedListingReservedSlot />}
                       <div className="mt-3 space-y-1 text-sm text-gray-700">
                         <p>
                           <Link href="/" className="font-semibold text-primary hover:text-primary-hover">
@@ -1346,6 +1305,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       <div className="mt-4">
                         <BestProvidersMethodologyCallout />
                       </div>
+                      {featuredListing ? <FeaturedListing listing={featuredListing} /> : null}
                       {directoryProviders.length ? (
                         <ProviderCardSection providers={directoryProviders} />
                       ) : null}
@@ -1382,6 +1342,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       <div className="mt-4">
                         <BestProvidersMethodologyCallout />
                       </div>
+                      {featuredListing ? <FeaturedListing listing={featuredListing} /> : null}
                       {directoryProviders.length ? (
                         <ProviderCardSection providers={directoryProviders} />
                       ) : providerData.providers.length ? (

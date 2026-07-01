@@ -7,6 +7,7 @@ import ComparisonTable from "../../../components/ComparisonTable";
 import FAQList from "../../../components/FAQList";
 import JsonLd from "../../../components/JsonLd";
 import ProviderCard from "../../../components/ProviderCard";
+import AdvertiseListingLink from "../../../components/AdvertiseListingLink";
 import PageShell from "../../../components/templates/PageShell";
 import {
   COMPARISON_SLUGS,
@@ -114,6 +115,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
               <ProviderCard provider={comparison.providerA} />
               <ProviderCard provider={comparison.providerB} />
             </div>
+            <AdvertiseListingLink className="mt-6" />
           </section>
 
           <AffiliateCTA
