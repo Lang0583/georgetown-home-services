@@ -211,6 +211,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     push(entries, `/seasonal/${season}`, { changeFrequency: "monthly", priority: 0.7 }, lastModified);
   }
 
+  // Provider head-to-head comparison pages (`/compare/[slug]`).
   for (const slug of COMPARISON_SLUGS) {
     push(entries, `/compare/${slug}`, { changeFrequency: "monthly", priority: 0.72 }, lastModified);
   }

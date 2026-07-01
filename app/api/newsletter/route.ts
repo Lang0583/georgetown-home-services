@@ -25,9 +25,6 @@ function sanitizeText(input: string, maxLen: number) {
 }
 
 export async function POST(req: Request) {
-  // TODO: Connect to Beehiiv API — endpoint: https://api.beehiiv.com/v2/publications/{pub_id}/subscriptions
-  // Replace current form action/handler with Beehiiv API call once publication ID is available
-  // Beehiiv docs: https://developers.beehiiv.com/
   let payload: NewsletterPayload;
   try {
     payload = (await req.json()) as NewsletterPayload;
@@ -51,25 +48,42 @@ export async function POST(req: Request) {
   // Honeypot: if filled, treat as bot submission. Pretend success but do nothing.
   if (website) return NextResponse.json({ ok: true, emailed: false, recorded: false });
 
+  const createdAt = new Date().toISOString();
   const signup = {
     email,
     firstName,
     leadMagnet,
     pdfKey,
     source,
-    createdAt: new Date().toISOString(),
+    createdAt,
   };
 
-  const webhookUrl = process.env.NEWSLETTER_WEBHOOK_URL;
+  const webhookUrl = process.env.NEWSLETTER_WEBHOOK_URL?.trim();
   if (webhookUrl) {
+    const webhookBody = {
+      name: firstName,
+      email,
+      guideChoice: leadMagnet ?? "seasonal_checklist",
+      source,
+      createdAt,
+    };
     try {
-      await fetch(webhookUrl, {
+      const webhookRes = await fetch(webhookUrl, {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(signup),
+        body: JSON.stringify(webhookBody),
       });
+      if (!webhookRes.ok) {
+        return NextResponse.json(
+          { ok: false, error: "Signup service rejected the request. Please try again." },
+          { status: 502 },
+        );
+      }
     } catch {
-      // Ignore transient webhook errors.
+      return NextResponse.json(
+        { ok: false, error: "Could not reach signup service. Please try again." },
+        { status: 502 },
+      );
     }
   }
 
