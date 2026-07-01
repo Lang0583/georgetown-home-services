@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BestProvidersMethodologyCallout from "../../components/BestProvidersMethodologyCallout";
+import Breadcrumbs from "../../components/Breadcrumbs";
 import Container from "../../components/Container";
+import FAQList from "../../components/FAQList";
+import FAQSchema from "../../components/FAQSchema";
 import LinkCard from "../../components/LinkCard";
 import CTASection from "../../components/CTASection";
 import JsonLd from "../../components/JsonLd";
-import { pageSeoMetadata } from "../../lib/page-seo";
+import { pageSeoMetadata, absolutePageUrl } from "../../lib/page-seo";
+import { BEST_INDEX_FAQS } from "../../lib/index-page-faqs";
+import { breadcrumbSchemaForBestIndex } from "../../lib/schema";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
@@ -22,42 +27,6 @@ export const metadata: Metadata = pageSeoMetadata({
   pathname: "/best",
   ogType: "website",
 });
-
-function faqJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "How should I use these best-of guides?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "Start with the category you need (electrical, landscaping, pest control, foundation, cleaning, plumbing, HVAC, or roofing). Compare providers using scopes, responsiveness, and review patterns—not just the star rating—and then contact a short list for written estimates.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Do these guides include every company in Georgetown?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "No. The goal is to provide a practical shortlist based on publicly available business information. Always confirm licensing, insurance, pricing, and availability directly with any provider before hiring.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Where should I go if I’m not sure what I need?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "Start on the Services hub for symptom-based pages (like AC not cooling or roof leak repair), then return here to compare providers for that category.",
-        },
-      },
-    ],
-  };
-}
 
 export default function BestIndexPage() {
   const bestPages = getBest();
@@ -82,7 +51,12 @@ export default function BestIndexPage() {
     <div className="bg-gray-50">
       <Container>
         <section className="py-10 md:py-12">
-          <JsonLd data={faqJsonLd()} />
+          <JsonLd data={breadcrumbSchemaForBestIndex()} />
+          <FAQSchema
+            pageUrl={absolutePageUrl("/best")}
+            name="Best home service providers in Georgetown, TX — FAQ"
+            faqs={BEST_INDEX_FAQS}
+          />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: "/best",
@@ -93,6 +67,12 @@ export default function BestIndexPage() {
           />
           <div className="flex flex-col gap-10">
             <div>
+              <Breadcrumbs
+                items={[
+                  { href: "/", label: "Home" },
+                  { href: "/best", label: "Best Of" },
+                ]}
+              />
               <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Top Providers</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
                 Best Home Service Providers in Georgetown, TX
@@ -212,29 +192,7 @@ export default function BestIndexPage() {
               </section>
             ) : null}
 
-            <section className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-              <h2 className="text-xl font-semibold text-gray-900">FAQ</h2>
-              <div className="mt-3 space-y-4 text-sm leading-relaxed text-gray-700">
-                <div>
-                  <div className="font-semibold text-gray-900">How should I use these guides?</div>
-                  <p>
-                    Start with the category you need, shortlist providers, then request written scopes you can compare line-by-line.
-                  </p>
-                </div>
-                <div>
-                  <div className="font-semibold text-gray-900">Do you include every company?</div>
-                  <p>
-                    No. The goal is a practical shortlist based on publicly available business information. Confirm licensing, insurance, and availability.
-                  </p>
-                </div>
-                <div>
-                  <div className="font-semibold text-gray-900">What if I’m not sure what I need?</div>
-                  <p>
-                    Start on the Services hub for symptom-based pages, then return here to compare providers for that category.
-                  </p>
-                </div>
-              </div>
-            </section>
+            <FAQList faqs={BEST_INDEX_FAQS} title="FAQ" className="mt-0" />
 
             <div className="pt-4">
               <CTASection

@@ -1,53 +1,50 @@
-import type { Provider } from "../data/providers";
+import type { Provider as DirectoryProvider } from "../data/providers";
+import type { Provider as LegacyProvider } from "./providers";
+import { assertNoHostedReviewSchema, validateItemListSchema } from "./structured-data-validate";
+
+export type RankedProviderListItem = {
+  name: string;
+  url: string;
+};
 
 function trimStr(s: string | undefined) {
   return (s ?? "").trim();
 }
 
-function localBusinessJsonLd(provider: Provider): Record<string, unknown> {
-  const locality = trimStr(provider.city) || "Georgetown";
-  const region = trimStr(provider.state) || "TX";
-
-  const addr: Record<string, unknown> = {
-    "@type": "PostalAddress",
-    addressLocality: locality,
-    addressRegion: region,
-    addressCountry: "US",
-  };
-  const street = trimStr(provider.address);
-  if (street) addr.streetAddress = street;
-  const zip = trimStr(provider.postalCode);
-  if (zip) addr.postalCode = zip;
-
-  const item: Record<string, unknown> = {
-    "@type": "LocalBusiness",
-    name: provider.name,
-    telephone: provider.phone,
-    address: addr,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: provider.rating.toFixed(1),
-      reviewCount: String(provider.reviewCount),
-    },
-    areaServed: provider.serviceArea,
-    description: provider.description,
-  };
-
-  if (provider.googleMapsUrl) item.url = provider.googleMapsUrl;
-
-  return item;
+/** Map on-page provider rows to ranked list items (position follows array order). */
+export function rankedProvidersFromDirectory(providers: DirectoryProvider[]): RankedProviderListItem[] {
+  return providers
+    .map((p) => ({ name: trimStr(p.name), url: trimStr(p.googleMapsUrl) }))
+    .filter((p) => p.name && p.url);
 }
 
-/** ItemList JSON-LD with LocalBusiness entries for /best/[slug] provider cards. */
-export function buildProviderItemListJsonLd(listName: string, providers: Provider[]) {
-  return {
+export function rankedProvidersFromLegacy(providers: LegacyProvider[]): RankedProviderListItem[] {
+  return providers
+    .map((p) => ({ name: trimStr(p.name), url: trimStr(p.websiteUrl) }))
+    .filter((p) => p.name && p.url);
+}
+
+/**
+ * ItemList JSON-LD for `/best/[slug]` ranked providers.
+ * Uses position, name, and url only — no Review or third-party aggregateRating.
+ */
+export function buildProviderItemListJsonLd(listName: string, providers: RankedProviderListItem[]) {
+  const data = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: listName,
     itemListElement: providers.map((provider, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      item: localBusinessJsonLd(provider),
+      name: provider.name,
+      item: {
+        "@type": "Thing",
+        name: provider.name,
+        url: provider.url,
+      },
     })),
   };
+  validateItemListSchema(data);
+  assertNoHostedReviewSchema(data);
+  return data;
 }
