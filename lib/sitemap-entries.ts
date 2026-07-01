@@ -180,11 +180,15 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     push(entries, `/locations/${slug}`, { changeFrequency: "monthly", priority: 0.7 }, lastModified);
   }
 
+  const SUN_CITY_PRIORITY_TRADES = new Set(["plumber", "hvac", "roofer"]);
+
   for (const p of neighborhoodServicePages) {
+    const isSunCityCore =
+      p.neighborhoodSlug === "sun-city" && SUN_CITY_PRIORITY_TRADES.has(p.serviceSlug);
     push(
       entries,
       `/neighborhoods/${p.neighborhoodSlug}/${p.serviceSlug}`,
-      { changeFrequency: "monthly", priority: 0.6 },
+      { changeFrequency: "monthly", priority: isSunCityCore ? 0.75 : 0.6 },
       lastModified,
     );
   }

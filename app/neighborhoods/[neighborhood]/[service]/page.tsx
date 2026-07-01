@@ -8,12 +8,19 @@ import { ButtonLink } from "@/components/Button";
 import FAQList from "@/components/FAQList";
 import FAQSchema from "@/components/FAQSchema";
 import JsonLd from "@/components/JsonLd";
+import ProviderCardSection from "@/components/ProviderCardSection";
 import PageShell from "@/components/templates/PageShell";
 import {
   getNeighborhoodServicePage,
   getNeighborhoodServiceStaticParams,
 } from "@/data/neighborhoods";
+import { getNeighborhoodTradeContext } from "@/data/neighborhood-trade-context";
+import { getCostGuidePage } from "@/data/cost-guides";
 import { pageSeoMetadata, absolutePageUrl } from "@/lib/page-seo";
+import { buildNeighborhoodGuideFaqs } from "@/lib/georgetown-page-faqs";
+import { getNeighborhoodTradeProviders } from "@/lib/neighborhood-providers";
+import { neighborhoodTradeH1 } from "@/lib/neighborhood-trade-display";
+import { buildProviderItemListJsonLd } from "@/lib/provider-item-list-schema";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_ISO,
@@ -21,7 +28,6 @@ import {
   webPageWithDateModifiedJsonLd,
 } from "@/lib/service-best-pages-meta";
 import { hubArticleJsonLd } from "@/lib/site-author";
-import { buildNeighborhoodGuideFaqs } from "@/lib/georgetown-page-faqs";
 import { adsenseNeighborhoodPageInlineSlot } from "@/lib/adsense-config";
 
 function breadcrumbJsonLd({
@@ -86,6 +92,10 @@ export default async function NeighborhoodServicePage({
 
   const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
   const pathname = `/neighborhoods/${neighborhood}/${service}`;
+  const displayH1 = neighborhoodTradeH1(page);
+  const contextParagraphs = getNeighborhoodTradeContext(neighborhood, service, page);
+  const providers = getNeighborhoodTradeProviders(neighborhood, service, 4);
+  const costGuide = getCostGuidePage(page.costGuideHref.replace("/costs/", ""));
   const neighborhoodFaqs = buildNeighborhoodGuideFaqs(page);
 
   return (
@@ -103,19 +113,27 @@ export default async function NeighborhoodServicePage({
         <JsonLd
           data={webPageWithDateModifiedJsonLd({
             pathname,
-            name: page.h1,
+            name: displayH1,
             description: page.metaDescription,
           })}
         />
         <JsonLd
           data={hubArticleJsonLd({
             pathname,
-            headline: page.h1,
+            headline: displayH1,
             description: page.metaDescription,
             datePublished: SERVICE_BEST_LAST_UPDATED_ISO,
             dateModified: SERVICE_BEST_LAST_UPDATED_ISO,
           })}
         />
+        {providers.length > 0 ? (
+          <JsonLd
+            data={buildProviderItemListJsonLd(
+              `${page.serviceName} serving ${page.neighborhoodName}, Georgetown TX`,
+              providers,
+            )}
+          />
+        ) : null}
         <FAQSchema
           pageUrl={absolutePageUrl(pathname)}
           name={`${page.serviceName} in ${page.neighborhoodName}, Georgetown TX — FAQ`}
@@ -134,11 +152,17 @@ export default async function NeighborhoodServicePage({
         <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">
           {page.serviceCategory} • {page.neighborhoodName}
         </div>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{page.h1}</h1>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{displayH1}</h1>
         <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
         <AuthorByline className="mt-3" compact />
 
         <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">{page.intro}</p>
+
+        {contextParagraphs.map((paragraph) => (
+          <p key={paragraph.slice(0, 48)} className="mt-4 max-w-3xl text-base leading-relaxed text-gray-700">
+            {paragraph}
+          </p>
+        ))}
 
         <section className="mt-10">
           <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
@@ -162,6 +186,40 @@ export default async function NeighborhoodServicePage({
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-gray-700">{page.whyLocal}</p>
         </section>
 
+        <section className="mt-12 scroll-mt-24" aria-labelledby="neighborhood-providers-heading">
+          <h2 id="neighborhood-providers-heading" className="text-2xl font-semibold tracking-tight text-gray-900">
+            Top {page.serviceName.toLowerCase()} serving {page.neighborhoodName}
+          </h2>
+          <p className="mt-3 max-w-3xl text-base leading-relaxed text-gray-700">
+            Shortlist from our Georgetown directory—prioritizing companies that mention {page.neighborhoodName} or
+            nearby service areas, sorted by public review volume. Confirm licensing and availability before you hire.
+          </p>
+          <ProviderCardSection providers={providers} />
+          <div className="mt-6">
+            <ButtonLink href={page.bestOfHref}>
+              See full {page.serviceName.toLowerCase()} directory →
+            </ButtonLink>
+          </div>
+        </section>
+
+        {costGuide ? (
+          <div className="mt-10 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
+            <h2 className="text-lg font-semibold text-gray-900">Georgetown {page.serviceCategory} cost guide</h2>
+            <p className="mt-2 text-sm leading-relaxed text-gray-700">
+              Planning numbers for {page.neighborhoodName} homeowners—not a quote. Typical range:{" "}
+              <span className="font-semibold text-gray-900">
+                ${costGuide.summaryRange.low.toLocaleString()}–${costGuide.summaryRange.high.toLocaleString()}
+              </span>.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <ButtonLink href={page.costGuideHref}>Open cost guide →</ButtonLink>
+              <ButtonLink href={page.bestOfHref} variant="secondary">
+                Compare top {page.serviceName.toLowerCase()}
+              </ButtonLink>
+            </div>
+          </div>
+        ) : null}
+
         <section className="mt-12 max-w-3xl">
           <p className="text-sm leading-relaxed text-gray-700">
             Practical questions we hear from neighbors comparing {page.serviceCategory} work in Georgetown—not a substitute
@@ -174,19 +232,6 @@ export default async function NeighborhoodServicePage({
             className="!mt-4"
           />
         </section>
-
-        <div className="mt-10 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-          <h2 className="text-lg font-semibold text-gray-900">Compare top-rated pros</h2>
-          <p className="mt-2 text-sm leading-relaxed text-gray-700">
-            Shortlist companies with public reviews, clear contact paths, and Georgetown-area service—then request
-            written scopes you can compare line-by-line.
-          </p>
-          <div className="mt-5">
-            <ButtonLink href={page.bestOfHref}>
-              Compare Top {page.serviceName} in Georgetown TX →
-            </ButtonLink>
-          </div>
-        </div>
 
         <section className="mt-10">
           <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Related pages</h2>

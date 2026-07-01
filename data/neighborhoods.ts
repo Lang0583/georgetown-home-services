@@ -18,38 +18,59 @@ export type NeighborhoodServicePage = {
   internalLinks: { label: string; href: string }[];
   bestOfHref: string;
   serviceHref: string;
+  costGuideHref: string;
 };
 
 /** Alias for consumers that prefer the shorter type name. */
 export type NeighborhoodPage = NeighborhoodServicePage;
 
 const SVC = {
-  plumber: { serviceHref: "/services/plumber-georgetown-tx", best: "/best/best-plumbers-georgetown-tx", cat: "plumbing" },
-  hvac: { serviceHref: "/services/hvac-georgetown-tx", best: "/best/top-hvac-companies-georgetown-tx", cat: "hvac" },
-  roofer: { serviceHref: "/services/roofer-georgetown-tx", best: "/best/best-roofers-georgetown-tx", cat: "roofing" },
+  plumber: {
+    serviceHref: "/services/plumber-georgetown-tx",
+    best: "/best/best-plumbers-georgetown-tx",
+    cost: "/costs/plumber-cost-georgetown-tx",
+    cat: "plumbing",
+  },
+  hvac: {
+    serviceHref: "/services/hvac-georgetown-tx",
+    best: "/best/top-hvac-companies-georgetown-tx",
+    cost: "/costs/hvac-repair-cost-georgetown-tx",
+    cat: "hvac",
+  },
+  roofer: {
+    serviceHref: "/services/roofer-georgetown-tx",
+    best: "/best/best-roofers-georgetown-tx",
+    cost: "/costs/roof-repair-cost-georgetown-tx",
+    cat: "roofing",
+  },
   electrician: {
     serviceHref: "/services/electrician-georgetown-tx",
     best: "/best/best-electricians-georgetown-tx",
+    cost: "/costs/electrician-cost-georgetown-tx",
     cat: "electrical",
   },
   landscaping: {
     serviceHref: "/services/landscaping-georgetown-tx",
     best: "/best/best-landscaping-companies-georgetown-tx",
+    cost: "/costs/landscaping-cost-georgetown-tx",
     cat: "landscaping",
   },
   "pest-control": {
     serviceHref: "/services/pest-control-georgetown-tx",
     best: "/best/best-pest-control-georgetown-tx",
+    cost: "/costs/pest-control-cost-georgetown-tx",
     cat: "pest control",
   },
   "foundation-repair": {
     serviceHref: "/services/foundation-repair-georgetown-tx",
     best: "/best/best-foundation-repair-georgetown-tx",
+    cost: "/costs/foundation-repair-cost-georgetown-tx",
     cat: "foundation",
   },
   "house-cleaning": {
     serviceHref: "/services/house-cleaning-georgetown-tx",
     best: "/best/best-house-cleaning-services-georgetown-tx",
+    cost: "/costs/house-cleaning-cost-georgetown-tx",
     cat: "cleaning",
   },
 } as const;
@@ -62,8 +83,14 @@ function linksFor(
   return [
     { label: "Service guide (Georgetown, TX)", href: s.serviceHref },
     { label: "Best-of directory & provider list", href: s.best },
+    { label: "Georgetown cost guide", href: s.cost },
     ...extras,
   ];
+}
+
+function svcFields(key: keyof typeof SVC) {
+  const s = SVC[key];
+  return { bestOfHref: s.best, serviceHref: s.serviceHref, costGuideHref: s.cost };
 }
 
 export const neighborhoodServicePages: NeighborhoodServicePage[] = [
@@ -92,8 +119,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "HVAC service guide (shared wall/crawl moisture clues)", href: SVC.hvac.serviceHref },
       { label: "Best roofers (ceiling stains often start as plumbing, not shingles)", href: SVC.roofer.best },
     ]),
-    bestOfHref: SVC.plumber.best,
-    serviceHref: SVC.plumber.serviceHref,
+    ...svcFields("plumber"),
   },
   {
     neighborhoodSlug: "sun-city",
@@ -119,8 +145,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Plumbing guide (condensate and pan leaks vs supply leaks)", href: SVC.plumber.serviceHref },
       { label: "Electrical guide (breaker trips that look like HVAC failures)", href: SVC.electrician.serviceHref },
     ]),
-    bestOfHref: SVC.hvac.best,
-    serviceHref: SVC.hvac.serviceHref,
+    ...svcFields("hvac"),
   },
   {
     neighborhoodSlug: "sun-city",
@@ -146,8 +171,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Pest control (soffit gaps that let squirrels ahead of the next rain)", href: SVC["pest-control"].serviceHref },
       { label: "Landscaping (limbs brushing low slopes and granule loss)", href: SVC.landscaping.serviceHref },
     ]),
-    bestOfHref: SVC.roofer.best,
-    serviceHref: SVC.roofer.serviceHref,
+    ...svcFields("roofer"),
   },
   {
     neighborhoodSlug: "sun-city",
@@ -173,8 +197,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "HVAC service guide (locked rotors vs true electrical faults)", href: SVC.hvac.serviceHref },
       { label: "Foundation repair (wall cracks near meter feeds and conduit)", href: SVC["foundation-repair"].serviceHref },
     ]),
-    bestOfHref: SVC.electrician.best,
-    serviceHref: SVC.electrician.serviceHref,
+    ...svcFields("electrician"),
   },
   {
     neighborhoodSlug: "sun-city",
@@ -200,8 +223,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Pest control (fire ant berms attacking drip lines)", href: SVC["pest-control"].best },
       { label: "House cleaning (pollen films on porches after April events)", href: SVC["house-cleaning"].serviceHref },
     ]),
-    bestOfHref: SVC.landscaping.best,
-    serviceHref: SVC.landscaping.serviceHref,
+    ...svcFields("landscaping"),
   },
   {
     neighborhoodSlug: "sun-city",
@@ -227,8 +249,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Landscaping (mulch volcanoes and stem girdling invite pest bridges)", href: SVC.landscaping.serviceHref },
       { label: "Foundation repair (termite shelter tubes on older stem walls)", href: SVC["foundation-repair"].best },
     ]),
-    bestOfHref: SVC["pest-control"].best,
-    serviceHref: SVC["pest-control"].serviceHref,
+    ...svcFields("pest-control"),
   },
   {
     neighborhoodSlug: "sun-city",
@@ -254,8 +275,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Plumbing (under-slab leak vs soil movement—test before piers)", href: SVC.plumber.best },
       { label: "Landscaping (negative grade and French drain misroutes)", href: SVC.landscaping.best },
     ]),
-    bestOfHref: SVC["foundation-repair"].best,
-    serviceHref: SVC["foundation-repair"].serviceHref,
+    ...svcFields("foundation-repair"),
   },
   {
     neighborhoodSlug: "sun-city",
@@ -281,8 +301,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "HVAC (returns packed with pollen—coordinate filter swaps)", href: SVC.hvac.best },
       { label: "Pest control (cleaning out pantry spills before ant scouts return)", href: SVC["pest-control"].serviceHref },
     ]),
-    bestOfHref: SVC["house-cleaning"].best,
-    serviceHref: SVC["house-cleaning"].serviceHref,
+    ...svcFields("house-cleaning"),
   },
 
   // —— Wolf Ranch ——
@@ -310,8 +329,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "HVAC (condensate in tray pans masquerading as supply leaks)", href: SVC.hvac.serviceHref },
       { label: "Foundation repair (slab heave after negative final grade near rear lots)", href: SVC["foundation-repair"].serviceHref },
     ]),
-    bestOfHref: SVC.plumber.best,
-    serviceHref: SVC.plumber.serviceHref,
+    ...svcFields("plumber"),
   },
   {
     neighborhoodSlug: "wolf-ranch",
@@ -337,8 +355,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Electrical (weak 240V lug torque shows as intermittent outdoor unit cutout)", href: SVC.electrician.serviceHref },
       { label: "Plumbing (primary condensate vs pan overflow—rule out drain kill)", href: SVC.plumber.best },
     ]),
-    bestOfHref: SVC.hvac.best,
-    serviceHref: SVC.hvac.serviceHref,
+    ...svcFields("hvac"),
   },
   {
     neighborhoodSlug: "wolf-ranch",
@@ -364,8 +381,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Landscaping (limb abrasion on low rear pitches after greenbelt freeze breaks)", href: SVC.landscaping.best },
       { label: "Pest control (soffit rot entry after wind-driven rain lifts fiber vents)", href: SVC["pest-control"].serviceHref },
     ]),
-    bestOfHref: SVC.roofer.best,
-    serviceHref: SVC.roofer.serviceHref,
+    ...svcFields("roofer"),
   },
   {
     neighborhoodSlug: "wolf-ranch",
@@ -391,8 +407,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "HVAC (heat kit amperage and surge LRA on marginal services)", href: SVC.hvac.best },
       { label: "Foundation repair (conduit shears at stem walls from minor differential)", href: SVC["foundation-repair"].serviceHref },
     ]),
-    bestOfHref: SVC.electrician.best,
-    serviceHref: SVC.electrician.serviceHref,
+    ...svcFields("electrician"),
   },
   {
     neighborhoodSlug: "wolf-ranch",
@@ -418,8 +433,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Pest control (fire ants in new sand under fresh sod)", href: SVC["pest-control"].best },
       { label: "House cleaning (limestone dust on black trim from unstabilized alley kicks)", href: SVC["house-cleaning"].best },
     ]),
-    bestOfHref: SVC.landscaping.best,
-    serviceHref: SVC.landscaping.serviceHref,
+    ...svcFields("landscaping"),
   },
   {
     neighborhoodSlug: "wolf-ranch",
@@ -445,8 +459,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Landscaping (rock piles against weeps)", href: SVC.landscaping.serviceHref },
       { label: "Roofing (loose soffit panels after builder nail pops)", href: SVC.roofer.serviceHref },
     ]),
-    bestOfHref: SVC["pest-control"].best,
-    serviceHref: SVC["pest-control"].serviceHref,
+    ...svcFields("pest-control"),
   },
   {
     neighborhoodSlug: "wolf-ranch",
@@ -472,8 +485,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Plumbing (hydrostatic vs soil—rule leaks before piers)", href: SVC.plumber.serviceHref },
       { label: "Landscaping (regrade plans that steal slope from city ROW)", href: SVC.landscaping.best },
     ]),
-    bestOfHref: SVC["foundation-repair"].best,
-    serviceHref: SVC["foundation-repair"].serviceHref,
+    ...svcFields("foundation-repair"),
   },
   {
     neighborhoodSlug: "wolf-ranch",
@@ -499,8 +511,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "HVAC (register dust blow-down before guests)", href: SVC.hvac.serviceHref },
       { label: "Pest control (pantry moth deep clean before perimeter spray)", href: SVC["pest-control"].best },
     ]),
-    bestOfHref: SVC["house-cleaning"].best,
-    serviceHref: SVC["house-cleaning"].serviceHref,
+    ...svcFields("house-cleaning"),
   },
 
   // —— Teravista ——
@@ -528,8 +539,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "HVAC (attic unit condensate tied into suspect branch drains)", href: SVC.hvac.serviceHref },
       { label: "House cleaning (descale fixtures before blaming cartridge failures)", href: SVC["house-cleaning"].serviceHref },
     ]),
-    bestOfHref: SVC.plumber.best,
-    serviceHref: SVC.plumber.serviceHref,
+    ...svcFields("plumber"),
   },
   {
     neighborhoodSlug: "teravista",
@@ -555,8 +565,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Electrical (weak outdoor disconnect lugs under continuous load)", href: SVC.electrician.best },
       { label: "Roofing (attic intake leaks that look like coil freeze-ups)", href: SVC.roofer.serviceHref },
     ]),
-    bestOfHref: SVC.hvac.best,
-    serviceHref: SVC.hvac.serviceHref,
+    ...svcFields("hvac"),
   },
   {
     neighborhoodSlug: "teravista",
@@ -582,8 +591,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Landscaping (limb strikes and granule trails on north slopes)", href: SVC.landscaping.serviceHref },
       { label: "Pest control (soffit gaps after fascia softening)", href: SVC["pest-control"].serviceHref },
     ]),
-    bestOfHref: SVC.roofer.best,
-    serviceHref: SVC.roofer.serviceHref,
+    ...svcFields("roofer"),
   },
   {
     neighborhoodSlug: "teravista",
@@ -609,8 +617,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "HVAC (LRA documentation before service upgrades)", href: SVC.hvac.serviceHref },
       { label: "Foundation repair (stem-wall conduit shears near older stoops)", href: SVC["foundation-repair"].best },
     ]),
-    bestOfHref: SVC.electrician.best,
-    serviceHref: SVC.electrician.serviceHref,
+    ...svcFields("electrician"),
   },
   {
     neighborhoodSlug: "teravista",
@@ -636,8 +643,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Pest control (ant highways along hardscape joints)", href: SVC["pest-control"].serviceHref },
       { label: "Roofing (valley splash from mis-aimed heads)", href: SVC.roofer.best },
     ]),
-    bestOfHref: SVC.landscaping.best,
-    serviceHref: SVC.landscaping.serviceHref,
+    ...svcFields("landscaping"),
   },
   {
     neighborhoodSlug: "teravista",
@@ -663,8 +669,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Landscaping (eliminate bridge mulch)", href: SVC.landscaping.best },
       { label: "House cleaning (food debris on outdoor kitchens attracting dusk flies)", href: SVC["house-cleaning"].serviceHref },
     ]),
-    bestOfHref: SVC["pest-control"].best,
-    serviceHref: SVC["pest-control"].serviceHref,
+    ...svcFields("pest-control"),
   },
   {
     neighborhoodSlug: "teravista",
@@ -690,8 +695,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Plumbing (under-slab leak surveillance before lifting)", href: SVC.plumber.serviceHref },
       { label: "Landscaping (swale reversals after neighbor berms)", href: SVC.landscaping.serviceHref },
     ]),
-    bestOfHref: SVC["foundation-repair"].best,
-    serviceHref: SVC["foundation-repair"].serviceHref,
+    ...svcFields("foundation-repair"),
   },
   {
     neighborhoodSlug: "teravista",
@@ -717,8 +721,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "HVAC (filter cadence before host weeks)", href: SVC.hvac.best },
       { label: "Pest control (deep pantry pulls before perimeter season)", href: SVC["pest-control"].best },
     ]),
-    bestOfHref: SVC["house-cleaning"].best,
-    serviceHref: SVC["house-cleaning"].serviceHref,
+    ...svcFields("house-cleaning"),
   },
 
   // —— Berry Creek ——
@@ -746,8 +749,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Landscaping (root barrier coordination)", href: SVC.landscaping.serviceHref },
       { label: "Foundation repair (slab heave vs drain failure)", href: SVC["foundation-repair"].serviceHref },
     ]),
-    bestOfHref: SVC.plumber.best,
-    serviceHref: SVC.plumber.serviceHref,
+    ...svcFields("plumber"),
   },
   {
     neighborhoodSlug: "berry-creek",
@@ -773,8 +775,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Electrical (service dips under start amps)", href: SVC.electrician.serviceHref },
       { label: "House cleaning (return grille dust after renovation sanding)", href: SVC["house-cleaning"].serviceHref },
     ]),
-    bestOfHref: SVC.hvac.best,
-    serviceHref: SVC.hvac.serviceHref,
+    ...svcFields("hvac"),
   },
   {
     neighborhoodSlug: "berry-creek",
@@ -800,8 +801,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Landscaping (limb reduction plans that protect warranty)", href: SVC.landscaping.best },
       { label: "Pest control (entry via softened rake boards)", href: SVC["pest-control"].serviceHref },
     ]),
-    bestOfHref: SVC.roofer.best,
-    serviceHref: SVC.roofer.serviceHref,
+    ...svcFields("roofer"),
   },
   {
     neighborhoodSlug: "berry-creek",
@@ -827,8 +827,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "HVAC (compressor LRA vs marginal service)", href: SVC.hvac.serviceHref },
       { label: "Foundation repair (conduit strain at settling stoops)", href: SVC["foundation-repair"].serviceHref },
     ]),
-    bestOfHref: SVC.electrician.best,
-    serviceHref: SVC.electrician.serviceHref,
+    ...svcFields("electrician"),
   },
   {
     neighborhoodSlug: "berry-creek",
@@ -854,8 +853,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Pest control (fire ants after fresh sand imports)", href: SVC["pest-control"].best },
       { label: "Foundation repair (negative grade reveals)", href: SVC["foundation-repair"].best },
     ]),
-    bestOfHref: SVC.landscaping.best,
-    serviceHref: SVC.landscaping.serviceHref,
+    ...svcFields("landscaping"),
   },
   {
     neighborhoodSlug: "berry-creek",
@@ -881,8 +879,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Roofing (exclusion after flashing repair)", href: SVC.roofer.serviceHref },
       { label: "Landscaping (remove bridge mulch first)", href: SVC.landscaping.serviceHref },
     ]),
-    bestOfHref: SVC["pest-control"].best,
-    serviceHref: SVC["pest-control"].serviceHref,
+    ...svcFields("pest-control"),
   },
   {
     neighborhoodSlug: "berry-creek",
@@ -908,8 +905,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Plumbing (hydrostatic vs geotech—dual test)", href: SVC.plumber.best },
       { label: "Landscaping (regrade + root barrier sequences)", href: SVC.landscaping.best },
     ]),
-    bestOfHref: SVC["foundation-repair"].best,
-    serviceHref: SVC["foundation-repair"].serviceHref,
+    ...svcFields("foundation-repair"),
   },
   {
     neighborhoodSlug: "berry-creek",
@@ -935,8 +931,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Allergen season HVAC filter upgrade pairing", href: SVC.hvac.serviceHref },
       { label: "Pest control (clean pet bowls before ant programs)", href: SVC["pest-control"].serviceHref },
     ]),
-    bestOfHref: SVC["house-cleaning"].best,
-    serviceHref: SVC["house-cleaning"].serviceHref,
+    ...svcFields("house-cleaning"),
   },
 
   // —— Georgetown Village ——
@@ -964,8 +959,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "HVAC (shared wet wall investigations)", href: SVC.hvac.serviceHref },
       { label: "House cleaning (post-event deep kitchen resets)", href: SVC["house-cleaning"].serviceHref },
     ]),
-    bestOfHref: SVC.plumber.best,
-    serviceHref: SVC.plumber.serviceHref,
+    ...svcFields("plumber"),
   },
   {
     neighborhoodSlug: "georgetown-village",
@@ -991,8 +985,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Electrical (service limits on stacked townhome legs)", href: SVC.electrician.serviceHref },
       { label: "Foundation repair (vibration transmission on older duplex slabs)", href: SVC["foundation-repair"].serviceHref },
     ]),
-    bestOfHref: SVC.hvac.best,
-    serviceHref: SVC.hvac.serviceHref,
+    ...svcFields("hvac"),
   },
   {
     neighborhoodSlug: "georgetown-village",
@@ -1018,8 +1011,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Electrical (mast guy-wire roof penetrations on older services)", href: SVC.electrician.best },
       { label: "Landscaping (limb management without ARC drama)", href: SVC.landscaping.serviceHref },
     ]),
-    bestOfHref: SVC.roofer.best,
-    serviceHref: SVC.roofer.serviceHref,
+    ...svcFields("roofer"),
   },
   {
     neighborhoodSlug: "georgetown-village",
@@ -1045,8 +1037,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "HVAC (heat kit permits tied to load calc filings)", href: SVC.hvac.best },
       { label: "House cleaning (post-install dust control expectations)", href: SVC["house-cleaning"].serviceHref },
     ]),
-    bestOfHref: SVC.electrician.best,
-    serviceHref: SVC.electrician.serviceHref,
+    ...svcFields("electrician"),
   },
   {
     neighborhoodSlug: "georgetown-village",
@@ -1072,8 +1063,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Pest control (outdoor dining spill vectors)", href: SVC["pest-control"].serviceHref },
       { label: "Foundation repair (stoop settlement near walkable ROW)", href: SVC["foundation-repair"].serviceHref },
     ]),
-    bestOfHref: SVC.landscaping.best,
-    serviceHref: SVC.landscaping.serviceHref,
+    ...svcFields("landscaping"),
   },
   {
     neighborhoodSlug: "georgetown-village",
@@ -1099,8 +1089,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Landscaping (hardscape joint sealing)", href: SVC.landscaping.best },
       { label: "House cleaning (commercial-food foot traffic residue on stoops)", href: SVC["house-cleaning"].best },
     ]),
-    bestOfHref: SVC["pest-control"].best,
-    serviceHref: SVC["pest-control"].serviceHref,
+    ...svcFields("pest-control"),
   },
   {
     neighborhoodSlug: "georgetown-village",
@@ -1126,8 +1115,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "Plumbing (under-slab testing near shared laterals)", href: SVC.plumber.serviceHref },
       { label: "Landscaping (ROW-positive grade restoration)", href: SVC.landscaping.serviceHref },
     ]),
-    bestOfHref: SVC["foundation-repair"].best,
-    serviceHref: SVC["foundation-repair"].serviceHref,
+    ...svcFields("foundation-repair"),
   },
   {
     neighborhoodSlug: "georgetown-village",
@@ -1153,8 +1141,7 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
       { label: "HVAC (event-week filter swaps)", href: SVC.hvac.serviceHref },
       { label: "Pest control (stoop food debris before ant swarms)", href: SVC["pest-control"].best },
     ]),
-    bestOfHref: SVC["house-cleaning"].best,
-    serviceHref: SVC["house-cleaning"].serviceHref,
+    ...svcFields("house-cleaning"),
   },
 ];
 
@@ -1162,10 +1149,18 @@ export const neighborhoodServicePages: NeighborhoodServicePage[] = [
 export const neighborhoodPages = neighborhoodServicePages;
 
 export function getNeighborhoodServiceStaticParams(): { neighborhood: string; service: string }[] {
-  return neighborhoodServicePages.map((p) => ({
+  const all = neighborhoodServicePages.map((p) => ({
     neighborhood: p.neighborhoodSlug,
     service: p.serviceSlug,
   }));
+  const priorityKeys = new Set([
+    "sun-city:plumber",
+    "sun-city:hvac",
+    "sun-city:roofer",
+  ]);
+  const priority = all.filter((p) => priorityKeys.has(`${p.neighborhood}:${p.service}`));
+  const rest = all.filter((p) => !priorityKeys.has(`${p.neighborhood}:${p.service}`));
+  return [...priority, ...rest];
 }
 
 export function getNeighborhoodServicePage(
