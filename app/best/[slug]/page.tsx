@@ -21,15 +21,11 @@ import {
   getServices,
 } from "../../../lib/site-content";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
-import {
-  SERVICE_BEST_LAST_UPDATED_DISPLAY,
-  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
-  webPageWithDateModifiedJsonLd,
-} from "../../../lib/service-best-pages-meta";
+import { webPageWithDateModifiedJsonLd } from "../../../lib/last-updated";
+import LastUpdated from "../../../components/LastUpdated";
 import { CORE_BEST_SLUGS, resolveBestPage } from "../../../lib/pageContentRegistry";
 import { getProvidersForBestSlug } from "../../../lib/providers";
 import {
-  BUSINESS_LISTINGS_LAST_UPDATED,
   getBusinessCategoryForBestSlug,
   getBusinessesByCategory,
   getRelatedServiceSlugForBestSlug,
@@ -332,6 +328,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
               pathname: `/best/${best.slug}`,
               name: best.title,
               description: best.description,
+              lastUpdated: best.lastUpdated,
             })}
           />
           {bestOfPageFaqs.length ? (
@@ -361,7 +358,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
               />
               <div className="text-sm font-semibold uppercase tracking-wide text-primary">Best Of</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{best.h1}</h1>
-              <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+              <LastUpdated lastUpdated={best.lastUpdated} />
               {hero ? (
                 <div className="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
                   <Image
@@ -387,9 +384,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                     We continuously update our rankings based on customer reviews, service availability, and verified
                     local presence in Georgetown and surrounding areas.
                   </p>
-                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
-                    <span className="font-semibold text-gray-900">Last updated:</span> {BUSINESS_LISTINGS_LAST_UPDATED} using publicly available provider data.
-                  </p>
                   <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-700">
                     We update this list regularly based on verified reviews and service availability in Georgetown.
                   </p>
@@ -406,9 +400,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                     replacements and maintenance plans sized for Central Texas weather.
                   </p>
                   <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
-                    <span className="font-semibold text-gray-900">Last updated:</span> {BUSINESS_LISTINGS_LAST_UPDATED} using publicly available provider data.
-                  </p>
-                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-700">
                     We update this page regularly based on verified reviews and service availability in Georgetown.
                   </p>
                 </>
@@ -430,9 +421,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                     leak repairs, wind/hail damage, and replacement planning.
                   </p>
                   <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
-                    <span className="font-semibold text-gray-900">Last updated:</span> {BUSINESS_LISTINGS_LAST_UPDATED} using publicly available provider data.
-                  </p>
-                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-700">
                     We update this page regularly based on verified reviews and service availability in Georgetown.
                   </p>
                 </>
@@ -1290,8 +1278,8 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         directly with any company before hiring.
                       </p>
                       <p className="mt-2 text-sm text-gray-600">
-                        Editorial guide last updated {BUSINESS_LISTINGS_LAST_UPDATED}. Provider cards below are
-                        verified separately ({directoryProviders.length.toLocaleString()} listings in this category).
+                        Provider cards below are verified separately (
+                        {directoryProviders.length.toLocaleString()} listings in this category).
                       </p>
                       {best.featuredPartner ? <FeaturedPartnerCard partner={best.featuredPartner} /> : <FeaturedListingReservedSlot />}
                       <div className="mt-3 space-y-1 text-sm text-gray-700">

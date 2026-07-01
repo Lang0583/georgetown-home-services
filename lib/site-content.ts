@@ -24,6 +24,8 @@ export type LocationPage = {
   faqs?: Faq[];
   serviceSlugs: string[];
   bestSlugs: string[];
+  /** ISO 8601 calendar date (YYYY-MM-DD). */
+  lastUpdated: string;
 };
 
 export type ServicePage = {
@@ -43,6 +45,8 @@ export type ServicePage = {
   type?: "service";
   /** Optional inline HTML; otherwise merged from `lib/generatedPages.json` by slug. */
   html?: string;
+  /** ISO 8601 calendar date (YYYY-MM-DD). */
+  lastUpdated: string;
 };
 
 export type BestPage = {
@@ -54,6 +58,8 @@ export type BestPage = {
   type?: "best";
   content: ContentBlock[];
   recommendedServiceSlugs: string[];
+  /** ISO 8601 calendar date (YYYY-MM-DD). */
+  lastUpdated: string;
   /**
    * Optional sponsored placement shown as "Featured Partner" on the best-of page.
    * Admin-friendly: edit in `data/site-content.json` and always include a disclosure label.

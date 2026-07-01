@@ -19,11 +19,11 @@ import { pageSeoMetadata, absolutePageUrl } from "@/lib/page-seo";
 import { buildProviderLocalBusinessJsonLd } from "@/lib/provider-item-list-schema";
 import { getProviderWebsiteUrl } from "@/lib/provider-website";
 import { breadcrumbSchemaForProvider } from "@/lib/schema";
+import LastUpdated from "@/components/LastUpdated";
 import {
-  SERVICE_BEST_LAST_UPDATED_DISPLAY,
-  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
+  DIRECTORY_PAGES_LAST_UPDATED,
   webPageWithDateModifiedJsonLd,
-} from "@/lib/service-best-pages-meta";
+} from "@/lib/last-updated";
 import { getBestBySlug } from "@/lib/site-content";
 
 export const dynamicParams = false;
@@ -58,6 +58,7 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
 
   const bestSlug = getBestSlugForCategory(provider.category);
   const bestPage = getBestBySlug(bestSlug);
+  const lastUpdated = bestPage?.lastUpdated ?? DIRECTORY_PAGES_LAST_UPDATED;
   const bestTitle = bestPage?.title ?? `Best ${PROVIDER_CATEGORY_LABELS[provider.category]} in Georgetown, TX`;
   const categoryLabel = PROVIDER_CATEGORY_LABELS[provider.category];
   const pathname = `/providers/${slug}`;
@@ -81,6 +82,7 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
             pathname,
             name: h1,
             description: provider.description,
+            lastUpdated,
           })}
         />
         <JsonLd data={buildProviderLocalBusinessJsonLd(provider, pageUrl)} />
@@ -95,9 +97,7 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
             ]}
           />
 
-          <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>
-            Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}
-          </p>
+          <LastUpdated lastUpdated={lastUpdated} />
 
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">{h1}</h1>
 

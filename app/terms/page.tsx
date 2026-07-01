@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "../../components/JsonLd";
+import LastUpdated from "../../components/LastUpdated";
 import TrustPage from "../../components/templates/TrustPage";
 import { pageSeoMetadata } from "../../lib/page-seo";
+import { getStaticPageLastUpdated } from "../../lib/static-pages-last-updated";
 import { webPageTrustJsonLd } from "../../lib/trust-pages-schema";
 
 export const metadata: Metadata = pageSeoMetadata({
@@ -104,13 +106,16 @@ export default function TermsPage() {
           We may update these terms; the “Last updated” date below will change. Continued use after updates constitutes
           acceptance unless applicable law requires otherwise.
         </p>
-        <p className="mt-3 text-sm text-gray-600">
-          Last updated: May 2026 · Questions? See{" "}
-          <Link href="/contact" className="font-medium text-primary underline-offset-4 hover:underline">
-            Contact
-          </Link>
-          .
-        </p>
+        <div className="mt-3 text-sm text-gray-600">
+          <LastUpdated lastUpdated={getStaticPageLastUpdated("/terms")} />
+          <p className="mt-1">
+            Questions? See{" "}
+            <Link href="/contact" className="font-medium text-primary underline-offset-4 hover:underline">
+              Contact
+            </Link>
+            .
+          </p>
+        </div>
       </section>
     </TrustPage>
   );

@@ -1,4 +1,5 @@
 import type { Faq } from "@/lib/site-content";
+import { DIRECTORY_PAGES_LAST_UPDATED } from "@/lib/last-updated";
 
 export type NeighborhoodHailPage = {
   neighborhoodSlug: string;
@@ -10,6 +11,8 @@ export type NeighborhoodHailPage = {
   /** Article body: paragraphs, headings, lists—includes `/roofing` CTA. */
   bodyHtml: string;
   faqs: Faq[];
+  /** ISO 8601 calendar date (YYYY-MM-DD). */
+  lastUpdated: string;
 };
 
 export const NEIGHBORHOOD_HAIL_PAGES: NeighborhoodHailPage[] = [
@@ -46,6 +49,7 @@ export const NEIGHBORHOOD_HAIL_PAGES: NeighborhoodHailPage[] = [
         a: "Often yes for legitimate storm-related functional damage, subject to your deductible and policy form; carriers typically want dated photos, corroborating soft-metal dents, and sometimes adjuster alignment—denials more often involve maintenance or timing disputes than hail being excluded outright.",
       },
     ],
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "teravista",
@@ -80,6 +84,7 @@ export const NEIGHBORHOOD_HAIL_PAGES: NeighborhoodHailPage[] = [
         a: "If adjusters document functional damage tied to a covered storm, payment is common subject to deductible and policy terms; cosmetic-only marred impacts may be excluded on some forms, which is why photo correlation with soft-metal hits matters.",
       },
     ],
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "wolf-ranch",
@@ -114,6 +119,7 @@ export const NEIGHBORHOOD_HAIL_PAGES: NeighborhoodHailPage[] = [
         a: "When functional damage is verified, many Williamson County homeowners receive coverage toward replacement or repair minus deductible; newer roofs can still be totaled if bruising is widespread—cosmetic-only arguments are where claims vary most.",
       },
     ],
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
   {
     neighborhoodSlug: "georgetown-village",
@@ -148,6 +154,7 @@ export const NEIGHBORHOOD_HAIL_PAGES: NeighborhoodHailPage[] = [
         a: "Functional storm damage is typically covered subject to deductible and policy type; older roofs may see depreciation applied unless endorsed otherwise, so request a written scope that separates cosmetic wear from new storm hits.",
       },
     ],
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   },
 ];
 

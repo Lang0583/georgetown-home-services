@@ -1,3 +1,5 @@
+import { DIRECTORY_PAGES_LAST_UPDATED } from '../lib/last-updated';
+
 /**
  * Sub-service landing pages under `/[service]/[slug]` (e.g. `/plumbing/drain-cleaning`).
  * Content updates belong here—page components read from this file only.
@@ -40,6 +42,8 @@ export type SubServicePage = {
   pricing: SubServicePricing;
   faqs: SubServiceFaq[];
   neighborhoodLinks: SubServiceNeighborhoodLink[];
+  /** ISO 8601 calendar date (YYYY-MM-DD). */
+  lastUpdated: string;
 };
 
 export const SUB_SERVICE_SLUGS = {
@@ -183,7 +187,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Plumbing in Teravista",
         "href": "/neighborhoods/teravista/plumber"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "plumbing",
@@ -240,7 +245,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Plumbing in Teravista",
         "href": "/neighborhoods/teravista/plumber"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "plumbing",
@@ -297,7 +303,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Plumbing in Teravista",
         "href": "/neighborhoods/teravista/plumber"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "plumbing",
@@ -354,7 +361,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Plumbing in Teravista",
         "href": "/neighborhoods/teravista/plumber"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "plumbing",
@@ -411,7 +419,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Plumbing in Teravista",
         "href": "/neighborhoods/teravista/plumber"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "plumbing",
@@ -468,7 +477,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Plumbing in Teravista",
         "href": "/neighborhoods/teravista/plumber"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "plumbing",
@@ -525,7 +535,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Plumbing in Teravista",
         "href": "/neighborhoods/teravista/plumber"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "plumbing",
@@ -582,7 +593,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Plumbing in Teravista",
         "href": "/neighborhoods/teravista/plumber"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "hvac",
@@ -639,7 +651,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "HVAC in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/hvac"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "hvac",
@@ -696,7 +709,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "HVAC in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/hvac"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "hvac",
@@ -753,7 +767,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "HVAC in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/hvac"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "hvac",
@@ -810,7 +825,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "HVAC in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/hvac"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "hvac",
@@ -867,7 +883,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "HVAC in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/hvac"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "hvac",
@@ -924,7 +941,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "HVAC in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/hvac"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "hvac",
@@ -981,7 +999,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "HVAC in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/hvac"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "hvac",
@@ -1038,7 +1057,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "HVAC in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/hvac"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "roofing",
@@ -1095,7 +1115,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Roofing in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/roofer"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "roofing",
@@ -1152,7 +1173,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Roofing in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/roofer"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "roofing",
@@ -1209,7 +1231,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Roofing in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/roofer"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "roofing",
@@ -1266,7 +1289,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Roofing in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/roofer"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "roofing",
@@ -1323,7 +1347,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Roofing in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/roofer"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "roofing",
@@ -1380,7 +1405,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Roofing in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/roofer"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "roofing",
@@ -1437,7 +1463,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Roofing in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/roofer"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "roofing",
@@ -1494,7 +1521,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Roofing in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/roofer"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "electrical",
@@ -1551,7 +1579,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Electrical in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/electrician"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "electrical",
@@ -1608,7 +1637,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Electrical in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/electrician"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "electrical",
@@ -1665,7 +1695,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Electrical in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/electrician"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "electrical",
@@ -1722,7 +1753,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Electrical in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/electrician"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "electrical",
@@ -1779,7 +1811,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Electrical in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/electrician"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "electrical",
@@ -1836,7 +1869,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Electrical in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/electrician"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "electrical",
@@ -1893,7 +1927,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Electrical in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/electrician"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "electrical",
@@ -1950,7 +1985,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Electrical in Wolf Ranch",
         "href": "/neighborhoods/wolf-ranch/electrician"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "landscaping",
@@ -2007,7 +2043,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Landscaping in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/landscaping"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "landscaping",
@@ -2064,7 +2101,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Landscaping in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/landscaping"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "landscaping",
@@ -2121,7 +2159,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Landscaping in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/landscaping"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "landscaping",
@@ -2178,7 +2217,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Landscaping in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/landscaping"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "landscaping",
@@ -2235,7 +2275,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Landscaping in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/landscaping"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "landscaping",
@@ -2292,7 +2333,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Landscaping in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/landscaping"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "landscaping",
@@ -2349,7 +2391,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Landscaping in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/landscaping"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "landscaping",
@@ -2406,7 +2449,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Landscaping in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/landscaping"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "pest-control",
@@ -2463,7 +2507,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Pest Control in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/pest-control"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "pest-control",
@@ -2520,7 +2565,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Pest Control in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/pest-control"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "pest-control",
@@ -2577,7 +2623,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Pest Control in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/pest-control"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "pest-control",
@@ -2634,7 +2681,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Pest Control in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/pest-control"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "pest-control",
@@ -2691,7 +2739,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Pest Control in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/pest-control"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "pest-control",
@@ -2748,7 +2797,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Pest Control in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/pest-control"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "pest-control",
@@ -2805,7 +2855,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Pest Control in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/pest-control"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "pest-control",
@@ -2862,7 +2913,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Pest Control in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/pest-control"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "foundation",
@@ -2919,7 +2971,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Foundation in Teravista",
         "href": "/neighborhoods/teravista/foundation-repair"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "foundation",
@@ -2976,7 +3029,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Foundation in Teravista",
         "href": "/neighborhoods/teravista/foundation-repair"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "foundation",
@@ -3033,7 +3087,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Foundation in Teravista",
         "href": "/neighborhoods/teravista/foundation-repair"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "foundation",
@@ -3090,7 +3145,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Foundation in Teravista",
         "href": "/neighborhoods/teravista/foundation-repair"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "foundation",
@@ -3147,7 +3203,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Foundation in Teravista",
         "href": "/neighborhoods/teravista/foundation-repair"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "foundation",
@@ -3204,7 +3261,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Foundation in Teravista",
         "href": "/neighborhoods/teravista/foundation-repair"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "foundation",
@@ -3261,7 +3319,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Foundation in Teravista",
         "href": "/neighborhoods/teravista/foundation-repair"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "foundation",
@@ -3318,7 +3377,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Foundation in Teravista",
         "href": "/neighborhoods/teravista/foundation-repair"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "cleaning",
@@ -3375,7 +3435,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Cleaning in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/house-cleaning"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "cleaning",
@@ -3432,7 +3493,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Cleaning in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/house-cleaning"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "cleaning",
@@ -3489,7 +3551,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Cleaning in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/house-cleaning"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "cleaning",
@@ -3546,7 +3609,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Cleaning in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/house-cleaning"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "cleaning",
@@ -3603,7 +3667,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Cleaning in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/house-cleaning"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "cleaning",
@@ -3660,7 +3725,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Cleaning in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/house-cleaning"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "cleaning",
@@ -3717,7 +3783,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Cleaning in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/house-cleaning"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   },
   {
     "serviceSlug": "cleaning",
@@ -3774,7 +3841,8 @@ export const subServicePages: SubServicePage[] = [
         "label": "Cleaning in Georgetown Village",
         "href": "/neighborhoods/georgetown-village/house-cleaning"
       }
-    ]
+    ],
+    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
   }
 ];
 

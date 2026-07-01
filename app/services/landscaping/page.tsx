@@ -5,11 +5,9 @@ import LinkCard from "../../../components/LinkCard";
 import JsonLd from "../../../components/JsonLd";
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
-import {
-  SERVICE_BEST_LAST_UPDATED_DISPLAY,
-  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
-  webPageWithDateModifiedJsonLd,
-} from "../../../lib/service-best-pages-meta";
+import LastUpdated from "../../../components/LastUpdated";
+import { webPageWithDateModifiedJsonLd } from "../../../lib/last-updated";
+import { getStaticPageLastUpdated } from "../../../lib/static-pages-last-updated";
 import { getBlog, getServices } from "../../../lib/site-content";
 
 const hubSeo = buildTradeHubSeo({ label: "Landscaping", pricingKey: "landscaping" });
@@ -47,6 +45,7 @@ function faqJsonLd() {
 }
 
 export default function LandscapingHubPage() {
+  const lastUpdated = getStaticPageLastUpdated("/services/landscaping");
   const services = getServices();
   const blog = getBlog();
 
@@ -67,6 +66,7 @@ export default function LandscapingHubPage() {
               name: "Landscaping & Lawn Care in Georgetown, TX",
               description:
                 "Landscaping and lawn care guidance for Georgetown: maintenance, irrigation, seasonal timing, and a directory of local companies to compare.",
+              lastUpdated,
             })}
           />
           <div className="flex flex-col gap-10">
@@ -75,7 +75,7 @@ export default function LandscapingHubPage() {
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
                 Landscaping &amp; Lawn Care in Georgetown, TX
               </h1>
-              <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+              <LastUpdated lastUpdated={lastUpdated} />
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
                 Plan maintenance, irrigation, and curb appeal with Central Texas seasons in mind. These pages help you define scope, compare visit
                 frequency, and shortlist reputable crews serving Georgetown.

@@ -4,12 +4,10 @@ import Container from "../../components/Container";
 import LinkCard from "../../components/LinkCard";
 import CTASection from "../../components/CTASection";
 import JsonLd from "../../components/JsonLd";
+import LastUpdated from "../../components/LastUpdated";
 import { pageSeoMetadata } from "../../lib/page-seo";
-import {
-  SERVICE_BEST_LAST_UPDATED_DISPLAY,
-  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
-  webPageWithDateModifiedJsonLd,
-} from "../../lib/service-best-pages-meta";
+import { webPageWithDateModifiedJsonLd } from "../../lib/last-updated";
+import { getStaticPageLastUpdated } from "../../lib/static-pages-last-updated";
 import { CORE_SERVICE_SLUGS } from "../../lib/pageContentRegistry";
 import {
   isExtendedServiceSlug,
@@ -67,6 +65,7 @@ function faqJsonLd() {
 }
 
 export default function ServicesIndexPage() {
+  const lastUpdated = getStaticPageLastUpdated("/services");
   const allServices = getServices();
   // Hide service rows whose pages 308 to a hub or render with noindex — both
   // would funnel link equity into URLs that crawlers either redirect or skip.
@@ -144,6 +143,7 @@ export default function ServicesIndexPage() {
               name: "Home Services in Georgetown, TX",
               description:
                 "Browse Georgetown service guides for electrical, landscaping, pest control, foundation repair, house cleaning, plumbing, HVAC, and roofing—including common problems and neighborhood-specific pages.",
+              lastUpdated,
             })}
           />
           <div className="flex flex-col gap-10">
@@ -152,7 +152,7 @@ export default function ServicesIndexPage() {
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
                 Home Services in Georgetown, TX
               </h1>
-              <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+              <LastUpdated lastUpdated={lastUpdated} />
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
                 Start with a core service category, then narrow down to problem-based pages (like “AC not cooling” or “roof leak repair”) or
                 neighborhood-specific guides. Each page links to related comparisons and articles so you can go from research to a confident next step.

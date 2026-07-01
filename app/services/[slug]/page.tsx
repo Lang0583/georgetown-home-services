@@ -24,13 +24,9 @@ import {
 } from "../../../lib/site-content";
 import { adsenseServicePageTopSlot, adsenseSidebarSlot } from "../../../lib/adsense-config";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
-import {
-  SERVICE_BEST_LAST_UPDATED_DISPLAY,
-  SERVICE_BEST_LAST_UPDATED_ISO,
-  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
-  webPageWithDateModifiedJsonLd,
-} from "../../../lib/service-best-pages-meta";
+import { webPageWithDateModifiedJsonLd } from "../../../lib/last-updated";
 import AuthorByline from "../../../components/AuthorByline";
+import LastUpdated from "../../../components/LastUpdated";
 import { hubArticleJsonLd } from "../../../lib/site-author";
 import { CORE_SERVICE_SLUGS, resolveServicePage } from "../../../lib/pageContentRegistry";
 import {
@@ -166,6 +162,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               pathname: `/services/${service.slug}`,
               name: service.title,
               description: service.description,
+              lastUpdated: service.lastUpdated,
             })}
           />
           <JsonLd
@@ -173,8 +170,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               pathname: `/services/${service.slug}`,
               headline: service.h1 ?? service.title,
               description: service.description,
-              datePublished: SERVICE_BEST_LAST_UPDATED_ISO,
-              dateModified: SERVICE_BEST_LAST_UPDATED_ISO,
+              datePublished: service.lastUpdated,
+              dateModified: service.lastUpdated,
             })}
           />
           <FAQSchema
@@ -201,7 +198,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   <AdSenseDisplay slotId={adsenseServicePageTopSlot} className="mx-auto max-w-2xl" />
                 </div>
               ) : null}
-              <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+              <LastUpdated lastUpdated={service.lastUpdated} />
               <AuthorByline className="mt-3" compact />
 
               {isPlumberService ? (

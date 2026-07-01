@@ -9,6 +9,7 @@ import FAQList from "@/components/FAQList";
 import FAQSchema from "@/components/FAQSchema";
 import JsonLd from "@/components/JsonLd";
 import ProviderCardSection from "@/components/ProviderCardSection";
+import LastUpdated from "@/components/LastUpdated";
 import PageShell from "@/components/templates/PageShell";
 import {
   getNeighborhoodServicePage,
@@ -21,12 +22,7 @@ import { buildNeighborhoodGuideFaqs } from "@/lib/georgetown-page-faqs";
 import { getNeighborhoodTradeProviders } from "@/lib/neighborhood-providers";
 import { neighborhoodTradeH1 } from "@/lib/neighborhood-trade-display";
 import { buildProviderItemListJsonLd } from "@/lib/provider-item-list-schema";
-import {
-  SERVICE_BEST_LAST_UPDATED_DISPLAY,
-  SERVICE_BEST_LAST_UPDATED_ISO,
-  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
-  webPageWithDateModifiedJsonLd,
-} from "@/lib/service-best-pages-meta";
+import { webPageWithDateModifiedJsonLd } from "@/lib/last-updated";
 import { hubArticleJsonLd } from "@/lib/site-author";
 import { adsenseNeighborhoodPageInlineSlot } from "@/lib/adsense-config";
 
@@ -115,6 +111,7 @@ export default async function NeighborhoodServicePage({
             pathname,
             name: displayH1,
             description: page.metaDescription,
+            lastUpdated: page.lastUpdated,
           })}
         />
         <JsonLd
@@ -122,8 +119,8 @@ export default async function NeighborhoodServicePage({
             pathname,
             headline: displayH1,
             description: page.metaDescription,
-            datePublished: SERVICE_BEST_LAST_UPDATED_ISO,
-            dateModified: SERVICE_BEST_LAST_UPDATED_ISO,
+            datePublished: page.lastUpdated,
+            dateModified: page.lastUpdated,
           })}
         />
         {providers.length > 0 ? (
@@ -153,7 +150,7 @@ export default async function NeighborhoodServicePage({
           {page.serviceCategory} • {page.neighborhoodName}
         </div>
         <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{displayH1}</h1>
-        <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+        <LastUpdated lastUpdated={page.lastUpdated} />
         <AuthorByline className="mt-3" compact />
 
         <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">{page.intro}</p>

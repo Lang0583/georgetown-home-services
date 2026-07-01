@@ -8,6 +8,7 @@ import { ButtonLink } from "@/components/Button";
 import FAQList from "@/components/FAQList";
 import FAQSchema from "@/components/FAQSchema";
 import JsonLd from "@/components/JsonLd";
+import LastUpdated from "@/components/LastUpdated";
 import NeighborhoodHomeServicesAngiRow from "@/components/NeighborhoodHomeServicesAngiRow";
 import PageShell from "@/components/templates/PageShell";
 import PricingEstimatorInteractive from "@/components/PricingEstimatorInteractive";
@@ -18,12 +19,7 @@ import {
 import { buildNeighborhoodHomeServicesHubFaqs } from "@/lib/georgetown-page-faqs";
 import { adsenseNeighborhoodPageInlineSlot } from "@/lib/adsense-config";
 import { absolutePageUrl, pageSeoMetadata } from "@/lib/page-seo";
-import {
-  SERVICE_BEST_LAST_UPDATED_DISPLAY,
-  SERVICE_BEST_LAST_UPDATED_ISO,
-  SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
-  webPageWithDateModifiedJsonLd,
-} from "@/lib/service-best-pages-meta";
+import { webPageWithDateModifiedJsonLd } from "@/lib/last-updated";
 import { hubArticleJsonLd } from "@/lib/site-author";
 
 const CORE_TRADES = [
@@ -125,6 +121,7 @@ export default async function NeighborhoodHomeServicesHubPage({
             pathname,
             name: hub.h1,
             description: hub.metaDescription,
+            lastUpdated: hub.lastUpdated,
           })}
         />
         <JsonLd
@@ -132,8 +129,8 @@ export default async function NeighborhoodHomeServicesHubPage({
             pathname,
             headline: hub.h1,
             description: hub.metaDescription,
-            datePublished: SERVICE_BEST_LAST_UPDATED_ISO,
-            dateModified: SERVICE_BEST_LAST_UPDATED_ISO,
+            datePublished: hub.lastUpdated,
+            dateModified: hub.lastUpdated,
           })}
         />
         <FAQSchema
@@ -154,7 +151,7 @@ export default async function NeighborhoodHomeServicesHubPage({
           Georgetown TX • {hub.neighborhoodName}
         </p>
         <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{hub.h1}</h1>
-        <p className={SERVICE_BEST_LAST_UPDATED_LINE_CLASS}>Last updated: {SERVICE_BEST_LAST_UPDATED_DISPLAY}</p>
+        <LastUpdated lastUpdated={hub.lastUpdated} />
         <AuthorByline className="mt-3" compact />
 
         <div
