@@ -1,11 +1,12 @@
-/** Publisher ID for `adsbygoogle.js` and `data-ad-client` (format `ca-pub-…`). */
-export const ADSENSE_PUBLISHER_ID =
-  process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID?.trim() ||
-  process.env.NEXT_PUBLIC_ADSENSE_CLIENT?.trim() ||
-  "ca-pub-2692091044925789";
+/** @deprecated Import from `lib/adConfig` for page placements; kept for existing imports. */
+export {
+  ADSENSE_PUBLISHER_ID,
+  blogPostAdSlot as adsenseBlogPostSlot,
+  bestOfAdSlot as adsenseBestOfSlot,
+} from "./adConfig";
 
 /** @deprecated Use `ADSENSE_PUBLISHER_ID` — alias for existing imports. */
-export const ADSENSE_CLIENT_ID = ADSENSE_PUBLISHER_ID;
+export { ADSENSE_PUBLISHER_ID as ADSENSE_CLIENT_ID } from "./adConfig";
 
 /**
  * Create display ad units in AdSense, then set either a shared slot or separate slots.
@@ -21,14 +22,6 @@ export const adsenseSidebarSlot =
   process.env.NEXT_PUBLIC_ADSENSE_SLOT?.trim() ||
   "";
 
-/** Display unit "GHS - Blog Post" (`/blog/[slug]` sidebar). Override via `NEXT_PUBLIC_ADSENSE_SLOT_BLOG_POST`. */
-export const adsenseBlogPostSlot =
-  process.env.NEXT_PUBLIC_ADSENSE_SLOT_BLOG_POST?.trim() || "3059695606";
-
-/** Display unit "GHS - Best Of Page" (`/best/[slug]`). Override via `NEXT_PUBLIC_ADSENSE_SLOT_BEST_OF`. */
-export const adsenseBestOfSlot =
-  process.env.NEXT_PUBLIC_ADSENSE_SLOT_BEST_OF?.trim() || "7971086444";
-
 /** Display unit "GHS - Service Page" (`/services/[slug]`). Override via `NEXT_PUBLIC_ADSENSE_SLOT_SERVICE`. */
 export const adsenseServiceMainSlot =
   process.env.NEXT_PUBLIC_ADSENSE_SLOT_SERVICE?.trim() || "9450125974";
@@ -37,7 +30,7 @@ export const adsenseServiceMainSlot =
 export const adsenseServicePageTopSlot =
   process.env.NEXT_PUBLIC_ADSENSE_SLOT_SERVICE_PAGE_TOP?.trim() || "5422703282";
 
-/** @deprecated Mid-post placement removed; blog display unit is sidebar-only (`adsenseBlogPostSlot`). */
+/** @deprecated Mid-post placement removed; blog display unit is inline after first section (`adsenseBlogPostSlot`). */
 export const adsenseBlogMidPostSlot =
   process.env.NEXT_PUBLIC_ADSENSE_SLOT_BLOG_MID_POST?.trim() || "";
 

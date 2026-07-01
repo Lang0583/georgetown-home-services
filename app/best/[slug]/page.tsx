@@ -44,13 +44,13 @@ import {
   showExtendedHomeServices,
 } from "../../../lib/public-site-scope";
 import BestProvidersMethodologyCallout from "../../../components/BestProvidersMethodologyCallout";
-import AdSenseDisplay from "../../../components/AdSenseDisplay";
+import AdUnit from "../../../components/AdUnit";
 import FlagshipYouTubeEmbed from "../../../components/FlagshipYouTubeEmbed";
 import BestOfRooferEditorialDepth from "../../../components/BestOfRooferEditorialDepth";
 import BestOfPlumberEditorialDepth from "../../../components/BestOfPlumberEditorialDepth";
 import BestOfHvacEditorialDepth from "../../../components/BestOfHvacEditorialDepth";
 import BestOfExtendedTradeEditorialDepth from "../../../components/BestOfExtendedTradeEditorialDepth";
-import { adsenseBestOfSlot } from "../../../lib/adsense-config";
+import { bestOfAdSlot } from "../../../lib/adConfig";
 import {
   FLAGSHIP_VIDEO_BEST_ROOFERS,
   flagshipVideoObjectJsonLd,
@@ -1347,9 +1347,9 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         </p>
                       ) : null}
 
-                      {adsenseBestOfSlot ? (
-                        <div className="mt-10 max-w-4xl">
-                          <AdSenseDisplay slotId={adsenseBestOfSlot} />
+                      {bestOfAdSlot ? (
+                        <div className="mt-10 max-w-4xl" role="complementary" aria-label="Advertisement">
+                          <AdUnit slotId={bestOfAdSlot} />
                         </div>
                       ) : null}
 
@@ -1386,9 +1386,9 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                           </Link>
                         </p>
                       ) : null}
-                      {adsenseBestOfSlot ? (
-                        <div className="mt-10 max-w-4xl">
-                          <AdSenseDisplay slotId={adsenseBestOfSlot} />
+                      {bestOfAdSlot ? (
+                        <div className="mt-10 max-w-4xl" role="complementary" aria-label="Advertisement">
+                          <AdUnit slotId={bestOfAdSlot} />
                         </div>
                       ) : null}
 

@@ -9,7 +9,7 @@ import EmailCaptureSitewide from "../components/EmailCaptureSitewide";
 import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
 import HomeFaqPageHeadJsonLd from "../components/HomeFaqPageHeadJsonLd";
-import { ADSENSE_PUBLISHER_ID } from "../lib/adsense-config";
+import { ADSENSE_PUBLISHER_ID } from "../lib/adConfig";
 import { getImpactPublisherTagInnerHtml } from "../lib/impact-publisher-tag";
 import { organizationSchema, websiteSchema } from "../lib/schema";
 
@@ -90,12 +90,6 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        {/* Google AdSense Auto Ads — same snippet as Adsense “Sites → Get code” (async in <head>, every page). */}
-        <script
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
-          crossOrigin="anonymous"
-        />
         {mediavineGrowSiteId ? (
           <Script
             id="mediavine-grow"
@@ -113,6 +107,13 @@ export default function RootLayout({
         <main className="flex-1 pt-20">{children}</main>
         <EmailCaptureSitewide />
         <SiteFooter />
+        <Script
+          id="google-adsense"
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
+          crossOrigin="anonymous"
+          strategy="lazyOnload"
+        />
       </body>
       {/* GA4 (gtag.js) via @next/third-parties/google — same as manual <GoogleAnalytics /> / gtag snippet. */}
       <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />

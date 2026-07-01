@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { ADSENSE_PUBLISHER_ID } from "../lib/adsense-config";
+import { ADSENSE_PUBLISHER_ID } from "../lib/adConfig";
 
 declare global {
   interface Window {
