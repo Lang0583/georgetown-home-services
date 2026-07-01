@@ -4,6 +4,19 @@ function trimStr(s: string | undefined) {
   return (s ?? "").trim();
 }
 
+/** LocalBusiness JSON-LD for a single provider profile page. */
+export function buildProviderLocalBusinessJsonLd(
+  provider: Provider,
+  pageUrl?: string,
+): Record<string, unknown> {
+  const item = localBusinessJsonLd(provider);
+  if (pageUrl) item.url = pageUrl;
+  return {
+    "@context": "https://schema.org",
+    ...item,
+  };
+}
+
 function localBusinessJsonLd(provider: Provider): Record<string, unknown> {
   const locality = trimStr(provider.city) || "Georgetown";
   const region = trimStr(provider.state) || "TX";

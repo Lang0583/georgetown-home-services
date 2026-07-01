@@ -26,6 +26,12 @@ import {
 import { TEXAS_SEASON_ORDER } from "@/lib/texas-seasons";
 import { COMPARISON_SLUGS } from "@/data/comparisons";
 import { GEORGETOWN_ZIP_CODES } from "@/data/zip-codes";
+import {
+  CATEGORY_TO_BEST_SLUG,
+  getAllProviderSlugs,
+  getProviderBySlug,
+  type ProviderCategory,
+} from "@/data/providers";
 
 function absoluteUrl(path: string): string {
   if (path === "/") return `${SITE_URL}/`;
@@ -143,6 +149,14 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     if (!showExtendedHomeServices() && isExtendedBestSlug(slug)) continue;
     if (isNoindexSlug(slug)) continue;
     push(entries, `/best/${slug}`, { changeFrequency: "monthly", priority: 0.8 }, lastModified);
+  }
+
+  for (const slug of getAllProviderSlugs()) {
+    const provider = getProviderBySlug(slug);
+    if (!provider) continue;
+    const bestSlug = CATEGORY_TO_BEST_SLUG[provider.category as ProviderCategory];
+    if (!showExtendedHomeServices() && isExtendedBestSlug(bestSlug)) continue;
+    push(entries, `/providers/${slug}`, { changeFrequency: "monthly", priority: 0.75 }, lastModified);
   }
 
   for (const p of costGuidePages) {

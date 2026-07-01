@@ -828,3 +828,52 @@ export function getDirectoryProvidersForBestSlug(slug: string): Provider[] {
   if (!category) return [];
   return getProvidersByCategory(category);
 }
+
+export const CATEGORY_TO_BEST_SLUG: Record<ProviderCategory, string> = {
+  plumbing: "best-plumbers-georgetown-tx",
+  hvac: "top-hvac-companies-georgetown-tx",
+  roofing: "best-roofers-georgetown-tx",
+  electrical: "best-electricians-georgetown-tx",
+  landscaping: "best-landscaping-companies-georgetown-tx",
+  "pest-control": "best-pest-control-georgetown-tx",
+  foundation: "best-foundation-repair-georgetown-tx",
+  cleaning: "best-house-cleaning-services-georgetown-tx",
+};
+
+export function getBestSlugForCategory(category: ProviderCategory): string {
+  return CATEGORY_TO_BEST_SLUG[category];
+}
+
+/** URL-safe slug from a provider business name (e.g. "Atech Plumbing" → "atech-plumbing"). */
+export function slugifyProviderName(name: string): string {
+  return name
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[''`]/g, "")
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+const PROVIDER_BY_SLUG = new Map<string, Provider>();
+
+for (const provider of PROVIDERS) {
+  const slug = slugifyProviderName(provider.name);
+  if (PROVIDER_BY_SLUG.has(slug)) {
+    throw new Error(`Duplicate provider slug: ${slug}`);
+  }
+  PROVIDER_BY_SLUG.set(slug, provider);
+}
+
+export function getProviderSlug(provider: Provider): string {
+  return slugifyProviderName(provider.name);
+}
+
+export function getProviderBySlug(slug: string): Provider | null {
+  return PROVIDER_BY_SLUG.get(slug) ?? null;
+}
+
+export function getAllProviderSlugs(): string[] {
+  return [...PROVIDER_BY_SLUG.keys()];
+}
