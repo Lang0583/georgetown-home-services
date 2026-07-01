@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import AdSenseDisplay from "../../../components/AdSenseDisplay";
 import BlogArticleBodyWithMidEmail from "../../../components/BlogArticleBodyWithMidEmail";
 import StormInspectionLeadForm from "../../../components/StormInspectionLeadForm";
 import LinkCard from "../../../components/LinkCard";
@@ -18,7 +17,6 @@ import {
   getLocationBySlug,
   getServices,
 } from "../../../lib/site-content";
-import { adsenseBlogPostSlot } from "../../../lib/adsense-config";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import { isNoindexSlug } from "../../../lib/public-site-scope";
 import { getGeneratedPage } from "../../../lib/generatedPages";
@@ -598,11 +596,6 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
                 </section>
               ) : null}
               </article>
-            }
-            aside={
-              <>
-                {adsenseBlogPostSlot ? <AdSenseDisplay slotId={adsenseBlogPostSlot} className="mt-8" /> : null}
-              </>
             }
           />
       </section>
