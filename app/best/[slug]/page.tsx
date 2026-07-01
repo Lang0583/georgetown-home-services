@@ -10,6 +10,7 @@ import RichText from "../../../components/RichText";
 import ProviderList from "../../../components/ProviderList";
 import ComparisonSection from "../../../components/ComparisonSection";
 import JsonLd from "../../../components/JsonLd";
+import FAQSchema from "../../../components/FAQSchema";
 import Breadcrumbs from "../../../components/Breadcrumbs";
 import PageShell from "../../../components/templates/PageShell";
 import TwoColumnPage from "../../../components/templates/TwoColumnPage";
@@ -35,7 +36,11 @@ import {
   getRelatedServiceSlugForBestSlug,
 } from "../../../lib/businesses";
 import { getAlsoCompareLinksForBestSlug } from "../../../lib/best-also-compare-links";
-import { buildProviderItemListJsonLd } from "../../../lib/provider-item-list-schema";
+import {
+  buildProviderItemListJsonLd,
+  rankedProvidersFromDirectory,
+  rankedProvidersFromLegacy,
+} from "../../../lib/provider-item-list-schema";
 import { getDirectoryProvidersForBestSlug } from "../../../data/providers";
 import { getComparisonsForBestSlug } from "../../../data/comparisons";
 import ProviderCardSection from "../../../components/ProviderCardSection";
@@ -96,18 +101,6 @@ const CORE_BEST_HERO: Record<string, { src: string; alt: string }> = {
     alt: "House cleaning team working in a Georgetown TX residence",
   },
 };
-
-function faqJsonLd(faqs: { q: string; a: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
-}
 
 function BestOfFaqSection({ faqs }: { faqs: readonly { q: string; a: string }[] }) {
   if (!faqs.length) return null;
@@ -306,6 +299,11 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
 
   /** FAQPage JSON-LD + visible FAQ (must match). Per Next.js, `next/script` `beforeInteractive` is root-layout-only; `<JsonLd />` emits the same `application/ld+json` as elsewhere. */
   const bestOfPageFaqs = getBestOfPageFaqs(best.slug);
+  const rankedProviders = directoryProviders.length
+    ? rankedProvidersFromDirectory(directoryProviders)
+    : rankedProvidersFromLegacy(providerData?.providers ?? []);
+  const providerItemListJsonLd =
+    rankedProviders.length > 0 ? buildProviderItemListJsonLd(best.title, rankedProviders) : null;
 
   const editorialMethodology = {
     title: "Methodology and editorial notes",
@@ -335,11 +333,13 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
             })}
           />
           {bestOfPageFaqs.length ? (
-            <JsonLd data={faqJsonLd(bestOfPageFaqs)} />
+            <FAQSchema
+              pageUrl={absolutePageUrl(`/best/${best.slug}`)}
+              name={`${best.title} — FAQ`}
+              faqs={bestOfPageFaqs}
+            />
           ) : null}
-          {directoryProviders.length ? (
-            <JsonLd data={buildProviderItemListJsonLd(best.title, directoryProviders)} />
-          ) : null}
+          {providerItemListJsonLd ? <JsonLd data={providerItemListJsonLd} /> : null}
           {isRoofersGeorgetown ? (
             <JsonLd
               data={flagshipVideoObjectJsonLd(

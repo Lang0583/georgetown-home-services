@@ -1,4 +1,5 @@
 import type { Faq } from "./site-content";
+import { validateFaqPageSchema } from "./structured-data-validate";
 
 /** FAQPage JSON-LD aligned with Google’s FAQ rich results guidance. */
 export function buildFaqPageJsonLd(opts: {
@@ -9,7 +10,7 @@ export function buildFaqPageJsonLd(opts: {
   faqs: Faq[];
 }): Record<string, unknown> | null {
   if (!opts.faqs.length) return null;
-  return {
+  const data = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: opts.faqs.map((f) => ({
@@ -20,4 +21,6 @@ export function buildFaqPageJsonLd(opts: {
     mainEntityOfPage: opts.pageUrl,
     name: opts.name,
   };
+  validateFaqPageSchema(data);
+  return data;
 }

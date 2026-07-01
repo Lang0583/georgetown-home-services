@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import AuthorByline from "@/components/AuthorByline";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import JsonLd from "@/components/JsonLd";
 import PageShell from "@/components/templates/PageShell";
 import { costGuidePages } from "@/data/cost-guides";
 import { pageSeoMetadata } from "@/lib/page-seo";
+import { breadcrumbSchemaForCostsIndex } from "@/lib/schema";
 import { showExtendedHomeServices } from "@/lib/public-site-scope";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
@@ -25,6 +27,7 @@ export default function CostsIndexPage() {
   return (
     <PageShell>
       <section className="py-8 md:py-12">
+        <JsonLd data={breadcrumbSchemaForCostsIndex()} />
         <Breadcrumbs
           items={[
             { href: "/", label: "Home" },

@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AdSenseDisplay from "../../components/AdSenseDisplay";
+import Breadcrumbs from "../../components/Breadcrumbs";
 import Container from "../../components/Container";
 import CTASection from "../../components/CTASection";
+import FAQList from "../../components/FAQList";
+import FAQSchema from "../../components/FAQSchema";
 import LinkCard from "../../components/LinkCard";
 import BlogMidContentEmailCard from "../../components/BlogMidContentEmailCard";
 import JsonLd from "../../components/JsonLd";
 import { adsenseInlineSlot } from "../../lib/adsense-config";
-import { pageSeoMetadata } from "../../lib/page-seo";
+import { BLOG_INDEX_FAQS } from "../../lib/index-page-faqs";
+import { pageSeoMetadata, absolutePageUrl } from "../../lib/page-seo";
+import { breadcrumbSchemaForBlogIndex } from "../../lib/schema";
 import { BLOG_EXPANSION_POSTS } from "../../data/blog-posts";
 import { getBlog } from "../../lib/site-content";
 
@@ -121,42 +126,6 @@ function categorizePosts(posts: ReturnType<typeof getBlog>) {
   return categories;
 }
 
-function faqJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Are these recommendations unbiased?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "These guides are written for Georgetown homeowners and focus on practical decision-making. Always confirm licensing, insurance, pricing, and availability directly with any provider before hiring.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Do you schedule service appointments?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "No. This site is a directory and homeowner guide. You choose who to contact and what to schedule directly with the provider.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Which topics should I read first?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "If you’re budgeting, start with the cost guides. If you’re dealing with a problem today, start with repair or emergency posts and then review the related service pages and best-of comparisons.",
-        },
-      },
-    ],
-  };
-}
-
 export default function BlogIndexPage() {
   const posts = getBlog();
   const categories = categorizePosts(posts);
@@ -169,10 +138,21 @@ export default function BlogIndexPage() {
     <div className="bg-gray-50">
       <Container>
         <section className="py-10 md:py-12">
-          <JsonLd data={faqJsonLd()} />
+          <JsonLd data={breadcrumbSchemaForBlogIndex()} />
+          <FAQSchema
+            pageUrl={absolutePageUrl("/blog")}
+            name="Georgetown home service blog — FAQ"
+            faqs={BLOG_INDEX_FAQS}
+          />
 
           <div className="flex flex-col gap-10">
             <div>
+              <Breadcrumbs
+                items={[
+                  { href: "/", label: "Home" },
+                  { href: "/blog", label: "Blog" },
+                ]}
+              />
               <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Blog</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
                 Practical Home Service Guides for Georgetown, TX
@@ -280,31 +260,7 @@ export default function BlogIndexPage() {
               );
             })}
 
-            <section className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-              <h2 className="text-xl font-semibold text-gray-900">FAQ</h2>
-              <div className="mt-3 space-y-4 text-sm leading-relaxed text-gray-700">
-                <div>
-                  <div className="font-semibold text-gray-900">Are these guides unbiased?</div>
-                  <p>
-                    These articles are written for Georgetown homeowners and focus on clear decision-making. Always confirm
-                    licensing, insurance, pricing, and availability directly with any provider before hiring.
-                  </p>
-                </div>
-                <div>
-                  <div className="font-semibold text-gray-900">Do you schedule appointments?</div>
-                  <p>
-                    No. This site is a directory and homeowner guide. You choose who to contact and what to schedule directly with the provider.
-                  </p>
-                </div>
-                <div>
-                  <div className="font-semibold text-gray-900">Where should I start?</div>
-                  <p>
-                    Budgeting: start with cost guides. Urgent problems: start with repair/emergency posts, then review the
-                    related service pages and best-of comparisons.
-                  </p>
-                </div>
-              </div>
-            </section>
+            <FAQList faqs={BLOG_INDEX_FAQS} title="FAQ" className="mt-0" />
 
             <div className="pt-2">
               <CTASection

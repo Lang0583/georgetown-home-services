@@ -1,10 +1,15 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Breadcrumbs from "../../components/Breadcrumbs";
 import Container from "../../components/Container";
+import FAQList from "../../components/FAQList";
+import FAQSchema from "../../components/FAQSchema";
 import LinkCard from "../../components/LinkCard";
 import CTASection from "../../components/CTASection";
 import JsonLd from "../../components/JsonLd";
-import { pageSeoMetadata } from "../../lib/page-seo";
+import { pageSeoMetadata, absolutePageUrl } from "../../lib/page-seo";
+import { SERVICES_INDEX_FAQS } from "../../lib/index-page-faqs";
+import { breadcrumbSchemaForServicesIndex } from "../../lib/schema";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
@@ -29,42 +34,6 @@ export const metadata: Metadata = pageSeoMetadata({
   pathname: "/services",
   ogType: "website",
 });
-
-function faqJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Is this a service company?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "This site is a local research hub. Use the service pages and best-of guides to compare providers and decide who to contact. Always confirm licensing, pricing, and availability directly with any company before hiring.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What should I do if the problem is urgent?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "If there is active water damage, no cooling in extreme heat, or a roof leak during storms, start with the relevant problem-based service page and then contact a provider from the best-of guide.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Do you cover neighborhoods like Sun City or Wolf Ranch?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "Yes. We publish neighborhood and location pages to help Georgetown homeowners find the right service category and next steps.",
-        },
-      },
-    ],
-  };
-}
 
 export default function ServicesIndexPage() {
   const allServices = getServices();
@@ -137,7 +106,12 @@ export default function ServicesIndexPage() {
     <div className="bg-gray-50">
       <Container>
         <section className="py-10 md:py-12">
-          <JsonLd data={faqJsonLd()} />
+          <JsonLd data={breadcrumbSchemaForServicesIndex()} />
+          <FAQSchema
+            pageUrl={absolutePageUrl("/services")}
+            name="Home services in Georgetown, TX — FAQ"
+            faqs={SERVICES_INDEX_FAQS}
+          />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: "/services",
@@ -148,6 +122,12 @@ export default function ServicesIndexPage() {
           />
           <div className="flex flex-col gap-10">
             <div>
+              <Breadcrumbs
+                items={[
+                  { href: "/", label: "Home" },
+                  { href: "/services", label: "Services" },
+                ]}
+              />
               <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Services</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
                 Home Services in Georgetown, TX
@@ -441,6 +421,8 @@ export default function ServicesIndexPage() {
                 </div>
               </section>
             ) : null}
+
+            <FAQList faqs={SERVICES_INDEX_FAQS} title="FAQ" className="mt-0" />
 
             <div className="pt-4">
               <CTASection

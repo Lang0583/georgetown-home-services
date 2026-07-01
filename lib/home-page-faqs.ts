@@ -1,4 +1,6 @@
 import type { Faq } from "./site-content";
+import { absolutePageUrl } from "./page-seo";
+import { buildFaqPageJsonLd } from "./faq-schema";
 
 /** Homepage FAQ copy — single source for visible FAQ section and FAQPage JSON-LD. */
 export const HOME_PAGE_FAQS: Faq[] = [
@@ -25,13 +27,9 @@ export const HOME_PAGE_FAQS: Faq[] = [
 ];
 
 export function homeFaqPageJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: HOME_PAGE_FAQS.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
+  return buildFaqPageJsonLd({
+    pageUrl: absolutePageUrl("/"),
+    name: "Georgetown Home Services — FAQ",
+    faqs: HOME_PAGE_FAQS,
+  });
 }

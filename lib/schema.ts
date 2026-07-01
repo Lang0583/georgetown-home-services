@@ -2,6 +2,11 @@ import { subServicePages } from "@/data/sub-services";
 import { CORE_SERVICE_SLUGS } from "@/lib/pageContentRegistry";
 import { absolutePageUrl, SITE_URL } from "@/lib/page-seo";
 import { getContact } from "@/lib/site-content";
+import {
+  validateBreadcrumbSchema,
+  validateOrganizationSchema,
+  validateWebsiteSchema,
+} from "@/lib/structured-data-validate";
 
 export type BreadcrumbItem = { name: string; url: string };
 
@@ -20,7 +25,7 @@ const GEORGETOWN_ZIPS = ["78626", "78628", "78633", "78634"] as const;
 
 /** BreadcrumbList JSON-LD from ordered `{ name, url }` items (urls should be absolute). */
 export function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
-  return {
+  const data = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: items.map((item, index) => ({
@@ -30,6 +35,8 @@ export function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
       item: item.url,
     })),
   };
+  validateBreadcrumbSchema(data);
+  return data;
 }
 
 function siteRoot(): string {
@@ -46,13 +53,49 @@ export function breadcrumbSchemaForService(serviceTitle: string, serviceSlug: st
   ]);
 }
 
-/** Home → Provider Directory → [category] */
+/** Home → Best Of → [category] */
 export function breadcrumbSchemaForBestOf(bestTitle: string, bestSlug: string) {
   const root = siteRoot();
   return generateBreadcrumbSchema([
     { name: "Home", url: `${root}/` },
-    { name: "Provider Directory", url: `${root}/best` },
+    { name: "Best Of", url: `${root}/best` },
     { name: bestTitle, url: `${root}/best/${bestSlug}` },
+  ]);
+}
+
+/** Home → Best Of */
+export function breadcrumbSchemaForBestIndex() {
+  const root = siteRoot();
+  return generateBreadcrumbSchema([
+    { name: "Home", url: `${root}/` },
+    { name: "Best Of", url: `${root}/best` },
+  ]);
+}
+
+/** Home → Services */
+export function breadcrumbSchemaForServicesIndex() {
+  const root = siteRoot();
+  return generateBreadcrumbSchema([
+    { name: "Home", url: `${root}/` },
+    { name: "Services", url: `${root}/services` },
+  ]);
+}
+
+/** Home → Cost Guides */
+export function breadcrumbSchemaForCostsIndex() {
+  const root = siteRoot();
+  return generateBreadcrumbSchema([
+    { name: "Home", url: `${root}/` },
+    { name: "Cost Guides", url: `${root}/costs` },
+  ]);
+}
+
+/** Home → Blog */
+export function breadcrumbSchemaForBlogIndex() {
+  const root = siteRoot();
+  return generateBreadcrumbSchema([
+    { name: "Home", url: `${root}/` },
+    { name: "Blog", url: `${root}/blog` },
   ]);
 }
 
@@ -134,7 +177,7 @@ export function organizationSchema() {
   const root = siteRoot();
   const sameAs = organizationSameAsFromEnv();
 
-  return {
+  const data = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Georgetown Home Services",
@@ -167,12 +210,14 @@ export function organizationSchema() {
     ],
     ...(sameAs.length ? { sameAs } : {}),
   };
+  validateOrganizationSchema(data);
+  return data;
 }
 
 /** Sitewide WebSite JSON-LD with SearchAction (root layout). */
 export function websiteSchema() {
   const root = siteRoot();
-  return {
+  const data = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Georgetown Home Services",
@@ -186,6 +231,8 @@ export function websiteSchema() {
       "query-input": "required name=search_term_string",
     },
   };
+  validateWebsiteSchema(data);
+  return data;
 }
 
 export function subServiceNamesForCoreService(serviceSlug: string): string[] {
