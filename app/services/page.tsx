@@ -96,7 +96,7 @@ export default function ServicesIndexPage() {
   const featuredGuides = blog.slice(0, Math.min(4, blog.length));
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-surface type-service-best">
       <Container>
         <section className="py-10 md:py-12">
           <JsonLd
@@ -110,20 +110,20 @@ export default function ServicesIndexPage() {
           />
           <div className="flex flex-col gap-10">
             <div>
-              <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Services</div>
-              <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
+              <div className="text-sm font-semibold uppercase tracking-wide text-muted">Services</div>
+              <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">
                 Home Services in Georgetown, TX
               </h1>
               <LastUpdated lastUpdated={lastUpdated} />
-              <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
+              <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
                 Start with a core service category, then narrow down to problem-based pages (like “AC not cooling” or “roof leak repair”) or
                 neighborhood-specific guides. Each page links to related comparisons and articles so you can go from research to a confident next step.
               </p>
             </div>
 
             <section>
-              <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Core service categories</h2>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+              <h2 className="text-3xl font-semibold tracking-tight text-ink">Core service categories</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                 The best starting point if you’re not sure which specific page fits your situation.
               </p>
               <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -195,8 +195,8 @@ export default function ServicesIndexPage() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Browse by Georgetown Neighborhood</h2>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+              <h2 className="text-3xl font-semibold tracking-tight text-ink">Browse by Georgetown Neighborhood</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                 Each neighborhood has different home ages, soil types, and common service needs.
               </p>
               <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -214,8 +214,8 @@ export default function ServicesIndexPage() {
 
             {problemBased.length ? (
               <section>
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Problem-based pages</h2>
-                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">Problem-based pages</h2>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                   If you’re dealing with a specific symptom, start here for a clearer diagnosis path and what to ask when you call.
                 </p>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -228,7 +228,7 @@ export default function ServicesIndexPage() {
 
             {plumbing.length ? (
               <section>
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Plumbing</h2>
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">Plumbing</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {plumbing.map((s) => (
                     <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
@@ -239,7 +239,7 @@ export default function ServicesIndexPage() {
 
             {hvac.length ? (
               <section>
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">HVAC</h2>
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">HVAC</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {hvac.map((s) => (
                     <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
@@ -250,7 +250,7 @@ export default function ServicesIndexPage() {
 
             {roofing.length ? (
               <section>
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Roofing</h2>
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">Roofing</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {roofing.map((s) => (
                     <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
@@ -261,7 +261,7 @@ export default function ServicesIndexPage() {
 
             {showExtendedHomeServices() && electrician.length ? (
               <section>
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Electrical</h2>
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">Electrical</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {electrician.map((s) => (
                     <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
@@ -272,7 +272,7 @@ export default function ServicesIndexPage() {
 
             {showExtendedHomeServices() && landscaping.length ? (
               <section>
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Landscaping &amp; lawn care</h2>
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">Landscaping &amp; lawn care</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {landscaping.map((s) => (
                     <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
@@ -283,7 +283,7 @@ export default function ServicesIndexPage() {
 
             {showExtendedHomeServices() && pest.length ? (
               <section>
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Pest control</h2>
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">Pest control</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {pest.map((s) => (
                     <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
@@ -294,7 +294,7 @@ export default function ServicesIndexPage() {
 
             {showExtendedHomeServices() && foundation.length ? (
               <section>
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Foundation repair</h2>
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">Foundation repair</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {foundation.map((s) => (
                     <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
@@ -305,7 +305,7 @@ export default function ServicesIndexPage() {
 
             {showExtendedHomeServices() && houseCleaning.length ? (
               <section>
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">House cleaning</h2>
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">House cleaning</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {houseCleaning.map((s) => (
                     <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
@@ -316,7 +316,7 @@ export default function ServicesIndexPage() {
 
             {otherServices.length ? (
               <section>
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">More service pages</h2>
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">More service pages</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {otherServices.map((s) => (
                     <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
@@ -327,8 +327,8 @@ export default function ServicesIndexPage() {
 
             {locations.length ? (
               <section>
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Neighborhood and location pages</h2>
-                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">Neighborhood and location pages</h2>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                   Browse service guides tailored to Georgetown neighborhoods and nearby areas.
                 </p>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -347,8 +347,8 @@ export default function ServicesIndexPage() {
 
             {featuredGuides.length ? (
               <section>
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Featured articles</h2>
-                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">Featured articles</h2>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                   Research-first reads to set cost expectations and avoid common mistakes.
                 </p>
                 <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
@@ -367,7 +367,7 @@ export default function ServicesIndexPage() {
                 primaryHref="/best"
                 emailFormHref="/#email-capture"
                 secondary={
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-muted">
                     Explore hubs:{" "}
                     <Link href="/best" className="font-semibold underline underline-offset-4">
                       Best Of

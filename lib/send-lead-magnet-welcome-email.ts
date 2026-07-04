@@ -66,7 +66,7 @@ export async function sendLeadMagnetWelcomeEmail(params: {
   const htmlLinks = linkLines
     .map((l) => {
       const label = l.highlighted ? `<strong>${l.title}</strong> (your pick)` : l.title;
-      return `<li><a href="${l.href}" style="color:#01696F;">${label}</a></li>`;
+      return `<li><a href="${l.href}" style="color:#1E3A5F;">${label}</a></li>`;
     })
     .join("");
 
@@ -100,8 +100,8 @@ export async function sendLeadMagnetWelcomeEmail(params: {
   <p>Thanks for joining <strong>Georgetown Home Services</strong>. ${choice}</p>
   <p><strong>Your PDF library (${attachments.length} checklists — also attached)</strong></p>
   <ul>${htmlLinks}</ul>
-  <p style="font-size: 14px; color: #6b7280;">Current season in Georgetown: <strong>${seasonGuide.label}</strong>. Download links expire after seven days; attachments are yours to keep.</p>
-  <p style="font-size: 12px; color: #9ca3af;">Georgetown Home Services · <a href="${SITE_URL}" style="color:#01696F;">${SITE_URL.replace(/^https?:\/\//, "")}</a></p>
+  <p style="font-size: 14px; color: #5A6B74;">Current season in Georgetown: <strong>${seasonGuide.label}</strong>. Download links expire after seven days; attachments are yours to keep.</p>
+  <p style="font-size: 12px; color: #5A6B74;">Georgetown Home Services · <a href="${SITE_URL}" style="color:#1E3A5F;">${SITE_URL.replace(/^https?:\/\//, "")}</a></p>
 </body>
 </html>`;
 

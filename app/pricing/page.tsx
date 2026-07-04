@@ -27,16 +27,16 @@ function CategorySection({ category }: { category: PricingCategory }) {
     <section
       id={category.key}
       aria-label={category.title}
-      className="not-prose mt-12 scroll-mt-24 rounded-xl border border-gray-200 bg-white p-6 shadow-sm"
+      className="not-prose mt-12 scroll-mt-24 rounded-xl border border-ink/10 bg-surface p-6 shadow-sm"
     >
-      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">{category.title}</h2>
+      <h2 className="text-2xl font-semibold tracking-tight text-ink">{category.title}</h2>
       <div className="mt-5">
         <ServicePricingCostTable rows={category.rows} variant="range" jobHeader="Job type" />
       </div>
-      <p className="mt-5 text-sm leading-relaxed text-gray-700">{category.localContext}</p>
-      <p className="mt-4 text-sm leading-relaxed text-gray-700">
-        <span className="font-semibold text-gray-900">Compare providers: </span>
-        <Link href={related.bestHref} className="font-medium text-primary underline-offset-4 hover:underline">
+      <p className="mt-5 text-sm leading-relaxed text-muted">{category.localContext}</p>
+      <p className="mt-4 text-sm leading-relaxed text-muted">
+        <span className="font-semibold text-ink">Compare providers: </span>
+        <Link href={related.bestHref} className="font-medium text-brand underline-offset-4 hover:underline">
           {related.bestLabel}
         </Link>
       </p>
@@ -67,14 +67,14 @@ export default function PricingPage() {
               { href: "/pricing", label: "Pricing" },
             ]}
           />
-          <div className="mt-2 text-sm font-semibold uppercase tracking-wide text-primary">
+          <div className="mt-2 text-sm font-semibold uppercase tracking-wide text-brand">
             Pricing guide
           </div>
-          <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
+          <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">
             Home Service Costs in Georgetown TX (2026)
           </h1>
 
-          <aside className="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm leading-relaxed text-amber-900">
+          <aside className="mt-6 rounded-xl border border-rating/25 bg-rating/10 p-5 text-sm leading-relaxed text-rating">
             <p>
               Prices below reflect typical ranges for Georgetown TX as of 2026. Your actual cost will vary based on
               home size, age, job complexity, materials, and provider. Always get 2-3 quotes before committing to any
@@ -82,24 +82,24 @@ export default function PricingPage() {
             </p>
           </aside>
 
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-gray-700">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
             This page lists real, planning-friendly price ranges for the home services Georgetown homeowners call most
             often—updated for {PRICING_YEAR} so you can set expectations before you dial. These are not quotes; use them
             to compare written bids line-by-line. Want to add up line items?{" "}
-            <Link href="/pricing/calculator" className="font-medium text-primary underline-offset-4 hover:underline">
+            <Link href="/pricing/calculator" className="font-medium text-brand underline-offset-4 hover:underline">
               Open the interactive estimator
             </Link>
             . Editorial ranges last reviewed {PRICING_LAST_REVIEWED_MONTH}.
           </p>
 
           <nav aria-label="Pricing categories" className="mt-8">
-            <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">Jump to a category</div>
+            <div className="text-xs font-semibold uppercase tracking-wide text-muted">Jump to a category</div>
             <ul className="mt-3 flex flex-wrap gap-2">
               {PRICING_CATEGORIES.map((c) => (
                 <li key={c.key}>
                   <Link
                     href={`#${c.key}`}
-                    className="inline-flex items-center rounded-full border border-gray-300 bg-white px-3 py-1 text-sm text-gray-800 hover:bg-gray-50"
+                    className="inline-flex items-center rounded-full border border-ink/15 bg-surface px-3 py-1 text-sm text-ink hover:bg-surface-alt"
                   >
                     {c.title.replace(/ Costs in Georgetown TX$/i, "")}
                   </Link>
@@ -112,9 +112,9 @@ export default function PricingPage() {
             <CategorySection key={c.key} category={c} />
           ))}
 
-          <section className="mt-16 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-            <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Before you hire</h2>
-            <p className="mt-3 text-sm leading-relaxed text-gray-700">
+          <section className="mt-16 rounded-xl border border-ink/10 bg-surface p-6 shadow-sm">
+            <h2 className="text-2xl font-semibold tracking-tight text-ink">Before you hire</h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted">
               Get two or three written scopes for the same work, ask what permits are included, and confirm how
               discovery during the job (extra decking, slab access, panel capacity) is priced. Your estimate—not this
               page—is the binding number for your home.
@@ -122,19 +122,19 @@ export default function PricingPage() {
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               <Link
                 href="/services"
-                className="rounded-lg border border-gray-200 p-4 hover:bg-gray-50"
+                className="rounded-lg border border-ink/10 p-4 hover:bg-surface-alt"
               >
-                <div className="text-sm font-semibold text-gray-900">Service guides</div>
-                <div className="mt-1 text-sm text-gray-600">Hiring checklists and cost drivers by trade.</div>
+                <div className="text-sm font-semibold text-ink">Service guides</div>
+                <div className="mt-1 text-sm text-muted">Hiring checklists and cost drivers by trade.</div>
               </Link>
-              <Link href="/best" className="rounded-lg border border-gray-200 p-4 hover:bg-gray-50">
-                <div className="text-sm font-semibold text-gray-900">Best-of directory</div>
-                <div className="mt-1 text-sm text-gray-600">Shortlists of reviewed Georgetown providers.</div>
+              <Link href="/best" className="rounded-lg border border-ink/10 p-4 hover:bg-surface-alt">
+                <div className="text-sm font-semibold text-ink">Best-of directory</div>
+                <div className="mt-1 text-sm text-muted">Shortlists of reviewed Georgetown providers.</div>
               </Link>
             </div>
           </section>
 
-          <p className="mt-10 text-xs leading-relaxed text-gray-500">
+          <p className="mt-10 text-xs leading-relaxed text-muted">
             Editorial disclosure: Georgetown Home Services is a directory and homeowner guide. We do not perform home
             services or dispatch contractors. Ranges are synthesized for planning in Williamson County; your written
             estimate is the only reliable figure for your project.

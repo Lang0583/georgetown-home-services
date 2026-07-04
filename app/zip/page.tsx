@@ -29,10 +29,10 @@ export default function ZipIndexPage() {
           />
 
           <header className="mt-6">
-            <h1 className="text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
+            <h1 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl">
               Georgetown TX Home Services by ZIP Code
             </h1>
-            <p className="mt-4 max-w-3xl text-base leading-relaxed text-gray-700">{ZIP_INDEX_INTRO}</p>
+            <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted">{ZIP_INDEX_INTRO}</p>
           </header>
 
           <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -48,13 +48,13 @@ export default function ZipIndexPage() {
             ))}
           </div>
 
-          <p className="mt-10 text-sm text-gray-600">
+          <p className="mt-10 text-sm text-muted">
             Also browse{" "}
-            <Link href="/service-areas" className="font-semibold text-primary hover:underline">
+            <Link href="/service-areas" className="font-semibold text-brand hover:underline">
               Georgetown service areas
             </Link>{" "}
             or the{" "}
-            <Link href="/best" className="font-semibold text-primary hover:underline">
+            <Link href="/best" className="font-semibold text-brand hover:underline">
               provider directory
             </Link>
             .

@@ -39,7 +39,7 @@ export default function HomeHailAlertBanner() {
 
   return (
     <div
-      className="w-full border-b border-amber-600/30"
+      className="w-full border-b border-rating/30"
       style={{ backgroundColor: bannerBg, color: bannerText }}
       role="region"
       aria-label="Hail storm alert"
@@ -52,7 +52,7 @@ export default function HomeHailAlertBanner() {
           <span aria-hidden>⚠️</span> Hail Storm Alert — Williamson County May 2026: Protect your home. Get a{" "}
           <Link
             href="/services/roofing"
-            className="font-bold underline decoration-amber-900/50 underline-offset-2 hover:decoration-amber-950"
+            className="font-bold underline decoration-rating/50 underline-offset-2 hover:decoration-rating"
             style={{ color: bannerText }}
           >
             free roof inspection
@@ -60,7 +60,7 @@ export default function HomeHailAlertBanner() {
           from a{" "}
           <Link
             href="/services/roofing"
-            className="font-bold underline decoration-amber-900/50 underline-offset-2 hover:decoration-amber-950"
+            className="font-bold underline decoration-rating/50 underline-offset-2 hover:decoration-rating"
             style={{ color: bannerText }}
           >
             Georgetown roofing pro
@@ -70,7 +70,7 @@ export default function HomeHailAlertBanner() {
         <button
           type="button"
           onClick={dismiss}
-          className="grid size-9 shrink-0 place-items-center rounded-md text-xl font-bold leading-none hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-950"
+          className="grid size-9 shrink-0 place-items-center rounded-md text-xl font-bold leading-none hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rating"
           style={{ color: bannerText }}
           aria-label="Dismiss hail storm alert"
         >

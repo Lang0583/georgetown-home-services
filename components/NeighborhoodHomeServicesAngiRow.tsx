@@ -9,7 +9,7 @@ import { angiGeorgetownListUrl } from "../lib/affiliates";
 export default function NeighborhoodHomeServicesAngiRow({ neighborhoodName }: { neighborhoodName: string }) {
   return (
     <div className="not-prose mt-6">
-      <p className="mb-3 text-xs leading-relaxed text-gray-600">
+      <p className="mb-3 text-xs leading-relaxed text-muted">
         Partner links below may earn us a fee if you hire through Angi—it does not change what you pay.
       </p>
       <div
@@ -19,21 +19,21 @@ export default function NeighborhoodHomeServicesAngiRow({ neighborhoodName }: { 
       <AffiliateOutboundCta
         href={angiGeorgetownListUrl("plumbing")}
         affiliateName="Angi"
-        className="inline-flex min-h-11 items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-50"
+        className="inline-flex min-h-11 items-center justify-center rounded-lg border border-ink/15 bg-surface px-4 py-2.5 text-sm font-semibold text-ink shadow-sm hover:bg-surface-alt"
       >
         Compare plumbers on Angi →
       </AffiliateOutboundCta>
       <AffiliateOutboundCta
         href={angiGeorgetownListUrl("hvac")}
         affiliateName="Angi"
-        className="inline-flex min-h-11 items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-50"
+        className="inline-flex min-h-11 items-center justify-center rounded-lg border border-ink/15 bg-surface px-4 py-2.5 text-sm font-semibold text-ink shadow-sm hover:bg-surface-alt"
       >
         Compare HVAC on Angi →
       </AffiliateOutboundCta>
       <AffiliateOutboundCta
         href={angiGeorgetownListUrl("roofing")}
         affiliateName="Angi"
-        className="inline-flex min-h-11 items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-50"
+        className="inline-flex min-h-11 items-center justify-center rounded-lg border border-ink/15 bg-surface px-4 py-2.5 text-sm font-semibold text-ink shadow-sm hover:bg-surface-alt"
       >
         Compare roofers on Angi →
       </AffiliateOutboundCta>

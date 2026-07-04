@@ -57,12 +57,12 @@ export default async function SeasonalSeasonPage({ params }: { params: Promise<{
             { href: `/seasonal/${raw}`, label: guide.label },
           ]}
         />
-        <p className="mt-4 text-sm font-semibold uppercase tracking-wide text-primary">
+        <p className="mt-4 text-sm font-semibold uppercase tracking-wide text-brand">
           {guide.monthsLabel}
           {isCurrent ? " · Current season" : null}
           {isCurrent && schedule.prepWindow ? " · Prep window" : null}
         </p>
-        <h1 className="mt-2 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{guide.headline}</h1>
+        <h1 className="mt-2 text-4xl font-bold tracking-tight text-ink md:text-5xl">{guide.headline}</h1>
         <SeasonalGuideBody guide={guide} />
 
         <div className="mt-12 max-w-xl">

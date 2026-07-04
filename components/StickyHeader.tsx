@@ -7,27 +7,27 @@ import { getBrandName } from "../lib/site-content";
 // equity drain across the entire site.
 
 const navLinkClass =
-  "inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-md px-2 text-sm font-semibold text-gray-700 underline-offset-4 transition-colors hover:bg-gray-50 hover:text-primary hover:underline hover:decoration-primary whitespace-nowrap sm:min-h-0 sm:min-w-0 sm:justify-start sm:px-0.5 sm:hover:bg-transparent";
+  "inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-md px-2 text-sm font-semibold text-muted underline-offset-4 transition-colors hover:bg-surface-alt hover:text-brand hover:underline hover:decoration-brand whitespace-nowrap sm:min-h-0 sm:min-w-0 sm:justify-start sm:px-0.5 sm:hover:bg-transparent";
 
 export default function StickyHeader() {
   const brand = getBrandName();
 
   return (
-    <header className="sticky top-0 z-50 h-20 border-b-[3px] border-primary bg-white shadow-sm">
+    <header className="sticky top-0 z-50 h-20 border-b-[3px] border-brand bg-surface shadow-sm">
       <div className="mx-auto flex h-full max-w-5xl items-center justify-between gap-6 px-4">
         <Link
           href="/"
           className={
             brand.startsWith("Georgetown")
-              ? "inline-flex shrink-0 items-baseline gap-x-1.5 text-lg font-bold text-gray-900"
-              : "shrink-0 text-lg font-bold text-gray-900"
+              ? "inline-flex shrink-0 items-baseline gap-x-1.5 text-lg font-bold text-ink"
+              : "shrink-0 text-lg font-bold text-ink"
           }
           aria-label={`${brand} home`}
         >
           {brand.startsWith("Georgetown") ? (
             <>
-              <span className="text-primary">Georgetown</span>
-              <span className="text-gray-900">{brand.slice("Georgetown".length).trimStart()}</span>
+              <span className="text-brand">Georgetown</span>
+              <span className="text-ink">{brand.slice("Georgetown".length).trimStart()}</span>
             </>
           ) : (
             brand

@@ -156,7 +156,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           : "Frequently Asked Questions";
 
   return (
-    <PageShell>
+    <PageShell variant="service">
         <section className="py-10 md:py-12">
           <JsonLd data={breadcrumbSchemaForService(service.title, service.slug)} />
           {serviceLocalBusiness ? <JsonLd data={serviceLocalBusiness} /> : null}
@@ -192,10 +192,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   { href: `/services/${service.slug}`, label: service.title },
                 ]}
               />
-              <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">
+              <div className="text-sm font-semibold uppercase tracking-wide text-muted">
                 {service.serviceType} • {location?.title ?? "Georgetown, TX"}
               </div>
-              <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{service.h1}</h1>
+              <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">{service.h1}</h1>
               {isCoreService && adsenseServicePageTopSlot ? (
                 <div className="mt-6">
                   <AdSenseDisplay slotId={adsenseServicePageTopSlot} className="mx-auto max-w-2xl" />
@@ -205,21 +205,21 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <AuthorByline className="mt-3" compact />
 
               {isPlumberService ? (
-                <p className="mt-4 text-lg leading-relaxed text-gray-700">
+                <p className="mt-4 text-lg leading-relaxed text-muted">
                   Plumbing issues in Georgetown, TX rarely happen at a convenient time. From slab leaks and aging water
                   heaters to main-line clogs and failing shutoff valves, this page is built to help Georgetown
                   homeowners understand their options, set realistic price expectations, and decide when it is time to
                   bring in a licensed plumber.
                 </p>
               ) : isHvacService ? (
-                <p className="mt-4 text-lg leading-relaxed text-gray-700">
+                <p className="mt-4 text-lg leading-relaxed text-muted">
                   In Georgetown, TX, long stretches of triple-digit heat mean your AC and heating system cannot be an
                   afterthought. This HVAC page focuses on the most common cooling and heating problems in local homes,
                   what repairs and replacements typically involve, and when to call a professional before a small issue
                   becomes a no-cool emergency.
                 </p>
               ) : isRooferService ? (
-                <p className="mt-4 text-lg leading-relaxed text-gray-700">
+                <p className="mt-4 text-lg leading-relaxed text-muted">
                   In Georgetown, TX, roofing problems tend to show up the same way: a ceiling stain after a heavy rain,
                   missing or lifted shingles after wind, granules in gutters after hail, or a slow drip that only appears
                   when storms hit at the right angle. This page is written for Georgetown homeowners who want clarity—what
@@ -227,16 +227,16 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   (flashing, vents, valleys, transitions), not just the symptom.
                 </p>
               ) : (
-                <p className="mt-4 text-lg leading-relaxed text-gray-700">{service.description}</p>
+                <p className="mt-4 text-lg leading-relaxed text-muted">{service.description}</p>
               )}
 
               {isPlumberService ? <CoreServiceGuideDecisionFramework trade="plumber" /> : null}
               {isHvacService ? <CoreServiceGuideDecisionFramework trade="hvac" /> : null}
               {isRooferService ? <CoreServiceGuideDecisionFramework trade="roofer" /> : null}
 
-              <div className="mt-6 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-                <div className="text-sm font-semibold text-gray-900">What this guide covers</div>
-                <ul className="mt-3 list-disc space-y-2.5 pl-6 text-sm leading-relaxed text-gray-700">
+              <div className="mt-6 rounded-xl border border-ink/10 bg-surface p-6 shadow-md">
+                <div className="text-sm font-semibold text-ink">What this guide covers</div>
+                <ul className="mt-3 list-disc space-y-2.5 pl-6 text-sm leading-relaxed text-muted">
                   {service.heroBullets.map((b) => (
                     <li key={b}>{b}</li>
                   ))}
@@ -249,7 +249,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     Browse all categories
                   </ButtonLink>
                 </div>
-                <p className="mt-3 text-xs leading-relaxed text-slate-600">
+                <p className="mt-3 text-xs leading-relaxed text-muted">
                   {isPlumberService
                     ? "Georgetown Home Services publishes educational guides and a provider directory. This site does not take service requests or schedule jobs."
                     : "We publish educational guides and a provider directory. We don’t take service requests or schedule jobs."}
@@ -258,53 +258,53 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
               <div className="mt-8">
                 {isPlumberService ? (
-                  <div className="space-y-10 text-gray-800">
+                  <div className="space-y-10 text-ink">
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
+                      <h2 className="text-2xl font-semibold tracking-tight text-ink">
                         Common Plumbing Problems in Georgetown Homes
                       </h2>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
+                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted">
                         <li>
-                          <span className="font-semibold text-gray-900">Slab leaks and hidden pipe damage:</span> small
+                          <span className="font-semibold text-ink">Slab leaks and hidden pipe damage:</span> small
                           hot spots on the floor, unexpected water bills, or damp carpet along interior walls.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Water heater failures:</span> lukewarm water,
+                          <span className="font-semibold text-ink">Water heater failures:</span> lukewarm water,
                           noisy tanks, or slow leaks around the base—especially on older units working hard in Texas
                           heat.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Main line and sewer clogs:</span> multiple
+                          <span className="font-semibold text-ink">Main line and sewer clogs:</span> multiple
                           fixtures backing up at once, gurgling drains, or sewage odors near cleanouts or tubs.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">High water pressure and failing shutoffs:</span>{" "}
+                          <span className="font-semibold text-ink">High water pressure and failing shutoffs:</span>{" "}
                           hammering pipes, stuck angle stops, and outdoor hose bibs that leak at the wall.
                         </li>
                       </ul>
                     </section>
 
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
+                      <h2 className="text-2xl font-semibold tracking-tight text-ink">
                         When to Call a Professional Plumber
                       </h2>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
+                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted">
                         <li>
-                          <span className="font-semibold text-gray-900">Active water damage:</span> wet ceilings,
+                          <span className="font-semibold text-ink">Active water damage:</span> wet ceilings,
                           buckling floors, or water near electrical fixtures should be addressed immediately by a
                           licensed plumber.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Sewer backups or strong odors:</span> multiple
+                          <span className="font-semibold text-ink">Sewer backups or strong odors:</span> multiple
                           drains backing up or sewage smells inside usually indicate a main-line issue, not just a
                           simple clog.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Gas lines or major piping changes:</span> any
+                          <span className="font-semibold text-ink">Gas lines or major piping changes:</span> any
                           work involving gas, slab penetrations, or large sections of pipe is not a DIY project.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Repeated “temporary” fixes:</span> if the same
+                          <span className="font-semibold text-ink">Repeated “temporary” fixes:</span> if the same
                           problem keeps returning, it is often cheaper long-term to have a professional diagnose the
                           root cause.
                         </li>
@@ -312,13 +312,13 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     </section>
 
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
+                      <h2 className="text-2xl font-semibold tracking-tight text-ink">
                         Guides for Georgetown Homeowners
                       </h2>
-                      <p className="mt-3 text-sm leading-relaxed text-gray-700">
+                      <p className="mt-3 text-sm leading-relaxed text-muted">
                         For deeper research, many Georgetown, TX homeowners start with:
                       </p>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-primary">
+                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-brand">
                         <li>
                           <Link href="/best/best-plumbers-georgetown-tx" className="font-semibold hover:underline">
                             Best Plumbers in Georgetown TX
@@ -352,10 +352,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     </section>
                   </div>
                 ) : isHvacService ? (
-                  <div className="space-y-10 text-gray-800">
+                  <div className="space-y-10 text-ink">
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">HVAC Services in Georgetown TX</h2>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                      <h2 className="text-2xl font-semibold tracking-tight text-ink">HVAC Services in Georgetown TX</h2>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                         Georgetown homes see long cooling seasons, hot afternoons that push systems under peak load, and
                         quick weather swings that expose weak airflow, drain line, and control issues. This page breaks
                         down the core HVAC services most homeowners need—what they include, when they matter, and how to
@@ -364,46 +364,46 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     </section>
 
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">AC repair in Georgetown</h2>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                      <h2 className="text-2xl font-semibold tracking-tight text-ink">AC repair in Georgetown</h2>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                         Most summer calls are some version of “it’s running but not cooling.” In Georgetown, that often
                         shows up during the hottest hours, in upstairs bedrooms, or in one wing of the house that never
                         seems to catch up. A useful repair visit starts with diagnosis (what failed and why), then
                         options (repair now vs monitor vs plan replacement if the system is at end of life).
                       </p>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
+                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted">
                         <li>
-                          <span className="font-semibold text-gray-900">No-cool / warm air:</span> electrical components
+                          <span className="font-semibold text-ink">No-cool / warm air:</span> electrical components
                           failing under load, control issues, or performance problems that require confirmation.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Weak airflow:</span> filters, returns, duct
+                          <span className="font-semibold text-ink">Weak airflow:</span> filters, returns, duct
                           restrictions, or blower-related issues—often mistaken for “needs refrigerant.”
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Condensate and drain line issues:</span> backed up
+                          <span className="font-semibold text-ink">Condensate and drain line issues:</span> backed up
                           drains that trip safety switches or cause water near the indoor unit.
                         </li>
                       </ul>
                     </section>
 
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">AC replacement in Georgetown</h2>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                      <h2 className="text-2xl font-semibold tracking-tight text-ink">AC replacement in Georgetown</h2>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                         Replacement is worth discussing when repairs are frequent, comfort is inconsistent, or a major
                         repair is a large fraction of the cost of a new system. In Georgetown, homeowners also replace
                         to solve comfort problems (hot rooms, humidity, noisy run cycles) that are partly equipment and
                         partly airflow.
                       </p>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                         When comparing bids, ask for written equipment model numbers, efficiency ratings, warranty terms,
                         and whether any ductwork or electrical corrections are included.
                       </p>
                     </section>
 
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Heating service in Georgetown</h2>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                      <h2 className="text-2xl font-semibold tracking-tight text-ink">Heating service in Georgetown</h2>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                         Georgetown’s heating season is shorter, but cold snaps still make “no heat” urgent. Heating
                         service typically includes troubleshooting failed starts, short cycling, thermostat/control
                         issues, and verifying safe operation. If the heater hasn’t run in a while, the first cold front
@@ -412,8 +412,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     </section>
 
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Maintenance (tune-ups)</h2>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                      <h2 className="text-2xl font-semibold tracking-tight text-ink">Maintenance (tune-ups)</h2>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                         Maintenance is most valuable before peak summer. A useful tune-up is not a checkbox—it should
                         reduce breakdown risk by checking airflow basics, cleaning where appropriate, and confirming the
                         condensate drain is clear. If your home has persistent hot rooms (common in two-story layouts),
@@ -422,58 +422,58 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     </section>
 
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
+                      <h2 className="text-2xl font-semibold tracking-tight text-ink">
                         Typical HVAC Costs in Georgetown TX
                       </h2>
                       <div className="mt-4 overflow-x-auto">
                         <table className="min-w-full text-left text-sm">
                           <thead>
-                            <tr className="border-b border-gray-200 text-xs font-semibold uppercase tracking-wide text-gray-600">
+                            <tr className="border-b border-ink/10 text-xs font-semibold uppercase tracking-wide text-muted">
                               <th className="py-2 pr-4">Service</th>
                               <th className="py-2">Typical Georgetown Range</th>
                             </tr>
                           </thead>
-                          <tbody className="text-gray-800">
-                            <tr className="border-b border-gray-100">
+                          <tbody className="text-ink">
+                            <tr className="border-b border-ink/10">
                               <td className="py-3 pr-4 align-top font-medium">Service call / diagnostic</td>
-                              <td className="py-3 align-top tabular-nums text-gray-900">$75–$150</td>
+                              <td className="py-3 align-top tabular-nums text-ink">$75–$150</td>
                             </tr>
-                            <tr className="border-b border-gray-100">
+                            <tr className="border-b border-ink/10">
                               <td className="py-3 pr-4 align-top font-medium">Refrigerant recharge (R-410A)</td>
-                              <td className="py-3 align-top tabular-nums text-gray-900">$200–$500</td>
+                              <td className="py-3 align-top tabular-nums text-ink">$200–$500</td>
                             </tr>
-                            <tr className="border-b border-gray-100">
+                            <tr className="border-b border-ink/10">
                               <td className="py-3 pr-4 align-top font-medium">Capacitor replacement</td>
-                              <td className="py-3 align-top tabular-nums text-gray-900">$150–$350</td>
+                              <td className="py-3 align-top tabular-nums text-ink">$150–$350</td>
                             </tr>
-                            <tr className="border-b border-gray-100">
+                            <tr className="border-b border-ink/10">
                               <td className="py-3 pr-4 align-top font-medium">Contactor replacement</td>
-                              <td className="py-3 align-top tabular-nums text-gray-900">$150–$300</td>
+                              <td className="py-3 align-top tabular-nums text-ink">$150–$300</td>
                             </tr>
-                            <tr className="border-b border-gray-100">
+                            <tr className="border-b border-ink/10">
                               <td className="py-3 pr-4 align-top font-medium">Condensate drain clear</td>
-                              <td className="py-3 align-top tabular-nums text-gray-900">$75–$200</td>
+                              <td className="py-3 align-top tabular-nums text-ink">$75–$200</td>
                             </tr>
-                            <tr className="border-b border-gray-100">
+                            <tr className="border-b border-ink/10">
                               <td className="py-3 pr-4 align-top font-medium">Evaporator coil replacement</td>
-                              <td className="py-3 align-top tabular-nums text-gray-900">$800–$2,000</td>
+                              <td className="py-3 align-top tabular-nums text-ink">$800–$2,000</td>
                             </tr>
-                            <tr className="border-b border-gray-100">
+                            <tr className="border-b border-ink/10">
                               <td className="py-3 pr-4 align-top font-medium">Compressor replacement</td>
-                              <td className="py-3 align-top tabular-nums text-gray-900">$1,200–$2,500</td>
+                              <td className="py-3 align-top tabular-nums text-ink">$1,200–$2,500</td>
                             </tr>
                             <tr>
                               <td className="py-3 pr-4 align-top font-medium">Full system replacement (2.5–5 ton)</td>
-                              <td className="py-3 align-top tabular-nums text-gray-900">$5,000–$12,000</td>
+                              <td className="py-3 align-top tabular-nums text-ink">$5,000–$12,000</td>
                             </tr>
                           </tbody>
                         </table>
                       </div>
-                      <p className="mt-4 max-w-2xl text-sm leading-relaxed text-gray-700">
+                      <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
                         Prices reflect Georgetown TX market conditions as of 2026. Get written quotes from at least two
                         local companies before approving any repair over $300.
                       </p>
-                      <p className="mt-3 text-sm font-semibold text-primary">
+                      <p className="mt-3 text-sm font-semibold text-brand">
                         <Link href="/blog/ac-repair-cost-georgetown-tx" className="hover:underline">
                           See our full AC repair cost breakdown →
                         </Link>
@@ -481,26 +481,26 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     </section>
 
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
+                      <h2 className="text-2xl font-semibold tracking-tight text-ink">
                         When to Call an HVAC Professional
                       </h2>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
+                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted">
                         <li>
-                          <span className="font-semibold text-gray-900">No cooling or no heat:</span> if your system is
+                          <span className="font-semibold text-ink">No cooling or no heat:</span> if your system is
                           not running or only blows room-temperature air during extreme weather, call a licensed HVAC
                           technician quickly.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Repeated breaker trips:</span> electrical issues
+                          <span className="font-semibold text-ink">Repeated breaker trips:</span> electrical issues
                           or hard-starting equipment can be a safety concern and should be evaluated professionally.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Water around the air handler:</span> water in a
+                          <span className="font-semibold text-ink">Water around the air handler:</span> water in a
                           closet, attic, or garage near your HVAC equipment usually warrants prompt attention to prevent
                           damage and mold.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Persistent comfort problems:</span> hot rooms,
+                          <span className="font-semibold text-ink">Persistent comfort problems:</span> hot rooms,
                           short cycling, or very high bills can signal sizing, duct, or control issues an HVAC company
                           can diagnose.
                         </li>
@@ -508,13 +508,13 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     </section>
 
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
+                      <h2 className="text-2xl font-semibold tracking-tight text-ink">
                         Guides for Georgetown Homeowners
                       </h2>
-                      <p className="mt-3 text-sm leading-relaxed text-gray-700">
+                      <p className="mt-3 text-sm leading-relaxed text-muted">
                         For more background before you schedule service, you can also read:
                       </p>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-primary">
+                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-brand">
                         <li>
                           <Link
                             href="/best/top-hvac-companies-georgetown-tx"
@@ -556,35 +556,35 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     </section>
                   </div>
                 ) : isRooferService ? (
-                  <div className="space-y-10 text-gray-800">
+                  <div className="space-y-10 text-ink">
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Common roofing issues in Georgetown</h2>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                      <h2 className="text-2xl font-semibold tracking-tight text-ink">Common roofing issues in Georgetown</h2>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                         Georgetown’s mix of UV-heavy summers and sudden storm bursts tends to reveal weak points at
                         transitions—places where water concentrates or where materials meet. These are the most common
                         patterns homeowners report before calling a roofer.
                       </p>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
+                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted">
                         <li>
-                          <span className="font-semibold text-gray-900">Hail and wind damage:</span> bruised shingles,
+                          <span className="font-semibold text-ink">Hail and wind damage:</span> bruised shingles,
                           granule loss, lifted edges, and missing tabs after storms moving through Williamson County.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Flashing / valley leaks:</span> leaks around
+                          <span className="font-semibold text-ink">Flashing / valley leaks:</span> leaks around
                           chimneys, roof-to-wall areas, and valleys where water channels during downpours.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Vent and penetration failures:</span> cracked pipe
+                          <span className="font-semibold text-ink">Vent and penetration failures:</span> cracked pipe
                           boots, loose vents, and seal degradation that lets water track into the attic over time.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Age and heat wear:</span> brittle shingles,
+                          <span className="font-semibold text-ink">Age and heat wear:</span> brittle shingles,
                           curling edges, and failing seals on older roofs exposed to years of Georgetown sun.
                         </li>
                       </ul>
-                      <div className="mt-5 rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-                        <div className="text-sm font-semibold text-gray-900">Start here if you see a ceiling stain</div>
-                        <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-gray-700">
+                      <div className="mt-5 rounded-xl border border-ink/10 bg-surface p-5 shadow-sm">
+                        <div className="text-sm font-semibold text-ink">Start here if you see a ceiling stain</div>
+                        <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-muted">
                           <li>Take photos of the stain and note which direction the storm came from.</li>
                           <li>Check the attic (if safe) for wet decking, drips, or daylight near penetrations.</li>
                           <li>Avoid climbing the roof—request an inspection with photos and a written scope.</li>
@@ -593,32 +593,32 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     </section>
 
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Roof repair in Georgetown</h2>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                      <h2 className="text-2xl font-semibold tracking-tight text-ink">Roof repair in Georgetown</h2>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                         Most Georgetown roofing calls start as “there’s a leak.” The most useful repair visit does two
                         things: it stabilizes the problem (stop water intrusion) and it documents the cause so you can
                         make a durable decision rather than chasing the leak every time it rains.
                       </p>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
+                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted">
                         <li>
-                          <span className="font-semibold text-gray-900">Leak diagnosis:</span> tracing the entry point
+                          <span className="font-semibold text-ink">Leak diagnosis:</span> tracing the entry point
                           (often flashing, vents, valleys, or transitions) instead of only patching where the stain shows
                           up.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Targeted repairs:</span> replacing damaged shingles,
+                          <span className="font-semibold text-ink">Targeted repairs:</span> replacing damaged shingles,
                           repairing flashing, resealing penetrations, and addressing specific weak points.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">What good looks like:</span> photos, clear scope,
+                          <span className="font-semibold text-ink">What good looks like:</span> photos, clear scope,
                           and guidance on what to monitor after the next storm.
                         </li>
                       </ul>
-                      <p className="mt-3 text-sm leading-relaxed text-gray-700">
+                      <p className="mt-3 text-sm leading-relaxed text-muted">
                         If you are budgeting, see{" "}
                         <Link
                           href="/blog/roof-repair-cost-georgetown-tx"
-                          className="font-semibold text-primary hover:underline"
+                          className="font-semibold text-brand hover:underline"
                         >
                           roof repair cost in Georgetown
                         </Link>{" "}
@@ -627,32 +627,32 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     </section>
 
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Roof replacement in Georgetown</h2>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                      <h2 className="text-2xl font-semibold tracking-tight text-ink">Roof replacement in Georgetown</h2>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                         Replacement becomes the better option when the roof is near end-of-life, damage is widespread, or
                         you are dealing with repeated repairs that keep returning. In Georgetown, good replacement planning
                         includes more than shingles—it includes underlayment, flashing, ventilation, and any decking that
                         needs attention once tear-off begins.
                       </p>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
+                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted">
                         <li>
-                          <span className="font-semibold text-gray-900">Scope clarity:</span> written materials, edge and
+                          <span className="font-semibold text-ink">Scope clarity:</span> written materials, edge and
                           flashing details, ventilation plan, and disposal/cleanup expectations.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Decking plan:</span> how rotten or damaged decking
+                          <span className="font-semibold text-ink">Decking plan:</span> how rotten or damaged decking
                           is handled and priced if discovered during tear-off.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Warranty terms:</span> workmanship + manufacturer
+                          <span className="font-semibold text-ink">Warranty terms:</span> workmanship + manufacturer
                           warranty details you can review before signing.
                         </li>
                       </ul>
-                      <p className="mt-3 text-sm leading-relaxed text-gray-700">
+                      <p className="mt-3 text-sm leading-relaxed text-muted">
                         For a cost-focused breakdown, read{" "}
                         <Link
                           href="/blog/roof-replacement-cost-georgetown-tx"
-                          className="font-semibold text-primary hover:underline"
+                          className="font-semibold text-brand hover:underline"
                         >
                           roof replacement cost in Georgetown, TX
                         </Link>
@@ -661,44 +661,44 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     </section>
 
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Storm damage in Georgetown</h2>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                      <h2 className="text-2xl font-semibold tracking-tight text-ink">Storm damage in Georgetown</h2>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                         After hail or wind, the most helpful next step is documentation and a clear plan—especially if you
                         may involve insurance. A reputable roofer can show you what is damaged, what is cosmetic, and what
                         impacts water shedding and lifespan.
                       </p>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
+                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted">
                         <li>
-                          <span className="font-semibold text-gray-900">What to document:</span> photos of missing shingles,
+                          <span className="font-semibold text-ink">What to document:</span> photos of missing shingles,
                           dented vents, exposed flashing, granules in downspouts, and interior staining that appears after
                           rain.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">What to avoid:</span> climbing the roof or letting
+                          <span className="font-semibold text-ink">What to avoid:</span> climbing the roof or letting
                           anyone pressure you into signing before you have a written scope and timeline.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">What to ask:</span> which items are repairable now,
+                          <span className="font-semibold text-ink">What to ask:</span> which items are repairable now,
                           which indicate end-of-life, and how they’ll prevent leaks during the next heavy Georgetown
                           downpour.
                         </li>
                         <li>
-                          <span className="font-semibold text-gray-900">Timing:</span> if water is actively entering, ask
+                          <span className="font-semibold text-ink">Timing:</span> if water is actively entering, ask
                           whether they can provide temporary stabilization while you decide on the long-term scope.
                         </li>
                       </ul>
                     </section>
 
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Roof inspections in Georgetown</h2>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                      <h2 className="text-2xl font-semibold tracking-tight text-ink">Roof inspections in Georgetown</h2>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                         Inspections are most valuable when they are specific. The goal is not “yes/no replacement”—it’s a
                         clear understanding of the failure points, remaining life, and what a repair would actually
                         accomplish. Ask for photos and a written summary so you can compare providers.
                       </p>
-                      <div className="mt-5 rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-                        <div className="text-sm font-semibold text-gray-900">A good inspection should cover</div>
-                        <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-gray-700">
+                      <div className="mt-5 rounded-xl border border-ink/10 bg-surface p-5 shadow-sm">
+                        <div className="text-sm font-semibold text-ink">A good inspection should cover</div>
+                        <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-muted">
                           <li>Flashing, valleys, vents, and penetrations (common leak sources)</li>
                           <li>Shingle condition, granule loss, and any storm impacts</li>
                           <li>Ventilation basics (intake/exhaust balance) and obvious heat issues</li>
@@ -708,11 +708,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     </section>
 
                     <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Guides for Georgetown homeowners</h2>
-                      <p className="mt-3 text-sm leading-relaxed text-gray-700">
+                      <h2 className="text-2xl font-semibold tracking-tight text-ink">Guides for Georgetown homeowners</h2>
+                      <p className="mt-3 text-sm leading-relaxed text-muted">
                         If you are gathering information before you talk with a roofer, you may also want to review:
                       </p>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-primary">
+                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-brand">
                         <li>
                           <Link href="/best/best-roofers-georgetown-tx" className="font-semibold hover:underline">
                             Best Roofers in Georgetown TX
@@ -762,10 +762,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
               {providersFromJson.length ? (
                 <section id="providers" className="mt-12 scroll-mt-24">
-                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">
+                  <h2 className="text-3xl font-semibold tracking-tight text-ink">
                     {businessCategory ? PROVIDER_SECTION_HEADING[businessCategory] : "Top Providers Serving Georgetown"}
                   </h2>
-                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                     These listings are compiled from public business information for companies that serve Georgetown, TX.
                     They are provided to help you compare options; confirm current licensing, insurance, pricing, and
                     availability with any provider before hiring.
@@ -777,8 +777,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               ) : null}
 
               <section className="mt-12">
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Explore Other Services</h2>
-                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">Explore Other Services</h2>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                   Browse the other core service categories in Georgetown, TX.
                 </p>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -796,8 +796,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
               {helpfulGuides.length ? (
                 <section className="mt-12">
-                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Helpful Guides</h2>
-                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                  <h2 className="text-3xl font-semibold tracking-tight text-ink">Helpful Guides</h2>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                     Related articles for Georgetown homeowners.
                   </p>
                   <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -818,8 +818,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
               <div>
                 <section className="mt-12">
-                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">{faqHeading}</h2>
-                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                  <h2 className="text-3xl font-semibold tracking-tight text-ink">{faqHeading}</h2>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                     {isPlumberService
                       ? "These answers summarize common questions Georgetown homeowners ask about plumbing. Use them as a starting point, then confirm details with any professional you choose to work with."
                       : "These answers summarize common questions documented in Georgetown-area homeowner guides and public complaint patterns. Use them as a starting point, then confirm details with any professional you choose to work with."}
@@ -832,7 +832,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
               {relatedServices.length ? (
                 <section className="mt-12">
-                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Related Services</h2>
+                  <h2 className="text-3xl font-semibold tracking-tight text-ink">Related Services</h2>
                   <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                     {relatedServices.map((s) => (
                       <LinkCard
@@ -849,8 +849,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
               {ruleLinks ? (
                 <section className="mt-12">
-                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Next internal links</h2>
-                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                  <h2 className="text-3xl font-semibold tracking-tight text-ink">Next internal links</h2>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                     Use these pages to navigate the directory and compare providers without starting over.
                   </p>
                   <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -910,13 +910,13 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             }
             aside={
               <>
-              <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
-                <div className="bg-primary px-6 py-3.5 text-xs font-semibold uppercase tracking-wide text-white">
+              <div className="overflow-hidden rounded-2xl border border-ink/10 bg-surface shadow-sm">
+                <div className="bg-accent px-6 py-3.5 text-xs font-semibold uppercase tracking-wide text-white">
                   Directory navigation
                 </div>
                 <div className="px-6 pb-6 pt-4">
-                  <div className="text-lg font-semibold text-gray-900">Browse the provider directory</div>
-                  <p className="mt-2 text-sm leading-relaxed text-gray-700">
+                  <div className="text-lg font-semibold text-ink">Browse the provider directory</div>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
                     When you’re ready, compare companies in Georgetown and contact providers directly.
                   </p>
                   <div className="mt-4">
@@ -931,9 +931,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 <ServiceRequestForm serviceSlug={service.slug} />
               </div>
 
-              <div className="mt-8 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-                <div className="text-sm font-semibold text-gray-900">Service area</div>
-                <div className="mt-2 text-sm leading-relaxed text-gray-700">{location?.title ?? "Georgetown, TX"}</div>
+              <div className="mt-8 rounded-xl border border-ink/10 bg-surface p-6 shadow-md">
+                <div className="text-sm font-semibold text-ink">Service area</div>
+                <div className="mt-2 text-sm leading-relaxed text-muted">{location?.title ?? "Georgetown, TX"}</div>
               </div>
 
               {adsenseSidebarSlot ? <AdSenseDisplay slotId={adsenseSidebarSlot} className="mt-8" /> : null}
@@ -944,9 +944,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
         <section className="py-10 md:py-12">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
-            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-              <h2 className="text-xl font-semibold text-gray-900">Compare local providers</h2>
-              <p className="mt-2 text-sm text-gray-700">
+            <div className="rounded-xl border border-ink/10 bg-surface p-6 shadow-md">
+              <h2 className="text-xl font-semibold text-ink">Compare local providers</h2>
+              <p className="mt-2 text-sm text-muted">
                 Your next step is browsing the directory page for this category. Use it to shortlist providers, then request written estimates
                 directly from the companies you choose.
               </p>
@@ -956,9 +956,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 </ButtonLink>
               </div>
             </div>
-            <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-              <h2 className="text-xl font-semibold text-gray-900">Popular guides</h2>
-              <p className="mt-2 text-sm text-gray-700">
+            <div className="rounded-xl border border-ink/10 bg-surface p-6 shadow-md">
+              <h2 className="text-xl font-semibold text-ink">Popular guides</h2>
+              <p className="mt-2 text-sm text-muted">
                 Learn what to look for and how to avoid common service mistakes.
               </p>
               <div className="mt-4 grid grid-cols-1 gap-3">
@@ -966,7 +966,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   const b = getBestBySlug(bSlug);
                   if (!b) return null;
                   return (
-                    <Link key={b.slug} href={`/best/${b.slug}`} className="text-sm font-semibold text-gray-900 hover:underline">
+                    <Link key={b.slug} href={`/best/${b.slug}`} className="text-sm font-semibold text-ink hover:underline">
                       {b.title}
                     </Link>
                   );
@@ -978,7 +978,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     const s = getServices().find((x) => x.slug === sSlug);
                     if (!s) return null;
                     return (
-                      <Link key={s.slug} href={`/services/${s.slug}`} className="text-sm font-semibold text-gray-900 hover:underline">
+                      <Link key={s.slug} href={`/services/${s.slug}`} className="text-sm font-semibold text-ink hover:underline">
                         {s.title}
                       </Link>
                     );

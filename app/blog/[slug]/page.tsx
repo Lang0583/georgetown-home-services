@@ -115,20 +115,20 @@ function NativeInlineCta({
   secondaryLabel: string;
 }) {
   return (
-    <section className="mt-10 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-      <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">Next step</div>
-      <h2 className="mt-2 text-xl font-semibold tracking-tight text-gray-900">{title}</h2>
-      <p className="mt-2 text-sm leading-relaxed text-gray-700">{description}</p>
+    <section className="mt-10 rounded-xl border border-ink/10 bg-surface p-6 shadow-md">
+      <div className="text-xs font-semibold uppercase tracking-wide text-muted">Next step</div>
+      <h2 className="mt-2 text-xl font-semibold tracking-tight text-ink">{title}</h2>
+      <p className="mt-2 text-sm leading-relaxed text-muted">{description}</p>
       <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
         <Link
           href={primaryHref}
-          className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-hover"
+          className="inline-flex items-center justify-center rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover"
         >
           {primaryLabel}
         </Link>
         <Link
           href={secondaryHref}
-          className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-50"
+          className="inline-flex items-center justify-center rounded-lg border border-ink/15 bg-surface px-5 py-2.5 text-sm font-semibold text-ink shadow-sm hover:bg-surface-alt"
         >
           {secondaryLabel}
         </Link>
@@ -144,9 +144,9 @@ function PracticalTakeaway({
 }) {
   if (!bullets.length) return null;
   return (
-    <section className="mt-10 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-      <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">Practical takeaway</div>
-      <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-700">
+    <section className="mt-10 rounded-xl border border-ink/10 bg-surface p-6 shadow-md">
+      <div className="text-xs font-semibold uppercase tracking-wide text-muted">Practical takeaway</div>
+      <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted">
         {bullets.slice(0, 4).map((b) => (
           <li key={b}>{b}</li>
         ))}
@@ -438,11 +438,11 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
                   { href: `/blog/${post.slug}`, label: post.title },
                 ]}
               />
-              <div className="text-sm font-semibold uppercase tracking-wide text-primary">
+              <div className="text-sm font-semibold uppercase tracking-wide text-brand">
                 Blog • {location?.title ?? "Georgetown, TX"}
               </div>
-              <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{post.h1}</h1>
-              <div className="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-gray-100 shadow-sm">
+              <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">{post.h1}</h1>
+              <div className="mt-6 overflow-hidden rounded-xl border border-ink/10 bg-surface-alt shadow-sm">
                 <Image
                   src={hero.src}
                   alt={hero.alt}
@@ -453,27 +453,27 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
                   sizes="(max-width: 768px) 100vw, min(1200px, 100vw)"
                 />
               </div>
-              <p className="mt-2 text-sm text-gray-600">
+              <p className="mt-2 text-sm text-muted">
                 By{" "}
-                <Link href={AUTHOR_PROFILE_PATH} className="font-medium text-gray-900 underline-offset-4 hover:underline">
+                <Link href={AUTHOR_PROFILE_PATH} className="font-medium text-ink underline-offset-4 hover:underline">
                   {AUTHOR_FIRST_NAME}
                 </Link>
                 {" | "}
                 {AUTHOR_BYLINE_PUBLISHER}
               </p>
-              <div className="mt-2 text-sm text-gray-600">
+              <div className="mt-2 text-sm text-muted">
                 <div>
-                  <span className="font-semibold text-gray-900">Published:</span> {publishedLabel}
+                  <span className="font-semibold text-ink">Published:</span> {publishedLabel}
                 </div>
                 <div className="mt-1">
-                  <span className="font-semibold text-gray-900">Last Updated:</span> {modifiedLabel}
+                  <span className="font-semibold text-ink">Last Updated:</span> {modifiedLabel}
                 </div>
               </div>
               {AFFILIATE_DISCLOSURE_SLUGS.has(post.slug) ? (
-                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-gray-700">{AFFILIATE_DISCLOSURE_TEXT}</p>
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">{AFFILIATE_DISCLOSURE_TEXT}</p>
               ) : null}
-              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">{post.description}</p>
-              <div className="mt-2 text-sm text-gray-500">Estimated read time: {post.readTime}</div>
+              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">{post.description}</p>
+              <div className="mt-2 text-sm text-muted">Estimated read time: {post.readTime}</div>
 
               {STORM_INSPECTION_LEAD_SLUGS.has(post.slug) ? (
                 <div className="not-prose mt-8 max-w-xl">
@@ -516,8 +516,8 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
 
               {ruleLinks ? (
                 <section className="mt-12">
-                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Related reading and next steps</h2>
-                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                  <h2 className="text-3xl font-semibold tracking-tight text-ink">Related reading and next steps</h2>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                     Continue with the relevant service guide, compare providers, or read another related post.
                   </p>
                   <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -551,7 +551,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
               ) : null}
 
               <section className="mt-12">
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Related Services</h2>
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">Related Services</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {relatedServices.slice(0, 4).map((s) => (
                     <LinkCard
@@ -567,7 +567,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
 
               {relatedBest.length ? (
                 <section className="mt-12">
-                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Best Of Guides</h2>
+                  <h2 className="text-3xl font-semibold tracking-tight text-ink">Best Of Guides</h2>
                   <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                     {relatedBest.slice(0, 2).map((b) => (
                       <LinkCard key={b.slug} href={`/best/${b.slug}`} title={b.title} description={b.description} />

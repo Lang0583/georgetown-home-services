@@ -94,26 +94,26 @@ export default async function ZipCodePage({ params }: { params: Promise<{ zipcod
           />
 
           <header className="mt-6">
-            <p className="text-sm font-semibold uppercase tracking-wide text-primary">Georgetown, Texas</p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
+            <p className="text-sm font-semibold uppercase tracking-wide text-brand">Georgetown, Texas</p>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-ink md:text-4xl">
               {zipPageH1(page.zip)}
             </h1>
-            <p className="mt-3 text-lg text-gray-700">{page.neighborhoods}</p>
+            <p className="mt-3 text-lg text-muted">{page.neighborhoods}</p>
           </header>
 
           <div className="prose prose-gray mt-8 max-w-none">
             {page.introParagraphs.map((paragraph) => (
-              <p key={paragraph.slice(0, 48)} className="text-base leading-relaxed text-gray-700">
+              <p key={paragraph.slice(0, 48)} className="text-base leading-relaxed text-muted">
                 {paragraph}
               </p>
             ))}
           </div>
 
           <section className="mt-12 scroll-mt-24" aria-labelledby="zip-services-heading">
-            <h2 id="zip-services-heading" className="text-2xl font-semibold tracking-tight text-gray-900">
+            <h2 id="zip-services-heading" className="text-2xl font-semibold tracking-tight text-ink">
               Services in This Area
             </h2>
-            <p className="mt-2 max-w-3xl text-sm text-gray-600">
+            <p className="mt-2 max-w-3xl text-sm text-muted">
               Service guides for Georgetown homeowners in ZIP {page.zip}. Links include your ZIP for reference when
               you compare providers.
             </p>
@@ -132,15 +132,15 @@ export default async function ZipCodePage({ params }: { params: Promise<{ zipcod
           </section>
 
           <section className="mt-12 scroll-mt-24" aria-labelledby="zip-providers-heading">
-            <h2 id="zip-providers-heading" className="text-2xl font-semibold tracking-tight text-gray-900">
+            <h2 id="zip-providers-heading" className="text-2xl font-semibold tracking-tight text-ink">
               Top Providers Serving {page.zip}
             </h2>
-            <div className="mt-3 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700">
+            <div className="mt-3 rounded-lg border border-ink/10 bg-surface-alt px-4 py-3 text-sm text-muted">
               <p>
-                <span className="font-semibold text-gray-900">Last verified:</span> {PROVIDERS_LAST_VERIFIED}
+                <span className="font-semibold text-ink">Last verified:</span> {PROVIDERS_LAST_VERIFIED}
               </p>
-              <p className="mt-1 text-gray-600">{PROVIDER_DISCLAIMER}</p>
-              <p className="mt-2 text-gray-600">
+              <p className="mt-1 text-muted">{PROVIDER_DISCLAIMER}</p>
+              <p className="mt-2 text-muted">
                 Serving Georgetown and surrounding areas — confirm current availability for your {page.zip} address
                 directly with each company.
               </p>
@@ -152,7 +152,7 @@ export default async function ZipCodePage({ params }: { params: Promise<{ zipcod
                 if (!providers.length) return null;
                 return (
                   <div key={category}>
-                    <h3 className="text-lg font-semibold text-gray-900">
+                    <h3 className="text-lg font-semibold text-ink">
                       {PROVIDER_CATEGORY_LABELS[category]}
                     </h3>
                     <div className="mt-4 space-y-5">
@@ -167,10 +167,10 @@ export default async function ZipCodePage({ params }: { params: Promise<{ zipcod
           </section>
 
           <section className="mt-12 scroll-mt-24" aria-labelledby="zip-costs-heading">
-            <h2 id="zip-costs-heading" className="text-2xl font-semibold tracking-tight text-gray-900">
+            <h2 id="zip-costs-heading" className="text-2xl font-semibold tracking-tight text-ink">
               Cost Guides for {page.zip} Homeowners
             </h2>
-            <p className="mt-2 max-w-3xl text-sm text-gray-600">
+            <p className="mt-2 max-w-3xl text-sm text-muted">
               Planning ranges for common projects in {page.shortLabel} ({page.housingProfile}).
             </p>
             <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -184,9 +184,9 @@ export default async function ZipCodePage({ params }: { params: Promise<{ zipcod
                 />
               ))}
             </div>
-            <p className="mt-4 text-sm text-gray-600">
+            <p className="mt-4 text-sm text-muted">
               More ranges:{" "}
-              <Link href="/costs" className="font-semibold text-primary hover:underline">
+              <Link href="/costs" className="font-semibold text-brand hover:underline">
                 browse all Georgetown cost guides
               </Link>
               .

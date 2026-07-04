@@ -28,9 +28,9 @@ import { exitInterstitialLabels } from "../lib/exit-interstitial";
 type SortKey = "recommended" | "reviews" | "rating";
 
 const websiteCtaClass =
-  "inline-flex items-center justify-center rounded-lg bg-[#01696F] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#0C4E54]";
+  "inline-flex items-center justify-center rounded-lg bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[var(--accent-hover)]";
 const mapsCtaClass =
-  "inline-flex items-center justify-center rounded-lg border border-[#01696F] bg-white px-4 py-2 text-sm font-semibold text-[#01696F] transition-colors hover:bg-[#01696F]/5";
+  "inline-flex items-center justify-center rounded-lg border border-[var(--accent)] bg-surface px-4 py-2 text-sm font-semibold text-[var(--accent)] transition-colors hover:bg-[var(--accent)]/5";
 
 function includesAny(haystack: string, needles: string[]) {
   const h = (haystack ?? "").toLowerCase();
@@ -46,13 +46,13 @@ function residentialFocus(b: Business) {
 }
 
 function badgeTone(b: ProviderBadge["key"]) {
-  if (b === "sponsored") return "border-amber-200 bg-amber-50 text-amber-900";
-  if (b === "featured") return "border-amber-200 bg-amber-50 text-amber-900";
-  if (b === "map_only_profile") return "border-gray-300 bg-gray-50 text-gray-700";
+  if (b === "sponsored") return "border-rating/25 bg-rating/10 text-rating";
+  if (b === "featured") return "border-rating/25 bg-rating/10 text-rating";
+  if (b === "map_only_profile") return "border-ink/15 bg-surface-alt text-muted";
   if (b === "emergency_availability") return "border-rose-200 bg-rose-50 text-rose-900";
-  if (b === "high_review_volume") return "border-emerald-200 bg-emerald-50 text-emerald-900";
-  if (b === "georgetown_office") return "border-white/25 bg-[#01696F] text-white";
-  return "border-amber-200 bg-amber-50 text-amber-900";
+  if (b === "high_review_volume") return "border-verified/25 bg-verified/10 text-verified";
+  if (b === "georgetown_office") return "border-white/25 bg-[var(--accent)] text-white";
+  return "border-rating/25 bg-rating/10 text-rating";
 }
 
 function BadgeRow({ badges }: { badges: ProviderBadge[] }) {
@@ -113,13 +113,13 @@ function ProviderMeta({
       {guideHref ? (
         <Link
           href={guideHref}
-          className="inline-flex items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-800 transition-colors hover:bg-gray-50"
+          className="inline-flex items-center justify-center rounded-lg border border-ink/10 bg-surface px-4 py-2 text-sm font-semibold text-ink transition-colors hover:bg-surface-alt"
         >
           {guideLabel}
         </Link>
       ) : null}
       {isMapOnlyProviderProfile(b) ? (
-        <span className="inline-flex items-center rounded-lg border border-gray-300 bg-gray-50 px-3 py-1.5 text-xs font-semibold text-gray-700">
+        <span className="inline-flex items-center rounded-lg border border-ink/15 bg-surface-alt px-3 py-1.5 text-xs font-semibold text-muted">
           Map listing only.
         </span>
       ) : null}
@@ -151,19 +151,19 @@ function ProviderCard({
   const badges = getProviderBadges(b);
   const { serviceCategory } = exitInterstitialLabels(normalizeBusinessGroup(b));
   const topPickClass =
-    "inline-flex shrink-0 items-center rounded-full bg-[#01696F] px-[10px] py-[2px] text-[12px] font-semibold leading-none text-white";
+    "inline-flex shrink-0 items-center rounded-full bg-[var(--accent)] px-[10px] py-[2px] text-[12px] font-semibold leading-none text-white";
 
   return (
-    <li className="rounded-xl border border-gray-200 border-l-4 border-l-[#01696F] bg-white p-6 shadow-md">
+    <li className="rounded-xl border border-ink/10 border-l-4 border-l-[var(--accent)] bg-surface p-6 shadow-md">
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-x-4">
           <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-1">
-            <div className="text-lg font-semibold text-gray-900 inline-flex max-w-full flex-wrap items-center gap-2">
+            <div className="text-lg font-semibold text-ink inline-flex max-w-full flex-wrap items-center gap-2">
               {href ? (
                 <a
                   href={href}
                   {...externalBusinessLinkProps}
-                  className="text-gray-900 hover:text-primary-hover hover:underline"
+                  className="text-ink hover:text-brand hover:underline"
                   onClick={() => trackOutboundClick(b.name, serviceCategory, href)}
                 >
                   {b.name}
@@ -178,7 +178,7 @@ function ProviderCard({
             {hasBusinessRatingData(b) ? (
               <RatingStarsWithCaption rating={b.rating} reviewCount={b.reviews} className="sm:justify-end" />
             ) : (
-              <span className="text-sm text-gray-500">Rating not available</span>
+              <span className="text-sm text-muted">Rating not available</span>
             )}
           </div>
         </div>
@@ -188,11 +188,11 @@ function ProviderCard({
         <BadgeRow badges={badges} />
 
         <BusinessListingDescription text={b.description} className="mt-1" />
-        <p className="text-sm text-gray-700">{serviceAreaNote(b)}</p>
+        <p className="text-sm text-muted">{serviceAreaNote(b)}</p>
 
         <ProviderMeta b={b} guideHref={guideHref} guideLabel={guideLabel} />
         {b.directory?.sponsored || b.directory?.featured ? (
-          <p className="mt-2 text-xs leading-relaxed text-slate-600">
+          <p className="mt-2 text-xs leading-relaxed text-muted">
             {b.directory?.sponsorDisclosureText?.trim() ||
               "This listing is a paid placement and is labeled for transparency."}
           </p>
@@ -277,10 +277,10 @@ export default function BestBusinessesDirectory({
 
   return (
     <div className="mt-8 space-y-10">
-      <section className="rounded-xl border border-gray-200 bg-gray-50 p-6 shadow-md">
-        <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">Filters</div>
+      <section className="rounded-xl border border-ink/10 bg-surface-alt p-6 shadow-md">
+        <div className="text-xs font-semibold uppercase tracking-wide text-muted">Filters</div>
         <div className="mt-2 grid grid-cols-1 gap-4 md:grid-cols-2">
-          <div className="flex flex-wrap gap-3 text-sm text-gray-700">
+          <div className="flex flex-wrap gap-3 text-sm text-muted">
             <label className="inline-flex items-center gap-2">
               <input type="checkbox" checked={filterEmergency} onChange={(e) => setFilterEmergency(e.target.checked)} />
               Emergency
@@ -307,10 +307,10 @@ export default function BestBusinessesDirectory({
             </label>
           </div>
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-semibold text-gray-900">
+            <label className="text-sm font-semibold text-ink">
               Sort
               <select
-                className="mt-1 w-full rounded-lg border border-gray-200 bg-white p-2 text-sm text-gray-900"
+                className="mt-1 w-full rounded-lg border border-ink/10 bg-surface p-2 text-sm text-ink"
                 value={sort}
                 onChange={(e) => setSort(e.target.value as SortKey)}
               >
@@ -319,16 +319,16 @@ export default function BestBusinessesDirectory({
                 <option value="rating">Highest rating</option>
               </select>
             </label>
-            <label className="mt-1 inline-flex items-center gap-2 text-sm text-gray-700">
+            <label className="mt-1 inline-flex items-center gap-2 text-sm text-muted">
               <input type="checkbox" checked={showLowerSignal} onChange={(e) => setShowLowerSignal(e.target.checked)} />
               Show newer / lower-signal options ({lowerSignal.length})
             </label>
-            <div className="text-sm text-gray-700">
-              Showing <span className="font-semibold text-gray-900">{filteredEstablished.length}</span> established picks
+            <div className="text-sm text-muted">
+              Showing <span className="font-semibold text-ink">{filteredEstablished.length}</span> established picks
               {businesses.length ? (
                 <>
                   {" "}
-                  out of <span className="font-semibold text-gray-900">{businesses.length}</span> listings.
+                  out of <span className="font-semibold text-ink">{businesses.length}</span> listings.
                 </>
               ) : null}
             </div>
@@ -338,8 +338,8 @@ export default function BestBusinessesDirectory({
 
       {sponsored.length ? (
         <section>
-          <h3 className="text-2xl font-semibold tracking-tight text-gray-900">Featured / Sponsored</h3>
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-gray-700">
+          <h3 className="text-2xl font-semibold tracking-tight text-ink">Featured / Sponsored</h3>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted">
             Paid placements are labeled. Organic listings are ranked separately.
           </p>
           <ul className="mt-6 space-y-5">
@@ -357,8 +357,8 @@ export default function BestBusinessesDirectory({
       ) : null}
 
       <section>
-        <h3 className="text-2xl font-semibold tracking-tight text-gray-900">Established picks</h3>
-        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-gray-700">
+        <h3 className="text-2xl font-semibold tracking-tight text-ink">Established picks</h3>
+        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted">
           These listings meet a basic signal threshold (for example, sufficient review volume and better documentation).
           Always confirm licensing, insurance, pricing, and availability directly with any provider before hiring.
         </p>
@@ -375,7 +375,7 @@ export default function BestBusinessesDirectory({
             ))}
           </ul>
         ) : (
-          <div className="mt-5 rounded-xl border border-gray-200 bg-white p-6 text-sm text-gray-700 shadow-md">
+          <div className="mt-5 rounded-xl border border-ink/10 bg-surface p-6 text-sm text-muted shadow-md">
             No established picks match the current filters.
           </div>
         )}
@@ -383,8 +383,8 @@ export default function BestBusinessesDirectory({
 
       {showLowerSignal ? (
         <section>
-          <h3 className="text-2xl font-semibold tracking-tight text-gray-900">Newer or lower-signal options</h3>
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-gray-700">
+          <h3 className="text-2xl font-semibold tracking-tight text-ink">Newer or lower-signal options</h3>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted">
             These providers have weaker signals (for example, low review volume or map-only documentation). They may still be
             good options, but you should verify details more carefully and prioritize written scopes.
           </p>

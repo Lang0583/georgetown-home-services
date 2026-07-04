@@ -39,8 +39,8 @@ export default function AboutPage() {
       }
     >
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Geographic focus</h2>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">Geographic focus</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           Our primary lens is <strong>Georgetown, Texas</strong> inside <strong>Williamson County</strong>, including
           neighborhoods people search by name—Sun City, Teravista, Wolf Ranch, Georgetown Village, Berry Creek, and the
           historic Square-adjacent blocks. When we reference &quot;Central Texas&quot; weather (heat, UV, hail season,
@@ -50,27 +50,27 @@ export default function AboutPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Who runs this site</h2>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">Who runs this site</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           {brand} is an independent local directory built and maintained by{" "}
-          <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-primary hover:underline">
+          <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-brand hover:underline">
             {AUTHOR_FIRST_NAME}
           </Link>
           , a Georgetown homeowner. He is <strong>not</strong> a contractor and does{" "}
           <strong>not</strong> accept payment for directory rankings.
         </p>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           How listings are sourced, which databases we check, and the five inclusion criteria for Best Of pages are
           documented on the{" "}
-          <Link href="/methodology" className="font-semibold text-primary hover:underline">
+          <Link href="/methodology" className="font-semibold text-brand hover:underline">
             listing methodology
           </Link>{" "}
           page—not duplicated here.
         </p>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           Guides and listings are for research and comparison—they are <strong>not</strong> a substitute for on-site
           diagnosis, code compliance review, or insurance or legal advice. See the{" "}
-          <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-primary hover:underline">
+          <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-brand hover:underline">
             author page
           </Link>{" "}
           for how to report corrections.
@@ -78,15 +78,15 @@ export default function AboutPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">What we are</h2>
-        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">What we are</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted">
           <li>
             <strong>Homeowner guides</strong> that explain categories, failure modes, cost drivers, and what belongs in a
             written estimate.
           </li>
           <li>
             <strong>Best Of comparison hubs</strong> that help you shortlist companies using the inclusion criteria on{" "}
-            <Link href="/methodology" className="font-semibold text-primary hover:underline">
+            <Link href="/methodology" className="font-semibold text-brand hover:underline">
               our listing methodology
             </Link>
             .
@@ -99,8 +99,8 @@ export default function AboutPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">What we are not</h2>
-        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">What we are not</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted">
           <li>We do not perform home services, employ tradespeople for hire, or dispatch technicians.</li>
           <li>We do not guarantee outcomes: pricing, timing, licensing, insurance, warranties, or code compliance.</li>
           <li>
@@ -111,16 +111,16 @@ export default function AboutPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">How the site is funded</h2>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">How the site is funded</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           Like many publishers, we use <strong>advertising</strong> (for example, Google AdSense display ads) and may use
           clearly labeled <strong>affiliate or sponsored placements</strong> where noted on individual pages. Ads do{" "}
           <strong>not</strong> dictate who appears in organic directory shortlists; see{" "}
-          <Link href="/editorial-policy" className="font-semibold text-primary hover:underline">
+          <Link href="/editorial-policy" className="font-semibold text-brand hover:underline">
             Editorial Policy
           </Link>{" "}
           and{" "}
-          <Link href="/methodology" className="font-semibold text-primary hover:underline">
+          <Link href="/methodology" className="font-semibold text-brand hover:underline">
             Methodology
           </Link>{" "}
           for how we separate editorial ranking logic from paid modules.
@@ -128,12 +128,12 @@ export default function AboutPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Corrections and provider data</h2>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">Corrections and provider data</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           Public listings drift—phones change, brands merge, service areas tighten. If you spot a factual error
           (wrong phone, defunct brand name, misleading map pin) or believe your company should be represented differently,
           use{" "}
-          <Link href="/contact#feedback" className="font-semibold text-primary hover:underline">
+          <Link href="/contact#feedback" className="font-semibold text-brand hover:underline">
             Contact &amp; feedback
           </Link>{" "}
           with evidence we can verify (link to official site, Secretary of State filing, or a dated listing screenshot).
@@ -142,18 +142,18 @@ export default function AboutPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Where to start</h2>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">Where to start</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           New to the site? Begin with{" "}
-          <Link href="/services" className="font-semibold text-primary hover:underline">
+          <Link href="/services" className="font-semibold text-brand hover:underline">
             service guides
           </Link>{" "}
           if you are still narrowing the problem, or jump to the{" "}
-          <Link href="/best" className="font-semibold text-primary hover:underline">
+          <Link href="/best" className="font-semibold text-brand hover:underline">
             provider directory
           </Link>{" "}
           if you already know the trade. Read{" "}
-          <Link href="/methodology" className="font-semibold text-primary hover:underline">
+          <Link href="/methodology" className="font-semibold text-brand hover:underline">
             how we rank providers
           </Link>{" "}
           before treating any shortlist as final.

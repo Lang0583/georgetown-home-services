@@ -28,10 +28,10 @@ export default function CompareIndexPage() {
           />
 
           <header className="mt-6">
-            <h1 className="text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
+            <h1 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl">
               Compare Georgetown Home Service Providers
             </h1>
-            <p className="mt-4 max-w-3xl text-base leading-relaxed text-gray-700">
+            <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted">
               Narrowing your shortlist to two companies? These head-to-head guides compare ratings, specialties, response
               patterns, and pricing transparency for real Georgetown-area providers—then link you to full directories
               and service guides.
@@ -44,7 +44,7 @@ export default function CompareIndexPage() {
             const label = PROVIDER_CATEGORY_LABELS[category];
             return (
               <section key={category} className="mt-10 scroll-mt-24">
-                <h2 className="text-2xl font-semibold tracking-tight text-gray-900">{label}</h2>
+                <h2 className="text-2xl font-semibold tracking-tight text-ink">{label}</h2>
                 <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
                   {items.map((c) => (
                     <LinkCard
@@ -60,13 +60,13 @@ export default function CompareIndexPage() {
             );
           })}
 
-          <p className="mt-10 text-sm text-gray-600">
+          <p className="mt-10 text-sm text-muted">
             Browse full directories on{" "}
-            <Link href="/best" className="font-semibold text-primary hover:underline">
+            <Link href="/best" className="font-semibold text-brand hover:underline">
               Best Of guides
             </Link>{" "}
             or explore{" "}
-            <Link href="/zip" className="font-semibold text-primary hover:underline">
+            <Link href="/zip" className="font-semibold text-brand hover:underline">
               Georgetown ZIP code pages
             </Link>
             .

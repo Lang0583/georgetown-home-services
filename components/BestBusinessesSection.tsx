@@ -31,7 +31,7 @@ function trim(s: string | undefined) {
 }
 
 const linkButtonClass =
-  "inline-flex items-center rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-semibold text-gray-900 hover:bg-gray-50";
+  "inline-flex items-center rounded-lg border border-ink/15 bg-surface px-3 py-1.5 text-xs font-semibold text-ink hover:bg-surface-alt";
 
 function serviceAreaNote(b: Business) {
   if (hasGeorgetownOfficeSignal(b)) return "Service area: Georgetown, TX and nearby.";
@@ -46,11 +46,11 @@ function BusinessNameHeading({ b }: { b: Business }) {
   const { serviceCategory } = exitInterstitialLabels(normalizeBusinessGroup(b));
   if (href) {
     return (
-      <h4 className="text-lg font-semibold text-gray-900">
+      <h4 className="text-lg font-semibold text-ink">
         <a
           href={href}
           {...externalBusinessLinkProps}
-          className="text-gray-900 hover:text-primary-hover hover:underline"
+          className="text-ink hover:text-brand hover:underline"
           onClick={() => trackOutboundClick(b.name, serviceCategory, href)}
         >
           {b.name}
@@ -58,7 +58,7 @@ function BusinessNameHeading({ b }: { b: Business }) {
       </h4>
     );
   }
-  return <h4 className="text-lg font-semibold text-gray-900">{b.name}</h4>;
+  return <h4 className="text-lg font-semibold text-ink">{b.name}</h4>;
 }
 
 function WebsiteAndMapLinks({ b }: { b: Business }) {
@@ -90,7 +90,7 @@ function WebsiteAndMapLinks({ b }: { b: Business }) {
         </a>
       ) : null}
       {isMapOnlyProviderProfile(b) ? (
-        <span className="inline-flex items-center rounded-lg border border-gray-300 bg-gray-50 px-3 py-1.5 text-xs font-semibold text-gray-700">
+        <span className="inline-flex items-center rounded-lg border border-ink/15 bg-surface-alt px-3 py-1.5 text-xs font-semibold text-muted">
           Map listing only.
         </span>
       ) : null}
@@ -101,7 +101,7 @@ function WebsiteAndMapLinks({ b }: { b: Business }) {
 export default function BestBusinessesSection({ businesses }: { businesses: Business[] }) {
   if (!businesses.length) {
     return (
-      <div className="mt-5 rounded-xl border border-gray-200 bg-white p-6 text-sm text-gray-700 shadow-md">
+      <div className="mt-5 rounded-xl border border-ink/10 bg-surface p-6 text-sm text-muted shadow-md">
         No businesses were found for this category in the current data.
       </div>
     );
@@ -113,13 +113,13 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
   return (
     <div className="mt-8 space-y-12">
       <div>
-        <h3 className="text-lg font-semibold text-gray-900">Featured Providers</h3>
-        <p className="mt-2 text-sm leading-relaxed text-gray-600">
+        <h3 className="text-lg font-semibold text-ink">Featured Providers</h3>
+        <p className="mt-2 text-sm leading-relaxed text-muted">
           Top {Math.min(FEATURED_MAX, businesses.length)} by rating, then review count
           {businesses.length > FEATURED_MAX ? ` (${businesses.length} total in this category)` : ""}.
         </p>
-        <div className="mt-6 rounded-xl border border-primary/25 bg-primary-light/60 p-4 shadow-sm md:p-5">
-          <ul className="divide-y divide-primary/25 rounded-xl border border-primary/25 bg-white shadow-sm">
+        <div className="mt-6 rounded-xl border border-brand/25 bg-surface-alt/60 p-4 shadow-sm md:p-5">
+          <ul className="divide-y divide-brand/20 rounded-xl border border-brand/25 bg-surface shadow-sm">
             {featured.map((b, i) => {
               const href = getBusinessOutboundUrl(b);
               const { serviceCategory } = exitInterstitialLabels(normalizeBusinessGroup(b));
@@ -131,26 +131,26 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
                         <a
                           href={href}
                           {...externalBusinessLinkProps}
-                          className="text-sm font-semibold text-gray-900 hover:text-primary-hover hover:underline"
+                          className="text-sm font-semibold text-ink hover:text-brand hover:underline"
                           onClick={() => trackOutboundClick(b.name, serviceCategory, href)}
                         >
                           {b.name}
                         </a>
                       ) : (
-                        <span className="text-sm font-semibold text-gray-900">{b.name}</span>
+                        <span className="text-sm font-semibold text-ink">{b.name}</span>
                       )}
-                      <span className="text-sm text-gray-600">
+                      <span className="text-sm text-muted">
                         {hasBusinessRatingData(b) ? (
                           <>
                             {formatRating(b.rating)} stars • {b.reviews.toLocaleString()} reviews
                           </>
                         ) : (
-                          <span className="text-gray-500">Rating not available</span>
+                          <span className="text-muted">Rating not available</span>
                         )}
                       </span>
                     </div>
                     <BusinessListingDescription text={b.description} className="" />
-                    <p className="text-sm text-gray-700">{serviceAreaNote(b)}</p>
+                    <p className="text-sm text-muted">{serviceAreaNote(b)}</p>
                     <BusinessPhoneRow phone={b.phone} providerName={b.name} wrapperClassName="" />
                     <WebsiteAndMapLinks b={b} />
                   </div>
@@ -163,8 +163,8 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
 
       {remainder.length > 0 ? (
         <div>
-          <h3 className="text-lg font-semibold text-gray-900">More listings</h3>
-          <ul className="mt-6 divide-y divide-gray-200 rounded-xl border border-gray-200 bg-white shadow-md">
+          <h3 className="text-lg font-semibold text-ink">More listings</h3>
+          <ul className="mt-6 divide-y divide-ink/10 rounded-xl border border-ink/10 bg-surface shadow-md">
             {remainder.map((b, i) => {
               const href = getBusinessOutboundUrl(b);
               const { serviceCategory } = exitInterstitialLabels(normalizeBusinessGroup(b));
@@ -176,26 +176,26 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
                         <a
                           href={href}
                           {...externalBusinessLinkProps}
-                          className="text-sm font-semibold text-gray-900 hover:text-primary-hover hover:underline"
+                          className="text-sm font-semibold text-ink hover:text-brand hover:underline"
                           onClick={() => trackOutboundClick(b.name, serviceCategory, href)}
                         >
                           {b.name}
                         </a>
                       ) : (
-                        <span className="text-sm font-semibold text-gray-900">{b.name}</span>
+                        <span className="text-sm font-semibold text-ink">{b.name}</span>
                       )}
-                      <span className="text-sm text-gray-600">
+                      <span className="text-sm text-muted">
                         {hasBusinessRatingData(b) ? (
                           <>
                             {formatRating(b.rating)} stars • {b.reviews.toLocaleString()} reviews
                           </>
                         ) : (
-                          <span className="text-gray-500">Rating not available</span>
+                          <span className="text-muted">Rating not available</span>
                         )}
                       </span>
                     </div>
                     <BusinessListingDescription text={b.description} className="" />
-                    <p className="text-sm text-gray-700">{serviceAreaNote(b)}</p>
+                    <p className="text-sm text-muted">{serviceAreaNote(b)}</p>
                     <BusinessPhoneRow phone={b.phone} providerName={b.name} wrapperClassName="" />
                     <WebsiteAndMapLinks b={b} />
                   </div>

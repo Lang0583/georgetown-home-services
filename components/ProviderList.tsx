@@ -13,7 +13,7 @@ import type { Provider } from "../lib/providers";
 import type { ProviderGroup } from "../lib/businesses";
 
 const websiteCtaClass =
-  "inline-flex items-center justify-center rounded-lg bg-[#01696F] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#0C4E54]";
+  "inline-flex items-center justify-center rounded-lg bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[var(--accent-hover)]";
 
 export default function ProviderList({
   providers,
@@ -31,17 +31,17 @@ export default function ProviderList({
         return (
           <div
             key={`${p.name}-${p.websiteUrl}`}
-            className="rounded-xl border border-gray-200 border-l-4 border-l-[#01696F] bg-white p-6 shadow-md"
+            className="rounded-xl border border-ink/10 border-l-4 border-l-[var(--accent)] bg-surface p-6 shadow-md"
           >
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center justify-between gap-2 gap-y-1">
-                  <h3 className="text-lg font-semibold text-gray-900">
+                  <h3 className="text-lg font-semibold text-ink">
                     {websiteHref ? (
                       <a
                         href={websiteHref}
                         {...externalBusinessLinkProps}
-                        className="text-gray-900 hover:text-primary-hover hover:underline"
+                        className="text-ink hover:text-brand hover:underline"
                         onClick={() => trackOutboundClick(p.name, ix.serviceCategory, websiteHref)}
                       >
                         {p.name}
@@ -51,7 +51,7 @@ export default function ProviderList({
                     )}
                   </h3>
                   {index === 0 ? (
-                    <span className="shrink-0 rounded-full bg-[#01696F] px-2.5 py-1 text-xs font-semibold text-white">
+                    <span className="shrink-0 rounded-full bg-[var(--accent)] px-2.5 py-1 text-xs font-semibold text-white">
                       Top Pick
                     </span>
                   ) : null}
@@ -83,7 +83,7 @@ export default function ProviderList({
                 )
               ) : null}
             </div>
-            <p className="mt-4 text-sm text-gray-700">{p.description}</p>
+            <p className="mt-4 text-sm text-muted">{p.description}</p>
           </div>
         );
       })}

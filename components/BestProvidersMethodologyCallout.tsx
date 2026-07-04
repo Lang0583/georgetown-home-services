@@ -11,7 +11,7 @@ import {
 export default function BestProvidersMethodologyCallout() {
   return (
     <div className="space-y-3">
-      <div className="rounded-lg border border-white/20 bg-[#01696F] px-5 py-4 shadow-sm">
+      <div className="rounded-lg border border-white/20 bg-[var(--accent)] px-5 py-4 shadow-sm">
         <h3 className="text-sm font-semibold text-white">How we selected these providers</h3>
         <ul className="mt-2 list-disc space-y-1 pl-4 text-xs leading-snug text-white/95 marker:text-white/90 sm:text-sm">
           {LISTING_INCLUSION_CRITERIA.map((text) => (
@@ -26,8 +26,8 @@ export default function BestProvidersMethodologyCallout() {
           </Link>
         </p>
       </div>
-      <p className="text-xs leading-relaxed text-gray-600">
-        <span className="font-semibold text-gray-800">How we verify licenses:</span> {listingLicenseVerificationNote()}
+      <p className="text-xs leading-relaxed text-muted">
+        <span className="font-semibold text-ink">How we verify licenses:</span> {listingLicenseVerificationNote()}
       </p>
     </div>
   );

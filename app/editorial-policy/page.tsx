@@ -38,10 +38,10 @@ export default function EditorialPolicyPage() {
       }
     >
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Who makes publishing decisions</h2>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">Who makes publishing decisions</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           Final calls on publish, merge, or retire URLs sit with{" "}
-          <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-primary hover:underline">
+          <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-brand hover:underline">
             {AUTHOR_FIRST_NAME}
           </Link>
           , who maintains {PUBLISHER_NAME} and is accountable for site-wide consistency—tone, claim discipline, and whether a page earns its spot
@@ -50,8 +50,8 @@ export default function EditorialPolicyPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Artificial intelligence: how we use it</h2>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">Artificial intelligence: how we use it</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           Drafting tools may accelerate first passes on long pages, but <strong>nothing ships without human review</strong>.
           Editors remove templated phrasing, inject Williamson County specifics (soil behavior, hail seasonality, neighborhood
           realities), and delete generic “SEO filler” that does not survive a skeptical homeowner read. If a draft cannot be
@@ -60,8 +60,8 @@ export default function EditorialPolicyPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">What we reject or merge (“thin content” bar)</h2>
-        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">What we reject or merge (“thin content” bar)</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted">
           <li>
             <strong>Near-duplicate URLs</strong> that differ only by suburb name with interchangeable paragraphs.
           </li>
@@ -84,12 +84,12 @@ export default function EditorialPolicyPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Fact-checking and corrections</h2>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">Fact-checking and corrections</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           We prioritize <strong>verifiable</strong> claims: manufacturer specifications when discussing equipment classes,
           widely published building science concepts, and public business data for directories. When readers flag an error
           with a checkable source, we correct the page and bump visible “last updated” context where the tooling allows.{" "}
-          <Link href="/contact#feedback" className="font-semibold text-primary hover:underline">
+          <Link href="/contact#feedback" className="font-semibold text-brand hover:underline">
             Contact &amp; feedback
           </Link>{" "}
           is the fastest route for corrections.
@@ -97,12 +97,12 @@ export default function EditorialPolicyPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">What we publish</h2>
-        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">What we publish</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted">
           <li>Service guides that teach category vocabulary, failure modes, and estimate comparison.</li>
           <li>
             Best Of hubs that pair shortlists with the{" "}
-            <Link href="/methodology" className="font-semibold text-primary hover:underline">
+            <Link href="/methodology" className="font-semibold text-brand hover:underline">
               listing methodology
             </Link>{" "}
             (data sources, inclusion criteria, and review cadence).
@@ -112,8 +112,8 @@ export default function EditorialPolicyPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Site-wide editorial review log</h2>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">Site-wide editorial review log</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           <strong>Spring 2026:</strong> expanded trust pages (About, Methodology, Editorial), deepened the roofing directory
           guide with original hiring analysis, and differentiated neighborhood storm pages to reduce clone-like patterns after
           county hail coverage—part of a broader push to meet reader expectations and advertising program quality bars.
@@ -121,10 +121,10 @@ export default function EditorialPolicyPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Sponsored placements</h2>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">Sponsored placements</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           Paid placements—when present—carry a clear <strong>Sponsored</strong> or <strong>Featured</strong> label.{" "}
-          <Link href="/methodology" className="font-semibold text-primary hover:underline">
+          <Link href="/methodology" className="font-semibold text-brand hover:underline">
             Listing methodology
           </Link>{" "}
           documents that placement cannot be bought and that affiliate links do not affect directory rankings.

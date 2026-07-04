@@ -17,11 +17,11 @@ export default function AdSenseDisplay({ slotId, className = "" }: Props) {
 
   return (
     <div
-      className={["rounded-xl border border-gray-200 bg-white p-4 shadow-sm", className].filter(Boolean).join(" ")}
+      className={["rounded-xl border border-ink/10 bg-surface p-4 shadow-sm", className].filter(Boolean).join(" ")}
       role="complementary"
       aria-label="Advertisement"
     >
-      <p className="mb-3 text-center text-[10px] font-semibold uppercase tracking-wider text-gray-400">Advertisement</p>
+      <p className="mb-3 text-center text-[10px] font-semibold uppercase tracking-wider text-muted">Advertisement</p>
       <AdUnit slotId={slotId} format="auto" responsive />
     </div>
   );

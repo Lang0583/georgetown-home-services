@@ -18,12 +18,12 @@ export default function FAQList({ faqs, variant = "bordered", title, className =
   if (variant === "plain") {
     return (
       <div className={className}>
-        <h2 className="text-3xl font-semibold tracking-tight text-gray-900">{heading}</h2>
+        <h2 className="text-3xl font-semibold tracking-tight text-ink">{heading}</h2>
         <div className="mt-6 flex flex-col gap-5">
           {faqs.map((faq, idx) => (
             <div key={idx}>
-              <h3 className="text-base font-bold leading-snug text-gray-900">{faq.q}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-gray-600">{faq.a}</p>
+              <h3 className="text-base font-bold leading-snug text-ink">{faq.q}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{faq.a}</p>
             </div>
           ))}
         </div>
@@ -32,16 +32,16 @@ export default function FAQList({ faqs, variant = "bordered", title, className =
   }
 
   return (
-    <div className={["mt-12 rounded-xl border border-gray-200 bg-white p-6 shadow-md md:p-8", className].filter(Boolean).join(" ")}>
-      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">{heading}</h2>
+    <div className={["mt-12 rounded-xl border border-ink/10 bg-surface p-6 shadow-md md:p-8", className].filter(Boolean).join(" ")}>
+      <h2 className="text-2xl font-semibold tracking-tight text-ink">{heading}</h2>
       <div className="mt-8 flex flex-col gap-6">
         {faqs.map((faq, idx) => (
           <div
             key={idx}
-            className="rounded-lg border border-gray-200 bg-gray-50 p-5 md:p-6"
+            className="rounded-lg border border-ink/10 bg-surface-alt p-5 md:p-6"
           >
-            <div className="text-base font-semibold leading-snug text-gray-900">{faq.q}</div>
-            <div className="mt-4 text-sm leading-relaxed text-gray-700">{faq.a}</div>
+            <div className="text-base font-semibold leading-snug text-ink">{faq.q}</div>
+            <div className="mt-4 text-sm leading-relaxed text-muted">{faq.a}</div>
           </div>
         ))}
       </div>

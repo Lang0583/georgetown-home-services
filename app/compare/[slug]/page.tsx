@@ -86,11 +86,11 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
           />
 
           <header className="mt-6">
-            <p className="text-sm font-semibold uppercase tracking-wide text-primary">
+            <p className="text-sm font-semibold uppercase tracking-wide text-brand">
               {comparison.categoryLabel} · Georgetown, TX
             </p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">{h1}</h1>
-            <p className="mt-4 max-w-3xl text-base leading-relaxed text-gray-700">
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-ink md:text-4xl">{h1}</h1>
+            <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted">
               Side-by-side look at two frequently compared {comparison.categoryLabel.toLowerCase()} companies serving
               Georgetown homeowners. Ratings reflect Google Business Profile data at last verification—confirm licensing,
               pricing, and availability directly with each company.
@@ -99,13 +99,13 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
 
           <ComparisonTable providerA={comparison.providerA} providerB={comparison.providerB} />
 
-          <section className="mt-8 rounded-xl border border-gray-200 bg-gray-50 p-6">
-            <h2 className="text-lg font-semibold text-gray-900">Bottom line</h2>
-            <p className="mt-3 text-sm leading-relaxed text-gray-700">{comparison.bottomLine}</p>
+          <section className="mt-8 rounded-xl border border-ink/10 bg-surface-alt p-6">
+            <h2 className="text-lg font-semibold text-ink">Bottom line</h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted">{comparison.bottomLine}</p>
           </section>
 
           <section className="mt-10" aria-labelledby="provider-cards-heading">
-            <h2 id="provider-cards-heading" className="text-2xl font-semibold tracking-tight text-gray-900">
+            <h2 id="provider-cards-heading" className="text-2xl font-semibold tracking-tight text-ink">
               Provider profiles
             </h2>
             <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -122,27 +122,27 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
           />
 
           <nav
-            className="mt-10 flex flex-col gap-3 rounded-xl border border-gray-200 bg-white p-6 text-sm shadow-sm sm:flex-row sm:flex-wrap sm:gap-x-6"
+            className="mt-10 flex flex-col gap-3 rounded-xl border border-ink/10 bg-surface p-6 text-sm shadow-sm sm:flex-row sm:flex-wrap sm:gap-x-6"
             aria-label="Related guides"
           >
             <div>
-              <span className="font-semibold text-gray-900">Best Of directory: </span>
-              <Link href={`/best/${comparison.bestSlug}`} className="font-semibold text-primary hover:underline">
+              <span className="font-semibold text-ink">Best Of directory: </span>
+              <Link href={`/best/${comparison.bestSlug}`} className="font-semibold text-brand hover:underline">
                 Top {comparison.categoryLabel.toLowerCase()} in Georgetown
               </Link>
             </div>
             <div>
-              <span className="font-semibold text-gray-900">Service guide: </span>
+              <span className="font-semibold text-ink">Service guide: </span>
               <Link
                 href={`/services/${comparison.serviceSlug}`}
-                className="font-semibold text-primary hover:underline"
+                className="font-semibold text-brand hover:underline"
               >
                 {comparison.categoryLabel} in Georgetown, TX
               </Link>
             </div>
             <div>
-              <span className="font-semibold text-gray-900">More comparisons: </span>
-              <Link href="/compare" className="font-semibold text-primary hover:underline">
+              <span className="font-semibold text-ink">More comparisons: </span>
+              <Link href="/compare" className="font-semibold text-brand hover:underline">
                 See all head-to-head matchups
               </Link>
             </div>

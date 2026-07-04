@@ -76,11 +76,11 @@ export default async function SearchPage({
   const results = matchQuery(index, q);
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-surface-alt">
       <Container>
         <section className="py-10 md:py-12">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">Search</h1>
-          <p className="mt-3 max-w-2xl text-gray-700">
+          <h1 className="text-3xl font-bold tracking-tight text-ink md:text-4xl">Search</h1>
+          <p className="mt-3 max-w-2xl text-muted">
             Find Georgetown TX service guides, provider directories, and homeowner articles.
           </p>
 
@@ -95,12 +95,12 @@ export default async function SearchPage({
                 type="search"
                 defaultValue={q}
                 placeholder="e.g. plumber cost, AC not cooling, roof hail"
-                className="min-h-11 flex-1 rounded-lg border border-gray-300 px-4 py-2 text-gray-900 shadow-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                className="min-h-11 flex-1 rounded-lg border border-ink/15 px-4 py-2 text-ink shadow-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
                 autoComplete="off"
               />
               <button
                 type="submit"
-                className="inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-5 py-2 text-sm font-semibold text-white hover:bg-primary-hover"
+                className="inline-flex min-h-11 items-center justify-center rounded-lg bg-accent px-5 py-2 text-sm font-semibold text-white hover:bg-accent-hover"
               >
                 Search
               </button>
@@ -109,7 +109,7 @@ export default async function SearchPage({
 
           {q ? (
             <div className="mt-10">
-              <h2 className="text-lg font-semibold text-gray-900">
+              <h2 className="text-lg font-semibold text-ink">
                 {results.length > 0
                   ? `${results.length} result${results.length === 1 ? "" : "s"} for “${q}”`
                   : `No results for “${q}”`}
@@ -121,14 +121,14 @@ export default async function SearchPage({
                   ))}
                 </div>
               ) : (
-                <p className="mt-4 text-sm text-gray-700">
-                  Try broader terms like <Link href="/search?q=plumber" className="font-semibold text-primary hover:underline">plumber</Link>
+                <p className="mt-4 text-sm text-muted">
+                  Try broader terms like <Link href="/search?q=plumber" className="font-semibold text-brand hover:underline">plumber</Link>
                   ,{" "}
-                  <Link href="/search?q=hvac" className="font-semibold text-primary hover:underline">
+                  <Link href="/search?q=hvac" className="font-semibold text-brand hover:underline">
                     HVAC
                   </Link>
                   , or browse the{" "}
-                  <Link href="/services" className="font-semibold text-primary hover:underline">
+                  <Link href="/services" className="font-semibold text-brand hover:underline">
                     services hub
                   </Link>
                   .
@@ -136,7 +136,7 @@ export default async function SearchPage({
               )}
             </div>
           ) : (
-            <p className="mt-8 text-sm text-gray-600">Enter a keyword to search guides and directories.</p>
+            <p className="mt-8 text-sm text-muted">Enter a keyword to search guides and directories.</p>
           )}
         </section>
       </Container>

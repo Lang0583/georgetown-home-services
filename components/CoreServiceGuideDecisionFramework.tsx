@@ -18,7 +18,7 @@ const copy: Record<
         backing into living space, or cannot stop water at the meter, treat it as urgent and call a licensed pro or
         emergency services as appropriate. For everything else, the goal is to describe <strong>what changed</strong> (flow
         rate, temperature, sound, duration) so your shortlist from{" "}
-        <Link href="/best/best-plumbers-georgetown-tx" className="font-semibold text-primary hover:underline">
+        <Link href="/best/best-plumbers-georgetown-tx" className="font-semibold text-brand hover:underline">
           Best Plumbers in Georgetown, TX
         </Link>{" "}
         can quote responsibly.
@@ -44,7 +44,7 @@ const copy: Record<
         Start with <strong>mode and pattern</strong>: does the symptom appear only in cooling, only in heating, or only
         when airflow is high? Noises that track fan speed differ from refrigerant-era hissing or electrical humming.
         Short-cycling (rapid start/stop) increases wear—donate that detail to every company you call from the{" "}
-        <Link href="/best/top-hvac-companies-georgetown-tx" className="font-semibold text-primary hover:underline">
+        <Link href="/best/top-hvac-companies-georgetown-tx" className="font-semibold text-brand hover:underline">
           top HVAC shortlist
         </Link>
         .
@@ -56,7 +56,7 @@ const copy: Record<
         especially if your ducts are leaking badly or you are still on R-22-era gear with costly refrigerant.
       </>,
       <>
-        After <Link href="/blog/hail-damage-georgetown-williamson-may-2026" className="font-semibold text-primary hover:underline">
+        After <Link href="/blog/hail-damage-georgetown-williamson-may-2026" className="font-semibold text-brand hover:underline">
           hail season
         </Link>
         , outdoor coils may look “a little bent” but still lose capacity. If cooling recovered poorly after storms, ask
@@ -76,7 +76,7 @@ const copy: Record<
         <strong>Stabilize first</strong> if active dripping threatens ceilings; tarping and bucket lines are temporary.
         Photograph everything before and after mitigation—insurance conversations go smoother with timestamps. Then collect
         written scopes from companies on{" "}
-        <Link href="/best/best-roofers-georgetown-tx" className="font-semibold text-primary hover:underline">
+        <Link href="/best/best-roofers-georgetown-tx" className="font-semibold text-brand hover:underline">
           Best Roofers in Georgetown, TX
         </Link>{" "}
         that itemize decking allowance, underlayment class, and ventilation balance.
@@ -94,11 +94,11 @@ const copy: Record<
 export default function CoreServiceGuideDecisionFramework({ trade }: { trade: Trade }) {
   const block = copy[trade];
   return (
-    <section className="mt-6 rounded-xl border border-primary/25 bg-primary/5 p-6 shadow-sm" aria-labelledby={`framework-${trade}`}>
-      <h2 id={`framework-${trade}`} className="text-xl font-semibold tracking-tight text-gray-900">
+    <section className="mt-6 rounded-xl border border-brand/25 bg-brand/5 p-6 shadow-sm" aria-labelledby={`framework-${trade}`}>
+      <h2 id={`framework-${trade}`} className="text-xl font-semibold tracking-tight text-ink">
         {block.title}
       </h2>
-      <div className="mt-4 space-y-3 text-sm leading-relaxed text-gray-800">
+      <div className="mt-4 space-y-3 text-sm leading-relaxed text-ink">
         {block.paragraphs.map((p, i) => (
           <p key={i}>{p}</p>
         ))}

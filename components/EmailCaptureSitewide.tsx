@@ -128,24 +128,24 @@ export default function EmailCaptureSitewide({
 
   const boxClass =
     variant === "blog-sidebar"
-      ? "rounded-xl border border-gray-200 bg-white p-4 shadow-sm"
+      ? "rounded-xl border border-ink/10 bg-surface p-4 shadow-sm"
       : compact
-        ? "mt-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
-        : "mt-12 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm";
+        ? "mt-8 rounded-2xl border border-ink/10 bg-surface p-6 shadow-sm"
+        : "mt-12 rounded-2xl border border-ink/10 bg-surface p-8 shadow-sm";
 
   if (variant === "blog-sidebar") {
     return (
       <section id={formId} className={boxClass}>
         <div className="flex gap-3">
-          <ChecklistLeadMagnetIcon className="mt-0.5 h-9 w-9 shrink-0 text-primary" />
+          <ChecklistLeadMagnetIcon className="mt-0.5 h-9 w-9 shrink-0 text-brand" />
           <div className="min-w-0">
-            <h2 className="text-base font-bold leading-snug text-gray-900">{EMAIL_CAPTURE_HEADLINE}</h2>
-            <p className="mt-1 text-xs leading-snug text-gray-600">{EMAIL_CAPTURE_SUBTEXT}</p>
+            <h2 className="text-base font-bold leading-snug text-ink">{EMAIL_CAPTURE_HEADLINE}</h2>
+            <p className="mt-1 text-xs leading-snug text-muted">{EMAIL_CAPTURE_SUBTEXT}</p>
           </div>
         </div>
 
         <form onSubmit={onSubmit} className="mt-3 flex flex-col gap-2">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-700">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted">
             {allowedOffers.map((k) => {
               const checked = offer === k;
               return (
@@ -156,7 +156,7 @@ export default function EmailCaptureSitewide({
                     value={k}
                     checked={checked}
                     onChange={() => setOffer(k)}
-                    className="text-primary focus:ring-primary/30"
+                    className="text-brand focus:ring-brand/30"
                   />
                   <span>{radioLabelForBlogSidebar(k)}</span>
                 </label>
@@ -165,7 +165,7 @@ export default function EmailCaptureSitewide({
           </div>
 
           <input
-            className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
+            className="w-full rounded-lg border border-ink/10 px-3 py-2 text-sm text-ink outline-none ring-0 placeholder:text-muted focus:border-brand/40 focus:ring-2 focus:ring-brand/20"
             type="email"
             name="email"
             placeholder={EMAIL_CAPTURE_EMAIL_PLACEHOLDER}
@@ -177,7 +177,7 @@ export default function EmailCaptureSitewide({
           />
 
           {status === "success" ? (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-50 px-3 py-2 text-xs text-emerald-900">
+            <div className="rounded-md border border-verified/30 bg-verified/10 px-3 py-2 text-xs text-verified">
               Thanks — your PDF is downloading and the full library is headed to your inbox.
             </div>
           ) : null}
@@ -188,18 +188,18 @@ export default function EmailCaptureSitewide({
           <button
             type="submit"
             disabled={!canSubmit}
-            className="w-full rounded-lg bg-[#01696F] py-2 text-sm font-semibold text-white transition-colors hover:bg-[#0C4E54] disabled:cursor-not-allowed disabled:opacity-60"
+            className="w-full rounded-lg bg-[var(--accent)] py-2 text-sm font-semibold text-white transition-colors hover:bg-[var(--accent-hover)] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {status === "submitting" ? "Sending…" : submitLabelForOffer(offer)}
           </button>
 
-          <p className="text-center text-[11px] leading-snug text-gray-600">{EMAIL_CAPTURE_TRUST_LINE}</p>
+          <p className="text-center text-[11px] leading-snug text-muted">{EMAIL_CAPTURE_TRUST_LINE}</p>
 
           {blogSidebarSecondaryHref ? (
             <p className="text-center">
               <Link
                 href={blogSidebarSecondaryHref}
-                className="text-sm font-medium text-primary underline-offset-4 hover:text-primary-hover hover:underline"
+                className="text-sm font-medium text-brand underline-offset-4 hover:text-brand hover:underline"
               >
                 {blogSidebarSecondaryLabel}
               </Link>
@@ -213,22 +213,22 @@ export default function EmailCaptureSitewide({
   return (
     <section id={formId} className={boxClass}>
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-        <ChecklistLeadMagnetIcon className="h-12 w-12 shrink-0 text-primary" />
+        <ChecklistLeadMagnetIcon className="h-12 w-12 shrink-0 text-brand" />
         <div className="min-w-0">
-          <h2 className="text-2xl font-bold text-gray-900">{EMAIL_CAPTURE_HEADLINE}</h2>
-          <p className="mt-2 text-slate-700">{EMAIL_CAPTURE_SUBTEXT}</p>
+          <h2 className="text-2xl font-bold text-ink">{EMAIL_CAPTURE_HEADLINE}</h2>
+          <p className="mt-2 text-muted">{EMAIL_CAPTURE_SUBTEXT}</p>
         </div>
       </div>
 
       {status === "success" ? (
-        <div className="mt-6 rounded-lg border border-emerald-500/30 bg-emerald-50 p-6 text-sm leading-relaxed text-emerald-900">
+        <div className="mt-6 rounded-lg border border-verified/30 bg-verified/10 p-6 text-sm leading-relaxed text-verified">
           {EMAIL_CAPTURE_SUCCESS_MESSAGE}
         </div>
       ) : (
         <>
           <form onSubmit={onSubmit} className="mt-6 grid gap-4 md:grid-cols-2">
             <input
-              className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
+              className="rounded-lg border border-ink/10 p-3 text-ink outline-none ring-0 placeholder:text-muted focus:border-brand/40 focus:ring-2 focus:ring-brand/20"
               type="text"
               name="firstName"
               placeholder="First name (optional)"
@@ -237,7 +237,7 @@ export default function EmailCaptureSitewide({
               autoComplete="given-name"
             />
             <input
-              className="rounded-lg border border-gray-200 p-3 text-gray-900 outline-none ring-0 placeholder:text-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
+              className="rounded-lg border border-ink/10 p-3 text-ink outline-none ring-0 placeholder:text-muted focus:border-brand/40 focus:ring-2 focus:ring-brand/20"
               type="email"
               name="email"
               placeholder={EMAIL_CAPTURE_EMAIL_PLACEHOLDER}
@@ -249,7 +249,7 @@ export default function EmailCaptureSitewide({
             />
 
             <div className="md:col-span-2">
-              <div className="text-sm font-semibold text-gray-900">Choose your free guide</div>
+              <div className="text-sm font-semibold text-ink">Choose your free guide</div>
               <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {allowedOffers.map((k) => {
                   const m = LEAD_MAGNETS[k];
@@ -259,7 +259,7 @@ export default function EmailCaptureSitewide({
                       key={k}
                       className={[
                         "flex cursor-pointer gap-3 rounded-xl border p-4 shadow-sm transition",
-                        checked ? "border-primary/40 bg-primary-light/60" : "border-gray-200 bg-white hover:bg-gray-50",
+                        checked ? "border-brand/40 bg-surface-alt/60" : "border-ink/10 bg-surface hover:bg-surface-alt",
                       ].join(" ")}
                     >
                       <input
@@ -271,8 +271,8 @@ export default function EmailCaptureSitewide({
                         className="mt-1"
                       />
                       <div className="min-w-0">
-                        <div className="text-sm font-semibold text-gray-900">{m.title}</div>
-                        <div className="mt-1 text-sm text-gray-700">{m.description}</div>
+                        <div className="text-sm font-semibold text-ink">{m.title}</div>
+                        <div className="mt-1 text-sm text-muted">{m.description}</div>
                       </div>
                     </label>
                   );
@@ -289,15 +289,15 @@ export default function EmailCaptureSitewide({
             <button
               type="submit"
               disabled={!canSubmit}
-              className="rounded-lg bg-primary px-6 py-3 font-semibold text-white hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60 md:col-span-2"
+              className="rounded-lg bg-accent px-6 py-3 font-semibold text-white hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60 md:col-span-2"
             >
               {status === "submitting" ? "Sending…" : submitLabelForOffer(offer)}
             </button>
 
-            <p className="text-xs leading-relaxed text-slate-600 md:col-span-2">{EMAIL_CAPTURE_CONSENT_LINE}</p>
+            <p className="text-xs leading-relaxed text-muted md:col-span-2">{EMAIL_CAPTURE_CONSENT_LINE}</p>
           </form>
 
-          <p className="mt-4 text-xs leading-relaxed text-slate-600">{EMAIL_CAPTURE_TRUST_LINE}</p>
+          <p className="mt-4 text-xs leading-relaxed text-muted">{EMAIL_CAPTURE_TRUST_LINE}</p>
         </>
       )}
     </section>

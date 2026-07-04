@@ -129,44 +129,44 @@ export default function BlogIndexPage() {
   const featuredRest = featured.slice(3);
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-surface-alt">
       <Container>
         <section className="py-10 md:py-12">
 
           <div className="flex flex-col gap-10">
             <div>
-              <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Blog</div>
-              <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
+              <div className="text-sm font-semibold uppercase tracking-wide text-muted">Blog</div>
+              <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">
                 Practical Home Service Guides for Georgetown, TX
               </h1>
-              <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
+              <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
                 This blog is designed for return visits: monthly maintenance reminders, seasonal Georgetown checklists, cost guides,
                 after-storm steps, warning signs, and “how to choose a contractor” checklists.
                 Every post includes a practical takeaway, links to service guides and Best Of comparisons, and a light email signup for maintenance reminders.
               </p>
-              <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm font-semibold text-gray-700">
+              <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm font-semibold text-muted">
                 <a className="hover:underline" href="#costs">
                   Costs
                 </a>
-                <span className="text-gray-300" aria-hidden>
+                <span className="text-muted" aria-hidden>
                   ·
                 </span>
                 <a className="hover:underline" href="#repair">
                   Repair advice
                 </a>
-                <span className="text-gray-300" aria-hidden>
+                <span className="text-muted" aria-hidden>
                   ·
                 </span>
                 <a className="hover:underline" href="#maintenance">
                   Maintenance
                 </a>
-                <span className="text-gray-300" aria-hidden>
+                <span className="text-muted" aria-hidden>
                   ·
                 </span>
                 <a className="hover:underline" href="#emergency">
                   Emergency
                 </a>
-                <span className="text-gray-300" aria-hidden>
+                <span className="text-muted" aria-hidden>
                   ·
                 </span>
                 <a className="hover:underline" href="#hiring">
@@ -182,8 +182,8 @@ export default function BlogIndexPage() {
             ) : null}
 
             <section>
-              <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Featured guides</h2>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+              <h2 className="text-3xl font-semibold tracking-tight text-ink">Featured guides</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                 Start here if you’re new to the site or planning a major repair or replacement.
               </p>
               <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
@@ -224,8 +224,8 @@ export default function BlogIndexPage() {
 
               return (
                 <section key={key} id={key} className="scroll-mt-24">
-                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">{meta.title}</h2>
-                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">{meta.description}</p>
+                  <h2 className="text-3xl font-semibold tracking-tight text-ink">{meta.title}</h2>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">{meta.description}</p>
 
                   <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                     {items.map((p) => (
@@ -242,24 +242,24 @@ export default function BlogIndexPage() {
               );
             })}
 
-            <section className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-              <h2 className="text-xl font-semibold text-gray-900">FAQ</h2>
-              <div className="mt-3 space-y-4 text-sm leading-relaxed text-gray-700">
+            <section className="rounded-xl border border-ink/10 bg-surface p-6 shadow-md">
+              <h2 className="text-xl font-semibold text-ink">FAQ</h2>
+              <div className="mt-3 space-y-4 text-sm leading-relaxed text-muted">
                 <div>
-                  <div className="font-semibold text-gray-900">Are these guides unbiased?</div>
+                  <div className="font-semibold text-ink">Are these guides unbiased?</div>
                   <p>
                     These articles are written for Georgetown homeowners and focus on clear decision-making. Always confirm
                     licensing, insurance, pricing, and availability directly with any provider before hiring.
                   </p>
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-900">Do you schedule appointments?</div>
+                  <div className="font-semibold text-ink">Do you schedule appointments?</div>
                   <p>
                     No. This site is a directory and homeowner guide. You choose who to contact and what to schedule directly with the provider.
                   </p>
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-900">Where should I start?</div>
+                  <div className="font-semibold text-ink">Where should I start?</div>
                   <p>
                     Budgeting: start with cost guides. Urgent problems: start with repair/emergency posts, then review the
                     related service pages and best-of comparisons.
@@ -276,7 +276,7 @@ export default function BlogIndexPage() {
                 primaryHref="/best"
                 emailFormHref="/#email-capture"
                 secondary={
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-muted">
                     Service hubs:{" "}
                     <Link href="/services" className="font-semibold underline underline-offset-4">
                       Services

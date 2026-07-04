@@ -48,9 +48,9 @@ export default function SiteFeedbackForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-emerald-200 bg-emerald-50/80 p-6 shadow-sm">
-        <div className="text-sm font-semibold text-emerald-900">Thanks for the feedback</div>
-        <p className="mt-2 text-sm leading-relaxed text-emerald-900">
+      <div className="rounded-2xl border border-verified/25 bg-verified/10/80 p-6 shadow-sm">
+        <div className="text-sm font-semibold text-verified">Thanks for the feedback</div>
+        <p className="mt-2 text-sm leading-relaxed text-verified">
           We read every message. If we need more detail, we&apos;ll reply by email.
         </p>
       </div>
@@ -58,10 +58,10 @@ export default function SiteFeedbackForm() {
   }
 
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-      <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">Feedback</div>
-      <h2 className="mt-2 text-lg font-semibold text-gray-900">Help us improve</h2>
-      <p className="mt-2 text-sm leading-relaxed text-gray-700">
+    <div className="rounded-2xl border border-ink/10 bg-surface p-6 shadow-sm">
+      <div className="text-xs font-semibold uppercase tracking-wide text-muted">Feedback</div>
+      <h2 className="mt-2 text-lg font-semibold text-ink">Help us improve</h2>
+      <p className="mt-2 text-sm leading-relaxed text-muted">
         Tell us what&apos;s on your mind—corrections, ideas, or listing questions. We use this to prioritize updates
         (not for booking contractors; use service guides or Best Of for that).
       </p>
@@ -80,7 +80,7 @@ export default function SiteFeedbackForm() {
         </div>
 
         <div>
-          <label htmlFor={`${baseId}-topic`} className="block text-sm font-medium text-gray-800">
+          <label htmlFor={`${baseId}-topic`} className="block text-sm font-medium text-ink">
             Topic <span className="text-rose-600">*</span>
           </label>
           <select
@@ -89,7 +89,7 @@ export default function SiteFeedbackForm() {
             required
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light"
+            className="mt-1 w-full rounded-lg border border-ink/10 bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
           >
             {SITE_FEEDBACK_TOPICS.map((t) => (
               <option key={t.value} value={t.value}>
@@ -100,7 +100,7 @@ export default function SiteFeedbackForm() {
         </div>
 
         <div>
-          <label htmlFor={`${baseId}-email`} className="block text-sm font-medium text-gray-800">
+          <label htmlFor={`${baseId}-email`} className="block text-sm font-medium text-ink">
             Email <span className="text-rose-600">*</span>
           </label>
           <input
@@ -112,13 +112,13 @@ export default function SiteFeedbackForm() {
             onChange={(e) => setEmail(e.target.value)}
             autoComplete="email"
             inputMode="email"
-            className="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light"
+            className="mt-1 w-full rounded-lg border border-ink/10 px-3 py-2 text-sm text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
           />
-          <p className="mt-1 text-xs text-gray-500">We only use this if we need to follow up.</p>
+          <p className="mt-1 text-xs text-muted">We only use this if we need to follow up.</p>
         </div>
 
         <div>
-          <label htmlFor={`${baseId}-message`} className="block text-sm font-medium text-gray-800">
+          <label htmlFor={`${baseId}-message`} className="block text-sm font-medium text-ink">
             Details <span className="text-rose-600">*</span>
           </label>
           <textarea
@@ -129,7 +129,7 @@ export default function SiteFeedbackForm() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="What page, provider, or idea should we look at?"
-            className="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light"
+            className="mt-1 w-full rounded-lg border border-ink/10 px-3 py-2 text-sm text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
           />
         </div>
 
@@ -142,7 +142,7 @@ export default function SiteFeedbackForm() {
         <button
           type="submit"
           disabled={!canSubmit}
-          className="inline-flex w-full items-center justify-center rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+          className="inline-flex w-full items-center justify-center rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
         >
           {status === "submitting" ? "Sending…" : "Send feedback"}
         </button>

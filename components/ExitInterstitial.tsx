@@ -77,13 +77,13 @@ export function ExitInterstitialModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="relative z-[101] w-full max-w-[400px] rounded-xl border border-gray-200 bg-white p-6 shadow-xl"
+        className="relative z-[101] w-full max-w-[400px] rounded-xl border border-ink/10 bg-surface p-6 shadow-xl"
         onMouseDown={(e) => e.stopPropagation()}
       >
-        <h2 id={titleId} className="text-lg font-semibold tracking-tight text-gray-900">
+        <h2 id={titleId} className="text-lg font-semibold tracking-tight text-ink">
           Before you go — get a free quote in 60 seconds
         </h2>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           Compare {providerName} with other top-rated {serviceCategory} companies on Angi — free, no obligation. We may
           earn a fee if you hire through this partner link.
         </p>
@@ -91,14 +91,14 @@ export function ExitInterstitialModal({
           <button
             type="button"
             onClick={openAngi}
-            className="inline-flex w-full items-center justify-center rounded-lg bg-[#01696F] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#0C4E54]"
+            className="inline-flex w-full items-center justify-center rounded-lg bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[var(--accent-hover)]"
           >
             Get a Free Quote on Angi →
           </button>
           <button
             type="button"
             onClick={continueToProvider}
-            className="text-center text-sm font-semibold text-gray-600 underline-offset-2 hover:text-gray-900 hover:underline"
+            className="text-center text-sm font-semibold text-muted underline-offset-2 hover:text-ink hover:underline"
           >
             No thanks, continue to {providerName} →
           </button>

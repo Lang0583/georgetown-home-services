@@ -11,7 +11,7 @@ export function RichTextBlocks({ blocks }: { blocks: ContentBlock[] }) {
       {blocks.map((block, idx) => {
         if (block.kind === "affiliateDisclosure") {
           return (
-            <p key={idx} className="mb-4 text-xs leading-relaxed text-slate-600">
+            <p key={idx} className="mb-4 text-xs leading-relaxed text-muted">
               {block.text}
             </p>
           );
@@ -32,7 +32,7 @@ export function RichTextBlocks({ blocks }: { blocks: ContentBlock[] }) {
                           : part.href
                       }
                       rel={part.rel ?? "nofollow sponsored"}
-                      className="font-medium text-primary underline underline-offset-2 hover:text-primary-hover"
+                      className="font-medium text-brand underline underline-offset-2 hover:text-brand"
                     >
                       {part.label}
                     </TrackableProseLink>

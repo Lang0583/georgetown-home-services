@@ -38,7 +38,7 @@ export default function HvacHubPage() {
   const posts = blog.filter((p) => p.relatedBestSlugs?.includes("top-hvac-companies-georgetown-tx")).slice(0, 10);
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-surface type-service-best">
       <Container>
         <section className="py-10 md:py-12">
           <JsonLd
@@ -52,21 +52,21 @@ export default function HvacHubPage() {
           />
           <div className="flex flex-col gap-10">
             <div>
-              <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Services</div>
-              <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">HVAC in Georgetown, TX</h1>
+              <div className="text-sm font-semibold uppercase tracking-wide text-muted">Services</div>
+              <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">HVAC in Georgetown, TX</h1>
               <LastUpdated lastUpdated={lastUpdated} />
-              <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
+              <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
                 Use these pages to diagnose common HVAC problems (AC not cooling, uneven temperatures), understand cost drivers, and choose who to call.
                 When you’re ready, compare local HVAC companies and contact providers directly.
               </p>
               <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
-                <Link href="/best/top-hvac-companies-georgetown-tx" className="text-primary hover:underline">
+                <Link href="/best/top-hvac-companies-georgetown-tx" className="text-brand hover:underline">
                   See Top HVAC Companies
                 </Link>
-                <span className="text-gray-300" aria-hidden>
+                <span className="text-muted" aria-hidden>
                   ·
                 </span>
-                <Link href="/services" className="text-gray-700 hover:underline">
+                <Link href="/services" className="text-muted hover:underline">
                   All service guides
                 </Link>
               </div>
@@ -78,7 +78,7 @@ export default function HvacHubPage() {
 
             {core ? (
               <section>
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Start here</h2>
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">Start here</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <LinkCard href={`/services/${core.slug}`} title={core.title} description={core.description} badge={core.serviceType} />
                   <LinkCard
@@ -93,8 +93,8 @@ export default function HvacHubPage() {
 
             {supporting.length ? (
               <section>
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Supporting HVAC pages</h2>
-                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">Supporting HVAC pages</h2>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                   Symptom and scenario pages that help you clarify the likely cause and what to ask when you call.
                 </p>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -107,8 +107,8 @@ export default function HvacHubPage() {
 
             {posts.length ? (
               <section>
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Cost and homeowner guides</h2>
-                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">Cost and homeowner guides</h2>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                   Repeat-use content: maintenance, costs, and warning signs. Each post links back to service guides and the provider directory.
                 </p>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">

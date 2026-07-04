@@ -57,10 +57,10 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
   const visible = chunks.length ? chunks[chunkIndex % chunks.length] : [];
 
   return (
-    <div className="rounded-lg bg-gray-50 p-4">
+    <div className="rounded-lg bg-surface-alt p-4">
       <div className="flex items-baseline justify-between gap-3">
-        <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-900">{title}</h3>
-        <Link href={bestHref} className="text-xs font-semibold text-primary hover:underline">
+        <h3 className="text-sm font-semibold uppercase tracking-wide text-ink">{title}</h3>
+        <Link href={bestHref} className="text-xs font-semibold text-brand hover:underline">
           Top Providers
         </Link>
       </div>
@@ -71,13 +71,13 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
           const maps = getBusinessMapsUrl(business);
           const serviceCategory = EXIT_INTERSTITIAL_SERVICE_LABEL[providerGroupKey];
           return (
-            <li key={`${providerGroupKey}-${business.name}`} className="text-sm text-gray-700">
-              <div className="font-medium text-gray-900">
+            <li key={`${providerGroupKey}-${business.name}`} className="text-sm text-muted">
+              <div className="font-medium text-ink">
                 {outbound ? (
                   <a
                     href={outbound}
                     {...externalBusinessLinkProps}
-                    className="text-gray-900 hover:text-primary-hover hover:underline"
+                    className="text-ink hover:text-brand hover:underline"
                     onClick={() => trackOutboundClick(business.name, serviceCategory, outbound)}
                   >
                     {business.name}
@@ -99,7 +99,7 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
                       providerUrl={website}
                       serviceCategory={EXIT_INTERSTITIAL_SERVICE_LABEL[providerGroupKey]}
                       angiCategorySlug={EXIT_INTERSTITIAL_ANGI_SLUG[providerGroupKey]}
-                      className="text-primary hover:text-primary-hover"
+                      className="text-brand hover:text-brand"
                     >
                       {BUSINESS_LINK_VISIT_WEBSITE}
                     </ExitInterstitial>
@@ -108,7 +108,7 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
                     <a
                       href={maps}
                       {...externalBusinessLinkProps}
-                      className="text-primary hover:text-primary-hover"
+                      className="text-brand hover:text-brand"
                       onClick={() => trackMapsClick(business.name)}
                     >
                       {BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS}
@@ -121,11 +121,11 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
         })}
       </ul>
       <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs">
-        <Link href={serviceHref} className="font-semibold text-gray-900 hover:underline">
+        <Link href={serviceHref} className="font-semibold text-ink hover:underline">
           View service page
         </Link>
-        <span className="text-gray-400">·</span>
-        <Link href={bestHref} className="font-semibold text-gray-900 hover:underline">
+        <span className="text-muted">·</span>
+        <Link href={bestHref} className="font-semibold text-ink hover:underline">
           Compare top providers
         </Link>
       </div>

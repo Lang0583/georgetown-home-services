@@ -9,7 +9,7 @@ export const DIRECTORY_PAGES_LAST_UPDATED: LastUpdatedIso = "2026-07-01";
 export const LAST_UPDATED_STALE_DAYS = 90;
 
 /** className for the visible “Last updated” line directly under the main H1. */
-export const LAST_UPDATED_LINE_CLASS = "mt-2 text-sm text-gray-500";
+export const LAST_UPDATED_LINE_CLASS = "mt-2 text-sm text-muted";
 
 export function formatLastUpdatedDisplay(iso: string): string {
   const d = parseIsoDate(iso);

@@ -45,16 +45,16 @@ export default function CTASection({
   showDisclaimer?: boolean;
 }) {
   return (
-    <section className="rounded-xl border border-gray-200 bg-gray-50 p-6 shadow-md md:p-8">
-      {eyebrow ? <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">{eyebrow}</div> : null}
-      <h2 className="mt-2 text-3xl font-semibold tracking-tight text-gray-900">{title}</h2>
-      <p className="mt-3 text-sm leading-relaxed text-gray-700 md:text-base">{description}</p>
+    <section className="rounded-xl bg-accent p-6 text-white shadow-md md:p-8">
+      {eyebrow ? <div className="text-xs font-semibold uppercase tracking-wide text-white/85">{eyebrow}</div> : null}
+      <h2 className="mt-2 text-3xl font-bold tracking-tight text-white">{title}</h2>
+      <p className="mt-3 text-sm leading-[1.65] text-white/95 md:text-base">{description}</p>
       <div className="mt-6">
         <SiteCTAButtons primaryHref={primaryHref} emailFormHref={emailFormHref} />
       </div>
-      {secondary ? <div className="mt-4 text-sm sm:max-w-md">{secondary}</div> : null}
+      {secondary ? <div className="mt-4 text-sm text-white/90 sm:max-w-md">{secondary}</div> : null}
       {showDisclaimer ? (
-        <p className="mt-4 text-xs leading-relaxed text-gray-600">{PROVIDER_INFO_DISCLAIMER}</p>
+        <p className="mt-4 text-xs leading-[1.65] text-white/85">{PROVIDER_INFO_DISCLAIMER}</p>
       ) : null}
     </section>
   );

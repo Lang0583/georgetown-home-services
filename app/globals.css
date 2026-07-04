@@ -1,43 +1,123 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #1d2b33;
+  --surface: #ffffff;
+  --surface-alt: #f3f6f5;
+  --brand: #1e3a5f;
+  --accent: #b23a18;
+  --accent-hover: #962f14;
+  --verified: #1e7a46;
+  --rating: #b45309;
+  --muted: #5a6b74;
+
+  --background: var(--surface);
+  --foreground: var(--ink);
+
+  color-scheme: light;
 }
 
 @theme inline {
+  --color-ink: var(--ink);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-brand: var(--brand);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-verified: var(--verified);
+  --color-rating: var(--rating);
+  --color-muted: var(--muted);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  /* Brand teal — slightly darker for WCAG AA contrast on white/gray-50 body text */
-  --color-primary: #0a5c64;
-  --color-primary-hover: #084249;
-  --color-primary-light: #e6f2f2;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: inherit;
 }
 
 html {
   scroll-padding-top: 6rem;
+  color-scheme: light;
 }
 
 body {
   overflow-x: hidden;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 17px;
+  line-height: 1.65;
 }
 
+:target {
+  scroll-margin-top: 6rem;
+}
+
+/* Prose rhythm — 70ch max width for readable copy */
+.prose-site,
+.prose-site > * {
+  max-width: 70ch;
+}
+
+.prose-site h1,
+.prose-site h2,
+.prose-site h3,
+.prose-site h4 {
+  color: var(--ink);
+  font-weight: 700;
+  max-width: 70ch;
+}
+
+.prose-site a:not(.btn-accent):not(.btn-secondary) {
+  color: var(--brand);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose-site a:not(.btn-accent):not(.btn-secondary):hover {
+  color: var(--brand);
+}
+
+/* 18px body on service and best routes */
+.type-service-best {
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+/* Hero / image overlays — no raw text on photos */
+.hero-overlay-band {
+  background-color: var(--brand);
+  color: var(--surface);
+}
+
+.hero-overlay-scrim {
+  position: relative;
+}
+
+.hero-overlay-scrim::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--ink) 60%, transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-overlay-scrim > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Default links outside prose inherit ink; explicit brand links use underline */
 a {
   color: inherit;
   text-decoration: none;
 }
 
-/* Ensure in-page anchors (like the request form) are not hidden beneath the sticky header. */
-:target {
-  scroll-margin-top: 6rem;
+a.link-brand {
+  color: var(--brand);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
-
+a.link-brand:hover {
+  color: var(--brand);
+}

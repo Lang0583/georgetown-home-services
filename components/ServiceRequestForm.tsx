@@ -60,9 +60,9 @@ export default function ServiceRequestForm({ serviceSlug }: Props) {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-emerald-200 bg-emerald-50/80 p-6 shadow-sm">
-        <div className="text-sm font-semibold text-emerald-900">Request received</div>
-        <p className="mt-2 text-sm leading-relaxed text-emerald-900">
+      <div className="rounded-2xl border border-verified/25 bg-verified/10/80 p-6 shadow-sm">
+        <div className="text-sm font-semibold text-verified">Request received</div>
+        <p className="mt-2 text-sm leading-relaxed text-verified">
           Thanks — your request was sent.
           {seasonalTipsOptIn
             ? " If you opted in, you’ll get seasonal Georgetown homeowner tips by email (unsubscribe anytime)."
@@ -73,10 +73,10 @@ export default function ServiceRequestForm({ serviceSlug }: Props) {
   }
 
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-      <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">Request service</div>
-      <h2 className="mt-2 text-lg font-semibold text-gray-900">Tell us what you need</h2>
-      <p className="mt-2 text-sm leading-relaxed text-gray-700">
+    <div className="rounded-2xl border border-ink/10 bg-surface p-6 shadow-sm">
+      <div className="text-xs font-semibold uppercase tracking-wide text-muted">Request service</div>
+      <h2 className="mt-2 text-lg font-semibold text-ink">Tell us what you need</h2>
+      <p className="mt-2 text-sm leading-relaxed text-muted">
         Share a short note and your contact details. Local providers use this to respond with availability and next steps.
       </p>
 
@@ -94,7 +94,7 @@ export default function ServiceRequestForm({ serviceSlug }: Props) {
         </div>
 
         <div>
-          <label htmlFor={`${baseId}-name`} className="block text-sm font-medium text-gray-800">
+          <label htmlFor={`${baseId}-name`} className="block text-sm font-medium text-ink">
             Name
           </label>
           <input
@@ -104,12 +104,12 @@ export default function ServiceRequestForm({ serviceSlug }: Props) {
             value={name}
             onChange={(e) => setName(e.target.value)}
             autoComplete="name"
-            className="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light"
+            className="mt-1 w-full rounded-lg border border-ink/10 px-3 py-2 text-sm text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
           />
         </div>
 
         <div>
-          <label htmlFor={`${baseId}-email`} className="block text-sm font-medium text-gray-800">
+          <label htmlFor={`${baseId}-email`} className="block text-sm font-medium text-ink">
             Email <span className="text-rose-600">*</span>
           </label>
           <input
@@ -121,13 +121,13 @@ export default function ServiceRequestForm({ serviceSlug }: Props) {
             onChange={(e) => setEmail(e.target.value)}
             autoComplete="email"
             inputMode="email"
-            className="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light"
+            className="mt-1 w-full rounded-lg border border-ink/10 px-3 py-2 text-sm text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
           />
         </div>
 
         <div>
-          <label htmlFor={`${baseId}-phone`} className="block text-sm font-medium text-gray-800">
-            Phone <span className="text-gray-500">(optional)</span>
+          <label htmlFor={`${baseId}-phone`} className="block text-sm font-medium text-ink">
+            Phone <span className="text-muted">(optional)</span>
           </label>
           <input
             id={`${baseId}-phone`}
@@ -136,12 +136,12 @@ export default function ServiceRequestForm({ serviceSlug }: Props) {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             autoComplete="tel"
-            className="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light"
+            className="mt-1 w-full rounded-lg border border-ink/10 px-3 py-2 text-sm text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
           />
         </div>
 
         <div>
-          <label htmlFor={`${baseId}-message`} className="block text-sm font-medium text-gray-800">
+          <label htmlFor={`${baseId}-message`} className="block text-sm font-medium text-ink">
             Message <span className="text-rose-600">*</span>
           </label>
           <textarea
@@ -152,18 +152,18 @@ export default function ServiceRequestForm({ serviceSlug }: Props) {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="What’s going on at your home? (issue, timeline, location in Georgetown area)"
-            className="mt-1 w-full resize-y rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light"
+            className="mt-1 w-full resize-y rounded-lg border border-ink/10 px-3 py-2 text-sm text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
           />
         </div>
 
-        <div className="rounded-lg border border-gray-100 bg-gray-50/80 p-3">
-          <label className="flex cursor-pointer gap-3 text-sm leading-snug text-gray-800">
+        <div className="rounded-lg border border-ink/10 bg-surface-alt/80 p-3">
+          <label className="flex cursor-pointer gap-3 text-sm leading-snug text-ink">
             <input
               type="checkbox"
               name="seasonalTipsOptIn"
               checked={seasonalTipsOptIn}
               onChange={(e) => setSeasonalTipsOptIn(e.target.checked)}
-              className="mt-0.5 h-4 w-4 shrink-0 rounded border-gray-300 text-primary focus:ring-primary/50"
+              className="mt-0.5 h-4 w-4 shrink-0 rounded border-ink/15 text-brand focus:ring-brand/30"
             />
             <span>
               ✓ Send me seasonal maintenance tips for Georgetown homeowners (monthly email, unsubscribe anytime).
@@ -178,7 +178,7 @@ export default function ServiceRequestForm({ serviceSlug }: Props) {
         <button
           type="submit"
           disabled={!canSubmit}
-          className="w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60"
+          className="w-full rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === "submitting" ? "Sending…" : "Send request"}
         </button>

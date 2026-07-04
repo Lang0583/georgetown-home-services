@@ -80,14 +80,14 @@ export default function PdfEmailDownload({
 
   const triggerClass =
     variant === "primary"
-      ? "inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-primary-dark"
+      ? "btn-accent inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-accent-hover"
       : variant === "secondary"
-        ? "inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50"
-        : "text-gray-800 hover:text-primary hover:underline";
+        ? "btn-accent inline-flex items-center justify-center rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-accent-hover"
+        : "link-brand text-brand underline underline-offset-2 hover:text-brand";
 
   if (status === "success" && !open) {
     return (
-      <p className={`text-sm text-emerald-800 ${className}`}>
+      <p className={`text-sm text-verified ${className}`}>
         Thanks — your PDF is downloading. Check your inbox for a copy too.
       </p>
     );
@@ -113,14 +113,14 @@ export default function PdfEmailDownload({
   return (
     <form
       onSubmit={onSubmit}
-      className={`rounded-lg border border-gray-200 bg-gray-50 p-4 ${className}`}
+      className={`rounded-lg border border-ink/10 bg-surface-alt p-4 ${className}`}
       aria-label={`Email form for ${asset.title}`}
     >
-      <p className="text-sm font-semibold text-gray-900">Enter your email to download the PDF</p>
-      <p className="mt-1 text-xs text-gray-600">We&apos;ll send a copy to your inbox. Unsubscribe anytime.</p>
+      <p className="text-sm font-semibold text-ink">Enter your email to download the PDF</p>
+      <p className="mt-1 text-xs text-muted">We&apos;ll send a copy to your inbox. Unsubscribe anytime.</p>
       <div className="mt-3 flex flex-col gap-2 sm:flex-row">
         <input
-          className="min-w-0 flex-1 rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary/40 focus:ring-2 focus:ring-primary-light"
+          className="min-w-0 flex-1 rounded-lg border border-ink/10 px-3 py-2 text-sm text-ink outline-none focus:border-brand/40 focus:ring-2 focus:ring-brand/20"
           type="email"
           name="email"
           placeholder="you@example.com"
@@ -133,7 +133,7 @@ export default function PdfEmailDownload({
         <button
           type="submit"
           disabled={!canSubmit}
-          className="shrink-0 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-60"
+          className="shrink-0 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white hover:bg-accent-hover-dark disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === "submitting" ? "Sending…" : "Download PDF"}
         </button>
@@ -148,7 +148,7 @@ export default function PdfEmailDownload({
           setStatus("idle");
           setError(null);
         }}
-        className="mt-2 text-xs text-gray-600 hover:text-gray-900"
+        className="mt-2 text-xs text-muted hover:text-ink"
       >
         Cancel
       </button>

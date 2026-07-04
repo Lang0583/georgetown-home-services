@@ -21,8 +21,8 @@ export default function HubRelatedLinks({
 
   return (
     <section className={`mt-12 ${className}`.trim()}>
-      <h2 className="text-3xl font-semibold tracking-tight text-gray-900">{title}</h2>
-      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">{description}</p>
+      <h2 className="text-3xl font-semibold tracking-tight text-ink">{title}</h2>
+      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">{description}</p>
       <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
         {links.map((link) => (
           <LinkCard

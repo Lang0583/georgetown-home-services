@@ -76,7 +76,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full text-gray-900 antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full text-ink antialiased`}
     >
       <head>
         {impactPublisherTagInnerHtml ? (
@@ -101,7 +101,7 @@ export default function RootLayout({
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
       </head>
-      <body className="min-h-full flex flex-col bg-gray-50 text-gray-900">
+      <body className="min-h-full flex flex-col bg-surface text-ink leading-[1.65]">
         <HomeHailAlertBanner />
         <StickyHeader />
         <main className="flex-1 pt-20">{children}</main>

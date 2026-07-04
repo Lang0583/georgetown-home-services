@@ -6,13 +6,16 @@ export default function PageShell({
   variant = "default",
 }: {
   children: ReactNode;
-  variant?: "default" | "white";
+  variant?: "default" | "white" | "service" | "best";
 }) {
-  const bg = variant === "white" ? "bg-white" : "bg-gray-50";
+  const bg =
+    variant === "white" || variant === "service" || variant === "best"
+      ? "bg-surface"
+      : "bg-surface-alt";
+  const typeClass = variant === "service" || variant === "best" ? "type-service-best" : "";
   return (
-    <div className={bg}>
+    <div className={[bg, typeClass, "prose-site"].filter(Boolean).join(" ")}>
       <Container>{children}</Container>
     </div>
   );
 }
-

@@ -24,19 +24,19 @@ export default function CostGuidePriceTable({ rows, year, caption }: CostGuidePr
       <table className="min-w-full text-left text-sm">
         <caption className="sr-only">{caption ?? `Georgetown TX price ranges ${year}`}</caption>
         <thead>
-          <tr className="border-b border-gray-200 text-xs font-semibold uppercase tracking-wide text-gray-600">
+          <tr className="border-b border-ink/10 text-xs font-semibold uppercase tracking-wide text-muted">
             <th className="py-2 pr-4">Service type</th>
             <th className="py-2 pr-4">Low</th>
             <th className="py-2 pr-4">Average</th>
             <th className="py-2">High</th>
           </tr>
         </thead>
-        <tbody className="text-gray-800">
+        <tbody className="text-ink">
           {rows.map((row) => (
-            <tr key={row.serviceType} className="border-b border-gray-100 last:border-0">
+            <tr key={row.serviceType} className="border-b border-ink/10 last:border-0">
               <td className="py-3 pr-4 align-top font-medium">{row.serviceType}</td>
               <td className="py-3 pr-4 align-top tabular-nums">{formatCell(row, "low")}</td>
-              <td className="py-3 pr-4 align-top tabular-nums font-semibold text-gray-900">
+              <td className="py-3 pr-4 align-top tabular-nums font-semibold text-ink">
                 {formatCell(row, "average")}
               </td>
               <td className="py-3 align-top tabular-nums">{formatCell(row, "high")}</td>

@@ -38,10 +38,10 @@ export default function CoreServiceGuideEnrichment({ serviceSlug }: Props) {
   return (
     <div className="mt-10 space-y-10">
       <section aria-labelledby={`why-hire-${serviceSlug}`}>
-        <h2 id={`why-hire-${serviceSlug}`} className="text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">
+        <h2 id={`why-hire-${serviceSlug}`} className="text-2xl font-semibold tracking-tight text-ink md:text-3xl">
           Why hire a {config.tradeNoun} in Georgetown TX
         </h2>
-        <div className="mt-4 max-w-3xl space-y-4 text-base leading-relaxed text-gray-700">
+        <div className="mt-4 max-w-3xl space-y-4 text-base leading-relaxed text-muted">
           {config.whyHireParagraphs.map((paragraph) => (
             <p key={paragraph.slice(0, 48)}>{paragraph}</p>
           ))}
@@ -50,14 +50,14 @@ export default function CoreServiceGuideEnrichment({ serviceSlug }: Props) {
 
       <JsonLd data={serviceHubPricingItemListJsonLd({ category: cat, pageUrl })} />
       <section
-        className="rounded-2xl border border-gray-200 bg-white p-6 shadow-md md:p-8"
+        className="rounded-2xl border border-ink/10 bg-surface p-6 shadow-md md:p-8"
         aria-labelledby={`service-pricing-${serviceSlug}`}
       >
-        <h2 id={`service-pricing-${serviceSlug}`} className="text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">
+        <h2 id={`service-pricing-${serviceSlug}`} className="text-2xl font-semibold tracking-tight text-ink md:text-3xl">
           {servicePricingSectionTitle(config.tradeLabel)} ({PRICING_YEAR})
         </h2>
-        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-gray-700">{cat.servicePriceContext}</p>
-        <p className="mt-2 text-xs text-gray-600">
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">{cat.servicePriceContext}</p>
+        <p className="mt-2 text-xs text-muted">
           Low, typical, and high columns are planning bands for the Georgetown / Williamson County market (
           {PRICING_LAST_REVIEWED_MONTH}), not quotes. Access, equipment size, storm vs cash-pay work, and hidden
           conditions all move the final number—request written scopes before you decide.
@@ -67,17 +67,17 @@ export default function CoreServiceGuideEnrichment({ serviceSlug }: Props) {
           <ServicePricingCostTable rows={pricingRows} variant="bands" />
         </div>
 
-        <div className="mt-6 flex flex-col gap-2 text-sm font-semibold text-primary sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4">
+        <div className="mt-6 flex flex-col gap-2 text-sm font-semibold text-brand sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4">
           <Link href="/pricing" className="hover:underline">
             Full pricing hub &amp; calculator →
           </Link>
-          <span className="hidden text-gray-300 sm:inline" aria-hidden>
+          <span className="hidden text-muted sm:inline" aria-hidden>
             ·
           </span>
           <Link href={links.guideHref} className="hover:underline">
             {links.guideLabel} →
           </Link>
-          <span className="hidden text-gray-300 sm:inline" aria-hidden>
+          <span className="hidden text-muted sm:inline" aria-hidden>
             ·
           </span>
           <Link href={links.bestHref} className="hover:underline">
@@ -90,26 +90,26 @@ export default function CoreServiceGuideEnrichment({ serviceSlug }: Props) {
         <section aria-labelledby={`neighborhood-links-${serviceSlug}`}>
           <h2
             id={`neighborhood-links-${serviceSlug}`}
-            className="text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl"
+            className="text-2xl font-semibold tracking-tight text-ink md:text-3xl"
           >
             {config.tradeLabel} by Georgetown neighborhood
           </h2>
-          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-gray-700">
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
             Georgetown is not one housing stock—Sun City slab ranches, Wolf Ranch and Teravista master-planned builds,
             Berry Creek tree canopy, and downtown Georgetown Village homes each show different failure patterns. Start
             with the neighborhood landing that matches your area.
           </p>
           <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {neighborhoodLinks.map((link) => (
-              <li key={link.href} className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+              <li key={link.href} className="rounded-lg border border-ink/10 bg-surface p-4 shadow-sm">
                 <Link
                   href={link.href}
-                  className="font-semibold text-primary underline-offset-4 hover:text-primary-hover hover:underline"
+                  className="font-semibold text-brand underline-offset-4 hover:text-brand hover:underline"
                 >
                   {link.label} →
                 </Link>
                 {link.description ? (
-                  <p className="mt-2 text-sm leading-relaxed text-gray-700">{link.description}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{link.description}</p>
                 ) : null}
               </li>
             ))}

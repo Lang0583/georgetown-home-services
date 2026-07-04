@@ -54,24 +54,24 @@ const STEPS = [
 export default function HomeHowItWorks() {
   return (
     <div
-      className="mt-8 rounded-xl border border-gray-200 bg-white p-6 shadow-md sm:p-8"
+      className="mt-8 rounded-xl border border-ink/10 bg-surface p-6 shadow-md sm:p-8"
       aria-labelledby="how-it-works-heading"
     >
-      <h2 id="how-it-works-heading" className="text-xl font-semibold tracking-tight text-gray-900">
+      <h2 id="how-it-works-heading" className="text-xl font-semibold tracking-tight text-ink">
         How it works
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-700">
+      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
         These guides walk you through finding the right trade, comparing local companies with real data, and reaching out when
         you&apos;re ready—no pass-through, no noise.
       </p>
       <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
         {STEPS.map(({ Icon, heading, copy }) => (
-          <div key={heading} className="rounded-lg border border-gray-100 bg-gray-50 p-4">
+          <div key={heading} className="rounded-lg border border-ink/10 bg-surface-alt p-4">
             <div className="flex gap-3">
-              <Icon className="h-6 w-6 shrink-0 text-gray-600" />
+              <Icon className="h-6 w-6 shrink-0 text-muted" />
               <div className="min-w-0">
-                <div className="text-sm font-semibold text-gray-900">{heading}</div>
-                <p className="mt-2 text-sm leading-relaxed text-gray-700">{copy}</p>
+                <div className="text-sm font-semibold text-ink">{heading}</div>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{copy}</p>
               </div>
             </div>
           </div>

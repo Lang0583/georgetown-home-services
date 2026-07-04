@@ -17,21 +17,21 @@ export default function SiteFooter() {
   const contact = getContact();
 
   return (
-    <footer className="border-t border-gray-200 bg-gray-50">
+    <footer className="border-t border-ink/10 bg-surface-alt">
       <div className="mx-auto max-w-5xl px-4 py-10">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-6">
           <div>
-            <div className="text-sm font-semibold text-gray-900">{brand}</div>
-            <div className="mt-1 text-sm text-gray-600">
-              <Link className={`${footerBarLinkClass} text-gray-700`} href="/contact#feedback">
+            <div className="text-sm font-semibold text-ink">{brand}</div>
+            <div className="mt-1 text-sm text-muted">
+              <Link className={`${footerBarLinkClass} text-muted`} href="/contact#feedback">
                 Contact &amp; feedback
               </Link>
             </div>
           </div>
 
           <div>
-            <div className="text-sm font-semibold text-gray-900">Home</div>
-            <ul className="mt-2 space-y-2 text-sm text-gray-700">
+            <div className="text-sm font-semibold text-ink">Home</div>
+            <ul className="mt-2 space-y-2 text-sm text-muted">
               <li>
                 <Link className="hover:underline" href="/">
                   Home
@@ -51,8 +51,8 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <div className="text-sm font-semibold text-gray-900">Services</div>
-            <ul className="mt-2 space-y-2 text-sm text-gray-700">
+            <div className="text-sm font-semibold text-ink">Services</div>
+            <ul className="mt-2 space-y-2 text-sm text-muted">
               <li>
                 <Link className="hover:underline" href="/services">
                   Service guides hub
@@ -167,8 +167,8 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <div className="text-sm font-semibold text-gray-900">Browse by Area</div>
-            <ul className="mt-2 space-y-2 text-sm text-gray-700">
+            <div className="text-sm font-semibold text-ink">Browse by Area</div>
+            <ul className="mt-2 space-y-2 text-sm text-muted">
               <li>
                 <Link className="hover:underline" href="/zip">
                   Georgetown ZIP codes
@@ -185,8 +185,8 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <div className="text-sm font-semibold text-gray-900">Provider directory</div>
-            <ul className="mt-2 space-y-2 text-sm text-gray-700">
+            <div className="text-sm font-semibold text-ink">Provider directory</div>
+            <ul className="mt-2 space-y-2 text-sm text-muted">
               <li>
                 <Link className="hover:underline" href="/best">
                   Provider directory hub
@@ -252,8 +252,8 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <div className="text-sm font-semibold text-gray-900">Trust & legal</div>
-            <ul className="mt-2 space-y-2 text-sm text-gray-700">
+            <div className="text-sm font-semibold text-ink">Trust & legal</div>
+            <ul className="mt-2 space-y-2 text-sm text-muted">
               <li>
                 <Link className="hover:underline" href="/about">
                   About Georgetown Home Services
@@ -298,9 +298,9 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <p className="mt-8 max-w-3xl text-xs leading-relaxed text-gray-600">{PROVIDER_INFO_DISCLAIMER}</p>
+        <p className="mt-8 max-w-3xl text-xs leading-relaxed text-muted">{PROVIDER_INFO_DISCLAIMER}</p>
 
-        <div className="mt-6 flex flex-col gap-2 border-t border-gray-200 pt-6 text-sm text-gray-600 md:flex-row md:items-center md:justify-between">
+        <div className="mt-6 flex flex-col gap-2 border-t border-ink/10 pt-6 text-sm text-muted md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap gap-x-3 gap-y-2">
                        <Link className={footerBarLinkClass} href="/">
               Home

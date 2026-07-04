@@ -36,7 +36,7 @@ function BylineAttribution() {
       By{" "}
       <Link
         href={AUTHOR_PROFILE_PATH}
-        className="font-semibold text-gray-900 underline-offset-4 hover:underline"
+        className="font-semibold text-ink underline-offset-4 hover:underline"
       >
         {AUTHOR_FIRST_NAME}
       </Link>
@@ -61,7 +61,7 @@ export default function AuthorByline({
 
   if (compact) {
     return (
-      <p className={`text-sm text-gray-600 ${className}`.trim()}>
+      <p className={`text-sm text-muted ${className}`.trim()}>
         <BylineAttribution />
         {datePublished ? <> · {formatLongDate(datePublished)}</> : null}
         {showUpdated ? <> · Updated {formatLongDate(dateModified!)}</> : null}
@@ -70,13 +70,13 @@ export default function AuthorByline({
   }
 
   return (
-    <div className={`flex flex-col gap-1 text-sm text-gray-600 ${className}`.trim()}>
+    <div className={`flex flex-col gap-1 text-sm text-muted ${className}`.trim()}>
       <p>
         <BylineAttribution />
         {datePublished ? <> · {formatLongDate(datePublished)}</> : null}
         {showUpdated ? <> · Updated {formatLongDate(dateModified!)}</> : null}
       </p>
-      <p className="text-xs text-gray-500">{AUTHOR_BYLINE_TAGLINE}</p>
+      <p className="text-xs text-muted">{AUTHOR_BYLINE_TAGLINE}</p>
     </div>
   );
 }

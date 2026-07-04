@@ -101,9 +101,9 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
 
           <LastUpdated lastUpdated={lastUpdated} />
 
-          <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">{h1}</h1>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-ink md:text-4xl">{h1}</h1>
 
-          <p className="mt-3 text-sm font-medium text-[#01696F]">
+          <p className="mt-3 text-sm font-medium text-[var(--accent)]">
             <Link href={`/best/${bestSlug}`} className="hover:underline">
               {categoryLabel}
             </Link>
@@ -111,63 +111,63 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
 
           <div className="mt-4 flex flex-wrap items-center gap-2">
             <RatingStarsRow rating={provider.rating} />
-            <span className="text-sm font-semibold text-gray-900">
+            <span className="text-sm font-semibold text-ink">
               {formatRatingOneDecimal(provider.rating)} ★
             </span>
-            <span className="text-sm text-gray-500">
+            <span className="text-sm text-muted">
               {provider.reviewCount.toLocaleString()} Google reviews
             </span>
           </div>
 
-          <div className="mt-6 space-y-3 text-sm text-gray-700">
+          <div className="mt-6 space-y-3 text-sm text-muted">
             <p>
-              <span className="font-semibold text-gray-900">Phone:</span>{" "}
+              <span className="font-semibold text-ink">Phone:</span>{" "}
               <a
                 href={telHref}
-                className="font-semibold text-primary hover:text-primary-hover hover:underline"
+                className="font-semibold text-brand hover:text-brand hover:underline"
               >
                 {provider.phone}
               </a>
             </p>
             {websiteUrl ? (
               <p>
-                <span className="font-semibold text-gray-900">Website:</span>{" "}
+                <span className="font-semibold text-ink">Website:</span>{" "}
                 <a
                   href={websiteUrl}
                   {...externalBusinessLinkProps}
-                  className="font-semibold text-primary hover:text-primary-hover hover:underline"
+                  className="font-semibold text-brand hover:text-brand hover:underline"
                 >
                   {websiteUrl.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}
                 </a>
               </p>
             ) : null}
             <p>
-              <span className="font-semibold text-gray-900">Service area:</span> {provider.serviceArea}
+              <span className="font-semibold text-ink">Service area:</span> {provider.serviceArea}
             </p>
             {licenseLine ? (
               <p>
-                <span className="font-semibold text-gray-900">{licenseLine}</span>
+                <span className="font-semibold text-ink">{licenseLine}</span>
               </p>
             ) : null}
             {provider.neighborhoodsServed?.length ? (
               <p>
-                <span className="font-semibold text-gray-900">Neighborhoods served:</span>{" "}
+                <span className="font-semibold text-ink">Neighborhoods served:</span>{" "}
                 {provider.neighborhoodsServed.join(", ")}
               </p>
             ) : null}
             {typeof provider.yearsInBusiness === "number" ? (
               <p>
-                <span className="font-semibold text-gray-900">Years in business:</span>{" "}
+                <span className="font-semibold text-ink">Years in business:</span>{" "}
                 {provider.yearsInBusiness}
               </p>
             ) : null}
           </div>
 
           <div className="mt-6">
-            <h2 className="text-lg font-semibold text-gray-900">About this provider</h2>
-            <p className="mt-2 text-gray-700">{provider.description}</p>
+            <h2 className="text-lg font-semibold text-ink">About this provider</h2>
+            <p className="mt-2 text-muted">{provider.description}</p>
             {provider.specialties.length > 0 ? (
-              <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-gray-700">
+              <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-muted">
                 {provider.specialties.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
@@ -176,8 +176,8 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
           </div>
 
           <div className="mt-8">
-            <h2 className="text-lg font-semibold text-gray-900">Location</h2>
-            <div className="mt-3 overflow-hidden rounded-xl border border-gray-200">
+            <h2 className="text-lg font-semibold text-ink">Location</h2>
+            <div className="mt-3 overflow-hidden rounded-xl border border-ink/10">
               <iframe
                 title={`Map of ${provider.name} in Georgetown, TX`}
                 src={mapsEmbedSrc}
@@ -192,30 +192,30 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
                 href={provider.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-semibold text-primary hover:text-primary-hover hover:underline"
+                className="text-sm font-semibold text-brand hover:text-brand hover:underline"
               >
                 Open in Google Maps →
               </a>
             </p>
           </div>
 
-          <p className="mt-8 text-sm text-gray-500">
+          <p className="mt-8 text-sm text-muted">
             Verified {PROVIDERS_LAST_VERIFIED}. {PROVIDER_DISCLAIMER}
           </p>
 
           <p className="mt-6">
             <Link
               href={`/best/${bestSlug}`}
-              className="text-sm font-semibold text-primary hover:text-primary-hover hover:underline"
+              className="text-sm font-semibold text-brand hover:text-brand hover:underline"
             >
               Compare other {categoryLabel} providers →
             </Link>
           </p>
 
-          <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-4">
-            <p className="text-sm text-gray-700">
+          <div className="mt-8 rounded-lg border border-ink/10 bg-surface-alt p-4">
+            <p className="text-sm text-muted">
               Is this your business?{" "}
-              <Link href="/contact" className="font-semibold text-primary hover:underline">
+              <Link href="/contact" className="font-semibold text-brand hover:underline">
                 Claim or update this listing →
               </Link>
             </p>

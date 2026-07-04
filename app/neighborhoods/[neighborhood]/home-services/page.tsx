@@ -148,23 +148,23 @@ export default async function NeighborhoodHomeServicesHubPage({
           ]}
         />
 
-        <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">
+        <p className="text-sm font-semibold uppercase tracking-wide text-muted">
           Georgetown TX • {hub.neighborhoodName}
         </p>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{hub.h1}</h1>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">{hub.h1}</h1>
         <LastUpdated lastUpdated={hub.lastUpdated} />
         <AuthorByline className="mt-3" compact />
 
         <div
-          className="prose prose-slate prose-lg mt-6 max-w-3xl text-gray-700 prose-p:leading-relaxed prose-strong:text-gray-900"
+          className="prose prose-lg mt-6 max-w-[70ch] text-ink leading-[1.65] prose-p:leading-[1.65] prose-strong:text-ink prose-headings:font-bold prose-headings:text-ink"
           dangerouslySetInnerHTML={{ __html: hub.introHtml }}
         />
 
         <section className="mt-12 max-w-3xl">
-          <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
+          <h2 className="text-2xl font-semibold tracking-tight text-ink">
             Planning ranges: plumbing, HVAC & roofing
           </h2>
-          <p className="mt-3 text-base leading-relaxed text-gray-700">
+          <p className="mt-3 text-base leading-relaxed text-muted">
             Toggle trade categories and select line items to see editorial low–high planning totals for Georgetown-area
             work. Figures are for budgeting and education—not quotes.
           </p>
@@ -179,9 +179,9 @@ export default async function NeighborhoodHomeServicesHubPage({
           </div>
         ) : null}
 
-        <section className="mt-12 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-          <h2 className="text-lg font-semibold text-gray-900">Compare Georgetown companies (directories)</h2>
-          <p className="mt-2 text-sm leading-relaxed text-gray-700">
+        <section className="mt-12 rounded-xl border border-ink/10 bg-surface p-6 shadow-md">
+          <h2 className="text-lg font-semibold text-ink">Compare Georgetown companies (directories)</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted">
             Shortlist licensed pros with clear contact paths and documented reviews—then collect written estimates you
             can compare line by line. Affiliate: explore additional Georgetown lists on Angi.
           </p>
@@ -202,7 +202,7 @@ export default async function NeighborhoodHomeServicesHubPage({
         />
 
         <section className="mt-12 max-w-3xl">
-          <p className="text-sm leading-relaxed text-gray-700">
+          <p className="text-sm leading-relaxed text-muted">
             Common questions about hiring{" "}
             <strong>
               {hub.neighborhoodName} plumber

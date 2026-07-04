@@ -66,31 +66,31 @@ export default function HomeTrustBar() {
       role="region"
       aria-label="Trust and credibility"
     >
-      <ul className="flex flex-col divide-y divide-gray-300/70 md:h-full md:flex-row md:items-center md:divide-y-0">
+      <ul className="flex flex-col divide-y divide-ink/15 md:h-full md:flex-row md:items-center md:divide-y-0">
         {SIGNALS.map(({ Icon, title, subtext }, index) => (
           <li
             key={title}
             className={[
               "flex min-w-0 flex-1 items-center gap-3 py-3 first:pt-0 last:pb-0 md:h-full md:py-0 md:pl-4 md:pr-4 lg:pl-5 lg:pr-5",
-              index > 0 ? "md:border-l md:border-gray-300/80" : "",
+              index > 0 ? "md:border-l md:border-ink/15/80" : "",
             ]
               .filter(Boolean)
               .join(" ")}
           >
-            <Icon className="h-6 w-6 shrink-0 text-gray-600" />
+            <Icon className="h-6 w-6 shrink-0 text-muted" />
             <div className="min-w-0 leading-tight">
-              <p className="text-sm font-semibold text-gray-800">{title}</p>
-              <p className="mt-0.5 text-xs text-gray-500">{subtext}</p>
+              <p className="text-sm font-semibold text-ink">{title}</p>
+              <p className="mt-0.5 text-xs text-muted">{subtext}</p>
             </div>
           </li>
         ))}
-        <li className="flex min-w-0 flex-1 items-center gap-3 border-t border-gray-300/70 py-3 last:pb-0 md:h-full md:border-l md:border-t-0 md:border-gray-300/80 md:py-0 md:pl-4 md:pr-4 lg:pl-5 lg:pr-5">
-          <IconClock className="h-6 w-6 shrink-0 text-gray-600" />
+        <li className="flex min-w-0 flex-1 items-center gap-3 border-t border-ink/15/70 py-3 last:pb-0 md:h-full md:border-l md:border-t-0 md:border-ink/15/80 md:py-0 md:pl-4 md:pr-4 lg:pl-5 lg:pr-5">
+          <IconClock className="h-6 w-6 shrink-0 text-muted" />
           <div className="min-w-0 leading-tight">
-            <p className="text-sm font-semibold text-gray-800">
+            <p className="text-sm font-semibold text-ink">
               <LastUpdated lastUpdated={getStaticPageLastUpdated("/")} variant="trustBar" />
             </p>
-            <p className="mt-0.5 text-xs text-gray-500">Actively maintained directory</p>
+            <p className="mt-0.5 text-xs text-muted">Actively maintained directory</p>
           </div>
         </li>
       </ul>

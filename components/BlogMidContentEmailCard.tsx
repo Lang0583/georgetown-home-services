@@ -67,7 +67,7 @@ export default function BlogMidContentEmailCard({ source, className }: Props) {
   return (
     <aside
       className={[
-        "not-prose mx-auto max-w-3xl rounded-xl border border-white/20 bg-[#01696F] p-5 shadow-sm sm:p-6",
+        "not-prose mx-auto max-w-3xl rounded-xl border border-white/20 bg-[var(--accent)] p-5 shadow-sm sm:p-6",
         className ?? "",
       ]
         .filter(Boolean)
@@ -111,13 +111,13 @@ export default function BlogMidContentEmailCard({ source, className }: Props) {
                 onChange={(e) => setEmail(e.target.value)}
                 autoComplete="email"
                 inputMode="email"
-                className="w-full rounded-lg border border-primary/25 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none placeholder:text-gray-400 focus:border-primary focus:ring-2 focus:ring-primary-light"
+                className="w-full rounded-lg border border-brand/25 bg-surface px-3 py-2.5 text-sm text-ink outline-none placeholder:text-muted focus:border-brand focus:ring-2 focus:ring-brand/20"
               />
             </div>
             <button
               type="submit"
               disabled={!canSubmit}
-              className="shrink-0 rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-[#01696F] shadow-sm transition-colors hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-60"
+              className="shrink-0 rounded-lg bg-surface px-5 py-2.5 text-sm font-semibold text-[var(--accent)] shadow-sm transition-colors hover:bg-surface/90 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === "submitting" ? "…" : EMAIL_CAPTURE_CTA_CHECKLIST}
             </button>

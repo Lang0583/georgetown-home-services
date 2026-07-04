@@ -26,7 +26,7 @@ export default function ServicePricingCostTable({
     <div className="overflow-x-auto">
       <table className="min-w-full text-left text-sm">
         <thead>
-          <tr className="border-b border-gray-200 text-xs font-semibold uppercase tracking-wide text-gray-600">
+          <tr className="border-b border-ink/10 text-xs font-semibold uppercase tracking-wide text-muted">
             <th scope="col" className="py-2 pr-4">
               {jobHeader}
             </th>
@@ -49,20 +49,20 @@ export default function ServicePricingCostTable({
             )}
           </tr>
         </thead>
-        <tbody className="text-gray-800">
+        <tbody className="text-ink">
           {rows.map((row) => (
-            <tr key={row.job} className="border-b border-gray-100 last:border-0">
-              <td className="py-3 pr-4 align-top font-medium text-gray-900">{row.job}</td>
+            <tr key={row.job} className="border-b border-ink/10 last:border-0">
+              <td className="py-3 pr-4 align-top font-medium text-ink">{row.job}</td>
               {variant === "bands" ? (
                 <>
-                  <td className="py-3 pr-4 align-top tabular-nums text-gray-900">{formatPricingLow(row)}</td>
-                  <td className="py-3 pr-4 align-top tabular-nums font-semibold text-gray-900">
+                  <td className="py-3 pr-4 align-top tabular-nums text-ink">{formatPricingLow(row)}</td>
+                  <td className="py-3 pr-4 align-top tabular-nums font-semibold text-ink">
                     {formatPricingTypical(row)}
                   </td>
-                  <td className="py-3 align-top tabular-nums text-gray-900">{formatPricingHigh(row)}</td>
+                  <td className="py-3 align-top tabular-nums text-ink">{formatPricingHigh(row)}</td>
                 </>
               ) : (
-                <td className="py-3 align-top tabular-nums font-semibold text-gray-900">
+                <td className="py-3 align-top tabular-nums font-semibold text-ink">
                   {formatPricingRange(row)}
                 </td>
               )}

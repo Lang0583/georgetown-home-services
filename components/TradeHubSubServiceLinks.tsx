@@ -21,8 +21,8 @@ export default function TradeHubSubServiceLinks({
 
   return (
     <section>
-      <h2 className="text-3xl font-semibold tracking-tight text-gray-900">{title}</h2>
-      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+      <h2 className="text-3xl font-semibold tracking-tight text-ink">{title}</h2>
+      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
         Narrow to a specific job type—each page links back to Georgetown service guides and directories.
       </p>
       <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">

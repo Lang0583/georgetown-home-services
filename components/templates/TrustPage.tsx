@@ -22,7 +22,7 @@ export default function TrustPage({
       <section className="py-10 md:py-12">
         <div className="max-w-3xl">
           <PageHeader eyebrow={eyebrow} title={title} description={description} />
-          <div className="mt-8 space-y-8 text-sm leading-relaxed text-gray-700">{children}</div>
+          <div className="mt-8 space-y-8 text-sm leading-relaxed text-muted">{children}</div>
         </div>
       </section>
     </PageShell>

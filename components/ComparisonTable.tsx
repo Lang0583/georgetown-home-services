@@ -56,29 +56,29 @@ export default function ComparisonTable({
   ];
 
   return (
-    <div className="mt-6 overflow-x-auto rounded-xl border border-gray-200 bg-white shadow-md">
+    <div className="mt-6 overflow-x-auto rounded-xl border border-ink/10 bg-surface shadow-md">
       <table className="min-w-full text-left text-sm">
         <thead>
-          <tr className="border-b border-gray-200 bg-gray-50">
-            <th scope="col" className="px-4 py-3 font-semibold text-gray-900">
+          <tr className="border-b border-ink/10 bg-surface-alt">
+            <th scope="col" className="px-4 py-3 font-semibold text-ink">
               Compare
             </th>
-            <th scope="col" className="px-4 py-3 font-semibold text-gray-900">
+            <th scope="col" className="px-4 py-3 font-semibold text-ink">
               {providerA.name}
             </th>
-            <th scope="col" className="px-4 py-3 font-semibold text-gray-900">
+            <th scope="col" className="px-4 py-3 font-semibold text-ink">
               {providerB.name}
             </th>
           </tr>
         </thead>
         <tbody>
           {rows.map((row) => (
-            <tr key={row.label} className="border-b border-gray-100 align-top last:border-b-0">
-              <th scope="row" className="px-4 py-3 font-medium text-gray-700">
+            <tr key={row.label} className="border-b border-ink/10 align-top last:border-b-0">
+              <th scope="row" className="px-4 py-3 font-medium text-muted">
                 {row.label}
               </th>
-              <td className="px-4 py-3 text-gray-700">{row.a}</td>
-              <td className="px-4 py-3 text-gray-700">{row.b}</td>
+              <td className="px-4 py-3 text-muted">{row.a}</td>
+              <td className="px-4 py-3 text-muted">{row.b}</td>
             </tr>
           ))}
         </tbody>
@@ -91,7 +91,7 @@ function RatingCell({ rating, reviewCount }: { rating: number; reviewCount: numb
   return (
     <div className="space-y-1">
       <RatingStarsRow rating={rating} />
-      <div className="font-semibold text-gray-900">
+      <div className="font-semibold text-ink">
         {formatRatingOneDecimal(rating)} ★ · {reviewCount.toLocaleString()} Google reviews
       </div>
     </div>

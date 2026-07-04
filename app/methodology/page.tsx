@@ -46,37 +46,37 @@ export default function MethodologyPage() {
       }
     >
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Data sources</h2>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">Data sources</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           Listings start from publicly observable business information. We do not rely on pay-to-play directories or
           unverified lead forms to decide who appears.
         </p>
-        <ul className="mt-4 space-y-4 text-sm leading-relaxed text-gray-700">
+        <ul className="mt-4 space-y-4 text-sm leading-relaxed text-muted">
           {LISTING_DATA_SOURCES.map((source) => (
             <li key={source.name}>
-              <span className="font-semibold text-gray-900">{source.name}:</span> {source.description}
+              <span className="font-semibold text-ink">{source.name}:</span> {source.description}
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-sm leading-relaxed text-gray-700">{listingLicenseVerificationNote()}</p>
+        <p className="mt-4 text-sm leading-relaxed text-muted">{listingLicenseVerificationNote()}</p>
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Inclusion criteria</h2>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">Inclusion criteria</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           A company must meet <strong>all five</strong> criteria below to appear in a default Best Of shortlist. The same
           list appears on every{" "}
-          <Link href="/best" className="font-semibold text-primary hover:underline">
+          <Link href="/best" className="font-semibold text-brand hover:underline">
             provider directory
           </Link>{" "}
           page—we import these strings from one file so the criteria never drift.
         </p>
-        <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-700">
+        <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted">
           {LISTING_INCLUSION_CRITERIA.map((criterion) => (
             <li key={criterion}>{criterion}</li>
           ))}
         </ul>
-        <p className="mt-4 text-sm leading-relaxed text-gray-700">
+        <p className="mt-4 text-sm leading-relaxed text-muted">
           Providers with thinner public signals (for example, fewer than {LISTING_MIN_GOOGLE_REVIEWS} reviews at listing
           time) may appear behind a
           “lower-signal” toggle but are not promoted into the default established picks row until documentation
@@ -85,11 +85,11 @@ export default function MethodologyPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">How often listings are reviewed</h2>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">{LISTINGS_REVIEW_CADENCE_SUMMARY}</p>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">How often listings are reviewed</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted">{LISTINGS_REVIEW_CADENCE_SUMMARY}</p>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           Report verifiable listing errors through{" "}
-          <Link href="/contact#feedback" className="font-semibold text-primary hover:underline">
+          <Link href="/contact#feedback" className="font-semibold text-brand hover:underline">
             Contact &amp; feedback
           </Link>
           . Include a link to an official site, registry entry, or dated screenshot we can check.
@@ -97,17 +97,17 @@ export default function MethodologyPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Placement and advertising independence</h2>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">{LISTING_PLACEMENT_CANNOT_BE_BOUGHT}</p>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">{LISTING_AFFILIATE_DOES_NOT_AFFECT_RANKINGS}</p>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">Placement and advertising independence</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted">{LISTING_PLACEMENT_CANNOT_BE_BOUGHT}</p>
+        <p className="mt-3 text-sm leading-relaxed text-muted">{LISTING_AFFILIATE_DOES_NOT_AFFECT_RANKINGS}</p>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           If a page includes a sponsored or featured module, it is labeled as such and sits outside the organic
           shortlist. Editorial ranking logic is documented here—not re-stated on{" "}
-          <Link href="/about" className="font-semibold text-primary hover:underline">
+          <Link href="/about" className="font-semibold text-brand hover:underline">
             About
           </Link>{" "}
           or{" "}
-          <Link href="/editorial-policy" className="font-semibold text-primary hover:underline">
+          <Link href="/editorial-policy" className="font-semibold text-brand hover:underline">
             Editorial Policy
           </Link>
           .
@@ -115,10 +115,10 @@ export default function MethodologyPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Who maintains this</h2>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">Who maintains this</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           Directory methodology is maintained by{" "}
-          <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-primary hover:underline">
+          <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-brand hover:underline">
             {AUTHOR_FIRST_NAME}
           </Link>
           . Human editors apply the criteria above when adding, deprioritizing, or correcting listings—there is no
@@ -127,8 +127,8 @@ export default function MethodologyPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">What you should still verify yourself</h2>
-        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-700">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">What you should still verify yourself</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted">
           <li>Current insurance certificates and trade licensing with the issuing authority—not from a marketing flyer.</li>
           <li>Written scopes that name materials, labor, permits, and excluded conditions before you authorize work.</li>
           <li>Availability, after-hours fees, and warranty terms at the time you book.</li>

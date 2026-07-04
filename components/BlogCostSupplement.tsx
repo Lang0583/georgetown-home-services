@@ -33,20 +33,20 @@ export default function BlogCostSupplement({ slug }: { slug: string }) {
   return (
     <section
       aria-label={supplement.heading}
-      className="not-prose my-10 rounded-xl border border-gray-200 bg-white p-6 shadow-sm"
+      className="not-prose my-10 rounded-xl border border-ink/10 bg-surface p-6 shadow-sm"
     >
       <div className="flex items-baseline justify-between gap-4">
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">
           {supplement.heading}
         </h2>
-        <div className="shrink-0 text-xs font-medium uppercase tracking-wide text-gray-500">
+        <div className="shrink-0 text-xs font-medium uppercase tracking-wide text-muted">
           Reviewed {PRICING_LAST_REVIEWED_MONTH}
         </div>
       </div>
-      <p className="mt-3 text-sm leading-relaxed text-gray-700">{supplement.lede}</p>
+      <p className="mt-3 text-sm leading-relaxed text-muted">{supplement.lede}</p>
       <div className="mt-5 overflow-x-auto">
         <table className="min-w-full text-left text-sm">
-          <thead className="border-b border-gray-200 text-xs font-semibold uppercase tracking-wide text-gray-600">
+          <thead className="border-b border-ink/10 text-xs font-semibold uppercase tracking-wide text-muted">
             <tr>
               <th scope="col" className="py-2 pr-4">
                 Job type
@@ -56,10 +56,10 @@ export default function BlogCostSupplement({ slug }: { slug: string }) {
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-100 text-gray-800">
+          <tbody className="divide-y divide-ink/10 text-ink">
             {rows.map((row) => (
               <tr key={row.job}>
-                <td className="py-3 pr-4 align-top font-medium text-gray-900">{row.job}</td>
+                <td className="py-3 pr-4 align-top font-medium text-ink">{row.job}</td>
                 <td className="py-3 pr-4 align-top font-semibold tabular-nums">
                   {formatPricingRange(row)}
                 </td>
@@ -68,11 +68,11 @@ export default function BlogCostSupplement({ slug }: { slug: string }) {
           </tbody>
         </table>
       </div>
-      <p className="mt-5 text-sm leading-relaxed text-gray-700">{category.localContext}</p>
-      <p className="mt-5 text-xs leading-relaxed text-gray-500">
+      <p className="mt-5 text-sm leading-relaxed text-muted">{category.localContext}</p>
+      <p className="mt-5 text-xs leading-relaxed text-muted">
         These are editorial ranges for planning, not quotes. Compare at least two
         written estimates before committing. Full category tables live on the{" "}
-        <Link href="/pricing" className="font-medium text-primary underline-offset-4 hover:underline">
+        <Link href="/pricing" className="font-medium text-brand underline-offset-4 hover:underline">
           Georgetown home-service pricing guide
         </Link>{" "}
         ({PRICING_YEAR}).

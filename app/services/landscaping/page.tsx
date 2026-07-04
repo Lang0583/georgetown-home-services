@@ -32,7 +32,7 @@ export default function LandscapingHubPage() {
   const posts = blog.filter((p) => p.relatedBestSlugs?.includes("best-landscaping-companies-georgetown-tx")).slice(0, 10);
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-surface type-service-best">
       <Container>
         <section className="py-10 md:py-12">
           <JsonLd
@@ -46,23 +46,23 @@ export default function LandscapingHubPage() {
           />
           <div className="flex flex-col gap-10">
             <div>
-              <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Services</div>
-              <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
+              <div className="text-sm font-semibold uppercase tracking-wide text-muted">Services</div>
+              <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">
                 Landscaping &amp; Lawn Care in Georgetown, TX
               </h1>
               <LastUpdated lastUpdated={lastUpdated} />
-              <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
+              <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
                 Plan maintenance, irrigation, and curb appeal with Central Texas seasons in mind. These pages help you define scope, compare visit
                 frequency, and shortlist reputable crews serving Georgetown.
               </p>
               <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
-                <Link href="/best/best-landscaping-companies-georgetown-tx" className="text-primary hover:underline">
+                <Link href="/best/best-landscaping-companies-georgetown-tx" className="text-brand hover:underline">
                   Best Landscaping Companies in Georgetown, TX
                 </Link>
-                <span className="text-gray-300" aria-hidden>
+                <span className="text-muted" aria-hidden>
                   ·
                 </span>
-                <Link href="/services" className="text-gray-700 hover:underline">
+                <Link href="/services" className="text-muted hover:underline">
                   All service guides
                 </Link>
               </div>
@@ -70,7 +70,7 @@ export default function LandscapingHubPage() {
 
             {core ? (
               <section>
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Start here</h2>
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">Start here</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <LinkCard href={`/services/${core.slug}`} title={core.title} description={core.description} badge={core.serviceType} />
                   <LinkCard
@@ -85,7 +85,7 @@ export default function LandscapingHubPage() {
 
             {supporting.length ? (
               <section>
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Supporting landscaping pages</h2>
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">Supporting landscaping pages</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {supporting.map((s) => (
                     <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
@@ -96,7 +96,7 @@ export default function LandscapingHubPage() {
 
             {posts.length ? (
               <section>
-                <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Homeowner guides</h2>
+                <h2 className="text-3xl font-semibold tracking-tight text-ink">Homeowner guides</h2>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {posts.map((p) => (
                     <LinkCard key={p.slug} href={`/blog/${p.slug}`} title={p.title} description={p.description} badge={p.readTime} />

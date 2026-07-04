@@ -25,7 +25,7 @@ export function BusinessListingDescription({
   const t = firstSentence.length > 220 ? `${firstSentence.slice(0, 217).trimEnd()}…` : firstSentence;
   if (!t) return null;
   return (
-    <p className={`text-sm leading-snug text-gray-600 line-clamp-3 ${className}`} title={t}>
+    <p className={`text-sm leading-snug text-muted line-clamp-3 ${className}`} title={t}>
       {t}
     </p>
   );

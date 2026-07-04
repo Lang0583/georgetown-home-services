@@ -129,15 +129,15 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
             gapClassName="gap-8"
             main={
               <>
-              <div className="text-sm font-semibold uppercase tracking-wide text-gray-600">Service locations</div>
-              <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{location.h1}</h1>
+              <div className="text-sm font-semibold uppercase tracking-wide text-muted">Service locations</div>
+              <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">{location.h1}</h1>
               <LastUpdated lastUpdated={location.lastUpdated} />
               <AuthorByline className="mt-3" compact />
-              <p className="mt-4 max-w-2xl text-lg text-gray-700">{location.description}</p>
+              <p className="mt-4 max-w-2xl text-lg text-muted">{location.description}</p>
 
-              <div className="mt-6 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-                <div className="text-sm font-semibold text-gray-900">Highlights</div>
-                <ul className="mt-3 list-disc space-y-2 pl-6 text-sm text-gray-700">
+              <div className="mt-6 rounded-xl border border-ink/10 bg-surface p-6 shadow-md">
+                <div className="text-sm font-semibold text-ink">Highlights</div>
+                <ul className="mt-3 list-disc space-y-2 pl-6 text-sm text-muted">
                   {location.heroBullets.map((b) => (
                     <li key={b}>{b}</li>
                   ))}
@@ -150,7 +150,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
 
               {servicePages.length ? (
                 <section className="mt-12">
-                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Services in {location.title}</h2>
+                  <h2 className="text-3xl font-semibold tracking-tight text-ink">Services in {location.title}</h2>
                   <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
                     {servicePages.map((s) => (
                       <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.title} description={s.description} badge={s.serviceType} />
@@ -161,7 +161,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
 
               {bestPages.length ? (
                 <section className="mt-12">
-                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Best Of for {location.title}</h2>
+                  <h2 className="text-3xl font-semibold tracking-tight text-ink">Best Of for {location.title}</h2>
                   <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
                     {bestPages.map((b) => (
                       <LinkCard key={b.slug} href={`/best/${b.slug}`} title={b.title} description={b.description} />
@@ -172,7 +172,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
 
               {location.faqs?.length ? (
                 <section className="mt-12">
-                  <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Frequently asked questions</h2>
+                  <h2 className="text-3xl font-semibold tracking-tight text-ink">Frequently asked questions</h2>
                   <div className="mt-6">
                     <FAQList faqs={location.faqs} />
                   </div>
@@ -192,14 +192,14 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
                   showDisclaimer
                 />
               </div>
-              <div className="mt-8 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-                <div className="text-sm font-semibold text-gray-900">Internal links</div>
-                <div className="mt-2 text-sm text-gray-700">
+              <div className="mt-8 rounded-xl border border-ink/10 bg-surface p-6 shadow-md">
+                <div className="text-sm font-semibold text-ink">Internal links</div>
+                <div className="mt-2 text-sm text-muted">
                   <Link className="underline underline-offset-4" href="/">
                     Home
                   </Link>
                 </div>
-                <div className="mt-2 text-sm text-gray-700">
+                <div className="mt-2 text-sm text-muted">
                   <Link className="underline underline-offset-4" href={`/locations/${location.slug}`}>
                     This location
                   </Link>

@@ -23,7 +23,7 @@ export function businessPhoneTel(phoneRaw: string | undefined): { href: string; 
 }
 
 const linkClassName =
-  "text-sm leading-snug text-gray-600 underline md:no-underline hover:text-gray-900 focus-visible:rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01696F]/35";
+  "text-sm leading-snug text-muted underline md:no-underline hover:text-ink focus-visible:rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/35";
 
 export function BusinessPhoneRow({
   phone,

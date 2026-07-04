@@ -49,7 +49,7 @@ export async function sendContactFormEmail(params: {
     <tr><td style="padding: 6px 0; font-weight: 600;">Source</td><td>${escapeHtml(params.source)}</td></tr>
     <tr><td style="padding: 6px 0; font-weight: 600;">Time</td><td>${escapeHtml(new Date().toISOString())}</td></tr>
   </table>
-  <p style="font-size: 12px; color: #6b7280;"><a href="${SITE_URL}" style="color:#01696F;">${SITE_URL.replace(/^https?:\/\//, "")}</a></p>
+  <p style="font-size: 12px; color: #5A6B74;"><a href="${SITE_URL}" style="color:#1E3A5F;">${SITE_URL.replace(/^https?:\/\//, "")}</a></p>
 </body>
 </html>`;
 

@@ -41,27 +41,27 @@ export default function ServiceAreasPage() {
       }
     >
       {core ? (
-        <section className="rounded-xl border border-gray-200 bg-white p-6 shadow-md">
-          <div className="text-sm font-semibold text-gray-900">Core area</div>
+        <section className="rounded-xl border border-ink/10 bg-surface p-6 shadow-md">
+          <div className="text-sm font-semibold text-ink">Core area</div>
           <div className="mt-3">
-            <Link href={`/locations/${core.slug}`} className="text-lg font-semibold text-primary hover:underline">
+            <Link href={`/locations/${core.slug}`} className="text-lg font-semibold text-brand hover:underline">
               {core.title}
             </Link>
-            <p className="mt-2 text-sm text-gray-700">{core.description}</p>
+            <p className="mt-2 text-sm text-muted">{core.description}</p>
           </div>
         </section>
       ) : null}
 
       {neighborhoods.length ? (
         <section>
-          <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Neighborhood pages</h2>
+          <h2 className="text-2xl font-semibold tracking-tight text-ink">Neighborhood pages</h2>
           <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {neighborhoods.map((n) => (
-              <div key={n.slug} className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-                <Link href={`/locations/${n.slug}`} className="font-semibold text-gray-900 hover:text-primary-hover hover:underline">
+              <div key={n.slug} className="rounded-xl border border-ink/10 bg-surface p-5 shadow-sm">
+                <Link href={`/locations/${n.slug}`} className="font-semibold text-ink hover:text-brand hover:underline">
                   {n.title}
                 </Link>
-                <p className="mt-2 text-sm text-gray-700">{n.description}</p>
+                <p className="mt-2 text-sm text-muted">{n.description}</p>
               </div>
             ))}
           </div>

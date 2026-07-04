@@ -12,15 +12,15 @@ export default function BestProviderDirectory({ providers }: { providers: Provid
       <section>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h3 className="text-xl font-semibold tracking-tight text-gray-900">Established picks</h3>
-            <p className="mt-1 max-w-3xl text-sm leading-relaxed text-gray-700">
+            <h3 className="text-xl font-semibold tracking-tight text-ink">Established picks</h3>
+            <p className="mt-1 max-w-3xl text-sm leading-relaxed text-muted">
               Listings with stronger public review volume and documentation. Confirm licensing, insurance, and scope
               directly with any company before hiring.
             </p>
           </div>
-          <p className="text-sm text-gray-700">
-            Showing <span className="font-semibold text-gray-900">{established.length}</span> of{" "}
-            <span className="font-semibold text-gray-900">{providers.length}</span>
+          <p className="text-sm text-muted">
+            Showing <span className="font-semibold text-ink">{established.length}</span> of{" "}
+            <span className="font-semibold text-ink">{providers.length}</span>
           </p>
         </div>
         {established.length ? (
@@ -36,7 +36,7 @@ export default function BestProviderDirectory({ providers }: { providers: Provid
             ))}
           </ul>
         ) : (
-          <div className="mt-4 rounded-xl border border-gray-200 bg-white p-5 text-sm text-gray-700 shadow-sm">
+          <div className="mt-4 rounded-xl border border-ink/10 bg-surface p-5 text-sm text-muted shadow-sm">
             No established picks are listed for this category yet.
           </div>
         )}
@@ -44,11 +44,11 @@ export default function BestProviderDirectory({ providers }: { providers: Provid
 
       {lowerSignal.length ? (
         <details className="group">
-          <summary className="cursor-pointer text-sm font-semibold text-gray-700 marker:text-gray-500">
+          <summary className="cursor-pointer text-sm font-semibold text-muted marker:text-muted">
             Show newer / lower-signal options ({lowerSignal.length})
           </summary>
           <section className="mt-3">
-            <p className="max-w-3xl text-sm leading-relaxed text-gray-700">
+            <p className="max-w-3xl text-sm leading-relaxed text-muted">
               These providers have weaker public signals (for example, fewer reviews). Verify details carefully and
               prioritize written scopes.
             </p>

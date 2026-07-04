@@ -75,10 +75,10 @@ export default function StormInspectionLeadForm({ source }: Props) {
   if (status === "success") {
     return (
       <div
-        className="not-prose rounded-2xl border-2 border-amber-400 bg-amber-50 p-6 shadow-sm"
+        className="not-prose rounded-2xl border-2 border-rating/40 bg-rating/10 p-6 shadow-sm"
         role="status"
       >
-        <p className="text-sm font-semibold text-amber-950">
+        <p className="text-sm font-semibold text-rating">
           Thanks! A local contractor will follow up within 24 hours.
         </p>
       </div>
@@ -86,11 +86,11 @@ export default function StormInspectionLeadForm({ source }: Props) {
   }
 
   return (
-    <div className="not-prose relative rounded-2xl border-2 border-amber-400 bg-amber-50/90 p-6 shadow-md">
-      <h2 className="text-lg font-semibold tracking-tight text-gray-900 md:text-xl">
+    <div className="not-prose relative rounded-2xl border-2 border-rating/40 bg-rating/10 p-6 shadow-md">
+      <h2 className="text-lg font-semibold tracking-tight text-ink md:text-xl">
         Request a storm damage inspection
       </h2>
-      <p className="mt-2 text-sm leading-relaxed text-gray-800">
+      <p className="mt-2 text-sm leading-relaxed text-ink">
         Georgetown and Williamson County homeowners: note the storm date, photograph damage from the ground, and file
         timely notice with your carrier if you plan to claim. We pass your request to local contractors for follow-up.
       </p>
@@ -110,7 +110,7 @@ export default function StormInspectionLeadForm({ source }: Props) {
         </div>
 
         <div>
-          <label htmlFor={`${baseId}-name`} className="block text-sm font-medium text-gray-800">
+          <label htmlFor={`${baseId}-name`} className="block text-sm font-medium text-ink">
             Full Name <span className="text-rose-600">*</span>
           </label>
           <input
@@ -122,12 +122,12 @@ export default function StormInspectionLeadForm({ source }: Props) {
             minLength={2}
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-amber-200 bg-white px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light"
+            className="mt-1 w-full rounded-lg border border-rating/25 bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
           />
         </div>
 
         <div>
-          <label htmlFor={`${baseId}-phone`} className="block text-sm font-medium text-gray-800">
+          <label htmlFor={`${baseId}-phone`} className="block text-sm font-medium text-ink">
             Phone Number <span className="text-rose-600">*</span>
           </label>
           <input
@@ -139,12 +139,12 @@ export default function StormInspectionLeadForm({ source }: Props) {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             placeholder="512-555-0100"
-            className="mt-1 w-full rounded-lg border border-amber-200 bg-white px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light"
+            className="mt-1 w-full rounded-lg border border-rating/25 bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
           />
         </div>
 
         <div>
-          <label htmlFor={`${baseId}-area`} className="block text-sm font-medium text-gray-800">
+          <label htmlFor={`${baseId}-area`} className="block text-sm font-medium text-ink">
             Neighborhood / Area
           </label>
           <input
@@ -155,12 +155,12 @@ export default function StormInspectionLeadForm({ source }: Props) {
             value={neighborhood}
             onChange={(e) => setNeighborhood(e.target.value)}
             placeholder="e.g. Sun City, Teravista"
-            className="mt-1 w-full rounded-lg border border-amber-200 bg-white px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light"
+            className="mt-1 w-full rounded-lg border border-rating/25 bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
           />
         </div>
 
         <div>
-          <label htmlFor={`${baseId}-svc`} className="block text-sm font-medium text-gray-800">
+          <label htmlFor={`${baseId}-svc`} className="block text-sm font-medium text-ink">
             Service Needed <span className="text-rose-600">*</span>
           </label>
           <select
@@ -169,7 +169,7 @@ export default function StormInspectionLeadForm({ source }: Props) {
             required
             value={serviceNeeded}
             onChange={(e) => setServiceNeeded(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-amber-200 bg-white px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light"
+            className="mt-1 w-full rounded-lg border border-rating/25 bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
           >
             <option value="" disabled>
               Select a service
@@ -189,7 +189,7 @@ export default function StormInspectionLeadForm({ source }: Props) {
         <button
           type="submit"
           disabled={!canSubmit}
-          className="inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex min-h-11 items-center justify-center rounded-lg bg-accent px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === "submitting" ? "Sending…" : "Request Free Inspection"}
         </button>

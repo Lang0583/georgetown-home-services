@@ -95,17 +95,17 @@ export default function Home() {
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
 
   return (
-    <div className="bg-gray-50 pb-40 md:pb-44">
+    <div className="bg-surface-alt pb-40 md:pb-44">
       <JsonLd data={homeLocalBusinessJsonLd()} />
       <JsonLd data={homeWebPageJsonLd()} />
       <Container>
         <section className="py-10 md:py-12">
           <div className="min-w-0">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight text-ink md:text-5xl">
               Georgetown, TX Home Services Directory
             </h1>
 
-            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
               Listings compiled from public business data, real ratings, and honest cost guides — no lead forms, no spam.
             </p>
 
@@ -119,13 +119,13 @@ export default function Home() {
 
             <section
               id="browse-categories"
-              className="mt-10 scroll-mt-28 rounded-xl border border-gray-200 bg-white p-6 shadow-md sm:p-8"
+              className="mt-10 scroll-mt-28 rounded-xl border border-ink/10 bg-surface p-6 shadow-md sm:p-8"
               aria-labelledby="browse-categories-heading"
             >
-              <h2 id="browse-categories-heading" className="text-xl font-semibold tracking-tight text-gray-900">
+              <h2 id="browse-categories-heading" className="text-xl font-semibold tracking-tight text-ink">
                 Browse by Category
               </h2>
-              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-700">
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
                 Eight core trade hubs for Georgetown: guides, typical issues, and links to compare local companies.
               </p>
               <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -133,11 +133,11 @@ export default function Home() {
                   <Link
                     key={s.slug}
                     href={`/services/${s.slug}`}
-                    className="rounded-lg border border-gray-200 border-t-[3px] border-t-transparent bg-gray-50 p-4 transition hover:border-x-primary/25 hover:border-b-primary/25 hover:border-t-primary hover:bg-white"
+                    className="rounded-lg border border-ink/10 border-t-[3px] border-t-transparent bg-surface-alt p-4 transition hover:border-x-brand/25 hover:border-b-brand/25 hover:border-t-brand hover:bg-surface"
                   >
-                    <div className="text-sm font-semibold text-gray-900">{s.serviceType}</div>
-                    <p className="mt-1 line-clamp-2 text-sm text-gray-700">{s.description}</p>
-                    <div className="mt-2 text-xs font-semibold text-primary">View {s.serviceType.toLowerCase()} guide →</div>
+                    <div className="text-sm font-semibold text-ink">{s.serviceType}</div>
+                    <p className="mt-1 line-clamp-2 text-sm text-muted">{s.description}</p>
+                    <div className="mt-2 text-xs font-semibold text-brand">View {s.serviceType.toLowerCase()} guide →</div>
                   </Link>
                 ))}
               </div>
@@ -153,10 +153,10 @@ export default function Home() {
 
         <section
           id="providers"
-          className="scroll-mt-28 rounded-xl border border-gray-200 bg-white p-6 shadow-md sm:p-8 md:-mt-4"
+          className="scroll-mt-28 rounded-xl border border-ink/10 bg-surface p-6 shadow-md sm:p-8 md:-mt-4"
         >
-          <h2 className="text-xl font-semibold tracking-tight text-gray-900">Top Local Providers</h2>
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-gray-700">
+          <h2 className="text-xl font-semibold tracking-tight text-ink">Top Local Providers</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted">
             Top listings from public data by category—shortlist companies here, then use each trade hub for cost guides and
             deeper comparisons.
           </p>
@@ -173,7 +173,7 @@ export default function Home() {
         </section>
 
         <section className="py-10 md:py-12">
-          <h2 className="text-3xl font-semibold tracking-tight text-gray-900">From the Blog</h2>
+          <h2 className="text-3xl font-semibold tracking-tight text-ink">From the Blog</h2>
           <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
             {blog.map((p) => (
               <LinkCard

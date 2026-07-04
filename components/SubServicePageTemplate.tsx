@@ -72,39 +72,39 @@ export default function SubServicePageTemplate({ page }: SubServicePageTemplateP
           ]}
         />
 
-        <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">{page.serviceLabel} • Georgetown, TX</p>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{page.h1}</h1>
+        <p className="text-sm font-semibold uppercase tracking-wide text-muted">{page.serviceLabel} • Georgetown, TX</p>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">{page.h1}</h1>
         <LastUpdated lastUpdated={page.lastUpdated} />
         <AuthorByline className="mt-3" compact />
 
-        <div className="prose prose-gray mt-8 max-w-3xl prose-p:leading-relaxed prose-p:text-gray-700">
+        <div className="prose prose-gray mt-8 max-w-3xl prose-p:leading-relaxed prose-p:text-muted">
           {page.bodyParagraphs.map((paragraph) => (
             <p key={paragraph.slice(0, 48)}>{paragraph}</p>
           ))}
         </div>
 
-        <section className="mt-12 max-w-3xl rounded-2xl border border-gray-200 bg-white p-6 shadow-md md:p-8">
-          <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
+        <section className="mt-12 max-w-3xl rounded-2xl border border-ink/10 bg-surface p-6 shadow-md md:p-8">
+          <h2 className="text-2xl font-semibold tracking-tight text-ink">
             {page.subServiceName} cost in Georgetown, TX ({page.pricing.year})
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-gray-700">{page.pricing.notes}</p>
+          <p className="mt-3 text-sm leading-relaxed text-muted">{page.pricing.notes}</p>
           <div className="mt-6 overflow-x-auto">
             <table className="min-w-full text-left text-sm">
               <thead>
-                <tr className="border-b border-gray-200 text-xs font-semibold uppercase tracking-wide text-gray-600">
+                <tr className="border-b border-ink/10 text-xs font-semibold uppercase tracking-wide text-muted">
                   <th className="py-2 pr-4">Price tier</th>
                   <th className="py-2">Typical range</th>
                 </tr>
               </thead>
-              <tbody className="text-gray-800">
-                <tr className="border-b border-gray-100">
+              <tbody className="text-ink">
+                <tr className="border-b border-ink/10">
                   <td className="py-3 pr-4 font-medium">Lower end</td>
                   <td className="py-3 tabular-nums">
                     {formatUsd(page.pricing.low)}
                     {page.pricing.unit ? ` ${page.pricing.unit}` : ""}
                   </td>
                 </tr>
-                <tr className="border-b border-gray-100">
+                <tr className="border-b border-ink/10">
                   <td className="py-3 pr-4 font-medium">Average</td>
                   <td className="py-3 tabular-nums">
                     {formatUsd(page.pricing.average)}
@@ -121,7 +121,7 @@ export default function SubServicePageTemplate({ page }: SubServicePageTemplateP
               </tbody>
             </table>
           </div>
-          <p className="mt-4 text-xs text-gray-600">
+          <p className="mt-4 text-xs text-muted">
             Ranges reflect Williamson County labor and material costs—not a quote. Get written scopes before you commit.
           </p>
         </section>
@@ -131,12 +131,12 @@ export default function SubServicePageTemplate({ page }: SubServicePageTemplateP
         </section>
 
         <section className="mt-12 max-w-3xl">
-          <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Related Georgetown pages</h2>
+          <h2 className="text-2xl font-semibold tracking-tight text-ink">Related Georgetown pages</h2>
           <ul className="mt-4 space-y-2 text-base">
             <li>
               <Link
                 href={page.parentHubPath}
-                className="font-medium text-primary underline-offset-4 hover:text-primary-hover hover:underline"
+                className="font-medium text-brand underline-offset-4 hover:text-brand hover:underline"
               >
                 {page.serviceLabel} services hub (Georgetown, TX)
               </Link>
@@ -145,7 +145,7 @@ export default function SubServicePageTemplate({ page }: SubServicePageTemplateP
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="font-medium text-primary underline-offset-4 hover:text-primary-hover hover:underline"
+                  className="font-medium text-brand underline-offset-4 hover:text-brand hover:underline"
                 >
                   {link.label}
                 </Link>

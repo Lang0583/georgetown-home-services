@@ -133,15 +133,15 @@ export default async function NeighborhoodHailDamagePage({
           ]}
         />
 
-        <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">
+        <p className="text-sm font-semibold uppercase tracking-wide text-muted">
           Storm guide • {page.neighborhoodName} • Georgetown, TX
         </p>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{page.h1}</h1>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">{page.h1}</h1>
         <LastUpdated lastUpdated={page.lastUpdated} />
         <AuthorByline className="mt-3" compact />
 
         <div
-          className="prose prose-slate prose-lg mt-6 max-w-3xl text-gray-700 prose-p:leading-relaxed prose-strong:text-gray-900 prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:underline"
+          className="prose prose-lg mt-6 max-w-[70ch] text-ink leading-[1.65] prose-p:leading-[1.65] prose-strong:text-ink prose-headings:font-bold prose-headings:text-ink prose-headings:tracking-tight prose-a:text-brand prose-a:underline hover:prose-a:text-brand"
           dangerouslySetInnerHTML={{ __html: page.bodyHtml }}
         />
 
@@ -152,7 +152,7 @@ export default async function NeighborhoodHailDamagePage({
         ) : null}
 
         <section className="mt-12 max-w-3xl">
-          <p className="text-sm leading-relaxed text-gray-700">
+          <p className="text-sm leading-relaxed text-muted">
             Quick answers for {page.neighborhoodName} neighbors after hail—not a replacement for an on-site inspection.
           </p>
           <FAQList
@@ -163,15 +163,15 @@ export default async function NeighborhoodHailDamagePage({
           />
         </section>
 
-        <div className="mt-10 flex flex-col gap-4 rounded-xl border border-gray-200 bg-white p-6 shadow-md sm:flex-row sm:flex-wrap sm:items-center">
+        <div className="mt-10 flex flex-col gap-4 rounded-xl border border-ink/10 bg-surface p-6 shadow-md sm:flex-row sm:flex-wrap sm:items-center">
           <ButtonLink href="/services/roofing">Georgetown roofing hub →</ButtonLink>
           <ButtonLink href="/best/best-roofers-georgetown-tx" variant="secondary">
             Best roofers directory →
           </ButtonLink>
         </div>
 
-        <p className="mt-8 text-sm text-gray-600">
-          <Link href="/blog/hail-damage-georgetown-williamson-may-2026" className="font-medium text-primary hover:underline">
+        <p className="mt-8 text-sm text-muted">
+          <Link href="/blog/hail-damage-georgetown-williamson-may-2026" className="font-medium text-brand hover:underline">
             Read the full May 2026 Williamson County hail guide →
           </Link>
         </p>

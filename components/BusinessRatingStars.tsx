@@ -6,10 +6,10 @@ function StarCell({ fillFraction }: { fillFraction: number }) {
   const w = Math.min(Math.max(fillFraction, 0), 1) * 100;
   return (
     <div className="relative h-4 w-4 shrink-0">
-      <svg className="h-4 w-4 text-gray-200" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <svg className="h-4 w-4 text-surface-alt" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
         <path d={STAR_PATH} />
       </svg>
-      <div className="absolute left-0 top-0 h-full overflow-hidden text-amber-400" style={{ width: `${w}%` }}>
+      <div className="absolute left-0 top-0 h-full overflow-hidden text-rating" style={{ width: `${w}%` }}>
         <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
           <path d={STAR_PATH} />
         </svg>
@@ -34,7 +34,7 @@ export function formatRatingOneDecimal(rating: number) {
 }
 
 /**
- * Five amber stars (partial fill) + “4.8 (241 reviews)” style text.
+ * Five rating-colored stars (partial fill) + “4.8 (241 reviews)” style text.
  */
 export function RatingStarsWithCaption({
   rating,
@@ -48,9 +48,9 @@ export function RatingStarsWithCaption({
   return (
     <div className={["flex flex-wrap items-center gap-2", className].filter(Boolean).join(" ")}>
       <RatingStarsRow rating={rating} />
-      <span className="text-sm text-gray-600">
-        <span className="font-semibold text-gray-900">{formatRatingOneDecimal(rating)}</span>
-        <span className="text-gray-500"> ({reviewCount.toLocaleString()} reviews)</span>
+      <span className="text-sm text-muted">
+        <span className="font-semibold text-rating">{formatRatingOneDecimal(rating)}</span>
+        <span> ({reviewCount.toLocaleString()} reviews)</span>
       </span>
     </div>
   );

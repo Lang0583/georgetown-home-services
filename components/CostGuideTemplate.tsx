@@ -58,12 +58,12 @@ export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
           ]}
         />
 
-        <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">Cost guide • Georgetown, TX</p>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{page.h1}</h1>
+        <p className="text-sm font-semibold uppercase tracking-wide text-muted">Cost guide • Georgetown, TX</p>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">{page.h1}</h1>
         <LastUpdated lastUpdated={page.lastUpdated} />
         <AuthorByline className="mt-3" compact />
 
-        <div className="prose prose-gray mt-8 max-w-3xl prose-p:leading-relaxed prose-p:text-gray-700">
+        <div className="prose prose-gray mt-8 max-w-3xl prose-p:leading-relaxed prose-p:text-muted">
           {page.bodyParagraphs.map((paragraph) => (
             <p key={paragraph.slice(0, 48)}>{paragraph}</p>
           ))}
@@ -71,17 +71,17 @@ export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
 
         <CostGuideAffiliateCallouts slug={page.slug} />
 
-        <section className="mt-12 max-w-3xl rounded-2xl border border-gray-200 bg-white p-6 shadow-md md:p-8">
-          <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
+        <section className="mt-12 max-w-3xl rounded-2xl border border-ink/10 bg-surface p-6 shadow-md md:p-8">
+          <h2 className="text-2xl font-semibold tracking-tight text-ink">
             Georgetown, TX {page.serviceName.toLowerCase()} price ranges ({page.year})
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-gray-700">{page.pricingIntro}</p>
+          <p className="mt-3 text-sm leading-relaxed text-muted">{page.pricingIntro}</p>
           <CostGuidePriceTable
             rows={page.priceRows}
             year={page.year}
             caption={`${page.serviceName} cost ranges in Georgetown TX`}
           />
-          <p className="mt-4 text-xs text-gray-600">
+          <p className="mt-4 text-xs text-muted">
             Planning estimates for Williamson County—not quotes. Storm work, after-hours calls, and access issues can move
             any line item above these bands.
           </p>
@@ -98,13 +98,13 @@ export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
         </section>
 
         <section className="mt-12 max-w-3xl">
-          <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Related Georgetown resources</h2>
+          <h2 className="text-2xl font-semibold tracking-tight text-ink">Related Georgetown resources</h2>
           <ul className="mt-4 space-y-2 text-base">
             {page.internalLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="font-medium text-primary underline-offset-4 hover:text-primary-hover hover:underline"
+                  className="font-medium text-brand underline-offset-4 hover:text-brand hover:underline"
                 >
                   {link.label}
                 </Link>
