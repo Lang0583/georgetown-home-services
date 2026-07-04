@@ -83,7 +83,7 @@ async function getSitemapUrls() {
 const sitemapPaths = await getSitemapUrls();
 
 const extras = [
-  '/about','/contact','/privacy-policy','/terms','/methodology','/editorial-policy','/service-areas','/authors/editorial-team',
+  '/about','/contact','/privacy-policy','/terms','/methodology','/editorial-policy','/service-areas','/authors/matt',
   '/services/electrician-georgetown-tx','/services/landscaping-georgetown-tx','/services/pest-control-georgetown-tx','/services/foundation-repair-georgetown-tx','/services/house-cleaning-georgetown-tx',
   '/services/hvac-georgetown-tx','/services/plumber-georgetown-tx','/services/roofer-georgetown-tx',
   '/best/best-electricians-georgetown-tx','/best/top-hvac-companies-georgetown-tx','/best/best-roofers-georgetown-tx',

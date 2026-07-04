@@ -3,7 +3,7 @@ import Link from "next/link";
 import JsonLd from "../../components/JsonLd";
 import TrustPage from "../../components/templates/TrustPage";
 import { pageSeoMetadata } from "../../lib/page-seo";
-import { AUTHOR_NAME, AUTHOR_PROFILE_PATH } from "../../lib/site-author";
+import { AUTHOR_FIRST_NAME, AUTHOR_PROFILE_PATH, PUBLISHER_NAME } from "../../lib/site-author";
 import { webPageTrustJsonLd } from "../../lib/trust-pages-schema";
 
 export const metadata: Metadata = pageSeoMetadata({
@@ -42,9 +42,9 @@ export default function EditorialPolicyPage() {
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
           Final calls on publish, merge, or retire URLs sit with{" "}
           <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-primary hover:underline">
-            {AUTHOR_NAME}
+            {AUTHOR_FIRST_NAME}
           </Link>
-          . The team is accountable for site-wide consistency—tone, claim discipline, and whether a page earns its spot
+          , who maintains {PUBLISHER_NAME} and is accountable for site-wide consistency—tone, claim discipline, and whether a page earns its spot
           in the index.
         </p>
       </section>

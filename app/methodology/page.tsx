@@ -3,7 +3,7 @@ import Link from "next/link";
 import JsonLd from "../../components/JsonLd";
 import TrustPage from "../../components/templates/TrustPage";
 import { pageSeoMetadata } from "../../lib/page-seo";
-import { AUTHOR_NAME, AUTHOR_PROFILE_PATH } from "../../lib/site-author";
+import { AUTHOR_FIRST_NAME, AUTHOR_PROFILE_PATH } from "../../lib/site-author";
 import { webPageTrustJsonLd } from "../../lib/trust-pages-schema";
 
 export const metadata: Metadata = pageSeoMetadata({
@@ -43,7 +43,7 @@ export default function MethodologyPage() {
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
           Rankings and methodology copy are maintained by{" "}
           <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-primary hover:underline">
-            {AUTHOR_NAME}
+            {AUTHOR_FIRST_NAME}
           </Link>
           . Editorial choices (who is emphasized by default, who is deprioritized when signals are weak) are human
           decisions informed by the criteria below—not an automated &quot;pay to rank&quot; auction.

@@ -4,7 +4,7 @@ import JsonLd from "../../components/JsonLd";
 import TrustPage from "../../components/templates/TrustPage";
 import { pageSeoMetadata } from "../../lib/page-seo";
 import { getBrandName } from "../../lib/site-content";
-import { AUTHOR_NAME, AUTHOR_PROFILE_PATH, PUBLISHER_NAME } from "../../lib/site-author";
+import { AUTHOR_FIRST_NAME, AUTHOR_PROFILE_PATH } from "../../lib/site-author";
 import { aboutPageJsonLd } from "../../lib/trust-pages-schema";
 
 export const metadata: Metadata = pageSeoMetadata({
@@ -52,23 +52,22 @@ export default function AboutPage() {
       <section>
         <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Who runs this site</h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          {brand} is published by the{" "}
+          {brand} is an independent local directory built and maintained by{" "}
           <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-primary hover:underline">
-            {AUTHOR_NAME}
+            {AUTHOR_FIRST_NAME}
           </Link>
-          —an in-house group that researches guides from public records and edits them for Georgetown-area
-          homeowners. We are <strong>not</strong> licensed plumbers, electricians, HVAC technicians, or roofers.
-          Content is for research and comparison; it is <strong>not</strong> a substitute for on-site diagnosis,
-          code compliance review, or insurance or legal advice.
+          , a Georgetown homeowner. He researches providers using public business data, license
+          databases, and review platforms. He is <strong>not</strong> a contractor and does{" "}
+          <strong>not</strong> accept payment for directory rankings.
         </p>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          Articles are researched from public business data, Texas licensing registries, and regional housing
-          patterns; drafts may use editorial tools and are human-reviewed before publishing. {PUBLISHER_NAME} is
-          owned and operated in Georgetown, Texas. See the{" "}
+          Guides and listings are for research and comparison—they are <strong>not</strong> a
+          substitute for on-site diagnosis, code compliance review, or insurance or legal advice.
+          See the{" "}
           <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-primary hover:underline">
-            editorial team profile
+            author page
           </Link>{" "}
-          for sourcing habits and correction policy.
+          for how listings are sourced and how to report corrections.
         </p>
       </section>
 

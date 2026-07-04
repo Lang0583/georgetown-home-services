@@ -1,9 +1,8 @@
 /**
- * Single source of truth for the public editorial attribution across the site.
+ * Single source of truth for public author attribution across the site.
  *
- * Georgetown Home Services publishes under a named editorial team (not an
- * individual pen name). Article schema, ProfilePage, and visible bylines all
- * reference the same Organization object for consistent E-E-A-T signals.
+ * Georgetown Home Services is built and maintained by Matt (first name only).
+ * Article schema, ProfilePage, and visible bylines reference the same Person.
  */
 
 import { SITE_URL } from "./page-seo";
@@ -25,42 +24,32 @@ function authorSameAsFromEnv(): string[] {
 
 export const PUBLISHER_NAME = "Georgetown Home Services";
 
+/** First-name-only public attribution — no last name in copy or schema. */
+export const AUTHOR_FIRST_NAME = "Matt";
+
+/** @deprecated Use AUTHOR_FIRST_NAME; kept for imports that expect AUTHOR_NAME. */
+export const AUTHOR_NAME = AUTHOR_FIRST_NAME;
+
 /** URL segment under `/authors/[slug]`. */
-export const AUTHOR_SLUG = "editorial-team";
-
-export const AUTHOR_NAME = "Georgetown Home Services Editorial Team";
-
-export const AUTHOR_JOB_TITLE = "Editorial team";
+export const AUTHOR_SLUG = "matt";
 
 export const AUTHOR_PROFILE_PATH = `/authors/${AUTHOR_SLUG}` as const;
 
+/** Visible byline suffix after the author link: `By Matt | Georgetown Home Services`. */
+export const AUTHOR_BYLINE_PUBLISHER = PUBLISHER_NAME;
+
 /**
- * Concise tagline used in visible bylines and the author profile card.
- * Keep this short — it appears under the name on bylines, not in long-form.
+ * Optional short line under full bylines. Keep factual — no credentials or tenure claims.
  */
 export const AUTHOR_BYLINE_TAGLINE =
-  "Researched from public records and Central Texas housing patterns. Drafts are edited for accuracy—not trades advice.";
+  "Provider research uses public business listings, license lookups, and review platforms—not paid placement.";
 
-/**
- * Topics the editorial team covers. Surfaced as `knowsAbout` on Organization
- * schema where applicable.
- */
-export const AUTHOR_KNOWS_ABOUT: readonly string[] = [
-  "Georgetown, Texas home services",
-  "Williamson County home maintenance",
-  "Residential plumbing decisions",
-  "Residential HVAC decisions",
-  "Residential roofing and hail damage documentation",
-  "Home repair vs. replacement decision frameworks",
-  "Local home-services pricing in Central Texas",
-];
-
-/** Long-form description used by Organization schema and the profile page intro. */
+/** Long-form description for Person schema and the author profile page. */
 export const AUTHOR_LONG_DESCRIPTION =
-  "The Georgetown Home Services Editorial Team produces homeowner guides and provider directories for Georgetown, Texas and Williamson County. Content is researched from public business listings, Texas licensing registries (TSBPE, TDLR, TDA SPCS where relevant), insurer and municipal references, and established Central Texas housing patterns. First drafts may use editorial tooling; published pages are human-reviewed for claim discipline and local specificity. Georgetown Home Services is not a licensed contractor, does not dispatch tradespeople, and is owned and operated in Georgetown, Texas.";
+  "Matt is a Georgetown, Texas homeowner who builds and maintains Georgetown Home Services—an independent local directory and homeowner guide for Williamson County. He researches providers using public business data, Texas licensing registries where trades are licensed, and review platforms. He is not a licensed contractor, does not dispatch tradespeople, and does not accept payment for directory rankings.";
 
 /**
- * Organization schema fragment usable as the `author` field on Article schema.
+ * Person schema fragment for the `author` field on Article schema.
  */
 export function authorPersonSchema(siteUrl: string = SITE_URL) {
   return articleAuthorSchema(siteUrl);
@@ -69,11 +58,11 @@ export function authorPersonSchema(siteUrl: string = SITE_URL) {
 export function articleAuthorSchema(siteUrl: string = SITE_URL) {
   const sameAs = authorSameAsFromEnv();
   return {
-    "@type": "Organization" as const,
-    name: AUTHOR_NAME,
+    "@type": "Person" as const,
+    name: AUTHOR_FIRST_NAME,
     url: `${siteUrl}${AUTHOR_PROFILE_PATH}`,
     ...(sameAs.length ? { sameAs } : {}),
-    parentOrganization: {
+    worksFor: {
       "@type": "Organization" as const,
       name: PUBLISHER_NAME,
       url: siteUrl,
@@ -81,20 +70,22 @@ export function articleAuthorSchema(siteUrl: string = SITE_URL) {
   };
 }
 
-/**
- * Full Organization schema for the editorial team profile page.
- */
+/** Full Person schema for the author profile page. */
 export function fullAuthorPersonSchema(siteUrl: string = SITE_URL) {
   const sameAs = authorSameAsFromEnv();
   return {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: AUTHOR_NAME,
+    "@type": "Person",
+    name: AUTHOR_FIRST_NAME,
     url: `${siteUrl}${AUTHOR_PROFILE_PATH}`,
     description: AUTHOR_LONG_DESCRIPTION,
     ...(sameAs.length ? { sameAs } : {}),
-    knowsAbout: [...AUTHOR_KNOWS_ABOUT],
-    areaServed: {
+    worksFor: {
+      "@type": "Organization",
+      name: PUBLISHER_NAME,
+      url: siteUrl,
+    },
+    homeLocation: {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
@@ -102,11 +93,6 @@ export function fullAuthorPersonSchema(siteUrl: string = SITE_URL) {
         addressRegion: "TX",
         addressCountry: "US",
       },
-    },
-    parentOrganization: {
-      "@type": "Organization",
-      name: PUBLISHER_NAME,
-      url: siteUrl,
     },
   };
 }
@@ -151,19 +137,19 @@ export function hubArticleJsonLd(opts: {
   };
 }
 
-/** ProfilePage schema for the editorial team about URL. */
+/** ProfilePage schema for the author profile URL. */
 export function authorProfilePageSchema(siteUrl: string = SITE_URL) {
   const profileUrl = `${siteUrl}${AUTHOR_PROFILE_PATH}`;
   return {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
     mainEntity: {
-      "@type": "Organization",
-      name: AUTHOR_NAME,
+      "@type": "Person",
+      name: AUTHOR_FIRST_NAME,
       url: profileUrl,
       description: AUTHOR_LONG_DESCRIPTION,
     },
     url: profileUrl,
-    name: `${AUTHOR_NAME} — ${AUTHOR_JOB_TITLE}`,
+    name: `${AUTHOR_FIRST_NAME} — ${PUBLISHER_NAME}`,
   };
 }

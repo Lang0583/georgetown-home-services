@@ -1,7 +1,8 @@
 import Link from "next/link";
 import {
+  AUTHOR_BYLINE_PUBLISHER,
   AUTHOR_BYLINE_TAGLINE,
-  AUTHOR_NAME,
+  AUTHOR_FIRST_NAME,
   AUTHOR_PROFILE_PATH,
 } from "../lib/site-author";
 
@@ -29,9 +30,25 @@ function formatLongDate(iso: string): string {
   }).format(d);
 }
 
+function BylineAttribution() {
+  return (
+    <>
+      By{" "}
+      <Link
+        href={AUTHOR_PROFILE_PATH}
+        className="font-semibold text-gray-900 underline-offset-4 hover:underline"
+      >
+        {AUTHOR_FIRST_NAME}
+      </Link>
+      {" | "}
+      {AUTHOR_BYLINE_PUBLISHER}
+    </>
+  );
+}
+
 /**
  * Visible author byline rendered above article-style content. Pairs with the
- * Organization schema in the page's JSON-LD; the visible byline is what Google's
+ * Person schema in the page's JSON-LD; the visible byline is what Google's
  * quality system actually verifies, so a schema-only attribution is weaker.
  */
 export default function AuthorByline({
@@ -45,13 +62,7 @@ export default function AuthorByline({
   if (compact) {
     return (
       <p className={`text-sm text-gray-600 ${className}`.trim()}>
-        By{" "}
-        <Link
-          href={AUTHOR_PROFILE_PATH}
-          className="font-semibold text-gray-900 underline-offset-4 hover:underline"
-        >
-          {AUTHOR_NAME}
-        </Link>
+        <BylineAttribution />
         {datePublished ? <> · {formatLongDate(datePublished)}</> : null}
         {showUpdated ? <> · Updated {formatLongDate(dateModified!)}</> : null}
       </p>
@@ -61,13 +72,7 @@ export default function AuthorByline({
   return (
     <div className={`flex flex-col gap-1 text-sm text-gray-600 ${className}`.trim()}>
       <p>
-        By{" "}
-        <Link
-          href={AUTHOR_PROFILE_PATH}
-          className="font-semibold text-gray-900 underline-offset-4 hover:underline"
-        >
-          {AUTHOR_NAME}
-        </Link>
+        <BylineAttribution />
         {datePublished ? <> · {formatLongDate(datePublished)}</> : null}
         {showUpdated ? <> · Updated {formatLongDate(dateModified!)}</> : null}
       </p>

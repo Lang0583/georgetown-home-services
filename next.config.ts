@@ -148,15 +148,15 @@ const nextConfig: NextConfig = {
         destination: "/blog/how-to-choose-a-reliable-plumber-georgetown-tx",
         permanent: true,
       },
-      // Legacy author profile slugs → current editorial team profile.
+      // Legacy author profile slugs → current Matt profile.
       {
-        source: "/authors/matt",
-        destination: "/authors/editorial-team",
+        source: "/authors/cole-reinhardt",
+        destination: "/authors/matt",
         permanent: true,
       },
       {
-        source: "/authors/cole-reinhardt",
-        destination: "/authors/editorial-team",
+        source: "/authors/editorial-team",
+        destination: "/authors/matt",
         permanent: true,
       },
     ];
