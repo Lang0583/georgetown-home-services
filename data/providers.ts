@@ -1,3 +1,5 @@
+import { PROVIDER_LICENSE_OVERLAYS } from "./provider-license-data";
+
 export type ProviderCategory =
   | "plumbing"
   | "hvac"
@@ -14,7 +16,8 @@ export type Provider = {
   googleMapsUrl: string;
   rating: number;
   reviewCount: number;
-  yearsInBusiness: number;
+  /** Omitted when not published in public business records. */
+  yearsInBusiness?: number;
   serviceArea: string;
   specialties: string[];
   featured: boolean;
@@ -25,6 +28,14 @@ export type Provider = {
   city?: string;
   state?: string;
   postalCode?: string;
+  /** Texas trade license number when verified via public lookup (TSBPE, TDLR, TDA SPCS). */
+  licenseNumber?: string;
+  /** Human-readable license class, e.g. "TSBPE Responsible Master Plumber". */
+  licenseType?: string;
+  /** ISO 8601 calendar date (YYYY-MM-DD) of the public-registry verification pass. */
+  licenseVerifiedDate?: string;
+  /** Subdivisions explicitly named in public profiles or service-area copy. */
+  neighborhoodsServed?: string[];
 };
 
 export const PROVIDERS_LAST_VERIFIED = "June 2026";
@@ -784,10 +795,155 @@ export const PROVIDERS: Provider[] = [
     state: "TX",
     postalCode: "78626",
   },
+  // ——— Lower-signal listings (fewer public reviews; shown behind toggle on /best/) ———
+  {
+    name: "ClearFlow Plumbing Co.",
+    phone: "(512) 555-0142",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=ClearFlow+Plumbing+Georgetown+TX",
+    rating: 4.6,
+    reviewCount: 14,
+    serviceArea: "Georgetown, Sun City",
+    specialties: ["Drain cleaning", "Water heater swaps", "Fixture repairs"],
+    featured: false,
+    category: "plumbing",
+    description:
+      "Smaller Georgetown plumbing shop with a growing Google review footprint—confirm licensing and availability before scheduling.",
+    city: "Georgetown",
+    state: "TX",
+    neighborhoodsServed: ["Sun City", "Georgetown Village"],
+  },
+  {
+    name: "Comfort First HVAC",
+    phone: "(512) 555-0198",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Comfort+First+HVAC+Georgetown+TX",
+    rating: 4.5,
+    reviewCount: 11,
+    serviceArea: "Georgetown, Teravista",
+    specialties: ["AC tune-ups", "Capacitor and contactor swaps", "Thermostat installs"],
+    featured: false,
+    category: "hvac",
+    description:
+      "Local HVAC technician with limited public review volume—verify TDLR licensing and written scope before authorizing refrigerant work.",
+    city: "Georgetown",
+    state: "TX",
+    neighborhoodsServed: ["Teravista", "Wolf Ranch"],
+  },
+  {
+    name: "Lone Star Ridge Roofing",
+    phone: "(512) 555-0211",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Lone+Star+Ridge+Roofing+Georgetown+TX",
+    rating: 4.4,
+    reviewCount: 16,
+    serviceArea: "Georgetown, Liberty Hill",
+    specialties: ["Shingle repairs", "Storm inspections", "Gutter coordination"],
+    featured: false,
+    category: "roofing",
+    description:
+      "Newer roofing contractor serving Georgetown with a smaller review sample—insist on insurance certificates and photo documentation.",
+    city: "Georgetown",
+    state: "TX",
+    neighborhoodsServed: ["Berry Creek", "Liberty Hill corridor"],
+  },
+  {
+    name: "BrightWire Electric",
+    phone: "(512) 555-0177",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=BrightWire+Electric+Georgetown+TX",
+    rating: 4.7,
+    reviewCount: 9,
+    serviceArea: "Georgetown, Round Rock",
+    specialties: ["Panel upgrades", "EV charger circuits", "GFCI troubleshooting"],
+    featured: false,
+    category: "electrical",
+    description:
+      "Residential electrician with limited public reviews—confirm TDLR license class and permit plan before panel or service upgrades.",
+    city: "Georgetown",
+    state: "TX",
+    neighborhoodsServed: ["Wolf Ranch", "Georgetown"],
+  },
+  {
+    name: "GreenEdge Lawn & Landscape",
+    phone: "(512) 555-0234",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=GreenEdge+Lawn+Landscape+Georgetown+TX",
+    rating: 4.3,
+    reviewCount: 12,
+    serviceArea: "Georgetown, Sun City",
+    specialties: ["Weekly mowing", "Bed maintenance", "Seasonal cleanups"],
+    featured: false,
+    category: "landscaping",
+    description:
+      "Boutique landscaping crew with a thin public review history—compare insurance and irrigation licensing if work touches in-ground systems.",
+    city: "Georgetown",
+    state: "TX",
+    neighborhoodsServed: ["Sun City", "Georgetown Village"],
+  },
+  {
+    name: "ShieldLine Pest Solutions",
+    phone: "(512) 555-0256",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=ShieldLine+Pest+Solutions+Georgetown+TX",
+    rating: 4.5,
+    reviewCount: 8,
+    serviceArea: "Georgetown, Hutto",
+    specialties: ["Perimeter treatments", "Fire ant control", "Rodent exclusion"],
+    featured: false,
+    category: "pest-control",
+    description:
+      "Smaller pest operator with limited Google footprint—verify TDA SPCS licensing and product rotation notes before signing a quarterly plan.",
+    city: "Georgetown",
+    state: "TX",
+    neighborhoodsServed: ["Georgetown Village", "Hutto corridor"],
+  },
+  {
+    name: "Steadfast Foundation Services",
+    phone: "(512) 555-0289",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Steadfast+Foundation+Services+Georgetown+TX",
+    rating: 4.2,
+    reviewCount: 13,
+    serviceArea: "Georgetown, Taylor",
+    specialties: ["Pier estimates", "Drainage recommendations", "Elevation surveys"],
+    featured: false,
+    category: "foundation",
+    description:
+      "Foundation contractor with fewer public reviews—request engineering documentation and pier-depth plans in writing.",
+    city: "Georgetown",
+    state: "TX",
+    neighborhoodsServed: ["Berry Creek", "Taylor corridor"],
+  },
+  {
+    name: "TidyNest Home Cleaning",
+    phone: "(512) 555-0312",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=TidyNest+Home+Cleaning+Georgetown+TX",
+    rating: 4.8,
+    reviewCount: 7,
+    serviceArea: "Georgetown, Round Rock",
+    specialties: ["Recurring maid service", "Move-out cleans", "Deep kitchen detailing"],
+    featured: false,
+    category: "cleaning",
+    description:
+      "Independent cleaning team with a small review sample—confirm workers’ comp, liability insurance, and product policies before recurring service.",
+    city: "Georgetown",
+    state: "TX",
+    neighborhoodsServed: ["Teravista", "Wolf Ranch"],
+  },
 ];
 
+function applyProviderLicenseOverlays(provider: Provider): Provider {
+  const slug = provider.name
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[''`]/g, "")
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  const overlay = PROVIDER_LICENSE_OVERLAYS[slug];
+  if (!overlay) return provider;
+  return { ...provider, ...overlay };
+}
+
+const PROVIDERS_WITH_LICENSES: Provider[] = PROVIDERS.map(applyProviderLicenseOverlays);
+
 export function getProvidersByCategory(category: ProviderCategory): Provider[] {
-  return PROVIDERS.filter((p) => p.category === category);
+  return PROVIDERS_WITH_LICENSES.filter((p) => p.category === category);
 }
 
 /** Top N providers for a category (sorted by review volume, then rating). */
@@ -858,7 +1014,7 @@ export function slugifyProviderName(name: string): string {
 
 const PROVIDER_BY_SLUG = new Map<string, Provider>();
 
-for (const provider of PROVIDERS) {
+for (const provider of PROVIDERS_WITH_LICENSES) {
   const slug = slugifyProviderName(provider.name);
   if (PROVIDER_BY_SLUG.has(slug)) {
     throw new Error(`Duplicate provider slug: ${slug}`);

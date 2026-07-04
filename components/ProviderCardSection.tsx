@@ -1,4 +1,6 @@
 import ProviderCard from "./ProviderCard";
+import BestProviderDirectory from "./BestProviderDirectory";
+import BestProvidersMethodologyCallout from "./BestProvidersMethodologyCallout";
 import {
   PROVIDER_DISCLAIMER,
   PROVIDERS_LAST_VERIFIED,
@@ -17,11 +19,11 @@ export default function ProviderCardSection({ providers }: { providers: Provider
         <p className="mt-1 text-gray-600">{PROVIDER_DISCLAIMER}</p>
       </div>
 
-      <div className="mt-5 space-y-6">
-        {providers.map((provider) => (
-          <ProviderCard key={`${provider.category}-${provider.name}`} provider={provider} />
-        ))}
+      <div className="mt-4">
+        <BestProvidersMethodologyCallout />
       </div>
+
+      <BestProviderDirectory providers={providers} />
     </div>
   );
 }

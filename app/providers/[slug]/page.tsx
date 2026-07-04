@@ -18,6 +18,7 @@ import { externalBusinessLinkProps } from "@/lib/businesses";
 import { pageSeoMetadata, absolutePageUrl } from "@/lib/page-seo";
 import { buildProviderLocalBusinessJsonLd } from "@/lib/provider-item-list-schema";
 import { getProviderWebsiteUrl } from "@/lib/provider-website";
+import { providerLicenseVerifiedLine } from "@/lib/provider-license";
 import { breadcrumbSchemaForProvider } from "@/lib/schema";
 import LastUpdated from "@/components/LastUpdated";
 import {
@@ -66,6 +67,7 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
   const h1 = `${provider.name} — Georgetown, TX`;
   const telHref = `tel:${provider.phone.replace(/\D/g, "")}`;
   const websiteUrl = getProviderWebsiteUrl(provider.name);
+  const licenseLine = providerLicenseVerifiedLine(provider);
   const mapsEmbedSrc = googleMapsEmbedUrl(
     provider.googleMapsUrl,
     `${provider.name} Georgetown TX`,
@@ -142,10 +144,23 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
             <p>
               <span className="font-semibold text-gray-900">Service area:</span> {provider.serviceArea}
             </p>
-            <p>
-              <span className="font-semibold text-gray-900">Years in business:</span>{" "}
-              {provider.yearsInBusiness}
-            </p>
+            {licenseLine ? (
+              <p>
+                <span className="font-semibold text-gray-900">{licenseLine}</span>
+              </p>
+            ) : null}
+            {provider.neighborhoodsServed?.length ? (
+              <p>
+                <span className="font-semibold text-gray-900">Neighborhoods served:</span>{" "}
+                {provider.neighborhoodsServed.join(", ")}
+              </p>
+            ) : null}
+            {typeof provider.yearsInBusiness === "number" ? (
+              <p>
+                <span className="font-semibold text-gray-900">Years in business:</span>{" "}
+                {provider.yearsInBusiness}
+              </p>
+            ) : null}
           </div>
 
           <div className="mt-6">

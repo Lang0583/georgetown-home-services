@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import AffiliateOutboundCta from "../../../components/AffiliateOutboundCta";
 import BestAlsoCompareBar from "../../../components/BestAlsoCompareBar";
 import { notFound } from "next/navigation";
@@ -43,7 +42,6 @@ import {
   isRedirectedServiceSlug,
   showExtendedHomeServices,
 } from "../../../lib/public-site-scope";
-import BestProvidersMethodologyCallout from "../../../components/BestProvidersMethodologyCallout";
 import FlagshipYouTubeEmbed from "../../../components/FlagshipYouTubeEmbed";
 import BestOfRooferEditorialDepth from "../../../components/BestOfRooferEditorialDepth";
 import BestOfPlumberEditorialDepth from "../../../components/BestOfPlumberEditorialDepth";
@@ -54,42 +52,6 @@ import {
   flagshipVideoObjectJsonLd,
 } from "../../../lib/flagship-videos";
 import { breadcrumbSchemaForBestOf } from "../../../lib/schema";
-
-/** Hero images for core `/best/[slug]` pages (Unsplash — permitted use per Unsplash License). */
-const CORE_BEST_HERO: Record<string, { src: string; alt: string }> = {
-  "best-plumbers-georgetown-tx": {
-    src: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=1200&q=80",
-    alt: "Licensed plumber working on pipes in Georgetown TX home",
-  },
-  "top-hvac-companies-georgetown-tx": {
-    src: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1200&q=80",
-    alt: "HVAC technician servicing air conditioning unit in Georgetown TX",
-  },
-  "best-roofers-georgetown-tx": {
-    src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
-    alt: "Roofer installing shingles on Georgetown TX residential home",
-  },
-  "best-electricians-georgetown-tx": {
-    src: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200&q=80",
-    alt: "Electrician inspecting electrical panel in Georgetown TX home",
-  },
-  "best-landscaping-companies-georgetown-tx": {
-    src: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&q=80",
-    alt: "Landscaper maintaining lawn and flower beds in Georgetown TX",
-  },
-  "best-pest-control-georgetown-tx": {
-    src: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&q=80",
-    alt: "Pest control technician treating home exterior in Georgetown TX",
-  },
-  "best-foundation-repair-georgetown-tx": {
-    src: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80",
-    alt: "Foundation repair specialist evaluating a Georgetown TX home",
-  },
-  "best-house-cleaning-services-georgetown-tx": {
-    src: "https://images.unsplash.com/photo-1581578731548-c64695db6952?w=1200&q=80",
-    alt: "House cleaning team working in a Georgetown TX residence",
-  },
-};
 
 function faqJsonLd(faqs: { q: string; a: string }[]) {
   return {
@@ -284,7 +246,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
     (b) => showExtendedHomeServices() || !isExtendedBestSlug(b.slug),
   );
   const ruleLinks = bestPageInternalLinks(best.slug);
-  const hero = CORE_BEST_HERO[best.slug];
 
   /** FAQPage JSON-LD + visible FAQ (must match). Per Next.js, `next/script` `beforeInteractive` is root-layout-only; `<JsonLd />` emits the same `application/ld+json` as elsewhere. */
   const bestOfPageFaqs = getBestOfPageFaqs(best.slug);
@@ -336,18 +297,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
               <div className="text-sm font-semibold uppercase tracking-wide text-primary">Best Of</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">{best.h1}</h1>
               <LastUpdated lastUpdated={best.lastUpdated} />
-              {hero ? (
-                <div className="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-                  <Image
-                    src={hero.src}
-                    alt={hero.alt}
-                    width={1200}
-                    height={400}
-                    loading="lazy"
-                    className="h-auto w-full"
-                  />
-                </div>
-              ) : null}
               {isPlumbersGeorgetown ? (
                 <>
                   <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">
@@ -1221,9 +1170,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                           </p>
                         ) : null}
                       </div>
-                      <div className="mt-4">
-                        <BestProvidersMethodologyCallout />
-                      </div>
                       {directoryProviders.length ? (
                         <ProviderCardSection providers={directoryProviders} />
                       ) : null}
@@ -1251,9 +1197,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                   ) : (
                     <>
                       <p className="mt-3 text-sm text-gray-700">{providerData.evaluatedIntro}</p>
-                      <div className="mt-4">
-                        <BestProvidersMethodologyCallout />
-                      </div>
                       {directoryProviders.length ? (
                         <ProviderCardSection providers={directoryProviders} />
                       ) : providerData.providers.length ? (

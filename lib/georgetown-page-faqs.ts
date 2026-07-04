@@ -164,7 +164,7 @@ const TRADE_FAQ_TEMPLATES: Record<ProviderGroup, Faq[]> = {
   pest_control: [
     {
       q: "What pests drive the most calls in Georgetown homes?",
-      a: "Fire ants, German cockroaches in warm kitchens, roof rats after fruit drop, mosquitoes near standing water, and subterranean termites in slab-adjacent soil are repeat callers. Seasonal spider and scorpion inquiries spike after dry stretches push insects indoors.",
+      a: "Fire ants, German cockroaches in warm kitchens, roof rats after fruit drop, mosquitoes near standing water, and subterranean termites in slab-adjacent soil are among the most common seasonal pest complaints in Central Texas. Spider and scorpion inquiries often spike after dry stretches push insects indoors.",
     },
     {
       q: "How often should perimeter pest service happen?",

@@ -812,7 +812,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
                     {isPlumberService
                       ? "These answers summarize common questions Georgetown homeowners ask about plumbing. Use them as a starting point, then confirm details with any professional you choose to work with."
-                      : "These answers summarize common questions we hear from homeowners in and around Georgetown, TX. Use them as a starting point, then confirm details with any professional you choose to work with."}
+                      : "These answers summarize common questions documented in Georgetown-area homeowner guides and public complaint patterns. Use them as a starting point, then confirm details with any professional you choose to work with."}
                   </p>
                   <div className="mt-6">
                     <FAQList faqs={serviceFaqs} />
