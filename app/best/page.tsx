@@ -62,8 +62,12 @@ export default function BestIndexPage() {
               </h1>
               <LastUpdated lastUpdated={lastUpdated} />
               <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">
-                Use these comparison guides to shortlist providers you can contact directly. Each guide includes practical
-                criteria (scope clarity, documentation, responsiveness) so you can compare quotes and avoid common mistakes.
+                Use these comparison guides to shortlist providers you can contact directly. Inclusion criteria and data
+                sources are on our{" "}
+                <Link href="/methodology" className="font-semibold text-primary hover:underline">
+                  listing methodology
+                </Link>{" "}
+                page—the same five rules shown on every directory below.
               </p>
             </div>
 

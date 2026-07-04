@@ -51,13 +51,11 @@ export default function MattAuthorProfilePage() {
       <section>
         <h2 className="text-2xl font-semibold tracking-tight text-gray-900">How listings are built</h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          Directory fields draw on Google Business Profile listings, official company websites,
-          TDLR and TSBPE public lookups where applicable, and other verifiable public sources.
-          Rankings follow the criteria on the{" "}
+          Data sources, the five inclusion criteria, review cadence, and independence rules are documented on the{" "}
           <Link href="/methodology" className="font-semibold text-primary hover:underline">
-            methodology
+            listing methodology
           </Link>{" "}
-          page. Sponsored or affiliate modules—when present—are labeled separately.
+          page—not restated here.
         </p>
       </section>
 

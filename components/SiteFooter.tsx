@@ -260,9 +260,9 @@ export default function SiteFooter() {
                 </Link>
               </li>
               <li>
-                <Link className="hover:underline" href="/methodology">
-                  How We Review and Rank Providers
-                </Link>
+            <Link className="hover:underline" href="/methodology">
+              Listing methodology
+            </Link>
               </li>
               <li>
                 <Link className="hover:underline" href="/editorial-policy">
@@ -309,7 +309,7 @@ export default function SiteFooter() {
               About
             </Link>
             <Link className={footerBarLinkClass} href="/methodology">
-              How we rank
+              Listing methodology
             </Link>
             <Link className={footerBarLinkClass} href="/services">
               Service guides

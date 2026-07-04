@@ -56,18 +56,24 @@ export default function AboutPage() {
           <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-primary hover:underline">
             {AUTHOR_FIRST_NAME}
           </Link>
-          , a Georgetown homeowner. He researches providers using public business data, license
-          databases, and review platforms. He is <strong>not</strong> a contractor and does{" "}
+          , a Georgetown homeowner. He is <strong>not</strong> a contractor and does{" "}
           <strong>not</strong> accept payment for directory rankings.
         </p>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          Guides and listings are for research and comparison—they are <strong>not</strong> a
-          substitute for on-site diagnosis, code compliance review, or insurance or legal advice.
-          See the{" "}
+          How listings are sourced, which databases we check, and the five inclusion criteria for Best Of pages are
+          documented on the{" "}
+          <Link href="/methodology" className="font-semibold text-primary hover:underline">
+            listing methodology
+          </Link>{" "}
+          page—not duplicated here.
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+          Guides and listings are for research and comparison—they are <strong>not</strong> a substitute for on-site
+          diagnosis, code compliance review, or insurance or legal advice. See the{" "}
           <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-primary hover:underline">
             author page
           </Link>{" "}
-          for how listings are sourced and how to report corrections.
+          for how to report corrections.
         </p>
       </section>
 
@@ -79,8 +85,11 @@ export default function AboutPage() {
             written estimate.
           </li>
           <li>
-            <strong>Best Of comparison hubs</strong> that help you shortlist companies using publicly available signals
-            (reviews, listing consistency, and stated service fit)—with methodology documented separately.
+            <strong>Best Of comparison hubs</strong> that help you shortlist companies using the inclusion criteria on{" "}
+            <Link href="/methodology" className="font-semibold text-primary hover:underline">
+              our listing methodology
+            </Link>
+            .
           </li>
           <li>
             <strong>Repeat-use checklists</strong> (seasonal maintenance, storm aftermath, hiring scripts) designed to

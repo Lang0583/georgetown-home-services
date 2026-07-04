@@ -100,7 +100,13 @@ export default function EditorialPolicyPage() {
         <h2 className="text-2xl font-semibold tracking-tight text-gray-900">What we publish</h2>
         <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-700">
           <li>Service guides that teach category vocabulary, failure modes, and estimate comparison.</li>
-          <li>Best Of hubs that pair shortlists with explicit methodology and homeowner instructions.</li>
+          <li>
+            Best Of hubs that pair shortlists with the{" "}
+            <Link href="/methodology" className="font-semibold text-primary hover:underline">
+              listing methodology
+            </Link>{" "}
+            (data sources, inclusion criteria, and review cadence).
+          </li>
           <li>Blog series (cost, maintenance, storm checklists) where each installment adds a distinct decision framework.</li>
         </ul>
       </section>
@@ -117,12 +123,11 @@ export default function EditorialPolicyPage() {
       <section>
         <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Sponsored placements</h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          Paid placements—when present—carry a clear <strong>Sponsored</strong> or <strong>Featured</strong> label and never
-          masquerade as organic methodology results. Read{" "}
+          Paid placements—when present—carry a clear <strong>Sponsored</strong> or <strong>Featured</strong> label.{" "}
           <Link href="/methodology" className="font-semibold text-primary hover:underline">
-            how we rank providers
+            Listing methodology
           </Link>{" "}
-          for the full separation rule.
+          documents that placement cannot be bought and that affiliate links do not affect directory rankings.
         </p>
       </section>
     </TrustPage>
