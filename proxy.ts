@@ -8,8 +8,12 @@ import { NextResponse } from "next/server";
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Legacy direct PDF URLs → seasonal hub (PDFs are email-gated).
-  if (pathname.startsWith("/downloads/") && pathname.toLowerCase().endsWith(".pdf")) {
+  // Legacy direct PDF URLs → seasonal hub (except the static HVAC heat guide).
+  if (
+    pathname.startsWith("/downloads/") &&
+    pathname.toLowerCase().endsWith(".pdf") &&
+    pathname !== "/downloads/hvac-texas-heat-guide.pdf"
+  ) {
     const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = "/seasonal";
     redirectUrl.search = "";

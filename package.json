@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "20.x"
+    "node": "22.x"
   },
   "browserslist": {
     "production": [
@@ -21,6 +21,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "generate:lead-pdfs": "tsx scripts/generate-lead-magnet-pdfs.ts",
+    "generate:pdfs": "tsx scripts/generate-pdfs.ts",
     "prebuild": "node scripts/clean-legacy-sitemap.cjs && node scripts/write-indexnow-key.cjs && node scripts/write-impact-site-verification.cjs && npm run generate:lead-pdfs && npx tsx scripts/check-last-updated.ts",
     "build": "next build --webpack",
     "postbuild": "node scripts/clean-legacy-sitemap.cjs && node scripts/ensure-vercel-next-lock.cjs && npx tsx scripts/submit-indexnow.ts",
@@ -58,6 +59,7 @@
     "jsdom": "^29.1.0",
     "next-sitemap": "^4.2.3",
     "pdf-lib": "^1.17.1",
+    "puppeteer": "^24.36.1",
     "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "ts-node": "^10.9.2",
