@@ -4,7 +4,7 @@ import JsonLd from "../../components/JsonLd";
 import TrustPage from "../../components/templates/TrustPage";
 import { pageSeoMetadata } from "../../lib/page-seo";
 import { getBrandName } from "../../lib/site-content";
-import { AUTHOR_NAME, AUTHOR_PROFILE_PATH } from "../../lib/site-author";
+import { AUTHOR_NAME, AUTHOR_PROFILE_PATH, PUBLISHER_NAME } from "../../lib/site-author";
 import { aboutPageJsonLd } from "../../lib/trust-pages-schema";
 
 export const metadata: Metadata = pageSeoMetadata({
@@ -52,18 +52,23 @@ export default function AboutPage() {
       <section>
         <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Who runs this site</h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          {brand} is run by{" "}
+          {brand} is published by the{" "}
           <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-primary hover:underline">
             {AUTHOR_NAME}
           </Link>
-          , founder and editor. {AUTHOR_NAME} is{" "}
-          <strong>not</strong> a licensed plumber, electrician, HVAC technician, or roofer. Content is written for
-          research and comparison; it is <strong>not</strong> a substitute for on-site diagnosis, code compliance
-          review, or insurance/legal advice. The{" "}
+          —an in-house group that researches guides from public records and edits them for Georgetown-area
+          homeowners. We are <strong>not</strong> licensed plumbers, electricians, HVAC technicians, or roofers.
+          Content is for research and comparison; it is <strong>not</strong> a substitute for on-site diagnosis,
+          code compliance review, or insurance or legal advice.
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-gray-700">
+          Articles are researched from public business data, Texas licensing registries, and regional housing
+          patterns; drafts may use editorial tools and are human-reviewed before publishing. {PUBLISHER_NAME} is
+          owned and operated in Georgetown, Texas. See the{" "}
           <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-primary hover:underline">
-            editor profile
+            editorial team profile
           </Link>{" "}
-          explains background, sourcing habits, and how we use drafting tools responsibly.
+          for sourcing habits and correction policy.
         </p>
       </section>
 

@@ -31,7 +31,7 @@ function formatLongDate(iso: string): string {
 
 /**
  * Visible author byline rendered above article-style content. Pairs with the
- * Person schema in the page's JSON-LD; the visible byline is what Google's
+ * Organization schema in the page's JSON-LD; the visible byline is what Google's
  * quality system actually verifies, so a schema-only attribution is weaker.
  */
 export default function AuthorByline({

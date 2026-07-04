@@ -29,7 +29,7 @@ import {
 } from "../../../lib/flagship-videos";
 import HailPillarNeighborhoodHub from "../../../components/HailPillarNeighborhoodHub";
 import { PRICING_YEAR } from "../../../lib/pricing-data";
-import { AUTHOR_NAME, AUTHOR_PROFILE_PATH, authorPersonSchema } from "../../../lib/site-author";
+import { AUTHOR_JOB_TITLE, AUTHOR_NAME, AUTHOR_PROFILE_PATH, authorPersonSchema } from "../../../lib/site-author";
 import { breadcrumbSchemaForBlog } from "../../../lib/schema";
 
 /** Posts with Amazon affiliate links in body copy — disclosure shown below byline. */
@@ -453,7 +453,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
                 <Link href={AUTHOR_PROFILE_PATH} className="font-medium text-gray-900 underline-offset-4 hover:underline">
                   {AUTHOR_NAME}
                 </Link>
-                <span className="text-gray-500"> · Founder and Editor</span>
+                <span className="text-gray-500"> · {AUTHOR_JOB_TITLE}</span>
               </p>
               <div className="mt-2 text-sm text-gray-600">
                 <div>

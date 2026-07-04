@@ -148,13 +148,15 @@ const nextConfig: NextConfig = {
         destination: "/blog/how-to-choose-a-reliable-plumber-georgetown-tx",
         permanent: true,
       },
-      // Author byline moved from a single-name slug to the full pen-name slug
-      // when the bio was expanded with full E-E-A-T context. Keep this 308 in
-      // place permanently — Article schema and any external links still
-      // reference the old path.
+      // Legacy author profile slugs → current editorial team profile.
       {
         source: "/authors/matt",
-        destination: "/authors/cole-reinhardt",
+        destination: "/authors/editorial-team",
+        permanent: true,
+      },
+      {
+        source: "/authors/cole-reinhardt",
+        destination: "/authors/editorial-team",
         permanent: true,
       },
     ];

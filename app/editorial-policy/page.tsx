@@ -42,9 +42,9 @@ export default function EditorialPolicyPage() {
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
           Final calls on publish, merge, or retire URLs sit with{" "}
           <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-primary hover:underline">
-            {AUTHOR_NAME}, founder and editor
+            {AUTHOR_NAME}
           </Link>
-          . The editor is accountable for site-wide consistency—tone, claim discipline, and whether a page earns its spot
+          . The team is accountable for site-wide consistency—tone, claim discipline, and whether a page earns its spot
           in the index.
         </p>
       </section>

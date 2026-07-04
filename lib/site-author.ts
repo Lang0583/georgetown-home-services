@@ -1,10 +1,9 @@
 /**
- * Single source of truth for the named editorial author across the site.
+ * Single source of truth for the public editorial attribution across the site.
  *
- * This is the E-E-A-T anchor: every Article schema, ProfilePage, and visible
- * byline references the same Person object so Google can cleanly tie content
- * to a consistent identified editor. If we add additional editors later they
- * should follow this same shape and live alongside this module.
+ * Georgetown Home Services publishes under a named editorial team (not an
+ * individual pen name). Article schema, ProfilePage, and visible bylines all
+ * reference the same Organization object for consistent E-E-A-T signals.
  */
 
 import { SITE_URL } from "./page-seo";
@@ -24,19 +23,15 @@ function authorSameAsFromEnv(): string[] {
     });
 }
 
-/**
- * Editor identity is published under the pen name "Cole Reinhardt" by editorial
- * choice. Pen names are an established convention in long-form journalism and
- * consumer-research publishing; the publishing entity (Georgetown Home
- * Services) is the entity legally accountable for content. The byline below
- * is the public author surface; corporate and contact details live on
- * `/about`, `/editorial-policy`, and `/contact`.
- */
-export const AUTHOR_SLUG = "cole-reinhardt";
-export const AUTHOR_FIRST_NAME = "Cole";
-export const AUTHOR_LAST_NAME = "Reinhardt";
-export const AUTHOR_NAME = `${AUTHOR_FIRST_NAME} ${AUTHOR_LAST_NAME}`;
-export const AUTHOR_JOB_TITLE = "Founding Editor";
+export const PUBLISHER_NAME = "Georgetown Home Services";
+
+/** URL segment under `/authors/[slug]`. */
+export const AUTHOR_SLUG = "editorial-team";
+
+export const AUTHOR_NAME = "Georgetown Home Services Editorial Team";
+
+export const AUTHOR_JOB_TITLE = "Editorial team";
+
 export const AUTHOR_PROFILE_PATH = `/authors/${AUTHOR_SLUG}` as const;
 
 /**
@@ -44,67 +39,62 @@ export const AUTHOR_PROFILE_PATH = `/authors/${AUTHOR_SLUG}` as const;
  * Keep this short — it appears under the name on bylines, not in long-form.
  */
 export const AUTHOR_BYLINE_TAGLINE =
-  "Georgetown homeowner. Founding editor of Georgetown Home Services. Writes about residential plumbing, HVAC, and roofing decisions in Williamson County.";
+  "Researched from public records and Central Texas housing patterns. Drafts are edited for accuracy—not trades advice.";
 
 /**
- * Topics the author writes about. Surfaced as `knowsAbout` on the Person
- * schema; helps Google associate the editor with this subject area.
+ * Topics the editorial team covers. Surfaced as `knowsAbout` on Organization
+ * schema where applicable.
  */
 export const AUTHOR_KNOWS_ABOUT: readonly string[] = [
   "Georgetown, Texas home services",
   "Williamson County home maintenance",
-  "Sun City Texas (Georgetown) homeownership",
   "Residential plumbing decisions",
   "Residential HVAC decisions",
-  "Residential roofing and hail damage claims",
-  "Slab leak detection and repair on Texas clay soils",
+  "Residential roofing and hail damage documentation",
   "Home repair vs. replacement decision frameworks",
   "Local home-services pricing in Central Texas",
 ];
 
-/** Long-form author description used by Person schema and the profile page intro. */
+/** Long-form description used by Organization schema and the profile page intro. */
 export const AUTHOR_LONG_DESCRIPTION =
-  "Founding editor of Georgetown Home Services. Cole has owned a 1990s-era home in Williamson County since 2018, and the site grew out of a homeowner journal kept after a 2020 slab leak repipe and a contested 2022 hail-damage roof claim turned into multi-thousand-dollar decisions with little local guidance available online. He writes about residential plumbing, HVAC, roofing, foundation, and pricing decisions specifically through the lens of Central Texas conditions: Edwards Aquifer hard water, expansive clay soil, Williamson County hail belts, and the housing-stock realities of Sun City, Wolf Ranch, Berry Creek, and central Georgetown. He is not a licensed contractor and does not perform paid work; the site's role is on the homeowner side of the conversation, not the trades side.";
+  "The Georgetown Home Services Editorial Team produces homeowner guides and provider directories for Georgetown, Texas and Williamson County. Content is researched from public business listings, Texas licensing registries (TSBPE, TDLR, TDA SPCS where relevant), insurer and municipal references, and established Central Texas housing patterns. First drafts may use editorial tooling; published pages are human-reviewed for claim discipline and local specificity. Georgetown Home Services is not a licensed contractor, does not dispatch tradespeople, and is owned and operated in Georgetown, Texas.";
 
 /**
- * Person schema fragment usable as the `author` field on Article schema.
- * Returned as a plain object so callers can spread additional fields.
+ * Organization schema fragment usable as the `author` field on Article schema.
  */
 export function authorPersonSchema(siteUrl: string = SITE_URL) {
+  return articleAuthorSchema(siteUrl);
+}
+
+export function articleAuthorSchema(siteUrl: string = SITE_URL) {
   const sameAs = authorSameAsFromEnv();
   return {
-    "@type": "Person" as const,
+    "@type": "Organization" as const,
     name: AUTHOR_NAME,
     url: `${siteUrl}${AUTHOR_PROFILE_PATH}`,
-    jobTitle: AUTHOR_JOB_TITLE,
     ...(sameAs.length ? { sameAs } : {}),
-    worksFor: {
+    parentOrganization: {
       "@type": "Organization" as const,
-      name: "Georgetown Home Services",
+      name: PUBLISHER_NAME,
       url: siteUrl,
     },
   };
 }
 
 /**
- * Full Person schema for use on the author profile page itself.
- * Differs from the fragment above by including `description` and
- * `knowsAbout`, which Google's quality systems use to disambiguate authors.
+ * Full Organization schema for the editorial team profile page.
  */
 export function fullAuthorPersonSchema(siteUrl: string = SITE_URL) {
   const sameAs = authorSameAsFromEnv();
   return {
     "@context": "https://schema.org",
-    "@type": "Person",
+    "@type": "Organization",
     name: AUTHOR_NAME,
-    givenName: AUTHOR_FIRST_NAME,
-    familyName: AUTHOR_LAST_NAME,
     url: `${siteUrl}${AUTHOR_PROFILE_PATH}`,
-    jobTitle: AUTHOR_JOB_TITLE,
     description: AUTHOR_LONG_DESCRIPTION,
     ...(sameAs.length ? { sameAs } : {}),
     knowsAbout: [...AUTHOR_KNOWS_ABOUT],
-    homeLocation: {
+    areaServed: {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
@@ -113,9 +103,9 @@ export function fullAuthorPersonSchema(siteUrl: string = SITE_URL) {
         addressCountry: "US",
       },
     },
-    worksFor: {
+    parentOrganization: {
       "@type": "Organization",
-      name: "Georgetown Home Services",
+      name: PUBLISHER_NAME,
       url: siteUrl,
     },
   };
@@ -123,9 +113,7 @@ export function fullAuthorPersonSchema(siteUrl: string = SITE_URL) {
 
 /**
  * Article schema for editorial hub pages (services, locations) that carry
- * substantive guide-style content. Pairs with the existing WebPage schema —
- * WebPage establishes page identity; Article asserts editorial provenance
- * with a named author, which is the E-E-A-T signal Google rewards.
+ * substantive guide-style content.
  */
 export function hubArticleJsonLd(opts: {
   pathname: string;
@@ -152,10 +140,10 @@ export function hubArticleJsonLd(opts: {
       width: 1200,
       height: 630,
     },
-    author: authorPersonSchema(siteUrl),
+    author: articleAuthorSchema(siteUrl),
     publisher: {
       "@type": "Organization",
-      name: opts.publisherName ?? "Georgetown Home Services",
+      name: opts.publisherName ?? PUBLISHER_NAME,
       url: siteUrl,
     },
     datePublished: opts.datePublished,
@@ -163,23 +151,16 @@ export function hubArticleJsonLd(opts: {
   };
 }
 
-/**
- * ProfilePage schema (separate from Person) — Google now recognizes
- * ProfilePage as a distinct page type for author/editor profiles, which
- * helps disambiguate "this URL is about a person" from generic about pages.
- */
+/** ProfilePage schema for the editorial team about URL. */
 export function authorProfilePageSchema(siteUrl: string = SITE_URL) {
   const profileUrl = `${siteUrl}${AUTHOR_PROFILE_PATH}`;
   return {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
     mainEntity: {
-      "@type": "Person",
+      "@type": "Organization",
       name: AUTHOR_NAME,
-      givenName: AUTHOR_FIRST_NAME,
-      familyName: AUTHOR_LAST_NAME,
       url: profileUrl,
-      jobTitle: AUTHOR_JOB_TITLE,
       description: AUTHOR_LONG_DESCRIPTION,
     },
     url: profileUrl,
