@@ -3,14 +3,18 @@ import { formatLicenseLookupDate, PROVIDER_LICENSE_LOOKUP_DATE } from "./provide
 
 export const LISTING_METHODOLOGY_PATH = "/methodology" as const;
 
+/** Minimum public Google signals for default Best Of inclusion (see inclusion criteria). */
+export const LISTING_MIN_GOOGLE_RATING = 4.5;
+export const LISTING_MIN_GOOGLE_REVIEWS = 25;
+
 /**
  * Five inclusion criteria shown on every `/best` directory block and the methodology page.
  * Import this list everywhere — do not duplicate the strings.
  */
 export const LISTING_INCLUSION_CRITERIA = [
   "Active service in Georgetown, TX",
-  "Minimum 4.5-star Google rating",
-  "Minimum 50 reviews at time of listing",
+  `Minimum ${LISTING_MIN_GOOGLE_RATING}-star Google rating`,
+  `Minimum ${LISTING_MIN_GOOGLE_REVIEWS} reviews at time of listing`,
   "Working phone and website",
   "No paid placement",
 ] as const;

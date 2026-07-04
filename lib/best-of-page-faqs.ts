@@ -1,11 +1,11 @@
 import { CORE_BEST_SLUGS } from "./pageContentRegistry";
 import type { Faq } from "./site-content";
+import { LISTING_MIN_GOOGLE_RATING, LISTING_MIN_GOOGLE_REVIEWS } from "./listing-methodology";
 
 type CoreBestSlug = (typeof CORE_BEST_SLUGS)[number];
 
 /** Shared Q2 — matches hiring guidance used across service guides; TDLR + TSBPE where applicable. */
-const FIND_RELIABLE_A =
-  "Check Google reviews for providers with 4.5+ stars and 50+ reviews. Verify state credentials where they apply (TDLR for electrical and HVAC contractors, TSBPE for licensed plumbers), confirm insurance, and ask how permits will be handled for your job. Get at least two written quotes before committing.";
+const FIND_RELIABLE_A = `Check Google reviews for providers with ${LISTING_MIN_GOOGLE_RATING}+ stars and ${LISTING_MIN_GOOGLE_REVIEWS}+ reviews. Verify state credentials where they apply (TDLR for electrical and HVAC contractors, TSBPE for licensed plumbers), confirm insurance, and ask how permits will be handled for your job. Get at least two written quotes before committing.`;
 
 /**
  * Exactly four FAQs per `/best/[slug]` core guide. Single source: visible accordion and FAQPage JSON-LD must match.

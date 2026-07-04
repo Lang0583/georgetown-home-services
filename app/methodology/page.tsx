@@ -8,6 +8,7 @@ import {
   LISTING_AFFILIATE_DOES_NOT_AFFECT_RANKINGS,
   LISTING_DATA_SOURCES,
   LISTING_INCLUSION_CRITERIA,
+  LISTING_MIN_GOOGLE_REVIEWS,
   LISTING_PLACEMENT_CANNOT_BE_BOUGHT,
   LISTINGS_REVIEW_CADENCE_SUMMARY,
   listingLicenseVerificationNote,
@@ -76,7 +77,8 @@ export default function MethodologyPage() {
           ))}
         </ul>
         <p className="mt-4 text-sm leading-relaxed text-gray-700">
-          Providers with thinner public signals (for example, fewer than 50 reviews at listing time) may appear behind a
+          Providers with thinner public signals (for example, fewer than {LISTING_MIN_GOOGLE_REVIEWS} reviews at listing
+          time) may appear behind a
           “lower-signal” toggle but are not promoted into the default established picks row until documentation
           improves.
         </p>
