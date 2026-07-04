@@ -11,10 +11,12 @@ import LastUpdated from "@/components/LastUpdated";
 import NeighborhoodHomeServicesAngiRow from "@/components/NeighborhoodHomeServicesAngiRow";
 import PageShell from "@/components/templates/PageShell";
 import PricingEstimatorInteractive from "@/components/PricingEstimatorInteractive";
+import HubRelatedLinks from "@/components/HubRelatedLinks";
 import {
   getNeighborhoodHomeServicesHub,
   neighborhoodHomeServicesHubStaticParams,
 } from "@/data/neighborhood-home-services-hubs";
+import { neighborhoodHubCrossLinks } from "@/lib/hub-cross-links";
 import { buildNeighborhoodHomeServicesHubFaqs } from "@/lib/georgetown-page-faqs";
 import { adsenseNeighborhoodPageInlineSlot } from "@/lib/adsense-config";
 import { absolutePageUrl, pageSeoMetadata } from "@/lib/page-seo";
@@ -192,6 +194,12 @@ export default async function NeighborhoodHomeServicesHubPage({
           </div>
           <NeighborhoodHomeServicesAngiRow neighborhoodName={hub.neighborhoodName} />
         </section>
+
+        <HubRelatedLinks
+          title="All Georgetown service guides"
+          description="Open any core trade guide or the pricing hub for planning ranges across Williamson County."
+          links={neighborhoodHubCrossLinks()}
+        />
 
         <section className="mt-12 max-w-3xl">
           <p className="text-sm leading-relaxed text-gray-700">

@@ -1,17 +1,9 @@
-"use client";
-
-import { useMemo, useState } from "react";
 import type { Provider } from "@/data/providers";
 import { partitionDirectoryProviders } from "@/lib/provider-directory";
 import ProviderCard from "./ProviderCard";
 
 export default function BestProviderDirectory({ providers }: { providers: Provider[] }) {
-  const [showLowerSignal, setShowLowerSignal] = useState(false);
-
-  const { established, lowerSignal } = useMemo(
-    () => partitionDirectoryProviders(providers),
-    [providers],
-  );
+  const { established, lowerSignal } = partitionDirectoryProviders(providers);
 
   const topPickName = established[0]?.name ?? lowerSignal[0]?.name ?? null;
 
@@ -51,36 +43,28 @@ export default function BestProviderDirectory({ providers }: { providers: Provid
       </section>
 
       {lowerSignal.length ? (
-        <section>
-          <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-gray-700">
-            <input
-              type="checkbox"
-              checked={showLowerSignal}
-              onChange={(e) => setShowLowerSignal(e.target.checked)}
-              className="rounded border-gray-300"
-            />
+        <details className="group">
+          <summary className="cursor-pointer text-sm font-semibold text-gray-700 marker:text-gray-500">
             Show newer / lower-signal options ({lowerSignal.length})
-          </label>
-          {showLowerSignal ? (
-            <>
-              <p className="mt-2 max-w-3xl text-sm leading-relaxed text-gray-700">
-                These providers have weaker public signals (for example, fewer reviews). Verify details carefully and
-                prioritize written scopes.
-              </p>
-              <ul className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-2">
-                {lowerSignal.map((provider) => (
-                  <li key={`${provider.category}-${provider.name}-low`}>
-                    <ProviderCard
-                      provider={provider}
-                      showTopPick={!topPickName && provider.name === lowerSignal[0]?.name}
-                      compact
-                    />
-                  </li>
-                ))}
-              </ul>
-            </>
-          ) : null}
-        </section>
+          </summary>
+          <section className="mt-3">
+            <p className="max-w-3xl text-sm leading-relaxed text-gray-700">
+              These providers have weaker public signals (for example, fewer reviews). Verify details carefully and
+              prioritize written scopes.
+            </p>
+            <ul className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-2">
+              {lowerSignal.map((provider) => (
+                <li key={`${provider.category}-${provider.name}-low`}>
+                  <ProviderCard
+                    provider={provider}
+                    showTopPick={!topPickName && provider.name === lowerSignal[0]?.name}
+                    compact
+                  />
+                </li>
+              ))}
+            </ul>
+          </section>
+        </details>
       ) : null}
     </div>
   );

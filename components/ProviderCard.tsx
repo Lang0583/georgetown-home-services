@@ -2,7 +2,7 @@ import Link from "next/link";
 import { RatingStarsRow, formatRatingOneDecimal } from "./BusinessRatingStars";
 import { angiGeorgetownListUrl } from "../lib/affiliates";
 import type { Provider } from "../data/providers";
-import { PROVIDER_CATEGORY_ANGI_SLUG, getProviderSlug } from "../data/providers";
+import { PROVIDER_CATEGORY_ANGI_SLUG, getProviderBySlug, getProviderSlug } from "../data/providers";
 import { providerLicenseVerifiedLine } from "@/lib/provider-license";
 import { getProviderWebsiteUrl } from "../lib/provider-website";
 import { externalBusinessLinkProps } from "../lib/businesses";
@@ -23,7 +23,9 @@ export default function ProviderCard({
 }) {
   const angiUrl = angiGeorgetownListUrl(PROVIDER_CATEGORY_ANGI_SLUG[provider.category]);
   const telHref = `tel:${provider.phone.replace(/\D/g, "")}`;
-  const profileHref = `/providers/${getProviderSlug(provider)}`;
+  const providerSlug = getProviderSlug(provider);
+  const hasProfile = Boolean(getProviderBySlug(providerSlug));
+  const profileHref = hasProfile ? `/providers/${providerSlug}` : null;
   const websiteUrl = getProviderWebsiteUrl(provider.name);
   const licenseLine = providerLicenseVerifiedLine(provider);
   const padding = compact ? "p-4" : "p-6";
@@ -39,9 +41,13 @@ export default function ProviderCard({
       <div className="flex flex-col gap-2">
         <div className="flex flex-wrap items-center gap-2">
           <h3 className="text-base font-semibold text-gray-900 sm:text-lg">
-            <Link href={profileHref} className="hover:text-primary-hover hover:underline">
-              {provider.name}
-            </Link>
+            {profileHref ? (
+              <Link href={profileHref} className="hover:text-primary-hover hover:underline">
+                {provider.name}
+              </Link>
+            ) : (
+              provider.name
+            )}
           </h3>
           {showTopPick ? (
             <span className="rounded-full bg-[#01696F] px-2.5 py-0.5 text-xs font-semibold text-white">
@@ -103,9 +109,11 @@ export default function ProviderCard({
       </div>
 
       <div className="mt-4 flex flex-wrap gap-2">
-        <Link href={profileHref} className={secondaryBtnClass}>
-          View profile
-        </Link>
+        {profileHref ? (
+          <Link href={profileHref} className={secondaryBtnClass}>
+            View profile
+          </Link>
+        ) : null}
         {websiteUrl ? (
           <a href={websiteUrl} {...externalBusinessLinkProps} className={secondaryBtnClass}>
             Visit website

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
+import TradeHubSubServiceLinks from "../../../components/TradeHubSubServiceLinks";
 import JsonLd from "../../../components/JsonLd";
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
@@ -129,6 +130,8 @@ export default function LandscapingHubPage() {
                 </div>
               </section>
             ) : null}
+
+            <TradeHubSubServiceLinks parentHubPath="/services/landscaping" />
           </div>
         </section>
       </Container>

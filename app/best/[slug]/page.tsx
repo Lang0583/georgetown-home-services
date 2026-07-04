@@ -51,6 +51,9 @@ import {
   FLAGSHIP_VIDEO_BEST_ROOFERS,
   flagshipVideoObjectJsonLd,
 } from "../../../lib/flagship-videos";
+import HubRelatedLinks from "../../../components/HubRelatedLinks";
+import { bestPageRelatedHubLinks } from "../../../lib/hub-cross-links";
+import { canonicalServicePathForLinks } from "../../../lib/public-site-scope";
 import { breadcrumbSchemaForBestOf } from "../../../lib/schema";
 
 function faqJsonLd(faqs: { q: string; a: string }[]) {
@@ -246,6 +249,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
     (b) => showExtendedHomeServices() || !isExtendedBestSlug(b.slug),
   );
   const ruleLinks = bestPageInternalLinks(best.slug);
+  const relatedHubLinks = bestPageRelatedHubLinks(best.slug);
 
   /** FAQPage JSON-LD + visible FAQ (must match). Per Next.js, `next/script` `beforeInteractive` is root-layout-only; `<JsonLd />` emits the same `application/ld+json` as elsewhere. */
   const bestOfPageFaqs = getBestOfPageFaqs(best.slug);
@@ -1267,6 +1271,13 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                 </section>
               ) : null}
 
+              {relatedHubLinks ? (
+                <HubRelatedLinks
+                  links={relatedHubLinks}
+                  description="Return to the service guide or open the pricing hub for planning ranges."
+                />
+              ) : null}
+
               <section className="mt-12">
                 <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Related guides and neighborhoods</h2>
                 <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
@@ -1275,7 +1286,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {relatedServiceSlug ? (
                     <LinkCard
-                      href={`/services/${relatedServiceSlug}`}
+                      href={canonicalServicePathForLinks(`/services/${relatedServiceSlug}`)}
                       title={relatedService?.title ?? "Service guide"}
                       description={relatedService?.description ?? "Service guide and homeowner checklist."}
                       badge="Service guide"
@@ -1342,7 +1353,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                     Read our methodology
                   </Link>
                   {relatedServiceSlug ? (
-                    <Link href={`/services/${relatedServiceSlug}`} className="block font-semibold text-gray-900 hover:underline">
+                    <Link href={canonicalServicePathForLinks(`/services/${relatedServiceSlug}`)} className="block font-semibold text-gray-900 hover:underline">
                       {relatedService ? `Read: ${relatedService.title}` : "Read our service guide"}
                     </Link>
                   ) : null}

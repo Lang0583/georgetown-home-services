@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
+import TradeHubSubServiceLinks from "../../../components/TradeHubSubServiceLinks";
 import ServiceHubPricingSection from "../../../components/ServiceHubPricingSection";
 import FlagshipYouTubeEmbed from "../../../components/FlagshipYouTubeEmbed";
 import JsonLd from "../../../components/JsonLd";
@@ -168,6 +169,8 @@ export default function RoofingHubPage() {
                 </div>
               </section>
             ) : null}
+
+            <TradeHubSubServiceLinks parentHubPath="/services/roofing" />
           </div>
         </section>
       </Container>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
+import TradeHubSubServiceLinks from "../../../components/TradeHubSubServiceLinks";
 import ServiceHubPricingSection from "../../../components/ServiceHubPricingSection";
 import JsonLd from "../../../components/JsonLd";
 import { pageSeoMetadata } from "../../../lib/page-seo";
@@ -98,6 +99,8 @@ export default function HvacHubPage() {
             </div>
 
             <ServiceHubPricingSection categoryKey="hvac" />
+
+            <TradeHubSubServiceLinks parentHubPath="/services/hvac" />
 
             {core ? (
               <section>

@@ -51,7 +51,7 @@ export default function HomeHailAlertBanner() {
         >
           <span aria-hidden>⚠️</span> Hail Storm Alert — Williamson County May 2026: Protect your home. Get a{" "}
           <Link
-            href="/roofing"
+            href="/services/roofing"
             className="font-bold underline decoration-amber-900/50 underline-offset-2 hover:decoration-amber-950"
             style={{ color: bannerText }}
           >
@@ -59,7 +59,7 @@ export default function HomeHailAlertBanner() {
           </Link>{" "}
           from a{" "}
           <Link
-            href="/roofing"
+            href="/services/roofing"
             className="font-bold underline decoration-amber-900/50 underline-offset-2 hover:decoration-amber-950"
             style={{ color: bannerText }}
           >

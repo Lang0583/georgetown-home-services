@@ -52,7 +52,9 @@ import { servicePageInternalLinks } from "../../../lib/internal-links";
 import { resolveServiceGuideFaqs } from "../../../lib/georgetown-page-faqs";
 import { buildServicePageSeo } from "../../../lib/service-page-seo";
 import CoreServiceGuideDecisionFramework from "../../../components/CoreServiceGuideDecisionFramework";
+import HubRelatedLinks from "../../../components/HubRelatedLinks";
 import CoreServiceGuideEnrichment from "../../../components/CoreServiceGuideEnrichment";
+import { servicePageRelatedHubLinks } from "../../../lib/hub-cross-links";
 import { breadcrumbSchemaForService, serviceDirectoryLocalBusinessSchema } from "../../../lib/schema";
 
 /**
@@ -142,6 +144,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     serviceTitle: service.title,
   });
   const coreEnrichment = getCoreServiceEnrichment(service.slug);
+  const relatedHubLinks = servicePageRelatedHubLinks(service.slug);
   const faqHeading = coreEnrichment
     ? `${coreEnrichment.tradeLabel} FAQ for Georgetown TX Homeowners`
     : isPlumberService
@@ -748,6 +751,13 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
               {isCoreServiceEnrichmentSlug(service.slug) ? (
                 <CoreServiceGuideEnrichment serviceSlug={service.slug} />
+              ) : null}
+
+              {relatedHubLinks ? (
+                <HubRelatedLinks
+                  links={relatedHubLinks}
+                  description="Compare top providers, use planning ranges, and open neighborhood home-services hubs."
+                />
               ) : null}
 
               {providersFromJson.length ? (

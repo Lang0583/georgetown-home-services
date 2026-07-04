@@ -164,7 +164,7 @@ export default async function NeighborhoodHailDamagePage({
         </section>
 
         <div className="mt-10 flex flex-col gap-4 rounded-xl border border-gray-200 bg-white p-6 shadow-md sm:flex-row sm:flex-wrap sm:items-center">
-          <ButtonLink href="/roofing">Georgetown roofing hub →</ButtonLink>
+          <ButtonLink href="/services/roofing">Georgetown roofing hub →</ButtonLink>
           <ButtonLink href="/best/best-roofers-georgetown-tx" variant="secondary">
             Best roofers directory →
           </ButtonLink>

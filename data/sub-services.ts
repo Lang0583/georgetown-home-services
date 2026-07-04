@@ -3860,6 +3860,11 @@ export function getSubServicePaths(): string[] {
   return subServicePages.map((p) => `/${p.serviceSlug}/${p.slug}`);
 }
 
+/** Sub-service landings grouped by trade hub path (e.g. `/services/plumbing`). */
+export function getSubServicesForParentHub(parentHubPath: string): SubServicePage[] {
+  return subServicePages.filter((p) => p.parentHubPath === parentHubPath);
+}
+
 export function isExtendedSubServiceCategory(serviceSlug: string): boolean {
   const page = subServicePages.find((p) => p.serviceSlug === serviceSlug);
   return page?.extended ?? false;

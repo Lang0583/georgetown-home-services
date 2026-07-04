@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { NEIGHBORHOOD_BROWSE_ENTRIES } from "../lib/neighborhood-browse";
+import { AUTHOR_PROFILE_PATH } from "../lib/site-author";
 import { PROVIDER_INFO_DISCLAIMER } from "../lib/provider-disclaimer";
 import { isNoindexSlug, showExtendedHomeServices } from "../lib/public-site-scope";
 import { getBrandName, getContact } from "../lib/site-content";
@@ -58,8 +59,53 @@ export default function SiteFooter() {
                 </Link>
               </li>
               <li>
+                <Link className="hover:underline" href="/compare">
+                  Compare providers
+                </Link>
+              </li>
+              <li>
                 <Link className="hover:underline" href="/pricing">
                   Pricing guide
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:underline" href="/services/plumbing">
+                  Plumbing hub
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:underline" href="/services/hvac">
+                  HVAC hub
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:underline" href="/services/roofing">
+                  Roofing hub
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:underline" href="/services/electrical">
+                  Electrical hub
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:underline" href="/services/landscaping">
+                  Landscaping hub
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:underline" href="/services/pest-control">
+                  Pest control hub
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:underline" href="/services/foundation">
+                  Foundation hub
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:underline" href="/services/house-cleaning">
+                  Cleaning hub
                 </Link>
               </li>
               <li>
@@ -229,6 +275,11 @@ export default function SiteFooter() {
                 </Link>
               </li>
               <li>
+                <Link className="hover:underline" href={AUTHOR_PROFILE_PATH}>
+                  About the editor
+                </Link>
+              </li>
+              <li>
                 <Link className="hover:underline" href="/contact">
                   Contact
                 </Link>
@@ -271,6 +322,15 @@ export default function SiteFooter() {
             </Link>
             <Link className={footerBarLinkClass} href="/costs">
               Cost guides
+            </Link>
+            <Link className={footerBarLinkClass} href="/compare">
+              Compare
+            </Link>
+            <Link className={footerBarLinkClass} href="/pricing">
+              Pricing
+            </Link>
+            <Link className={footerBarLinkClass} href={AUTHOR_PROFILE_PATH}>
+              Editor
             </Link>
             <Link className={footerBarLinkClass} href="/contact">
               Contact
