@@ -4,7 +4,7 @@
  * - `<distDir>/routes-manifest-deterministic.json` — platform finalization looks for this
  *   file even though Next.js 16.x only emits `routes-manifest.json` (Git Integration bug).
  *
- * Recreate/copy both on Vercel for the repo-root `.next` and the mirrored shim path.
+ * Recreate/copy both on Vercel for the repo-root `.next`.
  */
 const fs = require("fs");
 const path = require("path");
@@ -28,9 +28,8 @@ function ensureVercelNextArtifacts(distDir) {
 }
 
 const rootNext = path.join(process.cwd(), ".next");
-const shimNext = path.join(process.cwd(), "georgetown-home-services", ".next");
 
-const ensured = [ensureVercelNextArtifacts(rootNext), ensureVercelNextArtifacts(shimNext)].filter(Boolean).length;
+const ensured = [ensureVercelNextArtifacts(rootNext)].filter(Boolean).length;
 if (ensured) {
   console.log(`[vercel] ensured .next lock + routes-manifest-deterministic in ${ensured} location(s)`);
 }
