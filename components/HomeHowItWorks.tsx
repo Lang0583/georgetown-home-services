@@ -42,12 +42,12 @@ const STEPS = [
   {
     Icon: IconStar,
     heading: "Step 2 — Compare Local Options",
-    copy: "Read verified reviews, check pricing ranges, and see which companies serve your part of Georgetown.",
+    copy: "Read public Google reviews, check pricing ranges, and see which companies serve your part of Georgetown.",
   },
   {
     Icon: IconPhone,
     heading: "Step 3 — Reach Out Directly",
-    copy: "Call or visit providers directly — no middleman, no lead forms, no spam. Just the best local options, already vetted for you.",
+    copy: "Call or visit providers directly — no middleman, no lead forms, no spam. Shortlists compiled from public business data.",
   },
 ] as const;
 

@@ -228,7 +228,7 @@ export function serviceDirectoryLocalBusinessSchema(opts: {
     "@type": "LocalBusiness",
     name: `Georgetown Home Services - ${opts.serviceType}`,
     url: pageUrl,
-    description: `${opts.serviceTitle} — Georgetown TX directory, cost guides, and vetted provider comparisons.`,
+    description: `${opts.serviceTitle} — Georgetown TX directory, cost guides, and provider comparisons compiled from public business data.`,
     areaServed: ["Georgetown TX", ...GEORGETOWN_ZIPS],
     hasOfferCatalog: {
       "@type": "OfferCatalog",

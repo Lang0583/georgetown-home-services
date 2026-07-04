@@ -25,7 +25,7 @@ function homeLocalBusinessJsonLd() {
     name: "Georgetown Home Services",
     url: SITE_URL,
     description:
-      "Compare top-rated plumbers, HVAC companies, roofers, electricians, and more in Georgetown TX. Verified local providers, real Google ratings, and honest cost guides.",
+      "Compare top-rated plumbers, HVAC companies, roofers, electricians, and more in Georgetown TX. Listings compiled from public business data, real Google ratings, and honest cost guides.",
     areaServed: [
       { "@type": "City", name: "Georgetown", containedInPlace: { "@type": "State", name: "Texas" } },
       { "@type": "City", name: "Round Rock", containedInPlace: { "@type": "State", name: "Texas" } },
@@ -49,7 +49,7 @@ function homeWebPageJsonLd() {
     name: "Georgetown TX Home Services Directory (2026) | Compare Local Providers",
     url: SITE_URL,
     description:
-      "Compare top-rated plumbers, HVAC companies, roofers, electricians, and more in Georgetown TX. Verified local providers, real Google ratings, and honest cost guides. No lead forms.",
+      "Compare top-rated plumbers, HVAC companies, roofers, electricians, and more in Georgetown TX. Listings compiled from public business data, real Google ratings, and honest cost guides. No lead forms.",
     dateModified: getStaticPageLastUpdated("/"),
   };
 }
@@ -57,7 +57,7 @@ function homeWebPageJsonLd() {
 export const metadata: Metadata = pageSeoMetadata({
   absoluteTitle: "Georgetown TX Home Services Directory (2026) | Compare Local Providers",
   description:
-    "Compare top-rated plumbers, HVAC companies, roofers, electricians, and more in Georgetown TX. Verified local providers, real Google ratings, and honest cost guides. No lead forms.",
+    "Compare top-rated plumbers, HVAC companies, roofers, electricians, and more in Georgetown TX. Listings compiled from public business data, real Google ratings, and honest cost guides. No lead forms.",
   pathname: "/",
   ogType: "website",
 });
@@ -106,7 +106,7 @@ export default function Home() {
             </h1>
 
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gray-700">
-              Verified local providers, real ratings, and honest cost guides — no lead forms, no spam.
+              Listings compiled from public business data, real ratings, and honest cost guides — no lead forms, no spam.
             </p>
 
             <div className="mt-6">

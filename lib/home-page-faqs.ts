@@ -8,7 +8,7 @@ export const HOME_PAGE_FAQS: Faq[] = [
   },
   {
     q: "How do I find a reliable home service company in Georgetown, TX?",
-    a: "Start by checking reviews on Google and comparing at least 3 companies. Look for businesses with consistent ratings above 4.5 stars, verified licenses, and written estimates. Georgetown Home Services lists pre-screened providers across all major home service categories.",
+    a: "Start by checking reviews on Google and comparing at least 3 companies. Look for businesses with consistent ratings above 4.5 stars, verified licenses, and written estimates. Georgetown Home Services lists providers compiled from public business data across all major home service categories.",
   },
   {
     q: "How much does it cost to hire a plumber in Georgetown, TX?",

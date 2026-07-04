@@ -46,8 +46,8 @@ function IconClock({ className }: { className?: string }) {
 const SIGNALS = [
   {
     Icon: IconShieldCheck,
-    title: "Verified local providers",
-    subtext: "Georgetown-area businesses only",
+    title: "Georgetown-area listings",
+    subtext: "Compiled from public business data",
   },
   {
     Icon: IconStar,

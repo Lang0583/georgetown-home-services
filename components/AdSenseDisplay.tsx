@@ -1,6 +1,7 @@
 "use client";
 
 import AdUnit from "./AdUnit";
+import { ADSENSE_ENABLED } from "../lib/adConfig";
 
 type Props = {
   /** Ad unit slot from AdSense; when empty, nothing renders. */
@@ -12,7 +13,7 @@ type Props = {
  * Responsive display unit with labeled wrapper. One mount = one `(adsbygoogle).push({})`.
  */
 export default function AdSenseDisplay({ slotId, className = "" }: Props) {
-  if (!slotId) return null;
+  if (!ADSENSE_ENABLED || !slotId) return null;
 
   return (
     <div

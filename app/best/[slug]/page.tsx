@@ -44,13 +44,11 @@ import {
   showExtendedHomeServices,
 } from "../../../lib/public-site-scope";
 import BestProvidersMethodologyCallout from "../../../components/BestProvidersMethodologyCallout";
-import AdUnit from "../../../components/AdUnit";
 import FlagshipYouTubeEmbed from "../../../components/FlagshipYouTubeEmbed";
 import BestOfRooferEditorialDepth from "../../../components/BestOfRooferEditorialDepth";
 import BestOfPlumberEditorialDepth from "../../../components/BestOfPlumberEditorialDepth";
 import BestOfHvacEditorialDepth from "../../../components/BestOfHvacEditorialDepth";
 import BestOfExtendedTradeEditorialDepth from "../../../components/BestOfExtendedTradeEditorialDepth";
-import { bestOfAdSlot } from "../../../lib/adConfig";
 import {
   FLAGSHIP_VIDEO_BEST_ROOFERS,
   flagshipVideoObjectJsonLd,
@@ -166,18 +164,6 @@ function FeaturedPartnerCard({
   );
 }
 
-function FeaturedListingReservedSlot() {
-  return (
-    <section className="mt-6 rounded-xl border border-amber-200 bg-amber-50/40 p-5 shadow-sm">
-      <div className="text-xs font-semibold uppercase tracking-wide text-amber-900">Featured Listing (Reserved)</div>
-      <div className="mt-2 text-sm leading-relaxed text-gray-700">
-        This top slot is reserved for a clearly labeled featured listing in the future. Today, the directory below is ordered by public signals
-        like rating, review volume, and listing documentation.
-      </div>
-    </section>
-  );
-}
-
 /**
  * Allow runtime resolution for `[slug]` so `getBestBySlug` + `notFound()` control 404s.
  * (With `false`, Next can 404 before the page runs if static params are out of sync.)
@@ -195,14 +181,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   const overrides: Record<string, { title?: string; absoluteTitle?: string; description: string }> = {
     "best-plumbers-georgetown-tx": {
-      absoluteTitle: "Best Plumbers Georgetown TX (2026) — Verified Local Picks",
+      absoluteTitle: "Best Plumbers Georgetown TX (2026) — Local Picks",
       description:
         "The top-rated plumbers in Georgetown TX ranked by reviews, local presence, and service focus. Compare options for leaks, drains, slab repair, and emergency calls.",
     },
     "top-hvac-companies-georgetown-tx": {
       absoluteTitle: "Best HVAC Companies Georgetown TX (2026) — AC & Heating Repair",
       description:
-        "Georgetown TX's top-rated HVAC companies compared by response speed, service scope, and local reputation. Picks vetted for Central Texas summer heat.",
+        "Georgetown TX's top-rated HVAC companies compared by response speed, service scope, and local reputation. Picks compiled from public business data for Central Texas summer heat.",
     },
     "best-roofers-georgetown-tx": {
       absoluteTitle: "Best Roofers Georgetown TX (2026) — Storm, Repair & Replacement",
@@ -210,7 +196,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         "Top Georgetown TX roofing contractors ranked by reviews, storm damage experience, and transparency. Includes what to ask before signing any roofing contract.",
     },
     "best-electricians-georgetown-tx": {
-      absoluteTitle: "Best Electricians Georgetown TX (2026) — Licensed & Verified",
+      absoluteTitle: "Best Electricians Georgetown TX (2026) — Licensed Local Picks",
       description:
         "Top-rated electricians in Georgetown TX for panel upgrades, circuit work, and EV charger installation. Compare by licensing, reviews, and residential specialty.",
     },
@@ -222,7 +208,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     "best-pest-control-georgetown-tx": {
       absoluteTitle: "Best Pest Control Georgetown TX (2026) — Ranked & Reviewed",
       description:
-        "Georgetown TX's top pest control providers compared for perimeter plans, termite monitoring, and rodent exclusion. Local picks with verified ratings.",
+        "Georgetown TX's top pest control providers compared for perimeter plans, termite monitoring, and rodent exclusion. Local picks with public Google ratings.",
     },
     "best-foundation-repair-georgetown-tx": {
       absoluteTitle: "Best Foundation Repair Georgetown TX (2026) — Clay Soil Experts",
@@ -303,15 +289,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
   /** FAQPage JSON-LD + visible FAQ (must match). Per Next.js, `next/script` `beforeInteractive` is root-layout-only; `<JsonLd />` emits the same `application/ld+json` as elsewhere. */
   const bestOfPageFaqs = getBestOfPageFaqs(best.slug);
 
-  const editorialMethodology = {
-    title: "Methodology and editorial notes",
-    points: [
-      "We use publicly available business information (ratings, review volume, and listing details) to help you compare options.",
-      "We do not schedule work or route service requests. Contact providers directly for availability and written estimates.",
-      "Lower-signal providers (for example, few reviews or map-only documentation) are de-emphasized by default.",
-    ],
-  };
-
   const coreAlsoCompareSlugs = new Set([
     "best-plumbers-georgetown-tx",
     "top-hvac-companies-georgetown-tx",
@@ -381,14 +358,8 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                     options without pressure, and shows up when the problem cannot wait until next week.
                   </p>
                   <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-700">
-                    We continuously update our rankings based on customer reviews, service availability, and verified
-                    local presence in Georgetown and surrounding areas.
-                  </p>
-                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-700">
-                    We update this list regularly based on verified reviews and service availability in Georgetown.
-                  </p>
-                  <p className="mt-1 max-w-2xl text-sm leading-relaxed text-gray-700">
-                    This matters more than most people realize.
+                    We continuously update our rankings based on customer reviews, service availability, and publicly
+                    listed local presence in Georgetown and surrounding areas.
                   </p>
                 </>
               ) : isHvacGeorgetown ? (
@@ -398,9 +369,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                     company nearly as important as the equipment itself. This guide highlights local providers that keep
                     Georgetown homes livable when systems struggle on 100° days, from emergency AC repairs to full
                     replacements and maintenance plans sized for Central Texas weather.
-                  </p>
-                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
-                    We update this page regularly based on verified reviews and service availability in Georgetown.
                   </p>
                 </>
               ) : isRoofersGeorgetown ? (
@@ -419,9 +387,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                     </Link>
                     . This page focuses on helping you compare real roofing companies serving Georgetown—especially for
                     leak repairs, wind/hail damage, and replacement planning.
-                  </p>
-                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
-                    We update this page regularly based on verified reviews and service availability in Georgetown.
                   </p>
                 </>
               ) : (
@@ -490,45 +455,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                           </li>
                         </ul>
                       </div>
-                    </section>
-
-                    <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
-                        How We Selected These Companies
-                      </h2>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
-                        <li>
-                          <span className="font-semibold text-gray-900">Local presence:</span> the business address,
-                          map pin, or stated service area includes Georgetown, TX or nearby communities where Georgetown
-                          homeowners commonly live and work.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-gray-900">Public ratings data:</span> we reference star
-                          ratings and review counts where available from public business listings to sort and compare
-                          companies by track record.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-gray-900">Service focus:</span> the company describes core
-                          plumbing work—leaks, drains, water heaters, repipes, and emergency calls—rather than only
-                          selling equipment or doing unrelated trades.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-gray-900">Reachability:</span> working phone numbers,
-                          websites, or maps listings that make it realistic for a Georgetown homeowner to reach the
-                          company quickly when something fails.
-                        </li>
-                      </ul>
-                      <p className="mt-3 text-sm leading-relaxed text-gray-700">
-                        We rely strictly on publicly available information. Listings here are not endorsements or
-                        guarantees. Before you hire anyone, verify current licensing, insurance, availability, and
-                        pricing directly with the company.
-                      </p>
-                      <p className="mt-3 text-sm leading-relaxed text-gray-700">
-                        “Local” in practice means the company can actually service Georgetown neighborhoods such as Sun
-                        City, Berry Creek, Wolf Ranch, and areas closer to the Square without treating it as an
-                        afterthought. Availability is part of quality: a great plumber who cannot schedule you for two
-                        weeks is not helpful when you have a leaking shutoff or a main line backing up.
-                      </p>
                     </section>
 
                     <section>
@@ -1240,48 +1166,12 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
 
                   {businessesForPage !== null ? (
                     <>
-                      <section className="mt-6 rounded-xl border border-gray-200 bg-gray-50 p-6 shadow-md">
-                        <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">Intro and methodology</div>
-                        <h3 className="mt-2 text-lg font-semibold text-gray-900">{editorialMethodology.title}</h3>
-                        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-700">
-                          {editorialMethodology.points.map((p) => (
-                            <li key={p}>{p}</li>
-                          ))}
-                        </ul>
-                        <p className="mt-3 text-sm text-gray-700">
-                          Read more:{" "}
-                          <Link href="/methodology" className="font-semibold text-primary hover:underline">
-                            How we review and rank providers
-                          </Link>
-                          .
-                        </p>
-                      </section>
-
-                      <section className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                        <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-                          <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">Who this page is for</div>
-                          <p className="mt-2 text-sm leading-relaxed text-gray-700">
-                            Georgetown homeowners who want to shortlist providers quickly and compare written scopes without guessing.
-                          </p>
-                        </div>
-                        <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-                          <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">How to compare options</div>
-                          <p className="mt-2 text-sm leading-relaxed text-gray-700">
-                            Compare scope clarity, documentation, responsiveness, and total cost drivers—not just the star rating.
-                          </p>
-                        </div>
-                      </section>
-
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
                         These listings are compiled from publicly available local business information (for example, names, ratings, review counts,
                         and addresses or official websites where published online). They are provided for research and comparison—confirm details
                         directly with any company before hiring.
                       </p>
-                      <p className="mt-2 text-sm text-gray-600">
-                        Provider cards below are verified separately (
-                        {directoryProviders.length.toLocaleString()} listings in this category).
-                      </p>
-                      {best.featuredPartner ? <FeaturedPartnerCard partner={best.featuredPartner} /> : <FeaturedListingReservedSlot />}
+                      {best.featuredPartner ? <FeaturedPartnerCard partner={best.featuredPartner} /> : null}
                       <div className="mt-3 space-y-1 text-sm text-gray-700">
                         <p>
                           <Link href="/" className="font-semibold text-primary hover:text-primary-hover">
@@ -1347,12 +1237,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         </p>
                       ) : null}
 
-                      {bestOfAdSlot ? (
-                        <div className="mt-10 max-w-4xl" role="complementary" aria-label="Advertisement">
-                          <AdUnit slotId={bestOfAdSlot} />
-                        </div>
-                      ) : null}
-
                       <BestOfFaqSection faqs={bestOfPageFaqs} />
 
                       <section className="mt-10 rounded-xl border border-gray-200 bg-white p-6 shadow-md">
@@ -1385,11 +1269,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                             See head-to-head comparisons →
                           </Link>
                         </p>
-                      ) : null}
-                      {bestOfAdSlot ? (
-                        <div className="mt-10 max-w-4xl" role="complementary" aria-label="Advertisement">
-                          <AdUnit slotId={bestOfAdSlot} />
-                        </div>
                       ) : null}
 
                       <BestOfFaqSection faqs={bestOfPageFaqs} />

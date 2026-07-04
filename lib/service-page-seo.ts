@@ -60,7 +60,7 @@ function metaPricePhrase(cat: PricingCategory, serviceLabelLower: string): strin
 }
 
 const DEFAULT_CTA =
-  "Compare vetted Georgetown companies in our Best Of directory and request written estimates before you hire.";
+  "Compare Georgetown companies in our Best Of directory and request written estimates before you hire.";
 
 /** Per-slug `<title>` overrides for core service guides (absolute, no layout suffix). */
 const SERVICE_TITLE_OVERRIDES: Record<string, string> = {

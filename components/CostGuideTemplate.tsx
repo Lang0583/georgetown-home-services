@@ -11,7 +11,7 @@ import CostGuideAffiliateCallouts from "./CostGuideAffiliateCallouts";
 import CostGuidePriceTable from "./CostGuidePriceTable";
 import PageShell from "./templates/PageShell";
 import type { CostGuidePage } from "../data/cost-guides";
-import { costGuideAdSlot } from "../lib/adConfig";
+import { costGuideAdSlot, ADSENSE_ENABLED } from "../lib/adConfig";
 import { absolutePageUrl } from "../lib/page-seo";
 import { webPageWithDateModifiedJsonLd } from "../lib/last-updated";
 import { hubArticleJsonLd } from "../lib/site-author";
@@ -87,7 +87,7 @@ export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
           </p>
         </section>
 
-        {costGuideAdSlot ? (
+        {ADSENSE_ENABLED && costGuideAdSlot ? (
           <div className="mt-12 max-w-3xl" role="complementary" aria-label="Advertisement">
             <AdUnit slotId={costGuideAdSlot} className="mx-auto" />
           </div>

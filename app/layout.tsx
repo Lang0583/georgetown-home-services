@@ -107,13 +107,6 @@ export default function RootLayout({
         <main className="flex-1 pt-20">{children}</main>
         <EmailCaptureSitewide />
         <SiteFooter />
-        <Script
-          id="google-adsense"
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
-          crossOrigin="anonymous"
-          strategy="lazyOnload"
-        />
       </body>
       {/* GA4 (gtag.js) via @next/third-parties/google — same as manual <GoogleAnalytics /> / gtag snippet. */}
       <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />

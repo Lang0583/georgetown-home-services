@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { ADSENSE_PUBLISHER_ID } from "../lib/adConfig";
+import { ADSENSE_ENABLED, ADSENSE_PUBLISHER_ID } from "../lib/adConfig";
 
 declare global {
   interface Window {
@@ -28,16 +28,18 @@ export default function AdUnit({
   responsive = true,
   className = "block",
 }: Props) {
+  const active = ADSENSE_ENABLED && Boolean(slotId && ADSENSE_PUBLISHER_ID);
+
   useEffect(() => {
-    if (!slotId || !ADSENSE_PUBLISHER_ID) return;
+    if (!active) return;
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch {
       /* ignore */
     }
-  }, [slotId]);
+  }, [active, slotId]);
 
-  if (!slotId || !ADSENSE_PUBLISHER_ID) return null;
+  if (!active) return null;
 
   return (
     <ins

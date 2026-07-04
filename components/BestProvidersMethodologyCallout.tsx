@@ -1,10 +1,9 @@
-import Link from "next/link";
-
 const BULLETS = [
-  "Verified active service in Georgetown, TX and surrounding areas",
-  "Minimum 4.5 stars based on Google Business Profile ratings",
-  "At least 75 verified reviews at time of listing",
-  "No paid placements - rankings based solely on review data",
+  "Active service in Georgetown, TX",
+  "Minimum 4.5-star Google rating",
+  "Minimum 50 reviews at time of listing",
+  "Working phone and website",
+  "No paid placement",
 ] as const;
 
 /**
@@ -21,14 +20,6 @@ export default function BestProvidersMethodologyCallout() {
           </li>
         ))}
       </ul>
-      <p className="mt-2">
-        <Link
-          href="/methodology"
-          className="text-sm font-semibold text-white underline underline-offset-2 decoration-white/80 hover:text-white hover:decoration-white"
-        >
-          Read our full methodology →
-        </Link>
-      </p>
     </div>
   );
 }

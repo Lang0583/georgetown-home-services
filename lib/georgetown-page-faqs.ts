@@ -107,7 +107,7 @@ const TRADE_FAQ_TEMPLATES: Record<ProviderGroup, Faq[]> = {
     },
     {
       q: "Where can I compare roofers near Georgetown?",
-      a: "Use our Best Roofers in Georgetown, TX directory for vetted listings and hiring context, then request written proposals from multiple companies before you commit.",
+      a: "Use our Best Roofers in Georgetown, TX directory for listings compiled from public business data and hiring context, then request written proposals from multiple companies before you commit.",
     },
   ],
   electrician: [

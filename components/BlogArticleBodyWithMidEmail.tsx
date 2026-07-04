@@ -1,5 +1,5 @@
 import type { ContentBlock } from "../lib/site-content";
-import { blogPostAdSlot } from "../lib/adConfig";
+import { blogPostAdSlot, ADSENSE_ENABLED } from "../lib/adConfig";
 import { COST_POST_SUPPLEMENTS } from "../lib/pricing-data";
 import {
   splitBlocksAfterNthParagraph,
@@ -36,7 +36,7 @@ function useGeneratedHtml(slug: string, generated: { html: string } | null, bloc
 }
 
 function BlogInlineAd() {
-  if (!blogPostAdSlot) return null;
+  if (!ADSENSE_ENABLED || !blogPostAdSlot) return null;
   return (
     <div className="my-8" role="complementary" aria-label="Advertisement">
       <AdUnit slotId={blogPostAdSlot} className="mx-auto max-w-2xl" />
