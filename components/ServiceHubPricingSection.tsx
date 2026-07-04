@@ -1,28 +1,33 @@
 import Link from "next/link";
 import JsonLd from "./JsonLd";
+import ServicePricingCostTable from "./ServicePricingCostTable";
 import {
   PRICING_CATEGORY_RELATED_LINKS,
   PRICING_LAST_REVIEWED_MONTH,
   PRICING_YEAR,
   findCategory,
-  formatPricingRange,
   serviceHubPricingItemListJsonLd,
   type PricingCategory,
 } from "../lib/pricing-data";
 import { absolutePageUrl } from "../lib/page-seo";
 
-type HubCategoryKey = Extract<PricingCategory["key"], "plumbing" | "hvac" | "roofing">;
+type HubCategoryKey = PricingCategory["key"];
 
-const HUB_PATH: Record<HubCategoryKey, string> = {
+const HUB_PATH: Partial<Record<HubCategoryKey, string>> = {
   plumbing: "/services/plumbing",
   hvac: "/services/hvac",
   roofing: "/services/roofing",
+  electrical: "/services/electrical",
+  landscaping: "/services/landscaping",
+  pest: "/services/pest-control",
+  foundation: "/services/foundation",
+  cleaning: "/services/house-cleaning",
 };
 
 export default function ServiceHubPricingSection({ categoryKey }: { categoryKey: HubCategoryKey }) {
   const cat = findCategory(categoryKey);
   const links = PRICING_CATEGORY_RELATED_LINKS[categoryKey];
-  const pathname = HUB_PATH[categoryKey];
+  const pathname = HUB_PATH[categoryKey] ?? "/pricing";
   const pageUrl = absolutePageUrl(pathname);
 
   return (
@@ -38,32 +43,17 @@ export default function ServiceHubPricingSection({ categoryKey }: { categoryKey:
         aria-labelledby="hub-pricing-heading"
       >
         <h2 id="hub-pricing-heading" className="text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">
-          {cat.title.replace(" in Georgetown TX", "")} — typical Georgetown ranges ({PRICING_YEAR})
+          {cat.title.replace(" Costs in Georgetown TX", "")} — typical Georgetown ranges ({PRICING_YEAR})
         </h2>
-        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-gray-700">{cat.localContext}</p>
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-gray-700">{cat.servicePriceContext}</p>
         <p className="mt-2 text-xs text-gray-600">
           Ranges are planning estimates for the Georgetown / Williamson County market ({PRICING_LAST_REVIEWED_MONTH}
           ), not quotes. Hard water, attic access, equipment size, and storm vs cash-pay roofs all move the number—get
           written scopes before you decide.
         </p>
 
-        <div className="mt-6 overflow-x-auto">
-          <table className="min-w-full text-left text-sm">
-            <thead>
-              <tr className="border-b border-gray-200 text-xs font-semibold uppercase tracking-wide text-gray-600">
-                <th className="py-2 pr-4">{categoryKey === "hvac" ? "Service" : "Common job"}</th>
-                <th className="py-2">{categoryKey === "hvac" ? "Typical Georgetown Range" : "Typical range"}</th>
-              </tr>
-            </thead>
-            <tbody className="text-gray-800">
-              {cat.rows.map((row) => (
-                <tr key={row.job} className="border-b border-gray-100 last:border-0">
-                  <td className="py-3 pr-4 align-top font-medium">{row.job}</td>
-                  <td className="py-3 align-top tabular-nums text-gray-900">{formatPricingRange(row)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="mt-6">
+          <ServicePricingCostTable rows={cat.rows} variant="bands" />
         </div>
 
         {categoryKey === "hvac" ? (

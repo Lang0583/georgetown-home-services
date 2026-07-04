@@ -22,31 +22,6 @@ export const metadata: Metadata = pageSeoMetadata({
   ogType: "website",
 });
 
-function faqJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Do you schedule plumbing service?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. This site is a directory and homeowner guide. Use the Best Of page to compare plumbers and contact providers directly.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Where should I start if I’m not sure what’s wrong?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Start with the main plumbing guide, then use symptom pages like clogged drains or leak detection to narrow down likely causes and what to ask when you call.",
-        },
-      },
-    ],
-  };
-}
-
 export default function PlumbingHubPage() {
   const lastUpdated = getStaticPageLastUpdated("/services/plumbing");
   const services = getServices();
@@ -68,7 +43,6 @@ export default function PlumbingHubPage() {
     <div className="bg-gray-50">
       <Container>
         <section className="py-10 md:py-12">
-          <JsonLd data={faqJsonLd()} />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: "/services/plumbing",

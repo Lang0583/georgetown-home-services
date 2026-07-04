@@ -27,42 +27,6 @@ export const metadata: Metadata = pageSeoMetadata({
   ogType: "website",
 });
 
-function faqJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Is this a service company?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "This site is a local research hub. Use the service pages and best-of guides to compare providers and decide who to contact. Always confirm licensing, pricing, and availability directly with any company before hiring.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What should I do if the problem is urgent?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "If there is active water damage, no cooling in extreme heat, or a roof leak during storms, start with the relevant problem-based service page and then contact a provider from the best-of guide.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Do you cover neighborhoods like Sun City or Wolf Ranch?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "Yes. We publish neighborhood and location pages to help Georgetown homeowners find the right service category and next steps.",
-        },
-      },
-    ],
-  };
-}
-
 export default function ServicesIndexPage() {
   const lastUpdated = getStaticPageLastUpdated("/services");
   const allServices = getServices();
@@ -135,7 +99,6 @@ export default function ServicesIndexPage() {
     <div className="bg-gray-50">
       <Container>
         <section className="py-10 md:py-12">
-          <JsonLd data={faqJsonLd()} />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: "/services",

@@ -14,7 +14,8 @@ import {
   comparisonPageTitle,
   getComparisonBySlug,
 } from "../../../data/comparisons";
-import { pageSeoMetadata } from "../../../lib/page-seo";
+import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
+import { buildFaqPageJsonLd } from "../../../lib/faq-schema";
 
 export const dynamicParams = false;
 
@@ -51,16 +52,8 @@ function breadcrumbJsonLd(siteUrl: string, title: string, slug: string) {
   };
 }
 
-function faqJsonLd(faqs: { q: string; a: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
+function faqJsonLd(faqs: { q: string; a: string }[], pageUrl: string, name: string) {
+  return buildFaqPageJsonLd({ pageUrl, name, faqs });
 }
 
 export default async function ComparisonPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -71,12 +64,17 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
   const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
   const h1 = comparisonPageH1(comparison.providerA.name, comparison.providerB.name);
   const breadcrumbTitle = `${comparison.providerA.name} vs ${comparison.providerB.name}`;
+  const comparisonFaqSchema = faqJsonLd(
+    comparison.faqs,
+    absolutePageUrl(`/compare/${comparison.slug}`),
+    `${breadcrumbTitle} — FAQ`,
+  );
 
   return (
     <PageShell>
       <section className="py-8 md:py-12">
         <JsonLd data={breadcrumbJsonLd(siteUrl, breadcrumbTitle, comparison.slug)} />
-        <JsonLd data={faqJsonLd(comparison.faqs)} />
+        {comparisonFaqSchema ? <JsonLd data={comparisonFaqSchema} /> : null}
 
         <div className="mx-auto max-w-5xl px-4">
           <Breadcrumbs

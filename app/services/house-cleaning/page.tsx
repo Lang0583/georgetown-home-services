@@ -22,31 +22,6 @@ export const metadata: Metadata = pageSeoMetadata({
   ogType: "website",
 });
 
-function faqJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Do you schedule cleaning appointments?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. This site is a directory and homeowner guide. Use the Best Of page to compare house cleaning services and contact providers directly.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Where should I start?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Start with the house cleaning service guide for Georgetown, then open the Best House Cleaning Services directory when you want quotes.",
-        },
-      },
-    ],
-  };
-}
-
 export default function HouseCleaningHubPage() {
   const lastUpdated = getStaticPageLastUpdated("/services/house-cleaning");
   if (!showExtendedHomeServices()) redirect("/services");
@@ -64,7 +39,6 @@ export default function HouseCleaningHubPage() {
     <div className="bg-gray-50">
       <Container>
         <section className="py-10 md:py-12">
-          <JsonLd data={faqJsonLd()} />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: "/services/house-cleaning",

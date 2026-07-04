@@ -22,31 +22,6 @@ export const metadata: Metadata = pageSeoMetadata({
   ogType: "website",
 });
 
-function faqJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Do you schedule electrical work?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. This site is a directory and homeowner guide. Use the Best Of page to compare electricians and contact providers directly.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Where should I start?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Start with the main electrician guide for Georgetown, then open the Best Electricians directory when you are ready to request written scopes.",
-        },
-      },
-    ],
-  };
-}
-
 export default function ElectricalHubPage() {
   const lastUpdated = getStaticPageLastUpdated("/services/electrical");
   if (!showExtendedHomeServices()) redirect("/services");
@@ -64,7 +39,6 @@ export default function ElectricalHubPage() {
     <div className="bg-gray-50">
       <Container>
         <section className="py-10 md:py-12">
-          <JsonLd data={faqJsonLd()} />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: "/services/electrical",

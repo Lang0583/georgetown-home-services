@@ -22,31 +22,6 @@ export const metadata: Metadata = pageSeoMetadata({
   ogType: "website",
 });
 
-function faqJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Do you schedule HVAC service?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. This site is a directory and homeowner guide. Use the Best Of page to compare HVAC companies and contact providers directly.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What should I do if my AC is not cooling?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Start with the AC not cooling guide to clarify symptoms and likely causes, then compare providers in the directory if you need a professional visit.",
-        },
-      },
-    ],
-  };
-}
-
 export default function HvacHubPage() {
   const lastUpdated = getStaticPageLastUpdated("/services/hvac");
   const services = getServices();
@@ -66,7 +41,6 @@ export default function HvacHubPage() {
     <div className="bg-gray-50">
       <Container>
         <section className="py-10 md:py-12">
-          <JsonLd data={faqJsonLd()} />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: "/services/hvac",

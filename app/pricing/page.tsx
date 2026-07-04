@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import JsonLd from "../../components/JsonLd";
+import ServicePricingCostTable from "../../components/ServicePricingCostTable";
 import PageShell from "../../components/templates/PageShell";
 import { pageSeoMetadata, SITE_URL } from "../../lib/page-seo";
 import {
@@ -9,7 +10,6 @@ import {
   PRICING_CATEGORY_RELATED_LINKS,
   PRICING_LAST_REVIEWED_MONTH,
   PRICING_YEAR,
-  formatPricingRange,
   type PricingCategory,
 } from "../../lib/pricing-data";
 
@@ -30,29 +30,8 @@ function CategorySection({ category }: { category: PricingCategory }) {
       className="not-prose mt-12 scroll-mt-24 rounded-xl border border-gray-200 bg-white p-6 shadow-sm"
     >
       <h2 className="text-2xl font-semibold tracking-tight text-gray-900">{category.title}</h2>
-      <div className="mt-5 overflow-x-auto">
-        <table className="min-w-full text-left text-sm">
-          <thead className="border-b border-gray-200 text-xs font-semibold uppercase tracking-wide text-gray-600">
-            <tr>
-              <th scope="col" className="py-2 pr-4">
-                Job type
-              </th>
-              <th scope="col" className="py-2 pr-4">
-                Typical cost range
-              </th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-100 text-gray-800">
-            {category.rows.map((row) => (
-              <tr key={row.job}>
-                <td className="py-3 pr-4 align-top font-medium text-gray-900">{row.job}</td>
-                <td className="py-3 pr-4 align-top font-semibold tabular-nums text-gray-900">
-                  {formatPricingRange(row)}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="mt-5">
+        <ServicePricingCostTable rows={category.rows} variant="range" jobHeader="Job type" />
       </div>
       <p className="mt-5 text-sm leading-relaxed text-gray-700">{category.localContext}</p>
       <p className="mt-4 text-sm leading-relaxed text-gray-700">

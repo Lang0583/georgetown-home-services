@@ -22,31 +22,6 @@ export const metadata: Metadata = pageSeoMetadata({
   ogType: "website",
 });
 
-function faqJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Do you perform foundation repairs?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. This site is a directory and homeowner guide. Use the Best Of page to compare foundation repair companies and contact providers directly.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Why is clay soil mentioned so often?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Central Texas expansive clay swells when wet and shrinks in drought, which stresses slabs and footings. Good contractors pair repairs with moisture and drainage planning.",
-        },
-      },
-    ],
-  };
-}
-
 export default function FoundationHubPage() {
   const lastUpdated = getStaticPageLastUpdated("/services/foundation");
   if (!showExtendedHomeServices()) redirect("/services");
@@ -64,7 +39,6 @@ export default function FoundationHubPage() {
     <div className="bg-gray-50">
       <Container>
         <section className="py-10 md:py-12">
-          <JsonLd data={faqJsonLd()} />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: "/services/foundation",

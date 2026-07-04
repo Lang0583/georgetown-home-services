@@ -21,42 +21,6 @@ export const metadata: Metadata = pageSeoMetadata({
   ogType: "website",
 });
 
-function faqJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "How should I use these best-of guides?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "Start with the category you need (electrical, landscaping, pest control, foundation, cleaning, plumbing, HVAC, or roofing). Compare providers using scopes, responsiveness, and review patterns—not just the star rating—and then contact a short list for written estimates.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Do these guides include every company in Georgetown?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "No. The goal is to provide a practical shortlist based on publicly available business information. Always confirm licensing, insurance, pricing, and availability directly with any provider before hiring.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Where should I go if I’m not sure what I need?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "Start on the Services hub for symptom-based pages (like AC not cooling or roof leak repair), then return here to compare providers for that category.",
-        },
-      },
-    ],
-  };
-}
-
 export default function BestIndexPage() {
   const lastUpdated = getStaticPageLastUpdated("/best");
   const bestPages = getBest();
@@ -81,7 +45,6 @@ export default function BestIndexPage() {
     <div className="bg-gray-50">
       <Container>
         <section className="py-10 md:py-12">
-          <JsonLd data={faqJsonLd()} />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: "/best",

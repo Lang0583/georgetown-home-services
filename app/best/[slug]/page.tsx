@@ -55,18 +55,7 @@ import HubRelatedLinks from "../../../components/HubRelatedLinks";
 import { bestPageRelatedHubLinks } from "../../../lib/hub-cross-links";
 import { canonicalServicePathForLinks } from "../../../lib/public-site-scope";
 import { breadcrumbSchemaForBestOf } from "../../../lib/schema";
-
-function faqJsonLd(faqs: { q: string; a: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
-}
+import { buildFaqPageJsonLd } from "../../../lib/faq-schema";
 
 function BestOfFaqSection({ faqs }: { faqs: readonly { q: string; a: string }[] }) {
   if (!faqs.length) return null;
@@ -253,6 +242,14 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
 
   /** FAQPage JSON-LD + visible FAQ (must match). Per Next.js, `next/script` `beforeInteractive` is root-layout-only; `<JsonLd />` emits the same `application/ld+json` as elsewhere. */
   const bestOfPageFaqs = getBestOfPageFaqs(best.slug);
+  const bestFaqSchema =
+    bestOfPageFaqs.length > 0
+      ? buildFaqPageJsonLd({
+          pageUrl: absolutePageUrl(`/best/${best.slug}`),
+          name: `${best.title} — FAQ`,
+          faqs: bestOfPageFaqs,
+        })
+      : null;
 
   const coreAlsoCompareSlugs = new Set([
     "best-plumbers-georgetown-tx",
@@ -273,9 +270,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
               lastUpdated: best.lastUpdated,
             })}
           />
-          {bestOfPageFaqs.length ? (
-            <JsonLd data={faqJsonLd(bestOfPageFaqs)} />
-          ) : null}
+          {bestFaqSchema ? <JsonLd data={bestFaqSchema} /> : null}
           {directoryProviders.length ? (
             <JsonLd data={buildProviderItemListJsonLd(best.title, directoryProviders)} />
           ) : null}

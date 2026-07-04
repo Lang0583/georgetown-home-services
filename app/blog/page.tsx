@@ -5,7 +5,6 @@ import Container from "../../components/Container";
 import CTASection from "../../components/CTASection";
 import LinkCard from "../../components/LinkCard";
 import BlogMidContentEmailCard from "../../components/BlogMidContentEmailCard";
-import JsonLd from "../../components/JsonLd";
 import { adsenseInlineSlot } from "../../lib/adsense-config";
 import { pageSeoMetadata } from "../../lib/page-seo";
 import { BLOG_EXPANSION_POSTS } from "../../data/blog-posts";
@@ -121,42 +120,6 @@ function categorizePosts(posts: ReturnType<typeof getBlog>) {
   return categories;
 }
 
-function faqJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Are these recommendations unbiased?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "These guides are written for Georgetown homeowners and focus on practical decision-making. Always confirm licensing, insurance, pricing, and availability directly with any provider before hiring.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Do you schedule service appointments?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "No. This site is a directory and homeowner guide. You choose who to contact and what to schedule directly with the provider.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Which topics should I read first?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            "If you’re budgeting, start with the cost guides. If you’re dealing with a problem today, start with repair or emergency posts and then review the related service pages and best-of comparisons.",
-        },
-      },
-    ],
-  };
-}
-
 export default function BlogIndexPage() {
   const posts = getBlog();
   const categories = categorizePosts(posts);
@@ -169,7 +132,6 @@ export default function BlogIndexPage() {
     <div className="bg-gray-50">
       <Container>
         <section className="py-10 md:py-12">
-          <JsonLd data={faqJsonLd()} />
 
           <div className="flex flex-col gap-10">
             <div>

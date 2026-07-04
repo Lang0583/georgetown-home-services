@@ -28,31 +28,6 @@ export const metadata: Metadata = pageSeoMetadata({
   ogType: "website",
 });
 
-function faqJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Do you schedule roofing service?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. This site is a directory and homeowner guide. Use the Best Of page to compare roofers and contact providers directly.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What should I do after a storm?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Start with a checklist post (photos, documentation, stabilization), then compare providers in the directory for written scopes and permanent repair options.",
-        },
-      },
-    ],
-  };
-}
-
 export default function RoofingHubPage() {
   const lastUpdated = getStaticPageLastUpdated("/services/roofing");
   const services = getServices();
@@ -73,7 +48,6 @@ export default function RoofingHubPage() {
     <div className="bg-gray-50">
       <Container>
         <section className="py-10 md:py-12">
-          <JsonLd data={faqJsonLd()} />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: "/services/roofing",

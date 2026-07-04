@@ -1,5 +1,6 @@
 import Link from "next/link";
 import JsonLd from "./JsonLd";
+import ServicePricingCostTable from "./ServicePricingCostTable";
 import {
   getCoreServiceEnrichment,
   neighborhoodLandingLinksForCoreService,
@@ -9,8 +10,9 @@ import {
   PRICING_LAST_REVIEWED_MONTH,
   PRICING_YEAR,
   findCategory,
-  formatPricingRange,
+  getServicePagePricingRows,
   serviceHubPricingItemListJsonLd,
+  servicePricingSectionTitle,
 } from "../lib/pricing-data";
 import { absolutePageUrl } from "../lib/page-seo";
 
@@ -27,6 +29,7 @@ export default function CoreServiceGuideEnrichment({ serviceSlug }: Props) {
   if (!config) return null;
 
   const cat = findCategory(config.pricingKey);
+  const pricingRows = getServicePagePricingRows(cat);
   const links = PRICING_CATEGORY_RELATED_LINKS[config.pricingKey];
   const pathname = `/services/${serviceSlug}`;
   const pageUrl = absolutePageUrl(pathname);
@@ -51,32 +54,17 @@ export default function CoreServiceGuideEnrichment({ serviceSlug }: Props) {
         aria-labelledby={`service-pricing-${serviceSlug}`}
       >
         <h2 id={`service-pricing-${serviceSlug}`} className="text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">
-          {cat.title} ({PRICING_YEAR})
+          {servicePricingSectionTitle(config.tradeLabel)} ({PRICING_YEAR})
         </h2>
-        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-gray-700">{cat.localContext}</p>
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-gray-700">{cat.servicePriceContext}</p>
         <p className="mt-2 text-xs text-gray-600">
-          Ranges are planning estimates for the Georgetown / Williamson County market ({PRICING_LAST_REVIEWED_MONTH}
-          ), not quotes. Access, equipment size, storm vs cash-pay work, and hidden conditions all move the final
-          number—request written scopes before you decide.
+          Low, typical, and high columns are planning bands for the Georgetown / Williamson County market (
+          {PRICING_LAST_REVIEWED_MONTH}), not quotes. Access, equipment size, storm vs cash-pay work, and hidden
+          conditions all move the final number—request written scopes before you decide.
         </p>
 
-        <div className="mt-6 overflow-x-auto">
-          <table className="min-w-full text-left text-sm">
-            <thead>
-              <tr className="border-b border-gray-200 text-xs font-semibold uppercase tracking-wide text-gray-600">
-                <th className="py-2 pr-4">Common job</th>
-                <th className="py-2">Typical Georgetown range</th>
-              </tr>
-            </thead>
-            <tbody className="text-gray-800">
-              {cat.rows.map((row) => (
-                <tr key={row.job} className="border-b border-gray-100 last:border-0">
-                  <td className="py-3 pr-4 align-top font-medium">{row.job}</td>
-                  <td className="py-3 align-top tabular-nums text-gray-900">{formatPricingRange(row)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="mt-6">
+          <ServicePricingCostTable rows={pricingRows} variant="bands" />
         </div>
 
         <div className="mt-6 flex flex-col gap-2 text-sm font-semibold text-primary sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4">

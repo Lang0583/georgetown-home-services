@@ -16,6 +16,8 @@ export type PricingRow = {
    */
   low: number;
   high: number;
+  /** Midpoint override when low/high is not a fair “typical” (optional). */
+  typical?: number;
   /** When set, shown in tables/estimator instead of formatting `low`–`high`. */
   displayRange?: string;
   excludeFromEstimatorSum?: boolean;
@@ -36,8 +38,13 @@ export type PricingCategory = {
   intro: string;
   /** 1–2 sentences of Georgetown-specific context on the main pricing page. */
   localContext: string;
+  /** 2–3 sentences on local price drivers for core service guide cost sections. */
+  servicePriceContext: string;
   rows: PricingRow[];
 };
+
+/** Max job rows on core `/services/[slug]` cost sections (5–7 per spec). */
+export const SERVICE_PAGE_PRICING_JOB_MAX = 7;
 
 export const PRICING_CATEGORY_RELATED_LINKS: Readonly<
   Record<PricingCategory["key"], { bestHref: string; bestLabel: string; guideHref: string; guideLabel: string }>
@@ -99,6 +106,8 @@ export const PRICING_CATEGORIES: readonly PricingCategory[] = [
     intro: "Typical plumbing line items in Georgetown — select rows to sum ranges in the calculator.",
     localContext:
       "Georgetown's hard water from the Edwards Aquifer shortens water heater life and causes mineral buildup in pipes, making maintenance calls more frequent than in softer-water markets.",
+    servicePriceContext:
+      "Georgetown's hard Edwards Aquifer water scales fixtures and shortens water-heater life, so “simple” repairs often include descaling or anode work that softer-water markets skip. Slab-on-grade homes in Sun City, Wolf Ranch, and Teravista hide supply lines under concrete—leak isolation and access drive slab-leak tabs higher than exposed-pipe repairs. Freeze-thaw swings and summer irrigation demand also spike emergency and after-hours plumbing calls across Williamson County.",
     rows: [
       { job: "Service call / diagnostic", low: 100, high: 175 },
       { job: "Drain clearing", low: 150, high: 350 },
@@ -119,6 +128,8 @@ export const PRICING_CATEGORIES: readonly PricingCategory[] = [
     intro: "Cooling-heavy workload in Central Texas — ranges are for typical residential equipment.",
     localContext:
       "Georgetown summers regularly exceed 100°F, meaning HVAC systems run harder and longer than in most U.S. markets. Systems here typically need replacement every 12–15 years rather than the national average of 15–20.",
+    servicePriceContext:
+      "Georgetown summers regularly exceed 100°F, so capacitors, contactors, and condensate drains fail under longer runtimes than northern climates see. Two-story Teravista and Wolf Ranch layouts often need duct or airflow fixes—not just refrigerant—to cool upstairs bedrooms during peak weeks. Replacement quotes jump when attic access is tight, line sets need flushing, or equipment must be upsized after a Manual J review.",
     rows: [
       { job: "Service call / diagnostic", low: 75, high: 150 },
       { job: "Refrigerant recharge (R-410A)", low: 200, high: 500 },
@@ -136,6 +147,8 @@ export const PRICING_CATEGORIES: readonly PricingCategory[] = [
     intro: "Shingle-focused ranges; insurance-scope storm work follows different pricing than cash pay.",
     localContext:
       "Williamson County's spring hail season is the primary driver of roofing calls. Most reputable Georgetown roofers offer free post-storm inspections and can document damage for insurance claims.",
+    servicePriceContext:
+      "Williamson County hail and wind events are the main pricing variable—insurance-scope jobs follow adjuster lines while cash-pay repairs trade speed for flexibility. Tree litter in Berry Creek and Teravista valleys can dam water behind flashing, so labor rises when crews must trace leak paths beyond the ceiling stain. Square footage, shingle tier, decking replacement allowances, and ventilation upgrades separate a $9,000 reroof from a $20,000 scope on the same block.",
     rows: [
       {
         job: "Roof inspection",
@@ -155,6 +168,8 @@ export const PRICING_CATEGORIES: readonly PricingCategory[] = [
     intro: "Per-call and upgrade ranges — panel and EV jobs scale with access and service capacity.",
     localContext:
       "Older Georgetown neighborhoods like Georgetown Village frequently need panel upgrades when adding EV chargers or home additions. Sun City homes often require accessibility-focused electrical modifications.",
+    servicePriceContext:
+      "Older Georgetown Village bungalows often still run 100-amp panels that cannot safely add EV chargers, heat pumps, or kitchen remodel loads without a service upgrade. Long attic runs in two-story Wolf Ranch homes and garage-fed Sun City circuits change wire and labor versus a single-wall outlet swap. Permit fees, grounding updates, and trenching for detached garages or barns are the usual surprises on Georgetown electrical bids.",
     rows: [
       { job: "Service call / diagnostic", low: 100, high: 175 },
       { job: "Outlet or switch repair", low: 100, high: 250 },
@@ -170,6 +185,8 @@ export const PRICING_CATEGORIES: readonly PricingCategory[] = [
     intro: "Lawn, beds, sod, and irrigation — ranges vary sharply by lot size and material.",
     localContext:
       "Georgetown's clay soil and heat require irrigation scheduling adjustments through the season. Bermuda and St. Augustine are the dominant grass types, each with different maintenance windows.",
+    servicePriceContext:
+      "Georgetown's expansive clay swells when wet and cracks in drought, so sod prep, irrigation zoning, and seasonal mowing cadence all move quotes block by block. Edwards Aquifer watering rules and HOA standards in Sun City and Wolf Ranch affect how often crews can visit and what bed maintenance includes. Lot size, mature tree shade, and whether work touches a licensed in-ground irrigation system separate a basic mow from a full landscape install.",
     rows: [
       {
         job: "Lawn mowing (avg Georgetown lot)",
@@ -201,6 +218,8 @@ export const PRICING_CATEGORIES: readonly PricingCategory[] = [
     intro: "Initial visits, maintenance plans, and structural pests — confirm scope in writing.",
     localContext:
       "Fire ants, mosquitoes, and seasonal rodent pressure are the most common calls in Georgetown. Spring and fall are peak treatment seasons as temperatures shift.",
+    servicePriceContext:
+      "Georgetown's mix of subdivisions and greenbelt edges means fire ants, termites, scorpions, and rodents spike on different schedules—quarterly perimeter plans cost less than reactive whole-yard treatments. Sun City fruiting ornamentals and Wolf Ranch lots backing open space often need exclusion work, not spray alone. Structural termite jobs scale with foundation type and moisture patterns along Berry Creek tree lines.",
     rows: [
       { job: "Initial inspection and treatment", low: 150, high: 300 },
       {
@@ -225,6 +244,8 @@ export const PRICING_CATEGORIES: readonly PricingCategory[] = [
     intro: "Clay-soil movement is common — pier counts and drainage drive the final tab.",
     localContext:
       "Georgetown sits on expansive clay soil that swells with rain and shrinks in drought. Foundation movement is extremely common — most homes over 10 years old will show some cracking. Annual monitoring is recommended.",
+    servicePriceContext:
+      "Georgetown's expansive clay swells after heavy rain and shrinks in drought, so pier counts, drainage fixes, and engineering reports drive tabs more than cosmetic crack filler. Mature trees in Berry Creek and poor downspout discharge against slabs in Teravista add seasonal movement that pier-only bids miss. Slab-on-grade Sun City ranches and pier-and-beam remnants near Georgetown Village need different repair approaches—and pricing.",
     rows: [
       {
         job: "Engineer inspection",
@@ -244,6 +265,8 @@ export const PRICING_CATEGORIES: readonly PricingCategory[] = [
     intro: "Standard, deep, and move cleans — recurring plans usually beat one-time pricing.",
     localContext:
       "Georgetown's hard water leaves mineral deposits on fixtures and glass faster than softer markets. Ask cleaners specifically about hard water treatment as part of their standard service.",
+    servicePriceContext:
+      "Georgetown's hard Edwards Aquifer water leaves mineral film on glass and fixtures, so deep cleans take longer than in soft-water markets unless crews plan descaling time. Two-story Teravista foyers and Wolf Ranch open plans change ladder and staging labor versus Sun City single-level ranches. Pets, pollen seasons, and move-out landlord checklists are the usual reasons one home quotes higher than a neighbor with the same square footage.",
     rows: [
       { job: "Standard clean (avg Georgetown home)", low: 120, high: 200 },
       { job: "Deep clean", low: 200, high: 350 },
@@ -266,13 +289,57 @@ export const PRICING_CATEGORIES: readonly PricingCategory[] = [
   },
 ];
 
+const fmtUsd = (n: number) => `$${n.toLocaleString("en-US")}`;
+
+export function pricingRowTypicalValue(row: PricingRow): number | null {
+  if (typeof row.typical === "number") return row.typical;
+  if (row.low === 0 && row.high === 0) return null;
+  if (row.high < row.low) return null;
+  return Math.round((row.low + row.high) / 2);
+}
+
+/** Low column for three-band service/pricing tables. */
+export function formatPricingLow(row: PricingRow): string {
+  if (row.displayRange && row.low === 0 && row.high === 0) return "—";
+  if (row.low === 0 && row.high > 0) return "Free";
+  if (row.low === row.high) return fmtUsd(row.low);
+  return fmtUsd(row.low);
+}
+
+/** Typical column — midpoint unless `displayRange` is the only meaningful band. */
+export function formatPricingTypical(row: PricingRow): string {
+  if (row.displayRange && row.low === 0 && row.high === 0) return row.displayRange;
+  const typical = pricingRowTypicalValue(row);
+  if (typical == null) return row.displayRange ?? "—";
+  return fmtUsd(typical);
+}
+
+/** High column for three-band service/pricing tables. */
+export function formatPricingHigh(row: PricingRow): string {
+  if (row.displayRange && row.low === 0 && row.high === 0) return "—";
+  if (row.low === 0 && row.high > 0) return fmtUsd(row.high);
+  if (row.low === row.high) return fmtUsd(row.high);
+  return fmtUsd(row.high);
+}
+
 export function formatPricingRange(row: PricingRow): string {
   if (row.displayRange) return row.displayRange;
-  const fmt = (n: number) => `$${n.toLocaleString("en-US")}`;
   if (row.low === 0 && row.high === 0) return "—";
-  if (row.low === 0) return `Up to ${fmt(row.high)}`;
-  if (row.low === row.high) return fmt(row.low);
-  return `${fmt(row.low)}–${fmt(row.high)}`;
+  if (row.low === 0) return `Up to ${fmtUsd(row.high)}`;
+  if (row.low === row.high) return fmtUsd(row.low);
+  return `${fmtUsd(row.low)}–${fmtUsd(row.high)}`;
+}
+
+/** Heading for core service guide cost sections. */
+export function servicePricingSectionTitle(tradeLabel: string): string {
+  return `What ${tradeLabel.toLowerCase()} costs in Georgetown TX`;
+}
+
+/** Five to seven common jobs for `/services/[slug]` cost tables. */
+export function getServicePagePricingRows(category: PricingCategory): PricingRow[] {
+  const min = 5;
+  const rows = category.rows.slice(0, SERVICE_PAGE_PRICING_JOB_MAX);
+  return rows.length >= min ? rows : category.rows.slice(0, min);
 }
 
 export function findCategory(key: PricingCategory["key"]): PricingCategory {
