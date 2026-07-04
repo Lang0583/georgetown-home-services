@@ -1,28 +1,28 @@
 import Link from "next/link";
 
 /**
- * County pillar navigation — neighborhood hail blogs plus matching neighborhood hubs.
+ * County pillar navigation — in-page neighborhood sections plus matching hail hubs.
  */
 export default function HailPillarNeighborhoodHub() {
   const neighborhoods = [
     {
       name: "Sun City",
-      blogSlug: "hail-damage-sun-city-georgetown-tx",
+      sectionId: "sun-city",
       hubPath: "/neighborhoods/sun-city/hail-damage",
     },
     {
       name: "Teravista",
-      blogSlug: "hail-damage-teravista-georgetown-tx",
+      sectionId: "teravista",
       hubPath: "/neighborhoods/teravista/hail-damage",
     },
     {
       name: "Wolf Ranch",
-      blogSlug: "hail-damage-wolf-ranch-georgetown-tx",
+      sectionId: "wolf-ranch",
       hubPath: "/neighborhoods/wolf-ranch/hail-damage",
     },
     {
       name: "Georgetown Village",
-      blogSlug: "hail-damage-georgetown-village-tx",
+      sectionId: "georgetown-village",
       hubPath: "/neighborhoods/georgetown-village/hail-damage",
     },
   ] as const;
@@ -33,23 +33,26 @@ export default function HailPillarNeighborhoodHub() {
       aria-labelledby="hail-neighborhood-hub-heading"
     >
       <h2 id="hail-neighborhood-hub-heading" className="text-lg font-semibold text-gray-900 md:text-xl">
-        Neighborhood hail guides: May 2026 in Georgetown &amp; Williamson County
+        Neighborhood hail notes: May 2026 in Georgetown &amp; Williamson County
       </h2>
       <p className="mt-2 text-sm leading-relaxed text-gray-800">
-        This article is the <strong>county-wide hail reference</strong> for May 9–10, 2026. Each neighborhood below has a
-        dedicated blog write-up and a matching neighborhood hub with checklists for roof access, HOA timing, and
-        inspection scheduling.
+        This article is the <strong>county-wide hail reference</strong> for May 9–10, 2026. Jump to neighborhood
+        sections below or open each subdivision&apos;s hail hub for checklists on roof access, HOA timing, and inspection
+        scheduling.
       </p>
       <ul className="mt-4 space-y-3 text-sm leading-relaxed text-gray-800">
         {neighborhoods.map((n) => (
-          <li key={n.blogSlug}>
+          <li key={n.sectionId}>
             <span className="font-semibold text-gray-900">{n.name}</span> —{" "}
-            <Link href={`/blog/${n.blogSlug}`} className="font-medium text-primary hover:underline">
-              {n.name} hail blog
+            <Link
+              href={`#${n.sectionId}`}
+              className="font-medium text-primary hover:underline"
+            >
+              {n.name} section in this article
             </Link>
             {" · "}
             <Link href={n.hubPath} className="font-medium text-primary hover:underline">
-              {n.name} neighborhood hub
+              {n.name} neighborhood hail hub
             </Link>
           </li>
         ))}

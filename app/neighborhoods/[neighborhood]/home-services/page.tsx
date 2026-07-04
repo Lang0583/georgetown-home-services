@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import AuthorByline from "@/components/AuthorByline";
 import AdSenseDisplay from "@/components/AdSenseDisplay";
@@ -212,40 +211,6 @@ export default async function NeighborhoodHomeServicesHubPage({
             title={`FAQ for ${hub.neighborhoodName} homeowners`}
             className="!mt-4"
           />
-        </section>
-
-        <section className="mt-12">
-          <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
-            Deeper dives: {hub.neighborhoodName} by trade
-          </h2>
-          <ul className="mt-4 space-y-4">
-            {CORE_TRADES.map((t) => {
-              const neighborhoodPath = `/neighborhoods/${hub.neighborhoodSlug}/${t.serviceSlug}`;
-              return (
-                <li key={t.serviceSlug} className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
-                  <div className="font-semibold text-gray-900">{t.title} in {hub.neighborhoodName}</div>
-                  <p className="mt-2 text-sm leading-relaxed text-gray-700">
-                    Neighborhood-specific issues, common symptoms, and links to the Georgetown {t.title.toLowerCase()}{" "}
-                    hub.
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-3">
-                    <Link
-                      href={neighborhoodPath}
-                      className="text-sm font-medium text-primary underline-offset-4 hover:text-primary-hover hover:underline"
-                    >
-                      {hub.neighborhoodName} {t.title.toLowerCase()} landing →
-                    </Link>
-                    <Link
-                      href={t.serviceGuideHref}
-                      className="text-sm font-medium text-primary underline-offset-4 hover:text-primary-hover hover:underline"
-                    >
-                      Full Georgetown {t.title.toLowerCase()} guide →
-                    </Link>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
         </section>
       </section>
     </PageShell>

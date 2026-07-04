@@ -3,7 +3,6 @@ import { join } from "node:path";
 import type { MetadataRoute } from "next";
 import { costGuidePages } from "@/data/cost-guides";
 import { subServicePages } from "@/data/sub-services";
-import { neighborhoodServicePages } from "@/data/neighborhoods";
 import { NEIGHBORHOOD_HOME_SERVICES_HUBS } from "@/data/neighborhood-home-services-hubs";
 import { NEIGHBORHOOD_HAIL_PAGES } from "@/data/neighborhood-hail-pages";
 import {
@@ -192,19 +191,6 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     if (isRedirectedLocationSlug(slug)) continue;
     if (isNoindexSlug(slug)) continue;
     push(entries, `/locations/${slug}`, { changeFrequency: "monthly", priority: 0.7 }, lastModified);
-  }
-
-  const SUN_CITY_PRIORITY_TRADES = new Set(["plumber", "hvac", "roofer"]);
-
-  for (const p of neighborhoodServicePages) {
-    const isSunCityCore =
-      p.neighborhoodSlug === "sun-city" && SUN_CITY_PRIORITY_TRADES.has(p.serviceSlug);
-    push(
-      entries,
-      `/neighborhoods/${p.neighborhoodSlug}/${p.serviceSlug}`,
-      { changeFrequency: "monthly", priority: isSunCityCore ? 0.75 : 0.6 },
-      lastModified,
-    );
   }
 
   for (const hub of NEIGHBORHOOD_HOME_SERVICES_HUBS) {

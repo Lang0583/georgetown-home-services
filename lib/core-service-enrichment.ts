@@ -1,4 +1,3 @@
-import { neighborhoodServicePages } from "@/data/neighborhoods";
 import type { PricingCategory } from "./pricing-data";
 import type { InternalLink } from "./internal-links";
 
@@ -135,22 +134,14 @@ export function getCoreServiceEnrichment(slug: string): CoreServiceEnrichment | 
   return CORE_SERVICE_ENRICHMENT[slug];
 }
 
-/** Three or more `/neighborhoods/[area]/[service]` links for a core service guide. */
+/** Neighborhood home-services hub links for a core service guide. */
 export function neighborhoodLandingLinksForCoreService(serviceSlug: string): InternalLink[] {
   const config = getCoreServiceEnrichment(serviceSlug);
   if (!config) return [];
 
-  return NEIGHBORHOOD_LINK_AREAS.flatMap(({ slug, name }) => {
-    const page = neighborhoodServicePages.find(
-      (p) => p.neighborhoodSlug === slug && p.serviceSlug === config.neighborhoodServiceSlug,
-    );
-    if (!page) return [];
-    return [
-      {
-        href: `/neighborhoods/${slug}/${config.neighborhoodServiceSlug}`,
-        label: `${config.tradeLabel} in ${name}`,
-        description: page.intro.slice(0, 160),
-      },
-    ];
-  });
+  return NEIGHBORHOOD_LINK_AREAS.map(({ slug, name }) => ({
+    href: `/neighborhoods/${slug}/home-services`,
+    label: `${name} home services`,
+    description: `Plumber, HVAC, and roofer context for ${name}—planning ranges, FAQs, and Georgetown directories.`,
+  }));
 }

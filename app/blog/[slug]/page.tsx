@@ -43,13 +43,7 @@ const AFFILIATE_DISCLOSURE_SLUGS = new Set([
 const AFFILIATE_DISCLOSURE_TEXT =
   "Disclosure: This post contains affiliate links. If you purchase through our links, we may earn a small commission at no extra cost to you.";
 
-const STORM_INSPECTION_LEAD_SLUGS = new Set([
-  "hail-damage-georgetown-williamson-may-2026",
-  "hail-damage-sun-city-georgetown-tx",
-  "hail-damage-teravista-georgetown-tx",
-  "hail-damage-wolf-ranch-georgetown-tx",
-  "hail-damage-georgetown-village-tx",
-]);
+const STORM_INSPECTION_LEAD_SLUGS = new Set(["hail-damage-georgetown-williamson-may-2026"]);
 
 function articleJsonLd({
   siteUrl,
@@ -318,26 +312,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       absoluteTitle: "Hail Damage Repair Georgetown TX | May 2026 Storm Guide",
       description:
         "Georgetown TX hail damage guide for May 2026 storms in Williamson County—safe roof checks, insurance basics, and next steps for roofing and HVAC repair.",
-    },
-    "hail-damage-sun-city-georgetown-tx": {
-      absoluteTitle: "Sun City Hail Damage May 2026 | Georgetown TX Roof Guide",
-      description:
-        "May 2026 hail in Sun City, Georgetown TX: ground-level roof checks, photos for adjusters, insurance basics, and how to compare written roofing scopes.",
-    },
-    "hail-damage-teravista-georgetown-tx": {
-      absoluteTitle: "Teravista Hail Damage May 2026 | Georgetown TX Roof Guide",
-      description:
-        "May 2026 hail in Teravista, Georgetown TX: inspection timing, fairway wind effects, insurance notes, and links to Georgetown roofer comparisons.",
-    },
-    "hail-damage-wolf-ranch-georgetown-tx": {
-      absoluteTitle: "Wolf Ranch Hail Damage May 2026 | Georgetown TX Roof Guide",
-      description:
-        "May 2026 hail in Wolf Ranch, Georgetown TX: newer-roof bruising, HOA timing, documentation tips, and how to compare hail repair scopes.",
-    },
-    "hail-damage-georgetown-village-tx": {
-      absoluteTitle: "Georgetown Village Hail Damage May 2026 | Roof Guide",
-      description:
-        "May 2026 hail near downtown Georgetown Village: tight-lot access, tree debris, insurance context, and next steps with local roofers.",
     },
   };
 

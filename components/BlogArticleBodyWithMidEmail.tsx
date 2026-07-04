@@ -21,13 +21,7 @@ type Props = {
 };
 
 /** CMS-expanded posts that should not be overridden by legacy generated HTML. */
-const CMS_BODY_SLUGS = new Set([
-  "hail-damage-georgetown-williamson-may-2026",
-  "hail-damage-sun-city-georgetown-tx",
-  "hail-damage-teravista-georgetown-tx",
-  "hail-damage-wolf-ranch-georgetown-tx",
-  "hail-damage-georgetown-village-tx",
-]);
+const CMS_BODY_SLUGS = new Set(["hail-damage-georgetown-williamson-may-2026"]);
 
 function useGeneratedHtml(slug: string, generated: { html: string } | null, blocks: ContentBlock[]) {
   if (!generated) return null;

@@ -48,8 +48,12 @@ export function RichTextBlocks({ blocks }: { blocks: ContentBlock[] }) {
           );
         }
         if (block.kind === "h2") {
+          const id = block.text
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-|-$/g, "");
           return (
-            <h2 key={idx} className="mt-8 mb-4 text-xl font-semibold">
+            <h2 key={idx} id={id || undefined} className="mt-8 mb-4 text-xl font-semibold scroll-mt-24">
               {block.text}
             </h2>
           );

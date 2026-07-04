@@ -592,8 +592,8 @@ for (const [serviceSlug, slugs] of Object.entries(SLUGS)) {
     const hoods = custom?.hoods ?? cfg.defaultHoods;
     const bodyParagraphs = buildBody(name, cfg.label, local, serviceSlug, slug, hoods);
     const neighborhoodLinks = hoods.map((h) => ({
-      label: `${cfg.label} in ${NEIGHBORHOODS[h]}`,
-      href: `/neighborhoods/${h}/${cfg.neighborhoodServiceSlug}`,
+      label: `${NEIGHBORHOODS[h]} home services`,
+      href: `/neighborhoods/${h}/home-services`,
     }));
 
     allPages.push({

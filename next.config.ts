@@ -1,4 +1,8 @@
 import type { NextConfig } from "next";
+import {
+  hailBlogToPillarRedirects,
+  neighborhoodServiceToHubRedirects,
+} from "./lib/neighborhood-redirects";
 import { SITE_URL } from "./lib/page-seo";
 import { REDIRECTED_SERVICE_TO_HUB } from "./lib/public-site-scope";
 
@@ -120,6 +124,8 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       ...serviceHubRedirects,
+      ...neighborhoodServiceToHubRedirects(),
+      ...hailBlogToPillarRedirects(),
 
       // Old plumber blog URLs → single canonical post (one hop each — avoids GSC redirect chains)
       {

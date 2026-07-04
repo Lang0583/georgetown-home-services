@@ -3942,7 +3942,7 @@
             },
             {
               "type": "link",
-              "href": "/neighborhoods/teravista/roofer",
+              "href": "/neighborhoods/teravista/home-services",
               "label": "Teravista"
             },
             {
@@ -3951,7 +3951,7 @@
             },
             {
               "type": "link",
-              "href": "/neighborhoods/berry-creek/roofer",
+              "href": "/neighborhoods/berry-creek/home-services",
               "label": "Berry Creek"
             },
             {
@@ -3960,7 +3960,7 @@
             },
             {
               "type": "link",
-              "href": "/neighborhoods/sun-city/roofer",
+              "href": "/neighborhoods/sun-city/home-services",
               "label": "Sun City"
             },
             {
@@ -4093,7 +4093,7 @@
       "content": [
         {
           "kind": "p",
-          "text": "Repeated hail cores crossed west and central Williamson County on May 9–10, 2026, with NWS reports of golf-ball-sized stones in several corridors. Georgetown homeowners are again facing the same pattern: most shingle bruising is hard to judge from the sidewalk, yet soft metals, gutter grit, and ridge-cap lifts often tell the story before an interior stain appears. This county-wide guide is the reference point—use the neighborhood links at the bottom for Sun City, Teravista, Wolf Ranch, and Georgetown Village specifics."
+          "text": "Repeated hail cores crossed west and central Williamson County on May 9–10, 2026, with NWS reports of golf-ball-sized stones in several corridors. Georgetown homeowners are again facing the same pattern: most shingle bruising is hard to judge from the sidewalk, yet soft metals, gutter grit, and ridge-cap lifts often tell the story before an interior stain appears. This county-wide guide is the reference point—the neighborhood sections below cover Sun City, Teravista, Wolf Ranch, and Georgetown Village specifics."
         },
         {
           "kind": "h2",
@@ -4148,50 +4148,89 @@
         },
         {
           "kind": "h2",
-          "text": "Neighborhood-specific guides"
+          "text": "Sun City"
         },
         {
           "kind": "p",
           "parts": [
             {
               "type": "text",
-              "text": "For HOA timing, golf-cart traffic, fairway wind fetch, and downtown parking constraints, read the neighborhood write-ups: "
+              "text": "Sun City skews toward 55+ living, so storm weeks collide with clinic visits, guest traffic, and golf-cart circulation on interior paths. Expect longer drive times for ladder crews and occasional gate delays—save your roofer shortlist before skies clear so you are not choosing from whoever parks longest at a mailbox kiosk. Fairway-facing lots see more wind fetch on ridge caps; document soft-metal dents on mailboxes and patio fixtures even when field shingles look fine from the curb. For extended FAQs and a roofer shortlist, see the "
             },
             {
               "type": "link",
-              "href": "/blog/hail-damage-sun-city-georgetown-tx",
-              "label": "Sun City"
+              "href": "/neighborhoods/sun-city/hail-damage",
+              "label": "Sun City neighborhood hail hub"
             },
             {
               "type": "text",
-              "text": ", "
+              "text": "."
+            }
+          ]
+        },
+        {
+          "kind": "h2",
+          "text": "Teravista"
+        },
+        {
+          "kind": "p",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Teravista mixes tree-lined streets, golf-course adjacency, and several build eras—so hail rarely hits every lot the same way. Wind channeling around ponds can lift ridge shingles on one block while another sees only scattered bruising. Note storm motion on radar so your roofer has orientation photos, not hypotheticals, and compare scopes from inspectors who walk both tree-sheltered and open fairway lots. The "
             },
             {
               "type": "link",
-              "href": "/blog/hail-damage-teravista-georgetown-tx",
-              "label": "Teravista"
+              "href": "/neighborhoods/teravista/hail-damage",
+              "label": "Teravista hail hub"
             },
             {
               "type": "text",
-              "text": ", "
+              "text": " expands inspection timing and HOA coordination."
+            }
+          ]
+        },
+        {
+          "kind": "h2",
+          "text": "Wolf Ranch"
+        },
+        {
+          "kind": "p",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Wolf Ranch is filled with newer architectural roofs that can look pristine from the curb even after a harsh hail core. Builder-era bundles sometimes hide nail-line bruising until the next wind event. HOA design review can add a week if shingle class or color changes—start paperwork in parallel with insurance notice, and photograph condenser fins on ground-level equipment pads while crews are still booking quickly. See the "
             },
             {
               "type": "link",
-              "href": "/blog/hail-damage-wolf-ranch-georgetown-tx",
-              "label": "Wolf Ranch"
+              "href": "/neighborhoods/wolf-ranch/hail-damage",
+              "label": "Wolf Ranch hail hub"
             },
             {
               "type": "text",
-              "text": ", and "
+              "text": " for Wolf Ranch–specific checklists."
+            }
+          ]
+        },
+        {
+          "kind": "h2",
+          "text": "Georgetown Village"
+        },
+        {
+          "kind": "p",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Georgetown Village sits close to the historic core—tighter setbacks, mature street trees, and renovation-heavy homes mean hail shows up as dented mailboxes on narrow sidewalks and bruises hidden until the next steady rain. Event-week parking near the Square can block alley access for ladder trucks; weekday estimate slots often work better than weekend rushes when visitors return. Pair roof photos with notes on tree debris in valleys behind chimneys. The "
             },
             {
               "type": "link",
-              "href": "/blog/hail-damage-georgetown-village-tx",
-              "label": "Georgetown Village"
+              "href": "/neighborhoods/georgetown-village/hail-damage",
+              "label": "Georgetown Village hail hub"
             },
             {
               "type": "text",
-              "text": ". Each links to a neighborhood hub with FAQs and roofer shortlists."
+              "text": " covers downtown access and documentation tips."
             }
           ]
         },
@@ -4256,402 +4295,6 @@
         {
           "q": "Do I need to check HVAC too?",
           "a": "Yes—dented condenser fins and hail impacts on rooftop units are common pairing calls with roof inspections after Central Texas storms."
-        }
-      ]
-    },
-    {
-      "slug": "hail-damage-sun-city-georgetown-tx",
-      "title": "Hail Damage Repair in Sun City — Georgetown, TX (May 2026)",
-      "h1": "Hail Damage Repair in Sun City — Georgetown, TX (May 2026)",
-      "description": "May 2026 hail in Sun City, Georgetown TX: safe roof checks, what to photograph, insurance basics, and how to compare written roofing scopes before you sign.",
-      "locationSlug": "georgetown-tx",
-      "readTime": "8 min",
-      "datePublished": "2026-05-10",
-      "dateModified": "2026-05-12",
-      "content": [
-        {
-          "kind": "p",
-          "text": "After hail crossed west Williamson County on May 9–10, 2026, Sun City homeowners are dealing with a familiar tension: most shingle bruising is impossible to judge from the sidewalk, yet roofs here still take hits that show up first as granule loss, soft spots on the mat, or dented flashings—not always as an obvious leak."
-        },
-        {
-          "kind": "p",
-          "text": "Sun City skews toward 55+ living, so storm weeks collide with clinic visits, guest traffic, and golf-cart circulation on interior paths. Expect longer drive times for ladder crews and occasional gate delays. Save your roofer shortlist before the storm passes so you are not choosing from whoever parks longest at a mailbox kiosk."
-        },
-        {
-          "kind": "h2",
-          "text": "Safe checks you can do from the ground"
-        },
-        {
-          "kind": "ul",
-          "items": [
-            "Inspect mailboxes, gutter strips, and window screens for fresh dents—they corroborate roof impacts when shingles are hard to read.",
-            "Look for granule piles at downspouts after rain; sudden grit can signal bruising before interior stains appear.",
-            "Scan ridge and hip caps with binoculars; wind-plus-hail events pop tabs here first.",
-            "Note new ceiling spots after the next rain and date-stamp photos for adjusters."
-          ]
-        },
-        {
-          "kind": "h2",
-          "text": "Insurance and documentation in Texas"
-        },
-        {
-          "kind": "p",
-          "text": "Most homeowners policies cover sudden wind and hail damage, but your deductible—sometimes a dedicated wind/hail percentage—and whether the carrier pays replacement cost versus actual cash value change the math. File timely notice, photograph damage before emergency tarping, and keep NWS watch or warning timing handy."
-        },
-        {
-          "kind": "h2",
-          "text": "Sun City: next steps"
-        },
-        {
-          "kind": "p",
-          "parts": [
-            {
-              "type": "text",
-              "text": "Read the longer "
-            },
-            {
-              "type": "link",
-              "href": "/neighborhoods/sun-city/hail-damage",
-              "label": "Sun City neighborhood hail hub"
-            },
-            {
-              "type": "text",
-              "text": " for FAQs, then compare scopes on the "
-            },
-            {
-              "type": "link",
-              "href": "/services/roofer-georgetown-tx",
-              "label": "Georgetown roofing guide"
-            },
-            {
-              "type": "text",
-              "text": " and county timeline in "
-            },
-            {
-              "type": "link",
-              "href": "/blog/hail-damage-georgetown-williamson-may-2026",
-              "label": "our Williamson County hail pillar"
-            },
-            {
-              "type": "text",
-              "text": "."
-            }
-          ]
-        }
-      ],
-      "relatedServiceSlugs": [
-        "roofer-georgetown-tx",
-        "hvac-georgetown-tx"
-      ],
-      "relatedBestSlugs": [
-        "best-roofers-georgetown-tx",
-        "top-hvac-companies-georgetown-tx"
-      ],
-      "faqs": [
-        {
-          "q": "How soon should Sun City homeowners inspect after hail?",
-          "a": "Do a ground-level review once lightning risk drops, then book a licensed roofer for a documented walk within a few days—before the next heavy rain."
-        },
-        {
-          "q": "Should I also check HVAC after hail?",
-          "a": "Yes—dented condenser fins and hail impacts on rooftop units are common pairing calls with roof inspections after Central Texas storms."
-        }
-      ]
-    },
-    {
-      "slug": "hail-damage-teravista-georgetown-tx",
-      "title": "Hail Damage Repair in Teravista — Georgetown, TX (May 2026)",
-      "h1": "Hail Damage Repair in Teravista — Georgetown, TX (May 2026)",
-      "description": "May 2026 hail in Teravista, Georgetown TX: safe roof checks, what to photograph, insurance basics, and how to compare written roofing scopes before you sign.",
-      "locationSlug": "georgetown-tx",
-      "readTime": "8 min",
-      "datePublished": "2026-05-10",
-      "dateModified": "2026-05-12",
-      "content": [
-        {
-          "kind": "p",
-          "text": "After hail crossed west Williamson County on May 9–10, 2026, Teravista homeowners are dealing with a familiar tension: most shingle bruising is impossible to judge from the sidewalk, yet roofs here still take hits that show up first as granule loss, soft spots on the mat, or dented flashings—not always as an obvious leak."
-        },
-        {
-          "kind": "p",
-          "text": "Teravista mixes tree-lined streets, golf-course adjacency, and several build eras—so hail rarely hits every lot the same way. Wind channeling around ponds can lift ridge shingles on one block while another sees only scattered bruising. Note storm motion on radar so your roofer has orientation photos, not hypotheticals."
-        },
-        {
-          "kind": "h2",
-          "text": "Safe checks you can do from the ground"
-        },
-        {
-          "kind": "ul",
-          "items": [
-            "Inspect mailboxes, gutter strips, and window screens for fresh dents—they corroborate roof impacts when shingles are hard to read.",
-            "Look for granule piles at downspouts after rain; sudden grit can signal bruising before interior stains appear.",
-            "Scan ridge and hip caps with binoculars; wind-plus-hail events pop tabs here first.",
-            "Note new ceiling spots after the next rain and date-stamp photos for adjusters."
-          ]
-        },
-        {
-          "kind": "h2",
-          "text": "Insurance and documentation in Texas"
-        },
-        {
-          "kind": "p",
-          "text": "Most homeowners policies cover sudden wind and hail damage, but your deductible—sometimes a dedicated wind/hail percentage—and whether the carrier pays replacement cost versus actual cash value change the math. File timely notice, photograph damage before emergency tarping, and keep NWS watch or warning timing handy."
-        },
-        {
-          "kind": "h2",
-          "text": "Teravista: next steps"
-        },
-        {
-          "kind": "p",
-          "parts": [
-            {
-              "type": "text",
-              "text": "Read the longer "
-            },
-            {
-              "type": "link",
-              "href": "/neighborhoods/teravista/hail-damage",
-              "label": "Teravista neighborhood hail hub"
-            },
-            {
-              "type": "text",
-              "text": " for FAQs, then compare scopes on the "
-            },
-            {
-              "type": "link",
-              "href": "/services/roofer-georgetown-tx",
-              "label": "Georgetown roofing guide"
-            },
-            {
-              "type": "text",
-              "text": " and county timeline in "
-            },
-            {
-              "type": "link",
-              "href": "/blog/hail-damage-georgetown-williamson-may-2026",
-              "label": "our Williamson County hail pillar"
-            },
-            {
-              "type": "text",
-              "text": "."
-            }
-          ]
-        }
-      ],
-      "relatedServiceSlugs": [
-        "roofer-georgetown-tx",
-        "hvac-georgetown-tx"
-      ],
-      "relatedBestSlugs": [
-        "best-roofers-georgetown-tx",
-        "top-hvac-companies-georgetown-tx"
-      ],
-      "faqs": [
-        {
-          "q": "How soon should Teravista homeowners inspect after hail?",
-          "a": "Complete a ground-level review after lightning risk drops, then book a roofer within days so bruised mats are documented before the next storm."
-        },
-        {
-          "q": "Will insurance pay for hail roof repair in Teravista?",
-          "a": "When adjusters document functional damage tied to a covered storm, payment is common subject to deductible and policy terms; photo correlation with soft-metal hits matters."
-        }
-      ]
-    },
-    {
-      "slug": "hail-damage-wolf-ranch-georgetown-tx",
-      "title": "Hail Damage Repair in Wolf Ranch — Georgetown, TX (May 2026)",
-      "h1": "Hail Damage Repair in Wolf Ranch — Georgetown, TX (May 2026)",
-      "description": "May 2026 hail in Wolf Ranch, Georgetown TX: safe roof checks, what to photograph, insurance basics, and how to compare written roofing scopes before you sign.",
-      "locationSlug": "georgetown-tx",
-      "readTime": "8 min",
-      "datePublished": "2026-05-10",
-      "dateModified": "2026-05-12",
-      "content": [
-        {
-          "kind": "p",
-          "text": "After hail crossed west Williamson County on May 9–10, 2026, Wolf Ranch homeowners are dealing with a familiar tension: most shingle bruising is impossible to judge from the sidewalk, yet roofs here still take hits that show up first as granule loss, soft spots on the mat, or dented flashings—not always as an obvious leak."
-        },
-        {
-          "kind": "p",
-          "text": "Wolf Ranch is filled with newer architectural roofs that can look pristine from the curb even after a harsh hail core. Builder-era bundles sometimes hide nail-line bruising until the next wind event. HOA design review can add a week if shingle class or color changes—start paperwork in parallel with insurance notice."
-        },
-        {
-          "kind": "h2",
-          "text": "Safe checks you can do from the ground"
-        },
-        {
-          "kind": "ul",
-          "items": [
-            "Inspect mailboxes, gutter strips, and window screens for fresh dents—they corroborate roof impacts when shingles are hard to read.",
-            "Look for granule piles at downspouts after rain; sudden grit can signal bruising before interior stains appear.",
-            "Scan ridge and hip caps with binoculars; wind-plus-hail events pop tabs here first.",
-            "Note new ceiling spots after the next rain and date-stamp photos for adjusters."
-          ]
-        },
-        {
-          "kind": "h2",
-          "text": "Insurance and documentation in Texas"
-        },
-        {
-          "kind": "p",
-          "text": "Most homeowners policies cover sudden wind and hail damage, but your deductible—sometimes a dedicated wind/hail percentage—and whether the carrier pays replacement cost versus actual cash value change the math. File timely notice, photograph damage before emergency tarping, and keep NWS watch or warning timing handy."
-        },
-        {
-          "kind": "h2",
-          "text": "Wolf Ranch: next steps"
-        },
-        {
-          "kind": "p",
-          "parts": [
-            {
-              "type": "text",
-              "text": "Read the longer "
-            },
-            {
-              "type": "link",
-              "href": "/neighborhoods/wolf-ranch/hail-damage",
-              "label": "Wolf Ranch neighborhood hail hub"
-            },
-            {
-              "type": "text",
-              "text": " for FAQs, then compare scopes on the "
-            },
-            {
-              "type": "link",
-              "href": "/services/roofer-georgetown-tx",
-              "label": "Georgetown roofing guide"
-            },
-            {
-              "type": "text",
-              "text": " and county timeline in "
-            },
-            {
-              "type": "link",
-              "href": "/blog/hail-damage-georgetown-williamson-may-2026",
-              "label": "our Williamson County hail pillar"
-            },
-            {
-              "type": "text",
-              "text": "."
-            }
-          ]
-        }
-      ],
-      "relatedServiceSlugs": [
-        "roofer-georgetown-tx",
-        "hvac-georgetown-tx"
-      ],
-      "relatedBestSlugs": [
-        "best-roofers-georgetown-tx",
-        "top-hvac-companies-georgetown-tx"
-      ],
-      "faqs": [
-        {
-          "q": "How soon should Wolf Ranch homeowners inspect after hail?",
-          "a": "Schedule a licensed inspection as soon as crews can work safely—ideally before the next widespread rain—because latent bruising on newer laminates may not leak immediately."
-        },
-        {
-          "q": "Will insurance pay for hail roof repair in Wolf Ranch?",
-          "a": "When functional damage is verified, many Williamson County homeowners receive coverage toward replacement or repair minus deductible; widespread bruising can still warrant replacement."
-        }
-      ]
-    },
-    {
-      "slug": "hail-damage-georgetown-village-tx",
-      "title": "Hail Damage Repair in Georgetown Village — Georgetown, TX (May 2026)",
-      "h1": "Hail Damage Repair in Georgetown Village — Georgetown, TX (May 2026)",
-      "description": "May 2026 hail in Georgetown Village, Georgetown TX: safe roof checks, what to photograph, insurance basics, and how to compare written roofing scopes before you sign.",
-      "locationSlug": "georgetown-tx",
-      "readTime": "8 min",
-      "datePublished": "2026-05-10",
-      "dateModified": "2026-05-12",
-      "content": [
-        {
-          "kind": "p",
-          "text": "After hail crossed west Williamson County on May 9–10, 2026, Georgetown Village homeowners are dealing with a familiar tension: most shingle bruising is impossible to judge from the sidewalk, yet roofs here still take hits that show up first as granule loss, soft spots on the mat, or dented flashings—not always as an obvious leak."
-        },
-        {
-          "kind": "p",
-          "text": "Georgetown Village sits close to the historic core—tighter setbacks, mature street trees, and renovation-heavy homes mean hail shows up as dented mailboxes on narrow sidewalks and bruises hidden until the next steady rain. Event-week parking near the Square can block alley access for ladder trucks; weekday estimate slots often work better."
-        },
-        {
-          "kind": "h2",
-          "text": "Safe checks you can do from the ground"
-        },
-        {
-          "kind": "ul",
-          "items": [
-            "Inspect mailboxes, gutter strips, and window screens for fresh dents—they corroborate roof impacts when shingles are hard to read.",
-            "Look for granule piles at downspouts after rain; sudden grit can signal bruising before interior stains appear.",
-            "Scan ridge and hip caps with binoculars; wind-plus-hail events pop tabs here first.",
-            "Note new ceiling spots after the next rain and date-stamp photos for adjusters."
-          ]
-        },
-        {
-          "kind": "h2",
-          "text": "Insurance and documentation in Texas"
-        },
-        {
-          "kind": "p",
-          "text": "Most homeowners policies cover sudden wind and hail damage, but your deductible—sometimes a dedicated wind/hail percentage—and whether the carrier pays replacement cost versus actual cash value change the math. File timely notice, photograph damage before emergency tarping, and keep NWS watch or warning timing handy."
-        },
-        {
-          "kind": "h2",
-          "text": "Georgetown Village: next steps"
-        },
-        {
-          "kind": "p",
-          "parts": [
-            {
-              "type": "text",
-              "text": "Read the longer "
-            },
-            {
-              "type": "link",
-              "href": "/neighborhoods/georgetown-village/hail-damage",
-              "label": "Georgetown Village neighborhood hail hub"
-            },
-            {
-              "type": "text",
-              "text": " for FAQs, then compare scopes on the "
-            },
-            {
-              "type": "link",
-              "href": "/services/roofer-georgetown-tx",
-              "label": "Georgetown roofing guide"
-            },
-            {
-              "type": "text",
-              "text": " and county timeline in "
-            },
-            {
-              "type": "link",
-              "href": "/blog/hail-damage-georgetown-williamson-may-2026",
-              "label": "our Williamson County hail pillar"
-            },
-            {
-              "type": "text",
-              "text": "."
-            }
-          ]
-        }
-      ],
-      "relatedServiceSlugs": [
-        "roofer-georgetown-tx",
-        "hvac-georgetown-tx"
-      ],
-      "relatedBestSlugs": [
-        "best-roofers-georgetown-tx",
-        "top-hvac-companies-georgetown-tx"
-      ],
-      "faqs": [
-        {
-          "q": "How soon should Georgetown Village homeowners inspect after hail?",
-          "a": "After the watch clears, perform a safe exterior pass the same day if possible, then secure a roofer within a few days before clogged gutters multiply damage."
-        },
-        {
-          "q": "Will insurance pay for hail roof repair near downtown?",
-          "a": "Functional storm damage is typically covered subject to deductible and policy type; older roofs may see depreciation applied unless endorsed otherwise."
         }
       ]
     }

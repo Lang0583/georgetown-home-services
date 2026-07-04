@@ -181,11 +181,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Plumbing in Sun City",
-        "href": "/neighborhoods/sun-city/plumber"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Plumbing in Teravista",
-        "href": "/neighborhoods/teravista/plumber"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -239,11 +239,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Plumbing in Sun City",
-        "href": "/neighborhoods/sun-city/plumber"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Plumbing in Teravista",
-        "href": "/neighborhoods/teravista/plumber"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -297,11 +297,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Plumbing in Sun City",
-        "href": "/neighborhoods/sun-city/plumber"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Plumbing in Teravista",
-        "href": "/neighborhoods/teravista/plumber"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -355,11 +355,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Plumbing in Sun City",
-        "href": "/neighborhoods/sun-city/plumber"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Plumbing in Teravista",
-        "href": "/neighborhoods/teravista/plumber"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -413,11 +413,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Plumbing in Sun City",
-        "href": "/neighborhoods/sun-city/plumber"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Plumbing in Teravista",
-        "href": "/neighborhoods/teravista/plumber"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -471,11 +471,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Plumbing in Sun City",
-        "href": "/neighborhoods/sun-city/plumber"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Plumbing in Teravista",
-        "href": "/neighborhoods/teravista/plumber"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -529,11 +529,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Plumbing in Sun City",
-        "href": "/neighborhoods/sun-city/plumber"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Plumbing in Teravista",
-        "href": "/neighborhoods/teravista/plumber"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -587,11 +587,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Plumbing in Sun City",
-        "href": "/neighborhoods/sun-city/plumber"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Plumbing in Teravista",
-        "href": "/neighborhoods/teravista/plumber"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -645,11 +645,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "HVAC in Sun City",
-        "href": "/neighborhoods/sun-city/hvac"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "HVAC in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/hvac"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -703,11 +703,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "HVAC in Sun City",
-        "href": "/neighborhoods/sun-city/hvac"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "HVAC in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/hvac"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -761,11 +761,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "HVAC in Sun City",
-        "href": "/neighborhoods/sun-city/hvac"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "HVAC in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/hvac"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -819,11 +819,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "HVAC in Sun City",
-        "href": "/neighborhoods/sun-city/hvac"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "HVAC in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/hvac"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -877,11 +877,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "HVAC in Sun City",
-        "href": "/neighborhoods/sun-city/hvac"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "HVAC in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/hvac"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -935,11 +935,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "HVAC in Sun City",
-        "href": "/neighborhoods/sun-city/hvac"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "HVAC in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/hvac"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -993,11 +993,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "HVAC in Sun City",
-        "href": "/neighborhoods/sun-city/hvac"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "HVAC in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/hvac"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1051,11 +1051,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "HVAC in Sun City",
-        "href": "/neighborhoods/sun-city/hvac"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "HVAC in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/hvac"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1109,11 +1109,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Roofing in Sun City",
-        "href": "/neighborhoods/sun-city/roofer"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Roofing in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/roofer"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1167,11 +1167,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Roofing in Sun City",
-        "href": "/neighborhoods/sun-city/roofer"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Roofing in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/roofer"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1225,11 +1225,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Roofing in Sun City",
-        "href": "/neighborhoods/sun-city/roofer"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Roofing in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/roofer"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1283,11 +1283,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Roofing in Sun City",
-        "href": "/neighborhoods/sun-city/roofer"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Roofing in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/roofer"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1341,11 +1341,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Roofing in Sun City",
-        "href": "/neighborhoods/sun-city/roofer"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Roofing in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/roofer"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1399,11 +1399,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Roofing in Sun City",
-        "href": "/neighborhoods/sun-city/roofer"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Roofing in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/roofer"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1457,11 +1457,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Roofing in Sun City",
-        "href": "/neighborhoods/sun-city/roofer"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Roofing in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/roofer"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1515,11 +1515,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Roofing in Sun City",
-        "href": "/neighborhoods/sun-city/roofer"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Roofing in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/roofer"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1573,11 +1573,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Electrical in Teravista",
-        "href": "/neighborhoods/teravista/electrician"
+        "href": "/neighborhoods/teravista/home-services"
       },
       {
         "label": "Electrical in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/electrician"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1631,11 +1631,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Electrical in Teravista",
-        "href": "/neighborhoods/teravista/electrician"
+        "href": "/neighborhoods/teravista/home-services"
       },
       {
         "label": "Electrical in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/electrician"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1689,11 +1689,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Electrical in Teravista",
-        "href": "/neighborhoods/teravista/electrician"
+        "href": "/neighborhoods/teravista/home-services"
       },
       {
         "label": "Electrical in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/electrician"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1747,11 +1747,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Electrical in Teravista",
-        "href": "/neighborhoods/teravista/electrician"
+        "href": "/neighborhoods/teravista/home-services"
       },
       {
         "label": "Electrical in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/electrician"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1805,11 +1805,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Electrical in Teravista",
-        "href": "/neighborhoods/teravista/electrician"
+        "href": "/neighborhoods/teravista/home-services"
       },
       {
         "label": "Electrical in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/electrician"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1863,11 +1863,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Electrical in Teravista",
-        "href": "/neighborhoods/teravista/electrician"
+        "href": "/neighborhoods/teravista/home-services"
       },
       {
         "label": "Electrical in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/electrician"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1921,11 +1921,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Electrical in Teravista",
-        "href": "/neighborhoods/teravista/electrician"
+        "href": "/neighborhoods/teravista/home-services"
       },
       {
         "label": "Electrical in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/electrician"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1979,11 +1979,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Electrical in Teravista",
-        "href": "/neighborhoods/teravista/electrician"
+        "href": "/neighborhoods/teravista/home-services"
       },
       {
         "label": "Electrical in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/electrician"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -2037,11 +2037,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Landscaping in Berry Creek",
-        "href": "/neighborhoods/berry-creek/landscaping"
+        "href": "/neighborhoods/berry-creek/home-services"
       },
       {
         "label": "Landscaping in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/landscaping"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -2095,11 +2095,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Landscaping in Berry Creek",
-        "href": "/neighborhoods/berry-creek/landscaping"
+        "href": "/neighborhoods/berry-creek/home-services"
       },
       {
         "label": "Landscaping in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/landscaping"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -2153,11 +2153,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Landscaping in Berry Creek",
-        "href": "/neighborhoods/berry-creek/landscaping"
+        "href": "/neighborhoods/berry-creek/home-services"
       },
       {
         "label": "Landscaping in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/landscaping"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -2211,11 +2211,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Landscaping in Berry Creek",
-        "href": "/neighborhoods/berry-creek/landscaping"
+        "href": "/neighborhoods/berry-creek/home-services"
       },
       {
         "label": "Landscaping in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/landscaping"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -2269,11 +2269,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Landscaping in Berry Creek",
-        "href": "/neighborhoods/berry-creek/landscaping"
+        "href": "/neighborhoods/berry-creek/home-services"
       },
       {
         "label": "Landscaping in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/landscaping"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -2327,11 +2327,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Landscaping in Berry Creek",
-        "href": "/neighborhoods/berry-creek/landscaping"
+        "href": "/neighborhoods/berry-creek/home-services"
       },
       {
         "label": "Landscaping in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/landscaping"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -2385,11 +2385,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Landscaping in Berry Creek",
-        "href": "/neighborhoods/berry-creek/landscaping"
+        "href": "/neighborhoods/berry-creek/home-services"
       },
       {
         "label": "Landscaping in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/landscaping"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -2443,11 +2443,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Landscaping in Berry Creek",
-        "href": "/neighborhoods/berry-creek/landscaping"
+        "href": "/neighborhoods/berry-creek/home-services"
       },
       {
         "label": "Landscaping in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/landscaping"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -2501,11 +2501,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Pest Control in Berry Creek",
-        "href": "/neighborhoods/berry-creek/pest-control"
+        "href": "/neighborhoods/berry-creek/home-services"
       },
       {
         "label": "Pest Control in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/pest-control"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -2559,11 +2559,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Pest Control in Berry Creek",
-        "href": "/neighborhoods/berry-creek/pest-control"
+        "href": "/neighborhoods/berry-creek/home-services"
       },
       {
         "label": "Pest Control in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/pest-control"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -2617,11 +2617,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Pest Control in Berry Creek",
-        "href": "/neighborhoods/berry-creek/pest-control"
+        "href": "/neighborhoods/berry-creek/home-services"
       },
       {
         "label": "Pest Control in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/pest-control"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -2675,11 +2675,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Pest Control in Berry Creek",
-        "href": "/neighborhoods/berry-creek/pest-control"
+        "href": "/neighborhoods/berry-creek/home-services"
       },
       {
         "label": "Pest Control in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/pest-control"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -2733,11 +2733,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Pest Control in Berry Creek",
-        "href": "/neighborhoods/berry-creek/pest-control"
+        "href": "/neighborhoods/berry-creek/home-services"
       },
       {
         "label": "Pest Control in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/pest-control"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -2791,11 +2791,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Pest Control in Berry Creek",
-        "href": "/neighborhoods/berry-creek/pest-control"
+        "href": "/neighborhoods/berry-creek/home-services"
       },
       {
         "label": "Pest Control in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/pest-control"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -2849,11 +2849,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Pest Control in Berry Creek",
-        "href": "/neighborhoods/berry-creek/pest-control"
+        "href": "/neighborhoods/berry-creek/home-services"
       },
       {
         "label": "Pest Control in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/pest-control"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -2907,11 +2907,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Pest Control in Berry Creek",
-        "href": "/neighborhoods/berry-creek/pest-control"
+        "href": "/neighborhoods/berry-creek/home-services"
       },
       {
         "label": "Pest Control in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/pest-control"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -2965,11 +2965,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Foundation in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/foundation-repair"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       },
       {
         "label": "Foundation in Teravista",
-        "href": "/neighborhoods/teravista/foundation-repair"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -3023,11 +3023,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Foundation in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/foundation-repair"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       },
       {
         "label": "Foundation in Teravista",
-        "href": "/neighborhoods/teravista/foundation-repair"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -3081,11 +3081,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Foundation in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/foundation-repair"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       },
       {
         "label": "Foundation in Teravista",
-        "href": "/neighborhoods/teravista/foundation-repair"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -3139,11 +3139,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Foundation in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/foundation-repair"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       },
       {
         "label": "Foundation in Teravista",
-        "href": "/neighborhoods/teravista/foundation-repair"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -3197,11 +3197,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Foundation in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/foundation-repair"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       },
       {
         "label": "Foundation in Teravista",
-        "href": "/neighborhoods/teravista/foundation-repair"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -3255,11 +3255,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Foundation in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/foundation-repair"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       },
       {
         "label": "Foundation in Teravista",
-        "href": "/neighborhoods/teravista/foundation-repair"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -3313,11 +3313,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Foundation in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/foundation-repair"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       },
       {
         "label": "Foundation in Teravista",
-        "href": "/neighborhoods/teravista/foundation-repair"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -3371,11 +3371,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Foundation in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/foundation-repair"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       },
       {
         "label": "Foundation in Teravista",
-        "href": "/neighborhoods/teravista/foundation-repair"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -3429,11 +3429,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Cleaning in Sun City",
-        "href": "/neighborhoods/sun-city/house-cleaning"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Cleaning in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/house-cleaning"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -3487,11 +3487,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Cleaning in Sun City",
-        "href": "/neighborhoods/sun-city/house-cleaning"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Cleaning in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/house-cleaning"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -3545,11 +3545,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Cleaning in Sun City",
-        "href": "/neighborhoods/sun-city/house-cleaning"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Cleaning in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/house-cleaning"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -3603,11 +3603,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Cleaning in Sun City",
-        "href": "/neighborhoods/sun-city/house-cleaning"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Cleaning in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/house-cleaning"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -3661,11 +3661,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Cleaning in Sun City",
-        "href": "/neighborhoods/sun-city/house-cleaning"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Cleaning in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/house-cleaning"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -3719,11 +3719,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Cleaning in Sun City",
-        "href": "/neighborhoods/sun-city/house-cleaning"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Cleaning in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/house-cleaning"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -3777,11 +3777,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Cleaning in Sun City",
-        "href": "/neighborhoods/sun-city/house-cleaning"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Cleaning in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/house-cleaning"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -3835,11 +3835,11 @@ export const subServicePages: SubServicePage[] = [
     "neighborhoodLinks": [
       {
         "label": "Cleaning in Sun City",
-        "href": "/neighborhoods/sun-city/house-cleaning"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Cleaning in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/house-cleaning"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED

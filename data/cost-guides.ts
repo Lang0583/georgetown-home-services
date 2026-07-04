@@ -167,11 +167,11 @@ export const costGuidePages: CostGuidePage[] = [
       },
       {
         "label": "Plumbing in Sun City",
-        "href": "/neighborhoods/sun-city/plumber"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Plumbing in Teravista",
-        "href": "/neighborhoods/teravista/plumber"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -282,11 +282,11 @@ export const costGuidePages: CostGuidePage[] = [
       },
       {
         "label": "HVAC in Sun City",
-        "href": "/neighborhoods/sun-city/hvac"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "HVAC in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/hvac"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -396,11 +396,11 @@ export const costGuidePages: CostGuidePage[] = [
       },
       {
         "label": "HVAC in Teravista",
-        "href": "/neighborhoods/teravista/hvac"
+        "href": "/neighborhoods/teravista/home-services"
       },
       {
         "label": "HVAC in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/hvac"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -510,11 +510,11 @@ export const costGuidePages: CostGuidePage[] = [
       },
       {
         "label": "Roofing in Sun City",
-        "href": "/neighborhoods/sun-city/roofer"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Roofing in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/roofer"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -624,7 +624,7 @@ export const costGuidePages: CostGuidePage[] = [
       },
       {
         "label": "Roofing in Teravista",
-        "href": "/neighborhoods/teravista/roofer"
+        "href": "/neighborhoods/teravista/home-services"
       },
       {
         "label": "hail-damage in Sun City",
@@ -738,11 +738,11 @@ export const costGuidePages: CostGuidePage[] = [
       },
       {
         "label": "Electrical in Teravista",
-        "href": "/neighborhoods/teravista/electrician"
+        "href": "/neighborhoods/teravista/home-services"
       },
       {
         "label": "Electrical in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/electrician"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -846,11 +846,11 @@ export const costGuidePages: CostGuidePage[] = [
       },
       {
         "label": "Electrical in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/electrician"
+        "href": "/neighborhoods/georgetown-village/home-services"
       },
       {
         "label": "Electrical in Sun City",
-        "href": "/neighborhoods/sun-city/electrician"
+        "href": "/neighborhoods/sun-city/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -961,11 +961,11 @@ export const costGuidePages: CostGuidePage[] = [
       },
       {
         "label": "Landscaping in Berry Creek",
-        "href": "/neighborhoods/berry-creek/landscaping"
+        "href": "/neighborhoods/berry-creek/home-services"
       },
       {
         "label": "Landscaping in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/landscaping"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1078,11 +1078,11 @@ export const costGuidePages: CostGuidePage[] = [
       },
       {
         "label": "Landscaping in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/landscaping"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       },
       {
         "label": "Landscaping in Berry Creek",
-        "href": "/neighborhoods/berry-creek/landscaping"
+        "href": "/neighborhoods/berry-creek/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1188,11 +1188,11 @@ export const costGuidePages: CostGuidePage[] = [
       },
       {
         "label": "Pest control in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/pest-control"
+        "href": "/neighborhoods/georgetown-village/home-services"
       },
       {
         "label": "Pest control in Berry Creek",
-        "href": "/neighborhoods/berry-creek/pest-control"
+        "href": "/neighborhoods/berry-creek/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1297,11 +1297,11 @@ export const costGuidePages: CostGuidePage[] = [
       },
       {
         "label": "Pest control in Sun City",
-        "href": "/neighborhoods/sun-city/pest-control"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "Pest control in Teravista",
-        "href": "/neighborhoods/teravista/pest-control"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1411,11 +1411,11 @@ export const costGuidePages: CostGuidePage[] = [
       },
       {
         "label": "Foundation in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/foundation-repair"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       },
       {
         "label": "Foundation in Teravista",
-        "href": "/neighborhoods/teravista/foundation-repair"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1526,11 +1526,11 @@ export const costGuidePages: CostGuidePage[] = [
       },
       {
         "label": "House cleaning in Sun City",
-        "href": "/neighborhoods/sun-city/house-cleaning"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "House cleaning in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/house-cleaning"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1640,11 +1640,11 @@ export const costGuidePages: CostGuidePage[] = [
       },
       {
         "label": "Plumbing in Wolf Ranch",
-        "href": "/neighborhoods/wolf-ranch/plumber"
+        "href": "/neighborhoods/wolf-ranch/home-services"
       },
       {
         "label": "Plumbing in Sun City",
-        "href": "/neighborhoods/sun-city/plumber"
+        "href": "/neighborhoods/sun-city/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1748,11 +1748,11 @@ export const costGuidePages: CostGuidePage[] = [
       },
       {
         "label": "Plumbing in Berry Creek",
-        "href": "/neighborhoods/berry-creek/plumber"
+        "href": "/neighborhoods/berry-creek/home-services"
       },
       {
         "label": "Plumbing in Georgetown Village",
-        "href": "/neighborhoods/georgetown-village/plumber"
+        "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
@@ -1863,11 +1863,11 @@ export const costGuidePages: CostGuidePage[] = [
       },
       {
         "label": "HVAC in Sun City",
-        "href": "/neighborhoods/sun-city/hvac"
+        "href": "/neighborhoods/sun-city/home-services"
       },
       {
         "label": "HVAC in Teravista",
-        "href": "/neighborhoods/teravista/hvac"
+        "href": "/neighborhoods/teravista/home-services"
       }
     ],
     "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED

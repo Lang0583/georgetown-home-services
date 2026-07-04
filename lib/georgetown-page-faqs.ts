@@ -1,5 +1,4 @@
 import type { NeighborhoodHomeServicesHub } from "@/data/neighborhood-home-services-hubs";
-import type { NeighborhoodServicePage } from "@/data/neighborhoods";
 import type { ProviderGroup } from "./businesses";
 import { inferProviderGroupFromServicePage } from "./businesses";
 import type { Faq, ServicePage } from "./site-content";
@@ -294,81 +293,13 @@ export function resolveServiceGuideFaqs(service: ServicePage): Faq[] {
   return pad.slice(0, MAX_FAQS);
 }
 
-/** Map neighborhood service route segment → trade for tailored FAQs. */
-function neighborhoodServiceToGroup(serviceSlug: string): ProviderGroup {
-  const map: Record<string, ProviderGroup> = {
-    plumber: "plumber",
-    hvac: "hvac",
-    roofer: "roofer",
-    electrician: "electrician",
-    landscaping: "landscaping",
-    "pest-control": "pest_control",
-    "foundation-repair": "foundation_repair",
-    "house-cleaning": "house_cleaning",
-  };
-  return map[serviceSlug] ?? "plumber";
-}
-
-/**
- * 5–6 FAQs for `/neighborhoods/[area]/[service]` landings — localized to the subdivision + trade.
- */
-export function buildNeighborhoodGuideFaqs(page: NeighborhoodServicePage): Faq[] {
-  const { neighborhoodName, serviceName, serviceCategory, bestOfHref } = page;
-  const group = neighborhoodServiceToGroup(page.serviceSlug);
-  const tradeLabel =
-    group === "plumber"
-      ? "plumbing"
-      : group === "hvac"
-        ? "HVAC"
-        : group === "roofer"
-          ? "roofing"
-          : group === "electrician"
-            ? "electrical"
-            : group === "landscaping"
-              ? "landscaping"
-              : group === "pest_control"
-                ? "pest control"
-                : group === "foundation_repair"
-                  ? "foundation repair"
-                  : "house cleaning";
-
-  const localized: Faq[] = [
-    {
-      q: `Is ${serviceName.toLowerCase()} in ${neighborhoodName} different from other parts of Georgetown, TX?`,
-      a: `Often, yes. ${neighborhoodName} homes see patterns tied to build era, lot grading, tree canopy, and daily-use habits that differ from elsewhere in Georgetown. ${page.whyLocal} Always confirm any diagnosis with a licensed ${tradeLabel} professional who has inspected your specific home.`,
-    },
-    {
-      q: `What ${serviceCategory} symptoms should ${neighborhoodName} homeowners watch for first?`,
-      a: `Start with the “Common issues” list on this page—they reflect repeat calls we see tied to ${neighborhoodName}’s housing stock. Early documentation (photos, video, dates) helps contractors separate progressive problems from one-off weather spikes and makes written estimates easier to compare.`,
-    },
-    {
-      q: "How does Williamson County weather affect timing and pricing?",
-      a: "Peak summer heat, hail season, freeze-thaw swings, and clay soil moisture swings all influence how fast contractors can schedule and what materials cost. After widespread storms, demand spikes—plan ahead for longer lead times unless you have a true emergency.",
-    },
-    {
-      q: "Should I get multiple estimates for work in my neighborhood?",
-      a: `For non-emergency repairs or replacements, comparing two or three written scopes is still the best hedge against scope gaps. Make sure each bid lists materials, warranty length, and what happens if hidden conditions appear mid-job—especially for ${tradeLabel} work tied to concealed cavities or soil movement.`,
-    },
-    {
-      q: "Does Georgetown Home Services schedule or dispatch contractors to my home?",
-      a: `No. We publish neighborhood context and educational guides only. Use our provider directory at ${bestOfHref} to compare companies, then contact them directly for estimates and scheduling.`,
-    },
-    {
-      q: `Where can I compare top-rated ${serviceName.toLowerCase()} serving Georgetown, TX?`,
-      a: `Open our Georgetown-area directory (${bestOfHref}) for listings, hiring notes, and links to providers. Stick with written scopes and verifiable licensing—not high-pressure same-day sales tactics.`,
-    },
-  ];
-
-  return localized.slice(0, MAX_FAQS);
-}
-
 /** FAQs for `/neighborhoods/[area]/home-services` tri-trade hubs (plumbing + HVAC + roofing). */
 export function buildNeighborhoodHomeServicesHubFaqs(hub: NeighborhoodHomeServicesHub): Faq[] {
-  const { neighborhoodName } = hub;
+  const { neighborhoodName, neighborhoodSlug } = hub;
   return [
     {
-      q: `Why is ${neighborhoodName} plumbing different from “generic” Georgetown plumbing?`,
-      a: `Build era, lot grading, tree canopy, irrigation habits, and slab or foundation behavior change what fails first—even inside the same ZIP code. ${neighborhoodName} homes often show recurring symptom clusters (hard-water fixtures, drain performance after storms, guest-week demand spikes) that deserve context-specific questions when you call a licensed plumber. This page outlines higher-level patterns; the neighborhood plumbing-only guide drills into typical failure modes for your streets.`,
+      q: `Why is plumbing in ${neighborhoodName} different from “generic” Georgetown plumbing?`,
+      a: `Build era, lot grading, tree canopy, irrigation habits, and slab or foundation behavior change what fails first—even inside the same ZIP code. ${neighborhoodName} homes often show recurring symptom clusters (hard-water fixtures, drain performance after storms, guest-week demand spikes) that deserve context-specific questions when you call a licensed plumber. This hub outlines plumbing, HVAC, and roofing patterns together so you can compare trades before scheduling an on-site visit.`,
     },
     {
       q: `What HVAC issues show up most around ${neighborhoodName} during peak summer?`,
@@ -387,8 +318,8 @@ export function buildNeighborhoodHomeServicesHubFaqs(hub: NeighborhoodHomeServic
       a: "No. We publish homeowner education and directories. Use our Best Of pages for each trade and Angi’s Georgetown lists if you want an additional comparison lens—then hire based on licensing fit, transparent scope, and verified insurance.",
     },
     {
-      q: `Where can I read ${neighborhoodName}-specific guides for one trade only?`,
-      a: `Use the neighborhood drill-down links on this page for dedicated plumbing, HVAC, or roofing landings that expand common issues and local context beyond this overview.`,
+      q: `Where can I read more ${neighborhoodName} storm and hiring guidance?`,
+      a: `For May 2026 hail documentation and roof-access notes specific to ${neighborhoodName}, see the neighborhood hail damage page at /neighborhoods/${neighborhoodSlug}/hail-damage and our county-wide Williamson County hail article. Use the Georgetown service guides and Best Of directories on this page when you need trade-specific licensing and scope checklists.`,
     },
   ];
 }

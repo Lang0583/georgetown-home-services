@@ -9,7 +9,6 @@ import { join } from "node:path";
 import staticPages from "../data/static-pages-last-updated.json";
 import { NEIGHBORHOOD_HOME_SERVICES_HUBS } from "../data/neighborhood-home-services-hubs";
 import { NEIGHBORHOOD_HAIL_PAGES } from "../data/neighborhood-hail-pages";
-import { neighborhoodServicePages } from "../data/neighborhoods";
 import { costGuidePages } from "../data/cost-guides";
 import { subServicePages } from "../data/sub-services";
 import {
@@ -70,8 +69,8 @@ function main(): void {
   for (const page of NEIGHBORHOOD_HAIL_PAGES) {
     check(page.lastUpdated, "neighborhood-hail-pages", page.neighborhoodSlug, stale);
   }
-  for (const page of neighborhoodServicePages) {
-    check(page.lastUpdated, "neighborhoods", `${page.neighborhoodSlug}/${page.serviceSlug}`, stale);
+  for (const hub of NEIGHBORHOOD_HOME_SERVICES_HUBS) {
+    check(hub.lastUpdated, "neighborhood-home-services-hubs", hub.neighborhoodSlug, stale);
   }
   for (const guide of costGuidePages) {
     check(guide.lastUpdated, "cost-guides", guide.slug, stale);

@@ -568,7 +568,7 @@ function hoodLabel(path) {
     "foundation-repair": "Foundation",
     "house-cleaning": "House cleaning",
   };
-  return { label: `${svcNames[svc] ?? svc} in ${names[hood] ?? hood}`, href: `/neighborhoods/${hood}/${svc}` };
+  return { label: `${names[hood] ?? hood} home services`, href: `/neighborhoods/${hood}/home-services` };
 }
 
 const LICENSE_HINT = {
