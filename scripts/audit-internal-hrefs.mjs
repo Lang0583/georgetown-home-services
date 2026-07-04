@@ -23,7 +23,6 @@ const REDIRECT_SOURCES = new Map([
   ["/blog/how-to-find-a-good-plumber-georgetown", "/blog/how-to-choose-a-reliable-plumber-georgetown-tx"],
   ["/blog/roof-repair-cost-georgetown", "/blog/roof-repair-cost-georgetown-tx"],
   ["/blog/how-to-choose-plumber-georgetown-tx", "/blog/how-to-choose-a-reliable-plumber-georgetown-tx"],
-  ["/authors/cole-reinhardt", "/authors/matt"],
   ["/authors/editorial-team", "/authors/matt"],
 ]);
 

@@ -1,5 +1,4 @@
 import type { ContentBlock } from "../lib/site-content";
-import { blogPostAdSlot, ADSENSE_ENABLED } from "../lib/adConfig";
 import { COST_POST_SUPPLEMENTS } from "../lib/pricing-data";
 import {
   splitBlocksAfterNthParagraph,
@@ -7,7 +6,6 @@ import {
   splitHtmlBeforeFaq,
 } from "../lib/split-article-content";
 import { blogAffiliateConfigForSlug } from "../lib/blog-affiliate-config";
-import AdUnit from "./AdUnit";
 import AffiliateCTA from "./AffiliateCTA";
 import BlogCostSupplement from "./BlogCostSupplement";
 import BlogMidContentEmailCard from "./BlogMidContentEmailCard";
@@ -27,15 +25,6 @@ function useGeneratedHtml(slug: string, generated: { html: string } | null, bloc
   if (!generated) return null;
   if (CMS_BODY_SLUGS.has(slug) && blocks.length > 0) return null;
   return generated;
-}
-
-function BlogInlineAd() {
-  if (!ADSENSE_ENABLED || !blogPostAdSlot) return null;
-  return (
-    <div className="my-8" role="complementary" aria-label="Advertisement">
-      <AdUnit slotId={blogPostAdSlot} className="mx-auto max-w-2xl" />
-    </div>
-  );
 }
 
 /**
@@ -66,7 +55,6 @@ export default function BlogArticleBodyWithMidEmail({ slug, generated, blocks }:
     return (
       <ArticleContentShell>
         <ProseArticle dangerouslySetInnerHTML={{ __html: safeOpen2 }} />
-        <BlogInlineAd />
         {safePara3 ? <ProseArticle dangerouslySetInnerHTML={{ __html: safePara3 }} /> : null}
         {hasCostSupplement ? <BlogCostSupplement slug={slug} /> : null}
         <div className="my-8">
@@ -95,7 +83,6 @@ export default function BlogArticleBodyWithMidEmail({ slug, generated, blocks }:
       <ProseArticle>
         <RichTextBlocks blocks={first2} />
       </ProseArticle>
-      <BlogInlineAd />
       {thirdPara.length ? (
         <ProseArticle>
           <RichTextBlocks blocks={thirdPara} />

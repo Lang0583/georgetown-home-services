@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import AffiliateOutboundCta from "../../../components/AffiliateOutboundCta";
 import BestAlsoCompareBar from "../../../components/BestAlsoCompareBar";
 import { notFound } from "next/navigation";
 import LinkCard from "../../../components/LinkCard";
@@ -83,36 +82,6 @@ function BestOfFaqSection({ faqs }: { faqs: readonly { q: string; a: string }[] 
             <p className="mt-2 border-t border-ink/10 pt-2 pl-7 text-sm leading-relaxed text-muted">{f.a}</p>
           </details>
         ))}
-      </div>
-    </section>
-  );
-}
-
-function FeaturedPartnerCard({
-  partner,
-}: {
-  partner: NonNullable<
-    NonNullable<Awaited<ReturnType<typeof resolveBestPage>>>["record"]["featuredPartner"]
-  >;
-}) {
-  const disclosure = partner.disclosureLabel?.trim() || "Featured Listing (Sponsored)";
-  const cta = partner.ctaLabel?.trim() || "Visit partner";
-
-  return (
-    <section className="mt-6 rounded-xl border border-rating/25 bg-rating/10/40 p-5 shadow-sm">
-      <div className="text-xs font-semibold uppercase tracking-wide text-rating">{disclosure}</div>
-      <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-        <div className="min-w-0">
-          <div className="text-lg font-semibold text-ink">{partner.name}</div>
-          <p className="mt-1 text-sm leading-relaxed text-muted">{partner.description}</p>
-        </div>
-        <AffiliateOutboundCta
-          href={partner.href}
-          affiliateName={partner.name}
-          className="shrink-0 rounded-lg border border-rating/30 bg-surface px-4 py-2 text-sm font-semibold text-ink hover:bg-rating/10"
-        >
-          {cta}
-        </AffiliateOutboundCta>
       </div>
     </section>
   );
@@ -304,10 +273,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                     main line backs up right before company arrives. This guide is written for Georgetown homeowners who
                     want to choose a plumber with clear eyes: someone who understands local neighborhoods, explains
                     options without pressure, and shows up when the problem cannot wait until next week.
-                  </p>
-                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
-                    We continuously update our rankings based on customer reviews, service availability, and publicly
-                    listed local presence in Georgetown and surrounding areas.
                   </p>
                 </>
               ) : isHvacGeorgetown ? (
@@ -602,11 +567,9 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         How to compare HVAC companies in Georgetown
                       </h2>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                        Georgetown homeowners rely on HVAC more than most people realize. From May through September,
-                        Central Texas heat can push systems to run long hours, and small issues (weak airflow, a
-                        struggling outdoor unit, a clogged drain line) can turn into a no-cool call fast. In winter,
-                        short cold snaps expose maintenance gaps just as quickly—especially in homes where the heater
-                        sits idle for weeks at a time.
+                        Georgetown homeowners depend on HVAC through long Central Texas summers and short winter cold
+                        snaps. Small issues—weak airflow, a struggling outdoor unit, a clogged drain line—can turn into
+                        a no-cool call fast when heat pushes systems to run long hours.
                       </p>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                         Georgetown also has a mix of home types that change what “good HVAC” looks like in practice:
@@ -657,64 +620,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                           </li>
                         </ul>
                       </div>
-                    </section>
-
-                    <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-ink">
-                        How We Evaluated Providers
-                      </h2>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                        Ratings alone are not enough. Georgetown has a mix of older neighborhoods near the Square and
-                        fast-growing areas with newer construction, and the “right” HVAC provider depends on whether
-                        you need diagnostics, comfort improvements, or replacement planning. We use the criteria below
-                        to filter for companies that appear equipped to serve real homeowners, not just generate leads.
-                      </p>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                        In other words: we prioritize companies that look reachable, service-focused, and specific about
-                        HVAC work. For your final decision, you should still confirm the details that matter most for
-                        your home: licensing/insurance, warranty terms, whether a permit is required for certain work,
-                        and whether the quote includes any needed duct or electrical corrections.
-                      </p>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted">
-                        <li>
-                          <span className="font-semibold text-ink">Local service footprint:</span> a Georgetown,
-                          TX address, service area, or marketing that explicitly includes Georgetown or nearby
-                          corridors.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-ink">Public ratings and reviews:</span> star ratings
-                          and review counts where available from public business listings, used for relative ranking
-                          only.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-ink">Documented HVAC work:</span> clear mention of AC
-                          and heating repair, maintenance, or installation—not just generic home services.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-ink">Reachability:</span> working phone numbers,
-                          websites, or map listings so Georgetown homeowners can actually book service.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-ink">Clarity of scope:</span> providers that describe
-                          what a visit includes (diagnosis first, options second) rather than pushing replacement by
-                          default.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-ink">Fit for Texas heat:</span> evidence they handle
-                          the common Central Texas realities: peak-load no-cool calls, airflow imbalance in two-story
-                          homes, and drain/condensate issues that show up in humid stretches.
-                        </li>
-                      </ul>
-                      <p className="mt-3 text-sm leading-relaxed text-muted">
-                        We rely solely on publicly available information and do not receive compensation for
-                        placement. Always confirm current licensing, insurance, pricing, and availability directly with
-                        any HVAC company before hiring.
-                      </p>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                        A practical way to compare two providers is to ask both for the same thing: a written scope that
-                        includes what they will diagnose, what they will replace, and what the warranty covers. Clarity
-                        now usually means fewer surprises later.
-                      </p>
                     </section>
 
                     <section>
@@ -916,48 +821,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
 
                     <section>
                       <h2 className="text-2xl font-semibold tracking-tight text-ink">
-                        How We Evaluated Roofing Companies
-                      </h2>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                        Roofing is one of the highest-stakes home projects because the roof protects every other system in
-                        the house. We use a simple approach: start with publicly available business data, then prioritize
-                        roofing-specific signals that reduce the odds of a bad experience—unreachable companies, vague
-                        scopes, and “price-only” quotes that ignore ventilation, decking condition, and flashing details.
-                      </p>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted">
-                        <li>
-                          <span className="font-semibold text-ink">Local service footprint:</span> Georgetown, TX is
-                          explicitly served (address, service area, or reliable local presence).
-                        </li>
-                        <li>
-                          <span className="font-semibold text-ink">Reachability:</span> working phone numbers and
-                          websites that make it realistic to get answers quickly when you have active leaking or storm
-                          damage.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-ink">Public ratings and reviews:</span> star ratings
-                          and review counts where available are used for comparison, not as guarantees.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-ink">Service clarity:</span> the company describes
-                          roofing work (repairs, replacement, storm restoration, inspections) rather than unrelated trades
-                          with a “roofing” page tacked on.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-ink">Professional process:</span> signs of a real
-                          roofing process such as inspections, photos, written scopes, and warranty language you can
-                          review before signing.
-                        </li>
-                      </ul>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                        We rely strictly on public information. Listings on this page are not endorsements. Before you
-                        hire anyone, verify current insurance coverage, warranty terms, permit requirements (if any), and
-                        the exact scope of work for your roof.
-                      </p>
-                    </section>
-
-                    <section>
-                      <h2 className="text-2xl font-semibold tracking-tight text-ink">
                         Common Roofing Services in Georgetown
                       </h2>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
@@ -1119,7 +982,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         and addresses or official websites where published online). They are provided for research and comparison—confirm details
                         directly with any company before hiring.
                       </p>
-                      {best.featuredPartner ? <FeaturedPartnerCard partner={best.featuredPartner} /> : null}
                       <div className="mt-3 space-y-1 text-sm text-muted">
                         <p>
                           <Link href="/" className="font-semibold text-brand hover:text-brand">

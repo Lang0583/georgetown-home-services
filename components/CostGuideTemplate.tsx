@@ -1,6 +1,5 @@
 import Link from "next/link";
 import AuthorByline from "./AuthorByline";
-import AdUnit from "./AdUnit";
 import Breadcrumbs from "./Breadcrumbs";
 import FAQList from "./FAQList";
 import FAQSchema from "./FAQSchema";
@@ -11,7 +10,6 @@ import CostGuideAffiliateCallouts from "./CostGuideAffiliateCallouts";
 import CostGuidePriceTable from "./CostGuidePriceTable";
 import PageShell from "./templates/PageShell";
 import type { CostGuidePage } from "../data/cost-guides";
-import { costGuideAdSlot, ADSENSE_ENABLED } from "../lib/adConfig";
 import { absolutePageUrl } from "../lib/page-seo";
 import { webPageWithDateModifiedJsonLd } from "../lib/last-updated";
 import { hubArticleJsonLd } from "../lib/site-author";
@@ -86,12 +84,6 @@ export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
             any line item above these bands.
           </p>
         </section>
-
-        {ADSENSE_ENABLED && costGuideAdSlot ? (
-          <div className="mt-12 max-w-3xl" role="complementary" aria-label="Advertisement">
-            <AdUnit slotId={costGuideAdSlot} className="mx-auto" />
-          </div>
-        ) : null}
 
         <section className="mt-12 max-w-3xl">
           <FAQList faqs={faqs} variant="bordered" title={`Common questions: ${page.serviceName} costs`} className="!mt-0" />

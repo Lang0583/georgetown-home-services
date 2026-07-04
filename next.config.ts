@@ -148,12 +148,6 @@ const nextConfig: NextConfig = {
         destination: "/blog/how-to-choose-a-reliable-plumber-georgetown-tx",
         permanent: true,
       },
-      // Legacy author profile slugs → current Matt profile.
-      {
-        source: "/authors/cole-reinhardt",
-        destination: "/authors/matt",
-        permanent: true,
-      },
       {
         source: "/authors/editorial-team",
         destination: "/authors/matt",

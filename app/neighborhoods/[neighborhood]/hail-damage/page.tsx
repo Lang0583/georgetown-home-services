@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AuthorByline from "@/components/AuthorByline";
-import AdSenseDisplay from "@/components/AdSenseDisplay";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { ButtonLink } from "@/components/Button";
 import FAQList from "@/components/FAQList";
@@ -17,7 +16,6 @@ import {
 import { absolutePageUrl, pageSeoMetadata } from "@/lib/page-seo";
 import { webPageWithDateModifiedJsonLd } from "@/lib/last-updated";
 import { hubArticleJsonLd } from "@/lib/site-author";
-import { adsenseNeighborhoodPageInlineSlot } from "@/lib/adsense-config";
 
 function breadcrumbJsonLd({
   siteUrl,
@@ -144,12 +142,6 @@ export default async function NeighborhoodHailDamagePage({
           className="prose prose-lg mt-6 max-w-[70ch] text-ink leading-[1.65] prose-p:leading-[1.65] prose-strong:text-ink prose-headings:font-bold prose-headings:text-ink prose-headings:tracking-tight prose-a:text-brand prose-a:underline hover:prose-a:text-brand"
           dangerouslySetInnerHTML={{ __html: page.bodyHtml }}
         />
-
-        {adsenseNeighborhoodPageInlineSlot ? (
-          <div className="my-10">
-            <AdSenseDisplay slotId={adsenseNeighborhoodPageInlineSlot} className="mx-auto max-w-3xl" />
-          </div>
-        ) : null}
 
         <section className="mt-12 max-w-3xl">
           <p className="text-sm leading-relaxed text-muted">

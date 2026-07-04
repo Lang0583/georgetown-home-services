@@ -12,7 +12,7 @@ export default function BestProvidersMethodologyCallout() {
   return (
     <div className="space-y-3">
       <div className="rounded-lg border border-white/20 bg-[var(--accent)] px-5 py-4 shadow-sm">
-        <h3 className="text-sm font-semibold text-white">How we selected these providers</h3>
+        <h3 className="text-sm font-semibold text-white">How We Selected These Companies</h3>
         <ul className="mt-2 list-disc space-y-1 pl-4 text-xs leading-snug text-white/95 marker:text-white/90 sm:text-sm">
           {LISTING_INCLUSION_CRITERIA.map((text) => (
             <li key={text} className="pl-0.5">

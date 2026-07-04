@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import AdSenseDisplay from "../../../components/AdSenseDisplay";
 import AffiliateCTA from "../../../components/AffiliateCTA";
 import FAQList from "../../../components/FAQList";
 import FAQSchema from "../../../components/FAQSchema";
@@ -22,7 +21,6 @@ import {
   getServices,
   getServiceSlugs,
 } from "../../../lib/site-content";
-import { adsenseServicePageTopSlot, adsenseSidebarSlot } from "../../../lib/adsense-config";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import { webPageWithDateModifiedJsonLd } from "../../../lib/last-updated";
 import AuthorByline from "../../../components/AuthorByline";
@@ -196,11 +194,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 {service.serviceType} • {location?.title ?? "Georgetown, TX"}
               </div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">{service.h1}</h1>
-              {isCoreService && adsenseServicePageTopSlot ? (
-                <div className="mt-6">
-                  <AdSenseDisplay slotId={adsenseServicePageTopSlot} className="mx-auto max-w-2xl" />
-                </div>
-              ) : null}
               <LastUpdated lastUpdated={service.lastUpdated} />
               <AuthorByline className="mt-3" compact />
 
@@ -936,7 +929,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 <div className="mt-2 text-sm leading-relaxed text-muted">{location?.title ?? "Georgetown, TX"}</div>
               </div>
 
-              {adsenseSidebarSlot ? <AdSenseDisplay slotId={adsenseSidebarSlot} className="mt-8" /> : null}
               </>
             }
           />

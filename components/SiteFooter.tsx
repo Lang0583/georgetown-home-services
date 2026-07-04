@@ -367,7 +367,7 @@ export default function SiteFooter() {
             ) : null}
           </div>
           <div>
-            © {new Date().getFullYear()} {brand}. All rights reserved.
+            © {new Date().getFullYear()} {brand}.
           </div>
         </div>
       </div>

@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import AdSenseDisplay from "../../components/AdSenseDisplay";
 import Container from "../../components/Container";
 import CTASection from "../../components/CTASection";
 import LinkCard from "../../components/LinkCard";
 import BlogMidContentEmailCard from "../../components/BlogMidContentEmailCard";
-import { adsenseInlineSlot } from "../../lib/adsense-config";
 import { pageSeoMetadata } from "../../lib/page-seo";
 import { BLOG_EXPANSION_POSTS } from "../../data/blog-posts";
 import { getBlog } from "../../lib/site-content";
@@ -174,12 +172,6 @@ export default function BlogIndexPage() {
                 </a>
               </div>
             </div>
-
-            {adsenseInlineSlot ? (
-              <div className="mx-auto max-w-2xl">
-                <AdSenseDisplay slotId={adsenseInlineSlot} />
-              </div>
-            ) : null}
 
             <section>
               <h2 className="text-3xl font-semibold tracking-tight text-ink">Featured guides</h2>

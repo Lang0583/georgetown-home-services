@@ -9,7 +9,6 @@ import EmailCaptureSitewide from "../components/EmailCaptureSitewide";
 import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
 import HomeFaqPageHeadJsonLd from "../components/HomeFaqPageHeadJsonLd";
-import { ADSENSE_PUBLISHER_ID } from "../lib/adConfig";
 import { getImpactPublisherTagInnerHtml } from "../lib/impact-publisher-tag";
 import { organizationSchema, websiteSchema } from "../lib/schema";
 
@@ -18,8 +17,6 @@ const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com"
 /** impact.com / AppImpact “HTML tag” verification — paste the `content` value only (not the full tag). */
 const impactSiteVerification =
   process.env.IMPACT_SITE_VERIFICATION?.trim() || "b1d76151-29e8-4a9a-9913-9ea8f5ce9cd9";
-
-const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID?.trim() || ADSENSE_PUBLISHER_ID;
 
 /** GA4 default stream (override with `NEXT_PUBLIC_GA_MEASUREMENT_ID`). */
 const GA_MEASUREMENT_ID =
@@ -57,7 +54,6 @@ export async function generateMetadata(): Promise<Metadata> {
       "Independent Georgetown TX home services directory—compare plumbers, HVAC, roofers, and more with real reviews and local cost guides.",
     robots: { index: true, follow: true },
     other: {
-      "google-adsense-account": adsenseClient,
       /** impact.com crawlers expect <meta name="impact-site-verification" content="..."> (HTML uses `content`, not `value`). */
       "impact-site-verification": impactSiteVerification,
     },
@@ -86,9 +82,6 @@ export default function RootLayout({
             dangerouslySetInnerHTML={{ __html: impactPublisherTagInnerHtml }}
           />
         ) : null}
-        <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
-        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         {mediavineGrowSiteId ? (
           <Script
