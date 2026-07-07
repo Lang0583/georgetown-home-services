@@ -249,8 +249,8 @@ const COMPARISONS: ProviderComparison[] = [
         a: "Both advertise written estimates and transparent scopes. Confirm whether diagnostic fees apply toward repair work, and ask for model numbers and warranty terms on any replacement quote.",
       },
       {
-        q: "Which company has more Google reviews in Georgetown?",
-        a: "AirWise typically shows a higher public review volume as a longer-established Georgetown storefront. Roger Stuth carries fewer total reviews but very high satisfaction scores—read recent feedback for your job type (repair vs. full replacement).",
+        q: "Which company has stronger public ratings in Georgetown?",
+        a: "Both show strong Google star ratings for Williamson County HVAC work. Read recent feedback for your job type (repair vs. full replacement) and compare written scopes—not headline numbers alone.",
       },
     ],
     metaDescription:

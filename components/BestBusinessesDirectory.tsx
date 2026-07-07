@@ -25,7 +25,7 @@ import {
 } from "../lib/businesses";
 import { exitInterstitialLabels } from "../lib/exit-interstitial";
 
-type SortKey = "recommended" | "reviews" | "rating";
+type SortKey = "recommended" | "rating";
 
 const websiteCtaClass =
   "inline-flex items-center justify-center rounded-lg bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[var(--accent-hover)]";
@@ -176,7 +176,7 @@ function ProviderCard({
           </div>
           <div className="w-full sm:w-auto sm:shrink-0">
             {hasBusinessRatingData(b) ? (
-              <RatingStarsWithCaption rating={b.rating} reviewCount={b.reviews} className="sm:justify-end" />
+              <RatingStarsWithCaption rating={b.rating} className="sm:justify-end" />
             ) : (
               <span className="text-sm text-muted">Rating not available</span>
             )}
@@ -249,7 +249,6 @@ export default function BestBusinessesDirectory({
     });
 
     filtered.sort((a, b) => {
-      if (sort === "reviews") return b.reviews - a.reviews;
       if (sort === "rating") return b.rating !== a.rating ? b.rating - a.rating : b.reviews - a.reviews;
       // recommended
       return b.rating !== a.rating ? b.rating - a.rating : b.reviews - a.reviews;
@@ -314,8 +313,7 @@ export default function BestBusinessesDirectory({
                 value={sort}
                 onChange={(e) => setSort(e.target.value as SortKey)}
               >
-                <option value="recommended">Recommended (rating, then reviews)</option>
-                <option value="reviews">Most reviews</option>
+                <option value="recommended">Recommended (highest rating)</option>
                 <option value="rating">Highest rating</option>
               </select>
             </label>

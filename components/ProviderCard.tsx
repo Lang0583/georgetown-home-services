@@ -5,6 +5,7 @@ import type { Provider } from "../data/providers";
 import { PROVIDER_CATEGORY_ANGI_SLUG, getProviderBySlug, getProviderSlug } from "../data/providers";
 import { providerLicenseVerifiedLine } from "@/lib/provider-license";
 import { getProviderWebsiteUrl } from "../lib/provider-website";
+import { providerVerifiedCaption } from "@/lib/provider-rating-display";
 import { externalBusinessLinkProps } from "../lib/businesses";
 
 const primaryBtnClass =
@@ -66,9 +67,7 @@ export default function ProviderCard({
           <span className="text-sm font-semibold text-rating">
             {formatRatingOneDecimal(provider.rating)} ★
           </span>
-          <span className="text-sm text-muted">
-            {provider.reviewCount.toLocaleString()} Google reviews
-          </span>
+          <span className="text-sm text-muted">{providerVerifiedCaption()}</span>
         </div>
 
         {typeof provider.yearsInBusiness === "number" ? (

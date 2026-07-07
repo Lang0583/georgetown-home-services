@@ -35,7 +35,6 @@ function homeAndConstructionBusinessJsonLd(b: Business): Record<string, unknown>
     item.aggregateRating = {
       "@type": "AggregateRating",
       ratingValue: b.rating.toFixed(1),
-      reviewCount: String(b.reviews),
     };
   }
 

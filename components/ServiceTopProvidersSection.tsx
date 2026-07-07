@@ -17,6 +17,7 @@ import {
   type Business,
 } from "../lib/businesses";
 import { exitInterstitialLabels } from "../lib/exit-interstitial";
+import { providerVerifiedCaption } from "@/lib/provider-rating-display";
 import { trackMapsClick, trackOutboundClick } from "../lib/analytics";
 
 function trim(s: string | undefined) {
@@ -84,7 +85,7 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
                       {hasBusinessRatingData(b) ? (
                         <>
                           <span className="font-semibold text-ink">{formatRating(b.rating)}</span> stars •{" "}
-                          <span className="font-semibold text-ink">{b.reviews.toLocaleString()}</span> reviews
+                          {providerVerifiedCaption()}
                         </>
                       ) : (
                         <span className="text-muted">Rating not available</span>
@@ -156,7 +157,7 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
                       {hasBusinessRatingData(b) ? (
                         <>
                           <span className="font-semibold text-ink">{formatRating(b.rating)}</span> stars •{" "}
-                          <span className="font-semibold text-ink">{b.reviews.toLocaleString()}</span> reviews
+                          {providerVerifiedCaption()}
                         </>
                       ) : (
                         <span className="text-muted">Rating not available</span>
