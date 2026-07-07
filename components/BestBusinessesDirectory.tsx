@@ -176,7 +176,7 @@ function ProviderCard({
           </div>
           <div className="w-full sm:w-auto sm:shrink-0">
             {hasBusinessRatingData(b) ? (
-              <RatingStarsWithCaption rating={b.rating} className="sm:justify-end" />
+              <RatingStarsWithCaption rating={b.rating} reviewCount={b.reviews} className="sm:justify-end" />
             ) : (
               <span className="text-sm text-muted">Rating not available</span>
             )}

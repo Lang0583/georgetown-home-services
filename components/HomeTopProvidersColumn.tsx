@@ -1,6 +1,5 @@
 "use client";
 
-import { providerVerifiedCaption } from "@/lib/provider-rating-display";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { BusinessListingDescription } from "./BusinessListingDescription";
@@ -88,7 +87,7 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
                 )}
               </div>
               <div className="mt-1">
-                {business.rating.toFixed(1)} stars • {providerVerifiedCaption()}
+                {business.rating.toFixed(1)} stars • {business.reviews.toLocaleString()} reviews
               </div>
               <BusinessPhoneRow phone={business.phone} providerName={business.name} />
               <BusinessListingDescription text={business.description} className="mt-1" />

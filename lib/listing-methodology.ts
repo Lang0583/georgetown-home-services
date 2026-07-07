@@ -12,11 +12,10 @@ export const LISTING_MIN_GOOGLE_REVIEWS = 25;
  * Import this list everywhere — do not duplicate the strings.
  */
 export const LISTING_INCLUSION_CRITERIA = [
-  "Active service in Georgetown, TX",
-  `Minimum ${LISTING_MIN_GOOGLE_RATING}-star Google rating`,
-  `Minimum ${LISTING_MIN_GOOGLE_REVIEWS} reviews at time of listing`,
-  "Working phone and website",
-  "No paid placement",
+  `${LISTING_MIN_GOOGLE_RATING}+ Google rating`,
+  `${LISTING_MIN_GOOGLE_REVIEWS}+ reviews`,
+  "Active Georgetown-area service",
+  "Working phone",
 ] as const;
 
 export type ListingDataSource = {

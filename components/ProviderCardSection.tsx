@@ -8,7 +8,7 @@ export default function ProviderCardSection({ providers }: { providers: Provider
   return (
     <div id="providers" className="scroll-mt-24 mt-12">
       <BestProvidersMethodologyCallout />
-      <BestProviderDirectory providers={providers} />
+      <BestProviderDirectory providers={providers} category={providers[0]?.category} />
     </div>
   );
 }

@@ -13,10 +13,13 @@ export function formatLicenseLookupDate(isoDate: string): string {
   }).format(d);
 }
 
-/** Card line when license fields are populated; null when nothing to show. */
+/** Card line for license type; appends number only when published. */
 export function providerLicenseVerifiedLine(provider: Provider): string | null {
-  if (!provider.licenseNumber?.trim() || !provider.licenseType?.trim()) return null;
+  const licenseType = provider.licenseType?.trim();
+  if (!licenseType) return null;
+  const licenseNumber = provider.licenseNumber?.trim();
+  if (!licenseNumber) return licenseType;
   const verified = provider.licenseVerifiedDate?.trim();
   const dateSuffix = verified ? ` (verified ${formatLicenseLookupDate(verified)})` : "";
-  return `License verified: ${provider.licenseType} #${provider.licenseNumber}${dateSuffix}`;
+  return `${licenseType} #${licenseNumber}${dateSuffix}`;
 }

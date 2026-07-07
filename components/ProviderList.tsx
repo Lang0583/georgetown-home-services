@@ -57,7 +57,7 @@ export default function ProviderList({
                   ) : null}
                 </div>
                 <div className="mt-2">
-                  <RatingStarsWithCaption rating={p.rating} />
+                  <RatingStarsWithCaption rating={p.rating} reviewCount={p.reviewCount} />
                 </div>
               </div>
               {websiteHref ? (

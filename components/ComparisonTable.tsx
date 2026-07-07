@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { formatRatingOneDecimal, RatingStarsRow } from "./BusinessRatingStars";
-import { providerVerifiedCaption } from "@/lib/provider-rating-display";
 import type { ComparisonProvider } from "../data/comparisons";
 
 function formatWrittenEstimates(value: boolean) {
@@ -16,9 +15,9 @@ export default function ComparisonTable({
 }) {
   const rows: { label: string; a: ReactNode; b: ReactNode }[] = [
     {
-      label: "Star rating",
-      a: <RatingCell rating={providerA.rating} />,
-      b: <RatingCell rating={providerB.rating} />,
+      label: "Star rating + reviews",
+      a: <RatingCell rating={providerA.rating} reviewCount={providerA.reviewCount} />,
+      b: <RatingCell rating={providerB.rating} reviewCount={providerB.reviewCount} />,
     },
     {
       label: "Years in business",
@@ -84,12 +83,12 @@ export default function ComparisonTable({
   );
 }
 
-function RatingCell({ rating }: { rating: number }) {
+function RatingCell({ rating, reviewCount }: { rating: number; reviewCount: number }) {
   return (
     <div className="space-y-1">
       <RatingStarsRow rating={rating} />
       <div className="font-semibold text-ink">
-        {formatRatingOneDecimal(rating)} ★ · {providerVerifiedCaption()}
+        {formatRatingOneDecimal(rating)} ★ · {reviewCount.toLocaleString()} Google reviews
       </div>
     </div>
   );

@@ -40,6 +40,7 @@ function localBusinessJsonLd(provider: Provider): Record<string, unknown> {
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: provider.rating.toFixed(1),
+      reviewCount: String(provider.reviewCount),
     },
     areaServed: provider.serviceArea,
     description: provider.description,

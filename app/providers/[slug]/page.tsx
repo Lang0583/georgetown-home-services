@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { RatingStarsRow, formatRatingOneDecimal } from "@/components/BusinessRatingStars";
-import { providerVerifiedCaption } from "@/lib/provider-rating-display";
 import JsonLd from "@/components/JsonLd";
 import PageShell from "@/components/templates/PageShell";
 import {
@@ -115,7 +114,9 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
             <span className="text-sm font-semibold text-ink">
               {formatRatingOneDecimal(provider.rating)} ★
             </span>
-            <span className="text-sm text-muted">{providerVerifiedCaption()}</span>
+            <span className="text-sm text-muted">
+              {provider.reviewCount.toLocaleString()} Google reviews
+            </span>
           </div>
 
           <div className="mt-6 space-y-3 text-sm text-muted">
@@ -128,6 +129,11 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
                 {provider.phone}
               </a>
             </p>
+            {provider.address ? (
+              <p>
+                <span className="font-semibold text-ink">Address:</span> {provider.address}
+              </p>
+            ) : null}
             {websiteUrl ? (
               <p>
                 <span className="font-semibold text-ink">Website:</span>{" "}

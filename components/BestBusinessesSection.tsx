@@ -3,7 +3,6 @@
 import { BusinessListingDescription } from "./BusinessListingDescription";
 import { BusinessPhoneRow } from "./BusinessPhoneRow";
 import ExitInterstitial from "./ExitInterstitial";
-import { providerVerifiedCaption } from "@/lib/provider-rating-display";
 import { trackMapsClick, trackOutboundClick } from "../lib/analytics";
 import {
   BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS,
@@ -143,7 +142,7 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
                       <span className="text-sm text-muted">
                         {hasBusinessRatingData(b) ? (
                           <>
-                            {formatRating(b.rating)} stars • {providerVerifiedCaption()}
+                            {formatRating(b.rating)} stars • {b.reviews.toLocaleString()} reviews
                           </>
                         ) : (
                           <span className="text-muted">Rating not available</span>
@@ -188,7 +187,7 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
                       <span className="text-sm text-muted">
                         {hasBusinessRatingData(b) ? (
                           <>
-                            {formatRating(b.rating)} stars • {providerVerifiedCaption()}
+                            {formatRating(b.rating)} stars • {b.reviews.toLocaleString()} reviews
                           </>
                         ) : (
                           <span className="text-muted">Rating not available</span>
