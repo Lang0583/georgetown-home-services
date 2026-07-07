@@ -1,7 +1,7 @@
 import type { Provider } from "@/data/providers";
 
 /** Matches `lib/businesses.ts` established-pick threshold for directory cards. */
-export const PROVIDER_MIN_ESTABLISHED_REVIEWS = 20;
+export const PROVIDER_MIN_ESTABLISHED_REVIEWS = 25;
 
 export type ProviderDirectoryTier = "established" | "lower_signal";
 

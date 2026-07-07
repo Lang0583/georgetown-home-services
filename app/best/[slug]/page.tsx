@@ -5,8 +5,6 @@ import { notFound } from "next/navigation";
 import LinkCard from "../../../components/LinkCard";
 import GeneratedArticleBody from "../../../components/GeneratedArticleBody";
 import RichText from "../../../components/RichText";
-import ProviderList from "../../../components/ProviderList";
-import ComparisonSection from "../../../components/ComparisonSection";
 import JsonLd from "../../../components/JsonLd";
 import Breadcrumbs from "../../../components/Breadcrumbs";
 import PageShell from "../../../components/templates/PageShell";
@@ -22,13 +20,8 @@ import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import { webPageWithDateModifiedJsonLd } from "../../../lib/last-updated";
 import LastUpdated from "../../../components/LastUpdated";
 import { CORE_BEST_SLUGS, resolveBestPage } from "../../../lib/pageContentRegistry";
-import { getProvidersForBestSlug } from "../../../lib/providers";
-import {
-  getBusinessCategoryForBestSlug,
-  getBusinessesByCategory,
-  getRelatedServiceSlugForBestSlug,
-} from "../../../lib/businesses";
 import { getAlsoCompareLinksForBestSlug } from "../../../lib/best-also-compare-links";
+import { getRelatedServiceSlugForBestSlug } from "../../../lib/businesses";
 import { buildProviderItemListJsonLd } from "../../../lib/provider-item-list-schema";
 import { getDirectoryProvidersForBestSlug } from "../../../data/providers";
 import { getComparisonsForBestSlug } from "../../../data/comparisons";
@@ -178,10 +171,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
   const isHvacGeorgetown = slug === "top-hvac-companies-georgetown-tx";
   const isRoofersGeorgetown = slug === "best-roofers-georgetown-tx";
 
-  const providerData = getProvidersForBestSlug(slug);
-  const businessCategory = getBusinessCategoryForBestSlug(slug);
-  const businessesForPage =
-    businessCategory !== null ? getBusinessesByCategory(businessCategory) : null;
   const directoryProviders = getDirectoryProvidersForBestSlug(slug);
   const headToHeadComparisons = getComparisonsForBestSlug(best.slug);
   const relatedServiceSlug = getRelatedServiceSlugForBestSlug(slug);
@@ -971,118 +960,20 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                 )}
               </div>
 
-              {providerData ? (
-                <section className="mt-12">
-                  <h2 className="text-3xl font-semibold tracking-tight text-ink">Top provider cards</h2>
-
-                  {businessesForPage !== null ? (
-                    <>
-                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                        These listings are compiled from publicly available local business information (for example, names, ratings, review counts,
-                        and addresses or official websites where published online). They are provided for research and comparison—confirm details
-                        directly with any company before hiring.
-                      </p>
-                      <div className="mt-3 space-y-1 text-sm text-muted">
-                        <p>
-                          <Link href="/" className="font-semibold text-brand hover:text-brand">
-                            Home
-                          </Link>
-                          {relatedServiceSlug ? (
-                            <>
-                              {" "}
-                              ·{" "}
-                              <Link
-                                href={`/services/${relatedServiceSlug}`}
-                                className="font-semibold text-brand hover:text-brand"
-                              >
-                                {relatedService?.title ?? "Related service"}
-                              </Link>
-                            </>
-                          ) : null}
-                        </p>
-                        {isPlumbersGeorgetown ? (
-                          <p>
-                            Looking for a step-by-step checklist? Read{" "}
-                            <Link href="/blog/how-to-choose-a-reliable-plumber-georgetown-tx" className="font-semibold text-brand hover:text-brand">
-                              how to choose a reliable plumber in Georgetown
-                            </Link>
-                            .
-                          </p>
-                        ) : null}
-                        {isHvacGeorgetown ? (
-                          <p>
-                            If you are planning ahead on equipment, see{" "}
-                            <Link
-                              href="/blog/cost-to-replace-hvac-georgetown"
-                              className="font-semibold text-brand hover:text-brand"
-                            >
-                              typical costs to replace HVAC in Georgetown
-                            </Link>
-                            .
-                          </p>
-                        ) : null}
-                        {isRoofersGeorgetown ? (
-                          <p>
-                            Prefer the fundamentals before you compare companies? Start with{" "}
-                            <Link href="/services/roofer-georgetown-tx" className="font-semibold text-brand hover:text-brand">
-                              our roofing guide for Georgetown, TX
-                            </Link>
-                            .
-                          </p>
-                        ) : null}
-                      </div>
-                      {directoryProviders.length ? (
-                        <ProviderCardSection providers={directoryProviders} />
-                      ) : null}
-                      {headToHeadComparisons.length ? (
-                        <p className="mt-5 text-sm text-muted">
-                          <Link href="/compare" className="font-semibold text-brand hover:underline">
-                            See head-to-head comparisons →
-                          </Link>
-                          {" "}
-                          ({headToHeadComparisons.map((c) => `${c.providerA.name} vs ${c.providerB.name}`).join("; ")})
-                        </p>
-                      ) : null}
-
-                      <BestOfFaqSection faqs={bestOfPageFaqs} />
-
-                      <section className="mt-10 rounded-xl border border-ink/10 bg-surface p-6 shadow-md">
-                        <h3 className="text-xl font-semibold text-ink">Who this is best for</h3>
-                        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted">
-                          <li>Homeowners who want a shortlist of providers with stronger documentation and review signal.</li>
-                          <li>People comparing repair-focused vs replacement-focused providers for the same project.</li>
-                          <li>Anyone who wants to request multiple written estimates and compare scopes line-by-line.</li>
-                        </ul>
-                      </section>
-                    </>
-                  ) : (
-                    <>
-                      <p className="mt-3 text-sm text-muted">{providerData.evaluatedIntro}</p>
-                      {directoryProviders.length ? (
-                        <ProviderCardSection providers={directoryProviders} />
-                      ) : providerData.providers.length ? (
-                        <ProviderList providers={providerData.providers} providerGroup={businessCategory} />
-                      ) : (
-                        <div className="mt-5 rounded-xl border border-ink/10 bg-surface p-6 text-sm text-muted shadow-md">
-                          Provider listings haven’t been added yet for this guide.
-                        </div>
-                      )}
-                      {headToHeadComparisons.length ? (
-                        <p className="mt-5 text-sm text-muted">
-                          <Link href="/compare" className="font-semibold text-brand hover:underline">
-                            See head-to-head comparisons →
-                          </Link>
-                        </p>
-                      ) : null}
-
-                      <BestOfFaqSection faqs={bestOfPageFaqs} />
-                    </>
-                  )}
-
-                  <section aria-label="Comparison notes">
-                    <ComparisonSection comparison={providerData.comparison} />
-                  </section>
-                </section>
+              {directoryProviders.length ? (
+                <>
+                  <ProviderCardSection providers={directoryProviders} />
+                  {headToHeadComparisons.length ? (
+                    <p className="mt-5 text-sm text-muted">
+                      <Link href="/compare" className="font-semibold text-brand hover:underline">
+                        See head-to-head comparisons →
+                      </Link>
+                      {" "}
+                      ({headToHeadComparisons.map((c) => `${c.providerA.name} vs ${c.providerB.name}`).join("; ")})
+                    </p>
+                  ) : null}
+                  <BestOfFaqSection faqs={bestOfPageFaqs} />
+                </>
               ) : null}
 
               {recommended.length ? (
@@ -1106,7 +997,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                 <section className="mt-12">
                   <h2 className="text-3xl font-semibold tracking-tight text-ink">More ways to compare</h2>
                   <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                    Use core service guides to understand scope and cost drivers, and review our methodology for how we build these comparisons.
+                    Use core service guides to understand scope and cost drivers before you request written estimates.
                   </p>
                   <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                     {ruleLinks.twoCoreServices.map((l) => (
@@ -1118,12 +1009,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         badge="Service"
                       />
                     ))}
-                    <LinkCard
-                      href={ruleLinks.methodology.href}
-                      title={ruleLinks.methodology.label}
-                      description={ruleLinks.methodology.description ?? "Methodology for rankings."}
-                      badge="Methodology"
-                    />
                   </div>
                 </section>
               ) : null}

@@ -10,9 +10,12 @@ import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
 import HomeFaqPageHeadJsonLd from "../components/HomeFaqPageHeadJsonLd";
 import { getImpactPublisherTagInnerHtml } from "../lib/impact-publisher-tag";
+import { ADSENSE_PUBLISHER_ID } from "../lib/adConfig";
 import { organizationSchema, websiteSchema } from "../lib/schema";
 
 const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
+
+const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID?.trim() || ADSENSE_PUBLISHER_ID;
 
 /** impact.com / AppImpact “HTML tag” verification — paste the `content` value only (not the full tag). */
 const impactSiteVerification =
@@ -54,6 +57,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "Independent Georgetown TX home services directory—compare plumbers, HVAC, roofers, and more with real reviews and local cost guides.",
     robots: { index: true, follow: true },
     other: {
+      "google-adsense-account": adsenseClient,
       /** impact.com crawlers expect <meta name="impact-site-verification" content="..."> (HTML uses `content`, not `value`). */
       "impact-site-verification": impactSiteVerification,
     },
