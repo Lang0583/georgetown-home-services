@@ -81,7 +81,7 @@ export const costGuidePages: CostGuidePage[] = [
     "year": "2026",
     "h1": "How Much Does a Plumber Cost in Georgetown, TX? (2026 Guide)",
     "absoluteTitle": "Plumber Cost in Georgetown, TX (2026) | Georgetown Home Services",
-    "metaDescription": "How much does Plumber cost in Georgetown TX? 2026 range $150–$2,500. Local low, average & high tables, hiring tips, and FAQs for Williamson County.",
+    "metaDescription": "How much does plumbing cost in Georgetown TX? 2026 range $150–$2,500. Local low, average & high tables, hiring tips, and FAQs for Williamson County.",
     "pricingIntro": "Typical Plumber price bands reported by Georgetown-area homeowners and aligned with Williamson County contractor estimates (2026).",
     "bodyParagraphs": [
       "If you are budgeting for plumbing work in Georgetown, TX, most jobs fall between $150 and $2,500—use the table below as a 2026 planning band before you sign anything. Georgetown plumbers price for hard Edwards Aquifer water, slab-on-grade homes in Sun City, and long horizontal drain runs in 1990s subdivisions.",
@@ -132,19 +132,19 @@ export const costGuidePages: CostGuidePage[] = [
     },
     "faqs": [
       {
-        "question": "How much does Plumber cost in Georgetown, TX?",
-        "answer": "Most Plumber projects in Georgetown fall between $150 and $2,500. The table above breaks out common job types; emergencies, permits, and access issues can push totals higher."
+        "question": "How much does plumbing cost in Georgetown, TX?",
+        "answer": "Most plumbing projects in Georgetown fall between $150 and $2,500. The table above breaks out common job types; emergencies, permits, and access issues can push totals higher."
       },
       {
-        "question": "Why does Plumber cost more in Georgetown than national averages?",
+        "question": "Why does plumbing cost more in Georgetown than national averages?",
         "answer": "Georgetown plumbers price for hard Edwards Aquifer water, slab-on-grade homes in Sun City, and long horizontal drain runs in 1990s subdivisions. Labor, materials, and scheduling in Georgetown and Williamson County sit above many national averages because of heat load, clay soil, and population growth."
       },
       {
-        "question": "How do I compare Plumber quotes fairly?",
+        "question": "How do I compare plumbing quotes fairly?",
         "answer": "Request the same scope from each bidder: Trip or diagnostic fees, labor hours, parts, permit pulls for water heaters, and whether drywall or concrete restoration is excluded. Match warranty terms, permit responsibility, and cleanup—not just the bottom line."
       },
       {
-        "question": "Is Plumber covered by homeowners insurance?",
+        "question": "Is plumbing work covered by homeowners insurance?",
         "answer": "Sudden and accidental damage—like certain storm or pipe burst events—may be covered, while wear and gradual failures usually are not. Call your adjuster before major work."
       }
     ],
@@ -166,15 +166,15 @@ export const costGuidePages: CostGuidePage[] = [
         "href": "/plumbing/water-heater-installation"
       },
       {
-        "label": "Plumbing in Sun City",
+        "label": "Sun City home services",
         "href": "/neighborhoods/sun-city/home-services"
       },
       {
-        "label": "Plumbing in Teravista",
+        "label": "Teravista home services",
         "href": "/neighborhoods/teravista/home-services"
       }
     ],
-    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
+    "lastUpdated": "2026-07-01"
   },
   {
     "slug": "hvac-repair-cost-georgetown-tx",
@@ -259,7 +259,7 @@ export const costGuidePages: CostGuidePage[] = [
         "answer": "Request the same scope from each bidder: Quotes should separate diagnostic fees, parts, refrigerant by pound, and labor. Ask if the trip fee applies toward repair if you proceed the same day. Match warranty terms, permit responsibility, and cleanup—not just the bottom line."
       },
       {
-        "question": "Is HVAC repair covered by homeowners insurance?",
+        "question": "Is hVAC repair covered by homeowners insurance?",
         "answer": "Sudden and accidental damage—like certain storm or pipe burst events—may be covered, while wear and gradual failures usually are not. Call your adjuster before major work."
       }
     ],
@@ -281,15 +281,15 @@ export const costGuidePages: CostGuidePage[] = [
         "href": "/hvac/hvac-maintenance"
       },
       {
-        "label": "HVAC in Sun City",
+        "label": "Sun City home services",
         "href": "/neighborhoods/sun-city/home-services"
       },
       {
-        "label": "HVAC in Wolf Ranch",
+        "label": "Wolf Ranch home services",
         "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
-    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
+    "lastUpdated": "2026-07-01"
   },
   {
     "slug": "ac-installation-cost-georgetown-tx",
@@ -373,7 +373,7 @@ export const costGuidePages: CostGuidePage[] = [
         "answer": "Request the same scope from each bidder: A complete bid lists equipment model numbers, line-set reuse or replacement, pad, thermostat, permits, haul-away, and warranty registration. Match warranty terms, permit responsibility, and cleanup—not just the bottom line."
       },
       {
-        "question": "Is AC installation covered by homeowners insurance?",
+        "question": "Is aC installation covered by homeowners insurance?",
         "answer": "Sudden and accidental damage—like certain storm or pipe burst events—may be covered, while wear and gradual failures usually are not. Call your adjuster before major work."
       }
     ],
@@ -395,15 +395,15 @@ export const costGuidePages: CostGuidePage[] = [
         "href": "/hvac/heat-pump-installation"
       },
       {
-        "label": "HVAC in Teravista",
+        "label": "Teravista home services",
         "href": "/neighborhoods/teravista/home-services"
       },
       {
-        "label": "HVAC in Wolf Ranch",
+        "label": "Wolf Ranch home services",
         "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
-    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
+    "lastUpdated": "2026-07-01"
   },
   {
     "slug": "roof-replacement-cost-georgetown-tx",
@@ -487,7 +487,7 @@ export const costGuidePages: CostGuidePage[] = [
         "answer": "Request the same scope from each bidder: Written scopes should list shingle brand/line, underlayment, ice-and-water shield at valleys, drip edge, ventilation, and disposal. Match warranty terms, permit responsibility, and cleanup—not just the bottom line."
       },
       {
-        "question": "Is Roof replacement covered by homeowners insurance?",
+        "question": "Is roof replacement covered by homeowners insurance?",
         "answer": "Sudden hail or wind damage may be covered subject to your wind/hail deductible; cosmetic-only endorsements can limit payout—photograph soft metals and file timely notice."
       }
     ],
@@ -509,15 +509,15 @@ export const costGuidePages: CostGuidePage[] = [
         "href": "/roofing/metal-roofing"
       },
       {
-        "label": "Roofing in Sun City",
+        "label": "Sun City home services",
         "href": "/neighborhoods/sun-city/home-services"
       },
       {
-        "label": "Roofing in Wolf Ranch",
+        "label": "Wolf Ranch home services",
         "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
-    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
+    "lastUpdated": "2026-07-01"
   },
   {
     "slug": "roof-repair-cost-georgetown-tx",
@@ -601,7 +601,7 @@ export const costGuidePages: CostGuidePage[] = [
         "answer": "Request the same scope from each bidder: Repair quotes should specify number of squares touched, matching shingle source, and whether the fee includes a follow-up rain check. Match warranty terms, permit responsibility, and cleanup—not just the bottom line."
       },
       {
-        "question": "Is Roof repair covered by homeowners insurance?",
+        "question": "Is roof repair covered by homeowners insurance?",
         "answer": "Sudden hail or wind damage may be covered subject to your wind/hail deductible; cosmetic-only endorsements can limit payout—photograph soft metals and file timely notice."
       }
     ],
@@ -623,15 +623,15 @@ export const costGuidePages: CostGuidePage[] = [
         "href": "/roofing/roof-inspection"
       },
       {
-        "label": "Roofing in Teravista",
+        "label": "Teravista home services",
         "href": "/neighborhoods/teravista/home-services"
       },
       {
-        "label": "hail-damage in Sun City",
-        "href": "/neighborhoods/sun-city/hail-damage"
+        "label": "Sun City home services",
+        "href": "/neighborhoods/sun-city/home-services"
       }
     ],
-    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
+    "lastUpdated": "2026-07-01"
   },
   {
     "slug": "electrician-cost-georgetown-tx",
@@ -647,7 +647,7 @@ export const costGuidePages: CostGuidePage[] = [
     "year": "2026",
     "h1": "How Much Does an Electrician Cost in Georgetown, TX? (2026 Guide)",
     "absoluteTitle": "Electrician Cost in Georgetown, TX (2026) | Georgetown Home Services",
-    "metaDescription": "How much does Electrician cost in Georgetown TX? 2026 range $125–$4,000. Local low, average & high tables, hiring tips, and FAQs for Williamson County.",
+    "metaDescription": "How much does electrical work cost in Georgetown TX? 2026 range $125–$4,000. Local low, average & high tables, hiring tips, and FAQs for Williamson County.",
     "pricingIntro": "Typical Electrician price bands reported by Georgetown-area homeowners and aligned with Williamson County contractor estimates (2026).",
     "bodyParagraphs": [
       "If you are budgeting for an Electrician in Georgetown, TX, most jobs fall between $125 and $4,000—use the table below as a 2026 planning band before you sign anything. Georgetown electricians stay busy with panel upgrades for EV chargers in Wolf Ranch and accessibility retrofits in Sun City.",
@@ -703,19 +703,19 @@ export const costGuidePages: CostGuidePage[] = [
     },
     "faqs": [
       {
-        "question": "How much does Electrician cost in Georgetown, TX?",
-        "answer": "Most Electrician projects in Georgetown fall between $125 and $4,000. The table above breaks out common job types; emergencies, permits, and access issues can push totals higher."
+        "question": "How much does electrical work cost in Georgetown, TX?",
+        "answer": "Most electrical work projects in Georgetown fall between $125 and $4,000. The table above breaks out common job types; emergencies, permits, and access issues can push totals higher."
       },
       {
-        "question": "Why does Electrician cost more in Georgetown than national averages?",
+        "question": "Why does electrical work cost more in Georgetown than national averages?",
         "answer": "Georgetown electricians stay busy with panel upgrades for EV chargers in Wolf Ranch and accessibility retrofits in Sun City. Labor, materials, and scheduling in Georgetown and Williamson County sit above many national averages because of heat load, clay soil, and population growth."
       },
       {
-        "question": "How do I compare Electrician quotes fairly?",
+        "question": "How do I compare electrical quotes fairly?",
         "answer": "Request the same scope from each bidder: Estimates should list labor rate, parts, permit, and inspection. Ask if the service call credits toward same-day repair. Match warranty terms, permit responsibility, and cleanup—not just the bottom line."
       },
       {
-        "question": "Is Electrician covered by homeowners insurance?",
+        "question": "Is electrical work covered by homeowners insurance?",
         "answer": "Sudden and accidental damage—like certain storm or pipe burst events—may be covered, while wear and gradual failures usually are not. Call your adjuster before major work."
       }
     ],
@@ -737,15 +737,15 @@ export const costGuidePages: CostGuidePage[] = [
         "href": "/electrical/lighting-installation"
       },
       {
-        "label": "Electrical in Teravista",
+        "label": "Teravista home services",
         "href": "/neighborhoods/teravista/home-services"
       },
       {
-        "label": "Electrical in Wolf Ranch",
+        "label": "Wolf Ranch home services",
         "href": "/neighborhoods/wolf-ranch/home-services"
       }
     ],
-    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
+    "lastUpdated": "2026-07-01"
   },
   {
     "slug": "panel-upgrade-cost-georgetown-tx",
@@ -823,7 +823,7 @@ export const costGuidePages: CostGuidePage[] = [
         "answer": "Request the same scope from each bidder: Scope should list panel brand, amperage, new breakers included, labeling, permit, and whether the utility fee is separate. Match warranty terms, permit responsibility, and cleanup—not just the bottom line."
       },
       {
-        "question": "Is Panel upgrade covered by homeowners insurance?",
+        "question": "Is panel upgrade covered by homeowners insurance?",
         "answer": "Sudden and accidental damage—like certain storm or pipe burst events—may be covered, while wear and gradual failures usually are not. Call your adjuster before major work."
       }
     ],
@@ -845,15 +845,15 @@ export const costGuidePages: CostGuidePage[] = [
         "href": "/electrical/whole-home-rewiring"
       },
       {
-        "label": "Electrical in Georgetown Village",
+        "label": "Georgetown Village home services",
         "href": "/neighborhoods/georgetown-village/home-services"
       },
       {
-        "label": "Electrical in Sun City",
+        "label": "Sun City home services",
         "href": "/neighborhoods/sun-city/home-services"
       }
     ],
-    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
+    "lastUpdated": "2026-07-01"
   },
   {
     "slug": "landscaping-cost-georgetown-tx",
@@ -938,7 +938,7 @@ export const costGuidePages: CostGuidePage[] = [
         "answer": "Request the same scope from each bidder: Quotes should specify plant sizes, soil amendment, warranty on plant material, and irrigation controller programming. Match warranty terms, permit responsibility, and cleanup—not just the bottom line."
       },
       {
-        "question": "Is Landscaping covered by homeowners insurance?",
+        "question": "Is landscaping covered by homeowners insurance?",
         "answer": "Routine cleaning and lawn care are maintenance expenses and are not typically covered by homeowners insurance."
       }
     ],
@@ -960,15 +960,15 @@ export const costGuidePages: CostGuidePage[] = [
         "href": "/landscaping/sprinkler-installation"
       },
       {
-        "label": "Landscaping in Berry Creek",
+        "label": "Berry Creek home services",
         "href": "/neighborhoods/berry-creek/home-services"
       },
       {
-        "label": "Landscaping in Georgetown Village",
+        "label": "Georgetown Village home services",
         "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
-    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
+    "lastUpdated": "2026-07-01"
   },
   {
     "slug": "lawn-care-cost-georgetown-tx",
@@ -1055,7 +1055,7 @@ export const costGuidePages: CostGuidePage[] = [
         "answer": "Request the same scope from each bidder: Monthly plans should list visit count, edging, blowing, and what happens on rain days. Match warranty terms, permit responsibility, and cleanup—not just the bottom line."
       },
       {
-        "question": "Is Lawn care covered by homeowners insurance?",
+        "question": "Is lawn care covered by homeowners insurance?",
         "answer": "Routine cleaning and lawn care are maintenance expenses and are not typically covered by homeowners insurance."
       }
     ],
@@ -1077,15 +1077,15 @@ export const costGuidePages: CostGuidePage[] = [
         "href": "/landscaping/mulching"
       },
       {
-        "label": "Landscaping in Wolf Ranch",
+        "label": "Wolf Ranch home services",
         "href": "/neighborhoods/wolf-ranch/home-services"
       },
       {
-        "label": "Landscaping in Berry Creek",
+        "label": "Berry Creek home services",
         "href": "/neighborhoods/berry-creek/home-services"
       }
     ],
-    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
+    "lastUpdated": "2026-07-01"
   },
   {
     "slug": "pest-control-cost-georgetown-tx",
@@ -1165,7 +1165,7 @@ export const costGuidePages: CostGuidePage[] = [
         "answer": "Request the same scope from each bidder: Contracts should list covered pests, interior vs exterior, re-treat policy, and cancellation terms. Match warranty terms, permit responsibility, and cleanup—not just the bottom line."
       },
       {
-        "question": "Is Pest control covered by homeowners insurance?",
+        "question": "Is pest control covered by homeowners insurance?",
         "answer": "Sudden and accidental damage—like certain storm or pipe burst events—may be covered, while wear and gradual failures usually are not. Call your adjuster before major work."
       }
     ],
@@ -1187,15 +1187,15 @@ export const costGuidePages: CostGuidePage[] = [
         "href": "/pest-control/rodent-control"
       },
       {
-        "label": "Pest control in Georgetown Village",
+        "label": "Georgetown Village home services",
         "href": "/neighborhoods/georgetown-village/home-services"
       },
       {
-        "label": "Pest control in Berry Creek",
+        "label": "Berry Creek home services",
         "href": "/neighborhoods/berry-creek/home-services"
       }
     ],
-    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
+    "lastUpdated": "2026-07-01"
   },
   {
     "slug": "termite-treatment-cost-georgetown-tx",
@@ -1274,7 +1274,7 @@ export const costGuidePages: CostGuidePage[] = [
         "answer": "Request the same scope from each bidder: Treatment proposals should show diagram of drill points or bait stations, product used, and transferable warranty terms. Match warranty terms, permit responsibility, and cleanup—not just the bottom line."
       },
       {
-        "question": "Is Termite treatment covered by homeowners insurance?",
+        "question": "Is termite treatment covered by homeowners insurance?",
         "answer": "Sudden and accidental damage—like certain storm or pipe burst events—may be covered, while wear and gradual failures usually are not. Call your adjuster before major work."
       }
     ],
@@ -1296,15 +1296,15 @@ export const costGuidePages: CostGuidePage[] = [
         "href": "/pest-control/scorpion-control"
       },
       {
-        "label": "Pest control in Sun City",
+        "label": "Sun City home services",
         "href": "/neighborhoods/sun-city/home-services"
       },
       {
-        "label": "Pest control in Teravista",
+        "label": "Teravista home services",
         "href": "/neighborhoods/teravista/home-services"
       }
     ],
-    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
+    "lastUpdated": "2026-07-01"
   },
   {
     "slug": "foundation-repair-cost-georgetown-tx",
@@ -1388,7 +1388,7 @@ export const costGuidePages: CostGuidePage[] = [
         "answer": "Request the same scope from each bidder: Contracts should list pier type, depth guarantee, lift tolerance, and whether plumbing/static tests are included. Match warranty terms, permit responsibility, and cleanup—not just the bottom line."
       },
       {
-        "question": "Is Foundation repair covered by homeowners insurance?",
+        "question": "Is foundation repair covered by homeowners insurance?",
         "answer": "Gradual soil movement and maintenance cracks are usually excluded; sudden plumbing leaks under a slab may be a separate claim—document dates and get plumber findings in writing."
       }
     ],
@@ -1410,15 +1410,15 @@ export const costGuidePages: CostGuidePage[] = [
         "href": "/foundation/drainage-correction"
       },
       {
-        "label": "Foundation in Wolf Ranch",
+        "label": "Wolf Ranch home services",
         "href": "/neighborhoods/wolf-ranch/home-services"
       },
       {
-        "label": "Foundation in Teravista",
+        "label": "Teravista home services",
         "href": "/neighborhoods/teravista/home-services"
       }
     ],
-    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
+    "lastUpdated": "2026-07-01"
   },
   {
     "slug": "house-cleaning-cost-georgetown-tx",
@@ -1503,7 +1503,7 @@ export const costGuidePages: CostGuidePage[] = [
         "answer": "Request the same scope from each bidder: Checklists should list rooms, baseboards, interior windows, and cancellation policy for recurring plans. Match warranty terms, permit responsibility, and cleanup—not just the bottom line."
       },
       {
-        "question": "Is House cleaning covered by homeowners insurance?",
+        "question": "Is house cleaning covered by homeowners insurance?",
         "answer": "Routine cleaning and lawn care are maintenance expenses and are not typically covered by homeowners insurance."
       }
     ],
@@ -1525,15 +1525,15 @@ export const costGuidePages: CostGuidePage[] = [
         "href": "/cleaning/recurring-cleaning"
       },
       {
-        "label": "House cleaning in Sun City",
+        "label": "Sun City home services",
         "href": "/neighborhoods/sun-city/home-services"
       },
       {
-        "label": "House cleaning in Georgetown Village",
+        "label": "Georgetown Village home services",
         "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
-    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
+    "lastUpdated": "2026-07-01"
   },
   {
     "slug": "water-heater-installation-cost-georgetown-tx",
@@ -1617,7 +1617,7 @@ export const costGuidePages: CostGuidePage[] = [
         "answer": "Request the same scope from each bidder: Install quotes should list heater model, warranty, haul-away, permit, and whether expansion tanks are included. Match warranty terms, permit responsibility, and cleanup—not just the bottom line."
       },
       {
-        "question": "Is Water heater installation covered by homeowners insurance?",
+        "question": "Is water heater installation covered by homeowners insurance?",
         "answer": "Sudden and accidental damage—like certain storm or pipe burst events—may be covered, while wear and gradual failures usually are not. Call your adjuster before major work."
       }
     ],
@@ -1639,15 +1639,15 @@ export const costGuidePages: CostGuidePage[] = [
         "href": "/plumbing/leak-detection"
       },
       {
-        "label": "Plumbing in Wolf Ranch",
+        "label": "Wolf Ranch home services",
         "href": "/neighborhoods/wolf-ranch/home-services"
       },
       {
-        "label": "Plumbing in Sun City",
+        "label": "Sun City home services",
         "href": "/neighborhoods/sun-city/home-services"
       }
     ],
-    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
+    "lastUpdated": "2026-07-01"
   },
   {
     "slug": "drain-cleaning-cost-georgetown-tx",
@@ -1725,7 +1725,7 @@ export const costGuidePages: CostGuidePage[] = [
         "answer": "Request the same scope from each bidder: Quotes should state if pricing is per fixture or main line, and whether camera footage is included. Match warranty terms, permit responsibility, and cleanup—not just the bottom line."
       },
       {
-        "question": "Is Drain cleaning covered by homeowners insurance?",
+        "question": "Is drain cleaning covered by homeowners insurance?",
         "answer": "Sudden and accidental damage—like certain storm or pipe burst events—may be covered, while wear and gradual failures usually are not. Call your adjuster before major work."
       }
     ],
@@ -1747,15 +1747,15 @@ export const costGuidePages: CostGuidePage[] = [
         "href": "/plumbing/emergency-plumber"
       },
       {
-        "label": "Plumbing in Berry Creek",
+        "label": "Berry Creek home services",
         "href": "/neighborhoods/berry-creek/home-services"
       },
       {
-        "label": "Plumbing in Georgetown Village",
+        "label": "Georgetown Village home services",
         "href": "/neighborhoods/georgetown-village/home-services"
       }
     ],
-    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
+    "lastUpdated": "2026-07-01"
   },
   {
     "slug": "hvac-maintenance-cost-georgetown-tx",
@@ -1840,7 +1840,7 @@ export const costGuidePages: CostGuidePage[] = [
         "answer": "Request the same scope from each bidder: Tune-up checklists should cover amp draws, delta-T, drain clearing, and written findings—not just a filter swap. Match warranty terms, permit responsibility, and cleanup—not just the bottom line."
       },
       {
-        "question": "Is HVAC maintenance covered by homeowners insurance?",
+        "question": "Is hVAC maintenance covered by homeowners insurance?",
         "answer": "Sudden and accidental damage—like certain storm or pipe burst events—may be covered, while wear and gradual failures usually are not. Call your adjuster before major work."
       }
     ],
@@ -1862,15 +1862,15 @@ export const costGuidePages: CostGuidePage[] = [
         "href": "/hvac/ac-repair"
       },
       {
-        "label": "HVAC in Sun City",
+        "label": "Sun City home services",
         "href": "/neighborhoods/sun-city/home-services"
       },
       {
-        "label": "HVAC in Teravista",
+        "label": "Teravista home services",
         "href": "/neighborhoods/teravista/home-services"
       }
     ],
-    "lastUpdated": DIRECTORY_PAGES_LAST_UPDATED
+    "lastUpdated": "2026-07-01"
   }
 ];
 

@@ -6,6 +6,8 @@ import path from "node:path";
 
 const YEAR = "2026";
 const SITE_NAME = "Georgetown Home Services";
+/** Keep in sync with `lib/last-updated.ts` → DIRECTORY_PAGES_LAST_UPDATED */
+const DIRECTORY_PAGES_LAST_UPDATED = "2026-07-01";
 
 const GUIDES = [
   {
@@ -611,7 +613,44 @@ function buildBody(g) {
   ];
 }
 
+/** Grammatically correct FAQ subjects (avoid "Is Plumber covered…"). */
+function faqCostSubject(shortName) {
+  switch (shortName) {
+    case "Plumber":
+      return "plumbing";
+    case "Electrician":
+      return "electrical work";
+    default:
+      return shortName;
+  }
+}
+
+function faqCompareSubject(shortName) {
+  switch (shortName) {
+    case "Plumber":
+      return "plumbing";
+    case "Electrician":
+      return "electrical";
+    default:
+      return shortName;
+  }
+}
+
+function faqInsuranceSubject(shortName) {
+  switch (shortName) {
+    case "Plumber":
+      return "plumbing work";
+    case "Electrician":
+      return "electrical work";
+    default:
+      return shortName.charAt(0).toLowerCase() + shortName.slice(1);
+  }
+}
+
 function buildFaqs(g) {
+  const costSubject = faqCostSubject(g.shortName);
+  const compareSubject = faqCompareSubject(g.shortName);
+  const insuranceSubject = faqInsuranceSubject(g.shortName);
   const whyLocal =
     g.whyLocal ??
     `${g.local} Labor, materials, and scheduling in Georgetown and Williamson County sit above many national averages because of heat load, clay soil, and population growth.`;
@@ -626,19 +665,19 @@ function buildFaqs(g) {
           : "Sudden and accidental damage—like certain storm or pipe burst events—may be covered, while wear and gradual failures usually are not. Call your adjuster before major work.");
   return [
     {
-      question: `How much does ${g.shortName} cost in Georgetown, TX?`,
-      answer: `Most ${g.shortName} projects in Georgetown fall between ${fmt(g.summaryLow)} and ${fmt(g.summaryHigh)}. The table above breaks out common job types; emergencies, permits, and access issues can push totals higher.`,
+      question: `How much does ${costSubject} cost in Georgetown, TX?`,
+      answer: `Most ${costSubject} projects in Georgetown fall between ${fmt(g.summaryLow)} and ${fmt(g.summaryHigh)}. The table above breaks out common job types; emergencies, permits, and access issues can push totals higher.`,
     },
     {
-      question: `Why does ${g.shortName} cost more in Georgetown than national averages?`,
+      question: `Why does ${costSubject} cost more in Georgetown than national averages?`,
       answer: whyLocal,
     },
     {
-      question: `How do I compare ${g.shortName} quotes fairly?`,
+      question: `How do I compare ${compareSubject} quotes fairly?`,
       answer: `Request the same scope from each bidder: ${g.included} Match warranty terms, permit responsibility, and cleanup—not just the bottom line.`,
     },
     {
-      question: `Is ${g.shortName} covered by homeowners insurance?`,
+      question: `Is ${insuranceSubject} covered by homeowners insurance?`,
       answer: insurance,
     },
   ];
@@ -649,7 +688,8 @@ function fmt(n) {
 }
 
 function metaDesc(g) {
-  const base = `How much does ${g.shortName} cost in Georgetown TX? ${YEAR} range ${fmt(g.summaryLow)}–${fmt(g.summaryHigh)}. Local low, average & high tables, hiring tips, and FAQs for Williamson County.`;
+  const subject = faqCostSubject(g.shortName);
+  const base = `How much does ${subject} cost in Georgetown TX? ${YEAR} range ${fmt(g.summaryLow)}–${fmt(g.summaryHigh)}. Local low, average & high tables, hiring tips, and FAQs for Williamson County.`;
   return base.length <= 160 ? base : base.slice(0, 157) + "…";
 }
 
@@ -688,6 +728,7 @@ const pages = GUIDES.map((g) => {
     summaryRange: { low: g.summaryLow, high: g.summaryHigh },
     faqs: buildFaqs(g),
     internalLinks,
+    lastUpdated: DIRECTORY_PAGES_LAST_UPDATED,
   };
 });
 
@@ -708,7 +749,9 @@ function costGuideHeading(g) {
   return capitalizeService(g.shortName);
 }
 
-const out = `/**
+const out = `import { DIRECTORY_PAGES_LAST_UPDATED } from '../lib/last-updated';
+
+/**
  * Cost guide pages at \`/costs/[slug]\` — high-intent "how much does it cost" content.
  */
 
@@ -751,6 +794,8 @@ export type CostGuidePage = {
   summaryRange: { low: number; high: number };
   faqs: CostGuideFaq[];
   internalLinks: CostGuideInternalLink[];
+  /** ISO 8601 calendar date (YYYY-MM-DD). */
+  lastUpdated: string;
 };
 
 export const COST_GUIDE_SLUGS = ${JSON.stringify(GUIDES.map((g) => g.slug), null, 2)} as const;
