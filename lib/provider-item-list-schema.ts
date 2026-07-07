@@ -1,4 +1,5 @@
 import type { Provider } from "../data/providers";
+import { providerHasPublishedReviewCount } from "./provider-card-display";
 
 function trimStr(s: string | undefined) {
   return (s ?? "").trim();
@@ -32,16 +33,20 @@ function localBusinessJsonLd(provider: Provider): Record<string, unknown> {
   const zip = trimStr(provider.postalCode);
   if (zip) addr.postalCode = zip;
 
+  const aggregateRating: Record<string, unknown> = {
+    "@type": "AggregateRating",
+    ratingValue: provider.rating.toFixed(1),
+  };
+  if (providerHasPublishedReviewCount(provider)) {
+    aggregateRating.reviewCount = String(provider.reviewCount);
+  }
+
   const item: Record<string, unknown> = {
     "@type": "LocalBusiness",
     name: provider.name,
     telephone: provider.phone,
     address: addr,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: provider.rating.toFixed(1),
-      reviewCount: String(provider.reviewCount),
-    },
+    aggregateRating,
     areaServed: provider.serviceArea,
     description: provider.description,
   };

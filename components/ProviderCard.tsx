@@ -4,6 +4,7 @@ import { angiGeorgetownListUrl } from "../lib/affiliates";
 import type { Provider } from "../data/providers";
 import { PROVIDER_CATEGORY_ANGI_SLUG, getProviderBySlug, getProviderSlug } from "../data/providers";
 import { providerLicenseVerifiedLine } from "@/lib/provider-license";
+import { providerReviewCountLabel } from "@/lib/provider-card-display";
 import { getProviderWebsiteUrl } from "../lib/provider-website";
 import { externalBusinessLinkProps } from "../lib/businesses";
 
@@ -28,6 +29,7 @@ export default function ProviderCard({
   const profileHref = hasProfile ? `/providers/${providerSlug}` : null;
   const websiteUrl = getProviderWebsiteUrl(provider.name);
   const licenseLine = providerLicenseVerifiedLine(provider);
+  const reviewLabel = providerReviewCountLabel(provider);
   const padding = compact ? "p-4" : "p-6";
 
   return (
@@ -66,20 +68,14 @@ export default function ProviderCard({
           <span className="text-sm font-semibold text-rating">
             {formatRatingOneDecimal(provider.rating)} ★
           </span>
-          <span className="text-sm text-muted">
-            {provider.reviewCount.toLocaleString()} Google reviews
-          </span>
+          {reviewLabel ? (
+            <span className="text-sm text-muted">{reviewLabel}</span>
+          ) : null}
         </div>
 
         {provider.address ? (
           <p className="text-sm text-muted">
             <span className="font-semibold text-ink">Address:</span> {provider.address}
-          </p>
-        ) : null}
-
-        {typeof provider.yearsInBusiness === "number" ? (
-          <p className="text-sm text-muted">
-            <span className="font-semibold text-ink">{provider.yearsInBusiness} years</span> in business
           </p>
         ) : null}
 
@@ -91,18 +87,13 @@ export default function ProviderCard({
           <span className="font-semibold text-ink">Service area:</span> {provider.serviceArea}
         </p>
 
-        {provider.neighborhoodsServed?.length ? (
-          <p className="text-sm text-muted">
-            <span className="font-semibold text-ink">Neighborhoods served:</span>{" "}
-            {provider.neighborhoodsServed.join(", ")}
-          </p>
+        {provider.specialties.length > 0 ? (
+          <ul className="list-disc space-y-0.5 pl-5 text-sm text-muted">
+            {provider.specialties.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         ) : null}
-
-        <ul className="list-disc space-y-0.5 pl-5 text-sm text-muted">
-          {provider.specialties.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
 
         <p className="text-sm text-muted">
           <span className="font-semibold text-ink">Phone:</span>{" "}

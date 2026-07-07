@@ -21,8 +21,14 @@ export default function ComparisonTable({
     },
     {
       label: "Years in business",
-      a: `${providerA.yearsInBusiness} years`,
-      b: `${providerB.yearsInBusiness} years`,
+      a:
+        typeof providerA.yearsInBusiness === "number"
+          ? `${providerA.yearsInBusiness} years`
+          : "—",
+      b:
+        typeof providerB.yearsInBusiness === "number"
+          ? `${providerB.yearsInBusiness} years`
+          : "—",
     },
     {
       label: "Service area",

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { RatingStarsRow, formatRatingOneDecimal } from "@/components/BusinessRatingStars";
+import { providerReviewCountLabel } from "@/lib/provider-card-display";
 import JsonLd from "@/components/JsonLd";
 import PageShell from "@/components/templates/PageShell";
 import {
@@ -68,6 +69,7 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
   const telHref = `tel:${provider.phone.replace(/\D/g, "")}`;
   const websiteUrl = getProviderWebsiteUrl(provider.name);
   const licenseLine = providerLicenseVerifiedLine(provider);
+  const reviewLabel = providerReviewCountLabel(provider);
   const mapsEmbedSrc = googleMapsEmbedUrl(
     provider.googleMapsUrl,
     `${provider.name} Georgetown TX`,
@@ -114,9 +116,9 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
             <span className="text-sm font-semibold text-ink">
               {formatRatingOneDecimal(provider.rating)} ★
             </span>
-            <span className="text-sm text-muted">
-              {provider.reviewCount.toLocaleString()} Google reviews
-            </span>
+            {reviewLabel ? (
+              <span className="text-sm text-muted">{reviewLabel}</span>
+            ) : null}
           </div>
 
           <div className="mt-6 space-y-3 text-sm text-muted">
@@ -152,18 +154,6 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
             {licenseLine ? (
               <p>
                 <span className="font-semibold text-ink">{licenseLine}</span>
-              </p>
-            ) : null}
-            {provider.neighborhoodsServed?.length ? (
-              <p>
-                <span className="font-semibold text-ink">Neighborhoods served:</span>{" "}
-                {provider.neighborhoodsServed.join(", ")}
-              </p>
-            ) : null}
-            {typeof provider.yearsInBusiness === "number" ? (
-              <p>
-                <span className="font-semibold text-ink">Years in business:</span>{" "}
-                {provider.yearsInBusiness}
               </p>
             ) : null}
           </div>

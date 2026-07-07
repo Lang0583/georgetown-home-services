@@ -2,6 +2,7 @@ import type { Provider, ProviderCategory } from "./providers";
 import { PROVIDERS } from "./providers";
 
 export type ComparisonProvider = Provider & {
+  yearsInBusiness?: number;
   responseTime: string;
   writtenEstimates: boolean;
   emergencyAvailability: string;
@@ -278,11 +279,25 @@ const COMPARISONS: ProviderComparison[] = [
       writtenEstimates: true,
       emergencyAvailability: "24/7 emergency plumbing",
     },
-    providerB: asComparison(providerByName("Roto-Rooter Plumbing & Water Cleanup"), {
+    providerB: {
+      name: "Roto-Rooter Plumbing & Water Cleanup",
+      phone: "(512) 869-0808",
+      googleMapsUrl:
+        "https://www.google.com/maps/search/?api=1&query=Roto-Rooter+Plumbing+Georgetown+TX",
+      rating: 4.8,
+      reviewCount: 1200,
+      serviceArea: "Georgetown, Round Rock, Austin metro",
+      specialties: ["Drain and sewer clearing", "Camera inspections", "Water damage cleanup"],
+      featured: false,
+      category: "plumbing",
+      description:
+        "National drain and plumbing brand with Georgetown-area dispatch for clogs, sewer lines, and water cleanup.",
+      city: "Georgetown",
+      state: "TX",
       responseTime: "Often within hours for emergencies",
       writtenEstimates: true,
       emergencyAvailability: "24/7 emergency drain and sewer service",
-    }),
+    },
     bottomLine:
       "Mr. Rooter is the better default when you want a large dispatch network, uniform pricing menus, and 24/7 coverage across Williamson County. Roto-Rooter is often the faster call for stubborn drain and sewer clogs, camera inspections, and water cleanup tied to backups—compare trip fees and warranty terms before you choose.",
     faqs: [
@@ -352,7 +367,7 @@ const COMPARISONS: ProviderComparison[] = [
   buildComparison({
     slug: "apex-roofing-vs-ark-roofer-georgetown-tx",
     category: "roofing",
-    providerA: asComparison(providerByName("APEX Roofing Companies"), {
+    providerA: asComparison(providerByName("APEX Roofing"), {
       responseTime: "Inspections often within a few days",
       writtenEstimates: true,
       emergencyAvailability: "Storm and leak triage available",
@@ -389,7 +404,7 @@ const COMPARISONS: ProviderComparison[] = [
       writtenEstimates: true,
       emergencyAvailability: "Storm stabilization and repairs",
     }),
-    providerB: asComparison(providerByName("APEX Roofing Companies"), {
+    providerB: asComparison(providerByName("APEX Roofing"), {
       responseTime: "Inspections often within a few days",
       writtenEstimates: true,
       emergencyAvailability: "Storm and leak triage available",
@@ -421,7 +436,7 @@ const COMPARISONS: ProviderComparison[] = [
       writtenEstimates: true,
       emergencyAvailability: "24/7 emergency electrical service",
     }),
-    providerB: asComparison(providerByName("Odion Electrical, LLC"), {
+    providerB: asComparison(providerByName("Odion Electrical"), {
       responseTime: "Often same-day scheduling",
       writtenEstimates: true,
       emergencyAvailability: "24/7 emergency calls advertised",
@@ -448,16 +463,43 @@ const COMPARISONS: ProviderComparison[] = [
   buildComparison({
     slug: "just-right-lawns-vs-grass-works-georgetown-tx",
     category: "landscaping",
-    providerA: asComparison(providerByName("Just Right Lawns"), {
+    providerA: {
+      name: "Just Right Lawns",
+      phone: "(512) 861-7802",
+      googleMapsUrl:
+        "https://www.google.com/maps/search/?api=1&query=Just+Right+Lawns+Georgetown+TX",
+      rating: 4.7,
+      reviewCount: 2100,
+      serviceArea: "Georgetown, Round Rock, Austin metro",
+      specialties: ["Recurring mowing", "Fertilization and weed control", "Aeration programs"],
+      featured: false,
+      category: "landscaping",
+      description:
+        "Central Texas lawn care operator with turf programs serving Georgetown homeowners.",
+      city: "Georgetown",
+      state: "TX",
       responseTime: "Recurring routes on set schedules",
       writtenEstimates: true,
       emergencyAvailability: "Contact for details",
-    }),
-    providerB: asComparison(providerByName("Grass Works Lawn Care"), {
+    },
+    providerB: {
+      name: "Grass Works Lawn Care",
+      phone: "(512) 797-0567",
+      googleMapsUrl:
+        "https://www.google.com/maps/search/?api=1&query=Grass+Works+Lawn+Care+Georgetown+TX",
+      rating: 4.9,
+      reviewCount: 530,
+      serviceArea: "Georgetown, Sun City, Williamson County",
+      specialties: ["Lawn maintenance", "Landscape design", "Irrigation repair"],
+      featured: false,
+      category: "landscaping",
+      description: "Georgetown and Sun City lawn care and landscaping with strong local reviews.",
+      city: "Georgetown",
+      state: "TX",
       responseTime: "Weekly/bi-weekly route scheduling",
       writtenEstimates: true,
       emergencyAvailability: "Contact for details",
-    }),
+    },
     bottomLine:
       "Just Right Lawns is the better fit when you want a high-volume Central Texas turf program with fertilization, weed control, and thousands of regional reviews. Grass Works excels for Sun City and master-planned lots that need design-forward landscaping, irrigation repair, and a locally branded crew focused on Georgetown curb appeal.",
     faqs: [
@@ -485,11 +527,25 @@ const COMPARISONS: ProviderComparison[] = [
       writtenEstimates: true,
       emergencyAvailability: "Contact for details",
     }),
-    providerB: asComparison(providerByName("CenTex Foundation Repair"), {
+    providerB: {
+      name: "CenTex Foundation Repair",
+      phone: "(512) 763-0194",
+      googleMapsUrl:
+        "https://www.google.com/maps/search/?api=1&query=CenTex+Foundation+Repair+Austin+TX",
+      rating: 4.9,
+      reviewCount: 180,
+      serviceArea: "Georgetown, Austin, Round Rock corridor",
+      specialties: ["Engineer evaluations", "Concrete leveling", "Pier installation"],
+      featured: false,
+      category: "foundation",
+      description:
+        "Regional foundation repair contractor serving the Austin–Georgetown corridor with evaluations and pier work.",
+      city: "Austin",
+      state: "TX",
       responseTime: "Free evaluations; flexible scheduling",
       writtenEstimates: true,
       emergencyAvailability: "Contact for details",
-    }),
+    },
     bottomLine:
       "Baird Foundation Repair is strong when you want a Georgetown office, BBB A+ credentials, and pier work with a long Williamson County track record. CenTex Foundation Repair appeals to homeowners seeking engineer-style evaluations and concrete leveling expertise across the Austin–Georgetown corridor—especially if you want a second opinion before major pier installs.",
     faqs: [
@@ -512,16 +568,44 @@ const COMPARISONS: ProviderComparison[] = [
   buildComparison({
     slug: "morehands-vs-boardwalk-cleaning-georgetown-tx",
     category: "cleaning",
-    providerA: asComparison(providerByName("MoreHands Maid Service"), {
+    providerA: {
+      name: "MoreHands Maid Service",
+      phone: "(512) 869-1990",
+      googleMapsUrl:
+        "https://www.google.com/maps/search/?api=1&query=MoreHands+Maid+Service+Austin+TX",
+      rating: 4.8,
+      reviewCount: 890,
+      serviceArea: "Georgetown, Round Rock, Austin metro",
+      specialties: ["Recurring housekeeping", "Deep cleans", "Move-in/move-out"],
+      featured: false,
+      category: "cleaning",
+      description:
+        "Regional maid service with long-standing Austin metro coverage including Georgetown and Sun City.",
+      city: "Austin",
+      state: "TX",
       responseTime: "Recurring slots booked in advance",
       writtenEstimates: true,
       emergencyAvailability: "Contact for details",
-    }),
-    providerB: asComparison(providerByName("Boardwalk Cleaning Co."), {
+    },
+    providerB: {
+      name: "Boardwalk Cleaning Co.",
+      phone: "(512) 842-6209",
+      googleMapsUrl:
+        "https://www.google.com/maps/search/?api=1&query=Boardwalk+Cleaning+Georgetown+TX",
+      rating: 4.9,
+      reviewCount: 210,
+      serviceArea: "Georgetown, Cedar Park, northern Williamson County",
+      specialties: ["Two-person teams", "Move-in/move-out", "Satisfaction guarantee"],
+      featured: false,
+      category: "cleaning",
+      description:
+        "Georgetown-area cleaning company offering recurring and deep-clean packages.",
+      city: "Georgetown",
+      state: "TX",
       responseTime: "Online booking with set arrival windows",
       writtenEstimates: true,
       emergencyAvailability: "Contact for details",
-    }),
+    },
     bottomLine:
       "MoreHands Maid Service is ideal for long-term recurring cleans across Georgetown and Sun City with a 26-year regional presence and high review volume. Boardwalk Cleaning Co. fits homeowners who want two-person teams, a 24-hour satisfaction guarantee, and move-in/move-out packages tailored to northern Williamson County neighborhoods.",
     faqs: [
