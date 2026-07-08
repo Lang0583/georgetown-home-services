@@ -16,7 +16,7 @@ export const EXIT_INTERSTITIAL_SERVICE_LABEL: Record<ProviderGroup, string> = {
 };
 
 /**
- * Category keys for Angi — must match paths in `lib/affiliates.ts` (not every list uses `*-contractors.htm`).
+ * Category keys for affiliate quote links — mapped via `lib/affiliate-category.ts`.
  */
 export const EXIT_INTERSTITIAL_ANGI_SLUG: Record<ProviderGroup, string> = {
   plumber: "plumbing",

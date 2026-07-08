@@ -1,6 +1,9 @@
 "use client";
 
-import { trackAffiliateCtaClick } from "../lib/analytics";
+import AffiliateDisclosure from "./AffiliateDisclosure";
+import AffiliateLink from "./AffiliateLink";
+import { affiliateCategoryFromAngiSlug } from "@/lib/affiliate-category";
+import { getAffiliateLink } from "@/lib/affiliateLinks";
 import { AFFILIATE_CTA_HOMEADVISOR_URL } from "../lib/affiliates";
 
 const btnClass =
@@ -8,6 +11,7 @@ const btnClass =
 
 interface AffiliateCTAProps {
   angiCategorySlug?: string;
+  affiliateCategory?: string;
   thumbtackCategory?: string;
   serviceLabel?: string;
   heading?: string;
@@ -15,52 +19,52 @@ interface AffiliateCTAProps {
 
 export default function AffiliateCTA({
   angiCategorySlug,
+  affiliateCategory,
   thumbtackCategory,
   serviceLabel,
   heading = "Compare Free Quotes from Georgetown Contractors",
 }: AffiliateCTAProps = {}) {
+  const angiCategory =
+    affiliateCategory ?? (angiCategorySlug ? affiliateCategoryFromAngiSlug(angiCategorySlug) : "default");
+
   const affiliateLinks = [
     {
-      href: angiCategorySlug
-        ? `https://www.angi.com/companylist/us/tx/georgetown/${angiCategorySlug}.htm`
-        : "https://www.angi.com/companylist/us/tx/georgetown/home-services-contractors.htm",
+      href: getAffiliateLink(angiCategory),
       label: "Get Quotes on Angi",
-      affiliateName: "Angi",
+      category: angiCategory,
     },
     {
       href: thumbtackCategory
         ? `https://www.thumbtack.com/tx/georgetown/${thumbtackCategory}`
         : "https://www.thumbtack.com/tx/georgetown/",
       label: "Find Pros on Thumbtack",
-      affiliateName: "Thumbtack",
+      category: "thumbtack",
     },
-    { href: AFFILIATE_CTA_HOMEADVISOR_URL, label: "Browse HomeAdvisor", affiliateName: "HomeAdvisor" },
+    {
+      href: AFFILIATE_CTA_HOMEADVISOR_URL,
+      label: "Browse HomeAdvisor",
+      category: "homeadvisor",
+    },
   ] as const;
 
   return (
     <section
       className="not-prose mt-12 rounded-2xl border border-ink/10 bg-surface-alt p-6 md:p-8"
-      aria-label="Compare free quotes from Georgetown contractors"
+      aria-label={
+        serviceLabel
+          ? `Compare free quotes from Georgetown ${serviceLabel}`
+          : "Compare free quotes from Georgetown contractors"
+      }
     >
+      <AffiliateDisclosure className="mb-4" />
       <h2 className="text-xl font-semibold tracking-tight text-ink md:text-2xl">{heading}</h2>
       <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-        {affiliateLinks.map(({ href, label, affiliateName }) => (
-          <a
-            key={affiliateName}
-            href={href}
-            target="_blank"
-            rel="nofollow sponsored"
-            className={btnClass}
-            onClick={() => trackAffiliateCtaClick(affiliateName)}
-          >
+        {affiliateLinks.map(({ href, label, category }) => (
+          <AffiliateLink key={category} href={href} category={category} className={btnClass}>
             {label}
-          </a>
+          </AffiliateLink>
         ))}
       </div>
-      <p className="mt-4 text-xs leading-relaxed text-muted">
-        These are affiliate links. We may earn a commission if you use them — it doesn&apos;t affect our rankings or
-        editorial content.
-      </p>
     </section>
   );
 }

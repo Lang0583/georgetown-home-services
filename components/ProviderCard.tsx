@@ -1,15 +1,13 @@
 import Link from "next/link";
 import { RatingStarsRow, formatRatingOneDecimal } from "./BusinessRatingStars";
-import { angiGeorgetownListUrl } from "../lib/affiliates";
 import type { Provider } from "../data/providers";
-import { PROVIDER_CATEGORY_ANGI_SLUG, getProviderBySlug, getProviderSlug } from "../data/providers";
+import { getProviderBySlug, getProviderSlug } from "../data/providers";
 import { providerLicenseVerifiedLine, providerUnlicensedTradeNote } from "@/lib/provider-license";
 import { providerReviewCountLabel } from "@/lib/provider-card-display";
 import { getProviderWebsiteUrl } from "../lib/provider-website";
 import { externalBusinessLinkProps } from "../lib/businesses";
+import ProviderAffiliateQuoteButton from "./ProviderAffiliateQuoteButton";
 
-const primaryBtnClass =
-  "inline-flex items-center justify-center rounded-lg bg-[var(--accent)] px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-[var(--accent-hover)]";
 const secondaryBtnClass =
   "inline-flex items-center justify-center rounded-lg bg-accent px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover";
 
@@ -22,7 +20,6 @@ export default function ProviderCard({
   showTopPick?: boolean;
   compact?: boolean;
 }) {
-  const angiUrl = angiGeorgetownListUrl(PROVIDER_CATEGORY_ANGI_SLUG[provider.category]);
   const telHref = `tel:${provider.phone.replace(/\D/g, "")}`;
   const providerSlug = getProviderSlug(provider);
   const hasProfile = Boolean(getProviderBySlug(providerSlug));
@@ -119,9 +116,7 @@ export default function ProviderCard({
             Visit website
           </a>
         ) : null}
-        <a href={angiUrl} target="_blank" rel="nofollow sponsored noopener noreferrer" className={primaryBtnClass}>
-          Get a Quote
-        </a>
+        <ProviderAffiliateQuoteButton provider={provider} />
         <a
           href={provider.googleMapsUrl}
           target="_blank"

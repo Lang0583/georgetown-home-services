@@ -3,8 +3,7 @@
 import type { ReactNode } from "react";
 import { trackAffiliateLinkClick } from "@/lib/analytics";
 
-/** Featured listing / sponsored partner button — fires GA4 `affiliate_click`. */
-export default function AffiliateOutboundCta({
+export default function AffiliateLink({
   href,
   category,
   className,

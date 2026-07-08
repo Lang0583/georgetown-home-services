@@ -6,6 +6,7 @@ import FAQList from "../../../components/FAQList";
 import JsonLd from "../../../components/JsonLd";
 import LinkCard from "../../../components/LinkCard";
 import ProviderCard from "../../../components/ProviderCard";
+import AffiliateDisclosure from "../../../components/AffiliateDisclosure";
 import PageShell from "../../../components/templates/PageShell";
 import { costGuidePages } from "../../../data/cost-guides";
 import {
@@ -147,6 +148,7 @@ export default async function ZipCodePage({ params }: { params: Promise<{ zipcod
             </div>
 
             <div className="mt-8 space-y-10">
+              <AffiliateDisclosure className="max-w-3xl" />
               {PROVIDER_CATEGORY_ORDER.map((category) => {
                 const providers = getTopProvidersByCategory(category, 3);
                 if (!providers.length) return null;

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { trackAffiliateCtaClick } from "../lib/analytics";
+import { trackAffiliateLinkClick } from "../lib/analytics";
 import type { AffiliateOffer } from "../data/affiliates";
 
 type AffiliateCalloutProps = {
@@ -30,9 +30,9 @@ export default function AffiliateCallout({ offer, justification, className }: Af
         <a
           href={offer.href}
           target="_blank"
-          rel="sponsored noopener"
+          rel="sponsored nofollow"
           className="inline-flex min-h-11 items-center rounded-lg border border-ink/15 bg-surface-alt px-4 py-2.5 text-sm font-semibold text-ink shadow-sm hover:bg-surface"
-          onClick={() => trackAffiliateCtaClick(offer.affiliateName)}
+          onClick={() => trackAffiliateLinkClick(offer.id)}
         >
           {linkLabel}
         </a>

@@ -5,9 +5,10 @@ import {
   angiGeorgetownContractorsUrl,
   exitInterstitialSessionKey,
 } from "../lib/exit-interstitial";
+import { affiliateCategoryFromAngiSlug } from "@/lib/affiliate-category";
 import { externalBusinessLinkProps } from "../lib/businesses";
 import {
-  trackAffiliateCtaClick,
+  trackAffiliateLinkClick,
   trackAffiliateShown,
   trackOutboundClick,
 } from "../lib/analytics";
@@ -51,10 +52,10 @@ export function ExitInterstitialModal({
   if (!open) return null;
 
   const angiHref = angiGeorgetownContractorsUrl(angiCategorySlug);
+  const angiCategory = affiliateCategoryFromAngiSlug(angiCategorySlug);
 
   const openAngi = () => {
-    // TODO: add affiliate UTM params here once the Angi affiliate account is active
-    trackAffiliateCtaClick("Angi", { providerName, serviceCategory });
+    trackAffiliateLinkClick(angiCategory);
     window.open(angiHref, "_blank", "noopener,noreferrer");
     onClose();
   };

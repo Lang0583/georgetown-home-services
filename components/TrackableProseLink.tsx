@@ -1,16 +1,24 @@
 "use client";
 
-import { trackAffiliateCtaClick } from "../lib/analytics";
+import { trackAffiliateLinkClick } from "../lib/analytics";
 
-function affiliateLabelFromHref(href: string): string {
+const CJ_AFFILIATE_HOSTS = [
+  "anrdoezrs.net",
+  "dpbolvw.net",
+  "kqzyfj.com",
+  "jdoqocy.com",
+] as const;
+
+function affiliateCategoryFromHref(href: string): string {
   try {
     const host = new URL(href).hostname.toLowerCase();
-    if (host.includes("amazon.")) return "Amazon";
-    if (host.includes("angi.com")) return "Angi";
-    if (host.includes("homeadvisor.com")) return "HomeAdvisor";
-    return new URL(href).hostname.replace(/^www\./, "") || "Partner";
+    if (host.includes("amazon.")) return "amazon";
+    if (host.includes("homeadvisor.com")) return "homeadvisor";
+    if (host.includes("thumbtack.com")) return "thumbtack";
+    if (CJ_AFFILIATE_HOSTS.some((h) => host.includes(h))) return "cj_angi";
+    return host.replace(/^www\./, "") || "partner";
   } catch {
-    return "Partner";
+    return "partner";
   }
 }
 
@@ -19,7 +27,8 @@ function shouldTrackAffiliateClick(href: string, rel?: string): boolean {
   if (rel?.includes("sponsored")) return true;
   try {
     const h = new URL(href).hostname.toLowerCase();
-    if (h.includes("amazon.") || h.includes("angi.com") || h.includes("homeadvisor.com")) return true;
+    if (h.includes("amazon.") || h.includes("homeadvisor.com")) return true;
+    if (CJ_AFFILIATE_HOSTS.some((cj) => h.includes(cj))) return true;
   } catch {
     return false;
   }
@@ -45,7 +54,7 @@ export function TrackableProseLink({
       className={className}
       onClick={() => {
         if (shouldTrackAffiliateClick(href, rel)) {
-          trackAffiliateCtaClick(affiliateLabelFromHref(href));
+          trackAffiliateLinkClick(affiliateCategoryFromHref(href));
         }
       }}
     >

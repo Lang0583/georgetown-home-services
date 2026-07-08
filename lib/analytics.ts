@@ -31,19 +31,19 @@ export function trackEvent(eventName: string, params?: TrackEventParams): void {
   gtag("event", eventName, payload);
 }
 
-/** Affiliate / sponsored outbound CTA (Angi, featured partner, Amazon in guides, etc.). */
+/** CJ / partner outbound link — GA4 `affiliate_click` with `category` and `page_path`. */
+export function trackAffiliateLinkClick(category: string): void {
+  const page_path = typeof window !== "undefined" ? window.location.pathname : "";
+  trackEvent("affiliate_click", { category, page_path });
+}
+
+/** @deprecated Prefer {@link trackAffiliateLinkClick} with a service category key. */
 export function trackAffiliateCtaClick(
   affiliateName: string,
   extra?: { providerName?: string; serviceCategory?: string },
 ): void {
-  const p: TrackEventParams = {
-    event_category: "affiliate_click",
-    event_label: affiliateName,
-    page_location: pageLocation(),
-  };
-  if (extra?.providerName) p.provider_name = extra.providerName;
-  if (extra?.serviceCategory) p.service_category = extra.serviceCategory;
-  trackEvent("affiliate_click", p);
+  const category = extra?.serviceCategory ?? affiliateName.toLowerCase().replace(/\s+/g, "_");
+  trackAffiliateLinkClick(category);
 }
 
 /** Successful newsletter capture (`/api/newsletter` or service-request seasonal opt-in). */

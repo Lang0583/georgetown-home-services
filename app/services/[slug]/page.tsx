@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AffiliateCTA from "../../../components/AffiliateCTA";
+import { affiliateCategoryFromServiceSlug } from "@/lib/affiliate-category";
 import FAQList from "../../../components/FAQList";
 import FAQSchema from "../../../components/FAQSchema";
 import { ButtonLink } from "../../../components/Button";
@@ -807,7 +808,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 </section>
               ) : null}
 
-              {isCoreService ? <AffiliateCTA /> : null}
+              {isCoreService ? (
+                <AffiliateCTA affiliateCategory={affiliateCategoryFromServiceSlug(service.slug)} />
+              ) : null}
 
               <div>
                 <section className="mt-12">

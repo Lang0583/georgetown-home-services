@@ -6,6 +6,7 @@ import FAQSchema from "./FAQSchema";
 import JsonLd from "./JsonLd";
 import LastUpdated from "./LastUpdated";
 import AffiliateCTA from "./AffiliateCTA";
+import { affiliateCategoryFromServiceSlug } from "@/lib/affiliate-category";
 import PageShell from "./templates/PageShell";
 import type { SubServicePage } from "../data/sub-services";
 import { absolutePageUrl } from "../lib/page-seo";
@@ -154,7 +155,9 @@ export default function SubServicePageTemplate({ page }: SubServicePageTemplateP
           </ul>
         </section>
 
-        <AffiliateCTA />
+        <AffiliateCTA
+          affiliateCategory={affiliateCategoryFromServiceSlug(page.serviceSlug, page.slug)}
+        />
       </article>
     </PageShell>
   );

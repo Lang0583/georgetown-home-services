@@ -6,7 +6,9 @@ import FAQSchema from "./FAQSchema";
 import JsonLd from "./JsonLd";
 import LastUpdated from "./LastUpdated";
 import AffiliateCTA from "./AffiliateCTA";
+import AffiliateDisclosure from "./AffiliateDisclosure";
 import CostGuideAffiliateCallouts from "./CostGuideAffiliateCallouts";
+import { affiliateCategoryFromServiceSlug } from "@/lib/affiliate-category";
 import CostGuidePriceTable from "./CostGuidePriceTable";
 import PageShell from "./templates/PageShell";
 import type { CostGuidePage } from "../data/cost-guides";
@@ -67,6 +69,7 @@ export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
           ))}
         </div>
 
+        <AffiliateDisclosure className="mt-8 max-w-3xl" />
         <CostGuideAffiliateCallouts slug={page.slug} />
 
         <section className="mt-12 max-w-3xl rounded-2xl border border-ink/10 bg-surface p-6 shadow-md md:p-8">
@@ -105,7 +108,7 @@ export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
           </ul>
         </section>
 
-        <AffiliateCTA />
+        <AffiliateCTA affiliateCategory={affiliateCategoryFromServiceSlug(page.slug)} />
       </article>
     </PageShell>
   );
