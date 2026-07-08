@@ -1,5 +1,5 @@
-import { PROVIDERS_LAST_VERIFIED } from "@/data/providers";
-import { formatLicenseLookupDate, PROVIDER_LICENSE_LOOKUP_DATE } from "./provider-license";
+import { PROVIDERS_LAST_VERIFIED, PROVIDERS_VERIFIED_ISO_DATE } from "@/data/providers";
+import { formatLicenseLookupDate } from "./provider-license";
 
 export const LISTING_METHODOLOGY_PATH = "/methodology" as const;
 
@@ -16,6 +16,7 @@ export const LISTING_INCLUSION_CRITERIA = [
   `${LISTING_MIN_GOOGLE_REVIEWS}+ reviews`,
   "Active Georgetown-area service",
   "Working phone",
+  `Licensed trades verified against TSBPE / TDLR / TDA SPCS public databases as of ${PROVIDERS_LAST_VERIFIED}`,
 ] as const;
 
 export type ListingDataSource = {
@@ -59,6 +60,6 @@ export const LISTINGS_REVIEW_CADENCE_SUMMARY = `Provider shortlists are batch-re
 
 /** License verification note paired with provider cards on `/best` routes. */
 export function listingLicenseVerificationNote(): string {
-  const verifiedLabel = formatLicenseLookupDate(PROVIDER_LICENSE_LOOKUP_DATE);
-  return `Where shown on a card, license numbers were checked against public Texas registries—TSBPE for plumbing, TDLR for electrical and HVAC/ACR, and TDA SPCS for pest control—on ${verifiedLabel}. Roofing, landscaping, foundation, and cleaning listings rely on insurance and public business documentation instead; Texas does not license all of those trades at the state level.`;
+  const verifiedLabel = formatLicenseLookupDate(PROVIDERS_VERIFIED_ISO_DATE);
+  return `Where a license number appears on a card, it was checked against public Texas registries—TSBPE for plumbing, TDLR for electrical and HVAC/ACR, and TDA SPCS for pest control—on ${verifiedLabel}. Roofing, landscaping, foundation, and cleaning listings note that Texas does not license those trades at the state level.`;
 }

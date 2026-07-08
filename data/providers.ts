@@ -134,6 +134,15 @@ function parseAddressFields(address: string): Pick<Provider, "city" | "state" | 
   return { city: m[1].trim(), state: m[2].trim(), postalCode: m[3].trim() };
 }
 
+function stripInternalFields(row: Record<string, unknown>): VerifiedProviderRecord {
+  const clean: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(row)) {
+    if (key.startsWith("_")) continue;
+    clean[key] = value;
+  }
+  return clean as VerifiedProviderRecord;
+}
+
 function mapVerifiedRecord(row: VerifiedProviderRecord, category: ProviderCategory): Provider {
   const licenseType = row.licenseType?.trim() || undefined;
   const licenseNumber = row.licenseNumber?.trim() || undefined;
@@ -166,7 +175,7 @@ function loadProvidersFromVerifiedFile(data: VerifiedProvidersFile): Provider[] 
     const rows = data[key];
     if (!Array.isArray(rows)) continue;
     for (const row of rows) {
-      out.push(mapVerifiedRecord(row, category));
+      out.push(mapVerifiedRecord(stripInternalFields(row as Record<string, unknown>), category));
     }
   }
   return out;

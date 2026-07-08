@@ -1,7 +1,15 @@
-import type { Provider } from "@/data/providers";
+import type { Provider, ProviderCategory } from "@/data/providers";
+import { PROVIDERS_VERIFIED_ISO_DATE } from "@/data/providers";
 
-/** Batch date for the most recent TSBPE / TDLR / TDA SPCS public lookup pass. */
-export const PROVIDER_LICENSE_LOOKUP_DATE = "2026-06-15";
+/** Categories where Texas does not issue a state trade license. */
+const UNLICENSED_TRADE_CATEGORIES: ReadonlySet<ProviderCategory> = new Set([
+  "roofing",
+  "landscaping",
+  "foundation",
+  "cleaning",
+]);
+
+export const UNLICENSED_TRADE_NOTE = "No state license required in Texas";
 
 export function formatLicenseLookupDate(isoDate: string): string {
   const d = new Date(`${isoDate}T00:00:00.000Z`);
@@ -13,13 +21,28 @@ export function formatLicenseLookupDate(isoDate: string): string {
   }).format(d);
 }
 
-/** Card line for license type; appends number only when published. */
+/** @deprecated Use PROVIDERS_VERIFIED_ISO_DATE from providers.ts */
+export const PROVIDER_LICENSE_LOOKUP_DATE = PROVIDERS_VERIFIED_ISO_DATE;
+
+/**
+ * License line when `licenseNumber` is populated in verified JSON.
+ * Format: License: [number] ([type]) — verified [date]
+ */
 export function providerLicenseVerifiedLine(provider: Provider): string | null {
-  const licenseType = provider.licenseType?.trim();
-  if (!licenseType) return null;
   const licenseNumber = provider.licenseNumber?.trim();
-  if (!licenseNumber) return licenseType;
+  if (!licenseNumber) return null;
+
+  const licenseType = provider.licenseType?.trim();
+  const typePart = licenseType ? ` (${licenseType})` : "";
   const verified = provider.licenseVerifiedDate?.trim();
-  const dateSuffix = verified ? ` (verified ${formatLicenseLookupDate(verified)})` : "";
-  return `${licenseType} #${licenseNumber}${dateSuffix}`;
+  const verifiedPart = verified ? ` — verified ${formatLicenseLookupDate(verified)}` : "";
+
+  return `License: ${licenseNumber}${typePart}${verifiedPart}`;
+}
+
+/** Neutral note for trades Texas does not license at the state level. */
+export function providerUnlicensedTradeNote(provider: Provider): string | null {
+  if (!UNLICENSED_TRADE_CATEGORIES.has(provider.category)) return null;
+  if (provider.licenseNumber?.trim()) return null;
+  return UNLICENSED_TRADE_NOTE;
 }

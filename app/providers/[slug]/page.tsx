@@ -19,7 +19,7 @@ import { externalBusinessLinkProps } from "@/lib/businesses";
 import { pageSeoMetadata, absolutePageUrl } from "@/lib/page-seo";
 import { buildProviderLocalBusinessJsonLd } from "@/lib/provider-item-list-schema";
 import { getProviderWebsiteUrl } from "@/lib/provider-website";
-import { providerLicenseVerifiedLine } from "@/lib/provider-license";
+import { providerLicenseVerifiedLine, providerUnlicensedTradeNote } from "@/lib/provider-license";
 import { breadcrumbSchemaForProvider } from "@/lib/schema";
 import LastUpdated from "@/components/LastUpdated";
 import {
@@ -69,6 +69,7 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
   const telHref = `tel:${provider.phone.replace(/\D/g, "")}`;
   const websiteUrl = getProviderWebsiteUrl(provider.name);
   const licenseLine = providerLicenseVerifiedLine(provider);
+  const tradeNote = providerUnlicensedTradeNote(provider);
   const reviewLabel = providerReviewCountLabel(provider);
   const mapsEmbedSrc = googleMapsEmbedUrl(
     provider.googleMapsUrl,
@@ -156,6 +157,7 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
                 <span className="font-semibold text-ink">{licenseLine}</span>
               </p>
             ) : null}
+            {tradeNote ? <p className="text-xs text-muted">{tradeNote}</p> : null}
           </div>
 
           <div className="mt-6">
