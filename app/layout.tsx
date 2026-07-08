@@ -19,7 +19,7 @@ const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID?.trim() || AD
 
 /** impact.com / AppImpact “HTML tag” verification — paste the `content` value only (not the full tag). */
 const impactSiteVerification =
-  process.env.IMPACT_SITE_VERIFICATION?.trim() || "39b02bdb-a798-4816-965f-955369ad9bc7";
+  process.env.IMPACT_SITE_VERIFICATION?.trim() || "c55a404e-cfbc-482d-b7c6-7f9a33da5279";
 
 /** GA4 default stream (override with `NEXT_PUBLIC_GA_MEASUREMENT_ID`). */
 const GA_MEASUREMENT_ID =
