@@ -6,8 +6,8 @@ export const AFFILIATE_LINKS: Record<string, string> = {
   electrical: "https://www.anrdoezrs.net/click-101745849-17142831",
   pestControl: "https://www.jdoqocy.com/click-101745849-17141195",
   houseCleaning: "https://www.anrdoezrs.net/click-101745849-17142832",
-  landscaping: "https://www.jdoqocy.com/click-101745849-17141193",
-  foundationRepair: "https://www.jdoqocy.com/click-101745849-17141193",
+  landscaping: "https://www.jdoqocy.com/click-101745849-17142834",
+  foundationRepair: "https://www.jdoqocy.com/click-101745849-17252545",
   default: "https://www.jdoqocy.com/click-101745849-17141193",
 };
 
