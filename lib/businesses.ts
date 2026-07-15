@@ -32,6 +32,26 @@ export type Business = {
    * without altering the core provider dataset.
    */
   directory?: DirectoryListingMeta;
+  /**
+   * Verified state license number, EXACTLY as issued by the applicable Texas board.
+   * Populate manually against the state board record — never fabricate, never write "pending".
+   * When null/absent, {@link "./verified-license".verifiedLicense} returns null and the
+   * verification badge, credential JSON-LD, and methodology callout all suppress rendering.
+   */
+  licenseNumber?: string | null;
+  /**
+   * Optional per-provider override for the issuing authority acronym (e.g. "TSBPE", "TDLR",
+   * "TDA SPCS"). Leave null to use the default authority derived from {@link Business.category}
+   * via `CATEGORY_TO_AUTHORITY`. Use only when a provider's credential comes from a non-default
+   * authority for its trade.
+   */
+  licenseType?: string | null;
+  /**
+   * Optional verification date (ISO `YYYY-MM-DD` or freeform display string such as `"Jul 2026"`).
+   * Rendered next to the license number when present. NEVER fabricate a date; leave null
+   * until the license has actually been re-checked against the state board record.
+   */
+  licenseVerifiedDate?: string | null;
 };
 
 const businesses: Business[] = raw as Business[];

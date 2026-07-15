@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { BusinessListingDescription } from "./BusinessListingDescription";
 import { BusinessPhoneRow } from "./BusinessPhoneRow";
 import ExitInterstitial from "./ExitInterstitial";
+import VerifiedLicenseBadge from "./VerifiedLicenseBadge";
 import {
   BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS,
   BUSINESS_LINK_VISIT_WEBSITE,
@@ -98,6 +99,7 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
                 <span className="text-gray-800">{business.reviews.toLocaleString()} reviews</span>
               </div>
               <BusinessPhoneRow phone={business.phone} providerName={business.name} />
+              <VerifiedLicenseBadge business={business} className="mt-2" />
               <BusinessListingDescription text={business.description} className="mt-2" />
               {website || maps ? (
                 <div className="mt-3 flex flex-wrap gap-x-3 gap-y-0.5 border-t border-gray-200/80 pt-3 text-xs">

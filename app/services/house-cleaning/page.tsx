@@ -16,6 +16,7 @@ import { HOUSE_CLEANING_TRADE_HUB_FAQS } from "../../../lib/service-trade-hub-fa
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
+  breadcrumbListJsonLd,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import { showExtendedHomeServices } from "../../../lib/public-site-scope";
@@ -58,6 +59,12 @@ export default function HouseCleaningHubPage() {
               name: "House Cleaning in Georgetown, TX",
               description:
                 "House cleaning guidance for Georgetown: recurring service, deep cleans, move-out work, and a directory of local cleaners to compare.",
+            })}
+          />
+          <JsonLd
+            data={breadcrumbListJsonLd({
+              pathname: "/services/house-cleaning",
+              name: "House Cleaning in Georgetown, TX",
             })}
           />
           <div className="flex flex-col gap-10">

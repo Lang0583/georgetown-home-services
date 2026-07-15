@@ -42,24 +42,24 @@ const PARTNERS: readonly PartnerConfig[] = [
   },
   {
     id: "thumbtack",
-    label: "Get Quotes on Thumbtack",
+    label: "Find Pros on Thumbtack",
     href: AFFILIATE_GEORGETOWN_URLS.thumbtack,
     bgClass: "bg-[#1e3a8a]",
     hoverClass: "hover:bg-[#172554]",
   },
   {
     id: "homeadvisor",
-    label: "Get Quotes on HomeAdvisor",
+    label: "Browse HomeAdvisor",
     href: AFFILIATE_GEORGETOWN_URLS.homeadvisor,
     bgClass: "bg-[#15803d]",
     hoverClass: "hover:bg-[#166534]",
   },
 ];
 
-const DEFAULT_HEADING = "Get Free Quotes from Georgetown Contractors";
+const DEFAULT_HEADING = "Compare Free Quotes from Georgetown Contractors";
 const DEFAULT_SUBTEXT = "Compare bids from local pros — no obligation, no spam.";
 const DISCLAIMER =
-  "These are affiliate links. We may earn a commission if you request a quote.";
+  "These are affiliate links. We may earn a commission if you use them — it doesn\u2019t affect our rankings or editorial content.";
 
 /**
  * Three-partner quote-request CTA card. Renders one heading, one subtext,
@@ -85,7 +85,7 @@ export default function AffiliateCTA({
       ]
         .filter(Boolean)
         .join(" ")}
-      aria-label="Get free quotes from Georgetown contractors"
+      aria-label="Compare free quotes from Georgetown contractors"
     >
       <h2 className="text-2xl font-semibold tracking-tight text-gray-900 md:text-3xl">
         {heading}

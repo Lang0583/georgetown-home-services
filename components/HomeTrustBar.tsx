@@ -40,28 +40,44 @@ function IconClock({ className }: { className?: string }) {
   );
 }
 
-const SIGNALS = [
-  {
-    Icon: IconShieldCheck,
-    title: "Verified local providers",
-    subtext: "Georgetown-area businesses only",
-  },
-  {
-    Icon: IconStar,
-    title: "Ratings from Google Reviews",
-    subtext: "Real customer feedback",
-  },
-  {
-    Icon: IconClock,
-    title: "Updated April 2026",
-    subtext: "Actively maintained directory",
-  },
-] as const;
+/**
+ * "Updated June 2026" computed each render in Georgetown's local time. Pin
+ * the timezone so a Vercel server rendering at 11pm CT on the last day of a
+ * month does not flip the displayed month forward by one. Paired with
+ * `export const revalidate` on the homepage so the static cache regenerates
+ * daily and this string never drifts more than a day from the real month.
+ */
+function formatUpdatedLabel(now: Date = new Date()): string {
+  const monthYear = now.toLocaleString("en-US", {
+    month: "long",
+    year: "numeric",
+    timeZone: "America/Chicago",
+  });
+  return `Updated ${monthYear}`;
+}
 
 /**
  * Compact homepage credibility strip (NerdWallet / editorial-style).
  */
 export default function HomeTrustBar() {
+  const signals = [
+    {
+      Icon: IconShieldCheck,
+      title: "Verified local providers",
+      subtext: "Georgetown-area businesses only",
+    },
+    {
+      Icon: IconStar,
+      title: "Ratings from Google Reviews",
+      subtext: "Real customer feedback",
+    },
+    {
+      Icon: IconClock,
+      title: formatUpdatedLabel(),
+      subtext: "Actively maintained directory",
+    },
+  ];
+
   return (
     <div
       className="mt-6 rounded-lg bg-[#F3F4F6] px-4 py-3 md:h-20 md:max-h-20 md:py-0"
@@ -69,7 +85,7 @@ export default function HomeTrustBar() {
       aria-label="Trust and credibility"
     >
       <ul className="flex flex-col divide-y divide-gray-300/70 md:h-full md:flex-row md:items-center md:divide-y-0">
-        {SIGNALS.map(({ Icon, title, subtext }, index) => (
+        {signals.map(({ Icon, title, subtext }, index) => (
           <li
             key={title}
             className={[

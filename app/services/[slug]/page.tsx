@@ -477,36 +477,107 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         Typical HVAC Costs in Georgetown TX
                       </h2>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
-                        Pricing depends on equipment brand/age, access, and timing, but Georgetown, TX homeowners often
-                        see:
+                        Editorial price ranges for common HVAC service in Williamson County. Final pricing depends on
+                        equipment brand and age, attic access, and the time of year — but these ranges should set a
+                        reasonable expectation before you collect bids.
                       </p>
-                      <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
-                        <li>
-                          <span className="font-semibold text-gray-900">Service call and diagnosis:</span> commonly a fee
-                          in the low-to-mid hundreds, sometimes credited toward approved repairs.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-gray-900">Typical repairs:</span> smaller parts and drain
-                          clears often in the lower hundreds depending on access and brand.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-gray-900">Major repairs:</span> coils, compressors, or
-                          control boards can be significantly more and may approach replacement-level pricing on older
-                          systems.
-                        </li>
-                        <li>
-                          <span className="font-semibold text-gray-900">Replacement:</span> full system swaps are quoted
-                          in the many-thousands depending on tonnage, efficiency, and ductwork scope.
-                        </li>
-                      </ul>
+                      <div className="not-prose mt-4 overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+                        <table className="min-w-full divide-y divide-gray-200 text-sm">
+                          <caption className="sr-only">
+                            Typical Georgetown TX pricing ranges for HVAC service, repair, and replacement (2026).
+                          </caption>
+                          <thead className="bg-gray-50">
+                            <tr>
+                              <th
+                                scope="col"
+                                className="px-4 py-3 text-left font-semibold text-gray-900"
+                              >
+                                Service
+                              </th>
+                              <th
+                                scope="col"
+                                className="px-4 py-3 text-left font-semibold text-gray-900"
+                              >
+                                Typical Georgetown range
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-gray-200 bg-white text-gray-700">
+                            <tr>
+                              <th scope="row" className="px-4 py-3 text-left font-medium text-gray-900">
+                                Service call / diagnostic
+                              </th>
+                              <td className="px-4 py-3 tabular-nums">$75–$150</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" className="px-4 py-3 text-left font-medium text-gray-900">
+                                Refrigerant recharge (R-410A)
+                              </th>
+                              <td className="px-4 py-3 tabular-nums">$200–$500</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" className="px-4 py-3 text-left font-medium text-gray-900">
+                                Capacitor replacement
+                              </th>
+                              <td className="px-4 py-3 tabular-nums">$150–$350</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" className="px-4 py-3 text-left font-medium text-gray-900">
+                                Contactor replacement
+                              </th>
+                              <td className="px-4 py-3 tabular-nums">$150–$300</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" className="px-4 py-3 text-left font-medium text-gray-900">
+                                Condensate drain clear
+                              </th>
+                              <td className="px-4 py-3 tabular-nums">$75–$200</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" className="px-4 py-3 text-left font-medium text-gray-900">
+                                Evaporator coil replacement
+                              </th>
+                              <td className="px-4 py-3 tabular-nums">$800–$2,000</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" className="px-4 py-3 text-left font-medium text-gray-900">
+                                Compressor replacement
+                              </th>
+                              <td className="px-4 py-3 tabular-nums">$1,200–$2,500</td>
+                            </tr>
+                            <tr>
+                              <th scope="row" className="px-4 py-3 text-left font-medium text-gray-900">
+                                Full system replacement (2.5–5 ton)
+                              </th>
+                              <td className="px-4 py-3 tabular-nums">$5,000–$12,000</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
+                        Prices reflect Georgetown TX market conditions as of 2026. Get written quotes from at least two
+                        local companies before approving any repair over $300.
+                      </p>
                       <p className="mt-3 text-sm leading-relaxed text-gray-700">
-                        For a deeper replacement budget breakdown, read{" "}
+                        <Link
+                          href="/blog/ac-repair-cost-georgetown-tx"
+                          className="font-semibold text-primary hover:underline"
+                        >
+                          See our full AC repair cost breakdown →
+                        </Link>
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-gray-700">
+                        Planning a system swap instead? Read{" "}
                         <Link href="/blog/cost-to-replace-hvac-georgetown" className="font-semibold hover:underline">
                           cost to replace HVAC in Georgetown
                         </Link>
                         .
                       </p>
                     </section>
+
+                    <div className="mt-10">
+                      <AffiliateCTA placement="service-guide-hvac-mid-when-to-call" />
+                    </div>
 
                     <section>
                       <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
@@ -855,6 +926,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               ) : null}
 
               <div>
+                <div className="mt-12">
+                  <AffiliateCTA placement={`service-guide-above-faq:${service.slug}`} />
+                </div>
                 <section className="mt-12">
                   <h2 className="text-3xl font-semibold tracking-tight text-gray-900">
                     {isPlumberService

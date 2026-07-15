@@ -16,6 +16,7 @@ import { FOUNDATION_TRADE_HUB_FAQS } from "../../../lib/service-trade-hub-faqs";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
+  breadcrumbListJsonLd,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import { showExtendedHomeServices } from "../../../lib/public-site-scope";
@@ -58,6 +59,12 @@ export default function FoundationHubPage() {
               name: "Foundation Repair in Georgetown, TX",
               description:
                 "Foundation repair guidance for Georgetown, TX: expansive clay soil, drainage, crack patterns, and how to compare foundation contractors.",
+            })}
+          />
+          <JsonLd
+            data={breadcrumbListJsonLd({
+              pathname: "/services/foundation",
+              name: "Foundation Repair in Georgetown, TX",
             })}
           />
           <div className="flex flex-col gap-10">

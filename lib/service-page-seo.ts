@@ -62,7 +62,7 @@ function metaPricePhrase(cat: PricingCategory, serviceLabelLower: string): strin
 
 /** Flagship geo guides — match CTR audit headline hooks. */
 const SERVICE_SLUG_ABSOLUTE_TITLE: Record<string, string> = {
-  "plumber-georgetown-tx": `Plumber Georgetown TX — $75-250/hr | Licensed Local Pros [${PRICING_YEAR}]`,
+  "plumber-georgetown-tx": `Plumbers in Georgetown, TX (${PRICING_YEAR}) | Reviews, Costs & Local Pros`,
   "hvac-georgetown-tx": `HVAC Repair Georgetown TX — $85-175/hr | AC & Heating [${PRICING_YEAR}]`,
   "roofer-georgetown-tx": `Roofer Georgetown TX — $350-600/sq | Free Estimates [${PRICING_YEAR}]`,
 };

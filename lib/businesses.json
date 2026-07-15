@@ -12,7 +12,10 @@
     "rating": 4.8,
     "reviews": 180,
     "location_link": "https://www.google.com/maps/search/?api=1&query=Atech+Plumbing+4500+Williams+Dr+Georgetown+TX",
-    "description": "Williamson County plumbing company offering drain cleaning, water heater service, leak detection, and slab leak diagnosis."
+    "description": "Williamson County plumbing company offering drain cleaning, water heater service, leak detection, and slab leak diagnosis.",
+    "licenseNumber": null,
+    "licenseType": null,
+    "licenseVerifiedDate": null
   },
   {
     "name": "Reliant Plumbing",
@@ -27,7 +30,10 @@
     "rating": 4.7,
     "reviews": 240,
     "location_link": "https://www.google.com/maps/search/?api=1&query=Reliant+Plumbing+1616+Williams+Dr+Georgetown+TX",
-    "description": "Full-service plumbing for repairs, repipes, water heaters, and emergency calls across Georgetown and surrounding Williamson County."
+    "description": "Full-service plumbing for repairs, repipes, water heaters, and emergency calls across Georgetown and surrounding Williamson County.",
+    "licenseNumber": null,
+    "licenseType": null,
+    "licenseVerifiedDate": null
   },
   {
     "name": "Walker Plumbing",
@@ -42,7 +48,10 @@
     "rating": 4.6,
     "reviews": 53,
     "location_link": "https://www.google.com/maps/search/?api=1&query=Walker+Plumbing+375+Green+Acres+Georgetown+TX",
-    "description": "Long-running local plumber handling repairs, fixture replacement, and standard residential service calls."
+    "description": "Long-running local plumber handling repairs, fixture replacement, and standard residential service calls.",
+    "licenseNumber": null,
+    "licenseType": null,
+    "licenseVerifiedDate": null
   },
   {
     "name": "Georgetown Air Conditioning & Heating",
@@ -57,7 +66,10 @@
     "rating": 4.7,
     "reviews": 145,
     "location_link": "https://www.google.com/maps/search/?api=1&query=Georgetown+Air+Conditioning+Heating+Georgetown+TX",
-    "description": "Locally-named Georgetown HVAC contractor for AC and heating repair, installation, and seasonal maintenance."
+    "description": "Locally-named Georgetown HVAC contractor for AC and heating repair, installation, and seasonal maintenance.",
+    "licenseNumber": null,
+    "licenseType": null,
+    "licenseVerifiedDate": null
   },
   {
     "name": "Neal HVAC",
@@ -72,7 +84,10 @@
     "rating": 4.8,
     "reviews": 95,
     "location_link": "https://www.google.com/maps/search/?api=1&query=Neal+HVAC+2006+Rivery+Blvd+Georgetown+TX",
-    "description": "Georgetown HVAC company covering residential AC repair, replacement planning, and heat pump service."
+    "description": "Georgetown HVAC company covering residential AC repair, replacement planning, and heat pump service.",
+    "licenseNumber": null,
+    "licenseType": null,
+    "licenseVerifiedDate": null
   },
   {
     "name": "DTC Air Conditioning & Heating",
@@ -87,7 +102,10 @@
     "rating": 4.7,
     "reviews": 110,
     "location_link": "https://www.google.com/maps/search/?api=1&query=DTC+Air+Conditioning+Heating+361+Logan+Ranch+Rd+Georgetown+TX",
-    "description": "AC and heating service across Georgetown and the I-35 corridor; same-day diagnostics and replacement quotes."
+    "description": "AC and heating service across Georgetown and the I-35 corridor; same-day diagnostics and replacement quotes.",
+    "licenseNumber": null,
+    "licenseType": null,
+    "licenseVerifiedDate": null
   },
   {
     "name": "Texas Traditions Roofing",
@@ -147,7 +165,10 @@
     "rating": 4.8,
     "reviews": 120,
     "location_link": "https://www.google.com/maps/search/?api=1&query=Cox+Electric+707+Serenada+Dr+Georgetown+TX",
-    "description": "Georgetown electrician serving Sun City, Round Rock, and Cedar Park; panels, generators, EV chargers, and lighting."
+    "description": "Georgetown electrician serving Sun City, Round Rock, and Cedar Park; panels, generators, EV chargers, and lighting.",
+    "licenseNumber": null,
+    "licenseType": null,
+    "licenseVerifiedDate": null
   },
   {
     "name": "Skilliez Electric",
@@ -162,7 +183,10 @@
     "rating": 4.7,
     "reviews": 60,
     "location_link": "https://www.google.com/maps/search/?api=1&query=Skilliez+Electric+Georgetown+TX",
-    "description": "Local electrician offering residential wiring, 24/7 emergency service, and EV charger installation."
+    "description": "Local electrician offering residential wiring, 24/7 emergency service, and EV charger installation.",
+    "licenseNumber": null,
+    "licenseType": null,
+    "licenseVerifiedDate": null
   },
   {
     "name": "Comiskey Electric LLC",
@@ -177,7 +201,10 @@
     "rating": 4.9,
     "reviews": 75,
     "location_link": "https://www.google.com/maps/search/?api=1&query=Comiskey+Electric+Georgetown+TX",
-    "description": "Veteran-owned, licensed electrician covering Williamson and Travis Counties with a one-year workmanship guarantee."
+    "description": "Veteran-owned, licensed electrician covering Williamson and Travis Counties with a one-year workmanship guarantee.",
+    "licenseNumber": null,
+    "licenseType": null,
+    "licenseVerifiedDate": null
   },
   {
     "name": "Just Right Lawns",
@@ -228,16 +255,46 @@
     "name": "Georgetown Lawn & Landscape",
     "category": "landscaping",
     "type": "Landscaper",
-    "phone": "(512) 863-2257",
-    "website": "https://www.google.com/maps/search/?api=1&query=Georgetown+Lawn+and+Landscape+Georgetown+TX",
+    "phone": "(512) 863-4141",
+    "website": "https://www.georgetownlawnandlandscape.com/",
     "address": "Georgetown, TX and Williamson County",
     "city": "Georgetown",
     "state": "TX",
     "postal_code": "78626",
     "rating": 4.7,
-    "reviews": 85,
+    "reviews": 88,
     "location_link": "https://www.google.com/maps/search/?api=1&query=Georgetown+Lawn+and+Landscape+Georgetown+TX",
-    "description": "Full-service lawn care, bed maintenance, and seasonal cleanup serving Georgetown and Williamson County."
+    "description": "Full-service Georgetown landscaping company covering mowing, bed maintenance, seasonal cleanups, and irrigation service."
+  },
+  {
+    "name": "Lone Star Lawn Care",
+    "category": "landscaping",
+    "type": "Landscaper",
+    "phone": "(512) 529-3047",
+    "website": "https://www.lonestarlawncaretx.com/",
+    "address": "Serving Georgetown and Williamson County, TX",
+    "city": "Georgetown",
+    "state": "TX",
+    "postal_code": "78626",
+    "rating": 4.6,
+    "reviews": 62,
+    "location_link": "https://www.google.com/maps/search/?api=1&query=Lone+Star+Lawn+Care+Georgetown+TX",
+    "description": "Georgetown lawn care provider offering weekly mowing, edging, and seasonal landscape maintenance across Williamson County."
+  },
+  {
+    "name": "ABC Home & Commercial Services",
+    "category": "landscaping",
+    "type": "Landscaper",
+    "phone": "(512) 837-9500",
+    "website": "https://www.abchomecommercial.com/",
+    "address": "Georgetown office, serving the greater Austin area",
+    "city": "Georgetown",
+    "state": "TX",
+    "postal_code": "78626",
+    "rating": 4.5,
+    "reviews": 310,
+    "location_link": "https://www.google.com/maps/search/?api=1&query=ABC+Home+and+Commercial+Services+Georgetown+TX",
+    "description": "Austin-area home services company with a Georgetown office; landscaping, pest control, and irrigation."
   },
   {
     "name": "Emerald Lawns",
@@ -282,7 +339,10 @@
     "rating": 4.8,
     "reviews": 165,
     "location_link": "https://www.google.com/maps/search/?api=1&query=King%27s+Pest+Control+603+River+Bend+Dr+Georgetown+TX",
-    "description": "Family-owned Georgetown pest control company serving Williamson County since 1982; ants, rodents, termites, mosquitoes."
+    "description": "Family-owned Georgetown pest control company serving Williamson County since 1982; ants, rodents, termites, mosquitoes.",
+    "licenseNumber": null,
+    "licenseType": null,
+    "licenseVerifiedDate": null
   },
   {
     "name": "Allstate Pest Control",
@@ -297,7 +357,10 @@
     "rating": 4.7,
     "reviews": 95,
     "location_link": "https://www.google.com/maps/search/?api=1&query=Allstate+Pest+Control+5800+Williams+Dr+Georgetown+TX",
-    "description": "Local Georgetown pest control on Williams Drive offering general pest, wildlife, and rodent exclusion services."
+    "description": "Local Georgetown pest control on Williams Drive offering general pest, wildlife, and rodent exclusion services.",
+    "licenseNumber": null,
+    "licenseType": null,
+    "licenseVerifiedDate": null
   },
   {
     "name": "HomeTeam Pest Defense",
@@ -312,7 +375,10 @@
     "rating": 4.5,
     "reviews": 70,
     "location_link": "https://www.google.com/maps/search/?api=1&query=HomeTeam+Pest+Defense+2699+FM1460+Georgetown+TX",
-    "description": "National pest control brand with a Georgetown office; quarterly perimeter plans, termite monitoring, and rodent exclusion."
+    "description": "National pest control brand with a Georgetown office; quarterly perimeter plans, termite monitoring, and rodent exclusion.",
+    "licenseNumber": null,
+    "licenseType": null,
+    "licenseVerifiedDate": null
   },
   {
     "name": "Baird Foundation Repair",

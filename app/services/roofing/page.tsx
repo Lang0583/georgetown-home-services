@@ -25,6 +25,7 @@ import { ROOFING_TRADE_HUB_FAQS } from "../../../lib/service-trade-hub-faqs";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
+  breadcrumbListJsonLd,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import { isNoindexSlug, isRedirectedServiceSlug } from "../../../lib/public-site-scope";
@@ -74,6 +75,12 @@ export default function RoofingHubPage() {
               name: "Roofing in Georgetown, TX",
               description:
                 "Practical roofing guides for Georgetown homeowners: roof leaks, storm damage checklists, replacement cost drivers, and how to compare roofers.",
+            })}
+          />
+          <JsonLd
+            data={breadcrumbListJsonLd({
+              pathname: "/services/roofing",
+              name: "Roofing in Georgetown, TX",
             })}
           />
           <JsonLd

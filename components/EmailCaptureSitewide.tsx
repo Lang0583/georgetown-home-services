@@ -120,6 +120,31 @@ export default function EmailCaptureSitewide({
         : "mt-12 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm";
 
   if (variant === "blog-sidebar") {
+    if (status === "success") {
+      return (
+        <section id={formId} className={boxClass}>
+          <div className="flex gap-3">
+            <ChecklistLeadMagnetIcon className="mt-0.5 h-9 w-9 shrink-0 text-primary" />
+            <div className="min-w-0">
+              <h2 className="text-base font-bold leading-snug text-gray-900">{EMAIL_CAPTURE_HEADLINE}</h2>
+              <p className="mt-1 text-xs leading-snug text-gray-600">{EMAIL_CAPTURE_SUBTEXT}</p>
+            </div>
+          </div>
+          <div
+            role="status"
+            aria-live="polite"
+            className="mt-3 rounded-md border border-emerald-200 bg-emerald-50 p-3 text-xs leading-relaxed text-emerald-900"
+          >
+            <p className="text-sm font-semibold">You&rsquo;re in.</p>
+            <p className="mt-1">
+              Check your inbox for the Georgetown Homeowner Checklist &mdash; usually arrives within a few minutes. If you
+              don&rsquo;t see it, check your spam folder.
+            </p>
+          </div>
+        </section>
+      );
+    }
+
     return (
       <section id={formId} className={boxClass}>
         <div className="flex gap-3">
@@ -162,11 +187,6 @@ export default function EmailCaptureSitewide({
             inputMode="email"
           />
 
-          {status === "success" ? (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-50 px-3 py-2 text-xs text-emerald-900">
-              Thanks — check your inbox for the guide.
-            </div>
-          ) : null}
           {status === "error" && error ? (
             <div className="rounded-md border border-rose-500/30 bg-rose-50 px-3 py-2 text-xs text-rose-900">{error}</div>
           ) : null}
@@ -192,6 +212,31 @@ export default function EmailCaptureSitewide({
             </p>
           ) : null}
         </form>
+      </section>
+    );
+  }
+
+  if (status === "success") {
+    return (
+      <section id={formId} className={boxClass}>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+          <ChecklistLeadMagnetIcon className="h-12 w-12 shrink-0 text-primary" />
+          <div className="min-w-0">
+            <h2 className="text-2xl font-bold text-gray-900">{EMAIL_CAPTURE_HEADLINE}</h2>
+            <p className="mt-2 text-slate-700">{EMAIL_CAPTURE_SUBTEXT}</p>
+          </div>
+        </div>
+        <div
+          role="status"
+          aria-live="polite"
+          className="mt-6 rounded-lg border border-emerald-200 bg-emerald-50 p-5 text-sm leading-relaxed text-emerald-900"
+        >
+          <p className="text-base font-semibold">You&rsquo;re in.</p>
+          <p className="mt-2">
+            Check your inbox for the Georgetown Homeowner Checklist &mdash; usually arrives within a few minutes. If you
+            don&rsquo;t see it, check your spam folder.
+          </p>
+        </div>
       </section>
     );
   }
@@ -260,11 +305,6 @@ export default function EmailCaptureSitewide({
           </div>
         </div>
 
-        {status === "success" ? (
-          <div className="rounded-lg border border-emerald-500/30 bg-emerald-50 p-4 text-sm text-emerald-900 md:col-span-2">
-            Thanks{firstName.trim() ? `, ${firstName.trim()}` : ""} — check your inbox for the guide.
-          </div>
-        ) : null}
         {status === "error" && error ? (
           <div className="rounded-lg border border-rose-500/30 bg-rose-50 p-4 text-sm text-rose-900 md:col-span-2">{error}</div>
         ) : null}

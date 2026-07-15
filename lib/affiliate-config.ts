@@ -11,5 +11,5 @@ export const AFFILIATE_HOMEADVISOR_URL = "https://www.homeadvisor.com/";
 export const AFFILIATE_GEORGETOWN_URLS = {
   angi: "https://www.angi.com/companylist/us/tx/georgetown/home-services-contractors.htm",
   thumbtack: "https://www.thumbtack.com/tx/georgetown/",
-  homeadvisor: AFFILIATE_HOMEADVISOR_URL,
+  homeadvisor: "https://www.homeadvisor.com/c.Georgetown.TX.-12046.html",
 } as const;

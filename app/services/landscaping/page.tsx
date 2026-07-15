@@ -15,6 +15,7 @@ import { LANDSCAPING_TRADE_HUB_FAQS } from "../../../lib/service-trade-hub-faqs"
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
+  breadcrumbListJsonLd,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import { getBlog, getServices } from "../../../lib/site-content";
@@ -54,6 +55,12 @@ export default function LandscapingHubPage() {
               name: "Landscaping & Lawn Care in Georgetown, TX",
               description:
                 "Landscaping and lawn care guidance for Georgetown: maintenance, irrigation, seasonal timing, and a directory of local companies to compare.",
+            })}
+          />
+          <JsonLd
+            data={breadcrumbListJsonLd({
+              pathname: "/services/landscaping",
+              name: "Landscaping & Lawn Care in Georgetown, TX",
             })}
           />
           <div className="flex flex-col gap-10">

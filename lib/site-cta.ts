@@ -8,7 +8,8 @@ export const EMAIL_CAPTURE_SUBTEXT =
 export const EMAIL_CAPTURE_EMAIL_PLACEHOLDER = "Your email address";
 export const EMAIL_CAPTURE_CTA_CHECKLIST = "Send Me the Checklist";
 export const EMAIL_CAPTURE_CTA_REMINDERS = "Send Me Reminders";
-export const EMAIL_CAPTURE_TRUST_LINE = "One email per season. No spam. Unsubscribe anytime.";
+export const EMAIL_CAPTURE_TRUST_LINE =
+  "By submitting, you agree to receive occasional emails from Georgetown Home Services. Unsubscribe anytime. We never sell your information.";
 
 /** @deprecated Use EMAIL_CAPTURE_HEADLINE — kept for imports expecting this name. */
 export const CTA_EMAIL_PROVIDERS = EMAIL_CAPTURE_HEADLINE;

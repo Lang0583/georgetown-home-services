@@ -6,6 +6,9 @@ import { BusinessPhoneRow } from "./BusinessPhoneRow";
 import { RatingStarsWithCaption } from "./BusinessRatingStars";
 import Link from "next/link";
 import ExitInterstitial from "./ExitInterstitial";
+import VerifiedLicenseBadge from "./VerifiedLicenseBadge";
+import VerifiedProvidersJsonLd from "./VerifiedProvidersJsonLd";
+import LicenseVerificationMethodology from "./LicenseVerificationMethodology";
 import { trackMapsClick, trackOutboundClick } from "../lib/analytics";
 import {
   BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS,
@@ -185,6 +188,8 @@ function ProviderCard({
 
         <BusinessPhoneRow phone={b.phone} providerName={b.name} wrapperClassName="mt-2" />
 
+        <VerifiedLicenseBadge business={b} className="mt-2" />
+
         <BadgeRow badges={badges} />
 
         <BusinessListingDescription text={b.description} className="mt-1" />
@@ -277,6 +282,8 @@ export default function BestBusinessesDirectory({
 
   return (
     <div className="mt-8 space-y-10">
+      <VerifiedProvidersJsonLd businesses={businesses} />
+      <LicenseVerificationMethodology businesses={businesses} />
       <section className="rounded-xl border border-gray-200 bg-gray-50 p-6 shadow-md">
         <div className="text-xs font-semibold uppercase tracking-wide text-gray-600">Filters</div>
         <div className="mt-2 grid grid-cols-1 gap-4 md:grid-cols-2">

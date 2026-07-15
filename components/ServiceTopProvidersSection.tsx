@@ -3,6 +3,9 @@
 import { BusinessListingDescription } from "./BusinessListingDescription";
 import { BusinessPhoneRow } from "./BusinessPhoneRow";
 import ExitInterstitial from "./ExitInterstitial";
+import VerifiedLicenseBadge from "./VerifiedLicenseBadge";
+import VerifiedProvidersJsonLd from "./VerifiedProvidersJsonLd";
+import LicenseVerificationMethodology from "./LicenseVerificationMethodology";
 import {
   BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS,
   BUSINESS_LINK_VISIT_WEBSITE,
@@ -50,11 +53,13 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
 
   return (
     <section className="mt-12">
+      <VerifiedProvidersJsonLd businesses={businesses} />
       <h2 className="text-3xl font-semibold tracking-tight text-gray-900">Top Providers Serving Georgetown</h2>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-700">
         Local businesses from public listing data, sorted by rating (highest first), then by review count. Confirm
         licensing and availability before hiring.
       </p>
+      <LicenseVerificationMethodology businesses={businesses} className="mt-4" />
 
       <div className="mt-6 rounded-xl border border-gray-200 border-l-[3px] border-l-primary bg-slate-50 p-4 shadow-md ring-1 ring-gray-950/[0.04] md:p-5">
         <div className="text-sm font-semibold uppercase tracking-wide text-gray-900">Featured Providers</div>
@@ -94,6 +99,7 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
                   <BusinessListingDescription text={b.description} className="" />
                   <p className="text-sm text-gray-700">{serviceAreaNote(b)}</p>
                   <BusinessPhoneRow phone={b.phone} providerName={b.name} wrapperClassName="" />
+                  <VerifiedLicenseBadge business={b} />
                   <div className="flex flex-wrap gap-2 pt-0.5">
                     {website ? (
                       <ExitInterstitial
@@ -166,6 +172,7 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
                   <BusinessListingDescription text={b.description} className="" />
                   <p className="text-sm text-gray-700">{serviceAreaNote(b)}</p>
                   <BusinessPhoneRow phone={b.phone} providerName={b.name} wrapperClassName="" />
+                  <VerifiedLicenseBadge business={b} />
                   <div className="flex flex-wrap gap-2 pt-0.5">
                     {website ? (
                       <ExitInterstitial

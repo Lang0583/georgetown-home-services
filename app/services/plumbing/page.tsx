@@ -19,6 +19,7 @@ import { PLUMBING_TRADE_HUB_FAQS } from "../../../lib/service-trade-hub-faqs";
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
+  breadcrumbListJsonLd,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import { isNoindexSlug, isRedirectedServiceSlug } from "../../../lib/public-site-scope";
@@ -64,6 +65,12 @@ export default function PlumbingHubPage() {
               name: "Plumbing in Georgetown, TX",
               description:
                 "Practical plumbing guides for Georgetown homeowners: common issues, when to call a pro, cost drivers, and a directory of plumbers to compare.",
+            })}
+          />
+          <JsonLd
+            data={breadcrumbListJsonLd({
+              pathname: "/services/plumbing",
+              name: "Plumbing in Georgetown, TX",
             })}
           />
           <div className="flex flex-col gap-10">

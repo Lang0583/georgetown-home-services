@@ -16,6 +16,7 @@ import { PEST_CONTROL_TRADE_HUB_FAQS } from "../../../lib/service-trade-hub-faqs
 import {
   SERVICE_BEST_LAST_UPDATED_DISPLAY,
   SERVICE_BEST_LAST_UPDATED_LINE_CLASS,
+  breadcrumbListJsonLd,
   webPageWithDateModifiedJsonLd,
 } from "../../../lib/service-best-pages-meta";
 import { showExtendedHomeServices } from "../../../lib/public-site-scope";
@@ -58,6 +59,12 @@ export default function PestControlHubPage() {
               name: "Pest Control in Georgetown, TX",
               description:
                 "Pest control planning for Georgetown homeowners: inspections, treatment plans, warranties, and a directory of local providers to compare.",
+            })}
+          />
+          <JsonLd
+            data={breadcrumbListJsonLd({
+              pathname: "/services/pest-control",
+              name: "Pest Control in Georgetown, TX",
             })}
           />
           <div className="flex flex-col gap-10">
