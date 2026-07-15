@@ -16,6 +16,11 @@ module.exports = {
   /** Ensures neighborhood hail blog URLs appear in post-build sitemap (live `/sitemap.xml` also lists them via `getBlogSlugs()`). */
   additionalPaths: async (config) => {
     const zipPaths = ['/zip', '/zip/78626', '/zip/78628', '/zip/78633', '/zip/78634'];
+    // Standalone static routes not covered by any generated slug list.
+    const standaloneStaticPaths = [
+      '/sun-city/plumber',
+      '/plumbing/water-heater-replacement-cost-georgetown-tx',
+    ];
     const paths = [
       '/compare',
       ...comparisonPaths,
@@ -24,6 +29,7 @@ module.exports = {
       ...subServicePaths,
       ...costGuidePaths,
       ...blogExpansionPaths,
+      ...standaloneStaticPaths,
     ];
     return Promise.all(paths.map((path) => config.transform(config, path)));
   },

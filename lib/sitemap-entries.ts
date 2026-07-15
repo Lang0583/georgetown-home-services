@@ -224,6 +224,16 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     push(entries, `/zip/${zip}`, { changeFrequency: "monthly", priority: 0.7 }, lastModified);
   }
 
+  // Standalone static service/cost pages that don't have a matching entry in the
+  // dynamic emitters above. Add new one-off routes here so they ship in the sitemap.
+  push(entries, "/sun-city/plumber", { changeFrequency: "monthly", priority: 0.7 }, lastModified);
+  push(
+    entries,
+    "/plumbing/water-heater-replacement-cost-georgetown-tx",
+    { changeFrequency: "monthly", priority: 0.8 },
+    lastModified,
+  );
+
   const seen = new Set<string>();
   return entries.filter((entry) => {
     if (seen.has(entry.url)) return false;
