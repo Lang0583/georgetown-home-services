@@ -1,8 +1,32 @@
 import type { Provider } from "../data/providers";
 import { providerHasPublishedReviewCount } from "./provider-card-display";
+import { verifiedLicenseInfo } from "./verified-license";
 
 function trimStr(s: string | undefined) {
   return (s ?? "").trim();
+}
+
+/** schema.org EducationalOccupationalCredential — only when licenseNumber exists in data. */
+function hasCredentialJsonLd(provider: Provider): Record<string, unknown> | null {
+  const info = verifiedLicenseInfo(provider);
+  if (!info) return null;
+
+  const credential: Record<string, unknown> = {
+    "@type": "EducationalOccupationalCredential",
+    credentialCategory: "ProfessionalLicense",
+    identifier: info.licenseNumber,
+    recognizedBy: {
+      "@type": "Organization",
+      name: info.authority,
+    },
+  };
+  if (info.licenseType) {
+    credential.name = info.licenseType;
+  }
+  if (info.licenseVerifiedDate) {
+    credential.dateCreated = info.licenseVerifiedDate;
+  }
+  return credential;
 }
 
 /** LocalBusiness JSON-LD for a single provider profile page. */
@@ -52,6 +76,9 @@ function localBusinessJsonLd(provider: Provider): Record<string, unknown> {
   };
 
   if (provider.googleMapsUrl) item.url = provider.googleMapsUrl;
+
+  const credential = hasCredentialJsonLd(provider);
+  if (credential) item.hasCredential = credential;
 
   return item;
 }

@@ -1,6 +1,7 @@
 import type { Provider, ProviderCategory } from "@/data/providers";
 import { SHORT_VERIFIED_LIST_NOTES } from "@/data/providers";
 import ProviderCard from "./ProviderCard";
+import LicenseVerificationMethodology from "./LicenseVerificationMethodology";
 
 export default function BestProviderDirectory({
   providers,
@@ -17,6 +18,7 @@ export default function BestProviderDirectory({
       {shortListNote ? (
         <p className="max-w-3xl text-sm leading-relaxed text-muted">{shortListNote}</p>
       ) : null}
+      <LicenseVerificationMethodology providers={providers} />
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <p className="max-w-3xl text-sm leading-relaxed text-muted">
           Google-verified listings for Georgetown and Williamson County. Confirm licensing, insurance, and scope

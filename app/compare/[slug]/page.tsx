@@ -8,6 +8,7 @@ import ComparisonTable from "../../../components/ComparisonTable";
 import FAQList from "../../../components/FAQList";
 import JsonLd from "../../../components/JsonLd";
 import ProviderCard from "../../../components/ProviderCard";
+import LicenseVerificationMethodology from "../../../components/LicenseVerificationMethodology";
 import PageShell from "../../../components/templates/PageShell";
 import {
   COMPARISON_SLUGS,
@@ -110,6 +111,10 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
             <h2 id="provider-cards-heading" className="text-2xl font-semibold tracking-tight text-ink">
               Provider profiles
             </h2>
+            <LicenseVerificationMethodology
+              providers={[comparison.providerA, comparison.providerB]}
+              className="mt-3"
+            />
             <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
               <ProviderCard provider={comparison.providerA} />
               <ProviderCard provider={comparison.providerB} />

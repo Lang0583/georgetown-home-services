@@ -25,18 +25,21 @@ export function formatLicenseLookupDate(isoDate: string): string {
 export const PROVIDER_LICENSE_LOOKUP_DATE = PROVIDERS_VERIFIED_ISO_DATE;
 
 /**
- * License line only when BOTH licenseNumber and licenseVerifiedDate are populated.
- * Format: License: [number] ([type]) — verified [date]
+ * Plain-text license line when a real licenseNumber exists in data.
+ * Date is optional — if missing, returns authority + number without inventing a date.
+ * Prefer {@link VerifiedLicenseBadge} for UI; this remains for text-only contexts.
  */
 export function providerLicenseVerifiedLine(provider: Provider): string | null {
   const licenseNumber = provider.licenseNumber?.trim();
-  const licenseVerifiedDate = provider.licenseVerifiedDate?.trim();
-  if (!licenseNumber || !licenseVerifiedDate) return null;
+  if (!licenseNumber) return null;
 
   const licenseType = provider.licenseType?.trim();
   const typePart = licenseType ? ` (${licenseType})` : "";
-
-  return `License: ${licenseNumber}${typePart} — verified ${formatLicenseLookupDate(licenseVerifiedDate)}`;
+  const licenseVerifiedDate = provider.licenseVerifiedDate?.trim();
+  if (licenseVerifiedDate) {
+    return `License: ${licenseNumber}${typePart} — verified ${formatLicenseLookupDate(licenseVerifiedDate)}`;
+  }
+  return `License: ${licenseNumber}${typePart}`;
 }
 
 /** Neutral note for trades Texas does not license at the state level. */

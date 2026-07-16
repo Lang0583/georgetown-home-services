@@ -2,11 +2,12 @@ import Link from "next/link";
 import { RatingStarsRow, formatRatingOneDecimal } from "./BusinessRatingStars";
 import type { Provider } from "../data/providers";
 import { getProviderBySlug, getProviderSlug } from "../data/providers";
-import { providerLicenseVerifiedLine, providerUnlicensedTradeNote } from "@/lib/provider-license";
+import { providerUnlicensedTradeNote } from "@/lib/provider-license";
 import { providerReviewCountLabel } from "@/lib/provider-card-display";
 import { getProviderWebsiteUrl } from "../lib/provider-website";
 import { externalBusinessLinkProps } from "../lib/businesses";
 import ProviderAffiliateQuoteButton from "./ProviderAffiliateQuoteButton";
+import VerifiedLicenseBadge from "./VerifiedLicenseBadge";
 
 const secondaryBtnClass =
   "inline-flex items-center justify-center rounded-lg bg-accent px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover";
@@ -25,7 +26,6 @@ export default function ProviderCard({
   const hasProfile = Boolean(getProviderBySlug(providerSlug));
   const profileHref = hasProfile ? `/providers/${providerSlug}` : null;
   const websiteUrl = getProviderWebsiteUrl(provider.name);
-  const licenseLine = providerLicenseVerifiedLine(provider);
   const tradeNote = providerUnlicensedTradeNote(provider);
   const reviewLabel = providerReviewCountLabel(provider);
   const padding = compact ? "p-4" : "p-6";
@@ -77,9 +77,7 @@ export default function ProviderCard({
           </p>
         ) : null}
 
-        {licenseLine ? (
-          <p className="text-sm font-semibold text-verified">{licenseLine}</p>
-        ) : null}
+        <VerifiedLicenseBadge provider={provider} className="mt-1" />
 
         {tradeNote ? (
           <p className="text-xs text-muted">{tradeNote}</p>

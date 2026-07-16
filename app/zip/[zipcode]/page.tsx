@@ -7,6 +7,7 @@ import JsonLd from "../../../components/JsonLd";
 import LinkCard from "../../../components/LinkCard";
 import ProviderCard from "../../../components/ProviderCard";
 import AffiliateDisclosure from "../../../components/AffiliateDisclosure";
+import LicenseVerificationMethodology from "../../../components/LicenseVerificationMethodology";
 import PageShell from "../../../components/templates/PageShell";
 import { costGuidePages } from "../../../data/cost-guides";
 import {
@@ -21,6 +22,7 @@ import {
   PROVIDER_CATEGORY_LABELS,
   PROVIDER_CATEGORY_ORDER,
   PROVIDER_DISCLAIMER,
+  PROVIDERS,
   PROVIDERS_LAST_VERIFIED,
   getTopProvidersByCategory,
 } from "../../../data/providers";
@@ -149,6 +151,7 @@ export default async function ZipCodePage({ params }: { params: Promise<{ zipcod
 
             <div className="mt-8 space-y-10">
               <AffiliateDisclosure className="max-w-3xl" />
+              <LicenseVerificationMethodology providers={PROVIDERS} />
               {PROVIDER_CATEGORY_ORDER.map((category) => {
                 const providers = getTopProvidersByCategory(category, 3);
                 if (!providers.length) return null;

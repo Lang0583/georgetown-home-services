@@ -19,9 +19,10 @@ import { externalBusinessLinkProps } from "@/lib/businesses";
 import { pageSeoMetadata, absolutePageUrl } from "@/lib/page-seo";
 import { buildProviderLocalBusinessJsonLd } from "@/lib/provider-item-list-schema";
 import { getProviderWebsiteUrl } from "@/lib/provider-website";
-import { providerLicenseVerifiedLine, providerUnlicensedTradeNote } from "@/lib/provider-license";
+import { providerUnlicensedTradeNote } from "@/lib/provider-license";
 import { breadcrumbSchemaForProvider } from "@/lib/schema";
 import LastUpdated from "@/components/LastUpdated";
+import VerifiedLicenseBadge from "@/components/VerifiedLicenseBadge";
 import {
   DIRECTORY_PAGES_LAST_UPDATED,
   webPageWithDateModifiedJsonLd,
@@ -68,7 +69,6 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
   const h1 = `${provider.name} — Georgetown, TX`;
   const telHref = `tel:${provider.phone.replace(/\D/g, "")}`;
   const websiteUrl = getProviderWebsiteUrl(provider.name);
-  const licenseLine = providerLicenseVerifiedLine(provider);
   const tradeNote = providerUnlicensedTradeNote(provider);
   const reviewLabel = providerReviewCountLabel(provider);
   const mapsEmbedSrc = googleMapsEmbedUrl(
@@ -152,11 +152,7 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
             <p>
               <span className="font-semibold text-ink">Service area:</span> {provider.serviceArea}
             </p>
-            {licenseLine ? (
-              <p>
-                <span className="font-semibold text-ink">{licenseLine}</span>
-              </p>
-            ) : null}
+            <VerifiedLicenseBadge provider={provider} />
             {tradeNote ? <p className="text-xs text-muted">{tradeNote}</p> : null}
           </div>
 
