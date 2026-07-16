@@ -67,7 +67,14 @@ export default function BestIndexPage() {
                 <Link href="/methodology" className="font-semibold text-brand hover:underline">
                   listing methodology
                 </Link>{" "}
-                page—the same five rules shown on every directory below.
+                page—the same five rules shown on every directory below. For the latest computed license counts, read the{" "}
+                <Link
+                  href="/reports/williamson-county-license-check"
+                  className="font-semibold text-brand hover:underline"
+                >
+                  Williamson County license check report
+                </Link>
+                .
               </p>
             </div>
 

@@ -117,6 +117,18 @@ export default function Home() {
 
             <HomeTrustBar />
 
+            <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted">
+              New:{" "}
+              <Link
+                href="/reports/williamson-county-license-check"
+                className="font-semibold text-brand underline hover:text-brand"
+              >
+                Williamson County license check report
+              </Link>{" "}
+              — how many directory contractors have Texas license numbers we primary-source confirmed
+              against TSBPE, TDLR, and TDA SPCS.
+            </p>
+
             <section
               id="browse-categories"
               className="mt-10 scroll-mt-28 rounded-xl border border-ink/10 bg-surface p-6 shadow-md sm:p-8"

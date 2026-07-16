@@ -20,6 +20,7 @@ module.exports = {
     const standaloneStaticPaths = [
       '/sun-city/plumber',
       '/plumbing/water-heater-replacement-cost-georgetown-tx',
+      '/reports/williamson-county-license-check',
     ];
     const paths = [
       '/compare',

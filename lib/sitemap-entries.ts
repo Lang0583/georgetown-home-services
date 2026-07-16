@@ -90,6 +90,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     { path: "/about", priority: 0.5 },
     { path: AUTHOR_PROFILE_PATH, priority: 0.5 },
     { path: "/methodology", priority: 0.5 },
+    { path: "/reports/williamson-county-license-check", priority: 0.7 },
     { path: "/editorial-policy", priority: 0.5 },
     { path: "/service-areas", priority: 0.5 },
     { path: "/zip", priority: 0.7 },
