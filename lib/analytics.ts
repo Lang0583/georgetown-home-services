@@ -60,13 +60,18 @@ export function trackNewsletterSubmit(
   trackEvent("newsletter_submit", p);
 }
 
-/** `tel:` tap from provider cards (label = business name when available). */
-export function trackPhoneClick(providerName: string): void {
-  trackEvent("phone_click", {
-    event_category: "phone_click",
-    event_label: providerName,
-    page_location: pageLocation(),
-  });
+/**
+ * `tel:` tap from provider cards / profiles.
+ * Same shape as {@link trackAffiliateLinkClick}: named params + `page_path`.
+ */
+export function trackPhoneClick(providerName: string, category?: string): void {
+  const page_path = typeof window !== "undefined" ? window.location.pathname : "";
+  const payload: TrackEventParams = {
+    provider_name: providerName,
+    page_path,
+  };
+  if (category?.trim()) payload.category = category.trim();
+  trackEvent("phone_click", payload);
 }
 
 /** Provider “Visit Website” / outbound site opens (before new tab navigation). */
