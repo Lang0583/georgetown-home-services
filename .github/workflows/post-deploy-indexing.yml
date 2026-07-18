@@ -1,7 +1,12 @@
-name: Post-deploy — sitemap & Google Indexing API
+name: Post-deploy — Google Indexing API
 
-# Runs after changes land on `main` (e.g. Vercel deploy). Regenerates static
-# sitemap files and pings Google Indexing API for new hail-related URLs.
+# After pushes to `main`, optionally notify Google Indexing API for a small set of
+# hail-related URLs. Live sitemap is served by `app/sitemap.ts` (Vercel deploy) —
+# do not regenerate legacy `next-sitemap` artifacts here.
+#
+# Requires repository secret `GOOGLE_SERVICE_ACCOUNT_JSON` (full service account
+# JSON with Indexing API access + Search Console ownership). If unset, the job
+# skips successfully so missing credentials do not fail every deploy.
 
 on:
   push:
@@ -13,7 +18,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  sitemap-and-indexing:
+  indexing:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,22 +28,25 @@ jobs:
           node-version: "22"
           cache: npm
 
-      - run: npm ci
-
-      - name: Regenerate next-sitemap (public sitemap XML)
-        run: npx next-sitemap
-
-      - name: Write Google service account key
+      - name: Check for Google service account secret
+        id: creds
         env:
           SA_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
         run: |
           if [ -z "$SA_JSON" ]; then
-            echo "::error::Set repository secret GOOGLE_SERVICE_ACCOUNT_JSON (full service account JSON)."
-            exit 1
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::GOOGLE_SERVICE_ACCOUNT_JSON is not set — skipping Indexing API (sitemap is handled by the Vercel deploy)."
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            printf '%s' "$SA_JSON" > "${RUNNER_TEMP}/indexing-sa.json"
           fi
-          printf '%s' "$SA_JSON" > "${RUNNER_TEMP}/indexing-sa.json"
+
+      - name: Install dependencies
+        if: steps.creds.outputs.configured == 'true'
+        run: npm ci
 
       - name: Submit URLs to Google Indexing API
+        if: steps.creds.outputs.configured == 'true'
         env:
           GOOGLE_SERVICE_ACCOUNT_KEY_PATH: ${{ runner.temp }}/indexing-sa.json
         run: npx ts-node scripts/submit-to-indexing-api.ts
