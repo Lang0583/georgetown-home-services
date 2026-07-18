@@ -16,6 +16,7 @@ import {
   getComparisonBySlug,
 } from "../../../data/comparisons";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
+import { resolveComparisonProviders } from "../../../lib/resolve-comparison-providers";
 import { buildFAQPage } from "../../../lib/schema";
 
 export const dynamicParams = false;
@@ -52,6 +53,8 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
     pageUrl: absolutePageUrl(`/compare/${comparison.slug}`),
     name: `${breadcrumbTitle} — FAQ`,
   });
+  const { providers: verifiedProviders } = resolveComparisonProviders(comparison);
+  const showComparisonTable = verifiedProviders.length >= 2;
 
   return (
     <PageShell>
@@ -79,26 +82,32 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
             </p>
           </header>
 
-          <ComparisonTable providerA={comparison.providerA} providerB={comparison.providerB} />
+          {showComparisonTable ? <ComparisonTable providers={verifiedProviders} /> : null}
 
           <section className="mt-8 rounded-xl border border-ink/10 bg-surface-alt p-6">
             <h2 className="text-lg font-semibold text-ink">Bottom line</h2>
             <p className="mt-3 text-sm leading-relaxed text-muted">{comparison.bottomLine}</p>
           </section>
 
-          <section className="mt-10" aria-labelledby="provider-cards-heading">
-            <h2 id="provider-cards-heading" className="text-2xl font-semibold tracking-tight text-ink">
-              Provider profiles
-            </h2>
-            <LicenseVerificationMethodology
-              providers={[comparison.providerA, comparison.providerB]}
-              className="mt-3"
-            />
-            <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
-              <ProviderCard provider={comparison.providerA} />
-              <ProviderCard provider={comparison.providerB} />
-            </div>
-          </section>
+          {verifiedProviders.length > 0 ? (
+            <section className="mt-10" aria-labelledby="provider-cards-heading">
+              <h2 id="provider-cards-heading" className="text-2xl font-semibold tracking-tight text-ink">
+                Provider profiles
+              </h2>
+              <LicenseVerificationMethodology
+                providers={verifiedProviders}
+                className="mt-3"
+              />
+              <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+                {verifiedProviders.map((provider) => (
+                  <ProviderCard
+                    key={`${provider.category}-${provider.name}`}
+                    provider={provider}
+                  />
+                ))}
+              </div>
+            </section>
+          ) : null}
 
           <AffiliateCTA
             angiCategorySlug={comparison.angiCategorySlug}
