@@ -14,23 +14,21 @@ import PageShell from "./templates/PageShell";
 import type { CostGuidePage } from "../data/cost-guides";
 import { absolutePageUrl } from "../lib/page-seo";
 import { webPageWithDateModifiedJsonLd } from "../lib/last-updated";
-import { hubArticleJsonLd } from "../lib/site-author";
 import type { Faq } from "../lib/site-content";
-import { breadcrumbSchemaForCostGuide } from "../lib/schema";
+import { buildArticle } from "../lib/schema";
 
 type CostGuideTemplateProps = {
   page: CostGuidePage;
 };
 
 export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
-  const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
   const pathname = `/costs/${page.slug}`;
+  const pageUrl = absolutePageUrl(pathname);
   const faqs: Faq[] = page.faqs.map((f) => ({ q: f.question, a: f.answer }));
 
   return (
     <PageShell>
       <article className="py-8 md:py-12">
-        <JsonLd data={breadcrumbSchemaForCostGuide(page.serviceName, pathname)} />
         <JsonLd
           data={webPageWithDateModifiedJsonLd({
             pathname,
@@ -40,15 +38,15 @@ export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
           })}
         />
         <JsonLd
-          data={hubArticleJsonLd({
-            pathname,
+          data={buildArticle({
             headline: page.h1,
             description: page.metaDescription,
+            url: pageUrl,
             datePublished: page.lastUpdated,
             dateModified: page.lastUpdated,
           })}
         />
-        <FAQSchema pageUrl={absolutePageUrl(pathname)} name={`${page.serviceName} cost in Georgetown, TX — FAQ`} faqs={faqs} />
+        <FAQSchema pageUrl={pageUrl} name={`${page.serviceName} cost in Georgetown, TX — FAQ`} faqs={faqs} />
 
         <Breadcrumbs
           items={[

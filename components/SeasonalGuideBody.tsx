@@ -35,11 +35,11 @@ export default function SeasonalGuideBody({ guide, showPrep = true }: Props) {
               </>
             ) : null}
           </h2>
-          <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-ink">
+          <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-ink">
             {group.items.map((item) => (
               <li key={item}>{item}</li>
             ))}
-          </ul>
+          </ol>
         </section>
       ))}
 

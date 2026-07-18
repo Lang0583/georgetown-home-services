@@ -15,41 +15,7 @@ import {
 } from "@/data/neighborhood-hail-pages";
 import { absolutePageUrl, pageSeoMetadata } from "@/lib/page-seo";
 import { webPageWithDateModifiedJsonLd } from "@/lib/last-updated";
-import { hubArticleJsonLd } from "@/lib/site-author";
-
-function breadcrumbJsonLd({
-  siteUrl,
-  neighborhoodName,
-  pathname,
-  homeServicesPath,
-}: {
-  siteUrl: string;
-  neighborhoodName: string;
-  pathname: string;
-  homeServicesPath: string;
-}) {
-  const pagePath = pathname.startsWith("/") ? pathname : `/${pathname}`;
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
-      { "@type": "ListItem", position: 2, name: "Services", item: `${siteUrl}/services` },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: `${neighborhoodName} home services`,
-        item: `${siteUrl}${homeServicesPath}`,
-      },
-      {
-        "@type": "ListItem",
-        position: 4,
-        name: `${neighborhoodName} hail damage`,
-        item: `${siteUrl}${pagePath}`,
-      },
-    ],
-  };
-}
+import { buildArticle } from "@/lib/schema";
 
 /** Static `hail-damage` resolves before `[service]` dynamic slug. */
 export const dynamicParams = false;
@@ -84,21 +50,13 @@ export default async function NeighborhoodHailDamagePage({
   const page = getNeighborhoodHailPage(neighborhood);
   if (!page) notFound();
 
-  const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
   const pathname = `/neighborhoods/${neighborhood}/hail-damage`;
   const homeServicesPath = `/neighborhoods/${neighborhood}/home-services`;
+  const pageUrl = absolutePageUrl(pathname);
 
   return (
     <PageShell>
       <section className="py-8 md:py-12">
-        <JsonLd
-          data={breadcrumbJsonLd({
-            siteUrl,
-            neighborhoodName: page.neighborhoodName,
-            pathname,
-            homeServicesPath,
-          })}
-        />
         <JsonLd
           data={webPageWithDateModifiedJsonLd({
             pathname,
@@ -108,16 +66,16 @@ export default async function NeighborhoodHailDamagePage({
           })}
         />
         <JsonLd
-          data={hubArticleJsonLd({
-            pathname,
+          data={buildArticle({
             headline: page.h1,
             description: page.metaDescription,
+            url: pageUrl,
             datePublished: page.lastUpdated,
             dateModified: page.lastUpdated,
           })}
         />
         <FAQSchema
-          pageUrl={absolutePageUrl(pathname)}
+          pageUrl={pageUrl}
           name={`${page.neighborhoodName} hail damage — FAQ`}
           faqs={page.faqs}
         />

@@ -5,7 +5,7 @@ import ClaimProfileForm from "@/components/ClaimProfileForm";
 import JsonLd from "@/components/JsonLd";
 import PageShell from "@/components/templates/PageShell";
 import { absolutePageUrl, pageSeoMetadata } from "@/lib/page-seo";
-import { buildFaqPageJsonLd } from "@/lib/faq-schema";
+import { buildFAQPage } from "@/lib/schema";
 import type { Faq } from "@/lib/site-content";
 
 const PATHNAME = "/for-contractors";
@@ -60,10 +60,9 @@ const PRICING = [
 
 export default function ForContractorsPage() {
   const pageUrl = absolutePageUrl(PATHNAME);
-  const faqJsonLd = buildFaqPageJsonLd({
+  const faqJsonLd = buildFAQPage(FAQS, {
     pageUrl,
     name: "For Contractors — FAQ",
-    faqs: FAQS,
   });
 
   return (

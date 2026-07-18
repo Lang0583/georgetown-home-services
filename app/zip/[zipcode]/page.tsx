@@ -27,7 +27,7 @@ import {
   getTopProvidersByCategory,
 } from "../../../data/providers";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
-import { buildFaqPageJsonLd } from "../../../lib/faq-schema";
+import { buildFAQPage } from "../../../lib/schema";
 
 export const dynamicParams = false;
 
@@ -52,39 +52,23 @@ export async function generateMetadata({
   });
 }
 
-function breadcrumbJsonLd(siteUrl: string, zip: string) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
-      { "@type": "ListItem", position: 2, name: "Browse by ZIP", item: `${siteUrl}/zip` },
-      { "@type": "ListItem", position: 3, name: `Georgetown TX ${zip}`, item: `${siteUrl}/zip/${zip}` },
-    ],
-  };
-}
-
 export default async function ZipCodePage({ params }: { params: Promise<{ zipcode: string }> }) {
   const { zipcode } = await params;
   const page = getZipCodePage(zipcode);
   if (!page) notFound();
 
-  const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
-
   const costGuides = page.costGuideSlugs
     .map((slug) => costGuidePages.find((g) => g.slug === slug))
     .filter((g): g is (typeof costGuidePages)[number] => Boolean(g));
 
-  const zipFaqSchema = buildFaqPageJsonLd({
+  const zipFaqSchema = buildFAQPage(page.faqs, {
     pageUrl: absolutePageUrl(`/zip/${page.zip}`),
     name: `Georgetown TX ${page.zip} — FAQ`,
-    faqs: page.faqs,
   });
 
   return (
     <PageShell>
       <section className="py-8 md:py-12">
-        <JsonLd data={breadcrumbJsonLd(siteUrl, page.zip)} />
         {zipFaqSchema ? <JsonLd data={zipFaqSchema} /> : null}
 
         <div className="mx-auto max-w-5xl px-4">

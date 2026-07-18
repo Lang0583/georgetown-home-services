@@ -16,7 +16,7 @@ import {
   getComparisonBySlug,
 } from "../../../data/comparisons";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
-import { buildFaqPageJsonLd } from "../../../lib/faq-schema";
+import { buildFAQPage } from "../../../lib/schema";
 
 export const dynamicParams = false;
 
@@ -41,40 +41,21 @@ export async function generateMetadata({
   });
 }
 
-function breadcrumbJsonLd(siteUrl: string, title: string, slug: string) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
-      { "@type": "ListItem", position: 2, name: "Compare Providers", item: `${siteUrl}/compare` },
-      { "@type": "ListItem", position: 3, name: title, item: `${siteUrl}/compare/${slug}` },
-    ],
-  };
-}
-
-function faqJsonLd(faqs: { q: string; a: string }[], pageUrl: string, name: string) {
-  return buildFaqPageJsonLd({ pageUrl, name, faqs });
-}
-
 export default async function ComparisonPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const comparison = getComparisonBySlug(slug);
   if (!comparison) notFound();
 
-  const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
   const h1 = comparisonPageH1(comparison.providerA.name, comparison.providerB.name);
   const breadcrumbTitle = `${comparison.providerA.name} vs ${comparison.providerB.name}`;
-  const comparisonFaqSchema = faqJsonLd(
-    comparison.faqs,
-    absolutePageUrl(`/compare/${comparison.slug}`),
-    `${breadcrumbTitle} — FAQ`,
-  );
+  const comparisonFaqSchema = buildFAQPage(comparison.faqs, {
+    pageUrl: absolutePageUrl(`/compare/${comparison.slug}`),
+    name: `${breadcrumbTitle} — FAQ`,
+  });
 
   return (
     <PageShell>
       <section className="py-8 md:py-12">
-        <JsonLd data={breadcrumbJsonLd(siteUrl, breadcrumbTitle, comparison.slug)} />
         {comparisonFaqSchema ? <JsonLd data={comparisonFaqSchema} /> : null}
 
         <div className="mx-auto max-w-5xl px-4">

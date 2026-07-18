@@ -15,7 +15,7 @@ import {
   isRedirectedLocationSlug,
   showExtendedHomeServices,
 } from "../../../lib/public-site-scope";
-import { pageSeoMetadata } from "../../../lib/page-seo";
+import { absolutePageUrl, pageSeoMetadata } from "../../../lib/page-seo";
 import {
   getBestBySlug,
   getLocationBySlug,
@@ -23,42 +23,9 @@ import {
   getServices,
 } from "../../../lib/site-content";
 import AuthorByline from "../../../components/AuthorByline";
+import Breadcrumbs from "../../../components/Breadcrumbs";
 import LastUpdated from "../../../components/LastUpdated";
-import { hubArticleJsonLd } from "../../../lib/site-author";
-
-function breadcrumbJsonLd({
-  siteUrl,
-  locationTitle,
-  locationSlug,
-}: {
-  siteUrl: string;
-  locationTitle: string;
-  locationSlug: string;
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
-      { "@type": "ListItem", position: 2, name: "Service areas", item: `${siteUrl}/service-areas` },
-      { "@type": "ListItem", position: 3, name: locationTitle, item: `${siteUrl}/locations/${locationSlug}` },
-    ],
-  };
-}
-
-function faqPageJsonLd(siteUrl: string, title: string, faqs: { q: string; a: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-    mainEntityOfPage: siteUrl,
-    name: title,
-  };
-}
+import { buildArticle, buildFAQPage } from "../../../lib/schema";
 
 /** Only slugs returned by `generateStaticParams` resolve; unknown slugs 404. */
 export const dynamicParams = false;
@@ -91,7 +58,11 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
   const location = getLocationBySlug(slug);
   if (!location) notFound();
 
-  const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
+  const pathname = `/locations/${location.slug}`;
+  const pageUrl = absolutePageUrl(pathname);
+  const faqSchema = location.faqs?.length
+    ? buildFAQPage(location.faqs, { pageUrl, name: `${location.title} FAQ` })
+    : null;
 
   const services = getServices();
   const servicePages = location.serviceSlugs
@@ -106,29 +77,27 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
   return (
     <PageShell>
       <section className="py-8 md:py-12">
-          <JsonLd data={breadcrumbJsonLd({ siteUrl, locationTitle: location.title, locationSlug: location.slug })} />
           <JsonLd
-            data={hubArticleJsonLd({
-              pathname: `/locations/${location.slug}`,
+            data={buildArticle({
               headline: location.h1 ?? location.title,
               description: location.description,
+              url: pageUrl,
               datePublished: location.lastUpdated,
               dateModified: location.lastUpdated,
             })}
           />
-          {location.faqs?.length ? (
-            <JsonLd
-              data={faqPageJsonLd(
-                `${siteUrl}/locations/${location.slug}`,
-                `${location.title} FAQ`,
-                location.faqs
-              )}
-            />
-          ) : null}
+          {faqSchema ? <JsonLd data={faqSchema} /> : null}
           <TwoColumnPage
             gapClassName="gap-8"
             main={
               <>
+              <Breadcrumbs
+                items={[
+                  { href: "/", label: "Home" },
+                  { href: "/service-areas", label: "Service areas" },
+                  { href: pathname, label: location.title },
+                ]}
+              />
               <div className="text-sm font-semibold uppercase tracking-wide text-muted">Service locations</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">{location.h1}</h1>
               <LastUpdated lastUpdated={location.lastUpdated} />

@@ -1,6 +1,39 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import AffiliateCTA from '@/components/AffiliateCTA';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import FAQList from '@/components/FAQList';
+import FAQSchema from '@/components/FAQSchema';
+import { absolutePageUrl } from '@/lib/page-seo';
+
+const PAGE_PATH = '/sun-city/plumber';
+
+const FAQS = [
+  {
+    q: 'How much does a plumber cost in Sun City, Georgetown TX?',
+    a: "There is no honest single price without an on-site visit. Cost depends on the job type (fixture repair vs. slab leak vs. water heater replacement), access, whether clay-soil movement has stressed pipes, and whether code updates or permits are required. Get two or three written estimates from licensed Texas plumbers after they see the home.",
+  },
+  {
+    q: 'Why do Sun City homes have frequent plumbing problems?',
+    a: "Many Sun City homes were built in the late 1990s through early 2010s on Georgetown's expansive clay soil. That soil swells with rain and shrinks in drought, stressing underground pipes and contributing to slab leaks. Aging fixtures and years of hard Central Texas water also accelerate wear on valves, water heaters, and drain lines.",
+  },
+  {
+    q: 'Do plumbers serving Sun City offer senior discounts?',
+    a: "Some plumbers who regularly serve the Sun City 55+ community advertise senior discounts or flexible payment options. Ask upfront when requesting a quote, and confirm any discount is written into the estimate — do not assume every company offers one.",
+  },
+  {
+    q: 'How quickly can a plumber respond in Sun City Georgetown?',
+    a: "Response time depends on urgency, day of week, and how booked local crews are. Plumbers based in Georgetown or Williamson County can usually reach Sun City faster than out-of-area companies. For active leaks or backups, say so when you call and ask about same-day or after-hours options; for non-urgent work, weekday appointments are usually easier to schedule.",
+  },
+  {
+    q: 'What should I ask before hiring a plumber in Sun City?',
+    a: "Ask for a Texas plumbing license number (TSBPE), proof of insurance, whether they pull City of Georgetown permits when required, what the written scope includes and excludes, and whether they have experience with slab-on-grade homes on clay soil. Compare at least two written estimates line-by-line before authorizing major work.",
+  },
+  {
+    q: 'Are slab leaks common in Sun City Georgetown?',
+    a: "Slab leaks are a recurring concern in Sun City and across Georgetown because expansive clay soil can stress supply lines under the slab. Hot spots on floors, unexplained water bills, and the sound of running water when fixtures are off are warning signs. A licensed plumber can confirm with leak detection before recommending repair options.",
+  },
+];
 
 export const metadata: Metadata = {
   title: 'Plumber in Sun City Georgetown TX: Local Repairs & What Affects Cost',
@@ -12,120 +45,22 @@ export const metadata: Metadata = {
 };
 
 export default function SunCityPlumberPage() {
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'How much does a plumber cost in Sun City, Georgetown TX?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: "There is no honest single price without an on-site visit. Cost depends on the job type (fixture repair vs. slab leak vs. water heater replacement), access, whether clay-soil movement has stressed pipes, and whether code updates or permits are required. Get two or three written estimates from licensed Texas plumbers after they see the home.",
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Why do Sun City homes have frequent plumbing problems?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: "Many Sun City homes were built in the late 1990s through early 2010s on Georgetown's expansive clay soil. That soil swells with rain and shrinks in drought, stressing underground pipes and contributing to slab leaks. Aging fixtures and years of hard Central Texas water also accelerate wear on valves, water heaters, and drain lines.",
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Do plumbers serving Sun City offer senior discounts?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: "Some plumbers who regularly serve the Sun City 55+ community advertise senior discounts or flexible payment options. Ask upfront when requesting a quote, and confirm any discount is written into the estimate — do not assume every company offers one.",
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'How quickly can a plumber respond in Sun City Georgetown?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: "Response time depends on urgency, day of week, and how booked local crews are. Plumbers based in Georgetown or Williamson County can usually reach Sun City faster than out-of-area companies. For active leaks or backups, say so when you call and ask about same-day or after-hours options; for non-urgent work, weekday appointments are usually easier to schedule.",
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'What should I ask before hiring a plumber in Sun City?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: "Ask for a Texas plumbing license number (TSBPE), proof of insurance, whether they pull City of Georgetown permits when required, what the written scope includes and excludes, and whether they have experience with slab-on-grade homes on clay soil. Compare at least two written estimates line-by-line before authorizing major work.",
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Are slab leaks common in Sun City Georgetown?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: "Slab leaks are a recurring concern in Sun City and across Georgetown because expansive clay soil can stress supply lines under the slab. Hot spots on floors, unexplained water bills, and the sound of running water when fixtures are off are warning signs. A licensed plumber can confirm with leak detection before recommending repair options.",
-        },
-      },
-    ],
-  };
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://www.georgetownhomeservices.com/',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Plumbing',
-        item: 'https://www.georgetownhomeservices.com/services/plumber-georgetown-tx',
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: 'Sun City Plumber',
-        item: 'https://www.georgetownhomeservices.com/sun-city/plumber',
-      },
-    ],
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      <FAQSchema
+        pageUrl={absolutePageUrl(PAGE_PATH)}
+        name="Sun City Plumber — FAQ"
+        faqs={FAQS}
       />
 
       <main className="mx-auto max-w-4xl px-4 py-10 text-gray-800">
-        <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-600">
-          <ol className="flex flex-wrap items-center gap-1">
-            <li>
-              <Link href="/" className="text-blue-700 underline hover:text-blue-800">
-                Home
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li>
-              <Link
-                href="/services/plumber-georgetown-tx"
-                className="text-blue-700 underline hover:text-blue-800"
-              >
-                Plumbing
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li className="font-medium text-gray-800" aria-current="page">
-              Sun City Plumber
-            </li>
-          </ol>
-        </nav>
+        <Breadcrumbs
+          items={[
+            { href: '/', label: 'Home' },
+            { href: '/services/plumber-georgetown-tx', label: 'Plumbing' },
+            { href: PAGE_PATH, label: 'Sun City Plumber' },
+          ]}
+        />
 
         <h1 className="mb-5 text-3xl font-bold leading-tight tracking-tight text-gray-900 md:text-4xl">
           Plumber in Sun City, Georgetown TX: Local Repairs, Clay Soil &amp; How to Compare Quotes
@@ -448,6 +383,8 @@ export default function SunCityPlumberPage() {
             </li>
           </ul>
         </section>
+
+        <FAQList faqs={FAQS} variant="plain" className="mb-10" />
 
         <AffiliateCTA
           angiCategorySlug="plumbing"

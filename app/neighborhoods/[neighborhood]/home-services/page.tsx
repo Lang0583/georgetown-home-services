@@ -19,7 +19,7 @@ import { neighborhoodHubCrossLinks } from "@/lib/hub-cross-links";
 import { buildNeighborhoodHomeServicesHubFaqs } from "@/lib/georgetown-page-faqs";
 import { absolutePageUrl, pageSeoMetadata } from "@/lib/page-seo";
 import { webPageWithDateModifiedJsonLd } from "@/lib/last-updated";
-import { hubArticleJsonLd } from "@/lib/site-author";
+import { buildArticle } from "@/lib/schema";
 
 const CORE_TRADES = [
   {
@@ -41,32 +41,6 @@ const CORE_TRADES = [
     bestOfHref: "/best/best-roofers-georgetown-tx",
   },
 ] as const;
-
-function breadcrumbJsonLd({
-  siteUrl,
-  neighborhoodName,
-  pathname,
-}: {
-  siteUrl: string;
-  neighborhoodName: string;
-  pathname: string;
-}) {
-  const pagePath = pathname.startsWith("/") ? pathname : `/${pathname}`;
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
-      { "@type": "ListItem", position: 2, name: "Services", item: `${siteUrl}/services` },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: `${neighborhoodName} home services`,
-        item: `${siteUrl}${pagePath}`,
-      },
-    ],
-  };
-}
 
 /** Static `home-services` segment resolves before `[service]` for these slugs only. */
 export const dynamicParams = false;
@@ -101,20 +75,13 @@ export default async function NeighborhoodHomeServicesHubPage({
   const hub = getNeighborhoodHomeServicesHub(neighborhood);
   if (!hub) notFound();
 
-  const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
   const pathname = `/neighborhoods/${neighborhood}/home-services`;
+  const pageUrl = absolutePageUrl(pathname);
   const faqs = buildNeighborhoodHomeServicesHubFaqs(hub);
 
   return (
     <PageShell>
       <section className="py-8 md:py-12">
-        <JsonLd
-          data={breadcrumbJsonLd({
-            siteUrl,
-            neighborhoodName: hub.neighborhoodName,
-            pathname,
-          })}
-        />
         <JsonLd
           data={webPageWithDateModifiedJsonLd({
             pathname,
@@ -124,16 +91,16 @@ export default async function NeighborhoodHomeServicesHubPage({
           })}
         />
         <JsonLd
-          data={hubArticleJsonLd({
-            pathname,
+          data={buildArticle({
             headline: hub.h1,
             description: hub.metaDescription,
+            url: pageUrl,
             datePublished: hub.lastUpdated,
             dateModified: hub.lastUpdated,
           })}
         />
         <FAQSchema
-          pageUrl={absolutePageUrl(pathname)}
+          pageUrl={pageUrl}
           name={`${hub.neighborhoodName} plumber, HVAC & roofer — FAQ`}
           faqs={faqs}
         />

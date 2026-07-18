@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "../../components/Breadcrumbs";
-import JsonLd from "../../components/JsonLd";
 import ServicePricingCostTable from "../../components/ServicePricingCostTable";
 import PageShell from "../../components/templates/PageShell";
-import { pageSeoMetadata, SITE_URL } from "../../lib/page-seo";
+import { pageSeoMetadata } from "../../lib/page-seo";
 import {
   PRICING_CATEGORIES,
   PRICING_CATEGORY_RELATED_LINKS,
@@ -44,21 +43,10 @@ function CategorySection({ category }: { category: PricingCategory }) {
   );
 }
 
-function breadcrumbJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-      { "@type": "ListItem", position: 2, name: "Pricing", item: `${SITE_URL}/pricing` },
-    ],
-  };
-}
 
 export default function PricingPage() {
   return (
     <PageShell>
-      <JsonLd data={breadcrumbJsonLd()} />
       <section className="py-10 md:py-12">
         <div className="mx-auto max-w-4xl">
           <Breadcrumbs

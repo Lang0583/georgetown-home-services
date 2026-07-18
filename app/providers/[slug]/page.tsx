@@ -11,8 +11,7 @@ import {
   getProviderBySlug,
 } from "@/data/providers";
 import { pageSeoMetadata, absolutePageUrl } from "@/lib/page-seo";
-import { buildProviderLocalBusinessJsonLd } from "@/lib/provider-item-list-schema";
-import { breadcrumbSchemaForProvider } from "@/lib/schema";
+import { buildLocalBusiness } from "@/lib/schema";
 import LastUpdated from "@/components/LastUpdated";
 import {
   DIRECTORY_PAGES_LAST_UPDATED,
@@ -62,9 +61,6 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
     <PageShell>
       <section className="py-8 md:py-12">
         <JsonLd
-          data={breadcrumbSchemaForProvider(bestTitle, bestSlug, provider.name, slug)}
-        />
-        <JsonLd
           data={webPageWithDateModifiedJsonLd({
             pathname,
             name: h1,
@@ -72,7 +68,7 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
             lastUpdated,
           })}
         />
-        <JsonLd data={buildProviderLocalBusinessJsonLd(provider, pageUrl)} />
+        <JsonLd data={buildLocalBusiness(provider, pageUrl)} />
 
         <div className="mx-auto max-w-3xl px-4">
           <Breadcrumbs

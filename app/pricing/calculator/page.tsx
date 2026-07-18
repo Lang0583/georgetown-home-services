@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Breadcrumbs from "../../../components/Breadcrumbs";
-import JsonLd from "../../../components/JsonLd";
 import PricingEstimatorInteractive from "../../../components/PricingEstimatorInteractive";
 import PageShell from "../../../components/templates/PageShell";
-import { pageSeoMetadata, SITE_URL } from "../../../lib/page-seo";
+import { pageSeoMetadata } from "../../../lib/page-seo";
 import { PRICING_LAST_REVIEWED_MONTH, PRICING_YEAR } from "../../../lib/pricing-data";
 
 export const metadata: Metadata = pageSeoMetadata({
@@ -13,22 +12,9 @@ export const metadata: Metadata = pageSeoMetadata({
   ogType: "website",
 });
 
-function breadcrumbJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-      { "@type": "ListItem", position: 2, name: "Pricing", item: `${SITE_URL}/pricing` },
-      { "@type": "ListItem", position: 3, name: "Calculator", item: `${SITE_URL}/pricing/calculator` },
-    ],
-  };
-}
-
 export default function PricingCalculatorPage() {
   return (
     <PageShell>
-      <JsonLd data={breadcrumbJsonLd()} />
       <section className="py-10 md:py-12">
         <div className="mx-auto max-w-3xl">
           <Breadcrumbs

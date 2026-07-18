@@ -11,9 +11,8 @@ import PageShell from "./templates/PageShell";
 import type { SubServicePage } from "../data/sub-services";
 import { absolutePageUrl } from "../lib/page-seo";
 import { webPageWithDateModifiedJsonLd } from "../lib/last-updated";
-import { hubArticleJsonLd } from "../lib/site-author";
+import { buildArticle } from "../lib/schema";
 import type { Faq } from "../lib/site-content";
-import { breadcrumbSchemaForSubService } from "../lib/schema";
 
 function formatUsd(amount: number): string {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(
@@ -34,14 +33,6 @@ export default function SubServicePageTemplate({ page }: SubServicePageTemplateP
     <PageShell>
       <article className="py-8 md:py-12">
         <JsonLd
-          data={breadcrumbSchemaForSubService(
-            page.serviceLabel,
-            page.parentHubPath,
-            page.subServiceName,
-            pathname,
-          )}
-        />
-        <JsonLd
           data={webPageWithDateModifiedJsonLd({
             pathname,
             name: page.h1,
@@ -50,10 +41,10 @@ export default function SubServicePageTemplate({ page }: SubServicePageTemplateP
           })}
         />
         <JsonLd
-          data={hubArticleJsonLd({
-            pathname,
+          data={buildArticle({
             headline: page.h1,
             description: page.metaDescription,
+            url: absolutePageUrl(pathname),
             datePublished: page.lastUpdated,
             dateModified: page.lastUpdated,
           })}

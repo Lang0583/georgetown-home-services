@@ -1,6 +1,6 @@
 import JsonLd from "./JsonLd";
 import type { Faq } from "../lib/site-content";
-import { buildFaqPageJsonLd } from "../lib/faq-schema";
+import { buildFAQPage } from "../lib/schema";
 
 export type FAQSchemaProps = {
   /** Absolute canonical URL (e.g. from `absolutePageUrl(pathname)`). */
@@ -11,10 +11,10 @@ export type FAQSchemaProps = {
 };
 
 /**
- * Emits FAQPage JSON-LD for eligible FAQ rich results. Pair with `<FAQList />` for visible markup.
+ * Emits FAQPage JSON-LD for eligible FAQ rich results. Pair with visible FAQ markup.
  */
 export default function FAQSchema({ pageUrl, name, faqs }: FAQSchemaProps) {
-  const data = buildFaqPageJsonLd({ pageUrl, name, faqs });
+  const data = buildFAQPage(faqs, { pageUrl, name });
   if (!data) return null;
   return <JsonLd data={data} />;
 }

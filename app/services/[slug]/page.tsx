@@ -54,7 +54,7 @@ import CoreServiceGuideDecisionFramework from "../../../components/CoreServiceGu
 import HubRelatedLinks from "../../../components/HubRelatedLinks";
 import CoreServiceGuideEnrichment from "../../../components/CoreServiceGuideEnrichment";
 import { servicePageRelatedHubLinks } from "../../../lib/hub-cross-links";
-import { breadcrumbSchemaForService, serviceDirectoryLocalBusinessSchema } from "../../../lib/schema";
+import { serviceDirectoryLocalBusinessSchema } from "../../../lib/schema";
 
 /**
  * Allow runtime resolution for `[slug]` so `getServiceBySlug` + `notFound()` control 404s.
@@ -157,7 +157,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   return (
     <PageShell variant="service">
         <section className="py-10 md:py-12">
-          <JsonLd data={breadcrumbSchemaForService(service.title, service.slug)} />
           {serviceLocalBusiness ? <JsonLd data={serviceLocalBusiness} /> : null}
           <JsonLd
             data={webPageWithDateModifiedJsonLd({

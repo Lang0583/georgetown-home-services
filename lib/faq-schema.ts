@@ -42,7 +42,10 @@ export function shouldEmitFaqPageSchema(faqs: Faq[]): boolean {
   return faqsForFaqPageSchema(faqs).length >= MIN_FAQ_SCHEMA_COUNT;
 }
 
-/** FAQPage JSON-LD aligned with Google’s FAQ rich results guidance. */
+/**
+ * FAQPage JSON-LD aligned with Google’s FAQ rich results guidance.
+ * Prefer {@link buildFAQPage} from `lib/schema.ts` for new call sites.
+ */
 export function buildFaqPageJsonLd(opts: {
   /** Absolute canonical URL for the page (faq mainEntityOfPage). */
   pageUrl: string;

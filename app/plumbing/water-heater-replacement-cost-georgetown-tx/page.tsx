@@ -1,6 +1,39 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import AffiliateCTA from '@/components/AffiliateCTA';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import FAQList from '@/components/FAQList';
+import FAQSchema from '@/components/FAQSchema';
+import { absolutePageUrl } from '@/lib/page-seo';
+
+const PAGE_PATH = '/plumbing/water-heater-replacement-cost-georgetown-tx';
+
+const FAQS = [
+  {
+    q: 'What factors affect water heater replacement cost in Georgetown TX?',
+    a: "The biggest cost drivers are the size and fuel type of the unit, whether the installation location is easy to access, whether a City of Georgetown permit and code upgrades are required, whether supply and gas connections need to be updated, and whether a water softener or drain pan is being added to protect the new equipment. Sun City and older properties near the historic district often need code and connection updates that newer subdivisions do not.",
+  },
+  {
+    q: 'Does Georgetown TX require a permit for water heater replacement?',
+    a: "In most cases yes. The City of Georgetown requires a permit for water heater replacements so the work can be inspected against current safety and building codes. A licensed plumber typically pulls the permit as part of the job. Confirm the permit fee is included in the written estimate before work begins.",
+  },
+  {
+    q: 'Does Georgetown clay soil affect a water heater replacement?',
+    a: "Georgetown sits on expansive clay soil that expands with rain and shrinks in drought. Over years, that movement can stress the supply lines, gas connections, and drains around the water heater. Before installing a new unit, a thorough plumber inspects those connections for stress cracks or corrosion so a small issue does not become a bigger one after the new unit is in place.",
+  },
+  {
+    q: 'Tank vs. tankless water heater — which is better for Georgetown homes?',
+    a: "Both work well in Central Texas. The right choice depends on household hot water demand, available space, existing gas or electrical capacity, and how long the homeowner plans to stay in the house. Tank units are simpler and less expensive to install like-for-like. Tankless units cost more upfront and often require larger gas lines or an electrical upgrade, but they eliminate standby heat loss and free up space. A local plumber should walk through the trade-offs for the specific home rather than push one system.",
+  },
+  {
+    q: 'How do I know when to replace my water heater instead of repairing it?',
+    a: "Replacement is usually the better call when the tank itself is leaking, when rust or discolored hot water shows internal corrosion, when heavy sediment causes rumbling and reduced efficiency, or when the unit is at or past its expected service life. A repair may make sense when the issue is isolated to a specific component (thermostat, heating element, dip tube, valve) and the tank is still sound. A licensed plumber should walk through both options with a clear reason for the recommendation.",
+  },
+  {
+    q: 'How do I get an accurate water heater replacement quote in Georgetown?',
+    a: "Ask a licensed plumber to inspect the home in person, then request a written estimate that breaks out the equipment, labor, permit and inspection fees, code upgrades, water and gas connection updates, and any accessories such as a drain pan, expansion tank, or water softener. Compare at least two or three written estimates line-by-line rather than looking only at the bottom-line number. Be cautious of quotes given over the phone with no site visit — Georgetown installations have too many home-specific variables to price accurately without seeing the space.",
+  },
+];
 
 export const metadata: Metadata = {
   title: 'Water Heater Replacement Cost Georgetown TX: What Drives the Price',
@@ -13,121 +46,22 @@ export const metadata: Metadata = {
 };
 
 export default function WaterHeaterReplacementCostGeorgetownTX() {
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'What factors affect water heater replacement cost in Georgetown TX?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: "The biggest cost drivers are the size and fuel type of the unit, whether the installation location is easy to access, whether a City of Georgetown permit and code upgrades are required, whether supply and gas connections need to be updated, and whether a water softener or drain pan is being added to protect the new equipment. Sun City and older properties near the historic district often need code and connection updates that newer subdivisions do not.",
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Does Georgetown TX require a permit for water heater replacement?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: "In most cases yes. The City of Georgetown requires a permit for water heater replacements so the work can be inspected against current safety and building codes. A licensed plumber typically pulls the permit as part of the job. Confirm the permit fee is included in the written estimate before work begins.",
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Does Georgetown clay soil affect a water heater replacement?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: "Georgetown sits on expansive clay soil that expands with rain and shrinks in drought. Over years, that movement can stress the supply lines, gas connections, and drains around the water heater. Before installing a new unit, a thorough plumber inspects those connections for stress cracks or corrosion so a small issue does not become a bigger one after the new unit is in place.",
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Tank vs. tankless water heater — which is better for Georgetown homes?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: "Both work well in Central Texas. The right choice depends on household hot water demand, available space, existing gas or electrical capacity, and how long the homeowner plans to stay in the house. Tank units are simpler and less expensive to install like-for-like. Tankless units cost more upfront and often require larger gas lines or an electrical upgrade, but they eliminate standby heat loss and free up space. A local plumber should walk through the trade-offs for the specific home rather than push one system.",
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'How do I know when to replace my water heater instead of repairing it?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: "Replacement is usually the better call when the tank itself is leaking, when rust or discolored hot water shows internal corrosion, when heavy sediment causes rumbling and reduced efficiency, or when the unit is at or past its expected service life. A repair may make sense when the issue is isolated to a specific component (thermostat, heating element, dip tube, valve) and the tank is still sound. A licensed plumber should walk through both options with a clear reason for the recommendation.",
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'How do I get an accurate water heater replacement quote in Georgetown?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: "Ask a licensed plumber to inspect the home in person, then request a written estimate that breaks out the equipment, labor, permit and inspection fees, code upgrades, water and gas connection updates, and any accessories such as a drain pan, expansion tank, or water softener. Compare at least two or three written estimates line-by-line rather than looking only at the bottom-line number. Be cautious of quotes given over the phone with no site visit — Georgetown installations have too many home-specific variables to price accurately without seeing the space.",
-        },
-      },
-    ],
-  };
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://www.georgetownhomeservices.com',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Plumbing',
-        item: 'https://www.georgetownhomeservices.com/services/plumber-georgetown-tx',
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: 'Water Heater Replacement Cost Georgetown TX',
-        item: 'https://www.georgetownhomeservices.com/plumbing/water-heater-replacement-cost-georgetown-tx',
-      },
-    ],
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      <FAQSchema
+        pageUrl={absolutePageUrl(PAGE_PATH)}
+        name="Water Heater Replacement Cost Georgetown TX — FAQ"
+        faqs={FAQS}
       />
 
       <main className="max-w-4xl mx-auto px-4 py-10 text-gray-800">
-        {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="text-sm text-gray-600 mb-6">
-          <ol className="flex flex-wrap gap-1 items-center">
-            <li>
-              <Link href="/" className="hover:underline text-blue-700">
-                Home
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li>
-              <Link
-                href="/services/plumber-georgetown-tx"
-                className="hover:underline text-blue-700"
-              >
-                Plumbing
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li className="text-gray-700" aria-current="page">
-              Water Heater Replacement Cost Georgetown TX
-            </li>
-          </ol>
-        </nav>
+        <Breadcrumbs
+          items={[
+            { href: '/', label: 'Home' },
+            { href: '/services/plumber-georgetown-tx', label: 'Plumbing' },
+            { href: PAGE_PATH, label: 'Water Heater Replacement Cost Georgetown TX' },
+          ]}
+        />
 
         {/* H1 */}
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-5 leading-tight">
@@ -523,6 +457,8 @@ export default function WaterHeaterReplacementCostGeorgetownTX() {
             </li>
           </ul>
         </section>
+
+        <FAQList faqs={FAQS} variant="plain" className="mb-10" />
 
         <AffiliateCTA />
       </main>

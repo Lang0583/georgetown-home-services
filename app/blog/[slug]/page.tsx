@@ -22,7 +22,8 @@ import { isNoindexSlug } from "../../../lib/public-site-scope";
 import { getGeneratedPage } from "../../../lib/generatedPages";
 import { blogPageInternalLinks } from "../../../lib/internal-links";
 import { getBlogHeroImage } from "../../../lib/blog-hero-images";
-import { extractFaqPairs, faqPageJsonLd } from "../../../lib/extract-faq-schema";
+import { extractFaqPairs } from "../../../lib/extract-faq-schema";
+import { buildArticle, buildFAQPage } from "../../../lib/schema";
 import {
   FLAGSHIP_VIDEO_HAIL_WILLIAMSON_BLOG,
   flagshipVideoObjectJsonLd,
@@ -33,9 +34,7 @@ import {
   AUTHOR_BYLINE_PUBLISHER,
   AUTHOR_FIRST_NAME,
   AUTHOR_PROFILE_PATH,
-  authorPersonSchema,
 } from "../../../lib/site-author";
-import { breadcrumbSchemaForBlog } from "../../../lib/schema";
 
 /** Posts with Amazon affiliate links in body copy — disclosure shown below byline. */
 const AFFILIATE_DISCLOSURE_SLUGS = new Set([
@@ -49,42 +48,6 @@ const AFFILIATE_DISCLOSURE_TEXT =
   "Disclosure: This post contains affiliate links. If you purchase through our links, we may earn a small commission at no extra cost to you.";
 
 const STORM_INSPECTION_LEAD_SLUGS = new Set(["hail-damage-georgetown-williamson-may-2026"]);
-
-function articleJsonLd({
-  siteUrl,
-  headline,
-  description,
-  url,
-  publisherName,
-  datePublished,
-  dateModified,
-}: {
-  siteUrl: string;
-  headline: string;
-  description: string;
-  url: string;
-  publisherName: string;
-  datePublished: string;
-  dateModified: string;
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline,
-    image: {
-      "@type": "ImageObject",
-      url: `${siteUrl}/og-image.jpg`,
-      width: 1200,
-      height: 630,
-    },
-    description,
-    mainEntityOfPage: url,
-    author: authorPersonSchema(siteUrl),
-    publisher: { "@type": "Organization", name: publisherName, url: siteUrl },
-    datePublished,
-    dateModified,
-  };
-}
 
 const DEFAULT_BLOG_PUBLISH_DATE_ISO = "2026-04-12";
 
@@ -365,7 +328,6 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
   if (!post) notFound();
 
   const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
-  const publisherName = "Georgetown Home Services";
 
   const generated = getGeneratedPage(slug);
   const location = getLocationBySlug(post.locationSlug);
@@ -402,23 +364,25 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
   // Auto-extract FAQPage JSON-LD from generated article HTML. Posts with no
   // `?`-terminated H3s (e.g. pure listicles) simply emit no FAQ schema.
   const faqPairs = generated ? extractFaqPairs(generated.html) : [];
+  const blogPageUrl = absolutePageUrl(`/blog/${post.slug}`);
+  const faqSchema = buildFAQPage(
+    faqPairs.map((p) => ({ q: p.question, a: p.answer })),
+    { pageUrl: blogPageUrl, name: `${post.title} FAQ` },
+  );
 
   return (
     <PageShell>
       <section className="py-10 md:py-12">
-          <JsonLd data={breadcrumbSchemaForBlog(post.title, post.slug)} />
           <JsonLd
-            data={articleJsonLd({
-              siteUrl,
-              publisherName,
+            data={buildArticle({
               headline: post.title,
               description: post.description,
-              url: `${siteUrl}/blog/${post.slug}`,
+              url: blogPageUrl,
               datePublished,
               dateModified,
             })}
           />
-          {faqPairs.length > 0 ? <JsonLd data={faqPageJsonLd(faqPairs)} /> : null}
+          {faqSchema ? <JsonLd data={faqSchema} /> : null}
           {post.slug === "hail-damage-georgetown-williamson-may-2026" ? (
             <JsonLd
               data={flagshipVideoObjectJsonLd(

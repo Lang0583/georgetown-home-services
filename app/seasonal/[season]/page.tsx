@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Container from "@/components/Container";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import JsonLd from "@/components/JsonLd";
 import SeasonalGuideBody from "@/components/SeasonalGuideBody";
 import EmailCaptureSitewide from "@/components/EmailCaptureSitewide";
 import { getSeasonalGuide } from "@/data/seasonal-guides";
 import { pageSeoMetadata } from "@/lib/page-seo";
-import { getSeasonSchedule, isTexasSeasonSlug, TEXAS_SEASON_ORDER, type TexasSeason } from "@/lib/texas-seasons";
+import { buildHowTo } from "@/lib/schema";
+import { getSeasonSchedule, isTexasSeasonSlug, TEXAS_SEASON_ORDER } from "@/lib/texas-seasons";
 
 export function generateStaticParams() {
   return TEXAS_SEASON_ORDER.map((season) => ({ season }));
@@ -47,9 +49,22 @@ export default async function SeasonalSeasonPage({ params }: { params: Promise<{
   const schedule = getSeasonSchedule();
   const isCurrent = schedule.current === raw;
 
+  const howToSteps = guide.tasks.flatMap((group) =>
+    group.items.map((text) => ({
+      name: `${group.trade}: ${text.slice(0, 80)}`,
+      text,
+    })),
+  );
+  const howToJsonLd = buildHowTo({
+    name: guide.headline,
+    description: guide.intro,
+    steps: howToSteps,
+  });
+
   return (
     <Container>
       <div className="py-10 md:py-12">
+        {howToJsonLd ? <JsonLd data={howToJsonLd} /> : null}
         <Breadcrumbs
           items={[
             { href: "/", label: "Home" },

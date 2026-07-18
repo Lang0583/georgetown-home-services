@@ -46,8 +46,7 @@ import {
 import HubRelatedLinks from "../../../components/HubRelatedLinks";
 import { bestPageRelatedHubLinks } from "../../../lib/hub-cross-links";
 import { canonicalServicePathForLinks } from "../../../lib/public-site-scope";
-import { breadcrumbSchemaForBestOf } from "../../../lib/schema";
-import { buildFaqPageJsonLd } from "../../../lib/faq-schema";
+import { buildFAQPage } from "../../../lib/schema";
 
 function BestOfFaqSection({ faqs }: { faqs: readonly { q: string; a: string }[] }) {
   if (!faqs.length) return null;
@@ -198,14 +197,13 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
   const ruleLinks = bestPageInternalLinks(best.slug);
   const relatedHubLinks = bestPageRelatedHubLinks(best.slug);
 
-  /** FAQPage JSON-LD + visible FAQ (must match). Per Next.js, `next/script` `beforeInteractive` is root-layout-only; `<JsonLd />` emits the same `application/ld+json` as elsewhere. */
+  /** FAQPage JSON-LD + visible FAQ (must match). */
   const bestOfPageFaqs = getBestOfPageFaqs(best.slug);
   const bestFaqSchema =
     bestOfPageFaqs.length > 0
-      ? buildFaqPageJsonLd({
+      ? buildFAQPage(bestOfPageFaqs, {
           pageUrl: absolutePageUrl(`/best/${best.slug}`),
           name: `${best.title} — FAQ`,
-          faqs: bestOfPageFaqs,
         })
       : null;
 
@@ -219,7 +217,6 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
     <>
     <PageShell variant="best">
       <section className="py-10 md:py-12">
-          <JsonLd data={breadcrumbSchemaForBestOf(best.title, best.slug)} />
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: `/best/${best.slug}`,
