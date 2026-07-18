@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AffiliateCTA from "../../../components/AffiliateCTA";
-import AffiliateDisclosure from "../../../components/AffiliateDisclosure";
 import Breadcrumbs from "../../../components/Breadcrumbs";
 import ComparisonTable from "../../../components/ComparisonTable";
 import FAQList from "../../../components/FAQList";
@@ -107,7 +106,6 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
           </section>
 
           <section className="mt-10" aria-labelledby="provider-cards-heading">
-            <AffiliateDisclosure className="mb-3 max-w-3xl" />
             <h2 id="provider-cards-heading" className="text-2xl font-semibold tracking-tight text-ink">
               Provider profiles
             </h2>

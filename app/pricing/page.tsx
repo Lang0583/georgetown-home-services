@@ -16,7 +16,7 @@ import {
 export const metadata: Metadata = pageSeoMetadata({
   absoluteTitle: `Georgetown TX Home Service Pricing Guide (${PRICING_YEAR}) — Real Cost Ranges`,
   description:
-    "Real price ranges for plumbers, HVAC, roofers, electricians, and more in Georgetown TX. Updated 2026. Compare costs before you call — no lead forms, no spam.",
+    "Real price ranges for plumbers, HVAC, roofers, electricians, and more in Georgetown TX. Updated 2026. Compare costs before you call. No on-site lead forms. Direct provider contact info first. Any paid partner links are clearly labeled.",
   pathname: "/pricing",
   ogType: "article",
 });

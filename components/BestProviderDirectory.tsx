@@ -1,6 +1,7 @@
 import type { Provider, ProviderCategory } from "@/data/providers";
 import { SHORT_VERIFIED_LIST_NOTES } from "@/data/providers";
 import ProviderCard from "./ProviderCard";
+import ProviderAffiliateQuoteButton from "./ProviderAffiliateQuoteButton";
 import LicenseVerificationMethodology from "./LicenseVerificationMethodology";
 
 export default function BestProviderDirectory({
@@ -45,6 +46,7 @@ export default function BestProviderDirectory({
           No verified providers are listed for this category yet.
         </div>
       )}
+      {category ? <ProviderAffiliateQuoteButton category={category} /> : null}
     </div>
   );
 }

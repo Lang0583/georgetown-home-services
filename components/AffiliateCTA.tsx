@@ -1,10 +1,13 @@
 "use client";
 
-import AffiliateDisclosure from "./AffiliateDisclosure";
 import AffiliateLink from "./AffiliateLink";
 import { affiliateCategoryFromAngiSlug } from "@/lib/affiliate-category";
 import { getAffiliateLink } from "@/lib/affiliateLinks";
 import { AFFILIATE_CTA_HOMEADVISOR_URL } from "../lib/affiliates";
+import {
+  AFFILIATE_PARTNER_CTA_LABEL,
+  AFFILIATE_SPONSORED_DISCLOSURE,
+} from "@/lib/affiliate-disclosure";
 
 const btnClass =
   "btn-accent inline-flex min-h-11 flex-1 items-center justify-center rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-accent-hover sm:flex-none";
@@ -27,12 +30,9 @@ export default function AffiliateCTA({
   const angiCategory =
     affiliateCategory ?? (angiCategorySlug ? affiliateCategoryFromAngiSlug(angiCategorySlug) : "default");
 
-  const affiliateLinks = [
-    {
-      href: getAffiliateLink(angiCategory),
-      label: "Get Quotes on Angi",
-      category: angiCategory,
-    },
+  const partnerHref = getAffiliateLink(angiCategory);
+
+  const secondaryLinks = [
     {
       href: thumbtackCategory
         ? `https://www.thumbtack.com/tx/georgetown/${thumbtackCategory}`
@@ -52,14 +52,21 @@ export default function AffiliateCTA({
       className="not-prose mt-12 rounded-2xl border border-ink/10 bg-surface-alt p-6 md:p-8"
       aria-label={
         serviceLabel
-          ? `Compare free quotes from Georgetown ${serviceLabel}`
-          : "Compare free quotes from Georgetown contractors"
+          ? `Partner network quotes for Georgetown ${serviceLabel}`
+          : "Partner network quotes for Georgetown contractors"
       }
     >
-      <AffiliateDisclosure className="mb-4" />
       <h2 className="text-xl font-semibold tracking-tight text-ink md:text-2xl">{heading}</h2>
-      <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-        {affiliateLinks.map(({ href, label, category }) => (
+      <div className="mt-5">
+        <AffiliateLink href={partnerHref} category={angiCategory} className={btnClass}>
+          {AFFILIATE_PARTNER_CTA_LABEL}
+        </AffiliateLink>
+        <p className="mt-2 max-w-2xl text-xs leading-relaxed text-muted">
+          {AFFILIATE_SPONSORED_DISCLOSURE}
+        </p>
+      </div>
+      <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        {secondaryLinks.map(({ href, label, category }) => (
           <AffiliateLink key={category} href={href} category={category} className={btnClass}>
             {label}
           </AffiliateLink>

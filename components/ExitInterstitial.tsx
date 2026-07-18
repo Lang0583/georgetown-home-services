@@ -12,6 +12,10 @@ import {
   trackAffiliateShown,
   trackOutboundClick,
 } from "../lib/analytics";
+import {
+  AFFILIATE_PARTNER_CTA_LABEL,
+  AFFILIATE_SPONSORED_DISCLOSURE,
+} from "@/lib/affiliate-disclosure";
 
 export type ExitInterstitialModalProps = {
   providerName: string;
@@ -82,11 +86,10 @@ export function ExitInterstitialModal({
         onMouseDown={(e) => e.stopPropagation()}
       >
         <h2 id={titleId} className="text-lg font-semibold tracking-tight text-ink">
-          Before you go — get a free quote in 60 seconds
+          Before you go — compare partner network quotes
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          Compare {providerName} with other top-rated {serviceCategory} companies on Angi — free, no obligation. We may
-          earn a fee if you hire through this partner link.
+          Compare {providerName} with other top-rated {serviceCategory} companies on Angi — free, no obligation.
         </p>
         <div className="mt-6 flex flex-col gap-3">
           <button
@@ -94,8 +97,9 @@ export function ExitInterstitialModal({
             onClick={openAngi}
             className="inline-flex w-full items-center justify-center rounded-lg bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[var(--accent-hover)]"
           >
-            Get a Free Quote on Angi →
+            {AFFILIATE_PARTNER_CTA_LABEL}
           </button>
+          <p className="text-xs leading-relaxed text-muted">{AFFILIATE_SPONSORED_DISCLOSURE}</p>
           <button
             type="button"
             onClick={continueToProvider}

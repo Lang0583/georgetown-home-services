@@ -6,7 +6,7 @@ import FAQList from "../../../components/FAQList";
 import JsonLd from "../../../components/JsonLd";
 import LinkCard from "../../../components/LinkCard";
 import ProviderCard from "../../../components/ProviderCard";
-import AffiliateDisclosure from "../../../components/AffiliateDisclosure";
+import AffiliateCTA from "../../../components/AffiliateCTA";
 import LicenseVerificationMethodology from "../../../components/LicenseVerificationMethodology";
 import PageShell from "../../../components/templates/PageShell";
 import { costGuidePages } from "../../../data/cost-guides";
@@ -150,7 +150,6 @@ export default async function ZipCodePage({ params }: { params: Promise<{ zipcod
             </div>
 
             <div className="mt-8 space-y-10">
-              <AffiliateDisclosure className="max-w-3xl" />
               <LicenseVerificationMethodology providers={PROVIDERS} />
               {PROVIDER_CATEGORY_ORDER.map((category) => {
                 const providers = getTopProvidersByCategory(category, 3);
@@ -168,6 +167,10 @@ export default async function ZipCodePage({ params }: { params: Promise<{ zipcod
                   </div>
                 );
               })}
+              <AffiliateCTA
+                heading={`Partner network quotes for ${page.zip}`}
+                serviceLabel={`${page.zip} home services`}
+              />
             </div>
           </section>
 

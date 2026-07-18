@@ -47,7 +47,7 @@ const STEPS = [
   {
     Icon: IconPhone,
     heading: "Step 3 — Reach Out Directly",
-    copy: "Call or visit providers directly — no middleman, no lead forms, no spam. Shortlists compiled from public business data.",
+    copy: "Call or visit providers directly. No on-site lead forms. Direct provider contact info first. Any paid partner links are clearly labeled. Shortlists compiled from public business data.",
   },
 ] as const;
 
@@ -62,7 +62,8 @@ export default function HomeHowItWorks() {
       </h2>
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
         These guides walk you through finding the right trade, comparing local companies with real data, and reaching out when
-        you&apos;re ready—no pass-through, no noise.
+        you&apos;re ready. No on-site lead forms. Direct provider contact info first. Any paid partner links are clearly
+        labeled.
       </p>
       <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
         {STEPS.map(({ Icon, heading, copy }) => (

@@ -6,7 +6,6 @@ import { providerUnlicensedTradeNote } from "@/lib/provider-license";
 import { providerReviewCountLabel } from "@/lib/provider-card-display";
 import { getProviderWebsiteUrl } from "../lib/provider-website";
 import { externalBusinessLinkProps } from "../lib/businesses";
-import ProviderAffiliateQuoteButton from "./ProviderAffiliateQuoteButton";
 import VerifiedLicenseBadge from "./VerifiedLicenseBadge";
 
 const secondaryBtnClass =
@@ -114,7 +113,6 @@ export default function ProviderCard({
             Visit website
           </a>
         ) : null}
-        <ProviderAffiliateQuoteButton provider={provider} />
         <a
           href={provider.googleMapsUrl}
           target="_blank"

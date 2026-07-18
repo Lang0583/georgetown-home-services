@@ -767,6 +767,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   <div className="mt-6">
                     <ServiceTopProvidersSection businesses={providersFromJson} />
                   </div>
+                  {isCoreService ? (
+                    <AffiliateCTA affiliateCategory={affiliateCategoryFromServiceSlug(service.slug)} />
+                  ) : null}
                 </section>
               ) : null}
 
@@ -808,7 +811,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 </section>
               ) : null}
 
-              {isCoreService ? (
+              {!providersFromJson.length && isCoreService ? (
                 <AffiliateCTA affiliateCategory={affiliateCategoryFromServiceSlug(service.slug)} />
               ) : null}
 
