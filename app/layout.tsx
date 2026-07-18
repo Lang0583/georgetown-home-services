@@ -101,7 +101,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-surface text-ink leading-[1.65]">
         <HomeHailAlertBanner />
         <StickyHeader />
-        <main className="flex-1 pt-20">{children}</main>
+        <main className="flex-1 pt-[var(--site-header-offset,5rem)]">{children}</main>
         <EmailCaptureSitewide />
         <SiteFooter />
       </body>

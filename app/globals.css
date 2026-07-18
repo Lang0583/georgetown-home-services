@@ -47,6 +47,13 @@ body {
   line-height: 1.65;
 }
 
+/* Mobile sticky call bar clearance (footer + page end). Desktop: no padding. */
+@media (max-width: 767px) {
+  body.has-sticky-call-bar {
+    padding-bottom: var(--sticky-call-bar-h, 4.5rem);
+  }
+}
+
 :target {
   scroll-margin-top: 6rem;
 }

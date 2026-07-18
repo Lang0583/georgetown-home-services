@@ -44,8 +44,13 @@ export default function BestAlsoCompareBar({ links }: { links: AlsoCompareLink[]
       return;
     }
     const el = barRef.current;
+    const stickyCallH = () => {
+      const raw = getComputedStyle(document.documentElement).getPropertyValue("--sticky-call-bar-h");
+      const n = Number.parseFloat(raw);
+      return Number.isFinite(n) ? n : 0;
+    };
     const apply = () => {
-      document.body.style.paddingBottom = `${el.offsetHeight}px`;
+      document.body.style.paddingBottom = `${el.offsetHeight + stickyCallH()}px`;
     };
     apply();
     const ro = new ResizeObserver(apply);
@@ -73,7 +78,7 @@ export default function BestAlsoCompareBar({ links }: { links: AlsoCompareLink[]
       ref={barRef}
       role="region"
       aria-label="Also compare with other guides"
-      className="fixed bottom-0 left-0 right-0 z-[60] w-full border-t-[3px] border-brand bg-surface px-6 py-4 shadow-[0_-4px_14px_rgba(0,0,0,0.12)] md:py-3"
+      className="fixed bottom-[var(--sticky-call-bar-h,0px)] left-0 right-0 z-[60] w-full border-t-[3px] border-brand bg-surface px-6 py-4 shadow-[0_-4px_14px_rgba(0,0,0,0.12)] md:bottom-0 md:py-3"
     >
       <div className="mx-auto flex w-full max-w-5xl items-center gap-3">
         <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-3 gap-y-3 sm:gap-x-2 sm:gap-y-2">

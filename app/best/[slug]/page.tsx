@@ -26,8 +26,10 @@ import { buildProviderItemListJsonLd } from "../../../lib/provider-item-list-sch
 import { getDirectoryProvidersForBestSlug } from "../../../data/providers";
 import { getComparisonsForBestSlug } from "../../../data/comparisons";
 import ProviderCardSection from "../../../components/ProviderCardSection";
+import StickyCallBar from "../../../components/StickyCallBar";
 import { bestPageInternalLinks } from "../../../lib/internal-links";
 import { getBestOfPageFaqs } from "../../../lib/best-of-page-faqs";
+import { businessPhoneTel } from "../../../lib/phone";
 import {
   isExtendedBestSlug,
   isNoindexSlug,
@@ -171,6 +173,8 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
   const isRoofersGeorgetown = slug === "best-roofers-georgetown-tx";
 
   const directoryProviders = getDirectoryProvidersForBestSlug(slug);
+  const primaryCallProvider =
+    directoryProviders.find((p) => businessPhoneTel(p.phone)) ?? null;
   const headToHeadComparisons = getComparisonsForBestSlug(best.slug);
   const relatedServiceSlug = getRelatedServiceSlugForBestSlug(slug);
   const relatedService = relatedServiceSlug ? getServiceBySlug(relatedServiceSlug) : null;
@@ -216,7 +220,11 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
   return (
     <>
     <PageShell variant="best">
-      <section className="py-10 md:py-12">
+      <section
+        className={
+          primaryCallProvider ? "py-10 pb-24 md:py-12 md:pb-12" : "py-10 md:py-12"
+        }
+      >
           <JsonLd
             data={webPageWithDateModifiedJsonLd({
               pathname: `/best/${best.slug}`,
@@ -1104,6 +1112,13 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
             }
           />
       </section>
+      {primaryCallProvider ? (
+        <StickyCallBar
+          providerName={primaryCallProvider.name}
+          phone={primaryCallProvider.phone}
+          category={primaryCallProvider.category}
+        />
+      ) : null}
     </PageShell>
     {coreAlsoCompareSlugs.has(best.slug) ? (
       <BestAlsoCompareBar links={getAlsoCompareLinksForBestSlug(best.slug)} />

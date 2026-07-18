@@ -7,6 +7,7 @@ import { providerReviewCountLabel } from "@/lib/provider-card-display";
 import { getProviderWebsiteUrl } from "../lib/provider-website";
 import { externalBusinessLinkProps } from "../lib/businesses";
 import VerifiedLicenseBadge from "./VerifiedLicenseBadge";
+import { BusinessPhoneRow } from "./BusinessPhoneRow";
 
 const secondaryBtnClass =
   "inline-flex items-center justify-center rounded-lg bg-accent px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover";
@@ -20,7 +21,6 @@ export default function ProviderCard({
   showTopPick?: boolean;
   compact?: boolean;
 }) {
-  const telHref = `tel:${provider.phone.replace(/\D/g, "")}`;
   const providerSlug = getProviderSlug(provider);
   const hasProfile = Boolean(getProviderBySlug(providerSlug));
   const profileHref = hasProfile ? `/providers/${providerSlug}` : null;
@@ -94,12 +94,18 @@ export default function ProviderCard({
           </ul>
         ) : null}
 
-        <p className="text-sm text-muted">
-          <span className="font-semibold text-ink">Phone:</span>{" "}
-          <a href={telHref} className="font-semibold text-brand hover:text-brand hover:underline">
-            {provider.phone}
-          </a>
-        </p>
+        {provider.phone?.trim() ? (
+          <p className="text-sm text-muted">
+            <span className="font-semibold text-ink">Phone:</span>{" "}
+            <BusinessPhoneRow
+              phone={provider.phone}
+              providerName={provider.name}
+              category={provider.category}
+              wrapperClassName={null}
+              className="font-semibold text-brand hover:text-brand hover:underline"
+            />
+          </p>
+        ) : null}
       </div>
 
       <div className="mt-4 flex flex-wrap gap-2">

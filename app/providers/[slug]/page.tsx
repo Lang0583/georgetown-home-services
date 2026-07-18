@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import PageShell from "@/components/templates/PageShell";
+import StickyCallBar from "@/components/StickyCallBar";
 import VerifiedProfileCard from "@/components/VerifiedProfileCard";
 import {
   PROVIDER_CATEGORY_LABELS,
@@ -11,6 +12,7 @@ import {
   getProviderBySlug,
 } from "@/data/providers";
 import { pageSeoMetadata, absolutePageUrl } from "@/lib/page-seo";
+import { businessPhoneTel } from "@/lib/phone";
 import { buildLocalBusiness } from "@/lib/schema";
 import LastUpdated from "@/components/LastUpdated";
 import {
@@ -56,10 +58,11 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
   const pathname = `/providers/${slug}`;
   const pageUrl = absolutePageUrl(pathname);
   const h1 = `${provider.name} — Georgetown, TX`;
+  const showStickyCall = Boolean(businessPhoneTel(provider.phone));
 
   return (
     <PageShell>
-      <section className="py-8 md:py-12">
+      <section className={showStickyCall ? "py-8 pb-24 md:py-12 md:pb-12" : "py-8 md:py-12"}>
         <JsonLd
           data={webPageWithDateModifiedJsonLd({
             pathname,
@@ -87,6 +90,13 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
           </div>
         </div>
       </section>
+      {showStickyCall ? (
+        <StickyCallBar
+          providerName={provider.name}
+          phone={provider.phone}
+          category={provider.category}
+        />
+      ) : null}
     </PageShell>
   );
 }

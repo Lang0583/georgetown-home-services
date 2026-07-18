@@ -1,20 +1,59 @@
 import Link from "next/link";
 import { isNoindexSlug, showExtendedHomeServices } from "../lib/public-site-scope";
 import { getBrandName } from "../lib/site-content";
+import SiteNav, { type SiteNavLink } from "./SiteNav";
+import StickyHeaderShell from "./StickyHeaderShell";
 
 // Sitewide header links: only to indexable hubs. Noindex slugs are filtered
 // here because the header renders on every request, multiplying any link
 // equity drain across the entire site.
 
-const navLinkClass =
-  "inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-md px-2 text-sm font-semibold text-muted underline-offset-4 transition-colors hover:bg-surface-alt hover:text-brand hover:underline hover:decoration-brand whitespace-nowrap sm:min-h-0 sm:min-w-0 sm:justify-start sm:px-0.5 sm:hover:bg-transparent";
+const PRIMARY_NAV: SiteNavLink[] = [
+  { href: "/services", label: "Services" },
+  { href: "/best", label: "Best Of" },
+  { href: "/costs", label: "Cost Guide" },
+  { href: "/for-contractors", label: "For Contractors" },
+];
+
+function moreNavLinks(): SiteNavLink[] {
+  const links: SiteNavLink[] = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/search", label: "Search" },
+    { href: "/compare", label: "Compare" },
+    { href: "/pricing", label: "Pricing" },
+    { href: "/seasonal", label: "Seasonal tips" },
+    { href: "/blog", label: "Homeowner blog" },
+    { href: "/services/plumber-georgetown-tx", label: "Plumbing" },
+    { href: "/services/hvac-georgetown-tx", label: "HVAC" },
+    { href: "/services/roofer-georgetown-tx", label: "Roofing" },
+  ];
+
+  if (showExtendedHomeServices() && !isNoindexSlug("electrician-georgetown-tx")) {
+    links.push({ href: "/services/electrician-georgetown-tx", label: "Electrical" });
+  }
+  if (showExtendedHomeServices() && !isNoindexSlug("landscaping-georgetown-tx")) {
+    links.push({ href: "/services/landscaping-georgetown-tx", label: "Landscaping" });
+  }
+  if (showExtendedHomeServices() && !isNoindexSlug("pest-control-georgetown-tx")) {
+    links.push({ href: "/services/pest-control-georgetown-tx", label: "Pest" });
+  }
+  if (showExtendedHomeServices() && !isNoindexSlug("foundation-repair-georgetown-tx")) {
+    links.push({ href: "/services/foundation-repair-georgetown-tx", label: "Foundation" });
+  }
+  if (showExtendedHomeServices() && !isNoindexSlug("house-cleaning-georgetown-tx")) {
+    links.push({ href: "/services/house-cleaning-georgetown-tx", label: "Cleaning" });
+  }
+
+  return links;
+}
 
 export default function StickyHeader() {
   const brand = getBrandName();
 
   return (
-    <header className="sticky top-0 z-50 h-20 border-b-[3px] border-brand bg-surface shadow-sm">
-      <div className="mx-auto flex h-full max-w-5xl items-center justify-between gap-6 px-4">
+    <StickyHeaderShell>
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 px-4 py-3 md:min-h-20 md:flex-row md:items-center md:justify-between md:gap-6 md:py-0">
         <Link
           href="/"
           className={
@@ -34,76 +73,8 @@ export default function StickyHeader() {
           )}
         </Link>
 
-        <nav className="flex max-w-full min-w-0 flex-1 items-center gap-3 overflow-x-auto sm:gap-4 md:gap-6" aria-label="Main navigation">
-          <Link href="/" className={navLinkClass}>
-            Home
-          </Link>
-          <Link href="/about" className={navLinkClass}>
-            About
-          </Link>
-          <Link href="/for-contractors" className={navLinkClass}>
-            For Contractors
-          </Link>
-          <Link href="/services" className={navLinkClass}>
-            Service guides
-          </Link>
-          <Link href="/best" className={navLinkClass}>
-            Provider directory
-          </Link>
-          <Link href="/search" className={navLinkClass}>
-            Search
-          </Link>
-          <Link href="/compare" className={navLinkClass}>
-            Compare
-          </Link>
-          <Link href="/pricing" className={navLinkClass}>
-            Pricing
-          </Link>
-          <Link href="/costs" className={navLinkClass}>
-            Cost guides
-          </Link>
-          <Link href="/seasonal" className={navLinkClass}>
-            Seasonal tips
-          </Link>
-          <Link href="/blog" className={navLinkClass}>
-            Homeowner blog
-          </Link>
-          <Link href="/services/plumber-georgetown-tx" className={navLinkClass}>
-            Plumbing
-          </Link>
-          <Link href="/services/hvac-georgetown-tx" className={navLinkClass}>
-            HVAC
-          </Link>
-          <Link href="/services/roofer-georgetown-tx" className={navLinkClass}>
-            Roofing
-          </Link>
-          {showExtendedHomeServices() && !isNoindexSlug("electrician-georgetown-tx") ? (
-            <Link href="/services/electrician-georgetown-tx" className={navLinkClass}>
-              Electrical
-            </Link>
-          ) : null}
-          {showExtendedHomeServices() && !isNoindexSlug("landscaping-georgetown-tx") ? (
-            <Link href="/services/landscaping-georgetown-tx" className={navLinkClass}>
-              Landscaping
-            </Link>
-          ) : null}
-          {showExtendedHomeServices() && !isNoindexSlug("pest-control-georgetown-tx") ? (
-            <Link href="/services/pest-control-georgetown-tx" className={navLinkClass}>
-              Pest
-            </Link>
-          ) : null}
-          {showExtendedHomeServices() && !isNoindexSlug("foundation-repair-georgetown-tx") ? (
-            <Link href="/services/foundation-repair-georgetown-tx" className={navLinkClass}>
-              Foundation
-            </Link>
-          ) : null}
-          {showExtendedHomeServices() && !isNoindexSlug("house-cleaning-georgetown-tx") ? (
-            <Link href="/services/house-cleaning-georgetown-tx" className={navLinkClass}>
-              Cleaning
-            </Link>
-          ) : null}
-        </nav>
+        <SiteNav primary={PRIMARY_NAV} more={moreNavLinks()} />
       </div>
-    </header>
+    </StickyHeaderShell>
   );
 }

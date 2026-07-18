@@ -8,6 +8,7 @@ import {
 } from "@/data/providers";
 import { formatLicenseLookupDate } from "@/lib/provider-license";
 import { trackPhoneClick } from "@/lib/analytics";
+import { businessPhoneTel } from "@/lib/phone";
 import { providerHasPublishedReviewCount } from "@/lib/provider-card-display";
 import { RatingStarsRow, formatRatingOneDecimal } from "@/components/BusinessRatingStars";
 import { NEIGHBORHOOD_AREA_SLUGS } from "@/lib/neighborhood-redirects";
@@ -59,8 +60,7 @@ export default function VerifiedProfileCard({
   const bestSlug = getBestSlugForCategory(provider.category);
   const Heading = headingLevel;
 
-  const phone = provider.phone?.trim();
-  const digitsOnly = phone ? phone.replace(/\D/g, "") : "";
+  const tel = businessPhoneTel(provider.phone);
   const licenseNumber = provider.licenseNumber?.trim();
   const licenseBody = provider.licenseBody;
   const showLicenseBadge = Boolean(licenseNumber && licenseBody);
@@ -136,13 +136,13 @@ export default function VerifiedProfileCard({
         <p className="text-sm font-medium text-ink">{INSURANCE_STATUS_LABEL[insuranceStatus]}</p>
       ) : null}
 
-      {phone && digitsOnly ? (
+      {tel ? (
         <a
-          href={`tel:${digitsOnly}`}
+          href={tel.href}
           onClick={() => trackPhoneClick(provider.name, provider.category)}
           className="inline-flex w-full items-center justify-center rounded-lg bg-accent px-5 py-3.5 text-base font-semibold text-white transition-colors hover:bg-accent-hover sm:w-auto sm:min-w-[16rem]"
         >
-          Call {phone}
+          Call {tel.display}
         </a>
       ) : null}
 
