@@ -41,6 +41,9 @@ export default function StickyHeader() {
           <Link href="/about" className={navLinkClass}>
             About
           </Link>
+          <Link href="/for-contractors" className={navLinkClass}>
+            For Contractors
+          </Link>
           <Link href="/services" className={navLinkClass}>
             Service guides
           </Link>

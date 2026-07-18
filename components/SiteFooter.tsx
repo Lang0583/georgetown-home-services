@@ -285,6 +285,11 @@ export default function SiteFooter() {
                 </Link>
               </li>
               <li>
+                <Link className="hover:underline" href="/for-contractors">
+                  For Contractors
+                </Link>
+              </li>
+              <li>
                 <Link className="hover:underline" href="/privacy-policy">
                   Privacy Policy
                 </Link>
@@ -334,6 +339,9 @@ export default function SiteFooter() {
             </Link>
             <Link className={footerBarLinkClass} href="/contact">
               Contact
+            </Link>
+            <Link className={footerBarLinkClass} href="/for-contractors">
+              For Contractors
             </Link>
             <Link className={footerBarLinkClass} href="/privacy-policy">
               Privacy
