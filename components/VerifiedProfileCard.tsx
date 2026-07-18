@@ -5,12 +5,14 @@ import type { Provider } from "@/data/providers";
 import {
   PROVIDER_CATEGORY_LABELS,
   getBestSlugForCategory,
+  getProviderSlug,
 } from "@/data/providers";
 import { formatLicenseLookupDate } from "@/lib/provider-license";
 import { trackPhoneClick } from "@/lib/analytics";
 import { businessPhoneTel } from "@/lib/phone";
 import { providerHasPublishedReviewCount } from "@/lib/provider-card-display";
 import { RatingStarsRow, formatRatingOneDecimal } from "@/components/BusinessRatingStars";
+import VerifiedLicenseBadge from "@/components/VerifiedLicenseBadge";
 import { NEIGHBORHOOD_AREA_SLUGS } from "@/lib/neighborhood-redirects";
 import { isGeorgetownZipCode } from "@/data/zip-codes";
 
@@ -51,10 +53,13 @@ function zipHref(value: string): string | null {
 export default function VerifiedProfileCard({
   provider,
   headingLevel = "h1",
+  variant = "full",
 }: {
   provider: Provider;
   /** `h1` on dedicated profile pages; `h3` when embedded in another page. */
   headingLevel?: "h1" | "h3";
+  /** Compact homepage / directory teaser: name, category, license, rating, call. */
+  variant?: "full" | "compact";
 }) {
   const categoryLabel = PROVIDER_CATEGORY_LABELS[provider.category];
   const bestSlug = getBestSlugForCategory(provider.category);
@@ -83,6 +88,50 @@ export default function VerifiedProfileCard({
   const lastVerified = provider.lastVerified?.trim();
   const showRating =
     typeof provider.rating === "number" && providerHasPublishedReviewCount(provider);
+
+  if (variant === "compact") {
+    const profileHref = `/providers/${getProviderSlug(provider)}`;
+    return (
+      <article className="flex h-full flex-col gap-3 rounded-xl border border-ink/10 bg-surface p-4 shadow-sm">
+        <header>
+          <h3 className="text-base font-semibold tracking-tight text-ink">
+            <Link href={profileHref} className="hover:text-brand hover:underline">
+              {provider.name}
+            </Link>
+          </h3>
+          <p className="mt-1 text-sm font-medium text-[var(--accent)]">
+            <Link href={`/best/${bestSlug}`} className="hover:underline">
+              {categoryLabel}
+            </Link>
+          </p>
+        </header>
+
+        <VerifiedLicenseBadge provider={provider} />
+
+        {showRating ? (
+          <div className="flex flex-wrap items-center gap-2">
+            <RatingStarsRow rating={provider.rating} />
+            <span className="text-sm font-semibold text-ink">
+              {formatRatingOneDecimal(provider.rating)} ★
+            </span>
+            <span className="text-sm text-muted">
+              {provider.reviewCount.toLocaleString()} Google reviews
+            </span>
+          </div>
+        ) : null}
+
+        {tel ? (
+          <a
+            href={tel.href}
+            onClick={() => trackPhoneClick(provider.name, provider.category)}
+            className="mt-auto inline-flex w-full items-center justify-center rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
+          >
+            Call {tel.display}
+          </a>
+        ) : null}
+      </article>
+    );
+  }
 
   const licenseBadgeInner = showLicenseBadge ? (
     <span

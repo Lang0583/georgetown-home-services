@@ -10,6 +10,7 @@ import HomeCostGuidesSection from "../components/HomeCostGuidesSection";
 import SeasonalHomeSection from "../components/SeasonalHomeSection";
 import FAQList from "../components/FAQList";
 import JsonLd from "../components/JsonLd";
+import VerifiedProfileCard from "../components/VerifiedProfileCard";
 import { pageSeoMetadata, SITE_URL } from "../lib/page-seo";
 import { getStaticPageLastUpdated } from "../lib/static-pages-last-updated";
 import { CORE_SERVICE_SLUGS } from "../lib/pageContentRegistry";
@@ -17,6 +18,8 @@ import { EXTENDED_PROVIDER_GROUPS, isNoindexSlug, showExtendedHomeServices } fro
 import { getBlog, getServices } from "../lib/site-content";
 import { HOME_PAGE_FAQS } from "../lib/home-page-faqs";
 import { getBusinessesByCategory, type ProviderGroup } from "../lib/businesses";
+import { HOME_CATEGORY_CARD_DESCRIPTIONS } from "../lib/home-category-card-descriptions";
+import { getHomepageVerifiedProviders } from "../lib/homepage-verified-providers";
 
 function homeLocalBusinessJsonLd() {
   return {
@@ -65,6 +68,7 @@ export const metadata: Metadata = pageSeoMetadata({
 export default function Home() {
   const services = getServices();
   const blog = getBlog();
+  const verifiedProviders = getHomepageVerifiedProviders(6);
   const homepageTradeOrder: ProviderGroup[] = [
     "plumber",
     "hvac",
@@ -130,6 +134,45 @@ export default function Home() {
               against TSBPE, TDLR, and TDA SPCS.
             </p>
 
+            {verifiedProviders.length > 0 ? (
+              <section
+                id="verified-providers"
+                className="mt-10 scroll-mt-28 rounded-xl border border-ink/10 bg-surface p-6 shadow-md sm:p-8"
+                aria-labelledby="verified-providers-heading"
+              >
+                <div className="flex flex-wrap items-end justify-between gap-3">
+                  <div>
+                    <h2
+                      id="verified-providers-heading"
+                      className="text-xl font-semibold tracking-tight text-ink"
+                    >
+                      Verified providers
+                    </h2>
+                    <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
+                      License-verified listings first, then rating, then name—drawn from our directory data, not an
+                      invented weekly ranking.
+                    </p>
+                  </div>
+                  <Link
+                    href="/best"
+                    className="text-sm font-semibold text-brand underline-offset-2 hover:underline"
+                  >
+                    See all providers
+                  </Link>
+                </div>
+                <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {verifiedProviders.map((provider) => (
+                    <VerifiedProfileCard
+                      key={`${provider.category}-${provider.name}`}
+                      provider={provider}
+                      variant="compact"
+                      headingLevel="h3"
+                    />
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
             <section
               id="browse-categories"
               className="mt-10 scroll-mt-28 rounded-xl border border-ink/10 bg-surface p-6 shadow-md sm:p-8"
@@ -149,8 +192,12 @@ export default function Home() {
                     className="rounded-lg border border-ink/10 border-t-[3px] border-t-transparent bg-surface-alt p-4 transition hover:border-x-brand/25 hover:border-b-brand/25 hover:border-t-brand hover:bg-surface"
                   >
                     <div className="text-sm font-semibold text-ink">{s.serviceType}</div>
-                    <p className="mt-1 line-clamp-2 text-sm text-muted">{s.description}</p>
-                    <div className="mt-2 text-xs font-semibold text-brand">View {s.serviceType.toLowerCase()} guide →</div>
+                    <p className="mt-1 text-sm leading-relaxed text-muted">
+                      {HOME_CATEGORY_CARD_DESCRIPTIONS[s.slug] ?? s.description}
+                    </p>
+                    <div className="mt-2 text-xs font-semibold text-brand">
+                      View {s.serviceType.toLowerCase()} guide →
+                    </div>
                   </Link>
                 ))}
               </div>
@@ -185,20 +232,22 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-10 md:py-12">
-          <h2 className="text-3xl font-semibold tracking-tight text-ink">From the Blog</h2>
-          <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
-            {blog.map((p) => (
-              <LinkCard
-                key={p.slug}
-                href={`/blog/${p.slug}`}
-                title={p.title}
-                description={p.description}
-                badge={p.readTime}
-              />
-            ))}
-          </div>
-        </section>
+        {blog.length > 0 ? (
+          <section className="py-10 md:py-12">
+            <h2 className="text-3xl font-semibold tracking-tight text-ink">From the Blog</h2>
+            <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
+              {blog.map((p) => (
+                <LinkCard
+                  key={p.slug}
+                  href={`/blog/${p.slug}`}
+                  title={p.title}
+                  description={p.description}
+                  badge={p.readTime}
+                />
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <section className="py-10 md:py-12">
           <FAQList faqs={HOME_PAGE_FAQS} variant="plain" />
