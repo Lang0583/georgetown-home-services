@@ -10,6 +10,23 @@ export type ProviderCategory =
   | "foundation"
   | "cleaning";
 
+/** Texas issuing board when a licenseNumber is present in verified data. */
+export type LicenseBody = "TSBPE" | "TDLR" | "TDA SPCS";
+
+export type InsuranceStatus = "verified" | "self-attested" | "not-verified";
+
+export type ProviderHours = {
+  day: string;
+  open: string;
+  close: string;
+};
+
+export type ProviderReviewExcerpt = {
+  text: string;
+  author: string;
+  sourceUrl: string;
+};
+
 export type Provider = {
   name: string;
   phone: string;
@@ -18,6 +35,7 @@ export type Provider = {
   /** Omitted in UI when zero or absent in verified JSON. */
   reviewCount: number;
   serviceArea: string;
+  /** Always present today (often empty); optional specialty strings must come from verified data only. */
   specialties: string[];
   featured: boolean;
   category: ProviderCategory;
@@ -27,8 +45,19 @@ export type Provider = {
   state?: string;
   postalCode?: string;
   licenseNumber?: string;
+  /** Longer credential label from verified JSON (kept for existing UI). */
   licenseType?: string;
+  licenseBody?: LicenseBody;
   licenseVerifiedDate?: string;
+  licenseRegistryUrl?: string;
+  insuranceStatus?: InsuranceStatus;
+  hours?: ProviderHours[];
+  emergencyAvailable?: boolean;
+  neighborhoodsServed?: string[];
+  zipsServed?: string[];
+  websiteUrl?: string;
+  reviewExcerpts?: ProviderReviewExcerpt[];
+  lastVerified?: string;
   /** Google Place ID for re-verification batches. */
   placeId?: string;
 };
@@ -42,7 +71,19 @@ export type VerifiedProviderRecord = {
   placeId?: string;
   licenseType?: string;
   licenseNumber?: string;
+  licenseBody?: LicenseBody;
   licenseVerifiedDate?: string;
+  licenseRegistryUrl?: string;
+  insuranceStatus?: InsuranceStatus;
+  specialties?: string[];
+  hours?: ProviderHours[];
+  emergencyAvailable?: boolean;
+  neighborhoodsServed?: string[];
+  zipsServed?: string[];
+  websiteUrl?: string;
+  googleMapsUrl?: string;
+  reviewExcerpts?: ProviderReviewExcerpt[];
+  lastVerified?: string;
 };
 
 type VerifiedProvidersMeta = {
@@ -143,9 +184,30 @@ function stripInternalFields(row: Record<string, unknown>): VerifiedProviderReco
   return clean as VerifiedProviderRecord;
 }
 
+/**
+ * Derive licenseBody only from an existing licenseType string when licenseNumber is present.
+ * Never invents a board from category alone.
+ */
+function deriveLicenseBody(
+  licenseNumber: string | undefined,
+  licenseType: string | undefined,
+  explicit: LicenseBody | undefined,
+): LicenseBody | undefined {
+  if (!licenseNumber) return undefined;
+  if (explicit === "TSBPE" || explicit === "TDLR" || explicit === "TDA SPCS") {
+    return explicit;
+  }
+  const t = licenseType?.trim() ?? "";
+  if (t.startsWith("TSBPE")) return "TSBPE";
+  if (t.startsWith("TDLR")) return "TDLR";
+  if (/\bTDA\b/.test(t) && /\bSPCS\b/.test(t)) return "TDA SPCS";
+  return undefined;
+}
+
 function mapVerifiedRecord(row: VerifiedProviderRecord, category: ProviderCategory): Provider {
   const licenseType = row.licenseType?.trim() || undefined;
   const licenseNumber = row.licenseNumber?.trim() || undefined;
+  const licenseBody = deriveLicenseBody(licenseNumber, licenseType, row.licenseBody);
   const fullAddress = row.address.trim();
   const placeId = row.placeId?.trim() || undefined;
 
@@ -156,7 +218,7 @@ function mapVerifiedRecord(row: VerifiedProviderRecord, category: ProviderCatego
     rating: row.rating,
     reviewCount: typeof row.reviewCount === "number" ? row.reviewCount : 0,
     serviceArea: "Georgetown, TX area",
-    specialties: [],
+    specialties: Array.isArray(row.specialties) ? row.specialties : [],
     featured: false,
     category,
     description: `${row.name.trim()} serves homeowners in Georgetown and Williamson County.`,
@@ -164,7 +226,18 @@ function mapVerifiedRecord(row: VerifiedProviderRecord, category: ProviderCatego
     ...parseAddressFields(fullAddress),
     licenseType,
     licenseNumber,
+    licenseBody,
     licenseVerifiedDate: row.licenseVerifiedDate?.trim() || undefined,
+    // Optional enrichment fields: only pass through when present in verified JSON (never invent).
+    licenseRegistryUrl: row.licenseRegistryUrl?.trim() || undefined,
+    insuranceStatus: row.insuranceStatus,
+    hours: row.hours,
+    emergencyAvailable: row.emergencyAvailable,
+    neighborhoodsServed: row.neighborhoodsServed,
+    zipsServed: row.zipsServed,
+    websiteUrl: row.websiteUrl?.trim() || undefined,
+    reviewExcerpts: row.reviewExcerpts,
+    lastVerified: row.lastVerified?.trim() || undefined,
     placeId,
   };
 }
