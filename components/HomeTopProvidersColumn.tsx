@@ -11,13 +11,13 @@ import {
   PROVIDER_GROUP_LINKS,
   externalBusinessLinkProps,
   getBusinessMapsUrl,
-  getBusinessOutboundUrl,
   getBusinessWebsiteUrl,
   type Business,
   type ProviderGroup,
 } from "../lib/businesses";
 import { EXIT_INTERSTITIAL_ANGI_SLUG, EXIT_INTERSTITIAL_SERVICE_LABEL } from "../lib/exit-interstitial";
-import { trackMapsClick, trackOutboundClick } from "../lib/analytics";
+import { trackMapsClick } from "../lib/analytics";
+import { providerDetailHref } from "../lib/internalLinks";
 
 const ROTATE_MS = 5000;
 
@@ -66,22 +66,16 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
       </div>
       <ul className="mt-3 space-y-3">
         {visible.map((business) => {
-          const outbound = getBusinessOutboundUrl(business);
+          const detailHref = providerDetailHref(business.name);
           const website = getBusinessWebsiteUrl(business);
           const maps = getBusinessMapsUrl(business);
-          const serviceCategory = EXIT_INTERSTITIAL_SERVICE_LABEL[providerGroupKey];
           return (
             <li key={`${providerGroupKey}-${business.name}`} className="text-sm text-muted">
               <div className="font-medium text-ink">
-                {outbound ? (
-                  <a
-                    href={outbound}
-                    {...externalBusinessLinkProps}
-                    className="text-ink hover:text-brand hover:underline"
-                    onClick={() => trackOutboundClick(business.name, serviceCategory, outbound)}
-                  >
+                {detailHref ? (
+                  <Link href={detailHref} className="text-ink hover:text-brand hover:underline">
                     {business.name}
-                  </a>
+                  </Link>
                 ) : (
                   business.name
                 )}

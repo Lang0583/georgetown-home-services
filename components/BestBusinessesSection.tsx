@@ -1,15 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { BusinessListingDescription } from "./BusinessListingDescription";
 import { BusinessPhoneRow } from "./BusinessPhoneRow";
 import ExitInterstitial from "./ExitInterstitial";
-import { trackMapsClick, trackOutboundClick } from "../lib/analytics";
+import { trackMapsClick } from "../lib/analytics";
 import {
   BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS,
   BUSINESS_LINK_VISIT_WEBSITE,
   externalBusinessLinkProps,
   getBusinessMapsUrl,
-  getBusinessOutboundUrl,
   getBusinessWebsiteUrl,
   hasBusinessRatingData,
   hasGeorgetownOfficeSignal,
@@ -18,6 +18,7 @@ import {
   type Business,
 } from "../lib/businesses";
 import { exitInterstitialLabels } from "../lib/exit-interstitial";
+import { providerDetailHref } from "../lib/internalLinks";
 
 /** Detailed cards for the top of the list; remaining rows use a compact list. */
 const FEATURED_MAX = 3;
@@ -39,26 +40,6 @@ function serviceAreaNote(b: Business) {
   const state = trim(b.state) || "TX";
   if (city) return `Service area: ${city}, ${state} (serves the Georgetown area).`;
   return "Service area: Georgetown, TX area.";
-}
-
-function BusinessNameHeading({ b }: { b: Business }) {
-  const href = getBusinessOutboundUrl(b);
-  const { serviceCategory } = exitInterstitialLabels(normalizeBusinessGroup(b));
-  if (href) {
-    return (
-      <h4 className="text-lg font-semibold text-ink">
-        <a
-          href={href}
-          {...externalBusinessLinkProps}
-          className="text-ink hover:text-brand hover:underline"
-          onClick={() => trackOutboundClick(b.name, serviceCategory, href)}
-        >
-          {b.name}
-        </a>
-      </h4>
-    );
-  }
-  return <h4 className="text-lg font-semibold text-ink">{b.name}</h4>;
 }
 
 function WebsiteAndMapLinks({ b }: { b: Business }) {
@@ -121,21 +102,18 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
         <div className="mt-6 rounded-xl border border-brand/25 bg-surface-alt/60 p-4 shadow-sm md:p-5">
           <ul className="divide-y divide-brand/20 rounded-xl border border-brand/25 bg-surface shadow-sm">
             {featured.map((b, i) => {
-              const href = getBusinessOutboundUrl(b);
-              const { serviceCategory } = exitInterstitialLabels(normalizeBusinessGroup(b));
+              const detailHref = providerDetailHref(b.name);
               return (
                 <li key={`feat-${b.name}-${i}`} className="px-4 py-5 first:rounded-t-xl last:rounded-b-xl md:px-6">
                   <div className="flex flex-col gap-2">
                     <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-x-4">
-                      {href ? (
-                        <a
-                          href={href}
-                          {...externalBusinessLinkProps}
+                      {detailHref ? (
+                        <Link
+                          href={detailHref}
                           className="text-sm font-semibold text-ink hover:text-brand hover:underline"
-                          onClick={() => trackOutboundClick(b.name, serviceCategory, href)}
                         >
                           {b.name}
-                        </a>
+                        </Link>
                       ) : (
                         <span className="text-sm font-semibold text-ink">{b.name}</span>
                       )}
@@ -166,21 +144,18 @@ export default function BestBusinessesSection({ businesses }: { businesses: Busi
           <h3 className="text-lg font-semibold text-ink">More listings</h3>
           <ul className="mt-6 divide-y divide-ink/10 rounded-xl border border-ink/10 bg-surface shadow-md">
             {remainder.map((b, i) => {
-              const href = getBusinessOutboundUrl(b);
-              const { serviceCategory } = exitInterstitialLabels(normalizeBusinessGroup(b));
+              const detailHref = providerDetailHref(b.name);
               return (
                 <li key={`more-${b.name}-${i}`} className="px-4 py-5 first:rounded-t-xl last:rounded-b-xl md:px-6">
                   <div className="flex flex-col gap-2">
                     <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-x-4">
-                      {href ? (
-                        <a
-                          href={href}
-                          {...externalBusinessLinkProps}
+                      {detailHref ? (
+                        <Link
+                          href={detailHref}
                           className="text-sm font-semibold text-ink hover:text-brand hover:underline"
-                          onClick={() => trackOutboundClick(b.name, serviceCategory, href)}
                         >
                           {b.name}
-                        </a>
+                        </Link>
                       ) : (
                         <span className="text-sm font-semibold text-ink">{b.name}</span>
                       )}

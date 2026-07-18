@@ -5,11 +5,23 @@
  */
 
 import type { ReactNode } from "react";
+import Link from "next/link";
 import type { Provider } from "@/data/providers";
+import { providerDetailHref } from "@/lib/internalLinks";
 import { formatLicenseLookupDate } from "@/lib/provider-license";
 import { providerHasPublishedReviewCount } from "@/lib/provider-card-display";
 import { formatRatingOneDecimal, RatingStarsRow } from "./BusinessRatingStars";
 import { BusinessPhoneRow } from "./BusinessPhoneRow";
+
+function ProviderHeading({ provider }: { provider: Provider }) {
+  const href = providerDetailHref(provider.name);
+  if (!href) return <>{provider.name}</>;
+  return (
+    <Link href={href} className="hover:text-brand hover:underline">
+      {provider.name}
+    </Link>
+  );
+}
 
 const INSURANCE_STATUS_LABEL: Record<
   NonNullable<Provider["insuranceStatus"]>,
@@ -195,7 +207,9 @@ export default function ComparisonTable({ providers }: { providers: Provider[] }
             key={`${provider.category}-${provider.name}`}
             className="rounded-xl border border-ink/10 bg-surface p-4 shadow-sm"
           >
-            <h3 className="text-base font-semibold tracking-tight text-ink">{provider.name}</h3>
+            <h3 className="text-base font-semibold tracking-tight text-ink">
+              <ProviderHeading provider={provider} />
+            </h3>
             <dl className="mt-4 space-y-3">
               {rows.map((row) => (
                 <div key={row.label}>
@@ -224,7 +238,7 @@ export default function ComparisonTable({ providers }: { providers: Provider[] }
                   scope="col"
                   className="px-4 py-3 font-semibold text-ink"
                 >
-                  {provider.name}
+                  <ProviderHeading provider={provider} />
                 </th>
               ))}
             </tr>

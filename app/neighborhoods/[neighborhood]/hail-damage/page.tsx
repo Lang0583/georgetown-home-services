@@ -6,6 +6,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { ButtonLink } from "@/components/Button";
 import FAQList from "@/components/FAQList";
 import FAQSchema from "@/components/FAQSchema";
+import HubRelatedLinks from "@/components/HubRelatedLinks";
 import JsonLd from "@/components/JsonLd";
 import LastUpdated from "@/components/LastUpdated";
 import PageShell from "@/components/templates/PageShell";
@@ -13,6 +14,7 @@ import {
   getNeighborhoodHailPage,
   neighborhoodHailDamageStaticParams,
 } from "@/data/neighborhood-hail-pages";
+import { linkifyProviderNamesInHtml, linksForNeighborhood } from "@/lib/internalLinks";
 import { absolutePageUrl, pageSeoMetadata } from "@/lib/page-seo";
 import { webPageWithDateModifiedJsonLd } from "@/lib/last-updated";
 import { buildArticle } from "@/lib/schema";
@@ -98,7 +100,7 @@ export default async function NeighborhoodHailDamagePage({
 
         <div
           className="prose prose-lg mt-6 max-w-[70ch] text-ink leading-[1.65] prose-p:leading-[1.65] prose-strong:text-ink prose-headings:font-bold prose-headings:text-ink prose-headings:tracking-tight prose-a:text-brand prose-a:underline hover:prose-a:text-brand"
-          dangerouslySetInnerHTML={{ __html: page.bodyHtml }}
+          dangerouslySetInnerHTML={{ __html: linkifyProviderNamesInHtml(page.bodyHtml) }}
         />
 
         <section className="mt-12 max-w-3xl">
@@ -112,6 +114,12 @@ export default async function NeighborhoodHailDamagePage({
             className="!mt-4"
           />
         </section>
+
+        <HubRelatedLinks
+          title="Parent service and Best Of guides"
+          description="Jump to Georgetown roofing (and related) service guides and Best Of directories for this neighborhood."
+          links={linksForNeighborhood(page.neighborhoodSlug, "hail-damage")}
+        />
 
         <div className="mt-10 flex flex-col gap-4 rounded-xl border border-ink/10 bg-surface p-6 shadow-md sm:flex-row sm:flex-wrap sm:items-center">
           <ButtonLink href="/services/roofing">Georgetown roofing hub →</ButtonLink>

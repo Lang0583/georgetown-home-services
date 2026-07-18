@@ -1020,8 +1020,9 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
 
               {relatedHubLinks ? (
                 <HubRelatedLinks
+                  title="Related for this trade"
                   links={relatedHubLinks}
-                  description="Return to the service guide or open the pricing hub for planning ranges."
+                  description="Service guide, cost guide, provider comparisons, and neighborhood hubs for this category."
                 />
               ) : null}
 

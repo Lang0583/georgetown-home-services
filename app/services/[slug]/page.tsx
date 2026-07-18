@@ -748,8 +748,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
               {relatedHubLinks ? (
                 <HubRelatedLinks
+                  title="Related for this trade"
                   links={relatedHubLinks}
-                  description="Compare top providers, use planning ranges, and open neighborhood home-services hubs."
+                  description="Open the matching Best Of directory and cost guide for this service."
                 />
               ) : null}
 

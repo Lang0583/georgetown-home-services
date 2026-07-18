@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { linkifyProviderNamesInHtml } from "../lib/internalLinks";
 import { canonicalServicePathForLinks } from "../lib/public-site-scope";
 
 /**
@@ -62,6 +63,10 @@ export function sanitizeArticleHtml(html: string, opts?: { stripPricingAndFaq?: 
 
   // Normalize accidental extra whitespace.
   out = out.replace(/\n{3,}/g, "\n\n").trim();
+
+  // Equity: plain-text provider names → verified detail pages when those routes exist.
+  out = linkifyProviderNamesInHtml(out);
+
   return out;
 }
 

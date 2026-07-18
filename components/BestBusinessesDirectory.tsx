@@ -6,13 +6,12 @@ import { BusinessPhoneRow } from "./BusinessPhoneRow";
 import { RatingStarsWithCaption } from "./BusinessRatingStars";
 import Link from "next/link";
 import ExitInterstitial from "./ExitInterstitial";
-import { trackMapsClick, trackOutboundClick } from "../lib/analytics";
+import { trackMapsClick } from "../lib/analytics";
 import {
   BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS,
   BUSINESS_LINK_VISIT_WEBSITE,
   externalBusinessLinkProps,
   getBusinessMapsUrl,
-  getBusinessOutboundUrl,
   getBusinessWebsiteUrl,
   getProviderBadges,
   getProviderQualityTier,
@@ -24,6 +23,7 @@ import {
   type ProviderBadge,
 } from "../lib/businesses";
 import { exitInterstitialLabels } from "../lib/exit-interstitial";
+import { providerDetailHref } from "../lib/internalLinks";
 
 type SortKey = "recommended" | "rating";
 
@@ -147,9 +147,8 @@ function ProviderCard({
   guideLabel?: string;
   showTopPick?: boolean;
 }) {
-  const href = getBusinessOutboundUrl(b);
+  const detailHref = providerDetailHref(b.name);
   const badges = getProviderBadges(b);
-  const { serviceCategory } = exitInterstitialLabels(normalizeBusinessGroup(b));
   const topPickClass =
     "inline-flex shrink-0 items-center rounded-full bg-[var(--accent)] px-[10px] py-[2px] text-[12px] font-semibold leading-none text-white";
 
@@ -159,15 +158,10 @@ function ProviderCard({
         <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-x-4">
           <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-1">
             <div className="text-lg font-semibold text-ink inline-flex max-w-full flex-wrap items-center gap-2">
-              {href ? (
-                <a
-                  href={href}
-                  {...externalBusinessLinkProps}
-                  className="text-ink hover:text-brand hover:underline"
-                  onClick={() => trackOutboundClick(b.name, serviceCategory, href)}
-                >
+              {detailHref ? (
+                <Link href={detailHref} className="text-ink hover:text-brand hover:underline">
                   {b.name}
-                </a>
+                </Link>
               ) : (
                 b.name
               )}

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { BusinessListingDescription } from "./BusinessListingDescription";
 import { BusinessPhoneRow } from "./BusinessPhoneRow";
 import ExitInterstitial from "./ExitInterstitial";
@@ -8,7 +9,6 @@ import {
   BUSINESS_LINK_VISIT_WEBSITE,
   externalBusinessLinkProps,
   getBusinessMapsUrl,
-  getBusinessOutboundUrl,
   getBusinessWebsiteUrl,
   hasGeorgetownOfficeSignal,
   isMapOnlyProviderProfile,
@@ -17,7 +17,8 @@ import {
   type Business,
 } from "../lib/businesses";
 import { exitInterstitialLabels } from "../lib/exit-interstitial";
-import { trackMapsClick, trackOutboundClick } from "../lib/analytics";
+import { trackMapsClick } from "../lib/analytics";
+import { providerDetailHref } from "../lib/internalLinks";
 
 function trim(s: string | undefined) {
   return (s ?? "").trim();
@@ -62,21 +63,19 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
           {featured.map((b, i) => {
             const website = getBusinessWebsiteUrl(b);
             const maps = getBusinessMapsUrl(b);
-            const href = getBusinessOutboundUrl(b);
+            const detailHref = providerDetailHref(b.name);
             const { serviceCategory, angiCategorySlug } = exitInterstitialLabels(normalizeBusinessGroup(b));
             return (
               <li key={`featured-${b.name}-${i}`} className="px-4 py-5 first:rounded-t-xl last:rounded-b-xl md:px-6">
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-x-4">
-                    {href ? (
-                      <a
-                        href={href}
-                        {...externalBusinessLinkProps}
+                    {detailHref ? (
+                      <Link
+                        href={detailHref}
                         className="text-base font-semibold text-ink hover:text-brand hover:underline"
-                        onClick={() => trackOutboundClick(b.name, serviceCategory, href)}
                       >
                         {b.name}
-                      </a>
+                      </Link>
                     ) : (
                       <span className="text-base font-semibold text-ink">{b.name}</span>
                     )}
@@ -134,21 +133,19 @@ export default function ServiceTopProvidersSection({ businesses }: { businesses:
           {remainder.map((b, i) => {
             const website = getBusinessWebsiteUrl(b);
             const maps = getBusinessMapsUrl(b);
-            const href = getBusinessOutboundUrl(b);
+            const detailHref = providerDetailHref(b.name);
             const { serviceCategory, angiCategorySlug } = exitInterstitialLabels(normalizeBusinessGroup(b));
             return (
               <li key={`${b.name}-${i}`} className="px-4 py-5 first:rounded-t-xl last:rounded-b-xl md:px-6">
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-x-4">
-                    {href ? (
-                      <a
-                        href={href}
-                        {...externalBusinessLinkProps}
+                    {detailHref ? (
+                      <Link
+                        href={detailHref}
                         className="text-base font-semibold text-ink hover:text-brand hover:underline"
-                        onClick={() => trackOutboundClick(b.name, serviceCategory, href)}
                       >
                         {b.name}
-                      </a>
+                      </Link>
                     ) : (
                       <span className="text-base font-semibold text-ink">{b.name}</span>
                     )}

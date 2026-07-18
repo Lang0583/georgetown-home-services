@@ -14,6 +14,7 @@ import PageShell from "./templates/PageShell";
 import type { CostGuidePage } from "../data/cost-guides";
 import { absolutePageUrl } from "../lib/page-seo";
 import { webPageWithDateModifiedJsonLd } from "../lib/last-updated";
+import { linksForCostGuide, routeExists } from "../lib/internalLinks";
 import type { Faq } from "../lib/site-content";
 import { buildArticle } from "../lib/schema";
 
@@ -25,6 +26,15 @@ export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
   const pathname = `/costs/${page.slug}`;
   const pageUrl = absolutePageUrl(pathname);
   const faqs: Faq[] = page.faqs.map((f) => ({ q: f.question, a: f.answer }));
+  const clusterLinks = linksForCostGuide(page.slug);
+  const relatedLinks = (() => {
+    const seen = new Set(clusterLinks.map((l) => l.href));
+    const extras = page.internalLinks.filter((l) => routeExists(l.href) && !seen.has(l.href));
+    return [
+      ...clusterLinks.map((l) => ({ href: l.href, label: l.label })),
+      ...extras,
+    ];
+  })();
 
   return (
     <PageShell>
@@ -90,21 +100,23 @@ export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
           <FAQList faqs={faqs} variant="bordered" title={`Common questions: ${page.serviceName} costs`} className="!mt-0" />
         </section>
 
-        <section className="mt-12 max-w-3xl">
-          <h2 className="text-2xl font-semibold tracking-tight text-ink">Related Georgetown resources</h2>
-          <ul className="mt-4 space-y-2 text-base">
-            {page.internalLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="font-medium text-brand underline-offset-4 hover:text-brand hover:underline"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
+        {relatedLinks.length ? (
+          <section className="mt-12 max-w-3xl">
+            <h2 className="text-2xl font-semibold tracking-tight text-ink">Related Georgetown resources</h2>
+            <ul className="mt-4 space-y-2 text-base">
+              {relatedLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="font-medium text-brand underline-offset-4 hover:text-brand hover:underline"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
 
         <AffiliateCTA affiliateCategory={affiliateCategoryFromServiceSlug(page.slug)} />
       </article>

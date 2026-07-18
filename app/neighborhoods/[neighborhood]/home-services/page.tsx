@@ -17,6 +17,7 @@ import {
 } from "@/data/neighborhood-home-services-hubs";
 import { neighborhoodHubCrossLinks } from "@/lib/hub-cross-links";
 import { buildNeighborhoodHomeServicesHubFaqs } from "@/lib/georgetown-page-faqs";
+import { linkifyProviderNamesInHtml } from "@/lib/internalLinks";
 import { absolutePageUrl, pageSeoMetadata } from "@/lib/page-seo";
 import { webPageWithDateModifiedJsonLd } from "@/lib/last-updated";
 import { buildArticle } from "@/lib/schema";
@@ -122,7 +123,7 @@ export default async function NeighborhoodHomeServicesHubPage({
 
         <div
           className="prose prose-lg mt-6 max-w-[70ch] text-ink leading-[1.65] prose-p:leading-[1.65] prose-strong:text-ink prose-headings:font-bold prose-headings:text-ink"
-          dangerouslySetInnerHTML={{ __html: hub.introHtml }}
+          dangerouslySetInnerHTML={{ __html: linkifyProviderNamesInHtml(hub.introHtml) }}
         />
 
         <section className="mt-12 max-w-3xl">
@@ -155,9 +156,9 @@ export default async function NeighborhoodHomeServicesHubPage({
         </section>
 
         <HubRelatedLinks
-          title="All Georgetown service guides"
-          description="Open any core trade guide or the pricing hub for planning ranges across Williamson County."
-          links={neighborhoodHubCrossLinks()}
+          title="Parent service and Best Of guides"
+          description="Jump to the Georgetown service guides and Best Of directories that cover this neighborhood."
+          links={neighborhoodHubCrossLinks(hub.neighborhoodSlug)}
         />
 
         <section className="mt-12 max-w-3xl">

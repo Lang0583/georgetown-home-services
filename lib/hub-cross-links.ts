@@ -1,12 +1,17 @@
 /**
- * Canonical cross-links between core service guides, best-of directories,
- * neighborhood home-services hubs, and the pricing hub.
+ * Thin compatibility layer — trade-cluster linking lives in `lib/internalLinks.ts`.
  */
 
 import { NEIGHBORHOOD_AREAS } from "./neighborhood-redirects";
-import { CORE_BEST_SLUGS, CORE_SERVICE_SLUGS } from "./pageContentRegistry";
+import { CORE_SERVICE_SLUGS } from "./pageContentRegistry";
 import type { InternalLink } from "./internal-links";
-import { getBestBySlug, getServiceBySlug } from "./site-content";
+import {
+  linksForBestOf,
+  linksForNeighborhood,
+  linksForService,
+  routeExists,
+} from "./internalLinks";
+import { getServiceBySlug } from "./site-content";
 
 export const PRICING_HUB_PATH = "/pricing" as const;
 
@@ -18,23 +23,15 @@ export const PRICING_HUB_LINK: InternalLink = {
 
 /** All five neighborhood home-services hub URLs. */
 export function neighborhoodHomeServicesHubLinks(): InternalLink[] {
-  return NEIGHBORHOOD_AREAS.map(({ slug, name }) => ({
-    href: `/neighborhoods/${slug}/home-services`,
-    label: `${name} home services`,
-    description: `Plumber, HVAC, and roofing context for ${name}—planning ranges, FAQs, and directories.`,
-  }));
+  return NEIGHBORHOOD_AREAS.map(({ slug, name }) => {
+    const href = `/neighborhoods/${slug}/home-services`;
+    return {
+      href,
+      label: `${name} home services`,
+      description: `Plumber, HVAC, and roofing context for ${name}—planning ranges, FAQs, and directories.`,
+    };
+  }).filter((l) => routeExists(l.href));
 }
-
-const SERVICE_TO_BEST: Record<(typeof CORE_SERVICE_SLUGS)[number], (typeof CORE_BEST_SLUGS)[number]> = {
-  "plumber-georgetown-tx": "best-plumbers-georgetown-tx",
-  "hvac-georgetown-tx": "top-hvac-companies-georgetown-tx",
-  "roofer-georgetown-tx": "best-roofers-georgetown-tx",
-  "electrician-georgetown-tx": "best-electricians-georgetown-tx",
-  "landscaping-georgetown-tx": "best-landscaping-companies-georgetown-tx",
-  "pest-control-georgetown-tx": "best-pest-control-georgetown-tx",
-  "foundation-repair-georgetown-tx": "best-foundation-repair-georgetown-tx",
-  "house-cleaning-georgetown-tx": "best-house-cleaning-services-georgetown-tx",
-};
 
 /** Eight core service guide links (for neighborhood hub “all services” row). */
 export function coreServiceGuideLinks(): InternalLink[] {
@@ -45,55 +42,25 @@ export function coreServiceGuideLinks(): InternalLink[] {
       label: service?.title ?? slug,
       description: service?.description,
     };
-  });
+  }).filter((l) => routeExists(l.href));
 }
 
-/** Related links for a core `/services/[slug]` page. */
+/** Related links for a core `/services/[slug]` page (Best Of + cost guide). */
 export function servicePageRelatedHubLinks(serviceSlug: string): InternalLink[] | null {
-  if (!(CORE_SERVICE_SLUGS as readonly string[]).includes(serviceSlug)) return null;
-
-  const bestSlug = SERVICE_TO_BEST[serviceSlug as (typeof CORE_SERVICE_SLUGS)[number]];
-  const best = getBestBySlug(bestSlug);
-  const links: InternalLink[] = [];
-
-  if (best) {
-    links.push({
-      href: `/best/${best.slug}`,
-      label: best.title,
-      description: best.description,
-    });
-  }
-
-  links.push(PRICING_HUB_LINK);
-  links.push(...neighborhoodHomeServicesHubLinks());
-
-  return links;
+  const links = linksForService(serviceSlug);
+  return links.length ? links : null;
 }
 
-/** Related links for a core `/best/[slug]` page. */
+/** Related links for a core `/best/[slug]` page (service, cost, compare, neighborhoods). */
 export function bestPageRelatedHubLinks(bestSlug: string): InternalLink[] | null {
-  if (!(CORE_BEST_SLUGS as readonly string[]).includes(bestSlug)) return null;
-
-  const serviceSlug = Object.entries(SERVICE_TO_BEST).find(([, b]) => b === bestSlug)?.[0];
-  if (!serviceSlug) return null;
-
-  const service = getServiceBySlug(serviceSlug);
-  const links: InternalLink[] = [];
-
-  if (service) {
-    links.push({
-      href: `/services/${service.slug}`,
-      label: service.title,
-      description: service.description,
-    });
-  }
-
-  links.push(PRICING_HUB_LINK);
-
-  return links;
+  const links = linksForBestOf(bestSlug);
+  return links.length ? links : null;
 }
 
-/** Neighborhood hub: all eight service guides + pricing. */
-export function neighborhoodHubCrossLinks(): InternalLink[] {
-  return [...coreServiceGuideLinks(), PRICING_HUB_LINK];
+/** Neighborhood hub: parent service + Best Of for plumbing, HVAC, and roofing. */
+export function neighborhoodHubCrossLinks(neighborhoodSlug?: string): InternalLink[] {
+  if (neighborhoodSlug) {
+    return linksForNeighborhood(neighborhoodSlug, "home-services");
+  }
+  return [...coreServiceGuideLinks(), PRICING_HUB_LINK].filter((l) => routeExists(l.href));
 }

@@ -35,11 +35,15 @@ export default function HubRelatedLinks({
                 ? "Best Of"
                 : link.href.startsWith("/services/")
                   ? "Service"
-                  : link.href.startsWith("/neighborhoods/")
-                    ? "Neighborhood"
-                    : link.href === "/pricing"
-                      ? "Pricing"
-                      : "Guide"
+                  : link.href.startsWith("/costs/")
+                    ? "Cost guide"
+                    : link.href.startsWith("/compare/")
+                      ? "Compare"
+                      : link.href.startsWith("/neighborhoods/")
+                        ? "Neighborhood"
+                        : link.href === "/pricing"
+                          ? "Pricing"
+                          : "Guide"
             }
           />
         ))}
