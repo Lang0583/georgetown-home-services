@@ -58,9 +58,9 @@ function homeWebPageJsonLd() {
 }
 
 export const metadata: Metadata = pageSeoMetadata({
-  absoluteTitle: "Georgetown TX Home Services Directory (2026) | Compare Local Providers",
+  absoluteTitle: "Georgetown TX Home Services: Compare Local Pros, Reviews & Costs",
   description:
-    "Compare top-rated plumbers, HVAC companies, roofers, electricians, and more in Georgetown TX. Listings compiled from public business data, real Google ratings, and honest cost guides. No on-site lead forms. Direct provider contact info first. Any paid partner links are clearly labeled.",
+    "Compare Georgetown's top plumbers, HVAC, roofers, electricians & more — real Google ratings, honest cost guides, and no lead forms or spam.",
   pathname: "/",
   ogType: "website",
 });

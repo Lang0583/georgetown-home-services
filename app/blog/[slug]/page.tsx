@@ -231,14 +231,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         "Emergency plumber in Georgetown TX costs $150–$500+ for most calls. Real price ranges by issue type, what triggers after-hours fees, and how to avoid overpaying.",
     },
     "water-heater-not-working-georgetown-tx": {
-      absoluteTitle: "Water Heater Not Working Georgetown TX? Fix Guide (2026)",
+      absoluteTitle: "Water Heater Repair Georgetown TX: Fixes, Cost & When to Call",
       description:
-        "Georgetown TX water heater stopped working? Check pilot lights, breakers, and sediment first—then know when to call a plumber. Repair vs replace and local cost context.",
+        "No hot water in Georgetown? Causes you can check yourself, when a leak means replace not repair, and honest local cost context — no lead forms.",
     },
     "slab-leak-signs-georgetown-tx": {
-      absoluteTitle: "Slab Leak Signs in Georgetown TX: When to Worry (2026)",
+      absoluteTitle: "Slab Leak Signs in Georgetown, TX: 6 Warnings to Watch For",
       description:
-        "Do you have a slab leak in Georgetown TX? Hot spots, high water bills, and sound of running water are warning signs. What slab leaks mean on clay soil and when to call a plumber.",
+        "Hot floor spots, a spiking water bill, running-water sounds — how to spot a slab leak on Georgetown's clay soil and when to call a plumber.",
     },
     "how-to-choose-a-reliable-plumber-georgetown-tx": {
       absoluteTitle: "How to Choose a Plumber in Georgetown TX (2026 Checklist)",
@@ -261,9 +261,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         "Georgetown homeowners: these roof warning signs mean it's time to call. Check for storm damage, shingle wear, and age indicators before the next Texas hail season.",
     },
     "foundation-crack-georgetown-tx": {
-      absoluteTitle: "Foundation Crack Georgetown TX — When to Worry (2026 Guide)",
+      absoluteTitle: "Foundation Crack Repair in Georgetown, TX: Which Cracks Matter",
       description:
-        "Not all foundation cracks are serious — but some are. Georgetown TX homeowners: how to tell the difference, what causes cracking in clay soil, and when to call.",
+        "Which foundation cracks are cosmetic vs. serious on Williamson County clay, what repair involves, and how to get 2–3 comparable local quotes.",
     },
     "hvac-making-noise-georgetown-tx": {
       absoluteTitle: "HVAC Making Noise Georgetown TX? What Each Sound Means (2026)",
@@ -276,9 +276,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         "Safe ground-level inspection steps, photos to take for claims, when tarping helps, and how to compare roofer scopes in Williamson County.",
     },
     "hail-damage-georgetown-williamson-may-2026": {
-      absoluteTitle: "Hail Damage Repair Georgetown TX | May 2026 Storm Guide",
+      absoluteTitle: "May 2026 Hail in Georgetown & Williamson County: Owner Guide",
       description:
-        "Georgetown TX hail damage guide for May 2026 storms in Williamson County—safe roof checks, insurance basics, and next steps for roofing and HVAC repair.",
+        "The May 9–10, 2026 hail across Georgetown: safe checks, insurance steps, HVAC + roof pairing, and how to compare written scopes before signing.",
     },
   };
 
