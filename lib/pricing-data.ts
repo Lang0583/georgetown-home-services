@@ -1,11 +1,20 @@
 import type { ReactNode } from "react";
+import {
+  DIRECTORY_PAGES_LAST_UPDATED,
+  formatLastUpdatedDisplay,
+} from "./last-updated";
 
 /**
  * Georgetown / Williamson County home-service price ranges for /pricing and the calculator.
  * Single source: main guide tables and interactive estimator.
  */
 
-export const PRICING_LAST_REVIEWED_MONTH = "April 2026";
+/** ISO date from the shared directory freshness field — not a hardcoded month string. */
+export const PRICING_LAST_REVIEWED_ISO = DIRECTORY_PAGES_LAST_UPDATED;
+
+/** Human label: "Month D, YYYY" derived from {@link PRICING_LAST_REVIEWED_ISO}. */
+export const PRICING_LAST_REVIEWED_MONTH = formatLastUpdatedDisplay(PRICING_LAST_REVIEWED_ISO);
+
 export const PRICING_YEAR = "2026";
 
 export type PricingRow = {

@@ -146,11 +146,11 @@ export default function Home() {
                       id="verified-providers-heading"
                       className="text-xl font-semibold tracking-tight text-ink"
                     >
-                      Verified providers
+                      License-verified providers
                     </h2>
                     <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
-                      License-verified listings first, then rating, then name—drawn from our directory data, not an
-                      invented weekly ranking.
+                      Providers with a Texas license number and verification date in our directory data, sorted by
+                      rating then name—not an invented weekly ranking.
                     </p>
                   </div>
                   <Link

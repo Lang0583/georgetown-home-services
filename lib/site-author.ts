@@ -35,7 +35,10 @@ export const AUTHOR_SLUG = "matt";
 
 export const AUTHOR_PROFILE_PATH = `/authors/${AUTHOR_SLUG}` as const;
 
-/** Visible byline suffix after the author link: `By Matt | Georgetown Home Services`. */
+/** Visible byline text (linked to the author profile). */
+export const AUTHOR_BYLINE = "Matt, a Georgetown homeowner";
+
+/** @deprecated Use AUTHOR_BYLINE; publisher name is no longer in the byline. */
 export const AUTHOR_BYLINE_PUBLISHER = PUBLISHER_NAME;
 
 /**

@@ -1,8 +1,7 @@
 import Link from "next/link";
 import {
-  AUTHOR_BYLINE_PUBLISHER,
+  AUTHOR_BYLINE,
   AUTHOR_BYLINE_TAGLINE,
-  AUTHOR_FIRST_NAME,
   AUTHOR_PROFILE_PATH,
 } from "../lib/site-author";
 
@@ -38,10 +37,8 @@ function BylineAttribution() {
         href={AUTHOR_PROFILE_PATH}
         className="font-semibold text-ink underline-offset-4 hover:underline"
       >
-        {AUTHOR_FIRST_NAME}
+        {AUTHOR_BYLINE}
       </Link>
-      {" | "}
-      {AUTHOR_BYLINE_PUBLISHER}
     </>
   );
 }

@@ -34,7 +34,7 @@ export type Merge = {
 };
 
 /**
- * Phase 1 thin-content consolidation — applied April 2026 in response to:
+ * Phase 1 thin-content consolidation — applied in response to:
  *   - AdSense "Low value content" policy violation
  *   - GSC "Discovered – currently not indexed" on ~67 URLs
  *

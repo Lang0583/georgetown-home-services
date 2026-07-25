@@ -22,18 +22,18 @@ export type VerifiedLicenseInfo = {
 };
 
 /**
- * Returns license display info ONLY when a non-empty licenseNumber exists in data.
- * Date is optional — if missing, callers show authority + number without a date.
+ * Returns license display info ONLY when BOTH licenseNumber and licenseVerifiedDate
+ * exist in data. Never invents either field.
  */
 export function verifiedLicenseInfo(provider: Provider): VerifiedLicenseInfo | null {
   const licenseNumber = provider.licenseNumber?.trim();
-  if (!licenseNumber) return null;
+  const licenseVerifiedDate = provider.licenseVerifiedDate?.trim();
+  if (!licenseNumber || !licenseVerifiedDate) return null;
 
   const authority = LICENSE_AUTHORITY_BY_CATEGORY[provider.category];
   if (!authority) return null;
 
   const licenseType = provider.licenseType?.trim() || null;
-  const licenseVerifiedDate = provider.licenseVerifiedDate?.trim() || null;
 
   return {
     licenseNumber,

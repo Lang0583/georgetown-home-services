@@ -5,8 +5,8 @@ import {
 } from "@/lib/verified-license";
 
 /**
- * Trust badge for a provider with a real license number in verified data.
- * Renders nothing when licenseNumber is empty/missing — never invents or shows "pending".
+ * Trust badge for a provider with BOTH licenseNumber and licenseVerifiedDate in data.
+ * Renders nothing otherwise — never invents or shows "pending".
  */
 export default function VerifiedLicenseBadge({
   provider,
@@ -16,11 +16,9 @@ export default function VerifiedLicenseBadge({
   className?: string;
 }) {
   const info = verifiedLicenseInfo(provider);
-  if (!info) return null;
+  if (!info?.licenseVerifiedDate) return null;
 
-  const dateLabel = info.licenseVerifiedDate
-    ? formatVerifiedLicenseDateLabel(info.licenseVerifiedDate)
-    : null;
+  const dateLabel = formatVerifiedLicenseDateLabel(info.licenseVerifiedDate);
 
   return (
     <div
@@ -42,9 +40,7 @@ export default function VerifiedLicenseBadge({
           <span className="font-sans font-normal text-muted"> — {info.licenseType}</span>
         ) : null}
       </span>
-      {dateLabel ? (
-        <span className="font-normal text-muted">Checked {dateLabel}</span>
-      ) : null}
+      <span className="font-normal text-muted">Checked {dateLabel}</span>
     </div>
   );
 }

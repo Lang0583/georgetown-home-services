@@ -38,21 +38,19 @@ type ComparisonRow = {
 };
 
 function hasLicenseData(p: Provider): boolean {
-  return Boolean(p.licenseNumber?.trim());
+  return Boolean(p.licenseNumber?.trim() && p.licenseVerifiedDate?.trim());
 }
 
 function licenseCell(p: Provider): ReactNode {
   if (!hasLicenseData(p)) return <span className="text-muted">—</span>;
   const body = p.licenseBody?.trim();
   const number = p.licenseNumber!.trim();
-  const date = p.licenseVerifiedDate?.trim()
-    ? formatLicenseLookupDate(p.licenseVerifiedDate.trim())
-    : null;
+  const date = formatLicenseLookupDate(p.licenseVerifiedDate!.trim());
   return (
     <div className="space-y-0.5">
       {body ? <div className="font-semibold text-ink">{body}</div> : null}
       <div className="font-mono text-sm text-ink">{number}</div>
-      {date ? <div className="text-xs text-muted">Verified {date}</div> : null}
+      <div className="text-xs text-muted">Verified {date}</div>
     </div>
   );
 }

@@ -22,8 +22,8 @@ export default function BestProviderDirectory({
       <LicenseVerificationMethodology providers={providers} />
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <p className="max-w-3xl text-sm leading-relaxed text-muted">
-          Google-verified listings for Georgetown and Williamson County. Confirm licensing, insurance, and scope
-          directly with any company before hiring.
+          Public Google Business Profile listings for Georgetown and Williamson County. Confirm licensing, insurance,
+          and scope directly with any company before hiring.
         </p>
         <p className="text-sm text-muted">
           <span className="font-semibold text-ink">{providers.length}</span> listed
@@ -43,7 +43,7 @@ export default function BestProviderDirectory({
         </ul>
       ) : (
         <div className="rounded-xl border border-ink/10 bg-surface p-5 text-sm text-muted shadow-sm">
-          No verified providers are listed for this category yet.
+          No providers are listed for this category yet.
         </div>
       )}
       {category ? <ProviderAffiliateQuoteButton category={category} /> : null}

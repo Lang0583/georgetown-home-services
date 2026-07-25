@@ -8,6 +8,7 @@ import {
   getProviderSlug,
 } from "@/data/providers";
 import { formatLicenseLookupDate } from "@/lib/provider-license";
+import { verifiedLicenseInfo } from "@/lib/verified-license";
 import { trackPhoneClick } from "@/lib/analytics";
 import { businessPhoneTel } from "@/lib/phone";
 import { providerHasPublishedReviewCount } from "@/lib/provider-card-display";
@@ -66,11 +67,12 @@ export default function VerifiedProfileCard({
   const Heading = headingLevel;
 
   const tel = businessPhoneTel(provider.phone);
-  const licenseNumber = provider.licenseNumber?.trim();
-  const licenseBody = provider.licenseBody;
-  const showLicenseBadge = Boolean(licenseNumber && licenseBody);
-  const licenseDateLabel = provider.licenseVerifiedDate?.trim()
-    ? formatLicenseLookupDate(provider.licenseVerifiedDate.trim())
+  const licenseInfo = verifiedLicenseInfo(provider);
+  const showLicenseBadge = Boolean(licenseInfo);
+  const licenseNumber = licenseInfo?.licenseNumber;
+  const licenseBody = licenseInfo?.authority ?? provider.licenseBody;
+  const licenseDateLabel = licenseInfo?.licenseVerifiedDate
+    ? formatLicenseLookupDate(licenseInfo.licenseVerifiedDate)
     : null;
 
   const insuranceStatus = provider.insuranceStatus;

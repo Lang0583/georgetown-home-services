@@ -121,18 +121,19 @@ const VERIFIED_CATEGORY_KEYS: ReadonlyArray<{
   { key: "house_cleaning", category: "cleaning" },
 ];
 
-function formatVerifiedMonthYear(isoDate: string): string {
+function formatVerifiedDisplayDate(isoDate: string): string {
   const d = new Date(`${isoDate}T00:00:00.000Z`);
   if (Number.isNaN(d.getTime())) return isoDate;
   return new Intl.DateTimeFormat("en-US", {
     month: "long",
+    day: "numeric",
     year: "numeric",
     timeZone: "UTC",
   }).format(d);
 }
 
 export const PROVIDERS_VERIFIED_ISO_DATE = verifiedData._meta.verifiedDate;
-export const PROVIDERS_LAST_VERIFIED = formatVerifiedMonthYear(verifiedData._meta.verifiedDate);
+export const PROVIDERS_LAST_VERIFIED = formatVerifiedDisplayDate(verifiedData._meta.verifiedDate);
 
 export const PROVIDER_DISCLAIMER =
   `Ratings and review counts sourced from Google Business Profile (${PROVIDERS_LAST_VERIFIED} pull). Always confirm current licensing and availability directly.`;

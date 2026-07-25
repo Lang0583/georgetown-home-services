@@ -6,16 +6,12 @@ function isLicenseVerified(provider: Provider): boolean {
 }
 
 /**
- * Deterministic homepage shortlist from existing verified provider data.
- * Order: license-verified first, then rating (desc), then name (asc).
- * No invented “top rated this week” or other recency signal.
+ * Homepage shortlist: only providers that can show a license line
+ * (licenseNumber + licenseVerifiedDate both present). Sorted by rating desc, then name.
  */
 export function getHomepageVerifiedProviders(limit = 6): Provider[] {
-  const sorted = [...PROVIDERS].sort((a, b) => {
-    const aLicensed = isLicenseVerified(a) ? 1 : 0;
-    const bLicensed = isLicenseVerified(b) ? 1 : 0;
-    if (bLicensed !== aLicensed) return bLicensed - aLicensed;
-
+  const licensed = PROVIDERS.filter(isLicenseVerified);
+  const sorted = [...licensed].sort((a, b) => {
     const aRating = typeof a.rating === "number" && Number.isFinite(a.rating) ? a.rating : -1;
     const bRating = typeof b.rating === "number" && Number.isFinite(b.rating) ? b.rating : -1;
     if (bRating !== aRating) return bRating - aRating;

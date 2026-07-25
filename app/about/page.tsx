@@ -4,7 +4,7 @@ import JsonLd from "../../components/JsonLd";
 import TrustPage from "../../components/templates/TrustPage";
 import { pageSeoMetadata } from "../../lib/page-seo";
 import { getBrandName } from "../../lib/site-content";
-import { AUTHOR_FIRST_NAME, AUTHOR_PROFILE_PATH } from "../../lib/site-author";
+import { AUTHOR_BYLINE, AUTHOR_PROFILE_PATH } from "../../lib/site-author";
 import { aboutPageJsonLd } from "../../lib/trust-pages-schema";
 
 export const metadata: Metadata = pageSeoMetadata({
@@ -54,10 +54,10 @@ export default function AboutPage() {
         <p className="mt-3 text-sm leading-relaxed text-muted">
           {brand} is an independent local directory built and maintained by{" "}
           <Link href={AUTHOR_PROFILE_PATH} className="font-semibold text-brand hover:underline">
-            {AUTHOR_FIRST_NAME}
+            {AUTHOR_BYLINE}
           </Link>
-          , a Georgetown homeowner. He is <strong>not</strong> a contractor and does{" "}
-          <strong>not</strong> accept payment for directory rankings.
+          . He is <strong>not</strong> a contractor and does <strong>not</strong> accept payment for directory
+          rankings.
         </p>
         <p className="mt-3 text-sm leading-relaxed text-muted">
           How listings are sourced, which databases we check, and the five inclusion criteria for Best Of pages are

@@ -31,8 +31,7 @@ import {
 import HailPillarNeighborhoodHub from "../../../components/HailPillarNeighborhoodHub";
 import { PRICING_YEAR } from "../../../lib/pricing-data";
 import {
-  AUTHOR_BYLINE_PUBLISHER,
-  AUTHOR_FIRST_NAME,
+  AUTHOR_BYLINE,
   AUTHOR_PROFILE_PATH,
 } from "../../../lib/site-author";
 
@@ -420,10 +419,8 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
               <p className="mt-2 text-sm text-muted">
                 By{" "}
                 <Link href={AUTHOR_PROFILE_PATH} className="font-medium text-ink underline-offset-4 hover:underline">
-                  {AUTHOR_FIRST_NAME}
+                  {AUTHOR_BYLINE}
                 </Link>
-                {" | "}
-                {AUTHOR_BYLINE_PUBLISHER}
               </p>
               <div className="mt-2 text-sm text-muted">
                 <div>

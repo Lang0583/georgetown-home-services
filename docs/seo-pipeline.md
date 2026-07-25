@@ -121,7 +121,7 @@ npm run seo:consolidate:patch  # writes .reports/consolidation-patch.md
 # lib/public-site-scope.ts. The patch generator does not mutate code itself.
 ```
 
-The April 2026 application: 22 service URLs (87–142 words each) collapsed
+The Phase 1 application: 22 service URLs (87–142 words each) collapsed
 into `/services/{roofer,hvac,plumber}-georgetown-tx`. The applied merges are
 recorded in `scripts/seo/consolidation-spec.ts` as the canonical history.
 

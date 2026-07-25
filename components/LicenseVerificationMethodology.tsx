@@ -1,5 +1,5 @@
 import type { Provider } from "@/data/providers";
-import { AUTHOR_FIRST_NAME } from "@/lib/site-author";
+import { AUTHOR_BYLINE } from "@/lib/site-author";
 import { verifiedLicenseInfo } from "@/lib/verified-license";
 
 /**
@@ -28,8 +28,7 @@ export default function LicenseVerificationMethodology({
       Where a license badge appears, I checked that number against the public Texas boards — TSBPE
       for plumbing, TDLR for electrical and HVAC, and TDA SPCS for pest control. Trades Texas does
       not license at the state level (roofing, landscaping, foundation, cleaning) will not show a
-      badge. Always confirm current status yourself before hiring. — {AUTHOR_FIRST_NAME}, a
-      Georgetown homeowner.
+      badge. Always confirm current status yourself before hiring. — {AUTHOR_BYLINE}.
     </p>
   );
 }

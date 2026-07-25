@@ -153,6 +153,11 @@ const nextConfig: NextConfig = {
         destination: "/authors/matt",
         permanent: true,
       },
+      {
+        source: "/authors/cole-reinhardt",
+        destination: "/authors/matt",
+        permanent: true,
+      },
     ];
   },
 };

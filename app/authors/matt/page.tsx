@@ -5,6 +5,7 @@ import TrustPage from "@/components/templates/TrustPage";
 import { pageSeoMetadata } from "@/lib/page-seo";
 import { getBrandName } from "@/lib/site-content";
 import {
+  AUTHOR_BYLINE,
   AUTHOR_FIRST_NAME,
   AUTHOR_LONG_DESCRIPTION,
   AUTHOR_PROFILE_PATH,
@@ -36,10 +37,9 @@ export default function MattAuthorProfilePage() {
       <section>
         <h2 className="text-2xl font-semibold tracking-tight text-ink">Who runs this site</h2>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          {brand} is an independent local directory built and maintained by {AUTHOR_FIRST_NAME}, a
-          Georgetown homeowner. He researches providers using public business data, Texas licensing
-          registries where trades are licensed, and review platforms—not insider industry access or
-          paid placement for rankings.
+          {brand} is an independent local directory built and maintained by {AUTHOR_BYLINE}. He
+          researches providers using public business data, Texas licensing registries where trades are
+          licensed, and review platforms—not insider industry access or paid placement for rankings.
         </p>
         <p className="mt-3 text-sm leading-relaxed text-muted">
           {AUTHOR_FIRST_NAME} is <strong>not</strong> a licensed contractor and does not perform

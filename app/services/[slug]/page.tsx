@@ -38,7 +38,6 @@ import {
   isRedirectedServiceSlug,
   showExtendedHomeServices,
 } from "../../../lib/public-site-scope";
-import ServiceRequestForm from "../../../components/ServiceRequestForm";
 import ServiceTopProvidersSection from "../../../components/ServiceTopProvidersSection";
 import {
   BEST_CTA_LABEL_BY_GROUP,
@@ -924,10 +923,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     </ButtonLink>
                   </div>
                 </div>
-              </div>
-
-              <div className="mt-8">
-                <ServiceRequestForm serviceSlug={service.slug} />
               </div>
 
               <div className="mt-8 rounded-xl border border-ink/10 bg-surface p-6 shadow-md">

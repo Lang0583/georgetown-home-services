@@ -108,17 +108,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         "Georgetown TX's top-rated HVAC companies compared by response speed, service scope, and local reputation. Picks compiled from public business data for Central Texas summer heat.",
     },
     "best-roofers-georgetown-tx": {
-      absoluteTitle: "Best Roofers Georgetown TX (2026) — Storm, Repair & Replacement",
+      absoluteTitle:
+        "Best Roofers Georgetown TX (2026) — Reviews, Documentation & Local Focus",
       description:
         "Top Georgetown TX roofing contractors ranked by reviews, storm damage experience, and transparency. Includes what to ask before signing any roofing contract.",
     },
     "best-electricians-georgetown-tx": {
-      absoluteTitle: "Best Electricians Georgetown TX (2026) — Licensed Local Picks",
+      absoluteTitle:
+        "Best Electricians Georgetown TX (2026) — Reviews, Documentation & Local Focus",
       description:
         "Top-rated electricians in Georgetown TX for panel upgrades, circuit work, and EV charger installation. Compare by licensing, reviews, and residential specialty.",
     },
     "best-landscaping-companies-georgetown-tx": {
-      absoluteTitle: "Best Landscaping Companies Georgetown TX (2026) — Local Picks",
+      absoluteTitle:
+        "Best Landscaping Companies Georgetown TX (2026) — Reviews, Documentation & Local Focus",
       description:
         "Top Georgetown TX landscaping companies for lawn care, beds, mulch, and irrigation. Ranked by local reviews, service range, and Central Texas experience.",
     },
@@ -128,12 +131,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         "Georgetown TX's top pest control providers compared for perimeter plans, termite monitoring, and rodent exclusion. Local picks with public Google ratings.",
     },
     "best-foundation-repair-georgetown-tx": {
-      absoluteTitle: "Best Foundation Repair Georgetown TX (2026) — Clay Soil Experts",
+      absoluteTitle:
+        "Best Foundation Repair Georgetown TX (2026) — Reviews, Documentation & Local Focus",
       description:
         "Top foundation repair contractors in Georgetown TX ranked by reviews, engineering credentials, and experience with Williamson County's expansive clay soil.",
     },
     "best-house-cleaning-services-georgetown-tx": {
-      absoluteTitle: "Best House Cleaning Services Georgetown TX (2026) — Reviewed",
+      absoluteTitle:
+        "Best House Cleaning Services Georgetown TX (2026) — Reviews, Documentation & Local Focus",
       description:
         "Georgetown TX's top-rated cleaning services for recurring maid service, deep cleans, and move-out cleans. Compare local picks by ratings and reliability.",
     },
