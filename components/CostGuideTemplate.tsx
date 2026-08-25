@@ -8,6 +8,7 @@ import LastUpdated from "./LastUpdated";
 import AffiliateCTA from "./AffiliateCTA";
 import AffiliateDisclosure from "./AffiliateDisclosure";
 import CostGuideAffiliateCallouts from "./CostGuideAffiliateCallouts";
+import AdUnit from "./AdUnit";
 import { affiliateCategoryFromServiceSlug } from "@/lib/affiliate-category";
 import CostGuidePriceTable from "./CostGuidePriceTable";
 import PageShell from "./templates/PageShell";
@@ -17,6 +18,7 @@ import { webPageWithDateModifiedJsonLd } from "../lib/last-updated";
 import { linksForCostGuide, routeExists } from "../lib/internalLinks";
 import type { Faq } from "../lib/site-content";
 import { buildArticle } from "../lib/schema";
+import { costGuideAdSlot } from "../lib/adConfig";
 
 type CostGuideTemplateProps = {
   page: CostGuidePage;
@@ -79,6 +81,12 @@ export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
 
         <AffiliateDisclosure className="mt-8 max-w-3xl" />
         <CostGuideAffiliateCallouts slug={page.slug} />
+
+        {costGuideAdSlot ? (
+          <div className="mx-auto mt-10 max-w-3xl">
+            <AdUnit slotId={costGuideAdSlot} className="mx-auto" />
+          </div>
+        ) : null}
 
         <section className="mt-12 max-w-3xl rounded-2xl border border-ink/10 bg-surface p-6 shadow-md md:p-8">
           <h2 className="text-2xl font-semibold tracking-tight text-ink">

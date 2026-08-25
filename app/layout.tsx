@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Outfit, Source_Sans_3 } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import HomeHailAlertBanner from "../components/HomeHailAlertBanner";
@@ -10,7 +10,7 @@ import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
 import HomeFaqPageHeadJsonLd from "../components/HomeFaqPageHeadJsonLd";
 import { getImpactPublisherTagInnerHtml } from "../lib/impact-publisher-tag";
-import { ADSENSE_PUBLISHER_ID } from "../lib/adConfig";
+import { ADSENSE_ENABLED, ADSENSE_PUBLISHER_ID } from "../lib/adConfig";
 import { organizationSchema, websiteSchema } from "../lib/schema";
 
 const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
@@ -31,14 +31,16 @@ const mediavineGrowSiteId = process.env.NEXT_PUBLIC_MEDIAVINE_GROW_SITE_ID;
 /** impact.com Publisher Tag (tracking script). Paste full `<script>…</script>` or inner JS into `IMPACT_PUBLISHER_TAG`. */
 const impactPublisherTagInnerHtml = getImpactPublisherTagInnerHtml();
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const fontSans = Source_Sans_3({
+  variable: "--font-source-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const fontDisplay = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -76,7 +78,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full text-ink antialiased`}
+      className={`${fontSans.variable} ${fontDisplay.variable} h-full text-ink antialiased`}
     >
       <head>
         {impactPublisherTagInnerHtml ? (
@@ -87,6 +89,7 @@ export default function RootLayout({
           />
         ) : null}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
         {mediavineGrowSiteId ? (
           <Script
             id="mediavine-grow"
@@ -94,11 +97,20 @@ export default function RootLayout({
             strategy="lazyOnload"
           />
         ) : null}
+        {ADSENSE_ENABLED ? (
+          <Script
+            id="google-adsense"
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
+            crossOrigin="anonymous"
+            strategy="lazyOnload"
+          />
+        ) : null}
         <HomeFaqPageHeadJsonLd />
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
       </head>
-      <body className="min-h-full flex flex-col bg-surface text-ink leading-[1.65]">
+      <body className="flex min-h-full flex-col bg-surface font-sans text-ink leading-[1.65]">
         <HomeHailAlertBanner />
         <StickyHeader />
         <main className="flex-1 pt-[var(--site-header-offset,5rem)]">{children}</main>

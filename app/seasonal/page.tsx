@@ -16,6 +16,7 @@ export const metadata: Metadata = pageSeoMetadata({
     "Automatic seasonal home maintenance for Georgetown, TX: spring, summer, fall, and winter checklists with next-season prep tips and downloadable PDF checklists for Central Texas homeowners.",
   pathname: "/seasonal",
   ogType: "website",
+  ogImagePath: "/og/seasonal",
 });
 
 function SeasonCard({ season, active }: { season: TexasSeason; active: boolean }) {

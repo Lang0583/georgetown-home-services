@@ -3,7 +3,7 @@
 :root {
   --ink: #1d2b33;
   --surface: #ffffff;
-  --surface-alt: #f3f6f5;
+  --surface-alt: #eef3f1;
   --brand: #1e3a5f;
   --accent: #b23a18;
   --accent-hover: #962f14;
@@ -29,8 +29,8 @@
   --color-muted: var(--muted);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-outfit), var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
@@ -42,9 +42,13 @@ body {
   overflow-x: hidden;
   background: var(--surface);
   color: var(--ink);
-  font-family: inherit;
+  font-family: var(--font-sans);
   font-size: 17px;
   line-height: 1.65;
+}
+
+.font-display {
+  font-family: var(--font-display);
 }
 
 /* Mobile sticky call bar clearance (footer + page end). Desktop: no padding. */
@@ -69,6 +73,7 @@ body {
 .prose-site h3,
 .prose-site h4 {
   color: var(--ink);
+  font-family: var(--font-display);
   font-weight: 700;
   max-width: 70ch;
 }
@@ -103,7 +108,13 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: color-mix(in srgb, var(--ink) 60%, transparent);
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--ink) 35%, transparent) 0%,
+      color-mix(in srgb, var(--ink) 72%, transparent) 55%,
+      color-mix(in srgb, var(--ink) 88%, transparent) 100%
+    );
   pointer-events: none;
   z-index: 1;
 }
@@ -111,6 +122,49 @@ body {
 .hero-overlay-scrim > * {
   position: relative;
   z-index: 2;
+}
+
+/* Atmosphere: soft brand wash behind content bands */
+.surface-atmosphere {
+  background:
+    radial-gradient(120% 80% at 10% -10%, color-mix(in srgb, var(--brand) 10%, transparent), transparent 55%),
+    radial-gradient(90% 60% at 100% 0%, color-mix(in srgb, var(--accent) 6%, transparent), transparent 50%),
+    var(--surface-alt);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-ken {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.motion-safe\:animate-rise-in {
+  animation: rise-in 0.7s ease-out both;
+}
+
+.motion-safe\:animate-hero-ken {
+  animation: hero-ken 18s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-safe\:animate-rise-in,
+  .motion-safe\:animate-hero-ken {
+    animation: none !important;
+  }
 }
 
 /* Default links outside prose inherit ink; explicit brand links use underline */

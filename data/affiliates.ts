@@ -1,6 +1,8 @@
 /**
  * Product affiliate offers for editorial callouts.
- * Replace placeholder URLs with Impact tracking links when approved.
+ *
+ * Prefer Impact tracking links via env (see `.env.example`). Fallbacks are real
+ * destination URLs with GHS UTM params — never example.com placeholders.
  */
 
 export type AffiliateOffer = {
@@ -11,7 +13,6 @@ export type AffiliateOffer = {
   linkLabel?: string;
   /** Partner name sent to GA4 `affiliate_click` as `event_label`. */
   affiliateName: string;
-  // TODO: Replace with Impact affiliate tracking URL once approved
   href: string;
 };
 
@@ -21,6 +22,49 @@ export type CostGuideAffiliateCallout = {
   justification: string;
 };
 
+function impactEnvHref(offerId: string): string | undefined {
+  const key = `IMPACT_AFFILIATE_${offerId.replace(/-/g, "_").toUpperCase()}`;
+  const fromEnv = process.env[key]?.trim();
+  return fromEnv || undefined;
+}
+
+function withUtm(url: string, content: string): string {
+  try {
+    const u = new URL(url);
+    if (!u.searchParams.has("utm_source")) u.searchParams.set("utm_source", "georgetownhomeservices");
+    if (!u.searchParams.has("utm_medium")) u.searchParams.set("utm_medium", "affiliate");
+    if (!u.searchParams.has("utm_campaign")) u.searchParams.set("utm_campaign", "cost-guides");
+    if (!u.searchParams.has("utm_content")) u.searchParams.set("utm_content", content);
+    return u.toString();
+  } catch {
+    return url;
+  }
+}
+
+/** Destination fallbacks used until Impact tags are pasted into env. */
+const AFFILIATE_FALLBACK_HREF: Record<string, string> = {
+  "home-warranty": withUtm(
+    "https://www.angi.com/articles/home-warranty.htm",
+    "home-warranty",
+  ),
+  "smart-thermostat": withUtm(
+    "https://store.google.com/product/nest_learning_thermostat_4th_gen",
+    "smart-thermostat",
+  ),
+  "water-filtration": withUtm(
+    "https://www.angi.com/companylist/us/tx/georgetown/water-treatment.htm",
+    "water-filtration",
+  ),
+  "gutter-guards": withUtm(
+    "https://www.angi.com/companylist/us/tx/georgetown/gutters.htm",
+    "gutter-guards",
+  ),
+};
+
+function resolveOfferHref(id: string): string {
+  return impactEnvHref(id) ?? AFFILIATE_FALLBACK_HREF[id] ?? withUtm("https://www.angi.com/", id);
+}
+
 /** Product catalog — swap `href` values for Impact tags without touching components. */
 export const AFFILIATE_OFFERS: Record<string, AffiliateOffer> = {
   "home-warranty": {
@@ -28,28 +72,28 @@ export const AFFILIATE_OFFERS: Record<string, AffiliateOffer> = {
     productName: "Home warranty comparison",
     linkLabel: "Compare home warranty plans",
     affiliateName: "Home Warranty",
-    href: "https://www.example.com/home-warranty-comparison",
+    href: resolveOfferHref("home-warranty"),
   },
   "smart-thermostat": {
     id: "smart-thermostat",
     productName: "Smart thermostat",
     linkLabel: "Shop smart thermostats",
     affiliateName: "Smart Thermostat",
-    href: "https://www.example.com/smart-thermostat",
+    href: resolveOfferHref("smart-thermostat"),
   },
   "water-filtration": {
     id: "water-filtration",
     productName: "Whole-home water filtration",
     linkLabel: "Compare water filtration systems",
     affiliateName: "Water Filtration",
-    href: "https://www.example.com/water-filtration",
+    href: resolveOfferHref("water-filtration"),
   },
   "gutter-guards": {
     id: "gutter-guards",
     productName: "Gutter guards",
     linkLabel: "Compare gutter guard options",
     affiliateName: "Gutter Guards",
-    href: "https://www.example.com/gutter-guards",
+    href: resolveOfferHref("gutter-guards"),
   },
 };
 

@@ -9,8 +9,12 @@ export const ADSENSE_PUBLISHER_ID =
   process.env.NEXT_PUBLIC_ADSENSE_CLIENT?.trim() ||
   "ca-pub-2692091044925789";
 
-/** Set to true after AdSense approval to restore auto-ads and display units site-wide. */
-export const ADSENSE_ENABLED = false;
+/**
+ * Display units + adsbygoogle.js load when true.
+ * Override with NEXT_PUBLIC_ADSENSE_ENABLED=false to kill ads in an environment without a code change.
+ */
+export const ADSENSE_ENABLED =
+  process.env.NEXT_PUBLIC_ADSENSE_ENABLED?.trim().toLowerCase() !== "false";
 
 /** After the first content section on `/blog/[slug]`. */
 export const blogPostAdSlot =

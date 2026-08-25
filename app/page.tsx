@@ -1,8 +1,9 @@
 import Container from "../components/Container";
 import LinkCard from "../components/LinkCard";
-import { ButtonLink } from "../components/Button";
 import Link from "next/link";
 import type { Metadata } from "next";
+import HomeHero from "../components/HomeHero";
+import HomeEmailCaptureBand from "../components/HomeEmailCaptureBand";
 import HomeTopProvidersColumn from "../components/HomeTopProvidersColumn";
 import HomeTrustBar from "../components/HomeTrustBar";
 import HomeHowItWorks from "../components/HomeHowItWorks";
@@ -17,9 +18,24 @@ import { CORE_SERVICE_SLUGS } from "../lib/pageContentRegistry";
 import { EXTENDED_PROVIDER_GROUPS, isNoindexSlug, showExtendedHomeServices } from "../lib/public-site-scope";
 import { getBlog, getServices } from "../lib/site-content";
 import { HOME_PAGE_FAQS } from "../lib/home-page-faqs";
-import { getBusinessesByCategory, type ProviderGroup } from "../lib/businesses";
+import type { ProviderGroup } from "../lib/businesses";
 import { HOME_CATEGORY_CARD_DESCRIPTIONS } from "../lib/home-category-card-descriptions";
 import { getHomepageVerifiedProviders } from "../lib/homepage-verified-providers";
+import {
+  getProvidersByCategory,
+  type ProviderCategory,
+} from "../data/providers";
+
+const GROUP_TO_CATEGORY: Record<ProviderGroup, ProviderCategory> = {
+  plumber: "plumbing",
+  hvac: "hvac",
+  roofer: "roofing",
+  electrician: "electrical",
+  landscaping: "landscaping",
+  pest_control: "pest-control",
+  foundation_repair: "foundation",
+  house_cleaning: "cleaning",
+};
 
 function homeLocalBusinessJsonLd() {
   return {
@@ -52,7 +68,7 @@ function homeWebPageJsonLd() {
     name: "Georgetown TX Home Services Directory (2026) | Compare Local Providers",
     url: SITE_URL,
     description:
-      "Compare top-rated plumbers, HVAC companies, roofers, electricians, and more in Georgetown TX. Listings compiled from public business data, real Google ratings, and honest cost guides. No on-site lead forms. Direct provider contact info first. Any paid partner links are clearly labeled.",
+      "Compare top-rated plumbers, HVAC companies, roofers, electricians, and more in Georgetown TX. Listings compiled from public business data, real Google ratings, and honest cost guides. Direct provider contact info first. Any paid partner links are clearly labeled.",
     dateModified: getStaticPageLastUpdated("/"),
   };
 }
@@ -60,7 +76,7 @@ function homeWebPageJsonLd() {
 export const metadata: Metadata = pageSeoMetadata({
   absoluteTitle: "Georgetown TX Home Services: Compare Local Pros, Reviews & Costs",
   description:
-    "Compare Georgetown's top plumbers, HVAC, roofers, electricians & more — real Google ratings, honest cost guides, and no lead forms or spam.",
+    "Compare Georgetown's top plumbers, HVAC, roofers, electricians & more — real Google ratings, honest cost guides, and license-checked providers where Texas requires them.",
   pathname: "/",
   ogType: "website",
 });
@@ -86,12 +102,23 @@ export default function Home() {
     house_cleaning: "Cleaning",
   };
   const topLocalGroups = homepageTradeOrder
-    .map((key) => ({
-      title: tradeHomepageTitle[key],
-      key,
-      businesses: getBusinessesByCategory(key),
-    }))
-    .filter(({ businesses }) => businesses.length > 0);
+    .map((key) => {
+      const category = GROUP_TO_CATEGORY[key];
+      const providers = getProvidersByCategory(category)
+        .slice()
+        .sort((a, b) => {
+          const ar = typeof a.rating === "number" ? a.rating : -1;
+          const br = typeof b.rating === "number" ? b.rating : -1;
+          if (br !== ar) return br - ar;
+          return a.name.localeCompare(b.name, "en");
+        });
+      return {
+        title: tradeHomepageTitle[key],
+        key,
+        providers,
+      };
+    })
+    .filter(({ providers }) => providers.length > 0);
 
   const browseCategoryServices = (CORE_SERVICE_SLUGS as readonly string[])
     .filter((slug) => !isNoindexSlug(slug))
@@ -102,24 +129,13 @@ export default function Home() {
     <div className="bg-surface-alt pb-40 md:pb-44">
       <JsonLd data={homeLocalBusinessJsonLd()} />
       <JsonLd data={homeWebPageJsonLd()} />
+
+      <HomeHero />
+      <HomeEmailCaptureBand />
+
       <Container>
         <section className="py-10 md:py-12">
           <div className="min-w-0">
-            <h1 className="text-4xl font-bold tracking-tight text-ink md:text-5xl">
-              Georgetown, TX Home Services Directory
-            </h1>
-
-            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
-              Listings compiled from public business data, real ratings, and honest cost guides. No on-site lead
-              forms. Direct provider contact info first. Any paid partner links are clearly labeled.
-            </p>
-
-            <div className="mt-6">
-              <ButtonLink href="#providers" className="text-sm">
-                Browse Local Providers
-              </ButtonLink>
-            </div>
-
             <HomeTrustBar />
 
             <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted">
@@ -137,14 +153,14 @@ export default function Home() {
             {verifiedProviders.length > 0 ? (
               <section
                 id="verified-providers"
-                className="mt-10 scroll-mt-28 rounded-xl border border-ink/10 bg-surface p-6 shadow-md sm:p-8"
+                className="mt-10 scroll-mt-28 rounded-xl border border-ink/10 bg-surface p-6 sm:p-8"
                 aria-labelledby="verified-providers-heading"
               >
                 <div className="flex flex-wrap items-end justify-between gap-3">
                   <div>
                     <h2
                       id="verified-providers-heading"
-                      className="text-xl font-semibold tracking-tight text-ink"
+                      className="font-display text-xl font-semibold tracking-tight text-ink"
                     >
                       License-verified providers
                     </h2>
@@ -175,10 +191,13 @@ export default function Home() {
 
             <section
               id="browse-categories"
-              className="mt-10 scroll-mt-28 rounded-xl border border-ink/10 bg-surface p-6 shadow-md sm:p-8"
+              className="mt-10 scroll-mt-28 rounded-xl border border-ink/10 bg-surface p-6 sm:p-8"
               aria-labelledby="browse-categories-heading"
             >
-              <h2 id="browse-categories-heading" className="text-xl font-semibold tracking-tight text-ink">
+              <h2
+                id="browse-categories-heading"
+                className="font-display text-xl font-semibold tracking-tight text-ink"
+              >
                 Browse by Category
               </h2>
               <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
@@ -213,20 +232,20 @@ export default function Home() {
 
         <section
           id="providers"
-          className="scroll-mt-28 rounded-xl border border-ink/10 bg-surface p-6 shadow-md sm:p-8 md:-mt-4"
+          className="scroll-mt-28 rounded-xl border border-ink/10 bg-surface p-6 sm:p-8 md:-mt-4"
         >
-          <h2 className="text-xl font-semibold tracking-tight text-ink">Top Local Providers</h2>
+          <h2 className="font-display text-xl font-semibold tracking-tight text-ink">Top Local Providers</h2>
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted">
-            Top listings from public data by category—shortlist companies here, then use each trade hub for cost guides and
-            deeper comparisons.
+            Same verified directory used on Best Of and provider profiles—sorted by Google rating within each trade,
+            then use each hub for cost guides and deeper comparisons.
           </p>
           <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {topLocalGroups.map(({ title, key, businesses }) => (
+            {topLocalGroups.map(({ title, key, providers }) => (
               <HomeTopProvidersColumn
                 key={key}
                 title={title}
                 providerGroupKey={key}
-                businesses={businesses}
+                providers={providers}
               />
             ))}
           </div>
@@ -234,7 +253,7 @@ export default function Home() {
 
         {blog.length > 0 ? (
           <section className="py-10 md:py-12">
-            <h2 className="text-3xl font-semibold tracking-tight text-ink">From the Blog</h2>
+            <h2 className="font-display text-3xl font-semibold tracking-tight text-ink">From the Blog</h2>
             <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
               {blog.map((p) => (
                 <LinkCard
@@ -252,7 +271,6 @@ export default function Home() {
         <section className="py-10 md:py-12">
           <FAQList faqs={HOME_PAGE_FAQS} variant="plain" />
         </section>
-
       </Container>
     </div>
   );

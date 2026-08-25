@@ -11,19 +11,18 @@ import StickyHeaderShell from "./StickyHeaderShell";
 const PRIMARY_NAV: SiteNavLink[] = [
   { href: "/services", label: "Services" },
   { href: "/best", label: "Best Of" },
-  { href: "/costs", label: "Cost Guide" },
-  { href: "/for-contractors", label: "For Contractors" },
+  { href: "/costs", label: "Costs" },
+  { href: "/seasonal", label: "Seasonal" },
+  { href: "/blog", label: "Blog" },
+  { href: "/compare", label: "Compare" },
+  { href: "/pricing", label: "Pricing" },
 ];
 
 function moreNavLinks(): SiteNavLink[] {
   const links: SiteNavLink[] = [
-    { href: "/", label: "Home" },
+    { href: "/for-contractors", label: "For Contractors" },
     { href: "/about", label: "About" },
     { href: "/search", label: "Search" },
-    { href: "/compare", label: "Compare" },
-    { href: "/pricing", label: "Pricing" },
-    { href: "/seasonal", label: "Seasonal tips" },
-    { href: "/blog", label: "Homeowner blog" },
     { href: "/services/plumber-georgetown-tx", label: "Plumbing" },
     { href: "/services/hvac-georgetown-tx", label: "HVAC" },
     { href: "/services/roofer-georgetown-tx", label: "Roofing" },

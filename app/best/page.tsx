@@ -19,6 +19,7 @@ export const metadata: Metadata = pageSeoMetadata({
     "Browse provider directory and comparison pages for electricians, landscapers, pest control, foundation repair, house cleaners, plumbers, HVAC companies, and roofers serving Georgetown, Texas.",
   pathname: "/best",
   ogType: "website",
+  ogImagePath: "/og/best",
 });
 
 export default function BestIndexPage() {

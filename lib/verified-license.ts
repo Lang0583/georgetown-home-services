@@ -21,6 +21,18 @@ export type VerifiedLicenseInfo = {
   licenseVerifiedDate: string | null;
 };
 
+export type StateLicenseExemptInfo = {
+  /** Exact licenseType string from data (e.g. "No Texas state roofing license required"). */
+  label: string;
+  /** Date we confirmed the trade is state-exempt / listing still active. */
+  confirmedDate: string;
+};
+
+function looksStateExempt(licenseType: string | undefined): boolean {
+  const t = licenseType?.trim().toLowerCase() ?? "";
+  return t.includes("no texas state") && t.includes("license required");
+}
+
 /**
  * Returns license display info ONLY when BOTH licenseNumber and licenseVerifiedDate
  * exist in data. Never invents either field.
@@ -30,7 +42,8 @@ export function verifiedLicenseInfo(provider: Provider): VerifiedLicenseInfo | n
   const licenseVerifiedDate = provider.licenseVerifiedDate?.trim();
   if (!licenseNumber || !licenseVerifiedDate) return null;
 
-  const authority = LICENSE_AUTHORITY_BY_CATEGORY[provider.category];
+  const authority =
+    provider.licenseBody?.trim() || LICENSE_AUTHORITY_BY_CATEGORY[provider.category];
   if (!authority) return null;
 
   const licenseType = provider.licenseType?.trim() || null;
@@ -41,6 +54,18 @@ export function verifiedLicenseInfo(provider: Provider): VerifiedLicenseInfo | n
     licenseType,
     licenseVerifiedDate,
   };
+}
+
+/**
+ * Trades Texas does not license at the state level (roofing, landscaping, foundation,
+ * cleaning). Shows only when licenseType declares exemption AND licenseVerifiedDate is set.
+ */
+export function stateLicenseExemptInfo(provider: Provider): StateLicenseExemptInfo | null {
+  if (verifiedLicenseInfo(provider)) return null;
+  const label = provider.licenseType?.trim();
+  const confirmedDate = provider.licenseVerifiedDate?.trim();
+  if (!label || !confirmedDate || !looksStateExempt(label)) return null;
+  return { label, confirmedDate };
 }
 
 export function formatVerifiedLicenseDateLabel(isoDate: string): string {

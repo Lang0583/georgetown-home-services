@@ -40,6 +40,7 @@ export async function generateMetadata({
     description: page.metaDescription,
     pathname: `/neighborhoods/${neighborhood}/hail-damage`,
     ogType: "website",
+    ogImagePath: "/og/storm",
   });
 }
 

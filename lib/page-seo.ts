@@ -59,6 +59,11 @@ export function pageSeoMetadata(opts: {
   pathname: string;
   ogType: "website" | "article";
   noindex?: boolean;
+  /**
+   * Optional OG/Twitter image path (site-relative), e.g. `/og/best` or `/opengraph-image`.
+   * Defaults to the static `/og-image.jpg` asset.
+   */
+  ogImagePath?: string;
 }): Metadata {
   if (!opts.titleSegment && !opts.absoluteTitle) {
     throw new Error("pageSeoMetadata: set titleSegment or absoluteTitle");
@@ -66,6 +71,14 @@ export function pageSeoMetadata(opts: {
   const documentTitle = opts.absoluteTitle ?? documentTitleFromSegment(opts.titleSegment!);
   const path = normalizeSeoPathname(opts.pathname);
   const pageUrl = absolutePageUrl(path);
+  const ogImage = opts.ogImagePath
+    ? {
+        url: opts.ogImagePath,
+        width: 1200,
+        height: 630,
+        alt: documentTitle,
+      }
+    : { ...DEFAULT_OG_IMAGE };
   const meta: Metadata = {
     title: opts.absoluteTitle ? { absolute: opts.absoluteTitle } : opts.titleSegment!,
     description: opts.description,
@@ -77,13 +90,13 @@ export function pageSeoMetadata(opts: {
       type: opts.ogType,
       siteName: SITE_NAME,
       locale: "en_US",
-      images: [{ ...DEFAULT_OG_IMAGE }],
+      images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",
       title: documentTitle,
       description: opts.description,
-      images: [DEFAULT_OG_IMAGE.url],
+      images: [typeof ogImage.url === "string" ? ogImage.url : DEFAULT_OG_IMAGE.url],
     },
   };
   if (opts.noindex) {

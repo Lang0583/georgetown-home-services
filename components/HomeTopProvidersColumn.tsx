@@ -2,28 +2,22 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { BusinessListingDescription } from "./BusinessListingDescription";
+import type { Provider } from "@/data/providers";
+import { getProviderSlug } from "@/data/providers";
 import { BusinessPhoneRow } from "./BusinessPhoneRow";
 import ExitInterstitial from "./ExitInterstitial";
-import {
-  BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS,
-  BUSINESS_LINK_VISIT_WEBSITE,
-  PROVIDER_GROUP_LINKS,
-  externalBusinessLinkProps,
-  getBusinessMapsUrl,
-  getBusinessWebsiteUrl,
-  type Business,
-  type ProviderGroup,
-} from "../lib/businesses";
+import VerifiedLicenseBadge from "./VerifiedLicenseBadge";
+import { RatingStarsRow, formatRatingOneDecimal } from "./BusinessRatingStars";
+import { PROVIDER_GROUP_LINKS, type ProviderGroup } from "../lib/businesses";
 import { EXIT_INTERSTITIAL_ANGI_SLUG, EXIT_INTERSTITIAL_SERVICE_LABEL } from "../lib/exit-interstitial";
 import { trackMapsClick } from "../lib/analytics";
-import { providerDetailHref } from "../lib/internalLinks";
+import { providerHasPublishedReviewCount } from "../lib/provider-card-display";
 
 const ROTATE_MS = 5000;
 
-function chunkBusinesses(list: Business[], size: number): Business[][] {
+function chunkProviders(list: Provider[], size: number): Provider[][] {
   if (list.length === 0) return [];
-  const chunks: Business[][] = [];
+  const chunks: Provider[][] = [];
   for (let i = 0; i < list.length; i += size) {
     chunks.push(list.slice(i, i + size));
   }
@@ -33,12 +27,16 @@ function chunkBusinesses(list: Business[], size: number): Business[][] {
 type Props = {
   title: string;
   providerGroupKey: ProviderGroup;
-  businesses: Business[];
+  providers: Provider[];
 };
 
-export default function HomeTopProvidersColumn({ title, providerGroupKey, businesses }: Props) {
+export default function HomeTopProvidersColumn({
+  title,
+  providerGroupKey,
+  providers,
+}: Props) {
   const { best: bestHref, service: serviceHref } = PROVIDER_GROUP_LINKS[providerGroupKey];
-  const chunks = useMemo(() => chunkBusinesses(businesses, 3), [businesses]);
+  const chunks = useMemo(() => chunkProviders(providers, 3), [providers]);
   const [chunkIndex, setChunkIndex] = useState(0);
 
   useEffect(() => {
@@ -65,47 +63,55 @@ export default function HomeTopProvidersColumn({ title, providerGroupKey, busine
         </Link>
       </div>
       <ul className="mt-3 space-y-3">
-        {visible.map((business) => {
-          const detailHref = providerDetailHref(business.name);
-          const website = getBusinessWebsiteUrl(business);
-          const maps = getBusinessMapsUrl(business);
+        {visible.map((provider) => {
+          const detailHref = `/providers/${getProviderSlug(provider)}`;
+          const website = provider.websiteUrl?.trim();
+          const maps = provider.googleMapsUrl?.trim();
+          const showRating =
+            typeof provider.rating === "number" && providerHasPublishedReviewCount(provider);
           return (
-            <li key={`${providerGroupKey}-${business.name}`} className="text-sm text-muted">
+            <li key={`${providerGroupKey}-${provider.name}`} className="text-sm text-muted">
               <div className="font-medium text-ink">
-                {detailHref ? (
-                  <Link href={detailHref} className="text-ink hover:text-brand hover:underline">
-                    {business.name}
-                  </Link>
-                ) : (
-                  business.name
-                )}
+                <Link href={detailHref} className="text-ink hover:text-brand hover:underline">
+                  {provider.name}
+                </Link>
               </div>
-              <div className="mt-1">
-                {business.rating.toFixed(1)} stars • {business.reviews.toLocaleString()} reviews
-              </div>
-              <BusinessPhoneRow phone={business.phone} providerName={business.name} />
-              <BusinessListingDescription text={business.description} className="mt-1" />
+              {showRating ? (
+                <div className="mt-1 flex flex-wrap items-center gap-1.5">
+                  <RatingStarsRow rating={provider.rating} />
+                  <span className="text-ink">
+                    {formatRatingOneDecimal(provider.rating)} ★ ·{" "}
+                    {provider.reviewCount.toLocaleString()} reviews
+                  </span>
+                </div>
+              ) : null}
+              <VerifiedLicenseBadge provider={provider} className="mt-1.5" />
+              <BusinessPhoneRow phone={provider.phone} providerName={provider.name} />
+              {provider.description ? (
+                <p className="mt-1 line-clamp-2 text-sm leading-snug text-muted">{provider.description}</p>
+              ) : null}
               {website || maps ? (
                 <div className="mt-1 flex flex-wrap gap-x-3 gap-y-0.5">
                   {website ? (
                     <ExitInterstitial
-                      providerName={business.name}
+                      providerName={provider.name}
                       providerUrl={website}
                       serviceCategory={EXIT_INTERSTITIAL_SERVICE_LABEL[providerGroupKey]}
                       angiCategorySlug={EXIT_INTERSTITIAL_ANGI_SLUG[providerGroupKey]}
                       className="text-brand hover:text-brand"
                     >
-                      {BUSINESS_LINK_VISIT_WEBSITE}
+                      Visit website
                     </ExitInterstitial>
                   ) : null}
                   {maps ? (
                     <a
                       href={maps}
-                      {...externalBusinessLinkProps}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-brand hover:text-brand"
-                      onClick={() => trackMapsClick(business.name)}
+                      onClick={() => trackMapsClick(provider.name)}
                     >
-                      {BUSINESS_LINK_VIEW_ON_GOOGLE_MAPS}
+                      View on Google Maps
                     </a>
                   ) : null}
                 </div>

@@ -8,7 +8,7 @@ import {
   getProviderSlug,
 } from "@/data/providers";
 import { formatLicenseLookupDate } from "@/lib/provider-license";
-import { verifiedLicenseInfo } from "@/lib/verified-license";
+import { stateLicenseExemptInfo, verifiedLicenseInfo } from "@/lib/verified-license";
 import { trackPhoneClick } from "@/lib/analytics";
 import { businessPhoneTel } from "@/lib/phone";
 import { providerHasPublishedReviewCount } from "@/lib/provider-card-display";
@@ -68,6 +68,7 @@ export default function VerifiedProfileCard({
 
   const tel = businessPhoneTel(provider.phone);
   const licenseInfo = verifiedLicenseInfo(provider);
+  const exemptInfo = stateLicenseExemptInfo(provider);
   const showLicenseBadge = Boolean(licenseInfo);
   const licenseNumber = licenseInfo?.licenseNumber;
   const licenseBody = licenseInfo?.authority ?? provider.licenseBody;
@@ -181,6 +182,8 @@ export default function VerifiedProfileCard({
             licenseBadgeInner
           )}
         </div>
+      ) : exemptInfo ? (
+        <VerifiedLicenseBadge provider={provider} />
       ) : null}
 
       {insuranceStatus ? (

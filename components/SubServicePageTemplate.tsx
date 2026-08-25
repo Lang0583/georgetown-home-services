@@ -13,6 +13,7 @@ import { absolutePageUrl } from "../lib/page-seo";
 import { webPageWithDateModifiedJsonLd } from "../lib/last-updated";
 import { buildArticle } from "../lib/schema";
 import type { Faq } from "../lib/site-content";
+import { localDepthParagraphs } from "../lib/sub-service-local-depth";
 
 function formatUsd(amount: number): string {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(
@@ -28,6 +29,7 @@ export default function SubServicePageTemplate({ page }: SubServicePageTemplateP
   const siteUrl = process.env.SITE_URL ?? "https://www.georgetownhomeservices.com";
   const pathname = `/${page.serviceSlug}/${page.slug}`;
   const faqs: Faq[] = page.faqs.map((f) => ({ q: f.question, a: f.answer }));
+  const depth = localDepthParagraphs(page.serviceSlug, page.slug);
 
   return (
     <PageShell>
@@ -71,6 +73,9 @@ export default function SubServicePageTemplate({ page }: SubServicePageTemplateP
 
         <div className="prose prose-gray mt-8 max-w-3xl prose-p:leading-relaxed prose-p:text-muted">
           {page.bodyParagraphs.map((paragraph) => (
+            <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+          ))}
+          {depth.map((paragraph) => (
             <p key={paragraph.slice(0, 48)}>{paragraph}</p>
           ))}
         </div>

@@ -15,6 +15,7 @@ export const metadata: Metadata = pageSeoMetadata({
     "How much do plumbers, HVAC, roofers, and other pros cost in Georgetown TX? Compare 2026 low, average, and high price ranges with local hiring tips.",
   pathname: "/costs",
   ogType: "website",
+  ogImagePath: "/og/costs",
 });
 
 export default function CostsIndexPage() {

@@ -6,7 +6,9 @@ import {
   splitHtmlBeforeFaq,
 } from "../lib/split-article-content";
 import { blogAffiliateConfigForSlug } from "../lib/blog-affiliate-config";
+import { blogPostAdSlot } from "../lib/adConfig";
 import AffiliateCTA from "./AffiliateCTA";
+import AdUnit from "./AdUnit";
 import BlogCostSupplement from "./BlogCostSupplement";
 import BlogMidContentEmailCard from "./BlogMidContentEmailCard";
 import { ArticleContentShell, ProseArticle, sanitizeArticleHtml } from "./GeneratedArticleBody";
@@ -60,6 +62,11 @@ export default function BlogArticleBodyWithMidEmail({ slug, generated, blocks }:
         <div className="my-8">
           <BlogMidContentEmailCard source={source} />
         </div>
+        {blogPostAdSlot ? (
+          <div className="my-8">
+            <AdUnit slotId={blogPostAdSlot} className="mx-auto max-w-2xl" />
+          </div>
+        ) : null}
         {safeRest ? <ProseArticle dangerouslySetInnerHTML={{ __html: safeRest }} /> : null}
         {affiliate ? (
           <AffiliateCTA
@@ -92,6 +99,11 @@ export default function BlogArticleBodyWithMidEmail({ slug, generated, blocks }:
       <div className="my-8">
         <BlogMidContentEmailCard source={source} />
       </div>
+      {blogPostAdSlot ? (
+        <div className="my-8">
+          <AdUnit slotId={blogPostAdSlot} className="mx-auto max-w-2xl" />
+        </div>
+      ) : null}
       {restBlocks.length ? (
         <ProseArticle>
           <RichTextBlocks blocks={restBlocks} />

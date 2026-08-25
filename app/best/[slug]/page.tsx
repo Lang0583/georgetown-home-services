@@ -26,10 +26,12 @@ import { buildProviderItemListJsonLd } from "../../../lib/provider-item-list-sch
 import { getDirectoryProvidersForBestSlug } from "../../../data/providers";
 import { getComparisonsForBestSlug } from "../../../data/comparisons";
 import ProviderCardSection from "../../../components/ProviderCardSection";
+import AdUnit from "../../../components/AdUnit";
 import StickyCallBar from "../../../components/StickyCallBar";
 import { bestPageInternalLinks } from "../../../lib/internal-links";
 import { getBestOfPageFaqs } from "../../../lib/best-of-page-faqs";
 import { businessPhoneTel } from "../../../lib/phone";
+import { bestOfAdSlot } from "../../../lib/adConfig";
 import {
   isExtendedBestSlug,
   isNoindexSlug,
@@ -973,6 +975,11 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
               {directoryProviders.length ? (
                 <>
                   <ProviderCardSection providers={directoryProviders} />
+                  {bestOfAdSlot ? (
+                    <div className="mt-8">
+                      <AdUnit slotId={bestOfAdSlot} />
+                    </div>
+                  ) : null}
                   {headToHeadComparisons.length ? (
                     <p className="mt-5 text-sm text-muted">
                       <Link href="/compare" className="font-semibold text-brand hover:underline">
