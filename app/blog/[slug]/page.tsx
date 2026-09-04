@@ -23,7 +23,9 @@ import { getGeneratedPage } from "../../../lib/generatedPages";
 import { blogPageInternalLinks } from "../../../lib/internal-links";
 import { getBlogHeroImage } from "../../../lib/blog-hero-images";
 import { extractFaqPairs } from "../../../lib/extract-faq-schema";
-import { buildArticle, buildFAQPage } from "../../../lib/schema";
+import { buildArticle, buildFAQPage, buildHowTo } from "../../../lib/schema";
+import { blogHowToForSlug } from "../../../lib/blog-howto";
+import KeyTakeaways from "../../../components/KeyTakeaways";
 import {
   FLAGSHIP_VIDEO_HAIL_WILLIAMSON_BLOG,
   flagshipVideoObjectJsonLd,
@@ -368,6 +370,14 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
     faqPairs.map((p) => ({ q: p.question, a: p.answer })),
     { pageUrl: blogPageUrl, name: `${post.title} FAQ` },
   );
+  const blogHowTo = blogHowToForSlug(post.slug);
+  const howToSchema = blogHowTo
+    ? buildHowTo({
+        name: blogHowTo.name,
+        description: blogHowTo.description,
+        steps: blogHowTo.steps,
+      })
+    : null;
 
   return (
     <PageShell>
@@ -382,6 +392,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
             })}
           />
           {faqSchema ? <JsonLd data={faqSchema} /> : null}
+          {howToSchema ? <JsonLd data={howToSchema} /> : null}
           {post.slug === "hail-damage-georgetown-williamson-may-2026" ? (
             <JsonLd
               data={flagshipVideoObjectJsonLd(
@@ -435,6 +446,14 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
               ) : null}
               <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">{post.description}</p>
               <div className="mt-2 text-sm text-muted">Estimated read time: {post.readTime}</div>
+
+              {blogHowTo ? (
+                <KeyTakeaways
+                  title="Steps at a glance"
+                  items={blogHowTo.steps.map((s) => `${s.name}: ${s.text}`)}
+                  speakable
+                />
+              ) : null}
 
               {STORM_INSPECTION_LEAD_SLUGS.has(post.slug) ? (
                 <div className="not-prose mt-8 max-w-xl">

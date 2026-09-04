@@ -138,6 +138,14 @@ export default function WilliamsonCountyLicenseCheckPage() {
             {AUTHOR_FIRST_NAME}
           </Link>
           , a Georgetown homeowner · Published {publishedLabel}
+          {" · "}
+          <Link
+            href="/reports/williamson-county-license-check.md"
+            className="font-semibold text-brand underline-offset-2 hover:underline"
+          >
+            Markdown mirror
+          </Link>{" "}
+          for AI agents
         </p>
 
         <p className="mt-6 text-lg leading-relaxed text-ink">{headline}</p>

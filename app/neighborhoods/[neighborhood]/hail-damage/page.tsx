@@ -9,6 +9,8 @@ import FAQSchema from "@/components/FAQSchema";
 import HubRelatedLinks from "@/components/HubRelatedLinks";
 import JsonLd from "@/components/JsonLd";
 import LastUpdated from "@/components/LastUpdated";
+import KeyTakeaways from "@/components/KeyTakeaways";
+import SourcesVerificationStrip from "@/components/SourcesVerificationStrip";
 import PageShell from "@/components/templates/PageShell";
 import {
   getNeighborhoodHailPage,
@@ -18,6 +20,7 @@ import { linkifyProviderNamesInHtml, linksForNeighborhood } from "@/lib/internal
 import { absolutePageUrl, pageSeoMetadata } from "@/lib/page-seo";
 import { webPageWithDateModifiedJsonLd } from "@/lib/last-updated";
 import { buildArticle } from "@/lib/schema";
+import { hailTakeaways } from "@/lib/ai-seo-takeaways";
 
 /** Static `hail-damage` resolves before `[service]` dynamic slug. */
 export const dynamicParams = false;
@@ -99,6 +102,8 @@ export default async function NeighborhoodHailDamagePage({
         <LastUpdated lastUpdated={page.lastUpdated} />
         <AuthorByline className="mt-3" compact />
 
+        <KeyTakeaways items={hailTakeaways(page.neighborhoodName)} speakable />
+
         <div
           className="prose prose-lg mt-6 max-w-[70ch] text-ink leading-[1.65] prose-p:leading-[1.65] prose-strong:text-ink prose-headings:font-bold prose-headings:text-ink prose-headings:tracking-tight prose-a:text-brand prose-a:underline hover:prose-a:text-brand"
           dangerouslySetInnerHTML={{ __html: linkifyProviderNamesInHtml(page.bodyHtml) }}
@@ -113,8 +118,11 @@ export default async function NeighborhoodHailDamagePage({
             variant="bordered"
             title={`FAQ — ${page.neighborhoodName} hail damage`}
             className="!mt-4"
+            speakable
           />
         </section>
+
+        <SourcesVerificationStrip compact />
 
         <HubRelatedLinks
           title="Parent service and Best Of guides"

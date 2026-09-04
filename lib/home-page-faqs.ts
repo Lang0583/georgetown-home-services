@@ -33,5 +33,9 @@ export function homeFaqPageJsonLd() {
       name: f.q,
       acceptedAnswer: { "@type": "Answer", text: f.a },
     })),
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [".speakable-answer"],
+    },
   };
 }

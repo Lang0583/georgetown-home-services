@@ -56,6 +56,15 @@ Editorial CMS content lives primarily in `data/site-content.json`. Generators un
 
 See `.env.example` for Resend, Beehiiv, AdSense, GA4, IndexNow, Impact, and `ADMIN_CLAIMS_SECRET`. The site runs without `.env.local`; forms append to `data/*.jsonl` and succeed without Resend configured.
 
+## AI SEO / GEO
+
+- **Crawler policy:** `app/robots.ts` explicitly allows retrieval bots (OAI-SearchBot, PerplexityBot, Claude-SearchBot, …), allows training bots, and blocks CCBot/Bytespider/Diffbot.
+- **Citation packaging:** `KeyTakeaways` + `SourcesVerificationStrip` on cost, Best Of, hail, compare, and provider pages.
+- **Schema:** cost-guide AggregateOffer catalogs, HowTo on key blogs, Speakable on homepage/cost FAQs, compare ItemList.
+- **Discovery:** `/llms.txt`, `/methodology.md`, `/reports/williamson-county-license-check.md`.
+- **Measurement:** `AiReferralTracker` fires GA4 `ai_referral` from ChatGPT/Perplexity/Claude/Copilot/Gemini referrers.
+- **Entity sameAs:** set `NEXT_PUBLIC_GOOGLE_BUSINESS_PROFILE_URL`, `NEXT_PUBLIC_FACEBOOK_PAGE_URL`, `NEXT_PUBLIC_AUTHOR_SAME_AS`, etc. in `.env.local`.
+
 ## Editing content
 
 1. **Provider licenses / phones / ratings** → `data/ghs-verified-providers.json`

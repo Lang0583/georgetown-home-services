@@ -347,7 +347,9 @@ function organizationSameAsFromEnv(): string[] {
   const urls: string[] = [];
   const gbp = process.env.NEXT_PUBLIC_GOOGLE_BUSINESS_PROFILE_URL?.trim();
   const facebook = process.env.NEXT_PUBLIC_FACEBOOK_PAGE_URL?.trim();
-  for (const raw of [gbp, facebook]) {
+  const linkedin = process.env.NEXT_PUBLIC_LINKEDIN_COMPANY_URL?.trim();
+  const youtube = process.env.NEXT_PUBLIC_YOUTUBE_URL?.trim();
+  for (const raw of [gbp, facebook, linkedin, youtube]) {
     if (!raw) continue;
     try {
       const u = new URL(raw).href;
@@ -357,6 +359,11 @@ function organizationSameAsFromEnv(): string[] {
     }
   }
   return urls;
+}
+
+/** Public sameAs URLs for Organization / home LocalBusiness schema. */
+export function organizationSameAsUrls(): string[] {
+  return organizationSameAsFromEnv();
 }
 
 /** Sitewide Organization JSON-LD (root layout). */
@@ -397,6 +404,74 @@ export function organizationSchema() {
       "House cleaning",
     ],
     ...(sameAs.length ? { sameAs } : {}),
+  };
+}
+
+/**
+ * Cost-guide price bands as AggregateOffer JSON-LD.
+ * Mirrors the visible price table — never invents numbers.
+ */
+export function buildCostGuideOfferCatalog(opts: {
+  serviceName: string;
+  pageUrl: string;
+  year: string;
+  priceRows: ReadonlyArray<{
+    serviceType: string;
+    low: number;
+    average: number;
+    high: number;
+    unit?: string;
+  }>;
+}): SchemaJsonLd | null {
+  if (!opts.priceRows.length) return null;
+  const validThrough = `${opts.year}-12-31`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `${opts.serviceName} cost ranges in Georgetown, TX (${opts.year})`,
+    url: opts.pageUrl,
+    numberOfItems: opts.priceRows.length,
+    itemListElement: opts.priceRows.map((row, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "AggregateOffer",
+        name: row.serviceType,
+        priceCurrency: "USD",
+        lowPrice: String(row.low),
+        highPrice: String(row.high),
+        offerCount: 1,
+        ...(row.unit?.trim() ? { unitText: row.unit.trim() } : {}),
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          price: String(row.average),
+          priceCurrency: "USD",
+          validThrough,
+        },
+        areaServed: {
+          "@type": "City",
+          name: "Georgetown",
+          addressRegion: "TX",
+          addressCountry: "US",
+        },
+        description: `Planning estimate for ${row.serviceType} in Georgetown / Williamson County, TX (${opts.year}). Midpoint ${row.average}. Not a quote.`,
+      },
+    })),
+  };
+}
+
+/** SpeakableSpecification pointing at on-page CSS selectors. */
+export function buildSpeakableSchema(cssSelectors: string[]): SchemaJsonLd | null {
+  const selectors = cssSelectors.map((s) => s.trim()).filter(Boolean);
+  if (!selectors.length) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: selectors,
+    },
   };
 }
 

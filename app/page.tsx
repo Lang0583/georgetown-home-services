@@ -13,6 +13,7 @@ import FAQList from "../components/FAQList";
 import JsonLd from "../components/JsonLd";
 import VerifiedProfileCard from "../components/VerifiedProfileCard";
 import { pageSeoMetadata, SITE_URL } from "../lib/page-seo";
+import { organizationSameAsUrls } from "../lib/schema";
 import { getStaticPageLastUpdated } from "../lib/static-pages-last-updated";
 import { CORE_SERVICE_SLUGS } from "../lib/pageContentRegistry";
 import { EXTENDED_PROVIDER_GROUPS, isNoindexSlug, showExtendedHomeServices } from "../lib/public-site-scope";
@@ -57,7 +58,7 @@ function homeLocalBusinessJsonLd() {
       addressRegion: "TX",
       addressCountry: "US",
     },
-    sameAs: [] as string[],
+    sameAs: organizationSameAsUrls(),
   };
 }
 
@@ -269,7 +270,7 @@ export default function Home() {
         ) : null}
 
         <section className="py-10 md:py-12">
-          <FAQList faqs={HOME_PAGE_FAQS} variant="plain" />
+          <FAQList faqs={HOME_PAGE_FAQS} variant="plain" speakable />
         </section>
       </Container>
     </div>

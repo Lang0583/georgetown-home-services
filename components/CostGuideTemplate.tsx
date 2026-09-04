@@ -5,6 +5,8 @@ import FAQList from "./FAQList";
 import FAQSchema from "./FAQSchema";
 import JsonLd from "./JsonLd";
 import LastUpdated from "./LastUpdated";
+import KeyTakeaways from "./KeyTakeaways";
+import SourcesVerificationStrip from "./SourcesVerificationStrip";
 import AffiliateCTA from "./AffiliateCTA";
 import AffiliateDisclosure from "./AffiliateDisclosure";
 import CostGuideAffiliateCallouts from "./CostGuideAffiliateCallouts";
@@ -17,8 +19,9 @@ import { absolutePageUrl } from "../lib/page-seo";
 import { webPageWithDateModifiedJsonLd } from "../lib/last-updated";
 import { linksForCostGuide, routeExists } from "../lib/internalLinks";
 import type { Faq } from "../lib/site-content";
-import { buildArticle } from "../lib/schema";
+import { buildArticle, buildCostGuideOfferCatalog, buildSpeakableSchema } from "../lib/schema";
 import { costGuideAdSlot } from "../lib/adConfig";
+import { costGuideTakeaways } from "../lib/ai-seo-takeaways";
 
 type CostGuideTemplateProps = {
   page: CostGuidePage;
@@ -37,6 +40,14 @@ export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
       ...extras,
     ];
   })();
+  const takeaways = costGuideTakeaways(page);
+  const offerCatalog = buildCostGuideOfferCatalog({
+    serviceName: page.serviceName,
+    pageUrl,
+    year: page.year,
+    priceRows: page.priceRows,
+  });
+  const speakable = buildSpeakableSchema([".speakable-answer", "#key-takeaways-heading"]);
 
   return (
     <PageShell>
@@ -58,6 +69,8 @@ export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
             dateModified: page.lastUpdated,
           })}
         />
+        {offerCatalog ? <JsonLd data={offerCatalog} /> : null}
+        {speakable ? <JsonLd data={speakable} /> : null}
         <FAQSchema pageUrl={pageUrl} name={`${page.serviceName} cost in Georgetown, TX — FAQ`} faqs={faqs} />
 
         <Breadcrumbs
@@ -68,10 +81,17 @@ export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
           ]}
         />
 
-        <p className="text-sm font-semibold uppercase tracking-wide text-muted">Cost guide • Georgetown, TX</p>
+        <p className="text-sm font-semibold uppercase tracking-wide text-muted">
+          Cost guide • Georgetown, TX • Prices for {page.year}
+        </p>
         <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">{page.h1}</h1>
         <LastUpdated lastUpdated={page.lastUpdated} />
+        <p className="mt-1 text-xs text-muted">
+          Planning bands valid through {page.year}-12-31 · Williamson County estimates, not quotes
+        </p>
         <AuthorByline className="mt-3" compact />
+
+        <KeyTakeaways items={takeaways} speakable />
 
         <div className="prose prose-gray mt-8 max-w-3xl prose-p:leading-relaxed prose-p:text-muted">
           {page.bodyParagraphs.map((paragraph) => (
@@ -100,13 +120,21 @@ export default function CostGuideTemplate({ page }: CostGuideTemplateProps) {
           />
           <p className="mt-4 text-xs text-muted">
             Planning estimates for Williamson County—not quotes. Storm work, after-hours calls, and access issues can move
-            any line item above these bands.
+            any line item above these bands. Figures dated for {page.year}.
           </p>
         </section>
 
         <section className="mt-12 max-w-3xl">
-          <FAQList faqs={faqs} variant="bordered" title={`Common questions: ${page.serviceName} costs`} className="!mt-0" />
+          <FAQList
+            faqs={faqs}
+            variant="bordered"
+            title={`Common questions: ${page.serviceName} costs`}
+            className="!mt-0"
+            speakable
+          />
         </section>
+
+        <SourcesVerificationStrip compact />
 
         {relatedLinks.length ? (
           <section className="mt-12 max-w-3xl">

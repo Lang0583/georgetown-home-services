@@ -9,6 +9,7 @@ import EmailCaptureSitewide from "../components/EmailCaptureSitewide";
 import SiteFooter from "../components/SiteFooter";
 import JsonLd from "../components/JsonLd";
 import HomeFaqPageHeadJsonLd from "../components/HomeFaqPageHeadJsonLd";
+import AiReferralTracker from "../components/AiReferralTracker";
 import { getImpactPublisherTagInnerHtml } from "../lib/impact-publisher-tag";
 import { ADSENSE_ENABLED, ADSENSE_PUBLISHER_ID } from "../lib/adConfig";
 import { organizationSchema, websiteSchema } from "../lib/schema";
@@ -111,6 +112,7 @@ export default function RootLayout({
         <JsonLd data={websiteJsonLd} />
       </head>
       <body className="flex min-h-full flex-col bg-surface font-sans text-ink leading-[1.65]">
+        <AiReferralTracker />
         <HomeHailAlertBanner />
         <StickyHeader />
         <main className="flex-1 pt-[var(--site-header-offset,5rem)]">{children}</main>

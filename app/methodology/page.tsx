@@ -41,7 +41,11 @@ export default function MethodologyPage() {
       description={
         <>
           Georgetown Home Services is a comparison and education site—not a contractor or dispatch desk. This page
-          documents exactly how Best Of shortlists are assembled, verified, and updated for Georgetown, TX homeowners.
+          documents exactly how Best Of shortlists are assembled, verified, and updated for Georgetown, TX homeowners.{" "}
+          <Link href="/methodology.md" className="font-semibold text-brand hover:underline">
+            Markdown mirror
+          </Link>{" "}
+          available for AI agents.
         </>
       }
     >

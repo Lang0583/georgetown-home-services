@@ -18,6 +18,11 @@ import {
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import { resolveComparisonProviders } from "../../../lib/resolve-comparison-providers";
 import { buildFAQPage } from "../../../lib/schema";
+import { buildProviderItemListJsonLd } from "../../../lib/provider-item-list-schema";
+import SourcesVerificationStrip from "../../../components/SourcesVerificationStrip";
+import KeyTakeaways from "../../../components/KeyTakeaways";
+import LastUpdated from "../../../components/LastUpdated";
+import { PROVIDERS_VERIFIED_ISO_DATE } from "../../../data/providers";
 
 export const dynamicParams = false;
 
@@ -55,11 +60,24 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
   });
   const { providers: verifiedProviders } = resolveComparisonProviders(comparison);
   const showComparisonTable = verifiedProviders.length >= 2;
+  const compareTakeaways = [
+    `Side-by-side ${comparison.categoryLabel.toLowerCase()} comparison for Georgetown, TX homeowners—not a paid ranking.`,
+    "Ratings reflect Google Business Profile data at last verification; confirm licensing and availability directly.",
+    comparison.bottomLine.slice(0, 220) + (comparison.bottomLine.length > 220 ? "…" : ""),
+  ];
 
   return (
     <PageShell>
       <section className="py-8 md:py-12">
         {comparisonFaqSchema ? <JsonLd data={comparisonFaqSchema} /> : null}
+        {verifiedProviders.length >= 2 ? (
+          <JsonLd
+            data={buildProviderItemListJsonLd(
+              `${comparison.providerA.name} vs ${comparison.providerB.name}`,
+              verifiedProviders,
+            )}
+          />
+        ) : null}
 
         <div className="mx-auto max-w-5xl px-4">
           <Breadcrumbs
@@ -75,12 +93,15 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
               {comparison.categoryLabel} · Georgetown, TX
             </p>
             <h1 className="mt-2 text-3xl font-semibold tracking-tight text-ink md:text-4xl">{h1}</h1>
+            <LastUpdated lastUpdated={PROVIDERS_VERIFIED_ISO_DATE} />
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted">
               Side-by-side look at two frequently compared {comparison.categoryLabel.toLowerCase()} companies serving
               Georgetown homeowners. Ratings reflect Google Business Profile data at last verification—confirm licensing,
               pricing, and availability directly with each company.
             </p>
           </header>
+
+          <KeyTakeaways items={compareTakeaways} speakable />
 
           {showComparisonTable ? <ComparisonTable providers={verifiedProviders} /> : null}
 
@@ -144,8 +165,10 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
           </nav>
 
           <section className="mt-10">
-            <FAQList faqs={comparison.faqs} title="Comparison FAQ" />
+            <FAQList faqs={comparison.faqs} title="Comparison FAQ" speakable />
           </section>
+
+          <SourcesVerificationStrip />
         </div>
       </section>
     </PageShell>

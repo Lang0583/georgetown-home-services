@@ -116,3 +116,14 @@ export function trackContactFormSubmit(source: string): void {
     page_location: pageLocation(),
   });
 }
+
+/** AI answer-engine referral (ChatGPT, Perplexity, Claude, Copilot, Gemini). */
+export function trackAiReferral(source: string, referrerHost: string): void {
+  trackEvent("ai_referral", {
+    event_category: "ai_seo",
+    ai_source: source,
+    referrer_host: referrerHost,
+    page_path: typeof window !== "undefined" ? window.location.pathname : "",
+    page_location: pageLocation(),
+  });
+}

@@ -23,15 +23,18 @@ import { CORE_BEST_SLUGS, resolveBestPage } from "../../../lib/pageContentRegist
 import { getAlsoCompareLinksForBestSlug } from "../../../lib/best-also-compare-links";
 import { getRelatedServiceSlugForBestSlug } from "../../../lib/businesses";
 import { buildProviderItemListJsonLd } from "../../../lib/provider-item-list-schema";
-import { getDirectoryProvidersForBestSlug } from "../../../data/providers";
+import { getDirectoryProvidersForBestSlug, getCategoryForBestSlug } from "../../../data/providers";
 import { getComparisonsForBestSlug } from "../../../data/comparisons";
 import ProviderCardSection from "../../../components/ProviderCardSection";
 import AdUnit from "../../../components/AdUnit";
 import StickyCallBar from "../../../components/StickyCallBar";
+import KeyTakeaways from "../../../components/KeyTakeaways";
+import SourcesVerificationStrip from "../../../components/SourcesVerificationStrip";
 import { bestPageInternalLinks } from "../../../lib/internal-links";
 import { getBestOfPageFaqs } from "../../../lib/best-of-page-faqs";
 import { businessPhoneTel } from "../../../lib/phone";
 import { bestOfAdSlot } from "../../../lib/adConfig";
+import { bestOfTakeaways } from "../../../lib/ai-seo-takeaways";
 import {
   isExtendedBestSlug,
   isNoindexSlug,
@@ -180,6 +183,11 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
   const isRoofersGeorgetown = slug === "best-roofers-georgetown-tx";
 
   const directoryProviders = getDirectoryProvidersForBestSlug(slug);
+  const bestCategory = getCategoryForBestSlug(slug);
+  const takeaways =
+    bestCategory && directoryProviders.length
+      ? bestOfTakeaways(bestCategory, directoryProviders)
+      : [];
   const primaryCallProvider =
     directoryProviders.find((p) => businessPhoneTel(p.phone)) ?? null;
   const headToHeadComparisons = getComparisonsForBestSlug(best.slug);
@@ -266,6 +274,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
               <div className="text-sm font-semibold uppercase tracking-wide text-brand">Best Of</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">{best.h1}</h1>
               <LastUpdated lastUpdated={best.lastUpdated} />
+              {takeaways.length ? <KeyTakeaways items={takeaways} speakable /> : null}
               {isPlumbersGeorgetown ? (
                 <>
                   <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
@@ -990,6 +999,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                     </p>
                   ) : null}
                   <BestOfFaqSection faqs={bestOfPageFaqs} />
+                  <SourcesVerificationStrip />
                 </>
               ) : null}
 

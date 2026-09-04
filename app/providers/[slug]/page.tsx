@@ -7,6 +7,7 @@ import PageShell from "@/components/templates/PageShell";
 import StickyCallBar from "@/components/StickyCallBar";
 import VerifiedProfileCard from "@/components/VerifiedProfileCard";
 import ProviderMapEmbed from "@/components/ProviderMapEmbed";
+import SourcesVerificationStrip from "@/components/SourcesVerificationStrip";
 import {
   PROVIDER_CATEGORY_LABELS,
   getAllProviderSlugs,
@@ -124,6 +125,8 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
               Claim this profile
             </Link>
           </aside>
+
+          <SourcesVerificationStrip compact />
         </div>
       </section>
       {showStickyCall ? (
