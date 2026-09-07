@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
+/** Node runtime — `@vercel/og` on Edge exceeds Hobby’s 1 MB Edge Function limit (~1.06 MB). */
+export const runtime = "nodejs";
 export const alt = "Georgetown Home Services";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
