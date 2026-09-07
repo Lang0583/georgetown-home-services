@@ -102,6 +102,29 @@ const BLOG_HOWTOS: Record<string, BlogHowTo> = {
       },
     ],
   },
+  "drought-home-maintenance-georgetown-tx": {
+    name: "Drought home maintenance checklist for Georgetown, TX",
+    description:
+      "Follow watering rules, protect clay-soil foundations, and keep lawns and trees alive under Central Texas drought limits.",
+    steps: [
+      {
+        name: "Confirm watering days and hours",
+        text: "Check Georgetown Water Utility’s current drought-stage schedule and reprogram irrigation before the next cycle.",
+      },
+      {
+        name: "Stabilize foundation moisture",
+        text: "Use soaker or drip 8–18 inches from the slab on allowed days; look for soil pull-back and deep clay cracks.",
+      },
+      {
+        name: "Switch the lawn to survival mode",
+        text: "Deep infrequent watering on legal days, raise mow height, skip fertilizer, and fix overspray onto concrete.",
+      },
+      {
+        name: "Watch for secondary damage",
+        text: "Monitor water bills, hose bibs, HVAC condensate drains, and new sticking doors after the first soaking rain.",
+      },
+    ],
+  },
 };
 
 export function blogHowToForSlug(slug: string): BlogHowTo | null {

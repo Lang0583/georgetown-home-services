@@ -70,6 +70,10 @@ const HERO_BY_SLUG: Record<string, BlogHeroImage> = {
     src: DEFAULT_SRC,
     alt: "How to choose a plumber Georgetown TX",
   },
+  "drought-home-maintenance-georgetown-tx": {
+    src: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1200&q=80",
+    alt: "Dry Texas lawn and landscape during drought — Georgetown TX home maintenance",
+  },
 };
 
 export function getBlogHeroImage(slug: string): BlogHeroImage {

@@ -23,6 +23,7 @@ import { getGeneratedPage } from "../../../lib/generatedPages";
 import { blogPageInternalLinks } from "../../../lib/internal-links";
 import { getBlogHeroImage } from "../../../lib/blog-hero-images";
 import { extractFaqPairs } from "../../../lib/extract-faq-schema";
+import { extractHeadingFaqsFromContentBlocks } from "../../../lib/service-heading-faq-extract";
 import { buildArticle, buildFAQPage, buildHowTo } from "../../../lib/schema";
 import { blogHowToForSlug } from "../../../lib/blog-howto";
 import KeyTakeaways from "../../../components/KeyTakeaways";
@@ -362,9 +363,14 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
           : "plumbing";
   const takeaway = takeawayBullets(recurringType, serviceLabel);
   const hero = getBlogHeroImage(post.slug);
-  // Auto-extract FAQPage JSON-LD from generated article HTML. Posts with no
-  // `?`-terminated H3s (e.g. pure listicles) simply emit no FAQ schema.
-  const faqPairs = generated ? extractFaqPairs(generated.html) : [];
+  // FAQPage JSON-LD: prefer generated HTML pairs; fall back to question-style
+  // headings in site-content blocks (e.g. drought maintenance guide).
+  const faqPairs = generated
+    ? extractFaqPairs(generated.html)
+    : extractHeadingFaqsFromContentBlocks(post.content).map((p) => ({
+        question: p.q,
+        answer: p.a,
+      }));
   const blogPageUrl = absolutePageUrl(`/blog/${post.slug}`);
   const faqSchema = buildFAQPage(
     faqPairs.map((p) => ({ q: p.question, a: p.answer })),

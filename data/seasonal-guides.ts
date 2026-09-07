@@ -140,6 +140,7 @@ const SEASONAL_GUIDES: SeasonalGuide[] = [
     },
     pdfFilename: "georgetown-summer-home-checklist.pdf",
     relatedLinks: [
+      { label: "Drought home maintenance", href: "/blog/drought-home-maintenance-georgetown-tx" },
       { label: "AC not cooling guide", href: "/blog/ac-not-cooling-georgetown-tx" },
       { label: "HVAC maintenance costs", href: "/costs/hvac-maintenance-cost-georgetown-tx" },
       { label: "Foundation repair guide", href: "/services/foundation-repair-georgetown-tx" },

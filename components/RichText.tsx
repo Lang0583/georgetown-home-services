@@ -31,7 +31,10 @@ export function RichTextBlocks({ blocks }: { blocks: ContentBlock[] }) {
                           ? canonicalServicePathForLinks(part.href)
                           : part.href
                       }
-                      rel={part.rel ?? "nofollow sponsored"}
+                      rel={
+                        part.rel ??
+                        (part.href.startsWith("http") ? "noopener noreferrer" : undefined)
+                      }
                       className="font-medium text-brand underline underline-offset-2 hover:text-brand"
                     >
                       {part.label}

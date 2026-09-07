@@ -37,6 +37,11 @@ Markdown mirrors: ${base}/methodology.md · ${base}/reports/williamson-county-li
 - [HVAC repair cost](${base}/costs/hvac-repair-cost-georgetown-tx)
 - [Roof replacement cost](${base}/costs/roof-replacement-cost-georgetown-tx)
 
+## Flagship guides
+
+- [Drought home maintenance](${base}/blog/drought-home-maintenance-georgetown-tx): Watering rules, clay-soil foundations, lawn survival (links to city + AgriLife sources)
+- [After-hail roof checklist](${base}/blog/after-hail-roof-checklist-georgetown-tx)
+
 ## Trust
 
 - [Editorial policy](${base}/editorial-policy)
