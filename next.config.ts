@@ -25,6 +25,29 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  /**
+   * Routes that `fs.readFile*` under `process.cwd()` (newsletter / lead-magnet PDFs)
+   * otherwise file-trace the whole repo — including `.git` and `.next/cache` —
+   * and blow past Vercel’s 250 MB uncompressed function limit.
+   */
+  outputFileTracingExcludes: {
+    "*": [
+      "./.git/**",
+      "./.next/cache/**",
+      "./.reports/**",
+      "./.vercel/**",
+      "./.indexnow-tmp/**",
+      "./agent-transcripts/**",
+      "./private/pdf-templates/**",
+      "./scripts/**",
+    ],
+  },
+  outputFileTracingIncludes: {
+    "/api/lead-magnet-download/**": ["./private/lead-magnets/**/*"],
+    "/api/newsletter/**": ["./private/lead-magnets/**/*"],
+    "/api/newsletter-embed/**": ["./private/lead-magnets/**/*"],
+    "/api/service-request/**": ["./private/lead-magnets/**/*"],
+  },
   async redirects() {
     return [
       // —— Duplicate / alias paths → canonical (301) ——
