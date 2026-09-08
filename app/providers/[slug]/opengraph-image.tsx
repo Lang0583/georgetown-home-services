@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
-import { getProviderBySlug } from "@/data/providers";
-import { PROVIDER_CATEGORY_LABELS } from "@/data/providers";
+import { getProviderBySlug as getLegacyProviderBySlug, PROVIDER_CATEGORY_LABELS } from "@/data/providers";
+import { getProviderBySlug as getLicensedProviderBySlug, nonEmpty } from "@/lib/providers";
 
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
@@ -8,11 +8,15 @@ export const contentType = "image/png";
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const provider = getProviderBySlug(slug);
-  const title = provider?.name ?? "Georgetown Home Services";
-  const subtitle = provider
-    ? `${PROVIDER_CATEGORY_LABELS[provider.category]} · Georgetown, TX`
-    : "Local home services directory";
+  const licensed = getLicensedProviderBySlug(slug);
+  const legacy = getLegacyProviderBySlug(slug);
+
+  const title = licensed?.company ?? legacy?.name ?? "Georgetown Home Services";
+  const subtitle = licensed
+    ? `Plumbing · ${nonEmpty(licensed.city) ?? "Texas"}`
+    : legacy
+      ? `${PROVIDER_CATEGORY_LABELS[legacy.category]} · Georgetown, TX`
+      : "Local home services directory";
 
   return new ImageResponse(
     (

@@ -31,6 +31,11 @@ import {
   getProviderBySlug,
   type ProviderCategory,
 } from "@/data/providers";
+import {
+  PROVIDERS_GENERATED_ON,
+  getAllLicensedProviderSlugs,
+  getCitiesWithMinProviders,
+} from "@/lib/providers";
 
 function absoluteUrl(path: string): string {
   if (path === "/") return `${SITE_URL}/`;
@@ -155,7 +160,26 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     push(entries, `/best/${slug}`, { changeFrequency: "monthly", priority: 0.8 }, lastModified);
   }
 
+  const providerLastModified = new Date(`${PROVIDERS_GENERATED_ON}T00:00:00.000Z`);
+
+  push(entries, "/providers", { changeFrequency: "weekly", priority: 0.8 }, providerLastModified);
+
+  for (const city of getCitiesWithMinProviders(3)) {
+    push(
+      entries,
+      `/providers/city/${city.slug}`,
+      { changeFrequency: "weekly", priority: 0.75 },
+      providerLastModified,
+    );
+  }
+
+  const licensedSlugs = new Set(getAllLicensedProviderSlugs());
+  for (const slug of licensedSlugs) {
+    push(entries, `/providers/${slug}`, { changeFrequency: "weekly", priority: 0.75 }, providerLastModified);
+  }
+
   for (const slug of getAllProviderSlugs()) {
+    if (licensedSlugs.has(slug)) continue;
     const provider = getProviderBySlug(slug);
     if (!provider) continue;
     const bestSlug = CATEGORY_TO_BEST_SLUG[provider.category as ProviderCategory];

@@ -1,4 +1,4 @@
-import type { ProviderComparison } from "../lib/providers";
+import type { ProviderComparison } from "../lib/best-of-providers";
 
 export default function ComparisonSection({ comparison }: { comparison: ProviderComparison }) {
   return (

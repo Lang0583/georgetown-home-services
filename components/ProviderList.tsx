@@ -9,7 +9,7 @@ import {
 } from "../lib/businesses";
 import { exitInterstitialLabels } from "../lib/exit-interstitial";
 import { trackOutboundClick } from "../lib/analytics";
-import type { Provider } from "../lib/providers";
+import type { Provider } from "../lib/best-of-providers";
 import type { ProviderGroup } from "../lib/businesses";
 
 const websiteCtaClass =

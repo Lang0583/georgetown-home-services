@@ -1,0 +1,196 @@
+{
+  "best-plumbers-georgetown-tx": {
+    "evaluatedIntro": "These plumbing listings are a starting point for Georgetown homeowners—not a dispatch service. We note service area coverage, how clearly each company describes repairs and installs, and whether contact paths go to an official site. Pricing and response time vary by job scope and season.",
+    "providers": [],
+    "comparison": {
+      "pricingExpectations": [
+        "Service call/diagnostic fees vary by company and time of day.",
+        "Simple repairs (minor leaks, basic clogs, fixture swaps) are typically lower-cost than line replacements or complex access work.",
+        "After-hours and emergency requests commonly increase total cost."
+      ],
+      "responseTime": [
+        "Same-day availability depends on schedule load and whether the issue is an emergency.",
+        "Peak demand often occurs during freezes, heavy rain events, and weekends."
+      ],
+      "servicesOffered": [
+        "Drain clearing and troubleshooting",
+        "Leak detection and repair",
+        "Toilet and fixture repair/replacement",
+        "Water heater service (varies by provider)"
+      ]
+    }
+  },
+  "top-hvac-companies-georgetown-tx": {
+    "evaluatedIntro": "HVAC companies listed here serve Georgetown and nearby Williamson County. We look for clear repair vs replacement language, maintenance options, and direct contact through official websites. Quotes depend on system age, refrigerant type, and summer demand.",
+    "providers": [],
+    "comparison": {
+      "pricingExpectations": [
+        "Diagnostic fees vary by company and may be applied toward repair on approval.",
+        "Maintenance visits are typically lower-cost than repair calls.",
+        "Replacement quotes depend on system size, efficiency, ductwork needs, and installation complexity."
+      ],
+      "responseTime": [
+        "Same-day availability depends on season and demand (summer peaks are busiest).",
+        "Emergency service windows vary by provider and may cost more."
+      ],
+      "servicesOffered": [
+        "AC and heating diagnostics/repair",
+        "Seasonal maintenance and tune-ups",
+        "Replacement planning and installation",
+        "Airflow and comfort troubleshooting"
+      ]
+    }
+  },
+  "best-roofers-georgetown-tx": {
+    "evaluatedIntro": "Roofing contractors in this directory are evaluated for Georgetown-area work, written scope clarity (repair vs replacement), and legitimate contact channels. Hail season and roof pitch affect both price and scheduling—compare itemized bids, not door hangers.",
+    "providers": [],
+    "comparison": {
+      "pricingExpectations": [
+        "Repair pricing depends on access, materials, and extent of damage.",
+        "Replacement quotes vary widely by roof size, pitch, decking condition, and product selection.",
+        "Emergency tarping or leak mitigation may be priced separately from permanent repairs."
+      ],
+      "responseTime": [
+        "After storms, scheduling can be tighter—book inspections early when damage is suspected.",
+        "Same-week availability varies by crew load and material lead times.",
+        "Insurance-related timelines may add coordination steps."
+      ],
+      "servicesOffered": [
+        "Leak detection and localized repairs",
+        "Shingle replacement and flashing work",
+        "Storm damage assessments",
+        "Replacement planning and installation"
+      ]
+    }
+  },
+  "best-electricians-georgetown-tx": {
+    "evaluatedIntro": "These electricians serve Georgetown and nearby Williamson County with panel work, circuit adds, and safety repairs. We look for active TDLR electrical contractor licenses, clear written scopes (especially AFCI/GFCI and panel upgrades), and direct contact through official channels—not a sold ranking.",
+    "providers": [],
+    "comparison": {
+      "pricingExpectations": [
+        "Service calls and troubleshooting fees vary; panel upgrades are typically quoted after onsite assessment.",
+        "Material-heavy jobs (panels, breakers, GFCI/AFCI updates) depend on current code requirements.",
+        "Whole-home or EV circuit work may require permit and inspection costs in addition to labor."
+      ],
+      "responseTime": [
+        "Same-week scheduling is common for non-emergency work.",
+        "Spark, smoke, or repeated breaker trips should be treated as urgent—call a licensed electrician."
+      ],
+      "servicesOffered": [
+        "Panel evaluations and upgrades",
+        "New circuits for kitchen, bath, HVAC, or EV",
+        "Safety corrections for outlets, grounding, and arc-fault protection",
+        "Lighting and ceiling fan installs"
+      ]
+    }
+  },
+  "best-landscaping-companies-georgetown-tx": {
+    "evaluatedIntro": "Landscaping crews here are compared on visit frequency, bed and irrigation scope, and whether estimates are written. Central Texas heat and watering rules change maintenance needs—confirm insurance and visit checklists before signing a seasonal contract.",
+    "providers": [
+      {
+        "name": "Just Right Lawns",
+        "rating": 4.7,
+        "reviewCount": 2100,
+        "description": "Lawn care and turf programs serving Georgetown: mowing, fertilization, weed control, aeration, and recurring landscape maintenance from an established Central Texas operator.",
+        "websiteUrl": "https://justrightlawns.com/austin-tx/lawn-care-georgetown",
+        "phone": "(512) 861-7802"
+      },
+      {
+        "name": "The Grounds Guys of Georgetown",
+        "rating": 4.9,
+        "reviewCount": 42,
+        "description": "Full-service lawn and grounds care for Georgetown: mowing, seasonal cleanups, bed and tree work, landscape maintenance, and holiday lighting.",
+        "websiteUrl": "https://www.groundsguys.com/georgetown/",
+        "phone": "(512) 409-2817"
+      },
+      {
+        "name": "TCB Quality Landscaping",
+        "rating": 4.7,
+        "reviewCount": 31,
+        "description": "Georgetown-based landscape contractor since 2004: design and installation, irrigation, outdoor living, and seasonal maintenance for residential and commercial properties.",
+        "websiteUrl": "https://www.tcblandscapinginc.com/",
+        "phone": "(512) 864-2722"
+      }
+    ],
+    "comparison": {
+      "pricingExpectations": [
+        "Weekly vs biweekly mowing changes total season cost significantly.",
+        "Mulch depth, bed square footage, and plant counts should be defined in writing.",
+        "One-time cleanups are priced differently than recurring maintenance routes."
+      ],
+      "responseTime": [
+        "Spring and fall are peak booking windows in Central Texas.",
+        "Irrigation tune-ups often schedule faster than full landscape redesigns."
+      ],
+      "servicesOffered": [
+        "Mowing, edging, and seasonal fertilization",
+        "Mulch, bed weed control, and shrub trimming",
+        "Irrigation checks and head adjustments",
+        "Small tree care and seasonal color rotations"
+      ]
+    }
+  },
+  "best-pest-control-georgetown-tx": {
+    "evaluatedIntro": "Pest control companies here are compared on TPCL licensing, target-pest clarity, re-service terms, and how they handle pets and kids around Sun City and family neighborhoods. Ask for product labels and drying windows before outdoor perimeter work.",
+    "providers": [],
+    "comparison": {
+      "pricingExpectations": [
+        "Initial treatments are often higher than recurring maintenance visits.",
+        "Rodent exclusion may be quoted separately from general perimeter sprays.",
+        "Warranty or free re-service policies vary by company and pest type."
+      ],
+      "responseTime": [
+        "Interior ant or roach flare-ups may qualify for faster return visits.",
+        "Termite monitoring programs typically start with inspection scheduling."
+      ],
+      "servicesOffered": [
+        "Perimeter and interior treatments",
+        "Rodent trapping and exclusion guidance",
+        "Fire ant and spider programs",
+        "Seasonal mosquito or wasp add-ons (varies by provider)"
+      ]
+    }
+  },
+  "best-foundation-repair-georgetown-tx": {
+    "evaluatedIntro": "Foundation contractors serving Georgetown are evaluated for written pier or pier-and-beam scopes, moisture-management advice for expansive clay, and legitimate contact channels. Compare engineering notes and warranties—not door-hanger slogans—especially after drought-to-rain cycles in Williamson County.",
+    "providers": [],
+    "comparison": {
+      "pricingExpectations": [
+        "Engineering or measurement documentation may add cost but reduces guesswork.",
+        "Drainage corrections are often bundled with durable repairs in clay soil areas.",
+        "Pier counts, lift plans, and warranty terms drive most price differences."
+      ],
+      "responseTime": [
+        "Inspections may book out after drought-or-rain swings when homeowners notice new cracks.",
+        "Monitoring programs may be offered before immediate stabilization."
+      ],
+      "servicesOffered": [
+        "Slab and pier evaluations",
+        "Pier installation or adjustment",
+        "Beam and shim work in crawlspaces",
+        "Drainage recommendations tied to foundation performance"
+      ]
+    }
+  },
+  "best-house-cleaning-services-georgetown-tx": {
+    "evaluatedIntro": "House cleaning services in this directory are compared on room lists, supply policies (yours vs theirs), recurring-visit reliability, and cancellation terms. Confirm insurance and bonding before handing over keys for Sun City or busy family homes in Teravista and Wolf Ranch.",
+    "providers": [],
+    "comparison": {
+      "pricingExpectations": [
+        "First deep cleans cost more than maintenance visits on a steady schedule.",
+        "Square footage, number of baths, and pets affect time on site.",
+        "Move-out cleans may include appliance interiors as optional add-ons."
+      ],
+      "responseTime": [
+        "Recurring clients often receive priority scheduling windows.",
+        "Move-out deadlines may require booking one to two weeks ahead in busy seasons."
+      ],
+      "servicesOffered": [
+        "Biweekly or monthly maintenance cleaning",
+        "Deep cleans and seasonal refreshes",
+        "Move-in and move-out packages",
+        "Interior window and appliance detailing (often add-ons)"
+      ]
+    }
+  }
+}

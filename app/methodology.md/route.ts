@@ -15,7 +15,7 @@ Publisher: ${PUBLISHER_NAME}
 Author: ${AUTHOR_BYLINE}
 Canonical: ${base}${LISTING_METHODOLOGY_PATH}
 
-Georgetown Home Services is a comparison and education site—not a contractor or dispatch desk. Directory placement cannot be bought.
+Georgetown Home Services is a comparison and education site. It is not a contractor or dispatch desk. Directory placement cannot be bought.
 
 ## Inclusion criteria
 
@@ -25,12 +25,24 @@ ${criteria}
 
 ${sources}
 
+## How we verify licenses
+
+- Plumbing: Texas State Board of Plumbing Examiners public Responsible Master Plumber licensee file.
+- Electrical and HVAC: Texas Department of Licensing and Regulation public records where a license number is shown.
+- Pest control: Texas Department of Agriculture Structural Pest Control Service records where a license number is shown.
+- The plumbing source file refreshes from the board daily. On site records are stamped with a batch check date.
+- A verification badge requires a current license and current insurance on the state file.
+- Expired insurance on the state file removes the badge. The company can still appear with that fact stated plainly.
+- Texas does not license roofers at the state level, so roofing listings cannot carry a state license number.
+- Specialty endorsements only appear when endorsement sets differ across companies in the source file.
+
 ## Independence
 
 Affiliate links, sponsored modules, and display advertising do not affect directory rankings or the order of organic provider cards.
 
 ## Related
 
+- Licensed providers index: ${base}/providers
 - License report: ${base}/reports/williamson-county-license-check
 - License report (Markdown): ${base}/reports/williamson-county-license-check.md
 - Best Of index: ${base}/best

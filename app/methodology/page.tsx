@@ -89,6 +89,36 @@ export default function MethodologyPage() {
       </section>
 
       <section>
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">How we verify licenses</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
+          Plumbing listings pull from the Texas State Board of Plumbing Examiners public Responsible Master
+          Plumber licensee file. Electrical and HVAC listings use Texas Department of Licensing and Regulation
+          public records where a license number is shown. Pest control listings use Texas Department of
+          Agriculture Structural Pest Control Service records where a license number is shown.
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
+          The plumbing file refreshes from the board daily. We rebuild the on site provider file on a dated
+          batch and stamp each record with that check date. A verification badge only appears when the license
+          is current and the insurance certificate on file with the state is also current.
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
+          A listing loses its badge when the insurance certificate on the state file is expired, even if the
+          plumbing license itself is still current. We still list that company and state the insurance fact
+          plainly with a link to the board source.
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
+          Texas does not license roofers at the state level. Roofing listings cannot carry a state license
+          number or a state license badge. The same is true for landscaping, foundation repair, and house
+          cleaning at the state level.
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
+          Specialty endorsements only appear when the source file shows different endorsement sets across
+          companies. If every row shares the same endorsement list, we treat that as incomplete source
+          data and hide the endorsements block until the file is fixed.
+        </p>
+      </section>
+
+      <section>
         <h2 className="text-2xl font-semibold tracking-tight text-ink">How often listings are reviewed</h2>
         <p className="mt-3 text-sm leading-relaxed text-muted">{LISTINGS_REVIEW_CADENCE_SUMMARY}</p>
         <p className="mt-3 text-sm leading-relaxed text-muted">
