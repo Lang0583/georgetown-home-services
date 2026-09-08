@@ -23,8 +23,8 @@ npm run smoke                # needs a running server (BASE_URL optional)
 
 | Area | Routes | Data |
 |------|--------|------|
-| Home / directory | `/`, `/providers/[slug]` | `data/ghs-verified-providers.json` |
-| Best Of | `/best`, `/best/[slug]` | verified providers + `data/providers.json` intros |
+| Home / directory | `/`, `/providers`, `/providers/[slug]` | `data/providers.json` (TSBPE) + `data/ghs-verified-providers.json` (legacy) |
+| Best Of | `/best`, `/best/[slug]` | verified providers + `data/best-of-providers.json` intros |
 | Service hubs | `/services/...` | `data/site-content.json` |
 | Cost guides | `/costs/...` | `data/cost-guides.ts` + `data/affiliates.ts` |
 | Seasonal / PDFs | `/seasonal` | `data/seasonal-guides.ts`, `private/lead-magnets/` |
@@ -55,6 +55,17 @@ Editorial CMS content lives primarily in `data/site-content.json`. Generators un
 ## Environment
 
 See `.env.example` for Resend, Beehiiv, AdSense, GA4, IndexNow, Impact, and `ADMIN_CLAIMS_SECRET`. The site runs without `.env.local`; forms append to `data/*.jsonl` and succeed without Resend configured.
+
+### Newsletter emails (Google Sheet)
+
+Production signups are **not** durable in `data/newsletter-signups.jsonl` on Vercel. Store them in a Google Sheet:
+
+1. Create a Sheet with header row: `createdAt | email | name | guideChoice | source`
+2. Paste `scripts/google-sheet-newsletter-webhook.gs` into **Extensions → Apps Script**
+3. Deploy as a **Web app** (Execute as Me, Who has access: Anyone)
+4. Set `NEWSLETTER_WEBHOOK_URL` in Vercel to that Web app URL and redeploy
+
+The Sheet URL (your Drive link) is the place you open to see emails. The Web app URL is a secret — only put it in Vercel env, never in git.
 
 ## AI SEO / GEO
 
