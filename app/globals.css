@@ -100,28 +100,43 @@ body {
   color: var(--surface);
 }
 
+/**
+ * Fallback hero scrim for any non-home surfaces still using the class.
+ * Homepage uses an inline brand wash so copy always sits on solid #1e3a5f.
+ */
 .hero-overlay-scrim {
-  position: relative;
-}
-
-.hero-overlay-scrim::before {
-  content: "";
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--ink) 35%, transparent) 0%,
-      color-mix(in srgb, var(--ink) 72%, transparent) 55%,
-      color-mix(in srgb, var(--ink) 88%, transparent) 100%
-    );
-  pointer-events: none;
   z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(30, 58, 95, 0.22) 0%,
+    rgba(30, 58, 95, 0.55) 16%,
+    rgba(30, 58, 95, 0.92) 28%,
+    #1e3a5f 36%,
+    #1e3a5f 100%
+  );
 }
 
-.hero-overlay-scrim > * {
-  position: relative;
-  z-index: 2;
+/* Beat global `a { color: inherit }` and any ink prose defaults on the photo plane. */
+.hero-copy,
+.hero-copy-muted,
+a.hero-cta-secondary {
+  color: #ffffff !important;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.75),
+    0 2px 14px rgba(0, 0, 0, 0.55);
+}
+
+a.hero-cta-secondary {
+  border-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(29, 43, 51, 0.5);
+}
+
+a.hero-cta-secondary:hover {
+  background-color: rgba(29, 43, 51, 0.68);
+  color: #ffffff !important;
 }
 
 /* Atmosphere: soft brand wash behind content bands */
