@@ -1,158 +1,98 @@
-import Link from "next/link";
-import FAQList from "@/components/FAQList";
-import FAQSchema from "@/components/FAQSchema";
+import SourceBlock from "@/components/water/SourceBlock";
+import WaterCtaRow from "@/components/water/WaterCtaRow";
 import WaterPageFrame from "@/components/water/WaterPageFrame";
-import WaterPlantTable from "@/components/water/WaterPlantTable";
-import WaterPlumberCta from "@/components/water/WaterPlumberCta";
 import {
   PLANTS,
-  SYSTEM_RANGES,
-  USGS_BANDS,
-  formatGallonsPerPersonPerDay,
-  formatMglPerGrain,
-  formatUsgsBand,
+  WATER_SPEC,
+  formatUsd,
   plantGpg,
   plantMgL,
+  usgsHardRange,
+  usgsVeryHardThreshold,
 } from "@/data/water";
-import { pageSeoMetadata, absolutePageUrl } from "@/lib/page-seo";
-import type { Faq } from "@/lib/site-content";
+import { pageSeoMetadata } from "@/lib/page-seo";
 
 const LAST_REVIEWED = "2026-09-12";
 const PATH = "/water";
 
+const south = PLANTS.southlake;
+const park = PLANTS.park;
+
 export const metadata = pageSeoMetadata({
-  titleSegment: "Georgetown TX Water Hardness by Treatment Plant",
+  titleSegment: "Georgetown Water Hardness by Plant",
   description:
-    "Georgetown tap water hardness from Georgetown Utility Systems: Southlake versus Park Plant figures, USGS class, mineral ranges, and how we source the numbers.",
+    "Georgetown treats water at more than one plant, and the hardness is not the same. City published numbers, both bands, and what they mean before you buy a softener.",
   pathname: PATH,
   ogType: "website",
 });
 
-function waterFaqs(): Faq[] {
-  const south = PLANTS.southlake;
-  const park = PLANTS.park;
-  return [
-    {
-      q: "How hard is Georgetown tap water?",
-      a: `It depends on the treatment plant that serves the address. ${south.label} publishes ${plantMgL(south)} (${plantGpg(south)}, USGS ${south.usgsClass}). ${park.label} publishes ${plantMgL(park)} (${plantGpg(park)}, USGS ${park.usgsClass}).`,
-    },
-    {
-      q: "Which USGS hardness class applies?",
-      a: `USGS bands used here are ${USGS_BANDS.map(formatUsgsBand).join("; ")}. Southlake-area published values fall in ${south.usgsClass}. Park Plant published values fall in ${park.usgsClass}.`,
-    },
-    {
-      q: "Do you test water at the door?",
-      a: "No. We do not perform door to door tests. These pages cite Georgetown Utility Systems. Installation, if any, is by a separately licensed Water Treatment Specialist or plumber.",
-    },
-    {
-      q: "How do grains per gallon relate to milligrams per liter?",
-      a: `Softener settings are often in grains per gallon. One grain per gallon equals ${formatMglPerGrain()} as CaCO3. The plant pages show both units from the same city article.`,
-    },
-    {
-      q: "How do I find a plumber after reading these hardness pages?",
-      a: "Use the license-verified plumber directory. This site does not book jobs or sell contractor leads.",
-    },
-  ];
-}
-
 export default function WaterHubPage() {
-  const faqs = waterFaqs();
-  const south = PLANTS.southlake;
-  const park = PLANTS.park;
-
   return (
     <WaterPageFrame
-      title="Georgetown water hardness"
+      title="Georgetown water is hard. How hard depends on which plant serves you."
       lastReviewed={LAST_REVIEWED}
       crumbs={[
         { href: "/", label: "Home" },
         { href: PATH, label: "Water hardness" },
       ]}
     >
-      <FAQSchema pageUrl={absolutePageUrl(PATH)} name="Georgetown water hardness FAQ" faqs={faqs} />
-
       <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
-        Georgetown Utility Systems publishes hardness by treatment plant, not as a single citywide number. Homes on{" "}
-        {south.label} see {south.usgsClass.toLowerCase()} water. Homes on {park.label} see {park.usgsClass.toLowerCase()}{" "}
-        water. Use the plant pages for the cited ranges, then decide whether a plumber, a Water Treatment Specialist, or
-        neither is the next step.
+        There is no single hardness number for Georgetown. The city treats water at more than one plant, and the
+        finished water coming out of them is not the same.
+      </p>
+      <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">From the city&apos;s own published numbers:</p>
+      <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">
+        Water from {south.proseLabel} runs {plantMgL(south)} of hardness as calcium carbonate. That is roughly{" "}
+        {plantGpg(south)}.
+      </p>
+      <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">
+        Water from {park.proseLabel} runs {plantMgL(park)}. That is roughly {plantGpg(park)}.
+      </p>
+      <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">
+        USGS calls anything from {usgsHardRange()} hard, and anything above {usgsVeryHardThreshold()} very hard. So one
+        side of town sits at the top of the hard range, and the other sits well into very hard at close to double the
+        mineral load. Same city, same water bill, different water.
       </p>
 
-      <WaterPlantTable />
+      <h2 className="mt-10 text-2xl font-semibold tracking-tight text-ink">Why the gap matters before you spend money</h2>
+      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
+        Softener sizing is arithmetic, and grains per gallon is the input. Get the input wrong and everything downstream
+        is wrong.
+      </p>
+      <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">
+        Size a unit for {park.gpgHigh} grains when your house is actually on {south.gpgLow} and you bought more capacity
+        than you need and you will run more salt through it than you need. Size for {south.gpgLow} when you are actually
+        on {park.gpgHigh} and the unit regenerates far more often than it was built to, which burns salt, burns water,
+        and shortens resin life.
+      </p>
+      <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">
+        A salesman standing in your kitchen does not know which plant is feeding your street unless he asks. Most do
+        not ask.
+      </p>
 
-      <section className="mt-10">
-        <h2 className="text-2xl font-semibold tracking-tight text-ink">Treatment plants</h2>
-        <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted">
-          <li>
-            <Link href={`/water/${south.slug}`} className="font-semibold text-brand hover:underline">
-              {south.label}
-            </Link>
-            {" — "}
-            {plantMgL(south)}, {plantGpg(south)}
-          </li>
-          <li>
-            <Link href={`/water/${park.slug}`} className="font-semibold text-brand hover:underline">
-              {park.label}
-            </Link>
-            {" — "}
-            {plantMgL(park)}, {plantGpg(park)}
-          </li>
-        </ul>
-      </section>
+      <h2 className="mt-10 text-2xl font-semibold tracking-tight text-ink">Find out which band you are in</h2>
+      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
+        Start with the free lookup. Tell us your street and we tell you which band the city numbers put you in, or we
+        tell you honestly that we cannot pin it and show you both.
+      </p>
+      <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">
+        If you want the math done for your house, the paid spec is {formatUsd(WATER_SPEC.priceUsd)}. It takes your band,
+        your household size, and your current setup, runs the sizing formula in front of you instead of hiding it, and
+        gives you the questions to ask before you sign anything.
+      </p>
+      <WaterCtaRow showLookup showSpec />
 
-      <section className="mt-10">
-        <h2 className="text-2xl font-semibold tracking-tight text-ink">USGS hardness classes</h2>
-        <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted">
-          {USGS_BANDS.map((band) => (
-            <li key={band.label}>{formatUsgsBand(band)}</li>
-          ))}
-        </ul>
-      </section>
+      <h2 className="mt-10 text-2xl font-semibold tracking-tight text-ink">What we are not going to tell you</h2>
+      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
+        Hard water is not unsafe water. Hardness is calcium and magnesium. It is a scale and appliance problem, not a
+        contamination problem, and the city publishes its compliance reports separately.
+      </p>
+      <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">
+        If someone knocks on your door, runs a quick test in your sink, and tells you your water is dangerous, that is a
+        sales script. We do not do that, and neither should anyone we would list.
+      </p>
 
-      <section className="mt-10">
-        <h2 className="text-2xl font-semibold tracking-tight text-ink">System mineral ranges</h2>
-        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
-          The same city article lists recent mineral content as ranges, not street-level tests:
-        </p>
-        <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted">
-          <li>Calcium: {SYSTEM_RANGES.calcium}</li>
-          <li>Magnesium: {SYSTEM_RANGES.magnesium}</li>
-          <li>Sodium: {SYSTEM_RANGES.sodium}</li>
-          <li>Sulfate: {SYSTEM_RANGES.sulfate}</li>
-          <li>Total dissolved solids: {SYSTEM_RANGES.tds}</li>
-          <li>Alkalinity: {SYSTEM_RANGES.alkalinity}</li>
-        </ul>
-      </section>
-
-      <section className="mt-10">
-        <h2 className="text-2xl font-semibold tracking-tight text-ink">What this site will and will not do</h2>
-        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
-          These pages explain published figures, chloramine and resin trade-offs, and what belongs in a written
-          treatment spec. Daily household use in sizing math is {formatGallonsPerPersonPerDay()} per person. We do not
-          sell rankings, run door-to-door tests, or install equipment.
-        </p>
-        <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed">
-          <li>
-            <Link href="/water/how-we-source" className="font-semibold text-brand hover:underline">
-              How we source the numbers
-            </Link>
-          </li>
-          <li>
-            <Link href="/water/chloramine-and-resin" className="font-semibold text-brand hover:underline">
-              Chloramine and resin
-            </Link>
-          </li>
-          <li>
-            <Link href="/water/spec-what-you-get" className="font-semibold text-brand hover:underline">
-              What a written spec should include
-            </Link>
-          </li>
-        </ul>
-      </section>
-
-      <WaterPlumberCta />
-
-      <FAQList faqs={faqs} className="mt-10" />
+      <SourceBlock includeUsgsNote />
     </WaterPageFrame>
   );
 }

@@ -14,6 +14,7 @@ export const PLANTS = {
   southlake: {
     slug: "georgetown-southlake",
     label: "Lake Georgetown and Southlake WTP",
+    proseLabel: "Lake Georgetown and the Southlake plant",
     mglLow: 176,
     mglHigh: 178,
     gpgLow: 10,
@@ -23,6 +24,7 @@ export const PLANTS = {
   park: {
     slug: "georgetown-park-plant",
     label: "Park Plant and Southside WTP",
+    proseLabel: "the Park plant and the Southside plant",
     mglLow: 309,
     mglHigh: 320,
     gpgLow: 19,
@@ -55,7 +57,17 @@ export const SYSTEM_RANGES = {
 export const MGL_PER_GRAIN = 17.1;
 export const GALLONS_PER_PERSON_PER_DAY = 75;
 
-export const WATER_HUB_PATH = "/water";
+export const WATER_SPEC = {
+  priceUsd: 79,
+  refreshUsd: 49,
+} as const;
+
+export const SIZING_EXAMPLES = {
+  peopleFour: 4,
+  peopleTwo: 2,
+  regenDaysLow: 3,
+  regenDaysHigh: 4,
+} as const;
 
 export const WATER_SITEMAP_PATHS = [
   "/water",
@@ -67,46 +79,65 @@ export const WATER_SITEMAP_PATHS = [
   "/water/spec",
 ] as const;
 
-export function getPlantByKey(key: WaterPlantKey): WaterPlant {
-  return PLANTS[key];
+function usgsBand(label: UsgsBand["label"]): UsgsBand {
+  const band = USGS_BANDS.find((b) => b.label === label);
+  if (!band) throw new Error(`missing USGS band: ${label}`);
+  return band;
 }
 
-export function getPlantBySlug(slug: string): WaterPlant | undefined {
-  return (Object.values(PLANTS) as WaterPlant[]).find((p) => p.slug === slug);
+export function formatToRange(low: number, high: number): string {
+  if (low === high) return String(low);
+  return `${low} to ${high}`;
 }
 
-export function formatMgLRange(low: number, high: number): string {
-  return `${low}\u2013${high} mg/L as CaCO3`;
+export function formatMgLTo(low: number, high: number): string {
+  return `${formatToRange(low, high)} mg/L`;
 }
 
-export function formatGpgRange(low: number, high: number): string {
-  if (low === high) return `${low} gpg`;
-  return `${low}\u2013${high} gpg`;
+export function formatGpgTo(low: number, high: number): string {
+  const n = formatToRange(low, high);
+  const grain = low === high && high === 1 ? "grain" : "grains";
+  return `${n} ${grain} per gallon`;
 }
 
 export function plantMgL(plant: WaterPlant): string {
-  return formatMgLRange(plant.mglLow, plant.mglHigh);
+  return formatMgLTo(plant.mglLow, plant.mglHigh);
 }
 
 export function plantGpg(plant: WaterPlant): string {
-  return formatGpgRange(plant.gpgLow, plant.gpgHigh);
+  return formatGpgTo(plant.gpgLow, plant.gpgHigh);
 }
 
-export function formatUsgsBand(band: UsgsBand): string {
-  if (band.high === null) {
-    return `${band.label}: greater than ${band.low} mg/L as CaCO3`;
-  }
-  return `${band.label}: ${band.low}\u2013${band.high} mg/L as CaCO3`;
+export function usgsHardRange(): string {
+  const band = usgsBand("Hard");
+  if (band.high === null) throw new Error("Hard band missing high");
+  return formatMgLTo(band.low, band.high);
+}
+
+export function usgsVeryHardThreshold(): string {
+  return `${usgsBand("Very hard").low} mg/L`;
 }
 
 export function formatMglPerGrain(): string {
   return `${MGL_PER_GRAIN} mg/L`;
 }
 
-export function formatGallonsPerPersonPerDay(): string {
-  return `${GALLONS_PER_PERSON_PER_DAY} gallons`;
-}
-
 export function formatArticleId(): string {
   return String(WATER_SOURCE.articleId);
+}
+
+export function formatUsd(amount: number): string {
+  return `$${amount}`;
+}
+
+export function formatInt(n: number): string {
+  return n.toLocaleString("en-US");
+}
+
+export function grainsPerDay(gpg: number, people: number): number {
+  return gpg * people * GALLONS_PER_PERSON_PER_DAY;
+}
+
+export function grainCapacity(gpg: number, people: number, days: number): number {
+  return grainsPerDay(gpg, people) * days;
 }

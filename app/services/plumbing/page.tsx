@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ButtonLink } from "../../../components/Button";
 import Container from "../../../components/Container";
 import LinkCard from "../../../components/LinkCard";
 import TradeHubSubServiceLinks from "../../../components/TradeHubSubServiceLinks";
 import ServiceHubPricingSection from "../../../components/ServiceHubPricingSection";
 import JsonLd from "../../../components/JsonLd";
+import { PLANTS, plantGpg } from "../../../data/water";
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
 import LastUpdated from "../../../components/LastUpdated";
@@ -58,18 +60,24 @@ export default function PlumbingHubPage() {
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">Plumbing in Georgetown, TX</h1>
               <LastUpdated lastUpdated={lastUpdated} />
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
-                Georgetown plumbing calls often involve water heaters, scale, and fixtures that work harder because city
-                hardness differs by treatment plant. Read the published hardness by plant, then use these pages for
-                common issues, cost drivers, and what to ask before you hire. Compare companies in the directory and
-                contact providers directly.
+                Every plumber on this page has been checked against the Texas State Board of Plumbing Examiners before
+                being listed. Nobody pays to appear here and nobody pays for position.
               </p>
+              <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
+                One thing worth knowing before you call anyone about scale, a failing water heater, or a softener quote:
+                Georgetown water hardness is not the same across the city. Water from {PLANTS.southlake.proseLabel} runs
+                about {plantGpg(PLANTS.southlake)}. Water from {PLANTS.park.proseLabel} runs about {PLANTS.park.gpgHigh}.
+                A quote sized for the wrong number is a quote for the wrong equipment.
+              </p>
+              <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
+                Run the spec before you call, and you will know which number applies to you.
+              </p>
+              <div className="mt-4">
+                <ButtonLink href="/water" className="text-sm">
+                  Check your water hardness band, free
+                </ButtonLink>
+              </div>
               <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
-                <Link href="/water" className="text-brand hover:underline">
-                  Georgetown water hardness
-                </Link>
-                <span className="text-muted" aria-hidden>
-                  ·
-                </span>
                 <Link href="/best/best-plumbers-georgetown-tx" className="text-brand hover:underline">
                   Compare Georgetown Plumbers
                 </Link>
@@ -128,6 +136,12 @@ export default function PlumbingHubPage() {
                 </div>
               </section>
             ) : null}
+
+            <p className="text-sm leading-relaxed">
+              <Link href="/water" className="font-semibold text-brand hover:underline">
+                More on Georgetown water hardness by plant
+              </Link>
+            </p>
           </div>
         </section>
       </Container>
