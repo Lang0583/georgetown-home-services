@@ -328,6 +328,9 @@ export default function SiteFooter() {
             <Link className={footerBarLinkClass} href="/costs">
               Cost guides
             </Link>
+            <Link className={footerBarLinkClass} href="/water">
+              Water hardness
+            </Link>
             <Link className={footerBarLinkClass} href="/compare">
               Compare
             </Link>

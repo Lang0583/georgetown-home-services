@@ -87,6 +87,11 @@ const nextConfig: NextConfig = {
         destination: "/services/hvac",
         permanent: true,
       },
+      {
+        source: "/plumbing",
+        destination: "/services/plumbing",
+        permanent: true,
+      },
       // Legacy gated PDF paths (email capture) → seasonal hub. Static HVAC guide is exempt.
       {
         source: "/downloads/:filename((?!hvac-texas-heat-guide).*\\.pdf)",

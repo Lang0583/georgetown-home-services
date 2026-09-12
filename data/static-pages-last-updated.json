@@ -11,6 +11,13 @@
   "/services/house-cleaning": "2026-07-01",
   "/best": "2026-07-01",
   "/costs": "2026-07-01",
+  "/water": "2026-09-12",
+  "/water/georgetown-southlake": "2026-09-12",
+  "/water/georgetown-park-plant": "2026-09-12",
+  "/water/how-we-source": "2026-09-12",
+  "/water/chloramine-and-resin": "2026-09-12",
+  "/water/spec-what-you-get": "2026-09-12",
+  "/water/spec": "2026-09-12",
   "/privacy-policy": "2026-09-03",
   "/terms": "2026-09-03"
 }

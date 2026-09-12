@@ -58,10 +58,18 @@ export default function PlumbingHubPage() {
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">Plumbing in Georgetown, TX</h1>
               <LastUpdated lastUpdated={lastUpdated} />
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
-                Use these pages to understand common Georgetown plumbing issues (clogs, leaks, water heaters), what affects cost, and what to ask
-                before you hire. When you’re ready, compare companies in the directory and contact providers directly.
+                Georgetown plumbing calls often involve water heaters, scale, and fixtures that work harder because city
+                hardness differs by treatment plant. Read the published hardness by plant, then use these pages for
+                common issues, cost drivers, and what to ask before you hire. Compare companies in the directory and
+                contact providers directly.
               </p>
               <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
+                <Link href="/water" className="text-brand hover:underline">
+                  Georgetown water hardness
+                </Link>
+                <span className="text-muted" aria-hidden>
+                  ·
+                </span>
                 <Link href="/best/best-plumbers-georgetown-tx" className="text-brand hover:underline">
                   Compare Georgetown Plumbers
                 </Link>

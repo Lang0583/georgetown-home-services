@@ -25,6 +25,7 @@ import {
 import { TEXAS_SEASON_ORDER } from "@/lib/texas-seasons";
 import { COMPARISON_SLUGS } from "@/data/comparisons";
 import { GEORGETOWN_ZIP_CODES } from "@/data/zip-codes";
+import { WATER_SITEMAP_PATHS } from "@/data/water";
 import {
   CATEGORY_TO_BEST_SLUG,
   getAllProviderSlugs,
@@ -92,6 +93,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     { path: "/pricing", priority: 0.7 },
     { path: "/costs", priority: 0.85 },
     { path: "/seasonal", priority: 0.8 },
+    ...WATER_SITEMAP_PATHS.map((path) => ({ path, priority: path === "/water" ? 0.8 : 0.7 })),
     { path: "/about", priority: 0.5 },
     { path: AUTHOR_PROFILE_PATH, priority: 0.5 },
     { path: "/methodology", priority: 0.5 },

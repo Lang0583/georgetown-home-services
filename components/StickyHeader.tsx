@@ -13,6 +13,7 @@ const PRIMARY_NAV: SiteNavLink[] = [
   { href: "/best", label: "Best Of" },
   { href: "/costs", label: "Costs" },
   { href: "/seasonal", label: "Seasonal" },
+  { href: "/water", label: "Water hardness" },
   { href: "/blog", label: "Blog" },
   { href: "/compare", label: "Compare" },
   { href: "/pricing", label: "Pricing" },

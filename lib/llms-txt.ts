@@ -41,6 +41,7 @@ Markdown mirrors: ${base}/methodology.md · ${base}/reports/williamson-county-li
 
 - [Drought home maintenance](${base}/blog/drought-home-maintenance-georgetown-tx): Watering rules, clay-soil foundations, lawn survival (links to city + AgriLife sources)
 - [After-hail roof checklist](${base}/blog/after-hail-roof-checklist-georgetown-tx)
+- [Water hardness](${base}/water): Georgetown Utility Systems hardness by treatment plant (Southlake vs Park Plant)
 
 ## Trust
 
