@@ -8,6 +8,10 @@ import JsonLd from "../../../components/JsonLd";
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
 import LastUpdated from "../../../components/LastUpdated";
+import KeyTakeaways from "../../../components/KeyTakeaways";
+import SourcesVerificationStrip from "../../../components/SourcesVerificationStrip";
+import SpeakableJsonLd from "../../../components/SpeakableJsonLd";
+import { tradeHubTakeaways } from "../../../lib/ai-seo-takeaways";
 import { webPageWithDateModifiedJsonLd } from "../../../lib/last-updated";
 import { getStaticPageLastUpdated } from "../../../lib/static-pages-last-updated";
 import { showExtendedHomeServices } from "../../../lib/public-site-scope";
@@ -53,6 +57,8 @@ export default function FoundationHubPage() {
               <div className="text-sm font-semibold uppercase tracking-wide text-muted">Services</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">Foundation Repair in Georgetown, TX</h1>
               <LastUpdated lastUpdated={lastUpdated} />
+              <SpeakableJsonLd />
+              <KeyTakeaways items={tradeHubTakeaways("foundation")} speakable />
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
                 Expansive clay around Georgetown means foundation conversations should include moisture swings, drainage, and measured movement—not
                 guesswork from a single crack photo. Use these pages to learn warning signs, then compare contractors with clear scopes and warranty
@@ -109,6 +115,7 @@ export default function FoundationHubPage() {
             ) : null}
 
             <TradeHubSubServiceLinks parentHubPath="/services/foundation" />
+            <SourcesVerificationStrip />
           </div>
         </section>
       </Container>

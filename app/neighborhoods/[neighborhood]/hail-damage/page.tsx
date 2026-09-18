@@ -10,6 +10,7 @@ import HubRelatedLinks from "@/components/HubRelatedLinks";
 import JsonLd from "@/components/JsonLd";
 import LastUpdated from "@/components/LastUpdated";
 import KeyTakeaways from "@/components/KeyTakeaways";
+import SpeakableJsonLd from "@/components/SpeakableJsonLd";
 import SourcesVerificationStrip from "@/components/SourcesVerificationStrip";
 import PageShell from "@/components/templates/PageShell";
 import {
@@ -102,6 +103,7 @@ export default async function NeighborhoodHailDamagePage({
         <LastUpdated lastUpdated={page.lastUpdated} />
         <AuthorByline className="mt-3" compact />
 
+        <SpeakableJsonLd />
         <KeyTakeaways items={hailTakeaways(page.neighborhoodName)} speakable />
 
         <div

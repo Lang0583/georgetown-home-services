@@ -7,6 +7,9 @@ import FAQList from "@/components/FAQList";
 import FAQSchema from "@/components/FAQSchema";
 import JsonLd from "@/components/JsonLd";
 import LastUpdated from "@/components/LastUpdated";
+import KeyTakeaways from "@/components/KeyTakeaways";
+import SourcesVerificationStrip from "@/components/SourcesVerificationStrip";
+import SpeakableJsonLd from "@/components/SpeakableJsonLd";
 import NeighborhoodHomeServicesAngiRow from "@/components/NeighborhoodHomeServicesAngiRow";
 import PageShell from "@/components/templates/PageShell";
 import PricingEstimatorInteractive from "@/components/PricingEstimatorInteractive";
@@ -16,6 +19,7 @@ import {
   neighborhoodHomeServicesHubStaticParams,
 } from "@/data/neighborhood-home-services-hubs";
 import { neighborhoodHubCrossLinks } from "@/lib/hub-cross-links";
+import { neighborhoodHomeServicesTakeaways } from "@/lib/ai-seo-takeaways";
 import { buildNeighborhoodHomeServicesHubFaqs } from "@/lib/georgetown-page-faqs";
 import { linkifyProviderNamesInHtml } from "@/lib/internalLinks";
 import { absolutePageUrl, pageSeoMetadata } from "@/lib/page-seo";
@@ -119,6 +123,8 @@ export default async function NeighborhoodHomeServicesHubPage({
         </p>
         <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">{hub.h1}</h1>
         <LastUpdated lastUpdated={hub.lastUpdated} />
+        <SpeakableJsonLd />
+        <KeyTakeaways items={neighborhoodHomeServicesTakeaways(hub.neighborhoodName)} speakable />
         <AuthorByline className="mt-3" compact />
 
         <div
@@ -180,6 +186,7 @@ export default async function NeighborhoodHomeServicesHubPage({
             className="!mt-4"
           />
         </section>
+        <SourcesVerificationStrip compact />
       </section>
     </PageShell>
   );

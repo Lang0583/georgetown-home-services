@@ -8,6 +8,10 @@ import JsonLd from "../../../components/JsonLd";
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
 import LastUpdated from "../../../components/LastUpdated";
+import KeyTakeaways from "../../../components/KeyTakeaways";
+import SourcesVerificationStrip from "../../../components/SourcesVerificationStrip";
+import SpeakableJsonLd from "../../../components/SpeakableJsonLd";
+import { tradeHubTakeaways } from "../../../lib/ai-seo-takeaways";
 import { webPageWithDateModifiedJsonLd } from "../../../lib/last-updated";
 import { getStaticPageLastUpdated } from "../../../lib/static-pages-last-updated";
 import { showExtendedHomeServices } from "../../../lib/public-site-scope";
@@ -53,6 +57,8 @@ export default function ElectricalHubPage() {
               <div className="text-sm font-semibold uppercase tracking-wide text-muted">Services</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">Electrical in Georgetown, TX</h1>
               <LastUpdated lastUpdated={lastUpdated} />
+              <SpeakableJsonLd />
+              <KeyTakeaways items={tradeHubTakeaways("electrical")} speakable />
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
                 Use these pages to understand when electrical work is safety-critical, what belongs in a written scope, and how to compare licensed
                 electricians serving Georgetown. When you are ready, compare companies in the directory and contact providers directly.
@@ -114,6 +120,7 @@ export default function ElectricalHubPage() {
             ) : null}
 
             <TradeHubSubServiceLinks parentHubPath="/services/electrical" />
+            <SourcesVerificationStrip />
           </div>
         </section>
       </Container>

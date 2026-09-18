@@ -2,6 +2,8 @@ import SourceBlock from "@/components/water/SourceBlock";
 import WaterCtaRow from "@/components/water/WaterCtaRow";
 import WaterPageFrame from "@/components/water/WaterPageFrame";
 import WaterQuoteQuestions from "@/components/water/WaterQuoteQuestions";
+import KeyTakeaways from "@/components/KeyTakeaways";
+import SpeakableJsonLd from "@/components/SpeakableJsonLd";
 import {
   GALLONS_PER_PERSON_PER_DAY,
   PLANTS,
@@ -16,6 +18,7 @@ import {
   plantMgL,
   usgsHardRange,
 } from "@/data/water";
+import { waterPlantTakeaways } from "@/lib/ai-seo-takeaways";
 import { pageSeoMetadata } from "@/lib/page-seo";
 
 const LAST_REVIEWED = "2026-09-12";
@@ -49,6 +52,8 @@ export default function GeorgetownSouthlakeWaterPage() {
         { href: PATH, label: "Southlake plant" },
       ]}
     >
+      <SpeakableJsonLd />
+      <KeyTakeaways items={waterPlantTakeaways("southlake")} speakable />
       <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
         That works out to roughly {plantGpg(plant)}. On the USGS scale that lands in the hard band, which runs{" "}
         {usgsHardRange()}, and it sits right at the top of it.

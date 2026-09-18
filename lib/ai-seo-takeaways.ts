@@ -74,6 +74,150 @@ export function hailTakeaways(neighborhoodLabel: string): string[] {
   ];
 }
 
+export type TradeHubKey =
+  | "plumbing"
+  | "hvac"
+  | "roofing"
+  | "electrical"
+  | "landscaping"
+  | "pest-control"
+  | "foundation"
+  | "house-cleaning";
+
+const TRADE_HUB_COPY: Record<
+  TradeHubKey,
+  { label: string; bestPath: string; licenseBoard: string; localFact: string }
+> = {
+  plumbing: {
+    label: "plumbing",
+    bestPath: "/best/best-plumbers-georgetown-tx",
+    licenseBoard: "Texas State Board of Plumbing Examiners (TSBPE)",
+    localFact:
+      "Georgetown water hardness differs by treatment plant (Southlake ~10–11 gpg vs Park Plant ~19 gpg)—size softeners and heaters for the correct band.",
+  },
+  hvac: {
+    label: "HVAC",
+    bestPath: "/best/top-hvac-companies-georgetown-tx",
+    licenseBoard: "Texas Department of Licensing and Regulation (TDLR) ACR",
+    localFact:
+      "Georgetown summers regularly push triple-digit heat; attic equipment and peak-season capacitor/coil failures dominate local call volume May–September.",
+  },
+  roofing: {
+    label: "roofing",
+    bestPath: "/best/best-roofers-georgetown-tx",
+    licenseBoard: "Texas does not issue a statewide roofing license—verify insurance and written scopes",
+    localFact:
+      "Williamson County hail and wind seasons drive most roof inspections; compare photo-documented scopes, not door-hanger slogans.",
+  },
+  electrical: {
+    label: "electrical",
+    bestPath: "/best/best-electricians-georgetown-tx",
+    licenseBoard: "Texas Department of Licensing and Regulation (TDLR)",
+    localFact:
+      "EV chargers and heat-pump loads are pushing older 100–150A panels past comfort in renovated Georgetown homes.",
+  },
+  landscaping: {
+    label: "landscaping",
+    bestPath: "/best/best-landscaping-companies-georgetown-tx",
+    licenseBoard: "irrigation and pesticide work may require TCEQ / TDA credentials where applicable",
+    localFact:
+      "Central Texas drought rules and oak wilt–aware pruning change summer maintenance scopes more than a generic lawn-care checklist.",
+  },
+  "pest-control": {
+    label: "pest control",
+    bestPath: "/best/best-pest-control-georgetown-tx",
+    licenseBoard: "Texas Department of Agriculture Structural Pest Control Service (TDA SPCS)",
+    localFact:
+      "Subterranean termite pressure around expansive clay and slab edges is a recurring Georgetown inspection theme.",
+  },
+  foundation: {
+    label: "foundation repair",
+    bestPath: "/best/best-foundation-repair-georgetown-tx",
+    licenseBoard: "confirm engineering reports and written pier scopes—Texas does not use a single consumer foundation license badge",
+    localFact:
+      "Expansive clay shrink–swell cycles after drought-to-rain swings commonly open stair-step and horizontal cracks across Sun City and older slabs.",
+  },
+  "house-cleaning": {
+    label: "house cleaning",
+    bestPath: "/best/best-house-cleaning-services-georgetown-tx",
+    licenseBoard: "Texas does not license residential cleaners statewide—verify insurance and written service scopes",
+    localFact:
+      "Hard-water film and pollen loads differ by neighborhood; ask whether quotes include appliances, baseboards, and hard-water fixtures.",
+  },
+};
+
+/** Key takeaways for `/services/{trade}` hubs. */
+export function tradeHubTakeaways(trade: TradeHubKey): string[] {
+  const t = TRADE_HUB_COPY[trade];
+  return [
+    `Georgetown Home Services ${t.label} guides help homeowners compare local providers using public ratings and Texas license checks where the trade requires them.`,
+    `License verification for listed companies uses ${t.licenseBoard}.`,
+    t.localFact,
+    `Start with the Best Of shortlist at ${t.bestPath}, then compare written scopes—not paid rankings.`,
+  ];
+}
+
+/** Key takeaways for the water hardness hub and plant pages. */
+export function waterHubTakeaways(): string[] {
+  return [
+    "Georgetown has no single hardness number—finished water differs by treatment plant.",
+    "Lake Georgetown / Southlake plant water runs about 176–178 mg/L as CaCO₃ (~10–11 grains per gallon).",
+    "Park Plant / Southside plant water runs about 309–320 mg/L as CaCO₃ (~19 grains per gallon).",
+    "USGS calls 121–180 mg/L hard and above 180 mg/L very hard—so one side of town is hard and the other is very hard.",
+    "Softener sizing is arithmetic on grains per gallon; using the wrong plant band wastes salt or shortens resin life.",
+  ];
+}
+
+export function waterPlantTakeaways(plant: "southlake" | "park"): string[] {
+  if (plant === "southlake") {
+    return [
+      "If your street is on Lake Georgetown / Southlake plant water, plan around ~10–11 grains per gallon (176–178 mg/L as CaCO₃).",
+      "USGS classifies this band as hard—scale still builds, but capacity needs differ from Park Plant homes.",
+      "Ask any softener quote which plant band they assumed; most door-to-door scripts do not.",
+      "Figures come from the City of Georgetown published Ask GTX article—not a sink demo.",
+    ];
+  }
+  return [
+    "If your street is on Park Plant / Southside plant water, plan around ~19 grains per gallon (309–320 mg/L as CaCO₃).",
+    "USGS classifies this band as very hard—nearly double the mineral load of Southlake plant water.",
+    "Undersizing for ~10 gpg when you are actually near 19 gpg drives excess regenerations and salt use.",
+    "Figures come from the City of Georgetown published Ask GTX article—not a sink demo.",
+  ];
+}
+
+export function homepageTakeaways(): string[] {
+  return [
+    "Georgetown Home Services is an independent local directory—providers do not pay for ranking or placement.",
+    "Where Texas licenses a trade, listed companies are checked against TSBPE, TDLR, or TDA SPCS public records.",
+    "Cost guides publish Williamson County planning bands, not contractor quotes—compare two written scopes before you hire.",
+    "Georgetown water hardness differs by treatment plant; check /water before sizing a softener or blaming a plumber for scale.",
+  ];
+}
+
+export function seasonalTakeaways(seasonLabel: string): string[] {
+  return [
+    `${seasonLabel} maintenance in Georgetown should prioritize HVAC, roofing after storms, and irrigation/drought rules—not a generic national checklist.`,
+    "Use the seasonal task list as a planning aid, then open the matching trade hub for provider shortlists and cost bands.",
+    "License-checked providers appear on Best Of pages; directory placement cannot be bought.",
+  ];
+}
+
+export function neighborhoodHomeServicesTakeaways(neighborhoodLabel: string): string[] {
+  return [
+    `${neighborhoodLabel} homeowners should compare plumbers, HVAC, and roofers using Georgetown-specific cost bands and license checks—not national lead forms.`,
+    "Housing age, HOA rules, and storm exposure differ by neighborhood; ask contractors about local scope assumptions in writing.",
+    "Start from the trade hubs and Best Of shortlists, then confirm current licensing and availability directly.",
+  ];
+}
+
+export function zipTakeaways(zipcode: string): string[] {
+  return [
+    `ZIP ${zipcode} sits inside Georgetown / Williamson County home-service markets covered by this directory.`,
+    "Use ZIP context for housing-stock clues, then open trade hubs and Best Of pages for license-checked providers.",
+    "Cost bands are planning estimates for the metro—get address-specific written quotes before you hire.",
+  ];
+}
+
 /** Unique local facts AI engines can’t invent from national templates. */
 export const LOCAL_FACTS_BY_COST_SLUG: Record<string, string> = {
   "plumber-cost-georgetown-tx":
@@ -90,6 +234,24 @@ export const LOCAL_FACTS_BY_COST_SLUG: Record<string, string> = {
     "Mature trees near Berry Creek and older clay laterals make recurring backups a camera/root issue, not always a simple cable cleanout.",
   "water-heater-installation-cost-georgetown-tx":
     "Hard water shortens tank life across 78633/78628; many closed municipal systems expect expansion tanks on replacements.",
+  "electrician-cost-georgetown-tx":
+    "Panel upgrades often pair with EV chargers and heat-pump loads in renovated Georgetown homes—quotes should include permit and load calc language.",
+  "panel-upgrade-cost-georgetown-tx":
+    "Older 100–150A services in central Georgetown frequently need upgrades before whole-home heat pumps or Level 2 EV circuits.",
+  "landscaping-cost-georgetown-tx":
+    "Drought restrictions and oak wilt–aware pruning change Central Texas landscaping scopes more than a national lawn package.",
+  "lawn-care-cost-georgetown-tx":
+    "St. Augustine and Bermuda stress under Georgetown summer heat and watering rules—recurring mow quotes should state irrigation handling.",
+  "pest-control-cost-georgetown-tx":
+    "Slab-edge termite pressure on expansive clay is a common Georgetown add-on beyond general pest routes.",
+  "termite-treatment-cost-georgetown-tx":
+    "Confirm TDA SPCS licensing and whether the quote is bait, liquid barrier, or wood treatment—scopes differ widely on Georgetown slabs.",
+  "foundation-repair-cost-georgetown-tx":
+    "Drought-to-rain clay cycles around Sun City and older slabs drive pier counts and drainage scopes more than cosmetic crack filler.",
+  "house-cleaning-cost-georgetown-tx":
+    "Hard-water film and pollen loads vary by plant band and neighborhood—clarify whether quotes include fixtures and baseboards.",
+  "hvac-maintenance-cost-georgetown-tx":
+    "Twice-yearly tune-ups matter more here because cooling season runs long; filters and coils foul faster under Georgetown pollen and attic heat.",
 };
 
 export const LOCAL_FACTS_BY_CATEGORY: Partial<Record<ProviderCategory, string>> = {
@@ -101,8 +263,12 @@ export const LOCAL_FACTS_BY_CATEGORY: Partial<Record<ProviderCategory, string>> 
     "Hail and wind events in Williamson County are the main driver of roof inspections and replacements—not just shingle age.",
   electrical:
     "EV chargers and heat-pump loads are pushing older 100–150A panels past comfort in renovated Georgetown homes.",
+  landscaping:
+    "Drought rules and oak wilt–aware pruning change Georgetown landscaping scopes more than generic metro packages.",
   "pest-control":
     "Subterranean termite pressure around expansive clay and slab edges is a recurring Georgetown inspection theme.",
   foundation:
     "Expansive clay shrink–swell cycles after drought-to-rain swings commonly open stair-step and horizontal cracks.",
+  cleaning:
+    "Hard-water film and seasonal pollen loads differ by neighborhood and treatment plant band.",
 };

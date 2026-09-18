@@ -1,6 +1,8 @@
 import SourceBlock from "@/components/water/SourceBlock";
 import WaterCtaRow from "@/components/water/WaterCtaRow";
 import WaterPageFrame from "@/components/water/WaterPageFrame";
+import KeyTakeaways from "@/components/KeyTakeaways";
+import SpeakableJsonLd from "@/components/SpeakableJsonLd";
 import {
   PLANTS,
   WATER_SPEC,
@@ -10,6 +12,7 @@ import {
   usgsHardRange,
   usgsVeryHardThreshold,
 } from "@/data/water";
+import { waterHubTakeaways } from "@/lib/ai-seo-takeaways";
 import { pageSeoMetadata } from "@/lib/page-seo";
 
 const LAST_REVIEWED = "2026-09-12";
@@ -36,6 +39,8 @@ export default function WaterHubPage() {
         { href: PATH, label: "Water hardness" },
       ]}
     >
+      <SpeakableJsonLd />
+      <KeyTakeaways items={waterHubTakeaways()} speakable />
       <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
         There is no single hardness number for Georgetown. The city treats water at more than one plant, and the
         finished water coming out of them is not the same.

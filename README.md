@@ -70,9 +70,9 @@ The Sheet URL (your Drive link) is the place you open to see emails. The Web app
 ## AI SEO / GEO
 
 - **Crawler policy:** `app/robots.ts` explicitly allows retrieval bots (OAI-SearchBot, PerplexityBot, Claude-SearchBot, …), allows training bots, and blocks CCBot/Bytespider/Diffbot.
-- **Citation packaging:** `KeyTakeaways` + `SourcesVerificationStrip` on cost, Best Of, hail, compare, and provider pages.
-- **Schema:** cost-guide AggregateOffer catalogs, HowTo on key blogs, Speakable on homepage/cost FAQs, compare ItemList.
-- **Discovery:** `/llms.txt`, `/methodology.md`, `/reports/williamson-county-license-check.md`.
+- **Citation packaging:** `KeyTakeaways` + `SourcesVerificationStrip` + `SpeakableJsonLd` on cost, Best Of, compare, hail, trade hubs, core service guides, water plant pages, homepage, seasonal, neighborhood hubs, and ZIP pages.
+- **Schema:** cost-guide AggregateOffer catalogs, HowTo on key blogs/seasonal, SpeakableSpecification on takeaway blocks.
+- **Discovery:** `/llms.txt` (all Best Of, all cost guides, trade hubs, water, neighborhoods), plus Markdown mirrors `/methodology.md`, `/best.md`, `/costs.md`, `/water.md`, `/reports/williamson-county-license-check.md`.
 - **Measurement:** `AiReferralTracker` fires GA4 `ai_referral` from ChatGPT/Perplexity/Claude/Copilot/Gemini referrers.
 - **Entity sameAs:** set `NEXT_PUBLIC_GOOGLE_BUSINESS_PROFILE_URL`, `NEXT_PUBLIC_FACEBOOK_PAGE_URL`, `NEXT_PUBLIC_AUTHOR_SAME_AS`, etc. in `.env.local`.
 
