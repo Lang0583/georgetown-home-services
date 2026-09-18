@@ -14,7 +14,6 @@ import {
   type WaterPlantKey,
 } from "@/data/water";
 import { trackEvent } from "@/lib/analytics";
-import { getContact } from "@/lib/site-content";
 
 const inputClass =
   "mt-1 w-full rounded-lg border border-ink/10 bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20";
@@ -40,9 +39,8 @@ function isLookupArea(value: string): value is WaterLookupArea {
   return (Object.values(LOOKUP_AREAS) as string[]).includes(value);
 }
 
-export default function WaterPlantLookup() {
+export default function WaterPlantLookup({ contactEmail }: { contactEmail: string }) {
   const baseId = useId();
-  const contact = getContact();
   const south = PLANTS.southlake;
   const park = PLANTS.park;
 
@@ -63,7 +61,7 @@ export default function WaterPlantLookup() {
     }
     if (!isLookupArea(area)) {
       setError(
-        `Pick where the home is, then try again. If this keeps failing, email ${contact.email} with your ZIP and we will point you to the plant pages.`,
+        `Pick where the home is, then try again. If this keeps failing, email ${contactEmail} with your ZIP and we will point you to the plant pages.`,
       );
       return;
     }

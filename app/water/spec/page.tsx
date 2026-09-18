@@ -3,6 +3,7 @@ import WaterPageFrame from "@/components/water/WaterPageFrame";
 import WaterPlantLookup from "@/components/water/WaterPlantLookup";
 import { PLANTS, WATER_SPEC, formatUsd } from "@/data/water";
 import { pageSeoMetadata } from "@/lib/page-seo";
+import { getContact } from "@/lib/site-content";
 
 const LAST_REVIEWED = "2026-09-18";
 const PATH = "/water/spec";
@@ -39,7 +40,7 @@ export default function WaterSpecIntakePage() {
         .
       </p>
 
-      <WaterPlantLookup />
+      <WaterPlantLookup contactEmail={getContact().email} />
 
       <section
         id="paid-spec"
