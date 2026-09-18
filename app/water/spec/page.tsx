@@ -1,6 +1,7 @@
 import Link from "next/link";
 import WaterPageFrame from "@/components/water/WaterPageFrame";
 import WaterPlantLookup from "@/components/water/WaterPlantLookup";
+import WaterSpecCheckoutForm from "@/components/water/WaterSpecCheckoutForm";
 import { PLANTS, WATER_SPEC, formatUsd } from "@/data/water";
 import { pageSeoMetadata } from "@/lib/page-seo";
 import { getContact } from "@/lib/site-content";
@@ -16,7 +17,13 @@ export const metadata = pageSeoMetadata({
   ogType: "website",
 });
 
-export default function WaterSpecIntakePage() {
+export default async function WaterSpecIntakePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ canceled?: string }>;
+}) {
+  const { canceled } = await searchParams;
+
   return (
     <WaterPageFrame
       title="Plant lookup and written spec"
@@ -32,13 +39,23 @@ export default function WaterSpecIntakePage() {
         sure, we show both. We will not invent a middle number.
       </p>
       <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">
-        The {formatUsd(WATER_SPEC.priceUsd)} written spec form is coming next. Until that checkout is
-        ready,{" "}
+        The {formatUsd(WATER_SPEC.priceUsd)} written spec takes your household size and prints the
+        sizing math.{" "}
         <Link href="/water/spec-what-you-get" className="font-semibold text-brand hover:underline">
-          read what the spec includes
-        </Link>
-        .
+          Read what the spec includes
+        </Link>{" "}
+        if you want the details first.
       </p>
+
+      {canceled === "1" ? (
+        <p
+          className="mt-6 rounded-xl border border-ink/10 bg-surface-alt/80 p-4 text-sm leading-relaxed text-ink"
+          role="status"
+        >
+          Checkout canceled. No charge. Your answers are still here if you want to try again, or use
+          the free plant lookup above.
+        </p>
+      ) : null}
 
       <WaterPlantLookup contactEmail={getContact().email} />
 
@@ -50,12 +67,16 @@ export default function WaterSpecIntakePage() {
           Written spec ({formatUsd(WATER_SPEC.priceUsd)})
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-          The paid form is coming next. It will take your household size and print the sizing math for
-          the band you picked, or both bands if you were not sure. We will not average the plants.
+          Tell us the household facts. Checkout is {formatUsd(WATER_SPEC.priceUsd)} one time. The
+          written spec emails after payment. We will not average the plants.
         </p>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
           Georgetown Home Services is a private local directory and spec tool. We are not the City of
           Georgetown Water Utility and we do not install softeners, sell financing, or knock on doors.
+        </p>
+        <WaterSpecCheckoutForm />
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
+          An annual refresh will be {formatUsd(WATER_SPEC.refreshUsd)} later. It is not for sale yet.
         </p>
         <p className="mt-4">
           <Link href="/water/spec-what-you-get" className="font-semibold text-brand hover:underline">
