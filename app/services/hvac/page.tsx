@@ -56,8 +56,10 @@ export default function HvacHubPage() {
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">HVAC in Georgetown, TX</h1>
               <LastUpdated lastUpdated={lastUpdated} />
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
-                Use these pages to diagnose common HVAC problems (AC not cooling, uneven temperatures), understand cost drivers, and choose who to call.
-                When you’re ready, compare local HVAC companies and contact providers directly.
+                HVAC pages cover common Central Texas failure modes—systems that stop cooling in peak heat, short
+                cycling, and repair-versus-replacement decisions—plus planning cost bands for Georgetown and
+                Williamson County. The Best Of shortlist lists companies that meet published inclusion criteria;
+                placement is not sold.
               </p>
               <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
                 <Link href="/best/top-hvac-companies-georgetown-tx" className="text-brand hover:underline">
@@ -95,7 +97,8 @@ export default function HvacHubPage() {
               <section>
                 <h2 className="text-3xl font-semibold tracking-tight text-ink">Supporting HVAC pages</h2>
                 <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                  Symptom and scenario pages that help you clarify the likely cause and what to ask when you call.
+                  Symptom and scenario pages for recurring Georgetown HVAC calls—AC not cooling, uneven rooms, and
+                  maintenance timing—each linked back to the trade hub and provider shortlist.
                 </p>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {supporting.map((s) => (
