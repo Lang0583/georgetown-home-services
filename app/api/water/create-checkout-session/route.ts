@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { contactFormRateLimitOk } from "@/lib/contact-rate-limit";
+import { waterSpecCheckoutRateLimitOk } from "@/lib/contact-rate-limit";
 import {
   WATER_SPEC_PRODUCT,
   WATER_SPEC_VENTURE,
@@ -18,7 +18,7 @@ function clientIp(req: Request): string {
 }
 
 export async function POST(req: Request) {
-  if (!contactFormRateLimitOk(`water-spec:${clientIp(req)}`)) {
+  if (!waterSpecCheckoutRateLimitOk(clientIp(req))) {
     return NextResponse.json(
       { ok: false, error: "Too many checkout attempts. Wait a bit and try again." },
       { status: 429 },
