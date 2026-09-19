@@ -7,6 +7,10 @@ import JsonLd from "../../../components/JsonLd";
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
 import LastUpdated from "../../../components/LastUpdated";
+import KeyTakeaways from "../../../components/KeyTakeaways";
+import SourcesVerificationStrip from "../../../components/SourcesVerificationStrip";
+import SpeakableJsonLd from "../../../components/SpeakableJsonLd";
+import { tradeHubTakeaways } from "../../../lib/ai-seo-takeaways";
 import { webPageWithDateModifiedJsonLd } from "../../../lib/last-updated";
 import { getStaticPageLastUpdated } from "../../../lib/static-pages-last-updated";
 import { getBlog, getServices } from "../../../lib/site-content";
@@ -51,6 +55,8 @@ export default function LandscapingHubPage() {
                 Landscaping &amp; Lawn Care in Georgetown, TX
               </h1>
               <LastUpdated lastUpdated={lastUpdated} />
+              <SpeakableJsonLd />
+              <KeyTakeaways items={tradeHubTakeaways("landscaping")} speakable />
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
                 Plan maintenance, irrigation, and curb appeal with Central Texas seasons in mind. These pages help you define scope, compare visit
                 frequency, and shortlist reputable crews serving Georgetown.
@@ -106,6 +112,7 @@ export default function LandscapingHubPage() {
             ) : null}
 
             <TradeHubSubServiceLinks parentHubPath="/services/landscaping" />
+            <SourcesVerificationStrip />
           </div>
         </section>
       </Container>

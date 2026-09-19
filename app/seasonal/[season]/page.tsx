@@ -3,9 +3,13 @@ import { notFound } from "next/navigation";
 import Container from "@/components/Container";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
+import KeyTakeaways from "@/components/KeyTakeaways";
+import SourcesVerificationStrip from "@/components/SourcesVerificationStrip";
+import SpeakableJsonLd from "@/components/SpeakableJsonLd";
 import SeasonalGuideBody from "@/components/SeasonalGuideBody";
 import EmailCaptureSitewide from "@/components/EmailCaptureSitewide";
 import { getSeasonalGuide } from "@/data/seasonal-guides";
+import { seasonalTakeaways } from "@/lib/ai-seo-takeaways";
 import { pageSeoMetadata } from "@/lib/page-seo";
 import { buildHowTo } from "@/lib/schema";
 import { getSeasonSchedule, isTexasSeasonSlug, TEXAS_SEASON_ORDER } from "@/lib/texas-seasons";
@@ -78,7 +82,11 @@ export default async function SeasonalSeasonPage({ params }: { params: Promise<{
           {isCurrent && schedule.prepWindow ? " · Prep window" : null}
         </p>
         <h1 className="mt-2 text-4xl font-bold tracking-tight text-ink md:text-5xl">{guide.headline}</h1>
+        <SpeakableJsonLd />
+        <KeyTakeaways items={seasonalTakeaways(guide.label)} speakable />
         <SeasonalGuideBody guide={guide} />
+
+        <SourcesVerificationStrip compact />
 
         <div className="mt-12 max-w-xl">
           <EmailCaptureSitewide

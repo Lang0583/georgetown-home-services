@@ -8,6 +8,10 @@ import JsonLd from "../../../components/JsonLd";
 import { pageSeoMetadata } from "../../../lib/page-seo";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
 import LastUpdated from "../../../components/LastUpdated";
+import KeyTakeaways from "../../../components/KeyTakeaways";
+import SourcesVerificationStrip from "../../../components/SourcesVerificationStrip";
+import SpeakableJsonLd from "../../../components/SpeakableJsonLd";
+import { tradeHubTakeaways } from "../../../lib/ai-seo-takeaways";
 import { webPageWithDateModifiedJsonLd } from "../../../lib/last-updated";
 import { getStaticPageLastUpdated } from "../../../lib/static-pages-last-updated";
 import { showExtendedHomeServices } from "../../../lib/public-site-scope";
@@ -53,6 +57,8 @@ export default function PestControlHubPage() {
               <div className="text-sm font-semibold uppercase tracking-wide text-muted">Services</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">Pest Control in Georgetown, TX</h1>
               <LastUpdated lastUpdated={lastUpdated} />
+              <SpeakableJsonLd />
+              <KeyTakeaways items={tradeHubTakeaways("pest-control")} speakable />
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
                 Compare inspection quality, treatment scope, and re-service policies before you commit to a plan. These pages help you ask better
                 questions for ants, roaches, rodents, and seasonal pests common around Georgetown.
@@ -108,6 +114,7 @@ export default function PestControlHubPage() {
             ) : null}
 
             <TradeHubSubServiceLinks parentHubPath="/services/pest-control" />
+            <SourcesVerificationStrip />
           </div>
         </section>
       </Container>

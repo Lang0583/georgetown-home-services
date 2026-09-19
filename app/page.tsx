@@ -11,8 +11,11 @@ import HomeCostGuidesSection from "../components/HomeCostGuidesSection";
 import SeasonalHomeSection from "../components/SeasonalHomeSection";
 import FAQList from "../components/FAQList";
 import JsonLd from "../components/JsonLd";
+import KeyTakeaways from "../components/KeyTakeaways";
+import SpeakableJsonLd from "../components/SpeakableJsonLd";
 import VerifiedProfileCard from "../components/VerifiedProfileCard";
 import { pageSeoMetadata, SITE_URL } from "../lib/page-seo";
+import { homepageTakeaways } from "../lib/ai-seo-takeaways";
 import { organizationSameAsUrls } from "../lib/schema";
 import { getStaticPageLastUpdated } from "../lib/static-pages-last-updated";
 import { CORE_SERVICE_SLUGS } from "../lib/pageContentRegistry";
@@ -138,6 +141,8 @@ export default function Home() {
         <section className="py-10 md:py-12">
           <div className="min-w-0">
             <HomeTrustBar />
+            <SpeakableJsonLd />
+            <KeyTakeaways items={homepageTakeaways()} speakable className="mt-8" />
 
             <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted">
               New:{" "}

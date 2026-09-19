@@ -3,6 +3,8 @@ import SourceBlock from "@/components/water/SourceBlock";
 import WaterCtaRow from "@/components/water/WaterCtaRow";
 import WaterPageFrame from "@/components/water/WaterPageFrame";
 import WaterQuoteQuestions from "@/components/water/WaterQuoteQuestions";
+import KeyTakeaways from "@/components/KeyTakeaways";
+import SpeakableJsonLd from "@/components/SpeakableJsonLd";
 import {
   GALLONS_PER_PERSON_PER_DAY,
   PLANTS,
@@ -16,6 +18,7 @@ import {
   plantMgL,
   usgsVeryHardThreshold,
 } from "@/data/water";
+import { waterPlantTakeaways } from "@/lib/ai-seo-takeaways";
 import { pageSeoMetadata } from "@/lib/page-seo";
 
 const LAST_REVIEWED = "2026-09-12";
@@ -51,6 +54,8 @@ export default function GeorgetownParkPlantWaterPage() {
         { href: PATH, label: "Park plant" },
       ]}
     >
+      <SpeakableJsonLd />
+      <KeyTakeaways items={waterPlantTakeaways("park")} speakable />
       <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
         That is roughly {plantGpg(plant)}. The USGS scale calls anything above {usgsVeryHardThreshold()} very hard, so
         this is not a borderline case. It is nearly double the {plantMgL(other)} the city reports for water from{" "}

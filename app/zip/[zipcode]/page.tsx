@@ -8,6 +8,9 @@ import LinkCard from "../../../components/LinkCard";
 import ProviderCard from "../../../components/ProviderCard";
 import AffiliateCTA from "../../../components/AffiliateCTA";
 import LicenseVerificationMethodology from "../../../components/LicenseVerificationMethodology";
+import KeyTakeaways from "../../../components/KeyTakeaways";
+import SourcesVerificationStrip from "../../../components/SourcesVerificationStrip";
+import SpeakableJsonLd from "../../../components/SpeakableJsonLd";
 import PageShell from "../../../components/templates/PageShell";
 import { costGuidePages } from "../../../data/cost-guides";
 import {
@@ -26,6 +29,7 @@ import {
   PROVIDERS_LAST_VERIFIED,
   getTopProvidersByCategory,
 } from "../../../data/providers";
+import { zipTakeaways } from "../../../lib/ai-seo-takeaways";
 import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import { buildFAQPage } from "../../../lib/schema";
 
@@ -86,6 +90,8 @@ export default async function ZipCodePage({ params }: { params: Promise<{ zipcod
               {zipPageH1(page.zip)}
             </h1>
             <p className="mt-3 text-lg text-muted">{page.neighborhoods}</p>
+            <SpeakableJsonLd />
+            <KeyTakeaways items={zipTakeaways(page.zip)} speakable />
           </header>
 
           <div className="prose prose-gray mt-8 max-w-none">
@@ -188,6 +194,7 @@ export default async function ZipCodePage({ params }: { params: Promise<{ zipcod
           <section className="mt-12">
             <FAQList faqs={page.faqs} title={`FAQ: Georgetown TX ${page.zip}`} />
           </section>
+          <SourcesVerificationStrip compact />
         </div>
       </section>
     </PageShell>

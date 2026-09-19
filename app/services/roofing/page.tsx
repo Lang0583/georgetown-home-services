@@ -13,6 +13,10 @@ import {
 } from "../../../lib/flagship-videos";
 import { buildTradeHubSeo } from "../../../lib/service-page-seo";
 import LastUpdated from "../../../components/LastUpdated";
+import KeyTakeaways from "../../../components/KeyTakeaways";
+import SourcesVerificationStrip from "../../../components/SourcesVerificationStrip";
+import SpeakableJsonLd from "../../../components/SpeakableJsonLd";
+import { tradeHubTakeaways } from "../../../lib/ai-seo-takeaways";
 import { webPageWithDateModifiedJsonLd } from "../../../lib/last-updated";
 import { getStaticPageLastUpdated } from "../../../lib/static-pages-last-updated";
 import { isNoindexSlug, isRedirectedServiceSlug } from "../../../lib/public-site-scope";
@@ -69,6 +73,8 @@ export default function RoofingHubPage() {
               <div className="text-sm font-semibold uppercase tracking-wide text-muted">Services</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">Roofing in Georgetown, TX</h1>
               <LastUpdated lastUpdated={lastUpdated} />
+              <SpeakableJsonLd />
+              <KeyTakeaways items={tradeHubTakeaways("roofing")} speakable />
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
                 Use these pages to understand roof leaks, storm damage, when to stabilize vs repair, and what changes replacement costs in Georgetown.
                 When you’re ready, compare roofers in the directory and contact providers directly.
@@ -145,6 +151,7 @@ export default function RoofingHubPage() {
             ) : null}
 
             <TradeHubSubServiceLinks parentHubPath="/services/roofing" />
+            <SourcesVerificationStrip />
           </div>
         </section>
       </Container>

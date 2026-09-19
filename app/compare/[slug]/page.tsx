@@ -21,6 +21,7 @@ import { buildFAQPage } from "../../../lib/schema";
 import { buildProviderItemListJsonLd } from "../../../lib/provider-item-list-schema";
 import SourcesVerificationStrip from "../../../components/SourcesVerificationStrip";
 import KeyTakeaways from "../../../components/KeyTakeaways";
+import SpeakableJsonLd from "../../../components/SpeakableJsonLd";
 import LastUpdated from "../../../components/LastUpdated";
 import { PROVIDERS_VERIFIED_ISO_DATE } from "../../../data/providers";
 
@@ -101,6 +102,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
             </p>
           </header>
 
+          <SpeakableJsonLd />
           <KeyTakeaways items={compareTakeaways} speakable />
 
           {showComparisonTable ? <ComparisonTable providers={verifiedProviders} /> : null}

@@ -30,6 +30,7 @@ import AdUnit from "../../../components/AdUnit";
 import StickyCallBar from "../../../components/StickyCallBar";
 import KeyTakeaways from "../../../components/KeyTakeaways";
 import SourcesVerificationStrip from "../../../components/SourcesVerificationStrip";
+import SpeakableJsonLd from "../../../components/SpeakableJsonLd";
 import { bestPageInternalLinks } from "../../../lib/internal-links";
 import { getBestOfPageFaqs } from "../../../lib/best-of-page-faqs";
 import { businessPhoneTel } from "../../../lib/phone";
@@ -274,6 +275,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
               <div className="text-sm font-semibold uppercase tracking-wide text-brand">Best Of</div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">{best.h1}</h1>
               <LastUpdated lastUpdated={best.lastUpdated} />
+              <SpeakableJsonLd />
               {takeaways.length ? <KeyTakeaways items={takeaways} speakable /> : null}
               {isPlumbersGeorgetown ? (
                 <>

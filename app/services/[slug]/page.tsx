@@ -26,6 +26,10 @@ import { pageSeoMetadata, absolutePageUrl } from "../../../lib/page-seo";
 import { webPageWithDateModifiedJsonLd } from "../../../lib/last-updated";
 import AuthorByline from "../../../components/AuthorByline";
 import LastUpdated from "../../../components/LastUpdated";
+import KeyTakeaways from "../../../components/KeyTakeaways";
+import SourcesVerificationStrip from "../../../components/SourcesVerificationStrip";
+import SpeakableJsonLd from "../../../components/SpeakableJsonLd";
+import { tradeHubTakeaways, type TradeHubKey } from "../../../lib/ai-seo-takeaways";
 import { hubArticleJsonLd } from "../../../lib/site-author";
 import { CORE_SERVICE_SLUGS, resolveServicePage } from "../../../lib/pageContentRegistry";
 import {
@@ -194,6 +198,31 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               </div>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">{service.h1}</h1>
               <LastUpdated lastUpdated={service.lastUpdated} />
+              <SpeakableJsonLd />
+              <KeyTakeaways
+                items={(() => {
+                  const slug = service.slug;
+                  const map: Record<string, TradeHubKey> = {
+                    "plumber-georgetown-tx": "plumbing",
+                    "hvac-georgetown-tx": "hvac",
+                    "roofer-georgetown-tx": "roofing",
+                    "electrician-georgetown-tx": "electrical",
+                    "landscaping-georgetown-tx": "landscaping",
+                    "pest-control-georgetown-tx": "pest-control",
+                    "foundation-repair-georgetown-tx": "foundation",
+                    "house-cleaning-georgetown-tx": "house-cleaning",
+                  };
+                  const trade = map[slug];
+                  return trade
+                    ? tradeHubTakeaways(trade)
+                    : [
+                        `${service.h1} — Georgetown / Williamson County homeowner guidance from Georgetown Home Services.`,
+                        "Confirm Texas licensing where the trade requires it, and compare two written scopes before you hire.",
+                        "Directory placement cannot be bought.",
+                      ];
+                })()}
+                speakable
+              />
               <AuthorByline className="mt-3" compact />
 
               {isPlumberService ? (
@@ -980,6 +1009,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </div>
           </div>
         </section>
+      <SourcesVerificationStrip />
     </PageShell>
   );
 }
