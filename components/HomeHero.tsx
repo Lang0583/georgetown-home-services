@@ -53,8 +53,8 @@ export default function HomeHero() {
           Find trusted home pros in Georgetown, TX
         </h1>
         <p className="hero-copy-muted mt-4 max-w-xl text-base leading-relaxed md:text-lg motion-safe:animate-rise-in motion-safe:[animation-delay:140ms]">
-          Real Google ratings, primary-source license checks where Texas requires them, and honest local cost
-          guides—direct contact first, no sold rankings.
+          Independent directory for Georgetown and Williamson County: public Google ratings, primary-source
+          license checks where Texas requires them, and local cost planning bands. Rankings are not sold.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-3 motion-safe:animate-rise-in motion-safe:[animation-delay:200ms]">
           <ButtonLink href="#providers" className="text-sm shadow-none">

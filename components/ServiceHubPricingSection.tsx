@@ -48,8 +48,8 @@ export default function ServiceHubPricingSection({ categoryKey }: { categoryKey:
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">{cat.servicePriceContext}</p>
         <p className="mt-2 text-xs text-muted">
           Ranges are planning estimates for the Georgetown / Williamson County market ({PRICING_LAST_REVIEWED_MONTH}
-          ), not quotes. Hard water, attic access, equipment size, and storm vs cash-pay roofs all move the number—get
-          written scopes before you decide.
+          ), not quotes. Hard water, attic access, equipment size, and storm vs cash-pay roofs all move the number.
+          Written scopes from local companies are the decision document.
         </p>
 
         <div className="mt-6">

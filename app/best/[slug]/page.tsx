@@ -278,38 +278,34 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
               {isPlumbersGeorgetown ? (
                 <>
                   <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
-                    If you own a home in Georgetown, TX, you do not think about plumbers when everything is working—you
-                    think about them when a toilet overflows, a slab leak shows up as a hot spot on the floor, or a
-                    main line backs up right before company arrives. This guide is written for Georgetown homeowners who
-                    want to choose a plumber with clear eyes: someone who understands local neighborhoods, explains
-                    options without pressure, and shows up when the problem cannot wait until next week.
+                    This shortlist covers Georgetown-area plumbers that meet published inclusion criteria—active local
+                    service, working phone, and Google rating/review thresholds. License numbers shown on cards were
+                    checked against TSBPE public records where available. Placement is not sold. Common local jobs
+                    include slab leaks on clay soils, hard-water heater failures, and after-hours backups.
                   </p>
                 </>
               ) : isHvacGeorgetown ? (
                 <>
                   <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
-                    Summers in Georgetown, TX come with long stretches of heat and humidity, which makes a reliable HVAC
-                    company nearly as important as the equipment itself. This guide highlights local providers that keep
-                    Georgetown homes livable when systems struggle on 100° days, from emergency AC repairs to full
-                    replacements and maintenance plans sized for Central Texas weather.
+                    Georgetown cooling seasons run long, attic decks run hot, and peak-heat no-cool calls stack across
+                    Williamson County. This shortlist lists HVAC companies that meet published inclusion criteria for
+                    the Georgetown area. Where Texas licenses the trade, license fields were checked against TDLR
+                    records. Placement is not sold.
                   </p>
                 </>
               ) : isRoofersGeorgetown ? (
                 <>
                   <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
-                    Georgetown, TX roofs take a beating from heat, UV exposure, spring hail, and sudden downpours that
-                    show you exactly where flashing, vents, and valleys were installed well (or not). A “good roofer” in
-                    this area is not just someone who can nail down shingles—it is a company that can diagnose the real
-                    failure point, document what they found, and explain whether you need a targeted repair, storm
-                    restoration help, or a full replacement.
+                    Georgetown roofs face heat, UV, spring hail, and fast rain that exposes weak flashing, vents, and
+                    valleys. Texas does not issue a statewide roofing license, so this shortlist emphasizes public
+                    ratings, local service evidence, and written-scope discipline—not a paid ranking.
                   </p>
                   <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                    If you want the fundamentals before you compare companies, start with{" "}
+                    Trade fundamentals and storm documentation notes live on the{" "}
                     <Link href="/services/roofer-georgetown-tx" className="font-semibold text-brand">
-                      our roofing guide for Georgetown, TX
+                      Georgetown roofing guide
                     </Link>
-                    . This page focuses on helping you compare real roofing companies serving Georgetown—especially for
-                    leak repairs, wind/hail damage, and replacement planning.
+                    . This page is the provider shortlist for leak repair, wind/hail work, and replacement planning.
                   </p>
                 </>
               ) : (
@@ -327,7 +323,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                   <FlagshipYouTubeEmbed
                     id="flagship-video-best-roofers"
                     heading="Video: what hail damage can look like"
-                    summary="Real-world examples help you ask sharper questions when roofers explain scopes, deductibles, and whether damage is localized or widespread."
+                    summary="Examples of hail marks and collateral metal damage that belong in photo sets before insurance or cash-pay scopes are compared."
                     youtubeId={FLAGSHIP_VIDEO_BEST_ROOFERS.youtubeId}
                     iframeTitle="YouTube video: examples of roof hail damage"
                   />
@@ -352,11 +348,10 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       </p>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                         We start from public ratings and review counts, then look at whether the company appears to do
-                        steady day-in, day-out plumbing work—not just one or two categories. From there, it is up to
-                        you to confirm licensing, insurance, current pricing, and fit for your specific job. If you
-                        prefer to start with the basics, read{" "}
+                        steady day-in, day-out plumbing work—not just one or two categories. Licensing, insurance,
+                        current pricing, and job fit still need independent confirmation. Trade fundamentals live on{" "}
                         <Link href="/services/plumber-georgetown-tx" className="font-semibold text-brand">
-                          our plumbing guide for Georgetown, TX
+                          the Georgetown plumbing guide
                         </Link>
                         .
                       </p>
@@ -372,7 +367,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                             hard water make shutoffs, cartridges, and water heaters fail in predictable ways.
                           </li>
                           <li>
-                            When water is actively damaging your home, the right question is often{" "}
+                            When water is actively damaging a home, the first question is usually{" "}
                             <span className="font-semibold text-ink">“How do we stop damage safely first?”</span>{" "}
                             and then “What is the permanent fix?”
                           </li>
@@ -392,7 +387,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         </li>
                         <li>
                           <span className="font-semibold text-ink">Clear diagnosis and options:</span> a good
-                          plumber explains what they think is happening, how they will confirm it, and what your repair
+                          plumber explains what they think is happening, how they will confirm it, and what the repair
                           and replacement paths look like—in plain language.
                         </li>
                         <li>
@@ -454,15 +449,15 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         Average Plumbing Costs in Georgetown TX
                       </h2>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                        No two jobs are identical, and every company has its own pricing structure, but homeowners in
-                        and around Georgetown, TX tend to see similar patterns. Think in ranges rather than a single
-                        number and always get a written estimate for your exact project.
+                        No two jobs are identical, and every company has its own pricing structure, but Georgetown-area
+                        plumbing work tends to fall into recognizable planning bands. Treat published ranges as
+                        budgeting guidance; written estimates for the specific scope are the decision document.
                       </p>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                         Two notes that matter locally: first, after-hours and weekend calls can change the base service
                         fee; second, repairs that involve drywall, flooring, or concrete often have a plumbing cost and a
-                        separate restoration cost. Ask which parts of the job the plumber is responsible for and what
-                        will be handled by other trades.
+                        separate restoration cost. Clear scopes name which parts of the job the plumber owns and what
+                        other trades handle.
                       </p>
                       <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted">
                         <li>
@@ -477,8 +472,8 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         </li>
                         <li>
                           <span className="font-semibold text-ink">Water heater replacements:</span> full tank or
-                          tankless replacements are commonly quoted in the many-thousands once you include equipment,
-                          labor, haul-away, and any code-related adjustments.
+                          tankless replacements are commonly quoted in the many-thousands once equipment, labor,
+                          haul-away, and code-related adjustments are included.
                         </li>
                         <li>
                           <span className="font-semibold text-ink">Sewer and drain work:</span> cabling or jetting
@@ -488,11 +483,11 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         <li>
                           <span className="font-semibold text-ink">Slab leaks and repipes:</span> locating and
                           repairing leaks under a slab, or replacing larger sections of pipe, can run into the
-                          many-thousands once you account for plumbing, restoration, and finish work.
+                          many-thousands once plumbing, restoration, and finish work are accounted for.
                         </li>
                       </ul>
                         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                          For deeper cost context on specific problems, you can also read focused articles such as our{" "}
+                          Deeper cost context for specific problems lives in focused articles such as the{" "}
                           <Link
                             href="/blog/emergency-plumber-cost-georgetown-tx"
                             className="font-semibold text-brand"
@@ -506,7 +501,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                           >
                             how to choose a reliable plumber in Georgetown TX
                           </Link>
-                          . If you are planning broader system work, you may also find it helpful to compare{" "}
+                          . Broader system work often sits next to{" "}
                           <Link
                             href="/best/top-hvac-companies-georgetown-tx"
                             className="font-semibold text-brand"
@@ -531,14 +526,13 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         safety concerns around gas and water heaters.
                       </p>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                        If you have active leaking right now, stop the damage first: shut off the nearest fixture valve
-                        if it works, then the main shutoff if it does not. If you are unsure where the main shutoff is,
-                        take a minute to locate it on a calm day—Georgetown emergencies are easier when you are not
-                        hunting for a valve while water spreads across flooring.
+                        Active leaking: stop damage first—nearest fixture valve if it works, then the main shutoff.
+                        Locating the main on a calm day matters in Georgetown; after-hours emergencies go worse when the
+                        valve is still a mystery while water spreads across flooring.
                       </p>
                       <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted">
                         <li>
-                          <span className="font-semibold text-ink">Active leaks you cannot contain:</span> water
+                          <span className="font-semibold text-ink">Active leaks that cannot be contained:</span> water
                           coming through ceilings, soaking floors, or flowing from a burst line where shutoffs are not
                           working should be addressed quickly.
                         </li>
@@ -549,7 +543,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         </li>
                         <li>
                           <span className="font-semibold text-ink">No water to the home:</span> a main break or
-                          failed shutoff that leaves you without water is usually treated as urgent.
+                          failed shutoff that leaves the house without water is usually treated as urgent.
                         </li>
                       </ul>
                       <div className="mt-5 rounded-xl border border-ink/10 bg-surface p-4 text-sm text-muted shadow-sm">
@@ -557,15 +551,14 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         <ul className="mt-2 list-disc space-y-1.5 pl-5 leading-relaxed">
                           <li>Is this visit for stabilization, a permanent repair, or both?</li>
                           <li>Is there an after-hours fee or minimum service charge?</li>
-                          <li>Will you document findings (photos/video) for insurance or landlord records?</li>
-                          <li>What should we avoid using until the repair is complete (toilets, laundry, dishwasher)?</li>
+                          <li>Will findings be documented (photos/video) for insurance or landlord records?</li>
+                          <li>What should be avoided until the repair is complete (toilets, laundry, dishwasher)?</li>
                         </ul>
                       </div>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                        If you are facing that kind of issue, start by shutting off water if you can do so safely, then
-                        contact a plumber who clearly describes how they handle after-hours or emergency calls. For
-                        perspective on what that visit might cost, refer to the emergency pricing guide mentioned above,
-                        and use it alongside quotes from the companies listed on this page.
+                        For those scenarios, shut water off when it can be done safely, then contact a plumber who
+                        clearly describes after-hours or emergency handling. Cost perspective lives in the emergency
+                        pricing guide above; use it alongside quotes from the companies listed on this page.
                       </p>
                     </section>
 
@@ -585,31 +578,30 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         Georgetown also has a mix of home types that change what “good HVAC” looks like in practice:
                         two-story layouts with hot upstairs rooms, newer open floorplans that need balanced airflow, and
                         older homes where insulation, returns, and duct paths may not match modern comfort expectations.
-                        The best HVAC companies do not jump straight to replacement—they explain what they observed, what
-                        the fix accomplishes, and what you should monitor afterward.
+                        Stronger companies explain what they observed, what the fix accomplishes, and what to monitor
+                        afterward—rather than jumping straight to replacement.
                       </p>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                        This page is built to help you compare <strong>real HVAC companies serving Georgetown, TX</strong>
-                        using practical criteria: reachability, evidence of actual residential heating/cooling work,
-                        transparent service offerings, and the ability to explain options without pressure. If you want
-                        the fundamentals before you compare companies, start with{" "}
+                        This shortlist is for comparing <strong>HVAC companies that serve Georgetown, TX</strong> on
+                        practical criteria: reachability, evidence of residential heating/cooling work, transparent
+                        service offerings, and options explained without pressure. Trade fundamentals live on{" "}
                         <Link href="/services/hvac-georgetown-tx" className="font-semibold text-brand">
-                          our HVAC guide for Georgetown, TX
+                          the Georgetown HVAC guide
                         </Link>
                         .
                       </p>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                        If you’re troubleshooting a no-cool situation, read{" "}
+                        No-cool troubleshooting notes:{" "}
                         <Link href="/blog/why-your-ac-is-not-cooling-georgetown-tx" className="font-semibold text-brand">
-                          why your AC is not cooling in Georgetown TX
+                          why AC stops cooling in Georgetown TX
                         </Link>
-                        . For pricing expectations, see{" "}
+                        . Pricing expectations:{" "}
                         <Link href="/blog/ac-repair-cost-georgetown-tx" className="font-semibold text-brand">
                           AC repair cost in Georgetown TX
                         </Link>
-                        . For early warning signs, review{" "}
+                        . Early warning signs:{" "}
                         <Link href="/blog/signs-you-need-hvac-repair-georgetown-tx" className="font-semibold text-brand">
-                          signs you need HVAC repair
+                          signs HVAC repair is due
                         </Link>
                         .
                       </p>
@@ -617,16 +609,16 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         <div className="text-sm font-semibold text-ink">Quick takeaways for Georgetown homeowners</div>
                         <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-muted">
                           <li>
-                            If the AC is running but the house is warming up, describe the symptom clearly (no-cool vs
-                            weak airflow vs certain rooms hot) and ask what they will check first.
+                            When the AC runs but the house warms up, clear symptom labels (no-cool vs weak airflow vs
+                            certain rooms hot) and a first-check plan shorten the visit.
                           </li>
                           <li>
-                            For replacements, insist on written equipment model numbers and a scope that mentions airflow
-                            and ductwork, not just “new unit.”
+                            Replacement scopes should name equipment model numbers and mention airflow and ductwork, not
+                            just “new unit.”
                           </li>
                           <li>
-                            If schedules are full, good companies still give you triage steps and realistic ETAs—watch
-                            for clear communication, not vague promises.
+                            When schedules are full, stronger companies still offer triage steps and realistic ETAs—
+                            clear communication beats vague promises.
                           </li>
                         </ul>
                       </div>
@@ -671,9 +663,9 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         <div className="rounded-xl border border-ink/10 bg-surface p-5 shadow-sm">
                           <div className="text-sm font-semibold text-ink">AC repair (no-cool / weak airflow)</div>
                           <p className="mt-2 text-sm leading-relaxed text-muted">
-                            Best providers start with a diagnosis you can follow: what they measured, what failed, and
-                            what would happen if you do nothing. If your issue is comfort-related (one room always
-                            hotter), ask whether airflow balancing or duct fixes are part of the plan.
+                            Stronger providers start with a diagnosis that can be followed: what was measured, what
+                            failed, and what happens if nothing changes. Comfort issues (one room always hotter) often
+                            need airflow balancing or duct work in the plan, not only a part swap.
                           </p>
                           <p className="mt-2 text-sm leading-relaxed text-muted">
                             In Georgetown summers, it is common for failures to show up during peak afternoon load. A
@@ -689,8 +681,8 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                             included. If a quote is vague, it is hard to compare fairly.
                           </p>
                           <p className="mt-2 text-sm leading-relaxed text-muted">
-                            If you are replacing because of comfort (hot rooms, humidity, noisy operation), ask how the
-                            new plan addresses airflow and return placement. New equipment without airflow fixes often
+                            When replacement is driven by comfort (hot rooms, humidity, noisy operation), written plans
+                            should address airflow and return placement. New equipment without airflow fixes often
                             leaves the original comfort problem intact.
                           </p>
                         </div>
@@ -701,7 +693,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                           “Maintenance” should produce something measurable: improved reliability, better comfort, or
                           fewer emergency calls. For Georgetown homeowners, a useful maintenance visit typically includes
                           coil and drain checks, basic electrical inspection, filter guidance, and a short summary of
-                          anything you should watch over the next 30–60 days.
+                          what to monitor over the next 30–60 days.
                         </p>
                       </div>
                     </section>
@@ -711,9 +703,9 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         Typical HVAC Costs in Georgetown TX
                       </h2>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                        Actual pricing in Georgetown, TX depends on the brand, size, and age of your equipment, access
-                        to the unit, and when you schedule service. The ranges below are based on common scenarios
-                        reported in Central Texas; always ask for a written quote for your specific system.
+                        Georgetown pricing moves with brand, equipment size and age, access to the unit, and scheduling
+                        window. The ranges below reflect common Central Texas scenarios; written quotes for the specific
+                        system are the decision document.
                       </p>
                       <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted">
                         <li>
@@ -748,11 +740,11 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         explicitly excluded.
                       </p>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                        If you are specifically researching replacement budgets, see{" "}
+                        Replacement budget drivers are covered in{" "}
                         <Link href="/blog/cost-to-replace-hvac-georgetown" className="font-semibold text-brand">
                           cost to replace HVAC in Georgetown, TX
-                        </Link>{" "}
-                        for a breakdown of the major pricing drivers.
+                        </Link>
+                        .
                       </p>
                     </section>
 
@@ -762,13 +754,13 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       </h2>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                         In Georgetown, “emergency HVAC” usually means one of two things: <strong>no cooling during peak
-                        heat</strong> or a system doing something that makes you uncomfortable running it (repeated
-                        failed starts, tripping breakers, or unusual burning smell). When schedules are full, good
-                        companies still give you clear triage guidance and realistic ETAs.
+                        heat</strong> or a system that is unsafe to keep running (repeated failed starts, tripping
+                        breakers, or unusual burning smell). When schedules are full, stronger companies still offer
+                        clear triage guidance and realistic ETAs.
                       </p>
                       <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted">
                         <li>
-                          <span className="font-semibold text-ink">Before you call:</span> replace an overdue
+                          <span className="font-semibold text-ink">Before calling:</span> replace an overdue
                           filter, confirm breakers are not tripped, and note thermostat behavior (error codes, short
                           cycling, warm air).
                         </li>
@@ -779,14 +771,14 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         </li>
                         <li>
                           <span className="font-semibold text-ink">What to avoid:</span> do not open sealed system
-                          components or attempt refrigerant work. If you smell burning or see smoke, shut the system off
-                          and request urgent service.
+                          components or attempt refrigerant work. Burning smell or smoke: shut the system off and
+                          request urgent service.
                         </li>
                       </ul>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                        If you need a same-day option, it helps to be specific: “system runs but blows warm,” “outdoor
-                        unit not spinning,” “thermostat shows error code,” or “water near the indoor unit.” Those details
-                        help the company schedule the right type of visit and reduce wasted time on arrival.
+                        Same-day scheduling works better with specific symptom language: “system runs but blows warm,”
+                        “outdoor unit not spinning,” “thermostat shows error code,” or “water near the indoor unit.”
+                        Those details help the company schedule the right visit type and reduce wasted time on arrival.
                       </p>
                     </section>
 
@@ -805,10 +797,10 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       </p>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                         Roof problems often show up at the worst moment: a slow leak that finally stains a ceiling after a
-                        heavy rain, hail damage you did not notice until an inspection, or shingles that start lifting in
-                        wind. A strong roofing company explains what is urgent (stop active water intrusion) versus what
-                        can be planned (replacement, upgrades, ventilation improvements), and they put the scope in
-                        writing so you can compare apples-to-apples.
+                        heavy rain, hail damage missed until an inspection, or shingles that start lifting in wind. A
+                        strong roofing company explains what is urgent (stop active water intrusion) versus what can be
+                        planned (replacement, upgrades, ventilation improvements), and puts the scope in writing for
+                        apples-to-apples comparison.
                       </p>
                       <div className="mt-5 rounded-xl border border-ink/10 bg-surface p-5 shadow-sm">
                         <div className="text-sm font-semibold text-ink">Quick takeaways for Georgetown homeowners</div>
@@ -846,7 +838,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         </li>
                         <li>
                           <span className="font-semibold text-ink">Storm inspection and documentation:</span> post
-                          wind/hail inspections with photos and a written summary you can use for planning or insurance.
+                          wind/hail inspections with photos and a written summary usable for planning or insurance.
                         </li>
                         <li>
                           <span className="font-semibold text-ink">Roof replacement:</span> tear-off, underlayment,
@@ -865,10 +857,10 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       <div className="mt-5 rounded-xl border border-ink/10 bg-surface p-5 shadow-sm">
                         <div className="text-sm font-semibold text-ink">What to ask during a roof inspection</div>
                         <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-muted">
-                          <li>Where is the leak entering, and how do you know?</li>
+                          <li>Where is the leak entering, and how was that confirmed?</li>
                           <li>Is the damage isolated, or are there multiple failure points?</li>
                           <li>What parts will be replaced (flashing/boots/underlayment), not just “shingles”?</li>
-                          <li>Can you provide photos and a written scope before I commit?</li>
+                          <li>Can photos and a written scope be provided before work is approved?</li>
                         </ul>
                       </div>
                     </section>
@@ -899,14 +891,14 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                             <li>Multiple leaks or recurring repairs across seasons</li>
                             <li>Widespread hail/wind damage or brittle shingles throughout</li>
                             <li>Underlayment/decking issues discovered during inspection</li>
-                            <li>You need an integrated plan for ventilation, flashing, and edge details</li>
+                            <li>An integrated plan for ventilation, flashing, and edge details is required</li>
                           </ul>
                         </div>
                       </div>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                         The most expensive mistake is replacing a roof that could have been repaired—or repairing a roof
-                        that is already failing broadly. Ask for photos, ask for the specific failure point, and ask what
-                        will happen if you choose repair now (expected life, risk of recurrence, and what to watch for).
+                        that is already failing broadly. Stronger scopes include photos, the specific failure point, and
+                        expected life / recurrence risk if repair is chosen now.
                       </p>
                     </section>
 
@@ -916,8 +908,9 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                       </h2>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                         Roofing prices vary widely because every roof is different: pitch, height, material, number of
-                        penetrations, decking condition, and how much of the job is repair versus full replacement. Use
-                        the ranges below as budgeting guidance, then get a written estimate for your specific home.
+                        penetrations, decking condition, and how much of the job is repair versus full replacement. The
+                        ranges below are budgeting guidance; a written estimate for the specific home is the decision
+                        document.
                       </p>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
                         In Georgetown, two cost drivers show up repeatedly: <strong>storm volume</strong> (high demand can
@@ -957,17 +950,17 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                         </ul>
                       </div>
                       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                        For Georgetown-specific planning, you can also start with{" "}
+                        Georgetown planning context starts on{" "}
                         <Link href="/services/roofer-georgetown-tx" className="font-semibold text-brand">
                           roofing service in Georgetown, TX
-                        </Link>{" "}
-                        or read our guides on{" "}
+                        </Link>
+                        , with cost notes in{" "}
                         <Link href="/blog/roof-repair-cost-georgetown-tx" className="font-semibold text-brand">
                           roof repair cost in Georgetown
                         </Link>{" "}
-                        and{" "}
+                        and replacement timing signals in{" "}
                         <Link href="/blog/signs-you-may-need-a-new-roof-georgetown-tx" className="font-semibold text-brand">
-                          signs you may need a new roof
+                          signs a new roof may be due
                         </Link>
                         .
                       </p>
@@ -1024,7 +1017,7 @@ export default async function BestPage({ params }: { params: Promise<{ slug: str
                 <section className="mt-12">
                   <h2 className="text-3xl font-semibold tracking-tight text-ink">More ways to compare</h2>
                   <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                    Use core service guides to understand scope and cost drivers before you request written estimates.
+                    Core service guides cover scope and cost drivers before written estimates are requested.
                   </p>
                   <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                     {ruleLinks.twoCoreServices.map((l) => (

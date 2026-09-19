@@ -36,18 +36,18 @@ function IconPhone({ className }: { className?: string }) {
 const STEPS = [
   {
     Icon: IconSearch,
-    heading: "Step 1 — Find Your Service",
-    copy: "Browse by category or neighborhood to find exactly what you need — plumbing, HVAC, roofing, electrical, and more.",
+    heading: "1 — Trade hubs",
+    copy: "Plumbing, HVAC, roofing, and related trades are grouped by category and neighborhood, with guides that stay local to Georgetown and Williamson County.",
   },
   {
     Icon: IconStar,
-    heading: "Step 2 — Compare Local Options",
-    copy: "Read public Google reviews, check pricing ranges, and see which companies serve your part of Georgetown.",
+    heading: "2 — Public signals",
+    copy: "Listings lean on public Google ratings, planning cost bands, and Texas license checks where the trade is state-licensed. Placement is not sold.",
   },
   {
     Icon: IconPhone,
-    heading: "Step 3 — Reach Out Directly",
-    copy: "Call or visit providers directly. No on-site lead forms. Direct provider contact info first. Any paid partner links are clearly labeled. Shortlists compiled from public business data.",
+    heading: "3 — Direct contact",
+    copy: "Phone numbers and profile links go to the companies themselves. No on-site lead forms. Paid partner links, when present, are labeled.",
   },
 ] as const;
 
@@ -58,12 +58,12 @@ export default function HomeHowItWorks() {
       aria-labelledby="how-it-works-heading"
     >
       <h2 id="how-it-works-heading" className="text-xl font-semibold tracking-tight text-ink">
-        How it works
+        How this directory works
       </h2>
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
-        These guides walk you through finding the right trade, comparing local companies with real data, and reaching out when
-        you&apos;re ready. No on-site lead forms. Direct provider contact info first. Any paid partner links are clearly
-        labeled.
+        Georgetown Home Services is a comparison site, not a contractor or dispatch desk. Trade hubs, Best Of
+        shortlists, and cost guides are built from public business data and primary-source license lookups where
+        Texas requires a license.
       </p>
       <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
         {STEPS.map(({ Icon, heading, copy }) => (

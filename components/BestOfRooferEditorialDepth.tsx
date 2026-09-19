@@ -8,18 +8,18 @@ export default function BestOfRooferEditorialDepth() {
   return (
     <section className="mt-10 space-y-8 rounded-xl border border-ink/10 bg-surface p-6 shadow-sm md:p-8">
       <div>
-        <h2 className="text-2xl font-semibold tracking-tight text-ink">How to use this directory (before you call anyone)</h2>
+        <h2 className="text-2xl font-semibold tracking-tight text-ink">How to use this directory</h2>
         <p className="mt-3 text-sm leading-relaxed text-muted">
           Treat this page as a <strong>shortlist generator</strong>, not a scoreboard. Georgetown and Williamson County
           roofs fail in predictable ways—wind-driven hail on west- and south-facing slopes, flashing pulled loose at
           second-story transitions, and slow leaks that only show up after the{" "}
-          <em>next</em> hard rain. Your job is to translate what you see (water spots, drip lines, gutter grit after a
-          storm) into <strong>clear questions</strong> for two or three companies, then compare{" "}
-          <strong>written scopes</strong> line by line.
+          <em>next</em> hard rain. Water spots, drip lines, and gutter grit after a storm belong in{" "}
+          <strong>clear questions</strong> for two or three companies, then{" "}
+          <strong>written scopes</strong> compared line by line.
         </p>
         <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-muted">
           <li>
-            <strong>Pick 3–5 companies</strong> that match your situation: emergency tarping, leak isolation, hail
+            <strong>Pick 3–5 companies</strong> that match the job type: emergency tarping, leak isolation, hail
             documentation, or full replacement planning—not “who has the prettiest website.”
           </li>
           <li>
@@ -28,15 +28,15 @@ export default function BestOfRooferEditorialDepth() {
           </li>
           <li>
             <strong>Ask how photos are delivered</strong> (labeled, dated) and whether someone senior reviews scopes
-            before you sign—not just a door-knocker’s tablet sketch.
+            before a signature—not just a door-knocker’s tablet sketch.
           </li>
           <li>
             <strong>Compare apples to apples</strong>: if one quote assumes full synthetic underlayment and another
-            “includes underlayment” without a product name, stop and clarify before you choose on price alone.
+            “includes underlayment” without a product name, clarify before choosing on price alone.
           </li>
           <li>
-            <strong>Confirm insurance alignment</strong> if you are filing: who attends the adjuster walk, how change
-            orders are handled, and how emergency tarping is documented.
+            <strong>Confirm insurance alignment</strong> when a claim is in play: who attends the adjuster walk, how
+            change orders are handled, and how emergency tarping is documented.
           </li>
         </ol>
       </div>
@@ -48,21 +48,20 @@ export default function BestOfRooferEditorialDepth() {
           <strong>symptoms of a pattern</strong>—for example, repeated granule dump at downspouts after multiple storms,
           or ridge cap tabs that lift after wind plus hail on an aging laminate. In master-planned neighborhoods (Sun
           City, Teravista, Wolf Ranch, Georgetown Village), <strong>HOA packets</strong>, parking for large crews, and
-          dumpster placement can change scheduling as much as the roof pitch does—ask contractors how they&apos;ve
-          handled your neighborhood before, not only whether they serve “the Austin area.”
+          dumpster placement can change scheduling as much as the roof pitch does—ask how a crew has handled that
+          neighborhood before, not only whether they serve “the Austin area.”
         </p>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          If you are coming off a <strong>county-wide watch</strong>, expect longer callbacks. That is normal; what
-          matters is whether the company returns with a coherent plan—photos, timeline, written scope—and avoids
-          high-pressure “sign today” framing. Use our{" "}
+          After a <strong>county-wide watch</strong>, longer callbacks are normal; what matters is a coherent return
+          plan—photos, timeline, written scope—without high-pressure “sign today” framing. Prep notes live in the{" "}
           <Link href="/blog/hail-damage-georgetown-williamson-may-2026" className="font-semibold text-brand hover:underline">
             county hail guide
           </Link>{" "}
           and{" "}
           <Link href="/services/roofing" className="font-semibold text-brand hover:underline">
             roofing hub
-          </Link>{" "}
-          to prep questions before you pay a deposit.
+          </Link>
+          .
         </p>
       </div>
 
@@ -94,12 +93,12 @@ export default function BestOfRooferEditorialDepth() {
           <Link href="/methodology" className="font-semibold text-brand hover:underline">
             methodology
           </Link>{" "}
-          explains how we assemble these shortlists from public data; it does not replace your own diligence. When in
+          explains how we assemble these shortlists from public data; it does not replace independent diligence. When in
           doubt, pause, compare another estimate, and use{" "}
           <Link href="/contact" className="font-semibold text-brand hover:underline">
             contact
           </Link>{" "}
-          to tell us about confusing directory info—we correct factual listing errors when we can verify them.
+          to report confusing directory info—we correct factual listing errors when we can verify them.
         </p>
       </div>
     </section>

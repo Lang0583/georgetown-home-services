@@ -70,8 +70,9 @@ export default function RoofingHubPage() {
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">Roofing in Georgetown, TX</h1>
               <LastUpdated lastUpdated={lastUpdated} />
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
-                Use these pages to understand roof leaks, storm damage, when to stabilize vs repair, and what changes replacement costs in Georgetown.
-                When you’re ready, compare roofers in the directory and contact providers directly.
+                Roofing pages cover leak patterns, hail and wind documentation, repair-versus-replacement scopes, and
+                Williamson County cost drivers. Texas does not issue a statewide roofing license—compare insurance
+                language and written scopes. The Best Of shortlist is not a paid ranking.
               </p>
               <div className="mt-6 max-w-xl">
                 <StormInspectionLeadForm source="hub:services-roofing" />

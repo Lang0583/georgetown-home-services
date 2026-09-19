@@ -64,17 +64,18 @@ export default function PlumbingHubPage() {
                 being listed. Nobody pays to appear here and nobody pays for position.
               </p>
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
-                One thing worth knowing before you call anyone about scale, a failing water heater, or a softener quote:
-                Georgetown water hardness is not the same across the city. Water from {PLANTS.southlake.proseLabel} runs
-                about {plantGpg(PLANTS.southlake)}. Water from {PLANTS.park.proseLabel} runs about {PLANTS.park.gpgHigh}.
-                A quote sized for the wrong number is a quote for the wrong equipment.
+                Softener quotes, scale complaints, and water-heater failures often start from the wrong hardness input.
+                Georgetown water hardness is not uniform: water from {PLANTS.southlake.proseLabel} runs about{" "}
+                {plantGpg(PLANTS.southlake)}; water from {PLANTS.park.proseLabel} runs about {PLANTS.park.gpgHigh}. A
+                quote sized for the wrong plant band is a quote for the wrong equipment.
               </p>
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
-                Run the spec before you call, and you will know which number applies to you.
+                The free hardness lookup and paid sizing spec on the water hub pin which city-published band applies
+                before equipment is compared.
               </p>
               <div className="mt-4">
                 <ButtonLink href="/water" className="text-sm">
-                  Check your water hardness band, free
+                  Check water hardness band (free)
                 </ButtonLink>
               </div>
               <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
@@ -113,7 +114,8 @@ export default function PlumbingHubPage() {
               <section>
                 <h2 className="text-3xl font-semibold tracking-tight text-ink">Supporting plumbing pages</h2>
                 <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-                  Symptom and scenario pages that help you narrow down likely causes and the right questions to ask.
+                  Symptom and scenario pages for recurring Georgetown plumbing calls—clogs, leaks, and water heaters—
+                  each linked back to the trade hub and provider shortlist.
                 </p>
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {supporting.map((s) => (

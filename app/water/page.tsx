@@ -21,7 +21,7 @@ const park = PLANTS.park;
 export const metadata = pageSeoMetadata({
   titleSegment: "Georgetown Water Hardness by Plant",
   description:
-    "Georgetown treats water at more than one plant, and the hardness is not the same. City published numbers, both bands, and what they mean before you buy a softener.",
+    "Georgetown treats water at more than one plant, and the hardness is not the same. City-published numbers, both bands, and what they mean before a softener quote.",
   pathname: PATH,
   ogType: "website",
 });
@@ -29,7 +29,7 @@ export const metadata = pageSeoMetadata({
 export default function WaterHubPage() {
   return (
     <WaterPageFrame
-      title="Georgetown water is hard. How hard depends on which plant serves you."
+      title="Georgetown water is hard. How hard depends on which plant serves the street."
       lastReviewed={LAST_REVIEWED}
       crumbs={[
         { href: "/", label: "Home" },
@@ -54,42 +54,42 @@ export default function WaterHubPage() {
         mineral load. Same city, same water bill, different water.
       </p>
 
-      <h2 className="mt-10 text-2xl font-semibold tracking-tight text-ink">Why the gap matters before you spend money</h2>
+      <h2 className="mt-10 text-2xl font-semibold tracking-tight text-ink">Why the gap matters before a softener quote</h2>
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
         Softener sizing is arithmetic, and grains per gallon is the input. Get the input wrong and everything downstream
         is wrong.
       </p>
       <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">
-        Size a unit for {park.gpgHigh} grains when your house is actually on {south.gpgLow} and you bought more capacity
-        than you need and you will run more salt through it than you need. Size for {south.gpgLow} when you are actually
-        on {park.gpgHigh} and the unit regenerates far more often than it was built to, which burns salt, burns water,
-        and shortens resin life.
+        Size a unit for {park.gpgHigh} grains when the house is actually on {south.gpgLow} and the buyer paid for more
+        capacity than needed and will run more salt than needed. Size for {south.gpgLow} when the house is actually on{" "}
+        {park.gpgHigh} and the unit regenerates far more often than it was built to, which burns salt, burns water, and
+        shortens resin life.
       </p>
       <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">
-        A salesman standing in your kitchen does not know which plant is feeding your street unless he asks. Most do
-        not ask.
+        A salesman standing in a kitchen does not know which plant is feeding the street unless he asks. Most do not
+        ask.
       </p>
 
-      <h2 className="mt-10 text-2xl font-semibold tracking-tight text-ink">Find out which band you are in</h2>
+      <h2 className="mt-10 text-2xl font-semibold tracking-tight text-ink">Which band applies</h2>
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
-        Start with the free lookup. Tell us your street and we tell you which band the city numbers put you in, or we
-        tell you honestly that we cannot pin it and show you both.
+        Start with the free lookup. Enter a street address and the tool returns which band the city numbers put that
+        address in—or states honestly that the band cannot be pinned and shows both.
       </p>
       <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">
-        If you want the math done for your house, the paid spec is {formatUsd(WATER_SPEC.priceUsd)}. It takes your band,
-        your household size, and your current setup, runs the sizing formula in front of you instead of hiding it, and
-        gives you the questions to ask before you sign anything.
+        For house-level math, the paid spec is {formatUsd(WATER_SPEC.priceUsd)}. It takes plant band, household size, and
+        current setup, runs the sizing formula in the open instead of hiding it, and lists questions that belong on a
+        contract before signing.
       </p>
       <WaterCtaRow showLookup showSpec />
 
-      <h2 className="mt-10 text-2xl font-semibold tracking-tight text-ink">What we are not going to tell you</h2>
+      <h2 className="mt-10 text-2xl font-semibold tracking-tight text-ink">What this directory will not claim</h2>
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
         Hard water is not unsafe water. Hardness is calcium and magnesium. It is a scale and appliance problem, not a
         contamination problem, and the city publishes its compliance reports separately.
       </p>
       <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">
-        If someone knocks on your door, runs a quick test in your sink, and tells you your water is dangerous, that is a
-        sales script. We do not do that, and neither should anyone we would list.
+        Door-knock sink tests that declare the water &quot;dangerous&quot; are a sales script. This site does not run
+        that script, and neither should anyone listed here.
       </p>
 
       <SourceBlock includeUsgsNote />

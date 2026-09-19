@@ -7,10 +7,10 @@ export default function BestOfHvacEditorialDepth() {
       <div>
         <h2 className="text-2xl font-semibold tracking-tight text-ink">How to use this HVAC directory</h2>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          In Georgetown your HVAC system is both <strong>comfort equipment</strong> and <strong>safety infrastructure</strong>
-          during heat waves. Directory stars summarize public sentiment—they do not measure whether a company is the right
-          fit for <em>your</em> refrigerant system, duct layout, or warranty situation. Use this page to shortlist providers
-          who can articulate diagnostics, options, and trade-offs in writing.
+          In Georgetown, HVAC is both <strong>comfort equipment</strong> and <strong>safety infrastructure</strong> during
+          heat waves. Directory stars summarize public sentiment—they do not measure whether a company fits a given
+          refrigerant system, duct layout, or warranty situation. This page shortlists providers who can put diagnostics,
+          options, and trade-offs in writing.
         </p>
         <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-muted">
           <li>
@@ -26,8 +26,8 @@ export default function BestOfHvacEditorialDepth() {
             thermostat compatibility, and permit responsibilities.
           </li>
           <li>
-            <strong>Compare maintenance plans honestly:</strong> what filters they stock for your cabinet size, whether
-            priority scheduling is contractual or marketing.
+            <strong>Compare maintenance plans honestly:</strong> which filters they stock for common cabinet sizes,
+            whether priority scheduling is contractual or marketing.
           </li>
         </ol>
       </div>
@@ -37,9 +37,9 @@ export default function BestOfHvacEditorialDepth() {
         <p className="mt-3 text-sm leading-relaxed text-muted">
           Long <strong>cooling seasons</strong> stress capacitors, contactors, and condenser coils; hard winter snaps still
           happen—heat exchanger issues and defrost faults show up on the first cold night. Humid days also mask{" "}
-          <strong>condensate drain problems</strong> as “mystery leaks.” When you call, mention recent weather swings—it
-          shortens diagnostic time. If your home has single-return ducting or long flex runs common in some Georgetown
-          build eras, say so; static pressure problems mimic refrigerant faults.
+          <strong>condensate drain problems</strong> as “mystery leaks.” Recent weather swings shorten diagnostic time
+          when mentioned on the call. Single-return ducting or long flex runs common in some Georgetown build eras make
+          static pressure problems look like refrigerant faults.
         </p>
         <p className="mt-3 text-sm leading-relaxed text-muted">
           Pair this directory with the{" "}

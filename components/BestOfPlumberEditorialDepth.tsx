@@ -7,10 +7,10 @@ export default function BestOfPlumberEditorialDepth() {
       <div>
         <h2 className="text-2xl font-semibold tracking-tight text-ink">How to use this plumber directory</h2>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          Plumbing is different from many trades: a <strong>slow drip</strong> can sit in a wall for weeks before you see
-          stains, while a <strong>main-line backup</strong> needs same-day response. Use this page to build a{" "}
-          <strong>shortlist</strong>, not to pick a single &quot;winner&quot; from stars alone. The goal is two or three
-          licensed companies you can call with clear symptoms, photos, and access details.
+          Plumbing is different from many trades: a <strong>slow drip</strong> can sit in a wall for weeks before stains
+          appear, while a <strong>main-line backup</strong> needs same-day response. This page is a{" "}
+          <strong>shortlist</strong>, not a single winner from stars alone. The practical goal is two or three licensed
+          companies ready for clear symptoms, photos, and access details.
         </p>
         <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-muted">
           <li>
@@ -22,8 +22,8 @@ export default function BestOfPlumberEditorialDepth() {
             the quote (hidden access, corroded fittings, unknown slab route).
           </li>
           <li>
-            <strong>Confirm licensing language</strong> on the estimate and invoice—Texas homeowners should verify
-            credentials independently through official sources, not from a door hanger.
+            <strong>Confirm licensing language</strong> on the estimate and invoice—Texas credentials belong on official
+            sources, not a door hanger.
           </li>
           <li>
             <strong>Compare warranties</strong> on parts versus labor; cheap tank installs with thin labor warranties
@@ -37,17 +37,16 @@ export default function BestOfPlumberEditorialDepth() {
         <p className="mt-3 text-sm leading-relaxed text-muted">
           Williamson County&apos;s <strong>shifting clay soils</strong> stress slab plumbing and yard lines differently than
           sandy Gulf-Coast soils. Older Georgetown homes near the Square can have mixed generations of supply line
-          materials; newer master-planned sections may still see staple-up or foundation penetration quirks. Mention{" "}
-          <strong>when the home was built</strong>, whether you are on a <strong>slab or pier-and-beam</strong> (if you
-          know), and whether irrigation or pool lines run near the suspected leak—those details change how plumbers scope
-          work and price risk.
+          materials; newer master-planned sections may still see staple-up or foundation penetration quirks. Build year,{" "}
+          <strong>slab versus pier-and-beam</strong> (when known), and whether irrigation or pool lines run near a
+          suspected leak change how plumbers scope work and price risk.
         </p>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          Before you call, skim our{" "}
+          Vocabulary for cleanouts, PRV, and hydrostatic tests lives on the{" "}
           <Link href="/services/plumber-georgetown-tx" className="font-semibold text-brand hover:underline">
             Georgetown plumbing service guide
-          </Link>{" "}
-          for vocabulary (cleanouts, PRV, hydrostatic tests) so you are not buying jargon you do not need.
+          </Link>
+          —useful before jargon shows up on an invoice.
         </p>
       </div>
 
@@ -66,7 +65,7 @@ export default function BestOfPlumberEditorialDepth() {
           </li>
           <li>
             <strong>Upsells bundled into panic:</strong> whole-house repipes pitched from a single fixture clog without
-            diagnostics you can follow.
+            followable diagnostics.
           </li>
         </ul>
         <p className="mt-4 text-sm leading-relaxed text-muted">

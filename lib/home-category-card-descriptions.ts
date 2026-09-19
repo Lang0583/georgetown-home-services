@@ -12,7 +12,7 @@ export const HOME_CATEGORY_CARD_DESCRIPTIONS: Record<string, string> = {
   "electrician-georgetown-tx":
     "Electrical repairs, panel work, and new circuits for Georgetown homes—what’s urgent, when permits apply, and how EV or appliance loads show up in newer subdivisions.",
   "landscaping-georgetown-tx":
-    "Lawn care, beds, and irrigation for Georgetown’s heat and clay soil. Seasonal timing and watering basics help you compare landscape bids on the same scope.",
+    "Lawn care, beds, and irrigation for Georgetown’s heat and clay soil. Seasonal timing and watering basics put landscape bids on the same scope.",
   "pest-control-georgetown-tx":
     "Ants, roaches, rodents, and seasonal pests in Georgetown: how inspections and maintenance plans work, and how to compare providers without one-size chemical treatments.",
   "foundation-repair-georgetown-tx":
