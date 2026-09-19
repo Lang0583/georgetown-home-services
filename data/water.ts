@@ -108,6 +108,27 @@ export function plantGpg(plant: WaterPlant): string {
   return formatGpgTo(plant.gpgLow, plant.gpgHigh);
 }
 
+/** Published homeowner band line. Numbers stay in PLANTS only. */
+export function plantPublishedHardness(plant: WaterPlant): string {
+  return `${plantMgL(plant)} CaCO3 (about ${plantGpg(plant)})`;
+}
+
+export const LOOKUP_AREAS = {
+  southlake: "southlake",
+  park_southside: "park_southside",
+  not_sure: "not_sure",
+  other: "other",
+} as const;
+
+export type WaterLookupArea = (typeof LOOKUP_AREAS)[keyof typeof LOOKUP_AREAS];
+
+/** Known plant → that band only. Unknown / other → both. Never averages. */
+export function plantsForLookupArea(area: WaterLookupArea): WaterPlantKey[] {
+  if (area === LOOKUP_AREAS.southlake) return ["southlake"];
+  if (area === LOOKUP_AREAS.park_southside) return ["park"];
+  return ["southlake", "park"];
+}
+
 export function usgsHardRange(): string {
   const band = usgsBand("Hard");
   if (band.high === null) throw new Error("Hard band missing high");
